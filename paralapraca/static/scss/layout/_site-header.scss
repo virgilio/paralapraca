@@ -28,6 +28,7 @@
         border-radius: 100%;
         box-shadow: 2px 2px 4px 0 rgba(0, 0, 0, 0.5);
         height: 40px;
+        margin: 0 auto; 
         text-align: center; 
         width: 40px;
         img {
@@ -45,8 +46,9 @@
     }
     .menu-label {
         display: block;
-        font-size: $font-size-base;
+        font-size: $font-size-small;
         font-weight: $semi-bold;
+        margin-top: 5px;
         text-align: center; 
     }
 }
