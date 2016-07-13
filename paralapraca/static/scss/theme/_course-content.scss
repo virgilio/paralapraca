@@ -31,3 +31,30 @@
         }
     }
 }
+
+// Course notes
+// -----------------------------------------------------
+
+.student-notes {
+    .button-show {
+        color: $yellow;
+        position: fixed;
+        bottom: 0;
+        right: 0;
+    }
+    .notes-container {
+        .notes-header {
+            h4 {
+                color: $yellow;
+            }
+            .button-save {
+                background-color: $green;
+                color: #fff;
+                @include transition(background-color 0.5s ease);
+                &:hover {
+                    background-color: darken($green,10%);
+                }
+            }
+        }
+    }
+}

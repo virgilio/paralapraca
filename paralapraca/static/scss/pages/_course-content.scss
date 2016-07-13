@@ -371,8 +371,9 @@
     // END COURSE VIDEO
 }
 
-// COURSE NOTES - General
-// ********************************************************************* //
+// Course notes
+// -----------------------------------------------------
+
 .student-notes {
     position: fixed;
     bottom: 0;
@@ -439,9 +440,10 @@
     }
 }
 
+// Course units navigation
+// -----------------------------------------------------
+
 .course {
-    // COURSE UNITS - General
-    // ********************************************************************* //
     .lesson-units-nav {
         .line {
             background: $brand-primary;

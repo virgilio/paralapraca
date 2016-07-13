@@ -56,7 +56,7 @@
 .main-nav-opened { // when the offcanvas menu is opened
     .user-info {
         padding: 20px 25px;
-        width: 300px;
+        width: 250px;
         .user-icon {
             float: left;
             margin-right: 10px;
@@ -98,7 +98,7 @@
 .main-nav-opened { // when the offcanvas menu is opened
     .site-logo {
         @media screen and (min-width: $screen-sm-min) {
-            left: 300px;
+            left: 250px;
         }
     }
 }
@@ -140,7 +140,7 @@
     box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.24), 0 1px 1.5px 0 rgba(0, 0, 0, 0.12), 2px 2px 6px 0 rgba(0, 0, 0, 0.38);
     min-width: 300px;
     max-width: 420px;
-    position: absolute;
+    position: fixed;
     right: 19px;
     top: 80px;
     z-index: 1100;
