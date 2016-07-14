@@ -11,16 +11,22 @@
     }
     .info {
         color: $gray;
+        font-size: 13px;
         margin-bottom: 5px;
         a {
-            border-bottom: 1px solid transparent;
-            color: $gray;
+            border-bottom: 1px solid $gray-dark;
+            color: $gray-dark;
+            font-size: $font-size-base;
             font-weight: $bold;
             text-decoration: none;
-            transition: border 0.5s ease;
+            transition: border 0.25s ease;
             &:hover {
-                border-bottom: 1px solid $gray;
+                border-color: transparent;
             } 
+        }
+        .thread-name {
+            border-bottom: 1px solid $brand-primary;
+            color: $brand-primary;
         }
     }
     .actions {
@@ -28,8 +34,5 @@
     }
     .tags {
         margin-left: 50px;
-        a {
-            @extend %forum-tags;
-        }
     }
 }

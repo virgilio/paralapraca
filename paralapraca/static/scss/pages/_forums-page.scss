@@ -80,7 +80,7 @@
             font-size: $font-size-small;
             font-weight: normal;
             color: $gray;
-            padding: 0 20px 5px;
+            padding: 0 0 5px;
         }
     }
     tbody {
@@ -88,24 +88,31 @@
             &:nth-child(odd) {
                 background-color: rgba(#fff,0.5);
             }
-            &:hover {
-                background-color: rgba($brand-primary,0.2);
+            &.new {
+                background-color: rgba(155,155,155,0.2);
+                border-bottom: solid 2px rgba(194, 194, 194, 0.7);
             }
         }
         td {
-            padding: 10px 20px;
+            padding: 10px 0;
+            &:first-child {
+                padding-left: 20px;
+            }
         }
     }
     .thread-name {
-        color: $gray;
-        display: block;
-        font-size: $font-size-base;
-        font-weight: $bold;
-    }
-    .last-update {
         color: #000;
         display: block;
+        font-size: $font-size-base;
+        font-weight: $semi-bold;
+    }
+    .last-update {
+        color: $gray;
+        display: block;
         font-size: $font-size-small;
+        b {
+            font-weight: $semi-bold;
+        }
     }
     .tags {
         margin: 0; 

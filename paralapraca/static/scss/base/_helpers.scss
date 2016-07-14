@@ -14,9 +14,6 @@
     &-chat {
         @include icon(before, chat);
     }
-    &-comment {
-        @include icon(before, comment);
-    }
     &-compress {
         @include icon(after, compress);
     }
@@ -28,9 +25,6 @@
     }
     &-expand {
         @include icon(after, expand);
-    }
-    &-f-register {
-        @include icon(before, register-forum);
     }
     &-film {
         @include icon(before, film);
@@ -77,14 +71,23 @@
     &-profile {
         @include icon(before, profile);
     }
+    &-record {
+        @include icon(before, record);
+    }
     &-register {
         @include icon(before, register);
+    }
+    &-reply {
+        @include icon(before, reply);
     }
     &-repositories {
         @include icon(before, repositories);
     }
     &-save {
         @include icon(before, save);
+    }
+    &-schedule {
+        @include icon(before, schedule);
     }
     &-site {
         @include icon(before, site);
