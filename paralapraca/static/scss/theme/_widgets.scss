@@ -1,12 +1,16 @@
 // Widget's common styles
 // --------------------------------------------------
 
+.widget-topbar {
+    background-color: $orange;
+}
+
 .widget-title {
     text-transform: lowercase;
 }
 
 .section-title {
-    color: $brand-primary;
+    color: $orange;
     text-transform: lowercase;
 }
 
@@ -40,12 +44,19 @@
 
 .forums-widget {
     .widget-title {
-        color: $brand-primary;
+        color: $orange;
     }
 
     .widget-filter {
-        input {
-            color: $brand-primary;
+        &:after {
+            color: $orange;
         }
+        .form-control {
+            color: $orange;
+        }
+    }
+
+    .forum-update {
+        background-color: $orange;
     }
 }

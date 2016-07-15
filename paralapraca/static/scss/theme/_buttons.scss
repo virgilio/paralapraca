@@ -1,0 +1,30 @@
+// Buttons and labels
+// --------------------------------------------------
+
+// used on forum's page
+%forum-actions {
+    color: $orange;
+}
+
+a.action {
+    @include link-hover($orange,$orange,transparent,$orange); 
+}
+
+.action {
+    &.used {
+        &:before {
+            border: 1px solid $orange;
+        }    
+    }
+}
+
+%forum-tags, %forum-categories {
+    border: 1px solid $orange;
+    color: $orange;
+}
+
+a {
+    &.tag, &.category {
+        @include button-hover($orange,#fff,transparent,$orange);
+    }
+}

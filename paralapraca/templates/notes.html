@@ -32,10 +32,10 @@ notes my-notes
             <div class="line">
                 <div class="header">
                     {% verbatim angularjs %}
-                    <h3 class="course-title"><a href="/course/{{course.slug}}/mynotes/">{{course.name}}</a></h3>
+                    <h3 class="course-title">{{course.name}}</h3>
                     {% endverbatim angularjs %}
-                    <a href="/course/{% verbatim angularjs %}{{course.slug}}{% endverbatim angularjs %}/intro/" class="btn-intro">{% trans 'Home' %}</a>
-                    <a href="/course/{% verbatim angularjs %}{{course.slug}}{% endverbatim angularjs %}/intro/" class="btn-resume">{% trans 'Resume course' %}</a>
+                    <a href="/course/{% verbatim angularjs %}{{course.slug}}{% endverbatim angularjs %}/intro/" class="button-intro">{% trans 'Home' %}</a>
+                    <a href="/course/{% verbatim angularjs %}{{course.slug}}{% endverbatim angularjs %}/intro/" class="button-resume">{% trans 'Resume course' %}</a>
                 </div>
                 <small>
                     você tem {% verbatim angularjs %}{{course.course_notes_number}}{% endverbatim angularjs %} {% trans 'notes' %}
@@ -47,10 +47,10 @@ notes my-notes
                     <h5 class="unit-title">Unidade 1 - Lorem Ipsum Dolor Sit Amet</h5>
                     <div class="note-content">
                         <div class="row">
-                            <div class="col-sm-7 col-md-8 col-lg-9 text">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus...</div>
+                            <div class="col-sm-7 col-md-8 col-lg-9">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus...</div>
                             <div class="col-sm-5 col-md-4 col-lg-3">
-                                <button class="btn-edit">editar</button>
-                                <button class="btn-delete">descartar</button>
+                                <button class="button-edit">editar</button>
+                                <button class="button-delete">descartar</button>
                             </div>
                         </div>
                     </div>

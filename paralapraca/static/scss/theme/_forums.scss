@@ -1,0 +1,10 @@
+// Shared forums components
+// --------------------------------------------------
+
+.forums {
+    .info {
+        .thread-name {
+            @include link-hover($orange,$orange,$orange,transparent);
+        }
+    }
+}
