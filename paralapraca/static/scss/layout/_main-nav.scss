@@ -52,15 +52,10 @@
         }
     }
     a {
-        border-bottom: 1px solid transparent;
-        @include transition(border 0.5s ease);
-        text-decoration: none;
+        @include link-hover(#fff,#fff,transparent,#fff);
         &:before {
             display: block;
             font-size: $font-size-large;
-        }
-        &:hover {
-            border-color: #fff;
         }
     }
     .courses {

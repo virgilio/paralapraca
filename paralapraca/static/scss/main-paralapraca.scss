@@ -51,10 +51,12 @@
 // there are the specific's theme styles
 
 //== Base styles
+@import "theme/_buttons";
 @import "theme/_course-content";
 @import "theme/_course-box";
 @import "theme/_flatpage";
 @import "theme/_fonts";
+@import "theme/_forums";
 @import "theme/_globals";
 @import "theme/_headers";
 @import "theme/_home";

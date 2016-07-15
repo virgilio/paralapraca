@@ -15,22 +15,10 @@
             display: inline-block;
             font-size: 30px;
             margin: 0 10px 10px 0;
-            a {
-                color: #000;
-                text-decoration: none; 
-            }
         }
-        .btn-intro, .btn-resume {
-            @extend .btn;
-            @extend .btn-xs;
+        .button-intro, .button-resume {
             padding: 1px 10px;
             text-transform: lowercase;
-        }
-        .btn-intro {
-            @extend .btn-primary;
-        }
-        .btn-resume {
-            @extend .btn-default;
         }
     }
     small {
@@ -67,9 +55,10 @@
         background: rgba(255,255,255,0.5);
         overflow: hidden;
         padding: 15px;
-    }
-    .btn-delete, .btn-edit {
-        @extend .btn;
-        @extend .btn-sm;
+        .row {
+            div:last-child {
+                text-align: right; 
+            }
+        }
     }
 }

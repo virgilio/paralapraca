@@ -46,8 +46,7 @@
             font-weight: $normal;
             text-align: center;
             a {
-                color: #fff;
-                text-decoration: underline; 
+                @include link-hover(#fff,#fff,#fff,transparent);
             }
         }
     }

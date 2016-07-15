@@ -17,13 +17,11 @@ $purple:        #993671;
 //## Override Bootstrap's variables 
 // --------------------------------------------------
 
-$brand-primary:     $orange;
+$brand-primary:     $blue;
 $brand-success:     $green;
 $brand-info:        $light-blue;
-$brand-warning:     $yellow;
+$brand-warning:     $orange;
 $brand-danger:      $red;
-
-$btn-font-weight:                $bold !default;
 
 // Allows for customizing button radius independently from global border radius
 $btn-border-radius-base:         20px !default;

@@ -103,12 +103,6 @@
             right: 15px;
             top: 5px;
         }
-
-        .form-control {
-            &:focus {
-                border-color: $brand-primary;
-            }
-        }
     }
     .forum-update {
         background-color: $brand-primary;
@@ -122,16 +116,5 @@
     }
     .info {
         margin-left: 50px;
-    }
-    .thread-title {
-        color: #000;
-        display: block;
-        font-size: $font-size-small;
-        a {
-            color: #000;
-            &:hover {
-                border-bottom: 1px solid #000;
-            } 
-        }
     }
 }

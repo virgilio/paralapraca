@@ -14,19 +14,17 @@
         font-size: 13px;
         margin-bottom: 5px;
         a {
-            border-bottom: 1px solid $gray-dark;
+            font-size: $font-size-base;
+            font-weight: $bold;
+            @include link-hover($gray-dark,$gray-dark,$gray-dark,transparent);
+        }
+        .user-name {
             color: $gray-dark;
             font-size: $font-size-base;
             font-weight: $bold;
-            text-decoration: none;
-            transition: border 0.25s ease;
-            &:hover {
-                border-color: transparent;
-            } 
         }
         .thread-name {
-            border-bottom: 1px solid $brand-primary;
-            color: $brand-primary;
+            @include link-hover($brand-primary,$brand-primary,$brand-primary,transparent);
         }
     }
     .actions {

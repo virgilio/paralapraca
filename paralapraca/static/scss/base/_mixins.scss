@@ -70,3 +70,39 @@
   box-shadow: 0px 2px 2px 2px rgba(0, 0, 0, 0.2);
   padding: 15px;
 }
+
+//== Button mixin
+//
+@mixin button-hover($color,$color-hover,$bg-color,$bg-color-hover) {
+  color: $color;
+  cursor: pointer;
+  background-color: $bg-color;
+  @include transition(all 0.5s ease);
+  &:before {
+    color: $color;
+  }
+  &:hover, &:focus, &:active {
+    color: $color-hover;
+    background-color: $bg-color-hover;
+    &:before {
+      color: $color-hover;
+    }
+  }
+}
+
+@mixin link-hover($color,$color-hover,$border,$border-hover) {
+  color: $color;
+  border-bottom: 1px solid $border;
+  cursor: pointer;
+  @include transition(all 0.2s ease);
+  &:before {
+    color: $color;
+  }
+  &:hover, &:focus, &:active {
+    color: $color-hover;
+    border-bottom: 1px solid $border-hover;
+    &:before {
+      color: $color-hover;
+    }
+  }
+}

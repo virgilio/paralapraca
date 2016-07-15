@@ -3,14 +3,6 @@
 
 .main-header {
     background-color: $yellow;
-    .course-name {
-        a {
-            color: #000;
-            &:hover {
-                border-color: #000; 
-            } 
-        }
-    }
     .course-details {
         display: none;
     }
@@ -26,6 +18,35 @@
                 background-color: rgba($light-blue,0.4);
                 &:last-child {
                     background-color: rgba($green,0.4);
+                }
+            }
+        }
+    }
+}
+
+// Course units navigation
+// -----------------------------------------------------
+
+.course {
+    .lesson-units-nav {
+        .line {
+            background: $orange;
+        }
+        .progress {
+            .progress-bar {
+                background: $orange;
+            }
+        }
+    }
+    .units {
+        .units-title {
+            background: $orange;
+        }
+        .unit {
+            &.current, &.done {
+                background: $orange;
+                &:hover {
+                    background: darken($orange, 10%);
                 }
             }
         }

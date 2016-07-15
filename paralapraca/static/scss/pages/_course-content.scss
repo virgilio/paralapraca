@@ -21,17 +21,9 @@
         }
     }
     .course-name {
+        color: #000;
         font-size: 30px;
         margin: 0; 
-        a {
-            border-bottom: 2px solid transparent;
-            color: $brand-primary;
-            text-decoration: none;
-            @include transition(border 0.5s ease);
-            &:hover {
-                border-color: $brand-primary; 
-            } 
-        }
     }
     .course-slug {
         margin-bottom: 5px;
@@ -71,22 +63,18 @@
         }
         a {
             border-bottom: 2px solid transparent;
-            color: #000;
             display: inline-block;
             font-size: 10px;
             font-weight: $bold;
             max-width: 58px;
             vertical-align: top;
             text-align: center;
-            text-decoration: none;
             text-transform: lowercase; 
-            @include transition(border 0.5s ease);
+            @include link-hover(#000,#000,transparent,#000);
+            border-bottom-width: 2px !important;
             @media screen and (min-width: $screen-lg-min) {
                 font-size: 11px;
                 max-width: 68px;
-            }
-            &:hover {
-                border-color: #000; 
             }
             &:before {
                 display: block;
@@ -405,19 +393,13 @@
             }
             .all-notes {
                 @extend %icon-angle-right;
-                border-bottom: 1px solid;
-                color: #fff;
                 display: inline-block;
                 font-size: $font-size-small;
                 line-height: $font-size-small;
-                text-decoration: none;
-                @include transition(border 0.25s ease);
+                @include link-hover(#fff,#fff,#fff,transparent);
                 &:after {
                     margin-left: 5px;
                 }
-                &:hover {
-                    border-color: transparent;
-                } 
             }
             .button-save {
                 margin-right: 10px; 
@@ -485,22 +467,15 @@
             text-transform: lowercase;
         }
         .unit {
-            background: $gray-light;
             border-radius: 100%;
-            color: #fff;
             display: block;
             font-size: $font-size-base;
             font-weight: $semi-bold;
             height: 20px;
             margin-top: -11px; 
             text-align: center; 
-            text-decoration: none; 
-            @include transition(all 0.5s ease);
             width: 20px;
-            &:hover {
-                background: darken($gray-light, 10%);
-                color: #fff;  
-            }
+            @include button-hover(#fff,#fff,$gray-light,darken($gray-light, 10%));
             &.current {
                 height: 24px;
                 font-size: 16px;
@@ -533,6 +508,7 @@
     // END COURSE UNITS
     .lesson-list {
         .lesson {
+            background: transparent;
             margin-bottom: 30px;
             .title {
                 color: $gray;
