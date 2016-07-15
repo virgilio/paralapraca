@@ -137,12 +137,14 @@
                 li {
                     a {
                         color: #000;
-                        padding: 10px 20px;
+                        padding: 12px 15px;
                     }
-                    &.active {
+                    &:nth-child(even) {
                         a {
-                            color: #000;
                             background-color: darken($gray-lighter,10%);
+                            &:hover {
+                                background-color: darken($gray-lighter,15%);
+                            }
                         } 
                     }
                 }

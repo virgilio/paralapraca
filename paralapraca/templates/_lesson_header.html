@@ -3,7 +3,7 @@
             <div class="lesson-list-dropdown">
                 <button type="button" class="dropdown-toggle" data-toggle="dropdown">
                     <span class="lesson-breadcrumb">
-                        você está no <b>Módulo 2 de 5 | Aula 2 de 3:</b>
+                        você está no <b>Capítulo 2 de 5 | Unidade 2 de 3:</b>
                     </span>
                     <span class="lesson-name">
                         {{ lesson.name }}
@@ -11,7 +11,7 @@
                 </button>
                 <ul class="dropdown-menu">
                     {% for list_lesson in lesson.course.public_lessons %}
-                        <li><a href="{% url 'lesson' list_lesson.course.slug list_lesson.slug %}">{{ list_lesson.name }}</a></li>
+                        <li><a href="{% url 'lesson' list_lesson.course.slug list_lesson.slug %}"><b>Capítulo 2 de 5 | Unidade 2 de 3:</b> {{ list_lesson.name }}</a></li>
                     {% endfor %}
                 </ul>
             </div>
