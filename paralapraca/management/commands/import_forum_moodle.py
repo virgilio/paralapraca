@@ -6,6 +6,7 @@ from django.db import transaction
 
 import unicodecsv
 import csv
+import sys
 
 User = get_user_model()
 
