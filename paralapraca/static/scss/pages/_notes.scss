@@ -1,0 +1,75 @@
+// Notes' pages
+// --------------------------------------------------
+
+.notes {
+    .line {
+        margin-bottom: 30px;
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+    .header {
+        border-bottom: 1px solid #000;
+        .course-title {
+            color: #000;
+            display: inline-block;
+            font-size: 30px;
+            margin: 0 10px 10px 0;
+            a {
+                color: #000;
+                text-decoration: none; 
+            }
+        }
+        .btn-intro, .btn-resume {
+            @extend .btn;
+            @extend .btn-xs;
+            padding: 1px 10px;
+            text-transform: lowercase;
+        }
+        .btn-intro {
+            @extend .btn-primary;
+        }
+        .btn-resume {
+            @extend .btn-default;
+        }
+    }
+    small {
+        color: #000;
+        font-weight: $bold;
+
+        span {
+            border-bottom: 1px solid #000;
+            cursor: pointer;
+            font-weight: $normal;
+            margin-left: 10px;
+        }
+    }
+    .lesson-title {
+        color: $gray;
+        font-family: $font-family-sans-serif;
+        font-size: 16px;
+        font-weight: $extra-bold;
+        margin: 20px 0; 
+    }
+    .notes-list {
+        border-left: 1px solid $gray;
+        margin-bottom: 30px;
+        padding-left: 20px;
+    }
+    .unit-title {
+        color: #000;
+        font-family: $font-family-sans-serif;
+        font-size: $font-size-base;
+        font-weight: $extra-bold;
+        text-transform: initial;
+    }
+    .note-content {
+        background: rgba(255,255,255,0.5);
+        overflow: hidden;
+        padding: 15px;
+    }
+    .btn-delete, .btn-edit {
+        @extend .btn;
+        @extend .btn-sm;
+    }
+}

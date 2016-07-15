@@ -9,7 +9,7 @@
 {% endblock %}
 
 {% block wrapper_classes %}
-wrapper-course-lesson
+notes my-notes
 {% endblock %}
 
 {% block content %}
@@ -29,16 +29,31 @@ wrapper-course-lesson
         </p>
 
         <div class="courses courses-list" ng-repeat="course in courses">
-            <div class="row">
-                <div class="col-sm-7 col-lg-8">
+            <div class="line">
+                <div class="header">
                     {% verbatim angularjs %}
-                    <a href="/course/{{course.slug}}/mynotes/">{{course.name}}</a>
+                    <h3 class="course-title"><a href="/course/{{course.slug}}/mynotes/">{{course.name}}</a></h3>
                     {% endverbatim angularjs %}
-                    <small>{% verbatim angularjs %}{{course.course_notes_number}}{% endverbatim angularjs %} {% trans 'Notes' %}</small>
+                    <a href="/course/{% verbatim angularjs %}{{course.slug}}{% endverbatim angularjs %}/intro/" class="btn-intro">{% trans 'Home' %}</a>
+                    <a href="/course/{% verbatim angularjs %}{{course.slug}}{% endverbatim angularjs %}/intro/" class="btn-resume">{% trans 'Resume course' %}</a>
                 </div>
-                <div class="col-sm-5 col-lg-4 textright">
-                    <a href="/course/{% verbatim angularjs %}{{course.slug}}{% endverbatim angularjs %}/mynotes/" class="btn btn-sm btn-info">{% trans 'Go to notes' %}</a>
-                    <a href="/course/{% verbatim angularjs %}{{course.slug}}{% endverbatim angularjs %}/intro/" class="btn btn-sm btn-success">{% trans 'Resume course' %}</a>
+                <small>
+                    você tem {% verbatim angularjs %}{{course.course_notes_number}}{% endverbatim angularjs %} {% trans 'notes' %}
+                    <span class="show-all" role="button">ver todas</span>
+                    <span class="hide-all" role="button">esconder</span>
+                </small>
+                <h4 class="lesson-title">Capítulo 2 - Lorem Ipsum Dolor Sit Amet</h4>
+                <div class="notes-list">
+                    <h5 class="unit-title">Unidade 1 - Lorem Ipsum Dolor Sit Amet</h5>
+                    <div class="note-content">
+                        <div class="row">
+                            <div class="col-sm-7 col-md-8 col-lg-9 text">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus...</div>
+                            <div class="col-sm-5 col-md-4 col-lg-3">
+                                <button class="btn-edit">editar</button>
+                                <button class="btn-delete">descartar</button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
