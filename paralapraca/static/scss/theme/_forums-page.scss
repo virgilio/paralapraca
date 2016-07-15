@@ -1,0 +1,14 @@
+// Forums' pages
+// --------------------------------------------------
+
+.forum-thread {
+    .thread-post {
+        background-color: rgba($orange, 0.5);
+    }
+    .comments {
+        border-top: 1px solid $orange;
+        .comments-title {
+            color: $orange;
+        }
+    }
+}

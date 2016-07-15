@@ -10,7 +10,7 @@
     .progress-label {
         color: $blue;
     }
-    .button-continue {
-        background-color: $purple;
+    .continue {
+        @include button-hover(#fff,#fff,$purple,darken($purple,10%));
     }
 }

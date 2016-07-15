@@ -53,6 +53,7 @@
     }
     a {
         @include link-hover(#fff,#fff,transparent,#fff);
+        border-bottom-width: 2px !important;
         &:before {
             display: block;
             font-size: $font-size-large;

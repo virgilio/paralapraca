@@ -6,6 +6,29 @@
     .course-details {
         display: none;
     }
+    .lesson-units {
+        .lesson-list-dropdown {
+            .dropdown-menu {
+                border-top-color: #979797;
+                background-color: $yellow;
+                li {
+                    a {
+                        &:hover {
+                            background-color: darken($yellow,5%);
+                        }
+                    }
+                    &.active {
+                        a {
+                            background-color: #d8d8d8;
+                            &:hover {
+                                background-color: darken(#d8d8d8,10%);
+                            }
+                        } 
+                    }
+                }
+            }
+        }
+    }
 }
 
 // Course content (used on course intro and lesson page)

@@ -11,6 +11,12 @@
     &-attention {
         @include icon(before, attention);
     }
+    &-caret-down {
+        @include icon(after, caret-down);
+    }
+    &-caret-up {
+        @include icon(after, caret-up);
+    }
     &-chat {
         @include icon(before, chat);
     }
@@ -22,6 +28,9 @@
     }
     &-discussion {
         @include icon(before, discussion);
+    }
+    &-edit {
+        @include icon(before, edit);
     }
     &-expand {
         @include icon(after, expand);
@@ -91,6 +100,9 @@
     }
     &-site {
         @include icon(before, site);
+    }
+    &-trash {
+        @include icon(before, trash);
     }
     &-tools {
         @include icon(before, tools);

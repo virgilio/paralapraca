@@ -3,20 +3,16 @@
 
 .notes {
     .header {
-        .btn-intro, .btn-resume {
-            border: 0; 
-            color: #fff;
-            &:hover {
-                color: #fff;
-            }
+        .btn {
+            margin-top: -5px;
         }
-        .btn-intro {
+        .btn-primary {
             background: $blue;
             &:hover {
                 background: darken($blue,10%);
             }
         }
-        .btn-resume {
+        .btn-info {
             background: $purple;
             &:hover {
                 background: darken($purple,10%);

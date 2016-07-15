@@ -109,25 +109,42 @@
         @media screen and (min-width: $screen-md-min) {
             display: block;
         }
-        .lesson-name {
-            float: left;
-            font-size: $font-size-small;
-            @media screen and (min-width: $screen-lg-min) {
-                font-size: 16px;
-            }
-            span {
-                font-weight: $bold;
-            }
-        }
         .lesson-list-dropdown {
-            float: left;
-            button {
+            .dropdown-toggle {
                 background: transparent;
                 border: 0;
                 box-shadow: none;
                 font-size: $font-size-small;
+                padding: 0;
+                text-align: left;
+                width: 100%;
                 @media screen and (min-width: $screen-lg-min) {
                     font-size: 16px;
+                }
+            }
+            .dropdown-menu {
+                border: 0;
+                border-radius: 0;
+                border-top: 2px solid $gray-light;
+                background-color: $gray-lighter;
+                font-size: $font-size-small;
+                margin-top: 10px;
+                padding: 0;
+                width: 100%;
+                @media screen and (min-width: $screen-lg-min) {
+                    font-size: 16px;
+                }
+                li {
+                    a {
+                        color: #000;
+                        padding: 10px 20px;
+                    }
+                    &.active {
+                        a {
+                            color: #000;
+                            background-color: darken($gray-lighter,10%);
+                        } 
+                    }
                 }
             }
         }
@@ -367,7 +384,7 @@
     bottom: 0;
     right: 0;
     left: 100px;
-    .button-show {
+    .show-note {
         position: fixed;
         bottom: 0;
         right: 0;
@@ -401,10 +418,10 @@
                     margin-left: 5px;
                 }
             }
-            .button-save {
+            .save-note {
                 margin-right: 10px; 
             }
-            .button-save, .button-hide {
+            .save-note, .hide-note {
                 float: right;
             }
         }

@@ -10,30 +10,31 @@
     }
     .header {
         border-bottom: 1px solid #000;
+        margin-bottom: 6px;
+        padding-top: 6px;
         .course-title {
             color: #000;
             display: inline-block;
             font-size: 30px;
-            margin: 0 10px 10px 0;
+            margin-right: 10px;
         }
-        .button-intro, .button-resume {
-            padding: 1px 10px;
+        .btn {
             text-transform: lowercase;
         }
-    }
-    small {
-        color: #000;
-        font-weight: $bold;
-
-        span {
-            border-bottom: 1px solid #000;
-            cursor: pointer;
-            font-weight: $normal;
+        .btn + .btn {
             margin-left: 10px;
         }
     }
+    .notes-info {
+        color: #000;
+        font-size: $font-size-small;
+        font-weight: $bold;
+        .btn {
+            margin-left: 10px; 
+        }
+    }
     .lesson-title {
-        color: $gray;
+        color: $brand-primary;
         font-family: $font-family-sans-serif;
         font-size: 16px;
         font-weight: $extra-bold;

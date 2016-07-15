@@ -1,74 +1,89 @@
 // Buttons and labels
 // --------------------------------------------------
 
-// default style 
-%default-button {
-    border: 0;
-    border-radius: 20px;
-    display: inline-block;
-    margin-bottom: 0; // For input.btn
-    text-align: center;
-    vertical-align: middle;
-    touch-action: manipulation;
-    cursor: pointer;
-    background-image: none; // Reset unusual Firefox-on-Android default style; see https://github.com/necolas/normalize.css/issues/214
-    white-space: nowrap;
-    @include button-hover(#fff,#fff,$gray,darken($gray,10%));
-    &:active, &.active {
-        outline: 0;
-        background-image: none;
-        box-shadow: none;
+// overwrite some default classes
+.btn-xs {
+    font-weight: $semi-bold;
+    padding: 2px 6px;
+}
+
+.btn-sm {
+    font-weight: $semi-bold;
+}
+
+.btn-lg {
+    font-weight: $extra-bold;
+    &:before { // icon margin
+        margin-right: 10px;
+    }
+    &:after { // icon margin
+        margin-left: 10px;
     }
 }
 
-%btn-xs {
-    font-weight: $semi-bold;
+.btn-link {
+    border: 0;
+    border-bottom-style: solid;
+    border-radius: 0;
+    line-height: 1.2;
+    padding: 0;
 }
 
-%btn-sm {
-    font-weight: $semi-bold;
-}
-
-%btn {
+.btn {
     font-weight: $bold;
-}
-
-%btn-lg {
-    font-weight: $extra-bold;
-}
-
-// used on forum's page topbar
-%topbar-icons {
-    color: #fff;
-    font-size: $font-size-base;
-    margin-right: 20px;
-    &:before {
+    &:focus {
+        outline: 0;
+    }
+    &:before { // icon margin
         margin-right: 5px;
     }
-    &:hover {
-        color: #fff;
+    &:after { // icon margin
+        margin-left: 5px;
     }
-    span {
-        border-bottom: 1px solid #fff;    
+    &.clean {
+        @extend %icon-undo;
+        @include link-hover(#fff,#fff,#fff,transparent);
+        margin-right: 20px; 
     }
-}
-
-.button-clean {
-    @extend %icon-undo;
-    @extend %topbar-icons;
-}
-
-.button-goback {
-    @extend %icon-goback;
-    @extend %topbar-icons;
-    &:before {
-        font-size: $font-size-small;
+    &.delete {
+        @extend %icon-trash;
     }
-}
-
-.button-filter {
-    @extend %icon-filter; 
-    @extend %topbar-icons;
+    &.edit {
+        @extend %icon-edit;
+    }
+    &.filter {
+        @extend %icon-filter; 
+        @include link-hover(#fff,#fff,#fff,transparent);
+    }
+    &.hide-all {
+        @extend %icon-caret-up; 
+        @include link-hover(#000,#000,#000,transparent);
+        font-weight: $normal;
+    }
+    &.hide-note {
+        @extend %icon-compress;
+        @include link-hover(#fff,#fff,transparent,transparent);
+        &:after {
+            vertical-align: middle;
+        }
+    }
+    &.show-all {
+        @extend %icon-caret-down; 
+        @include link-hover(#000,#000,#000,transparent);
+        font-weight: $normal;
+    }
+    &.show-note {
+        @extend %icon-expand;
+        border-radius: 10px 10px 0 0;
+        @include button-hover(#fff,#fff,$gray,darken($gray,10%));
+        &:after {
+            margin-left: 10px;
+            vertical-align: middle;
+        }
+    }
+    &.save-note {
+        @extend %icon-save;
+    }
 }
 
 // used on forum's page
@@ -161,41 +176,3 @@ a {
         @include button-hover($brand-primary,#fff,transparent,$brand-primary);
     }
 }
-
-// used on note's component on lesson page
-%notes-buttons {
-    @extend %default-button;
-    &:after {
-        margin-left: 5px;
-    }
-}
-
-.button-show {
-    @extend %icon-expand;
-    @extend %notes-buttons;
-    border-radius: 10px 10px 0 0;
-    font-size: 16px;
-    padding: 10px 15px;
-    &:after {
-        margin-left: 10px;
-        vertical-align: middle;
-    }
-}
-
-.button-hide {
-    @extend %icon-compress;
-    @extend %notes-buttons;
-}
-
-.button-save {
-    @extend %icon-save;
-    &:before {
-        margin-right: 5px;
-    }
-}
-
-// use on note's page
-.button-intro, .button-resume, .button-edit, .button-delete {
-    @extend %default-button;
-}
-

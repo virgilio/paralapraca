@@ -94,6 +94,7 @@
   color: $color;
   border-bottom: 1px solid $border;
   cursor: pointer;
+  line-height: 1.2;
   @include transition(all 0.2s ease);
   &:before {
     color: $color;

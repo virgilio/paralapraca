@@ -42,13 +42,12 @@
             }
         }
     }
-    .button-continue {
-        background-color: $brand-primary;
-        color: #fff;
+    .continue {
         display: block;
         font-weight: $bold;
         padding: 3px;
         text-align: center; 
+        @include button-hover(#fff,#fff,$brand-primary,darken($brand-primary,10%));
     }
     .course-update {
         @extend %icon-attention;
