@@ -8,13 +8,17 @@
     {% javascript 'notes' %}
 {% endblock %}
 
+{% block body_attrs %}
+  ng-app="notes"
+{% endblock %}
+
 {% block wrapper_classes %}
 notes course-notes
 {% endblock %}
 
 {% block content %}
 <!-- CONTAINER -->
-<div class="my-notes course course-notes" ng-app="notes" ng-controller="CourseNotesCtrl">
+<div class="my-notes course course-notes" ng-controller="CourseNotesCtrl">
 
     {% include "_course-header-inline.html"  with course=course question_form=false %}
 

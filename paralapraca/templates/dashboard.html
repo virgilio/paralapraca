@@ -8,9 +8,13 @@
     {% javascript 'dashboard' %}
 {% endblock %}
 
+{% block body_attrs %}
+  ng-app="dashboard"
+{% endblock %}
+
 {% block content %}
 
-<div ng-app="dashboard" ng-controller="DashboardCtrl">
+<div ng-controller="DashboardCtrl" ng-cloak>
 
     <section class="widget courses-widget container-fluid">
 

@@ -1,7 +1,10 @@
 {% load i18n %}
 {% load is_coordinator %}
+{% load pipeline %}
 
-<header class="site-header" role="navigation">
+{% javascript 'plpc-header' %}
+
+<header ng-controller="HeaderCtrl" ng-cloak class="site-header" role="navigation">
     <div class="user-info">
         {% if user.is_authenticated %}
             {% block header_user_menu %}
@@ -21,60 +24,61 @@
     {% if user.is_authenticated %}
         <ul class="user-tools">
             <li>
-                <a class="notifications" href="#">{% trans 'Notifications' %}</a>
+                <a class="notifications" ng-click="show_notification = !show_notification">{% trans 'Notifications' %}</a>
             </li>
             <!--<li>-->
                 <!--<a class="chat" href="#">{% trans 'Chat' %}</a>-->
             <!--</li>-->
         </ul>
     {% endif %}
-</header>
 
-{% if user.is_authenticated %}
-<!-- <div class="notifications-panel">
-    <h2 class="notifications-title">{% trans 'Notifications' %}</h2>
-    <ul class="notifications-list">
-        <li class="notifications-item">
-            <span class="icon"><img src="http://placehold.it/50"></span>
-            <span class="info"><b>Lenina Freire</b> fez ação tal no tópico <a href="">Lorem Ipsum Dolor Sit Amet</a> no fórum <a href="">Lorem Ipsum Dolor Sit Amet</a></span>
-            <span class="date">há 30 minutos</span> 
-        </li>
-        <li class="notifications-item not-read">
-            <span class="icon"><img src="http://placehold.it/50"></span>
-            <span class="info"><b>Lenina Freire</b> fez ação tal no tópico <a href="">Lorem Ipsum Dolor Sit Amet</a> no fórum <a href="">Lorem Ipsum Dolor Sit Amet</a></span>
-            <span class="date">há 30 minutos</span> 
-        </li>
-        <li class="notifications-item not-read">
-            <span class="icon"><img src="http://placehold.it/50"></span>
-            <span class="info"><b>Lenina Freire</b> fez ação tal no tópico <a href="">Lorem Ipsum Dolor Sit Amet</a> no fórum <a href="">Lorem Ipsum Dolor Sit Amet</a></span>
-            <span class="date">há 30 minutos</span> 
-        </li>
-        <li class="notifications-item">
-            <span class="icon"><img src="http://placehold.it/50"></span>
-            <span class="info"><b>Lenina Freire</b> fez ação tal no tópico <a href="">Lorem Ipsum Dolor Sit Amet</a> no fórum <a href="">Lorem Ipsum Dolor Sit Amet</a></span>
-            <span class="date">há 30 minutos</span> 
-        </li>
-        <li class="notifications-item">
-            <span class="icon"><img src="http://placehold.it/50"></span>
-            <span class="info"><b>Lenina Freire</b> fez ação tal no tópico <a href="">Lorem Ipsum Dolor Sit Amet</a> no fórum <a href="">Lorem Ipsum Dolor Sit Amet</a></span>
-            <span class="date">há 30 minutos</span> 
-        </li>
-        <li class="notifications-item">
-            <span class="icon"><img src="http://placehold.it/50"></span>
-            <span class="info"><b>Lenina Freire</b> fez ação tal no tópico <a href="">Lorem Ipsum Dolor Sit Amet</a> no fórum <a href="">Lorem Ipsum Dolor Sit Amet</a></span>
-            <span class="date">há 30 minutos</span> 
-        </li>
-        <li class="notifications-item">
-            <span class="icon"><img src="http://placehold.it/50"></span>
-            <span class="info"><b>Lenina Freire</b> fez ação tal no tópico <a href="">Lorem Ipsum Dolor Sit Amet</a> no fórum <a href="">Lorem Ipsum Dolor Sit Amet</a></span>
-            <span class="date">há 30 minutos</span> 
-        </li>
-        <li class="notifications-item">
-            <span class="icon"><img src="http://placehold.it/50"></span>
-            <span class="info"><b>Lenina Freire</b> fez ação tal no tópico <a href="">Lorem Ipsum Dolor Sit Amet</a> no fórum <a href="">Lorem Ipsum Dolor Sit Amet</a></span>
-            <span class="date">há 30 minutos</span> 
-        </li>
-    </ul>
-    <a href="#" class="see-more">ver todos</a>
-</div> -->
+    {% if user.is_authenticated %}
+    <div ng-if="show_notification" class="notifications-panel">
+        <h2 class="notifications-title">{% trans 'Notifications' %}</h2>
+        <ul class="notifications-list">
+            <li class="notifications-item">
+                <span class="icon"><img src="http://placehold.it/50"></span>
+                <span class="info"><b>Lenina Freire</b> fez ação tal no tópico <a href="">Lorem Ipsum Dolor Sit Amet</a> no fórum <a href="">Lorem Ipsum Dolor Sit Amet</a></span>
+                <span class="date">há 30 minutos</span>
+            </li>
+            <li class="notifications-item not-read">
+                <span class="icon"><img src="http://placehold.it/50"></span>
+                <span class="info"><b>Lenina Freire</b> fez ação tal no tópico <a href="">Lorem Ipsum Dolor Sit Amet</a> no fórum <a href="">Lorem Ipsum Dolor Sit Amet</a></span>
+                <span class="date">há 30 minutos</span>
+            </li>
+            <li class="notifications-item not-read">
+                <span class="icon"><img src="http://placehold.it/50"></span>
+                <span class="info"><b>Lenina Freire</b> fez ação tal no tópico <a href="">Lorem Ipsum Dolor Sit Amet</a> no fórum <a href="">Lorem Ipsum Dolor Sit Amet</a></span>
+                <span class="date">há 30 minutos</span>
+            </li>
+            <li class="notifications-item">
+                <span class="icon"><img src="http://placehold.it/50"></span>
+                <span class="info"><b>Lenina Freire</b> fez ação tal no tópico <a href="">Lorem Ipsum Dolor Sit Amet</a> no fórum <a href="">Lorem Ipsum Dolor Sit Amet</a></span>
+                <span class="date">há 30 minutos</span>
+            </li>
+            <li class="notifications-item">
+                <span class="icon"><img src="http://placehold.it/50"></span>
+                <span class="info"><b>Lenina Freire</b> fez ação tal no tópico <a href="">Lorem Ipsum Dolor Sit Amet</a> no fórum <a href="">Lorem Ipsum Dolor Sit Amet</a></span>
+                <span class="date">há 30 minutos</span>
+            </li>
+            <li class="notifications-item">
+                <span class="icon"><img src="http://placehold.it/50"></span>
+                <span class="info"><b>Lenina Freire</b> fez ação tal no tópico <a href="">Lorem Ipsum Dolor Sit Amet</a> no fórum <a href="">Lorem Ipsum Dolor Sit Amet</a></span>
+                <span class="date">há 30 minutos</span>
+            </li>
+            <li class="notifications-item">
+                <span class="icon"><img src="http://placehold.it/50"></span>
+                <span class="info"><b>Lenina Freire</b> fez ação tal no tópico <a href="">Lorem Ipsum Dolor Sit Amet</a> no fórum <a href="">Lorem Ipsum Dolor Sit Amet</a></span>
+                <span class="date">há 30 minutos</span>
+            </li>
+            <li class="notifications-item">
+                <span class="icon"><img src="http://placehold.it/50"></span>
+                <span class="info"><b>Lenina Freire</b> fez ação tal no tópico <a href="">Lorem Ipsum Dolor Sit Amet</a> no fórum <a href="">Lorem Ipsum Dolor Sit Amet</a></span>
+                <span class="date">há 30 minutos</span>
+            </li>
+        </ul>
+        <a href="#" class="see-more">ver todos</a>
+    </div>
 {% endif %}
+
+</header>
