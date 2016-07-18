@@ -30,56 +30,28 @@
             </div>
         </header>
 
-        <div class="courses line two-column fifty-fifty">
-            <div class="course-box column">
+        {% verbatim %}
+        <div class="courses line two-column fifty-fifty" ng-repeat="courses_row in courses_rows">
+            <div class="course-box column" ng-repeat="course in courses_row">
                 <div class="line two-column">
                     <div class="course-progress column">
                         <div class="progress">
-                            <div class="progress-bar" role="progressbar" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100" style="width: 65%;">
+                            <div class="progress-bar" role="progressbar" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100" style="width: {{course.percent_progress}}%;">
                             </div>
-                        </div>    
-                    </div>
-                    <div class="progress-label column">65% completo</div>
-                </div>
-                <div class="line two-column">
-                    <div class="course-thumb column">
-                        <div class="course-thumb-bg" style="background-image: url(http://placehold.it/800x600);"></div>
-                        <a class="continue" href="#">continuar módulo</a>
-                    </div>
-                    <div class="course-description column">
-                        <h3 class="course-title">Formação de Formadores</h3>
-                        <div class="course-info">
-                            <p><b>Iniciado em:</b> 00/00/0000 | <b>Cidade:</b> Camaçari</p>
-                            <p>você parou em <span class="unit-title">Nome da Unidade e Também o Nome da Aula</span></p>
                         </div>
                     </div>
-                </div>
-                <div class="line one-column">
-                    <div class="column">
-                        <p class="course-update"><strong>atualização:</strong> lorem ipsum dolor sit amet, consectetur adipiscing elit | <span>xx horas atrás</span></p>
-                    </div>
-                </div>
-            </div>
-            <div class="course-box column">
-                <div class="line two-column">
-                    <div class="course-progress column">
-                        <div class="progress">
-                            <div class="progress-bar" role="progressbar" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100" style="width: 65%;">
-                            </div>
-                        </div>    
-                    </div>
-                    <div class="progress-label column">65% completo</div>
+                    <div class="progress-label column">{{course.percent_progress}} completo</div>
                 </div>
                 <div class="line two-column">
                     <div class="course-thumb column">
-                        <div class="course-thumb-bg" style="background-image: url(http://placehold.it/800x600);"></div>
-                        <a class="continue" href="#">continuar módulo</a>
+                        <div class="course-thumb-bg" style="background-image: url({{course.course.home_thumbnail_url || 'http://placehold.it/800x600'}});"></div>
+                        <a class="button-continue" href="#">continuar módulo</a>
                     </div>
                     <div class="course-description column">
-                        <h3 class="course-title">Formação de Formadores</h3>
+                        <h3 class="course-title">{{course.course.name}}</h3>
                         <div class="course-info">
-                            <p><b>Iniciado em:</b> 00/00/0000 | <b>Cidade:</b> Camaçari</p>
-                            <p>você parou em <span class="unit-title">Nome da Unidade e Também o Nome da Aula</span></p>
+                            <p><b>Iniciado em:</b> {{course.course.start_date}} | <b>Cidade:</b> Camaçari</p>
+                            <p>você parou em <span class="unit-title">{{course.current_class.name}}</span></p>
                         </div>
                     </div>
                 </div>
@@ -90,67 +62,8 @@
                 </div>
             </div>
         </div>
+        {% endverbatim %}
 
-        <div class="line two-column fifty-fifty">
-            <div class="course-box column">
-                <div class="line two-column">
-                    <div class="course-progress column">
-                        <div class="progress">
-                            <div class="progress-bar" role="progressbar" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100" style="width: 65%;">
-                            </div>
-                        </div>    
-                    </div>
-                    <div class="progress-label column">65% completo</div>
-                </div>
-                <div class="line two-column">
-                    <div class="course-thumb column">
-                        <div class="course-thumb-bg" style="background-image: url(http://placehold.it/800x600);"></div>
-                        <a class="continue" href="#">continuar módulo</a>
-                    </div>
-                    <div class="course-description column">
-                        <h3 class="course-title">Formação de Formadores</h3>
-                        <div class="course-info">
-                            <p><b>Iniciado em:</b> 00/00/0000 | <b>Cidade:</b> Camaçari</p>
-                            <p>você parou em <span class="unit-title">Nome da Unidade e Também o Nome da Aula</span></p>
-                        </div>
-                    </div>
-                </div>
-                <div class="line one-column">
-                    <div class="column">
-                        <p class="course-update"><strong>atualização:</strong> lorem ipsum dolor sit amet, consectetur adipiscing elit | <span>xx horas atrás</span></p>
-                    </div>
-                </div>
-            </div>
-            <div class="course-box column">
-                <div class="line two-column">
-                    <div class="course-progress column">
-                        <div class="progress">
-                            <div class="progress-bar" role="progressbar" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100" style="width: 65%;">
-                            </div>
-                        </div>    
-                    </div>
-                    <div class="progress-label column">65% completo</div>
-                </div>
-                <div class="line two-column">
-                    <div class="course-thumb column">
-                        <div class="course-thumb-bg" style="background-image: url(http://placehold.it/800x600);"></div>
-                        <a class="continue" href="#">continuar módulo</a>
-                    </div>
-                    <div class="course-description column">
-                        <h3 class="course-title">Formação de Formadores</h3>
-                        <div class="course-info">
-                            <p><b>Iniciado em:</b> 00/00/0000 | <b>Cidade:</b> Camaçari</p>
-                            <p>você parou em <span class="unit-title">Nome da Unidade e Também o Nome da Aula</span></p>
-                        </div>
-                    </div>
-                </div>
-                <div class="line one-column">
-                    <div class="column">
-                        <p class="course-update"><strong>atualização:</strong> lorem ipsum dolor sit amet, consectetur adipiscing elit | <span>xx horas atrás</span></p>
-                    </div>
-                </div>
-            </div>
-        </div>
     </section>
 
     <section class="widget forums forums-widget container-fluid">
@@ -171,26 +84,26 @@
                 <h3 class="section-title">últimas postagens</h3>
                 <div class="forum-update">
                     Avante e Entremeios
-                </div> 
+                </div>
                 <div class="forum-update">
                     Curso de Mediação
-                </div>   
+                </div>
                 <div class="forum-update">
                     Formação de formadoras
                 </div>
                 <div class="forum-update">
                     Avante e Entremeios
-                </div> 
+                </div>
                 <div class="forum-update">
                     Curso de Mediação
-                </div>   
+                </div>
                 <div class="forum-update">
                     Formação de formadoras
                 </div>
             </div>
             <div class="column">
                 <h3 class="section-title">Avante e Entremeios</h3>
-                
+
                 <div class="user-update">
                     <div class="user-icon">
                         <img src="http://placehold.it/40" alt="Carla Marques">
@@ -223,7 +136,7 @@
                     <div class="tags">
                         <span class="tag">#lorem</span><span class="tag">#ipsum</span><span class="tag">#lorem</span><span class="tag">#ipsum</span><span class="tag">#lorem</span><span class="tag">#ipsum</span>
                     </div>
-                </div> 
+                </div>
 
                 <div class="user-update">
                     <div class="user-icon">
@@ -240,10 +153,10 @@
                     <div class="tags">
                         <span class="tag">#lorem</span><span class="tag">#ipsum</span><span class="tag">#lorem</span><span class="tag">#ipsum</span><span class="tag">#lorem</span><span class="tag">#ipsum</span>
                     </div>
-                </div> 
+                </div>
 
             </div>
-        </div> 
+        </div>
     </section>
 
 </div>
