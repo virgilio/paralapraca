@@ -74,14 +74,14 @@
 </head>
 <body {% if in_admin %}id="admin"{% else %}id="notadmin"{% endif %}
       {% spaceless %}{% block body_attrs %}{% endblock %}{% endspaceless %}
-      class="{% if user.is_authenticated %}user-logged{% else %} {% endif %} main-nav-opened">
+      class="{% if user.is_authenticated %}user-logged{% else %}user-unlogged{% endif %} main-nav-opened">
 
     <div class="site-wrapper">
         {% block header %}
         {% if user.is_authenticated %}
             {% include 'header.html' %}
         {% else %}
-            {% include 'footer-unlogged.html' %}
+            {% include 'header-unlogged.html' %}
         {% endif %}
         {% endblock %}
 
