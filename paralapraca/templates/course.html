@@ -36,10 +36,6 @@ wrapper-course-intro
 
 {% block content %}
 
-{% if not in_admin %}
-<script type="text/javascript" src="{% static 'js/introjs/course.js' %}"></script>
-{% endif %}
-
 <!-- COURSE -->
 <div class="course course-intro" {% if in_admin %}ng-controller="CourseEditController"{% endif %}>
 
@@ -185,7 +181,7 @@ wrapper-course-intro
 
             <!--  COURSE-VIDEO  -->
             <section class="video" ng-show="mediaSection=='video'">
-                
+
                 <div ng-show="course.intro_video.youtube_id && !playerReady">
                     <div class="waiting textcenter jumbotron" style="height: 515px">
                         <div class="middle">
