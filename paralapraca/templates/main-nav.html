@@ -24,7 +24,7 @@
         <li><a href="{% url 'user_courses' %}" class="courses">{% trans 'Meu módulos' %}</a></li>
         <li><a href="{% url 'courses' %}" class="courses">{% trans "Módulos" %}</a></li>
         <!--<li><a href="#" class="repositories">{% trans "Repository" %}</a></li>-->
-        <li><a href="{% url 'forum' %}" class="forum">{% trans "Forum" %}</a></li>
+        <li><a href="{% url 'discussion:forum' %}" class="forum">{% trans "Forum" %}</a></li>
         <!--<li><a href="#" class="help">{% trans "Help" %}</a></li>-->
         <li><a href="{% url 'timtec_logout' %}" class="logout">{% trans "Logout" %}</a></li>
     {% else %}
@@ -48,9 +48,9 @@
             <li><a href="/pages/about">{% trans 'About' %}</a></li>
             <li><a href="#" data-toggle="modal" data-target="#modal-contact">{% trans 'Contact' %}</a></li>
             {% endblock %}
-        </ul> 
+        </ul>
         <div class="legal-text">
-            {% trans 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse in aliquam eros.' %} 
+            {% trans 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse in aliquam eros.' %}
         </div>
     </div>
 </nav>

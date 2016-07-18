@@ -1,11 +1,21 @@
 {% extends 'base.html' %}
 {% load i18n %}
 {% load is_coordinator %}
+{% load pipeline %}
+
+{% block js %}
+    {{ block.super }}
+    {% javascript 'timtec-discussion' %}
+{% endblock %}
+
+{% block body_attrs %}
+  ng-app="timtec.discussion"
+{% endblock %}
 
 {% block content %}
 
-<div ng-app="core" ng-controller="ForumCtrl">
-    
+<div ng-controller="ForumCtrl" ng-cloak>
+
     <section class="forums forums-page forums-widget widget container-fluid">
         <div class="widget-topbar line one-column">
             <div class="column">
@@ -102,140 +112,167 @@
             </div>
         </div>
 
-        <div class="line one-column">
-            <div class="column">
-                <h3 class="section-title">geral</h3>
+        {% verbatim %}
+        <div ng-repeat="forum in forums">
+            <div class="line one-column">
+                <div class="column">
+                    <h3 class="section-title">{{ forum.title }}</h3>
+                </div>
+            </div>
+
+            <div class="forum-list">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>tópico</th>
+                            <th>reações</th>
+                            <th>categorias</th>
+                            <th>tags</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="topic in forum.latest_topics">
+                            <td>
+                                <a ng-href="/discussion/topic/##{{ topic.id}}"><span class="thread-name">{{ topic.title }}</span></a>
+                                <span class="last-update">Última atividade <b>há 2 horas</b></span>
+                            </td>
+                            <td>
+                                <span class="action replies small">1</span>
+                                <span class="action liked small">4</span>
+                                <span class="action used small">7</span>
+                            </td>
+                            <td>
+                                <span ng-repeat="category in topic.categories" class="category">{{ category.name }}</span>
+                            </td>
+                            <td>
+                                <div class="tags">
+                                    <span ng-repeat="tag in topic.tags" class="tag">{{ tag.name }}</span>
+                                </div>
+                            </td>
+                        </tr>
+
+
+
+
+                        <tr class="new">
+                            <td>
+                                <span class="thread-name">Lorem ipsum dolor sit amet</span>
+                                <span class="last-update">Última atividade <b>há 2 horas</b></span>
+                            </td>
+                            <td>
+                                <span class="action replies small">1</span>
+                                <span class="action liked small">4</span>
+                                <span class="action used small">7</span>
+                            </td>
+                            <td>
+                                <span class="category discussion">discussão</span>
+                            </td>
+                            <td>
+                                <div class="tags">
+                                    <span class="tag">#lorem</span><span class="tag">#ipsum</span><span class="tag">#lorem</span>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="new">
+                            <td>
+                                <span class="thread-name">Lorem ipsum dolor sit amet</span>
+                                <span class="last-update">Última atividade <b>há 2 horas</b></span>
+                            </td>
+                            <td>
+                                <span class="action replies small">1</span>
+                                <span class="action liked small">4</span>
+                                <span class="action used small">7</span>
+                            </td>
+                            <td>
+                                <span class="category schedule">pauta</span>
+                            </td>
+                            <td>
+                                <div class="tags">
+                                    <span class="tag">#lorem</span><span class="tag">#ipsum</span><span class="tag">#lorem</span>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span class="thread-name">Lorem ipsum dolor sit amet</span>
+                                <span class="last-update">Última atividade <b>há 2 horas</b></span>
+                            </td>
+                            <td>
+                                <span class="action replies small">1</span>
+                                <span class="action liked small">4</span>
+                                <span class="action used small">7</span>
+                            </td>
+                            <td>
+                                <span class="category record">registro</span>
+                            </td>
+                            <td>
+                                <div class="tags">
+                                    <span class="tag">#lorem</span><span class="tag">#ipsum</span><span class="tag">#lorem</span>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span class="thread-name">Lorem ipsum dolor sit amet</span>
+                                <span class="last-update">Última atividade <b>há 2 horas</b></span>
+                            </td>
+                            <td>
+                                <span class="action replies small">1</span>
+                                <span class="action liked small">4</span>
+                                <span class="action used small">7</span>
+                            </td>
+                            <td>
+                                <span class="category discussion">discussão</span>
+                            </td>
+                            <td>
+                                <div class="tags">
+                                    <span class="tag">#lorem</span><span class="tag">#ipsum</span><span class="tag">#lorem</span>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span class="thread-name">Lorem ipsum dolor sit amet</span>
+                                <span class="last-update">Última atividade <b>há 2 horas</b></span>
+                            </td>
+                            <td>
+                                <span class="action replies small">1</span>
+                                <span class="action liked small">4</span>
+                                <span class="action used small">7</span>
+                            </td>
+                            <td>
+                                <span class="category schedule">pauta</span>
+                            </td>
+                            <td>
+                                <div class="tags">
+                                    <span class="tag">#lorem</span><span class="tag">#ipsum</span><span class="tag">#lorem</span>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span class="thread-name">Lorem ipsum dolor sit amet</span>
+                                <span class="last-update">Última atividade <b>há 2 horas</b></span>
+                            </td>
+                            <td>
+                                <span class="action replies small">1</span>
+                                <span class="action liked small">4</span>
+                                <span class="action used small">7</span>
+                            </td>
+                            <td>
+                                <span class="category record">registro</span>
+                            </td>
+                            <td>
+                                <div class="tags">
+                                    <span class="tag">#lorem</span><span class="tag">#ipsum</span><span class="tag">#lorem</span>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
-
-        <div class="forum-list">
-            <table>
-                <thead>
-                    <tr>
-                        <th>tópico</th>
-                        <th>reações</th>
-                        <th>categorias</th>
-                        <th>tags</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr class="new">
-                        <td>
-                            <span class="thread-name">Lorem ipsum dolor sit amet</span>
-                            <span class="last-update">Última atividade <b>há 2 horas</b></span>
-                        </td>
-                        <td>
-                            <span class="action replies small">1</span>
-                            <span class="action liked small">4</span>
-                            <span class="action used small">7</span>
-                        </td>
-                        <td>
-                            <span class="category discussion">discussão</span>
-                        </td>
-                        <td>
-                            <div class="tags">
-                                <span class="tag">#lorem</span><span class="tag">#ipsum</span><span class="tag">#lorem</span>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr class="new">
-                        <td>
-                            <span class="thread-name">Lorem ipsum dolor sit amet</span>
-                            <span class="last-update">Última atividade <b>há 2 horas</b></span>
-                        </td>
-                        <td>
-                            <span class="action replies small">1</span>
-                            <span class="action liked small">4</span>
-                            <span class="action used small">7</span>
-                        </td>
-                        <td>
-                            <span class="category schedule">pauta</span>
-                        </td>
-                        <td>
-                            <div class="tags">
-                                <span class="tag">#lorem</span><span class="tag">#ipsum</span><span class="tag">#lorem</span>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <span class="thread-name">Lorem ipsum dolor sit amet</span>
-                            <span class="last-update">Última atividade <b>há 2 horas</b></span>
-                        </td>
-                        <td>
-                            <span class="action replies small">1</span>
-                            <span class="action liked small">4</span>
-                            <span class="action used small">7</span>
-                        </td>
-                        <td>
-                            <span class="category record">registro</span>
-                        </td>
-                        <td>
-                            <div class="tags">
-                                <span class="tag">#lorem</span><span class="tag">#ipsum</span><span class="tag">#lorem</span>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <span class="thread-name">Lorem ipsum dolor sit amet</span>
-                            <span class="last-update">Última atividade <b>há 2 horas</b></span>
-                        </td>
-                        <td>
-                            <span class="action replies small">1</span>
-                            <span class="action liked small">4</span>
-                            <span class="action used small">7</span>
-                        </td>
-                        <td>
-                            <span class="category discussion">discussão</span>
-                        </td>
-                        <td>
-                            <div class="tags">
-                                <span class="tag">#lorem</span><span class="tag">#ipsum</span><span class="tag">#lorem</span>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <span class="thread-name">Lorem ipsum dolor sit amet</span>
-                            <span class="last-update">Última atividade <b>há 2 horas</b></span>
-                        </td>
-                        <td>
-                            <span class="action replies small">1</span>
-                            <span class="action liked small">4</span>
-                            <span class="action used small">7</span>
-                        </td>
-                        <td>
-                            <span class="category schedule">pauta</span>
-                        </td>
-                        <td>
-                            <div class="tags">
-                                <span class="tag">#lorem</span><span class="tag">#ipsum</span><span class="tag">#lorem</span>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <span class="thread-name">Lorem ipsum dolor sit amet</span>
-                            <span class="last-update">Última atividade <b>há 2 horas</b></span>
-                        </td>
-                        <td>
-                            <span class="action replies small">1</span>
-                            <span class="action liked small">4</span>
-                            <span class="action used small">7</span>
-                        </td>
-                        <td>
-                            <span class="category record">registro</span>
-                        </td>
-                        <td>
-                            <div class="tags">
-                                <span class="tag">#lorem</span><span class="tag">#ipsum</span><span class="tag">#lorem</span>
-                            </div>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+        {% endverbatim %}
 
     </section>
 

@@ -1,11 +1,22 @@
 {% extends 'base.html' %}
 {% load i18n %}
 {% load is_coordinator %}
+{% load pipeline %}
+
+{% block js %}
+    {{ block.super }}
+    {% javascript 'timtec-discussion' %}
+{% endblock %}
+
+{% block body_attrs %}
+  ng-app="timtec.discussion"
+{% endblock %}
 
 {% block content %}
 
-<div ng-app="core" ng-controller="ForumCtrl">
-    
+<div ng-controller="TopicCtrl">
+
+    {% verbatim %}
     <section class="forums forums-page forums-widget widget container-fluid">
         <div class="widget-topbar line two-column fifty-fifty">
             <div class="column">
@@ -41,7 +52,7 @@
                         <img src="http://placehold.it/40" alt="Joana Terra">
                     </div>
                     <div class="info">
-                        <h4 class="thread-header"><span class="thread-title">Lorem ipsum dolor sit amet</span> por <span class="user-name">Joana Terra</span></h4>
+                        <h4 class="thread-header"><span class="thread-title">{{ topic.title }}</span> por <span class="user-name">Joana Terra</span></h4>
                     </div>
                     <div class="actions">
                         <span class="action replies">30 respostas</span>
@@ -51,7 +62,7 @@
                     <div class="thread-post">
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur auctor lacinia sem, eu cursus sem malesuada eu. Duis blandit accumsan metus ac auctor.</p>
 
-                        <p>Suspendisse tempus commodo viverra. Vestibulum id arcu efficitur, ultrices ipsum sit amet, rhoncus ipsum. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p> 
+                        <p>Suspendisse tempus commodo viverra. Vestibulum id arcu efficitur, ultrices ipsum sit amet, rhoncus ipsum. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
 
                         <div class="tags">
                             <a href="#" class="tag">#lorem</a><a href="#" class="tag">#ipsum</a><a href="#" class="tag">#lorem</a><a href="#" class="tag">#ipsum</a><a href="#" class="tag">#lorem</a><a href="#" class="tag">#ipsum</a>
@@ -147,6 +158,7 @@
         </div>
 
     </section>
+    {% endverbatim %}
 
 </div>
 
