@@ -4,6 +4,9 @@
 {% block account_content %}
 
 <div class="register-page">
+    <div class="alert alert-danger" role="alert">
+        Todos os campos são obrigatórios.
+    </div>
 
     <form onclick="event.stopPropagation()" method="post" action="{% url 'account_signup' %}" class="register-form">{% csrf_token %}
         <fieldset>
@@ -46,31 +49,27 @@
             </div>
             {% endwith %}
 
-        	{% if terms_required %}
-    		{% with errors=form.accept_terms.errors %}
-    		<div class="form-group{{ errors|yesno:' has-error,' }}">
-    			<div class="col-lg-offset-4 col-sm-offset-4 col-lg-8 col-sm-8 textleft">
-    			<span class="checkbox-wrapper"><input name="accept_terms" id="accept_terms" type="checkbox" {% if form.accept_terms.value %}checked=""{% endif %}></span>
-    				{% url 'flatpage' url='/terms' as terms_url %}
-    			<label for="accept_terms" class="terms">{% blocktrans %}I agree to the <a href="{{ terms_url }}" target="_blank">Terms of Use</a>{% endblocktrans %}</label>
-    				{% for error in errors %}<small>{{error}}</small>{% endfor %}
-    		</div>
-    		{% endwith %}
-        	{% endif %}
+            {% with errors=form.accept_terms.errors %}
+            <div class="checkbox{{ errors|yesno:' has-error,' }}">
+                <label for="accept_terms" class="terms">
+                    <input name="accept_terms" id="accept_terms" type="checkbox" style="display:inline-block;" {% if form.accept_terms.value %}checked=""{% endif %}>
+                    {% url 'flatpage' url='/terms' as terms_url %}
+                    {% blocktrans %}I agree to the <a href="{{ terms_url }}" target="_blank">Terms of Use</a>{% endblocktrans %}
+                </label>
+                {% for error in errors %}<small>{{error}}</small>{% endfor %}
+            </div>
+            {% endwith %}
 
             <button class="btn btn-submit">{% trans "Sign Up" %}</button>
-
-            <div class="form-group">
-                <p class="bottom textcenter">
-                    {% load socialaccount %}
-                    <a href="{% provider_login_url 'facebook' method='oauth2' %}">Facebook Connect</a>
-                    {% for provider in openid_providers %}
-                    <span> | </span>
-                    <a href="{% provider_login_url "openid" openid=provider.openid_url  next=current_path %}">{{ provider.name }}</a>
-                    {% endfor %}
-                </p>
-            </div>
         </fieldset>
+        <p class="info">
+            {% load socialaccount %}
+            <a href="{% provider_login_url 'facebook' method='oauth2' %}">Facebook Connect</a>
+            {% for provider in openid_providers %}
+            <span> | </span>
+            <a href="{% provider_login_url "openid" openid=provider.openid_url  next=current_path %}">{{ provider.name }}</a>
+            {% endfor %}
+        </p>
     </form>
 
 </div>
