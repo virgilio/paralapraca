@@ -12,10 +12,14 @@
 notes my-notes
 {% endblock %}
 
+{% block body_attrs %}
+  ng-app="notes"
+{% endblock %}
+
 {% block content %}
 
 <!-- CONTAINER -->
-<div class="my-notes page container-fluid" ng-app="notes" ng-controller="UserNotesCtrl">
+<div class="my-notes page container-fluid" ng-controller="UserNotesCtrl" ng-cloak>
 
     <section class="content">
         {% block notes_header %}

@@ -9,8 +9,6 @@
 {{ block.super }}
 {% javascript 'lesson' %}
 
-<script type="text/javascript" src="{% static 'js/introjs/lesson.js' %}"></script>
-
 <script type="text/javascript">
 window.lessonId = {{ lesson.pk }};
 // Content type id for object type core.Unit used by django generic relations.
@@ -29,6 +27,10 @@ $(document).ready(function() {
 
 {% endblock %}
 
+{% block body_attrs %}
+    ng-app="lesson"
+{% endblock %}
+
 {% block wrapper_classes %}
 wrapper-course-lesson
 {% endblock %}
@@ -36,7 +38,7 @@ wrapper-course-lesson
 {% block content %}
 
 <!-- COURSE -->
-<div class="course course-lesson" ng-app="lesson">
+<div class="course course-lesson">
 
     <!-- HEADER -->
     {% include "_course-header-inline.html"  with course=lesson.course %}
@@ -187,7 +189,7 @@ wrapper-course-lesson
                 <button class="btn btn-xs btn-success save-note">salvar</button>
             </div>
             <div class="notes-content">
-                Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. 
+                Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt.
             </div>
         </div>
     </div>

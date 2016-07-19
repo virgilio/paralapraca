@@ -19,16 +19,20 @@
     <script type="text/javascript" src="{% static 'js/new-course/controllers.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/markdown/app.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/markdown/filters.js' %}"></script>
+
     <script>
         window.course_id = {{ course.pk }};
-
     </script>
     {% endblock %}
-
-    {% block body_attrs %}
-    ng-app="new-course"
-    {% endblock %}
 {% endif %}
+
+{% block body_attrs %}
+    {% if in_admin %}
+        ng-app="new-course"
+    {% else %}
+        ng-app="header"
+    {% endif %}
+{% endblock %}
 
 {% block wrapper_classes %}
 wrapper-course-intro
