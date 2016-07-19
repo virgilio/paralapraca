@@ -46,7 +46,7 @@
         margin-right: 20px; 
     }
     &.delete {
-        @extend %icon-trash;
+        @extend %icon-delete;
     }
     &.edit {
         @extend %icon-edit;
@@ -54,6 +54,11 @@
     &.filter {
         @extend %icon-filter; 
         @include link-hover(#fff,#fff,#fff,transparent);
+    }
+    &.goback {
+        @extend %icon-goback; 
+        @include link-hover(#fff,#fff,#fff,transparent);
+        font-weight: $normal;
     }
     &.hide-all {
         @extend %icon-caret-up; 
@@ -66,6 +71,9 @@
         &:after {
             vertical-align: middle;
         }
+    }
+    &.reply {
+        @extend %icon-reply;
     }
     &.show-all {
         @extend %icon-caret-down; 
@@ -82,13 +90,13 @@
         }
     }
     &.save-note {
-        @extend %icon-save;
+        @extend %icon-checked;
     }
 }
 
 // used on forum's page
 %forum-actions {
-    color: $brand-primary;
+    color: $gray;
     font-size: $font-size-small;
     font-weight: $semi-bold;
     margin-right: 10px;
@@ -101,32 +109,47 @@
     }
 }
 
-a.action {
-    @include link-hover($brand-primary,$brand-primary,transparent,$brand-primary); 
-}
-
 .action {
     @extend %forum-actions;
 
     &.liked {
         @extend %icon-like;
+        &:before {
+            color: $brand-primary;
+        }
     }
     &.used {
+        @extend %icon-checked;
         &:before {
-            border: 1px solid $brand-primary;
-            border-radius: 100%;
-            content: "=";
-            display: inline-block;
-            font-size: 16px;
-            font-weight: bold;
-            height: 16px;
-            line-height: 90%;
-            text-align: center;
-            width: 16px;
-        }    
+            color: $brand-success;
+        }
     }
     &.replies {
         @extend %icon-reply;
+        &:before {
+            color: $brand-info;
+        }
+    }
+}
+
+a.action { 
+    &.liked {
+        @include link-hover($gray,$brand-primary,$gray,$brand-primary);
+        &.active {
+            @include link-hover($brand-primary,$brand-primary,$brand-primary,$brand-primary);
+        }
+    }
+    &.used {
+        @include link-hover($gray,$brand-success,$gray,$brand-success);
+        &.active {
+            @include link-hover($brand-success,$brand-success,$brand-success,$brand-success);
+        }
+    }
+    &.replies {
+        @include link-hover($gray,$brand-info,$gray,$brand-info);
+        &.active {
+            @include link-hover($brand-info,$brand-info,$brand-info,$brand-info);
+        }
     }
 }
 

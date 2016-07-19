@@ -2,22 +2,45 @@
 // --------------------------------------------------
 
 // used on forum's page
-%forum-actions {
-    color: $orange;
-}
-
-a.action {
-    @include link-hover($orange,$orange,transparent,$orange); 
-}
 
 .action {
+    &.liked {
+        &:before {
+            color: $orange;
+        }
+    }
     &.used {
         &:before {
-            border: 1px solid $orange;
-        }    
+            color: $purple;
+        }
+    }
+    &.replies {
+        &:before {
+            color: $pink;
+        }
     }
 }
 
+a.action { 
+    &.liked {
+        @include link-hover($gray,$orange,$gray,$orange);
+        &.active {
+            @include link-hover($orange,$orange,$orange,$orange);
+        }
+    }
+    &.used {
+        @include link-hover($gray,$purple,$gray,$purple);
+        &.active {
+            @include link-hover($purple,$purple,$purple,$purple);
+        }
+    }
+    &.replies {
+        @include link-hover($gray,$pink,$gray,$pink);
+        &.active {
+            @include link-hover($pink,$pink,$pink,$pink);
+        }
+    }
+}
 %forum-tags, %forum-categories {
     border: 1px solid $orange;
     color: $orange;

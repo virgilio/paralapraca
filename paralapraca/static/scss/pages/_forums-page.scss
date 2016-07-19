@@ -1,6 +1,52 @@
 // Forums' pages
 // --------------------------------------------------
 
+.thread {
+    .widget-topbar {
+        background-color: transparent;
+        border-top: 4px solid $brand-primary;
+        margin-bottom: 5px;
+        .line {
+            border-bottom: 1px solid $brand-primary;
+            color: $brand-primary;
+            margin: 0 15px; 
+            padding-bottom: 10px;
+            .title {
+                font-size: 18px;
+                font-weight: $semi-bold;
+            }
+            .btn.goback {
+                @include link-hover($brand-primary,$brand-primary,$brand-primary,transparent);
+            }
+        }
+    }
+}
+
+.comments-form {
+    margin-top: 20px;
+    overflow: hidden; 
+    width: 100%;
+    .tools {
+        button {
+            border-radius: 5px 5px 0 0;
+            border: 1px solid $gray-light;
+            border-bottom: 0;
+            padding: 4px 10px;
+        }
+    }
+    textarea {
+        border: 2px solid $brand-info;
+        height: 170px;
+        margin-bottom: 10px;
+        padding: 10px;
+        width: 100%;
+    }
+    > button {
+        float: right;
+        margin-left: 10px;
+    }
+}
+
 .forum-thread {
     background-color: rgba(#fff,0.8);
     padding: 15px;
@@ -8,6 +54,9 @@
     .thread-header {
         margin: 0 0 10px 0;
         font-family: $font-family-sans-serif;
+        .user-name {
+            font-size: 16px;
+        }
     }
     .thread-title {
         display: inline;
@@ -19,15 +68,15 @@
         color: #000;
     }
     .actions {
-        display: inline-block;
-        margin: 0 5px 5px 0; 
+        margin: 10px 0 0;
+        overflow: hidden;  
     }
     .tags {
         display: inline-block;
         margin: 0 0 5px 0;
     }
     .thread-post {
-        background-color: rgba($brand-primary, 0.5);
+        background-color: rgba(155,155,155,0.3);
         margin-top: 10px;
         padding: 15px;
 

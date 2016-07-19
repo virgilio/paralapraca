@@ -20,11 +20,17 @@
     &-chat {
         @include icon(before, chat);
     }
+    &-checked {
+        @include icon(before, checked);
+    }
     &-compress {
         @include icon(after, compress);
     }
     &-courses {
         @include icon(before, courses);
+    }
+    &-delete {
+        @include icon(before, delete);
     }
     &-discussion {
         @include icon(before, discussion);
@@ -92,17 +98,11 @@
     &-repositories {
         @include icon(before, repositories);
     }
-    &-save {
-        @include icon(before, save);
-    }
     &-schedule {
         @include icon(before, schedule);
     }
     &-site {
         @include icon(before, site);
-    }
-    &-trash {
-        @include icon(before, trash);
     }
     &-tools {
         @include icon(before, tools);

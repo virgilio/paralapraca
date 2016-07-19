@@ -1,10 +1,26 @@
 // Forums' pages
 // --------------------------------------------------
 
-.forum-thread {
-    .thread-post {
-        background-color: rgba($orange, 0.5);
+.thread {
+    .widget-topbar {
+        border-color: $orange;
+        .line {
+            border-color: $orange;
+            color: $orange;
+            .btn.goback {
+                @include link-hover($orange,$orange,$orange,transparent);
+            }
+        }
     }
+}
+
+.comments-form {
+    textarea {
+        border: 2px solid $pink;
+    }
+}
+
+.forum-thread {
     .comments {
         border-top: 1px solid $orange;
         .comments-title {

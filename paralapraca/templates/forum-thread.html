@@ -17,31 +17,15 @@
 <div ng-controller="TopicCtrl">
 
     {% verbatim %}
-    <section class="forums forums-page forums-widget widget container-fluid">
-        <div class="widget-topbar line two-column fifty-fifty">
-            <div class="column">
-                <h2 class="title">Mostrando todos os resultados</h2>
-            </div>
-            <div class="column">
-                <a href="#" class="btn btn-link goback"><span>voltar</span></a>
-                <a href="#" class="btn btn-link filter"><span>filtrar por tags e categorias</span></a>
-            </div>
-        </div>
-
-        <header class="widget-header line two-column fifty-fifty">
-            <div class="column">
-                <h2 class="widget-title">fóruns</h2>
-            </div>
-            <div class="column">
-                <form class="widget-filter form-inline">
-                    <input class="form-control" type="text" placeholder="Busca nos fóruns...">
-                </form>
-            </div>
-        </header>
-
-        <div class="line one-column">
-            <div class="column">
-                <h3 class="section-title">Avante e Entremeios</h3>
+    <section class="forums forums-page forums-widget thread widget container-fluid">
+        <div class="widget-topbar">
+            <div class="line">
+                <div class="pull-left">
+                    <h2 class="title">Fóruns > Avante e Entremeios</h2>
+                </div>
+                <div class="pull-right">
+                    <a href="#" class="btn btn-link goback"><span>voltar para os tópicos</span></a>
+                </div>
             </div>
         </div>
 
@@ -54,20 +38,39 @@
                     <div class="info">
                         <h4 class="thread-header"><span class="thread-title">{{ topic.title }}</span> por <span class="user-name">Joana Terra</span></h4>
                     </div>
-                    <div class="actions">
-                        <span class="action replies">30 respostas</span>
-                        <span class="action liked">4 curtiram</span>
-                        <span class="action used">7 usaram</span>
+                    <div class="tags">
+                        <a href="#" class="tag">#lorem</a><a href="#" class="tag">#ipsum</a><a href="#" class="tag">#lorem</a><a href="#" class="tag">#ipsum</a><a href="#" class="tag">#lorem</a><a href="#" class="tag">#ipsum</a>
                     </div>
                     <div class="thread-post">
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur auctor lacinia sem, eu cursus sem malesuada eu. Duis blandit accumsan metus ac auctor.</p>
 
                         <p>Suspendisse tempus commodo viverra. Vestibulum id arcu efficitur, ultrices ipsum sit amet, rhoncus ipsum. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-
-                        <div class="tags">
-                            <a href="#" class="tag">#lorem</a><a href="#" class="tag">#ipsum</a><a href="#" class="tag">#lorem</a><a href="#" class="tag">#ipsum</a><a href="#" class="tag">#lorem</a><a href="#" class="tag">#ipsum</a>
-                        </div>
                     </div>
+                    <div class="actions">
+                        <div class="pull-left">
+                            <a class="action liked active">curti!</a>
+                            <a class="action used">usar</a>
+                            <a class="action replies">comentar</a>
+                        </div>
+                        <div class="pull-right">
+                            <span class="action liked">4 curtiram</span>
+                            <span class="action used">7 usaram</span>
+                            <span class="action replies">30 respostas</span>
+                        </div>                  
+                    </div>
+
+                    <form class="comments-form">
+                        <div class="tools">
+                            <button><span class="sr-only">negrito</span><i class="fa fa-bold" aria-hidden="true"></i></button>
+                            <button><span class="sr-only">itálico</span><i class="fa fa-italic" aria-hidden="true"></i></button>
+                            <button><span class="sr-only">sublinhado</span><i class="fa fa-underline" aria-hidden="true"></i></button>
+                            <button><span class="sr-only">inserir imagem</span><i class="fa fa-picture-o" aria-hidden="true"></i></button>
+                            <button><span class="sr-only">inserir vídeo</span><i class="fa fa-youtube" aria-hidden="true"></i></button>
+                        </div>
+                        <textarea placeholder="Escreva aqui o seu comentário"></textarea>
+                        <button class="btn btn-xs reply">comentar</button>
+                        <button class="btn btn-xs delete">descartar</button>
+                    </form>
 
                     <div class="comments">
                         <h3 class="comments-title">Comentários</h3>
@@ -80,8 +83,16 @@
                                 <div class="comment-post">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur auctor lacinia sem, eu cursus sem malesuada eu. Duis blandit accumsan metus ac auctor.</div>
                             </div>
                             <div class="actions">
-                                <span class="action replies">1 resposta</span>
-                                <span class="action liked">4 curtiram</span>
+                                <div class="pull-left">
+                                    <a class="action liked active">curti!</a>
+                                    <a class="action used">usar</a>
+                                    <a class="action replies">comentar</a>
+                                </div>
+                                <div class="pull-right">
+                                    <span class="action liked">4 curtiram</span>
+                                    <span class="action used">7 usaram</span>
+                                    <span class="action replies">30 respostas</span>
+                                </div>                  
                             </div>
 
                             <div class="thread">
@@ -90,11 +101,20 @@
                                 </div>
                                 <div class="info">
                                     <span class="user-name">Roberta Reis</span>
-                                    <div class="comment-post">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur auctor lacinia sem, eu cursus sem malesuada eu. Duis blandit accumsan metus ac auctor.</div>
-                                </div>
-                                <div class="actions">
-                                    <span class="action replies">1 resposta</span>
-                                    <span class="action liked">4 curtiram</span>
+                                    <div class="comment-post">
+                                        <form class="comments-form">
+                                            <div class="tools">
+                                                <button><span class="sr-only">negrito</span><i class="fa fa-bold" aria-hidden="true"></i></button>
+                                                <button><span class="sr-only">itálico</span><i class="fa fa-italic" aria-hidden="true"></i></button>
+                                                <button><span class="sr-only">sublinhado</span><i class="fa fa-underline" aria-hidden="true"></i></button>
+                                                <button><span class="sr-only">inserir imagem</span><i class="fa fa-picture-o" aria-hidden="true"></i></button>
+                                                <button><span class="sr-only">inserir vídeo</span><i class="fa fa-youtube" aria-hidden="true"></i></button>
+                                            </div>
+                                            <textarea placeholder="Escreva aqui o seu comentário"></textarea>
+                                            <button class="btn btn-xs reply">comentar</button>
+                                            <button class="btn btn-xs delete">descartar</button>
+                                        </form>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -120,8 +140,16 @@
                                     <div class="comment-post">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur auctor lacinia sem, eu cursus sem malesuada eu. Duis blandit accumsan metus ac auctor.</div>
                                 </div>
                                 <div class="actions">
-                                    <span class="action replies">1 resposta</span>
-                                    <span class="action liked">4 curtiram</span>
+                                    <div class="pull-left">
+                                        <a class="action liked active">curti!</a>
+                                        <a class="action used">usar</a>
+                                        <a class="action replies">comentar</a>
+                                    </div>
+                                    <div class="pull-right">
+                                        <span class="action liked">4 curtiram</span>
+                                        <span class="action used">7 usaram</span>
+                                        <span class="action replies">30 respostas</span>
+                                    </div>                  
                                 </div>
                             </div>
                         </div>
@@ -147,8 +175,16 @@
                                     <div class="comment-post">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur auctor lacinia sem, eu cursus sem malesuada eu. Duis blandit accumsan metus ac auctor.</div>
                                 </div>
                                 <div class="actions">
-                                    <span class="action replies">1 resposta</span>
-                                    <span class="action liked">4 curtiram</span>
+                                    <div class="pull-left">
+                                        <a class="action liked active">curti!</a>
+                                        <a class="action used">usar</a>
+                                        <a class="action replies">comentar</a>
+                                    </div>
+                                    <div class="pull-right">
+                                        <span class="action liked">4 curtiram</span>
+                                        <span class="action used">7 usaram</span>
+                                        <span class="action replies">30 respostas</span>
+                                    </div>                  
                                 </div>
                             </div>
                         </div>
