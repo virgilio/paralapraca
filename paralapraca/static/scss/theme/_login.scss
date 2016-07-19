@@ -27,6 +27,12 @@
                 border: 1px solid darken($brand-primary, 10%);
             }
         }
+        .checkbox {
+            margin: 10px 15px 15px;
+            a {
+                @include link-hover(#fff,#fff,#fff,transparent);
+            }
+        }
         .btn {
             color: #fff;
             display: block;
@@ -85,9 +91,7 @@
         }
         .btn-submit {
             background-color: $green;
-            float: right;
-            margin: 0 35px 20px 0; 
-            width: 235px;
+            margin-bottom: 15px;
             &:hover {
                 background-color: darken($green, 15%);
             }
