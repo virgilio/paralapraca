@@ -57,4 +57,7 @@ $link-color:        $brand-primary;
 
 //== Typography
 //
-$headings-font-family: "Neuton", $font-family-sans-serif;
+
+$font-family-serif: "Neuton", Georgia, "Times New Roman", Times, serif;
+
+$headings-font-family: $font-family-serif;

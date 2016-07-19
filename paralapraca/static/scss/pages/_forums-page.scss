@@ -31,8 +31,25 @@
             border: 1px solid $gray-light;
             border-radius: 5px 5px 0 0;
             border-bottom: 0;
-            padding: 4px 10px;
+            height: 30px;
+            line-height: 18px;
+            text-align: center;
+            vertical-align: bottom;
+            width: 30px;
             @include button-hover($gray,$gray,$gray-lighter,darken($gray-lighter,10%));
+            &.bold, &.italic, &.underline {
+                font-family: $font-family-serif;
+                font-size: 18px;
+            }
+            &.bold {
+                font-weight: bold;
+            }
+            &.italic {
+                font-style: italic;
+            }
+            &.underline {
+                text-decoration: underline;
+            }
         }
     }
     textarea {
