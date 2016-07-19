@@ -4,7 +4,7 @@
 
 {% javascript 'plpc-header' %}
 
-<header ng-controller="HeaderCtrl" ng-cloak class="site-header" role="navigation">
+<header ng-controller="HeaderCtrl" class="site-header" role="navigation">
     <div class="user-info">
         {% if user.is_authenticated %}
             {% block header_user_menu %}
@@ -33,7 +33,7 @@
     {% endif %}
 
     {% if user.is_authenticated %}
-    <div ng-if="show_notification" class="notifications-panel">
+    <div ng-if="show_notification" class="notifications-panel" ng-cloak>
         <h2 class="notifications-title">{% trans 'Notifications' %}</h2>
         <ul class="notifications-list">
             <li class="notifications-item">
@@ -77,7 +77,7 @@
                 <span class="date">há 30 minutos</span>
             </li>
         </ul>
-        <a href="#" class="see-more">ver todos</a>
+        <!--<a href="#" class="see-more">ver todos</a>-->
     </div>
 {% endif %}
 
