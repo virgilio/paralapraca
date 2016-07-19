@@ -102,6 +102,30 @@
         }
     }
 
+    .forgot-pass-form {
+        margin: 0 auto; 
+        .form-group {
+            max-width: 340px;
+        }
+        label {
+            font-weight: normal;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        .btn-submit {
+            background-color: $blue;
+            margin-bottom: 15px;
+            max-width: 340px;
+            width: 100%;
+            @media screen and (min-width: $screen-xs-min) {
+                width: 340px;
+            }
+            &:hover {
+                background-color: darken($blue, 15%);
+            }
+        }
+    }
+
     .alert { // common alert styles
         border: 0;
         border-radius: 0;
@@ -115,6 +139,19 @@
 
         &.alert-danger {
             background-color: $pink;
+        }
+    }
+
+    .message {
+        color: #fff;
+        margin: 0 auto; 
+        max-width: 500px; 
+        text-align: center;
+        h2 {
+            font-weight: $extra-bold;
+        }
+        h2, h3 {
+            font-family: $font-family-sans-serif;
         }
     }
 }

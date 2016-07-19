@@ -4,9 +4,17 @@
 {% block account_content %}
 
 <div class="register-page">
+    {% for error in errors %}
     <div class="alert alert-danger" role="alert">
-        Todos os campos são obrigatórios.
+        {{error}}
     </div>
+    {% endfor %}
+
+    {% for error in form.non_field_errors %}
+    <div class="alert alert-danger" role="alert">
+        {{error}}
+    </div>
+    {% endfor %}
 
     <form onclick="event.stopPropagation()" method="post" action="{% url 'account_signup' %}" class="register-form">{% csrf_token %}
         <fieldset>
@@ -16,7 +24,6 @@
                 <i class="fa fa-user" aria-hidden="true"></i>
                 <label for="username" class="sr-only">{% trans "Username" %}</label>
                 <input name="username" type="text" value="{{form.username.value|default_if_none:""}}" class="form-control" id="username" placeholder="{% trans 'Username' %}">
-                    {% for error in errors %}<small>{{error}}</small>{% endfor %}
             </div>
             {% endwith %}
 
@@ -25,7 +32,6 @@
                 <i class="fa fa-envelope" aria-hidden="true"></i>
                 <label for="email" class="sr-only">{% trans "E-mail" %}</label>
                 <input name="email" type="email" id="email" value="{{form.email.value|default_if_none:""}}" class="form-control" placeholder="{% trans 'Your e-mail' %}">
-                    {% for error in errors %}<small>{{error}}</small>{% endfor %}
             </div>
             {% endwith %}
 
@@ -34,18 +40,14 @@
                 <i class="fa fa-lock" aria-hidden="true"></i>
                 <label for="password1" class="sr-only">{% trans "Password" %}</label>
                 <input name="password1" type="password1" id="password" class="form-control" placeholder="{% trans 'Really strong password' %}">
-                    {% for error in errors %}<small>{{error}}</small>{% endfor %}
-                    {% for error in form.non_field_errors %}<small>{{error}}</small>{% endfor %}
             </div>
             {% endwith %}
 
-            {% with errors=form.password1.errors %}
+            {% with errors=form.password2.errors %}
             <div class="form-group{% if errors or form.non_field_errors %} has-error{% endif %}">
                 <i class="fa fa-lock" aria-hidden="true"></i>
                 <label for="password2" class="sr-only">{% trans 'Password confirmation' %}</label>
                 <input name="password2" type="password2" class="form-control" placeholder="{% trans 'Password confirmation' %}">
-                    {% for error in errors %}<small>{{error}}</small>{% endfor %}
-                    {% for error in form.non_field_errors %}<small>{{error}}</small>{% endfor %}
             </div>
             {% endwith %}
 
@@ -56,7 +58,6 @@
                     {% url 'flatpage' url='/terms' as terms_url %}
                     {% blocktrans %}I agree to the <a href="{{ terms_url }}" target="_blank">Terms of Use</a>{% endblocktrans %}
                 </label>
-                {% for error in errors %}<small>{{error}}</small>{% endfor %}
             </div>
             {% endwith %}
 

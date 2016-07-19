@@ -2,23 +2,11 @@
 {% load i18n %}
 
 {% block account_content %}
-
 <div class="login-page">
-    {% for error in form.login.errors %}
-        <div class="alert alert-danger" role="alert">
-            {{error}}
-        </div>
-    {% endfor error in %}
-    {% for error in form.password.errors %}
-        <div class="alert alert-danger" role="alert">
-            {{error}}
-        </div>
-    {% endfor %}
-    {% for error in form.non_field_errors %}
-        <div class="alert alert-danger" role="alert">
-            {{error}}
-        </div>
-    {% endfor %}
+    <div class="message">
+        <h2>{% trans "Mission accomplished" %}</h2>
+        <h3>{% trans "You have an active account" %}</h3>
+    </div>
 
     <form method="post" action="{% url 'account_login' %}" class="login-form">{% csrf_token %}
         <fieldset>
@@ -43,5 +31,4 @@
         <p class="info"><a href="{% url 'account_reset_password' %}">{% trans "Forgot my password" %}</a></p>
     </form>
 </div>
-
 {% endblock %}
