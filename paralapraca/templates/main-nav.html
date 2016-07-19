@@ -5,13 +5,13 @@
     <ul class="user-nav">
     {% if user.is_authenticated %}
         {% if user.is_superuser %}
-            <li class="submenu">
-                <ul class="admin-nav">
-                    <li><a href="{% url 'administration.home' %}">{% trans 'Home edit' %}</a></li>
+            <!--<li class="submenu">-->
+                <!--<ul class="admin-nav">-->
+                    <!--<li><a href="{% url 'administration.home' %}">{% trans 'Home edit' %}</a></li>-->
                     <!--<li><a href="{% url 'administration.courses' %}" id="admin-link">{% trans 'Courses' %}</a></li>-->
-                    <li><a href="{% url 'administration.users' %}">{% trans 'Users' %}</a></li>
-                </ul>
-            </li>
+                    <!--<li><a href="{% url 'administration.users' %}">{% trans 'Users' %}</a></li>-->
+                <!--</ul>-->
+            <!--</li>-->
         {% elif user|is_coordinator %}
             <!--<li class="submenu">-->
                 <!--<a href="{% url 'administration.courses' %}">-->
@@ -54,3 +54,31 @@
         </div>
     </div>
 </nav>
+
+<div class="modal fade" id="modal-contact">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">{% trans 'Contact' %}</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-lg-8 col-lg-offset-1">
+                        <form class="form-horizontal" method="post" action="{% url 'contact' %}">
+                            {% csrf_token %}
+                            {% include '_contact_form.html' %}
+                            <div class="submit textright">
+                                <button type="reset" class="btn btn-danger">{% trans 'Clear' %}</button>
+                                <button type="submit" class="btn btn-success">{% trans 'Send' %}</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">{% trans 'Close' %}</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
