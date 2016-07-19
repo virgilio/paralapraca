@@ -1,0 +1,47 @@
+{% extends 'account/base.html' %}
+{% load i18n %}
+
+<!-- TABLET AND DESKTOP -->
+{% block account_content %}
+
+<div class="login-page">
+    {% for error in form.login.errors %}
+        <div class="alert alert-danger" role="alert">
+            {{error}}
+        </div>
+    {% endfor error in %}
+    {% for error in form.password.errors %}
+        <div class="alert alert-danger" role="alert">
+            {{error}}
+        </div>
+    {% endfor %}
+    {% for error in form.non_field_errors %}
+        <div class="alert alert-danger" role="alert">
+            {{error}}
+        </div>
+    {% endfor %}
+
+    <form method="post" action="{% url 'account_login' %}" class="login-form">{% csrf_token %}
+        <fieldset>
+            <legend>{% trans "Sign In" %}</legend>
+            <div class="form-group{% if form.errors %} has-error{% endif %}">
+                <label for="username" class="sr-only">{% trans "Username" %}</label>
+                <input name="login" type="text" id="username" class="form-control" 
+                       value="{{form.login.value|default_if_none:""}}" placeholder='{% trans "E-mail or username" %}'/>
+            </div>
+            <div class="form-group{% if form.errors %} has-error{% endif %}">
+                <label for="password" class="sr-only">{% trans "Password" %}</label>
+                <input name="password" type="password" id="password" class="form-control" placeholder='{% trans "Password" %}'>
+            </div>
+            <button type="submit" class="btn btn-submit">{% trans "Sign In" %}</button>
+            <input type="hidden" name="next" value="{{ next }}" />
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" value="rememberme" style="display:inline-block;"> Lembrar do meu usuário neste computador.
+                </label>
+            </div>
+        </fieldset>
+        <p class="info"><a href="{% url 'account_reset_password' %}">{% trans "Forgot my password" %}</a></p>
+    </form>
+{% endblock %}
+</div>

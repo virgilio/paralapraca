@@ -29,6 +29,7 @@
         }
         .checkbox {
             margin: 10px 15px 15px;
+            padding: 0;
             a {
                 @include link-hover(#fff,#fff,#fff,transparent);
             }
@@ -88,6 +89,9 @@
                 display: inline-block;
                 width: 235px;
             }
+        }
+        .checkbox {
+            padding: 0 0 0 5px;
         }
         .btn-submit {
             background-color: $green;
