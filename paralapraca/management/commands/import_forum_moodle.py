@@ -163,11 +163,13 @@ class Command(BaseCommand):
                 # Find out wich forum is the corret one for the current topic
                 destination = exchange.get(int(row['forum']))
 
-
-                # TODO find out who is the real author of the current topic
                 # TODO repost with original created date
                 # TODO flag post as read-only
-                topics[row['id']] = Topic.objects.create(forum=destination['forum'], title=row['name'], author=me)
+                topics[row['id']] = Topic.objects.create(
+                    forum=destination['forum'],
+                    title=row['name'].encode('utf-8'),
+                    author=User.objects.get(email=row['email'][:29])
+                )
 
                 # Add all categories relevant to this topic1
                 if 'category' in destination:
@@ -217,19 +219,19 @@ class Command(BaseCommand):
                             parent_comment = comments[row['parent']]
 
 
-                        # TODO adjust user in each comment
+                        # TODO adjust create_date in each comment
                         comments[row['id']] = Comment.objects.create(
                             topic=topics[row['discussion']],
                             text=row['message'],
-                            author=me,
+                            author=User.objects.get(email=row['email'][:29]),
                             parent=parent_comment
                         )
                     else:
-                        # TODO adjust user in each comment
+                        # TODO adjust create_date in each comment
                         comments[row['id']] = Comment.objects.create(
                             topic=topics[row['discussion']],
                             text=row['message'],
-                            author=me
+                            author=User.objects.get(email=row['email'][:29])
                         )
 
                     count += 1
