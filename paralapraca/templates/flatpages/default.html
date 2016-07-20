@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load django_markdown %}
+{% load pipeline %}
+
+{% if user.is_superuser %}
+    {% block js %}
+		{{block.super}}
+        {% javascript 'core' %}
+    <script>
+        window.page_url = '{{ flatpage.url }}';
+    </script>
+	{% endblock %}
+{% endif %}
+
+{% block title %}
+{{ flatpage.title }}
+{% endblock %}
+
+{% block content %}
+<div class="flatpage" ng-app="core" ng-controller="FlatPageCtrl">
+
+		{% block content-header %}
+        <h2>{{ flatpage.title }}</h2>
+		{% endblock %}
+        
+        <div class="content">
+    	   {{ flatpage.content|markdown }}
+        </div>
+
+</div>
+{% endblock %}
