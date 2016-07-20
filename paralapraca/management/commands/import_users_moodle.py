@@ -25,7 +25,7 @@ class Command(BaseCommand):
         if not len(files) == 1:
             raise CommandError('Choose a file to import')
 
-        # This file comes from moodle's DB and generates only deactivated userss
+        # This file comes from moodle's DB and generates only deactivated users
         with open(files[0], 'r') as csvfile:
             readf = unicodecsv.DictReader(csvfile)
             count = 0
@@ -34,7 +34,7 @@ class Command(BaseCommand):
                     if fieldname in row:
                         row[fieldname] = row[fieldname][:size]
 
-                set_password = row.pop('password')
+                # set_password = row.pop('password')
 
                 nu = User.objects.create(
                     username=row['username'][:29], # django has a 30 char limitation in the following fields
@@ -42,8 +42,9 @@ class Command(BaseCommand):
                     last_name=row['lastname'][:29],
                     email=row['email'][:29],
                     city=row['city'][:29],
+                    biography=row['description'],
                 )
-                nu.set_password(set_password)
+                # nu.set_password(set_password)
                 nu.is_active = False
                 nu.accepted_terms = False
                 nu.save()

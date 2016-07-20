@@ -164,7 +164,6 @@ class Command(BaseCommand):
                 destination = exchange.get(int(row['forum']))
 
                 # TODO repost with original created date
-                # TODO flag post as read-only
                 topics[row['id']] = Topic.objects.create(
                     forum=destination['forum'],
                     title=row['name'].encode('utf-8'),
