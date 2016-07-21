@@ -3,10 +3,12 @@ from django.core.management.base import BaseCommand, CommandError
 from django.contrib.auth import get_user_model, models
 from discussion.models import Category, Forum, Topic, Comment, Tag, TopicNotification
 from django.db import transaction
+from django.utils import timezone
 
 import unicodecsv
 import csv
 import sys
+import datetime
 
 User = get_user_model()
 
@@ -163,7 +165,6 @@ class Command(BaseCommand):
                 # Find out wich forum is the corret one for the current topic
                 destination = exchange.get(int(row['forum']))
 
-                # TODO repost with original created date
                 topics[row['id']] = Topic.objects.create(
                     forum=destination['forum'],
                     title=row['name'].encode('utf-8'),
@@ -197,10 +198,31 @@ class Command(BaseCommand):
                     if fieldname in row:
                         row[fieldname] = row[fieldname][:size]
 
+                # Adjusts the created and modified dates to the Django standard
+                created = timezone.make_aware(
+                    datetime.datetime.fromtimestamp(
+                        float(
+                            row['created']
+                        )
+                    ),
+                    timezone.get_current_timezone()
+                )
+
+                modified = timezone.make_aware(
+                    datetime.datetime.fromtimestamp(
+                        float(
+                            row['modified']
+                        )
+                    ),
+                    timezone.get_current_timezone()
+                )
+
                 # If there is no parent, the text message has to be stored in the Topic instance and no Comment instance must be created
                 if row['parent'] == '0':
                     disc = topics[row['discussion']]
                     disc.content = row['message']
+                    disc.created_at = created
+                    disc.updated_at = modified
                     disc.save()
 
                 else:
@@ -217,20 +239,21 @@ class Command(BaseCommand):
                             # If it is, the parent can be safely used
                             parent_comment = comments[row['parent']]
 
-
-                        # TODO adjust create_date in each comment
                         comments[row['id']] = Comment.objects.create(
                             topic=topics[row['discussion']],
                             text=row['message'],
                             author=User.objects.get(email=row['email'][:29]),
-                            parent=parent_comment
+                            parent=parent_comment,
+                            created_at = created,
+                            updated_at = modified,
                         )
                     else:
-                        # TODO adjust create_date in each comment
                         comments[row['id']] = Comment.objects.create(
                             topic=topics[row['discussion']],
                             text=row['message'],
-                            author=User.objects.get(email=row['email'][:29])
+                            author=User.objects.get(email=row['email'][:29]),
+                            created_at = created,
+                            updated_at = modified,
                         )
 
                     count += 1
