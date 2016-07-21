@@ -42,74 +42,98 @@
         </div>
 
         <div class="line two-column fifty-fifty">
-            <div class="column">
-              {% verbatim %}
-                <div class="user-update" ng-repeat="topic in latest_topics">
-                    <div class="user-icon">
-                        <img src="http://placehold.it/40" alt="{{ topic.author.name }}">
-                    </div>
-                    <div class="info">
-                        <b>{{ topic.author.name }}</b> comentou no tópico <a href="#" class="thread-name">{{ topic.title }}</a> no fórum <a href="#">{{ topic.forum.title }}</a></span>
-                    </div>
-                    <div class="actions">
-                        <span class="action replies">{{  topic.count_replies }} resposta</span>
-                        <span class="action liked">{{ topic.count_likes }} curtiram</span>
-                    </div>
+          {% verbatim %}
+            <div class="user-update column" ng-repeat="topic in latest_topics">
+                <div class="user-icon">
+                    <img src="http://placehold.it/40" alt="{{ topic.author.name }}">
                 </div>
-              {% endverbatim %}
-                <div class="user-update">
-                    <div class="user-icon">
-                        <img src="http://placehold.it/40" alt="Carla Marques">
-                    </div>
-                    <div class="info">
-                        <b>Carla Marques</b> criou o tópico <a href="#" class="thread-name">Curso de Mediação</a> no fórum <a href="#">Experiências Pedagógicas</a></span>
-                    </div>
+                <div class="info">
+                    <b>{{ topic.author.name }}</b> comentou no tópico <a href="#" class="thread-name">{{ topic.title }}</a> no fórum <a href="#">{{ topic.forum.title }}</a></span>
                 </div>
-                <div class="user-update">
-                    <div class="user-icon">
-                        <img src="http://placehold.it/40" alt="Carla Marques">
-                    </div>
-                    <div class="info">
-                        <b>Carla Marques</b> comentou no tópico <a href="#" class="thread-name">Curso de Mediação</a> no fórum <a href="#">Lorem ipsum dolor sit amet...</a></span>
-                    </div>
-                    <div class="actions">
-                        <span class="action replies">1 resposta</span>
-                        <span class="action liked">4 curtiram</span>
-                    </div>
+                <div class="actions">
+                    <span class="action replies">{{  topic.count_replies }} resposta</span>
+                    <span class="action liked">{{ topic.count_likes }} curtiram</span>
                 </div>
             </div>
-            <div class="column">
-                <div class="user-update">
-                    <div class="user-icon">
-                        <img src="http://placehold.it/40" alt="Carla Marques">
-                    </div>
-                    <div class="info">
-                        <b>Carla Marques</b> comentou no tópico <a href="#" class="thread-name">Curso de Mediação</a> no fórum <a href="#">Lorem ipsum dolor sit amet...</a></span>
-                    </div>
-                    <div class="actions">
-                        <span class="action replies">1 resposta</span>
-                        <span class="action liked">4 curtiram</span>
-                    </div>
+          {% endverbatim %}
+            <div class="user-update column">
+                <div class="user-icon">
+                    <img src="http://placehold.it/40" alt="Carla Marques">
                 </div>
-                <div class="user-update">
-                    <div class="user-icon">
-                        <img src="http://placehold.it/40" alt="Carla Marques">
-                    </div>
-                    <div class="info">
-                        <b>Carla Marques</b> criou o tópico <a href="#" class="thread-name">Curso de Mediação</a> no fórum <a href="#">Experiências Pedagógicas</a></span>
-                    </div>
+                <div class="info">
+                    <b>Carla Marques</b> criou o tópico <a href="#" class="thread-name">Curso de Mediação</a> no fórum <a href="#">Experiências Pedagógicas</a></span>
                 </div>
-                <div class="user-update">
-                    <div class="user-icon">
-                        <img src="http://placehold.it/40" alt="Carla Marques">
-                    </div>
-                    <div class="info">
-                        <b>Carla Marques</b> comentou no tópico <a href="#" class="thread-name">Curso de Mediação</a> no fórum <a href="#">Lorem ipsum dolor sit amet...</a></span>
-                    </div>
-                    <div class="actions">
-                        <span class="action replies">1 resposta</span>
-                        <span class="action liked">4 curtiram</span>
-                    </div>
+            </div>
+            <div class="user-update column">
+                <div class="user-icon">
+                    <img src="http://placehold.it/40" alt="Carla Marques">
+                </div>
+                <div class="info">
+                    <b>Carla Marques</b> comentou no tópico <a href="#" class="thread-name">Curso de Mediação</a> no fórum <a href="#">Lorem ipsum dolor sit amet...</a></span>
+                </div>
+                <div class="actions">
+                    <span class="action replies">1 resposta</span>
+                    <span class="action liked">4 curtiram</span>
+                </div>
+            </div>
+            <div class="user-update column">
+                <div class="user-icon">
+                    <img src="http://placehold.it/40" alt="Carla Marques">
+                </div>
+                <div class="info">
+                    <b>Carla Marques</b> comentou no tópico <a href="#" class="thread-name">Curso de Mediação</a> no fórum <a href="#">Lorem ipsum dolor sit amet...</a></span>
+                </div>
+                <div class="actions">
+                    <span class="action replies">1 resposta</span>
+                    <span class="action liked">4 curtiram</span>
+                </div>
+            </div>
+            <div class="user-update column">
+                <div class="user-icon">
+                    <img src="http://placehold.it/40" alt="Carla Marques">
+                </div>
+                <div class="info">
+                    <b>Carla Marques</b> criou o tópico <a href="#" class="thread-name">Curso de Mediação</a> no fórum <a href="#">Experiências Pedagógicas</a></span>
+                </div>
+            </div>
+            <div class="user-update column">
+                <div class="user-icon">
+                    <img src="http://placehold.it/40" alt="Carla Marques">
+                </div>
+                <div class="info">
+                    <b>Carla Marques</b> comentou no tópico <a href="#" class="thread-name">Curso de Mediação</a> no fórum <a href="#">Lorem ipsum dolor sit amet...</a></span>
+                </div>
+                <div class="actions">
+                    <span class="action replies">1 resposta</span>
+                    <span class="action liked">4 curtiram</span>
+                </div>
+            </div>
+            <div class="user-update column">
+                <div class="user-icon">
+                    <img src="http://placehold.it/40" alt="Carla Marques">
+                </div>
+                <div class="info">
+                    <b>Carla Marques</b> criou o tópico <a href="#" class="thread-name">Curso de Mediação</a> no fórum <a href="#">Experiências Pedagógicas</a></span>
+                </div>
+            </div>
+            <div class="user-update column">
+                <div class="user-icon">
+                    <img src="http://placehold.it/40" alt="Carla Marques">
+                </div>
+                <div class="info">
+                    <b>Carla Marques</b> comentou no tópico <a href="#" class="thread-name">Curso de Mediação</a> no fórum <a href="#">Lorem ipsum dolor sit amet...</a></span>
+                </div>
+                <div class="actions">
+                    <span class="action replies">1 resposta</span>
+                    <span class="action liked">4 curtiram</span>
+                </div>
+            </div>
+            <div class="user-update column">
+                <div class="user-icon">
+                    <img src="http://placehold.it/40" alt="Carla Marques">
+                </div>
+                <div class="info">
+                    <b>Carla Marques</b> criou o tópico <a href="#" class="thread-name">Curso de Mediação</a> no fórum <a href="#">Experiências Pedagógicas</a></span>
                 </div>
             </div>
         </div>
