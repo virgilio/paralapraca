@@ -4,6 +4,7 @@
 //## Course box used on course widget on dashboard and course list page
 //##
 .course-box {
+    color: #000;
     margin-bottom: 30px;
 
     .course-progress {
@@ -43,6 +44,7 @@
         }
     }
     .continue {
+        border-radius: 0;
         display: block;
         font-weight: $bold;
         padding: 3px;

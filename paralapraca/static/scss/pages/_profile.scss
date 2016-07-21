@@ -2,16 +2,21 @@
 // --------------------------------------------------
 
 .profile-picture {
-    img {
-        width: 100%;
-    }
+    background-position: center;
+    background-size: cover;
+    float: left;
+    height: 140px;
+    margin: 0 15px 15px 0; 
+    width: 140px;
 }
 
 .profile-name {
+    color: #000;
     margin-top: 0; 
 }
 
 .profile-info {
+    color: #000;
     p {
         &:before {
             font-size: $font-size-large;
@@ -33,6 +38,7 @@
 }
 
 .profile-bio {
+    margin-left: 155px;
     p {
         font-size: $font-size-base;
         line-height: $line-height-computed;
@@ -43,6 +49,31 @@
 }
 
 .profile-edit {
-    margin-top: 15px;
-    text-align: right; 
+    float: right;
+}
+
+.profile-certificates {
+    border-top: 1px solid #000;
+    margin-top: 30px;
+    padding-top: 30px;
+
+    .course-box {
+        .course-thumb {
+            padding-right: 0 !important;
+        }
+        .progress-label {
+            color: #000;
+            font-size: $font-size-base;
+            line-height: 100%;
+        }
+        .see-certificate {
+            border: 0;
+            border-radius: 0;
+            display: block;
+            font-weight: $bold;
+            padding: 3px;
+            text-align: center; 
+            @include button-hover(#fff,#fff,$brand-success,darken($brand-success,10%));
+        }
+    }
 }

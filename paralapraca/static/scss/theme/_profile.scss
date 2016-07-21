@@ -1,0 +1,25 @@
+// Profile's pages
+// --------------------------------------------------
+
+.profile.page {
+    @include card(rgba(#fff,0.3));
+    padding: 30px; 
+
+    .profile-info {
+        a {
+            @include link-hover($orange,$orange,$orange,transparent);
+        }
+    }
+
+    .page-header {
+        h2 {
+            color: $pink;
+        }
+    }
+
+    .profile-certificates {
+        h2 {
+            color: $purple;
+        }
+    }
+}

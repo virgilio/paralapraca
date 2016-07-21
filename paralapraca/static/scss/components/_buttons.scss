@@ -28,9 +28,10 @@
     line-height: 1.2;
     padding: 0;
 }
-
 .btn {
+    border-color: transparent !important;
     font-weight: $bold;
+    @include transition(all 0.2s ease);
     &:focus {
         outline: 0;
     }
