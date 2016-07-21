@@ -31,6 +31,7 @@
 .btn {
     border-color: transparent !important;
     font-weight: $bold;
+    text-transform: lowercase;
     @include transition(all 0.2s ease);
     &:focus {
         outline: 0;
@@ -90,7 +91,7 @@
             vertical-align: middle;
         }
     }
-    &.save-note {
+    &.save {
         @extend %icon-checked;
     }
 }
