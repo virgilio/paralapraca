@@ -1,0 +1,62 @@
+// My courses' pages
+// --------------------------------------------------
+
+.my-courses {
+    
+    .nav-tabs {
+        border-bottom-color: darken($gray,10%);
+        > li { 
+            cursor: pointer;
+            > a {
+                background-color: darken($gray,10%);
+                border: transparent;
+                border-radius: 10px 10px 0 0;
+                color: #fff;
+                cursor: pointer;
+                font-weight: $bold;
+                text-transform: lowercase;
+                @include transition(all 0.5s ease);
+            }
+            &.active, &:active {
+                a {
+                    background-color: $gray;
+                    border: transparent;
+                    color: #fff;
+                }  
+            }
+            &:hover, &:focus {
+                a {
+                    background-color: #000;
+                    border: transparent;
+                    color: #fff;
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+    .tab-pane {
+        margin-top: 30px;
+    }
+    .course {
+        margin-bottom: 30px;
+        margin-top: 0;
+        header {
+            .course-title {
+                color: #000;
+                font-size: 30px; 
+                margin: 0 0 10px; 
+            }
+            .progress {
+                border-radius: 0px;
+                height: 5px;
+                margin-bottom: 0;
+            }
+        }
+        .buttons {
+            text-align: right;
+            .btn {
+                margin-left: 10px;
+            }
+        }
+    }
+}
