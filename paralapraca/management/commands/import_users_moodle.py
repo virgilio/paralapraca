@@ -35,7 +35,7 @@ class Command(BaseCommand):
                         row[fieldname] = row[fieldname][:size]
 
                 # set_password = row.pop('password')
-
+                # TODO check if the user already exists using email or username (if needded)
                 nu = User.objects.create(
                     username=row['username'][:29], # django has a 30 char limitation in the following fields
                     first_name=row['firstname'][:29],
