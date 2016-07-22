@@ -45,6 +45,8 @@ class Command(BaseCommand):
                 user.first_name = row['firstname'][:29]
                 user.last_name = row['lastname'][:29]
                 user.city = row['city'][:29]
+                user.biography = row['description']
+
                 user.is_active = False
                 user.accepted_terms = False
                 user.save()

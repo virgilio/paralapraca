@@ -64,6 +64,7 @@ class Command(BaseCommand):
                         user.save()
                 else:
                     # If the user can't be found, it must be created
+                    # TODO create the new username based on the first words of its names
                     nu = User.objects.create(
                         username=row['email'][:29], # django has a 30 char limitation in the following fields
                         first_name=row['username'].split(' ', 1)[0][:29],

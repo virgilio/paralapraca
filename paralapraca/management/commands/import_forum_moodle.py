@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from django.core.management.base import BaseCommand, CommandError
 from django.contrib.auth import get_user_model, models
-from discussion.models import Category, Forum, Topic, Comment, Tag, TopicNotification
+from discussion.models import Group, Category, Forum, Topic, Comment, Tag, TopicNotification
 from django.db import transaction
 from django.utils import timezone
 
@@ -33,7 +33,6 @@ class Command(BaseCommand):
 
         # Retrieve the admin superuser
         User = get_user_model()
-        me = User.objects.all().first()
 
         # Create all categories
         catPauta, _ = Category.objects.get_or_create(name='Pautas',description='Pautas',color='FFF')
@@ -41,14 +40,14 @@ class Command(BaseCommand):
         catDisc, _ = Category.objects.get_or_create(name='Discussões',description='Discussões',color='FFF')
 
         # Create all foruns
-        fGE, _ = Forum.objects.get_or_create(author=me, title='Fórum Geral')
-        fAS, _ = Forum.objects.get_or_create(author=me, title='Fórum Assessoras')
-        fNG, _ = Forum.objects.get_or_create(author=me, title='Fórum Natal - Gestão Paralapraca')
-        fMG, _ = Forum.objects.get_or_create(author=me, title='Fórum Maracanaú - Gestão Paralapraca')
-        fCG, _ = Forum.objects.get_or_create(author=me, title='Fórum Camaçari - Gestão Paralapraca')
-        fMG, _ = Forum.objects.get_or_create(author=me, title='Fórum Maracanaú - Gestão Paralapraca')
-        fOG, _ = Forum.objects.get_or_create(author=me, title='Fórum Olinda - Gestão Paralapraca')
-        fGM, _ = Forum.objects.get_or_create(author=me, title='Fórum Gestão Municipal')
+        fGE, _ = Forum.objects.get_or_create(title='Fórum Geral')
+        fAS, _ = Forum.objects.get_or_create(title='Fórum Assessoras')
+        fNG, _ = Forum.objects.get_or_create(title='Fórum Natal - Gestão Paralapraca')
+        fMG, _ = Forum.objects.get_or_create(title='Fórum Maracanaú - Gestão Paralapraca')
+        fCG, _ = Forum.objects.get_or_create(title='Fórum Camaçari - Gestão Paralapraca')
+        fMG, _ = Forum.objects.get_or_create(title='Fórum Maracanaú - Gestão Paralapraca')
+        fOG, _ = Forum.objects.get_or_create(title='Fórum Olinda - Gestão Paralapraca')
+        fGM, _ = Forum.objects.get_or_create(title='Fórum Gestão Municipal')
 
         # Create the nedded tags for the migrations
         tOrg, _ = Tag.objects.get_or_create(name='Organização de Ambiente')
@@ -58,6 +57,31 @@ class Command(BaseCommand):
         tExp, _ = Tag.objects.get_or_create(name='Exploração de Mundo')
         tLit, _ = Tag.objects.get_or_create(name='Literatura')
         tMus, _ = Tag.objects.get_or_create(name='Música')
+
+
+        # Test if the user groups have already been created
+        if not Group.objects.filter(name='Avante'):
+            print("Import users and their groups before running this script.")
+            sys.exit()
+        # import pdb; pdb.set_trace()
+
+        # Get every possible group in wich users can be put in
+        gAv = Group.objects.get(name='Avante')
+        gEn = Group.objects.get(name='Entremeios')
+        gAs = Group.objects.get(name='Assessoras')
+        gDu = Group.objects.get(name='Duplas')
+        gCo = Group.objects.get(name='Coordenadoras')
+        gGe = Group.objects.get(name='Gestores')
+        gCa = Group.objects.get(name='Camaçari')
+        gMac = Group.objects.get(name='Maceió')
+        gMar = Group.objects.get(name='Maracanaú')
+        gOl = Group.objects.get(name='Olinda')
+        gNa = Group.objects.get(name='Natal')
+
+        # Assign groups to its respectives forums
+        # Forum Assessoras
+        fAS.groups.add(gAs, gAv, gEn)
+
 
         # Holds all the necesseary exchange info for each source and destination forum in the migration
         exchange = {

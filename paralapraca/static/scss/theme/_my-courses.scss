@@ -1,0 +1,15 @@
+// My courses' pages
+// --------------------------------------------------
+
+.my-courses {
+    .course {
+        .buttons {
+            .btn-primary {
+                @include button-hover(#fff,#fff,$purple,darken($purple,10%));
+            }
+            .btn-info {
+                @include button-hover(#fff,#fff,$pink,darken($pink,10%));
+            }
+        }
+    }
+}

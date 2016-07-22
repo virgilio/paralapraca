@@ -67,47 +67,40 @@ wrapper-course-lesson
                 </div>
                 {% endif %}
                 {% for cs in request.user.coursestudent_set.all %}
-                <div class="course">
+                <div class="course row">
                     {% if cs.course.has_started %}
-                    <header>
-                        <div class="row">
-                            <div class="col-sm-8">
-                                <h1><a href="{% url 'resume_course' cs.course.slug %}">{{ cs.course.name }}</a></h1>
-                            </div>
-                            <div class="col-sm-4 textright">
-                                <div class="btn-group">
-                                    <a href="{% url 'resume_course' cs.course.slug %}" class="btn btn-sm btn-success">{% trans "Resume Course" %}</a>
-                                    <a href="{% url 'resume_course' cs.course.slug %}" class="btn btn-sm btn-success"><i class="fa fa-angle-double-right"></i></a>
-                                </div>
-                            </div>
+                    <header class="col-md-8">
+                        <h3 class="course-title">{{ cs.course.name }}</h3>
+                        <div class="progress">
+                            <div class="progress-bar" style="width:{{cs.percent_progress}}%;"></div>
                         </div>
                     </header>
-                    <div class="progress">
-                        <div class="progress-bar" style="width:{{cs.percent_progress}}%;"></div>
-                    </div>
-                    <a href="{% url 'user_course_notes' cs.course.slug %}" class="btn btn-default btn-sm">{% trans "My Notes" %}</a>
+                    <div class="buttons col-md-4">
+                        <a href="{% url 'resume_course' cs.course.slug %}" class="btn btn-sm btn-primary continue">{% trans "Resume Course" %}</a>
+                        <a href="{% url 'user_course_notes' cs.course.slug %}" class="btn btn-sm btn-info notes">{% trans "Notes" %}</a>
+                        
+                        <!-- CERTIFICATE -->
+                        {% if cs.certificate %}
+                            <a href="{% url 'certificate' cs.certificate.link_hash %}"
+                               class="btn btn-default btn-sm">
+                                {% if cs.certificate.type == 'receipt' %}
+                                    {% trans "View Receipt" %}
+                                {% elif cs.certificate.type == 'certificate' %}
+                                    {% trans "View certificate" %}
+                                {% endif %}
+                            </a>
+                        {% endif %}
 
-                    <!-- CERTIFICATE -->
-                    {% if cs.certificate %}
-                        <a href="{% url 'certificate' cs.certificate.link_hash %}"
+                        {% if cs.certificate.type == 'receipt' and cs.get_current_class.user_can_certificate %}
+                        <a href="#"
+                           ng-click="createCertificationProcess({{ cs.id }})"
+                           ng-hide="hasOpenProcess({{ cs.id }})"
                            class="btn btn-default btn-sm">
-                            {% if cs.certificate.type == 'receipt' %}
-                                {% trans "View Receipt" %}
-                            {% elif cs.certificate.type == 'certificate' %}
-                                {% trans "View certificate" %}
-                            {% endif %}
+                            {% trans "Request certificate" %}
                         </a>
-                    {% endif %}
-
-                    {% if cs.certificate.type == 'receipt' and cs.get_current_class.user_can_certificate %}
-                    <a href="#"
-                       ng-click="createCertificationProcess({{ cs.id }})"
-                       ng-hide="hasOpenProcess({{ cs.id }})"
-                       class="btn btn-default btn-sm">
-                        {% trans "Request certificate" %}
-                    </a>
-                    {% endif %}
-                    <!-- END CERTIFICATE -->
+                        {% endif %}
+                        <!-- END CERTIFICATE -->
+                    </div>
 
                     {# <a href="" class="btn btn-default btn-sm">{% trans "Details" %}</a>#}
                     {# <span class="info">0 min of lecture and 0 quizzes remaining in 1.1a Equivalent Fractions.</span>#}
