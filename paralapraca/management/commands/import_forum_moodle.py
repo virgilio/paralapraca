@@ -189,10 +189,22 @@ class Command(BaseCommand):
                 # Find out wich forum is the corret one for the current topic
                 destination = exchange.get(int(row['forum']))
 
+                last_activity_at = timezone.make_aware(
+                    datetime.datetime.fromtimestamp(
+                        float(
+                            row['timemodified']
+                        )
+                    ),
+                    timezone.get_current_timezone()
+                )
+
                 topics[row['id']] = Topic.objects.create(
                     forum=destination['forum'],
                     title=row['name'].encode('utf-8'),
-                    author=User.objects.get(email=row['email'][:29])
+                    author=User.objects.get(email=row['email'][:29]),
+                    last_activity_at=last_activity_at,
+                    created_at=last_activity_at,
+                    updated_at=last_activity_at,
                 )
 
                 # Add all categories relevant to this topic1
@@ -223,6 +235,7 @@ class Command(BaseCommand):
                         row[fieldname] = row[fieldname][:size]
 
                 # Adjusts the created and modified dates to the Django standard
+                # TODO: use django packages to retrieve the timezone
                 created = timezone.make_aware(
                     datetime.datetime.fromtimestamp(
                         float(
