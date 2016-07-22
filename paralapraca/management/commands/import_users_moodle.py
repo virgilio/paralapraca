@@ -2,6 +2,7 @@
 from django.core.management.base import BaseCommand, CommandError
 from django.contrib.auth import get_user_model, models
 from django.db import transaction
+from django.db.models import Q
 
 import unicodecsv
 
@@ -34,17 +35,16 @@ class Command(BaseCommand):
                     if fieldname in row:
                         row[fieldname] = row[fieldname][:size]
 
-                # set_password = row.pop('password')
+                user, created = User.objects.get_or_create(email=row['email'][:29])
+                if user.username != row['username'][:29] and not User.objects.filter(username=row['username'][:29]).exists():
+                    user.username = row['username'][:29]
+                else:
+                    user.username = row['email'][:29].split('@')[0]
+                    print(row['email'][:29].split('@')[0])
 
-                nu = User.objects.create(
-                    username=row['username'][:29], # django has a 30 char limitation in the following fields
-                    first_name=row['firstname'][:29],
-                    last_name=row['lastname'][:29],
-                    email=row['email'][:29],
-                    city=row['city'][:29],
-                    biography=row['description'],
-                )
-                # nu.set_password(set_password)
-                nu.is_active = False
-                nu.accepted_terms = False
-                nu.save()
+                user.first_name = row['firstname'][:29]
+                user.last_name = row['lastname'][:29]
+                user.city = row['city'][:29]
+                user.is_active = False
+                user.accepted_terms = False
+                user.save()
