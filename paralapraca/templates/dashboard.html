@@ -35,8 +35,8 @@
         </header>
 
         {% verbatim %}
-        <div class="courses line two-column fifty-fifty" ng-repeat="courses_row in courses_rows">
-            <div class="course-box column" ng-repeat="course in courses_row">
+        <div class="courses line two-column fifty-fifty">
+            <div class="course-box column" ng-repeat="course in my_courses">
                 <div class="line two-column">
                     <div class="course-progress column">
                         <div class="progress">
@@ -54,16 +54,17 @@
                     <div class="course-description column">
                         <h3 class="course-title">{{course.course.name}}</h3>
                         <div class="course-info">
-                            <p><b>Iniciado em:</b> {{course.course.start_date}} | <b>Cidade:</b> Camaçari</p>
+                            <p><b>Iniciado em:</b> {{course.course.start_date}}
+                              <!--| <b>Cidade:</b> Camaçari</p>-->
                             <p>você parou em <span class="unit-title">{{course.current_class.name}}</span></p>
                         </div>
                     </div>
                 </div>
-                <div class="line one-column">
-                    <div class="column">
-                        <p class="course-update"><strong>atualização:</strong> lorem ipsum dolor sit amet, consectetur adipiscing elit | <span>xx horas atrás</span></p>
-                    </div>
-                </div>
+                <!--<div class="line one-column">-->
+                    <!--<div class="column">-->
+                        <!--<p class="course-update"><strong>atualização:</strong> lorem ipsum dolor sit amet, consectetur adipiscing elit | <span>xx horas atrás</span></p>-->
+                    <!--</div>-->
+                <!--</div>-->
             </div>
         </div>
         {% endverbatim %}
