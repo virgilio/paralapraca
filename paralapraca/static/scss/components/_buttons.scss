@@ -47,6 +47,9 @@
         @include link-hover(#fff,#fff,#fff,transparent);
         margin-right: 20px; 
     }
+    &.continue {
+        @extend %icon-angle-right;
+    }
     &.delete {
         @extend %icon-delete;
     }
@@ -73,6 +76,9 @@
         &:after {
             vertical-align: middle;
         }
+    }
+    &.notes {
+        @extend %icon-notes;
     }
     &.reply {
         @extend %icon-reply;
