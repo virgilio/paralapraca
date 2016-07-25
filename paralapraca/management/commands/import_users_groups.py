@@ -54,6 +54,8 @@ class Command(BaseCommand):
                     if row['remocao'] == '1':
                         # deactivate this user's profile
                         user.is_active = False
+                        group = row.pop('grupo')
+                        user.groups.add(Group.objects.get(name=group))
                         user.save()
                         print("User "+row['email'][:29]+" has been deactivated.\n")
                     else:
@@ -73,6 +75,8 @@ class Command(BaseCommand):
                     )
                     nu.is_active = True
                     nu.accepted_terms = False
+                    group = row.pop('grupo')
+                    user.groups.add(Group.objects.get(name=group))
                     nu.save()
 
                     print("User "+row['email'][:29]+" couldn't be found in the database and has been created.\n")
