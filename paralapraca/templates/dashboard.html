@@ -88,7 +88,7 @@
             </div>
         </header>
 
-        <div class="line two-column forty-sixty">
+        <!-- <div class="line two-column forty-sixty">
             <div class="column">
                 <h3 class="section-title">últimas postagens</h3>
                 <div class="forum-update">
@@ -111,58 +111,56 @@
                 </div>
             </div>
             <div class="column">
-                <h3 class="section-title">Avante e Entremeios</h3>
+                <h3 class="section-title">Últimas postagens</h3>
 
-                <div class="user-update">
+                {% verbatim %}
+                <div class="user-update" ng-repeat="topic in latest_topics">
                     <div class="user-icon">
-                        <img src="http://placehold.it/40" alt="Carla Marques">
+                        <img ng-src="{{topic.author.picture}}" alt="{{topic.author.first_name}}" />
                     </div>
                     <div class="info">
-                        <b>Carla Marques</b> comentou no tópico <a href="#" class="thread-name">Curso de Mediação</a>
-                        no fórum <a href="#">Lorem ipsum dolor sit amet...</a></span>
+                        <b>{{topic.author.first_name}}</b> comentou no tópico <a href="../discussion/topic/##{{topic.id}}" class="thread-name">{{topic.title}}</a>
+                        no fórum <a href="#">{{topic.forum.title}}</a></span>
                     </div>
                     <div class="actions">
-                        <span class="action liked">4 curtiram</span>
-                        <span class="action used">7 usaram</span>
+                        <span class="action replies">{{topic.count_replies}} {{topic.count_replies > 1 || topic.count_replies == 0? 'respostas':'resposta'}}</span>
+                        <span class="action liked">{{topic.count_likes}} {{topic.count_likes > 1 || topic.count_likes == 0? 'gostaram':'gostou'}}</span>
                     </div>
                     <div class="tags">
-                        <span class="tag">#lorem</span><span class="tag">#ipsum</span><span class="tag">#lorem</span><span class="tag">#ipsum</span><span class="tag">#lorem</span><span class="tag">#ipsum</span>
+                        <span ng-repeat="tag in topic.tags" class="tag">#{{tag.name}}</span>
                     </div>
                 </div>
+                {% endverbatim %}
 
-                <div class="user-update">
-                    <div class="user-icon">
-                        <img src="http://placehold.it/40" alt="Carla Marques">
-                    </div>
-                    <div class="info">
-                        <b>Carla Marques</b> comentou no tópico <a href="#" class="thread-name">Curso de Mediação</a>
-                        no fórum <a href="#">Lorem ipsum dolor sit amet...</a></span>
-                    </div>
-                    <div class="actions">
-                        <span class="action liked">4 curtiram</span>
-                        <span class="action used">7 usaram</span>
-                    </div>
-                    <div class="tags">
-                        <span class="tag">#lorem</span><span class="tag">#ipsum</span><span class="tag">#lorem</span><span class="tag">#ipsum</span><span class="tag">#lorem</span><span class="tag">#ipsum</span>
-                    </div>
-                </div>
+            </div>
+        </div> -->
 
-                <div class="user-update">
-                    <div class="user-icon">
-                        <img src="http://placehold.it/40" alt="Carla Marques">
-                    </div>
-                    <div class="info">
-                        <b>Carla Marques</b> comentou no tópico <a href="#" class="thread-name">Curso de Mediação</a>
-                        no fórum <a href="#">Lorem ipsum dolor sit amet...</a></span>
-                    </div>
-                    <div class="actions">
-                        <span class="action liked">4 curtiram</span>
-                        <span class="action used">7 usaram</span>
-                    </div>
-                    <div class="tags">
-                        <span class="tag">#lorem</span><span class="tag">#ipsum</span><span class="tag">#lorem</span><span class="tag">#ipsum</span><span class="tag">#lorem</span><span class="tag">#ipsum</span>
-                    </div>
+        <div class="line one-column">
+            <div class="column">
+                <h3 class="section-title">últimas postagens</h3>
+            </div>
+        </div>
+
+        <div class="line two-column fifty-fifty">
+
+            {% verbatim %}
+            <div class="user-update column" ng-repeat="topic in latest_topics">
+                <div class="user-icon">
+                    <img ng-src="{{topic.author.picture}}" alt="{{topic.author.first_name}}" />
                 </div>
+                <div class="info">
+                    <b>{{topic.author.first_name}}</b> comentou no tópico <a href="../discussion/topic/##{{topic.id}}" class="thread-name">{{topic.title}}</a>
+                    no fórum <a href="#">{{topic.forum.title}}</a></span>
+                </div>
+                <div class="actions">
+                    <span class="action replies">{{topic.count_replies}} {{topic.count_replies > 1 || topic.count_replies == 0? 'respostas':'resposta'}}</span>
+                    <span class="action liked">{{topic.count_likes}} {{topic.count_likes > 1 || topic.count_likes == 0? 'gostaram':'gostou'}}</span>
+                </div>
+                <div class="tags">
+                    <span ng-repeat="tag in topic.tags" class="tag">#{{tag.name}}</span>
+                </div>
+            </div>
+            {% endverbatim %}
 
             </div>
         </div>
