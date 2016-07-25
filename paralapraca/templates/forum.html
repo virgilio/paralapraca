@@ -46,13 +46,16 @@
             <div class="user-update column" ng-repeat="topic in latest_topics">
                 <div class="user-icon">
                     <img src="http://placehold.it/40" alt="{{ topic.author.name }}">
+                    <!--<img ng-src="{{ topic.author.picture }}"-->
+                             <!--err-src="http://placehold.it/40"-->
+                             <!--alt="{{ topic.author.name }}">-->
                 </div>
                 <div class="info">
-                    <b>{{ topic.author.name }}</b> comentou no tópico <a href="#" class="thread-name">{{ topic.title }}</a> no fórum <a href="#">{{ topic.forum.title }}</a></span>
+                    <b>{{ topic.author.name }}</b> comentou no tópico <a href="/discussion/topic/##{{ topic.id }}" class="thread-name">{{ topic.title }}</a> no fórum <a href="#">{{ topic.forum.title }}</a></span>
                 </div>
                 <div class="actions">
                     <span class="action replies">{{  topic.count_replies }} resposta</span>
-                    <span class="action liked">{{ topic.count_likes }} curtiram</span>
+                    <span class="action liked">{{ topic.count_likes }} gostaram</span>
                 </div>
             </div>
           {% endverbatim %}
@@ -61,71 +64,11 @@
                     <img src="http://placehold.it/40" alt="Carla Marques">
                 </div>
                 <div class="info">
-                    <b>Carla Marques</b> criou o tópico <a href="#" class="thread-name">Curso de Mediação</a> no fórum <a href="#">Experiências Pedagógicas</a></span>
-                </div>
-            </div>
-            <div class="user-update column">
-                <div class="user-icon">
-                    <img src="http://placehold.it/40" alt="Carla Marques">
-                </div>
-                <div class="info">
-                    <b>Carla Marques</b> comentou no tópico <a href="#" class="thread-name">Curso de Mediação</a> no fórum <a href="#">Lorem ipsum dolor sit amet...</a></span>
+                    <b>Carla Marques</b> comentou no tópico <a href="" class="thread-name">Curso de Mediação</a> no fórum <a href="#">Lorem ipsum dolor sit amet...</a></span>
                 </div>
                 <div class="actions">
                     <span class="action replies">1 resposta</span>
-                    <span class="action liked">4 curtiram</span>
-                </div>
-            </div>
-            <div class="user-update column">
-                <div class="user-icon">
-                    <img src="http://placehold.it/40" alt="Carla Marques">
-                </div>
-                <div class="info">
-                    <b>Carla Marques</b> comentou no tópico <a href="#" class="thread-name">Curso de Mediação</a> no fórum <a href="#">Lorem ipsum dolor sit amet...</a></span>
-                </div>
-                <div class="actions">
-                    <span class="action replies">1 resposta</span>
-                    <span class="action liked">4 curtiram</span>
-                </div>
-            </div>
-            <div class="user-update column">
-                <div class="user-icon">
-                    <img src="http://placehold.it/40" alt="Carla Marques">
-                </div>
-                <div class="info">
-                    <b>Carla Marques</b> criou o tópico <a href="#" class="thread-name">Curso de Mediação</a> no fórum <a href="#">Experiências Pedagógicas</a></span>
-                </div>
-            </div>
-            <div class="user-update column">
-                <div class="user-icon">
-                    <img src="http://placehold.it/40" alt="Carla Marques">
-                </div>
-                <div class="info">
-                    <b>Carla Marques</b> comentou no tópico <a href="#" class="thread-name">Curso de Mediação</a> no fórum <a href="#">Lorem ipsum dolor sit amet...</a></span>
-                </div>
-                <div class="actions">
-                    <span class="action replies">1 resposta</span>
-                    <span class="action liked">4 curtiram</span>
-                </div>
-            </div>
-            <div class="user-update column">
-                <div class="user-icon">
-                    <img src="http://placehold.it/40" alt="Carla Marques">
-                </div>
-                <div class="info">
-                    <b>Carla Marques</b> criou o tópico <a href="#" class="thread-name">Curso de Mediação</a> no fórum <a href="#">Experiências Pedagógicas</a></span>
-                </div>
-            </div>
-            <div class="user-update column">
-                <div class="user-icon">
-                    <img src="http://placehold.it/40" alt="Carla Marques">
-                </div>
-                <div class="info">
-                    <b>Carla Marques</b> comentou no tópico <a href="#" class="thread-name">Curso de Mediação</a> no fórum <a href="#">Lorem ipsum dolor sit amet...</a></span>
-                </div>
-                <div class="actions">
-                    <span class="action replies">1 resposta</span>
-                    <span class="action liked">4 curtiram</span>
+                    <span class="action liked">4 gostaram</span>
                 </div>
             </div>
             <div class="user-update column">
@@ -159,13 +102,12 @@
                     <tbody>
                         <tr ng-repeat="topic in forum.latest_topics">
                             <td>
-                                <a ng-href="/discussion/topic/##{{ topic.id}}"><span class="thread-name">{{ topic.title }}</span></a>
+                                <a ng-href="/discussion/topic/##{{ topic.id }}"><span class="thread-name">{{ topic.title }}</span></a>
                                 <span class="last-update">Última atividade em <b>{{ topic.last_update | date: "dd/MM/yyyy' às 'HH:mm"}}</b></span>
                             </td>
                             <td>
                                 <span class="action replies small">{{ topic.count_replies }}</span>
                                 <span class="action liked small">{{ topic.count_likes }}</span>
-                                <span class="action used small">{{ topic.count_uses }}</span>
                             </td>
                             <td>
                                 <span ng-repeat="category in topic.categories" class="category">{{ category.name }}</span>
@@ -176,26 +118,25 @@
                                 </div>
                             </td>
                         </tr>
-
-                        <tr class="new">
-                            <td>
-                                <span class="thread-name">Lorem ipsum dolor sit amet</span>
-                                <span class="last-update">Última atividade <b>há 2 horas</b></span>
-                            </td>
-                            <td>
-                                <span class="action replies small">1</span>
-                                <span class="action liked small">4</span>
-                                <span class="action used small">7</span>
-                            </td>
-                            <td>
-                                <span class="category discussion">discussão</span>
-                            </td>
-                            <td>
-                                <div class="tags">
-                                    <span class="tag">#lorem</span><span class="tag">#ipsum</span><span class="tag">#lorem</span>
-                                </div>
-                            </td>
-                        </tr>
+                        <!--<tr class="new">-->
+                            <!--<td>-->
+                                <!--<span class="thread-name">Lorem ipsum dolor sit amet</span>-->
+                                <!--<span class="last-update">Última atividade <b>há 2 horas</b></span>-->
+                            <!--</td>-->
+                            <!--<td>-->
+                                <!--<span class="action replies small">1</span>-->
+                                <!--<span class="action liked small">4</span>-->
+                                <!--<span class="action used small">7</span>-->
+                            <!--</td>-->
+                            <!--<td>-->
+                                <!--<span class="category discussion">discussão</span>-->
+                            <!--</td>-->
+                            <!--<td>-->
+                                <!--<div class="tags">-->
+                                    <!--<span class="tag">#lorem</span><span class="tag">#ipsum</span><span class="tag">#lorem</span>-->
+                                <!--</div>-->
+                            <!--</td>-->
+                        <!--</tr>-->
                     </tbody>
                 </table>
             </div>
