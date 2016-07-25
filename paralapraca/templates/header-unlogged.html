@@ -5,10 +5,11 @@
     {% block header_navbar %}
     <nav class="site-nav">
         <ul>
-            <li><a href="#">Fazer o login</a></li>
-            <li><a href="#">O projeto</a></li>
-            <li><a href="#">Sobre a plataforma</a></li>
-            <li><a href="#">FAQ</a></li>
+            <li><a href="#">Entrar!</a></li>
+            <li><a href="/pages/o-projeto">O projeto</a></li>
+            <li><a href="/pages/sobre">Sobre a plataforma</a></li>
+            <li><a href="/pages/faq">Perguntas frequentes</a></li>
+            <li><a href="#" data-toggle="modal" data-target="#modal-contact">Contato</a></li>
         </ul>
     </nav>
     <div class="site-logo">
@@ -23,6 +24,32 @@
     </div>
     <div class="color-line"></div>
     {% endblock %}
-
-
 </header>
+
+<div class="modal fade" id="modal-contact">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">{% trans 'Contact' %}</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-lg-8 col-lg-offset-1">
+                        <form class="form-horizontal" method="post" action="{% url 'contact' %}">
+                            {% csrf_token %}
+                            {% include '_contact_form.html' %}
+                            <div class="submit textright">
+                                <button type="reset" class="btn btn-danger">{% trans 'Clear' %}</button>
+                                <button type="submit" class="btn btn-success">{% trans 'Send' %}</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">{% trans 'Close' %}</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
