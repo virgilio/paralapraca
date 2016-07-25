@@ -112,6 +112,16 @@
             display: none;
         }
 
+        span {
+            margin-left: 15px;
+            &.icons {
+                margin: 0 auto;
+                span {
+                    margin: 0 auto;
+                }
+            }
+        }
+
         // Replace icons
         // --------------------------------------------------
         .icons {
