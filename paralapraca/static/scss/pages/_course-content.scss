@@ -420,15 +420,21 @@
                     margin-left: 5px;
                 }
             }
-            .save-note {
-                margin-right: 10px; 
-            }
-            .save-note, .hide-note {
+            .save {
                 float: right;
+                margin: -2px 15px 0 0; 
+            }
+            .hide-note {
+                float: right;
+                margin: 2px 0 0 0; 
             }
         }
         .notes-content {
             padding: 15px;
+            textarea {
+                border: 0;
+                width: 100%;
+            }
         }
     }
 }
