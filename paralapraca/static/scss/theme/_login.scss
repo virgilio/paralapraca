@@ -4,154 +4,156 @@
 // ## Common styles
 //
 .user-unlogged {
-    form { // common form styles
-        color: #fff;
-        legend {
+    .wrapper {
+        form { // common form styles
             color: #fff;
-            border-bottom: 0;
-            font-size: 5vmax;
-            font-weight: $lighter;
-            line-height: 100%;
-            text-align: center;
-            @media screen and (min-width: $screen-sm-min) {
-                font-size: 36px;
-            }
-        }
-        .form-group {
-            margin: 0 auto 15px; 
-            max-width: 270px;
-        }
-        .form-control {
-            font-weight: $semi-bold;
-            &:hover, &:focus, &:active {
-                border: 1px solid darken($brand-primary, 10%);
-            }
-        }
-        .checkbox {
-            margin: 10px 15px 15px;
-            padding: 0;
-            a {
-                @include link-hover(#fff,#fff,#fff,transparent);
-            }
-        }
-        .btn {
-            color: #fff;
-            display: block;
-            font-size: $font-size-large;
-            font-weight: $extra-bold;
-            margin: 0 auto; 
-            width: 270px;
-            transition: all 0.5s ease;
-            &:hover {
+            legend {
                 color: #fff;
+                border-bottom: 0;
+                font-size: 5vmax;
+                font-weight: $lighter;
+                line-height: 100%;
+                text-align: center;
+                @media screen and (min-width: $screen-sm-min) {
+                    font-size: 36px;
+                }
+            }
+            .form-group {
+                margin: 0 auto 15px; 
+                max-width: 270px;
+            }
+            .form-control {
+                font-weight: $semi-bold;
+                &:hover, &:focus, &:active {
+                    border: 1px solid darken($brand-primary, 10%);
+                }
+            }
+            .checkbox {
+                margin: 10px 15px 15px;
+                padding: 0;
+                a {
+                    @include link-hover(#fff,#fff,#fff,transparent);
+                }
+            }
+            .btn {
+                color: #fff;
+                display: block;
+                font-size: $font-size-large;
+                font-weight: $extra-bold;
+                margin: 0 auto; 
+                width: 270px;
+                transition: all 0.5s ease;
+                &:hover {
+                    color: #fff;
+                }
+            }
+            .info {
+                color: #fff;
+                margin: 0;
+                font-size: $font-size-base;
+                font-weight: $normal;
+                text-align: center;
+                a {
+                    @include link-hover(#fff,#fff,#fff,transparent);
+                }
             }
         }
-        .info {
-            color: #fff;
-            margin: 0;
-            font-size: $font-size-base;
-            font-weight: $normal;
-            text-align: center;
-            a {
-                @include link-hover(#fff,#fff,#fff,transparent);
-            }
-        }
-    }
 
-    .login-form { // this is used on home and login page
-        .btn-submit {
-            background-color: $blue;
-            &:hover {
-                background-color: darken($blue, 15%);
+        .login-form { // this is used on home and login page
+            .btn-submit {
+                background-color: $blue;
+                &:hover {
+                    background-color: darken($blue, 15%);
+                }
+            }
+            .checkbox {
+                margin: 15px 0; 
+                text-align: center;
+                label {
+                    color: #fff;
+                    font-weight: $extra-bold;
+                }
             }
         }
-        .checkbox {
-            margin: 15px 0; 
-            text-align: center;
+
+        .register-form {
+            margin: 0 auto; 
+            max-width: 340px;
+            .form-group {
+                .fa {
+                    display: inline-block;
+                    font-size: 20px;
+                    text-align: center; 
+                    width: 30px;
+                }
+                input {
+                    display: inline-block;
+                    width: 235px;
+                }
+            }
+            .checkbox {
+                padding: 0 0 0 5px;
+            }
+            .btn-submit {
+                background-color: $green;
+                margin-bottom: 15px;
+                &:hover {
+                    background-color: darken($green, 15%);
+                }
+            }
+        }
+
+        .forgot-pass-form {
+            margin: 0 auto; 
+            .form-group {
+                max-width: 340px;
+            }
             label {
-                color: #fff;
+                font-weight: normal;
+                margin-bottom: 15px;
+                text-align: center;
+            }
+            .btn-submit {
+                background-color: $blue;
+                margin-bottom: 15px;
+                max-width: 340px;
+                width: 100%;
+                @media screen and (min-width: $screen-xs-min) {
+                    width: 340px;
+                }
+                &:hover {
+                    background-color: darken($blue, 15%);
+                }
+            }
+        }
+
+        .alert { // common alert styles
+            border: 0;
+            border-radius: 0;
+            color: #fff;
+            font-weight: $bold;
+            margin: -20px -20px 20px; 
+            text-align: center; 
+            @media screen and (min-width: 947px) {
+                margin: -40px -40px 40px; 
+            }
+
+            &.alert-danger {
+                background-color: $pink;
+            }
+        }
+
+        .message {
+            color: #fff;
+            margin: 0 auto; 
+            max-width: 500px; 
+            text-align: center;
+            h2 {
                 font-weight: $extra-bold;
             }
-        }
-    }
-
-    .register-form {
-        margin: 0 auto; 
-        max-width: 340px;
-        .form-group {
-            .fa {
-                display: inline-block;
-                font-size: 20px;
-                text-align: center; 
-                width: 30px;
+            h2, h3 {
+                font-family: $font-family-sans-serif;
             }
-            input {
-                display: inline-block;
-                width: 235px;
-            }
-        }
-        .checkbox {
-            padding: 0 0 0 5px;
-        }
-        .btn-submit {
-            background-color: $green;
-            margin-bottom: 15px;
-            &:hover {
-                background-color: darken($green, 15%);
-            }
-        }
-    }
-
-    .forgot-pass-form {
-        margin: 0 auto; 
-        .form-group {
-            max-width: 340px;
-        }
-        label {
-            font-weight: normal;
-            margin-bottom: 15px;
-            text-align: center;
-        }
-        .btn-submit {
-            background-color: $blue;
-            margin-bottom: 15px;
-            max-width: 340px;
-            width: 100%;
-            @media screen and (min-width: $screen-xs-min) {
-                width: 340px;
-            }
-            &:hover {
-                background-color: darken($blue, 15%);
-            }
-        }
-    }
-
-    .alert { // common alert styles
-        border: 0;
-        border-radius: 0;
-        color: #fff;
-        font-weight: $bold;
-        margin: -20px -20px 20px; 
-        text-align: center; 
-        @media screen and (min-width: 947px) {
-            margin: -40px -40px 40px; 
-        }
-
-        &.alert-danger {
-            background-color: $pink;
-        }
-    }
-
-    .message {
-        color: #fff;
-        margin: 0 auto; 
-        max-width: 500px; 
-        text-align: center;
-        h2 {
-            font-weight: $extra-bold;
-        }
-        h2, h3 {
-            font-family: $font-family-sans-serif;
         }
     }
 }

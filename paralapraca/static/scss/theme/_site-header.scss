@@ -16,6 +16,7 @@
         .site-nav {
             margin: 30px 60px 60px 0; 
             overflow: hidden; 
+            padding-bottom: 2px;
             ul {
                 @extend %list-inline;
                 float: right;

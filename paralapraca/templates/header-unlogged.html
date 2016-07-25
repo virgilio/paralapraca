@@ -34,21 +34,14 @@
                 <h4 class="modal-title">{% trans 'Contact' %}</h4>
             </div>
             <div class="modal-body">
-                <div class="row">
-                    <div class="col-lg-8 col-lg-offset-1">
-                        <form class="form-horizontal" method="post" action="{% url 'contact' %}">
-                            {% csrf_token %}
-                            {% include '_contact_form.html' %}
-                            <div class="submit textright">
-                                <button type="reset" class="btn btn-danger">{% trans 'Clear' %}</button>
-                                <button type="submit" class="btn btn-success">{% trans 'Send' %}</button>
-                            </div>
-                        </form>
+                <form class="form-horizontal contact-form" method="post" action="{% url 'contact' %}">
+                    {% csrf_token %}
+                    {% include '_contact_form.html' %}
+                    <div class="submit">
+                        <button type="reset" class="btn btn-sm btn-warning clean">{% trans 'Clear' %}</button>
+                        <button type="submit" class="btn btn-sm btn-success save">{% trans 'Send' %}</button>
                     </div>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">{% trans 'Close' %}</button>
+                </form>
             </div>
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
