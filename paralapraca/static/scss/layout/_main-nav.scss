@@ -9,7 +9,7 @@
     position: fixed;
     @include transition(width 0.5s ease);
     width: 100px; 
-    z-index: 900;
+    z-index: 1000;
 
     a {
         color: #fff;

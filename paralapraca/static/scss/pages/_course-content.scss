@@ -121,6 +121,12 @@
                 @media screen and (min-width: $screen-lg-min) {
                     font-size: 16px;
                 }
+                .lesson-name {
+                    @extend %icon-caret-down;
+                    &:after {
+                        margin-left: 5px;
+                    }
+                }
             }
             .dropdown-menu {
                 border: 0;
@@ -255,7 +261,9 @@
     }
     // END LESSONS
     .next-lesson {
+        background-color: rgba($gray,0.3);
         height: 347px;
+        padding: 30px;
         text-align: center;
         @media (min-width: $screen-lg-min) {
             height: 423px;
@@ -547,6 +555,7 @@
 
 .course-lesson {
     .lesson-content {
+        margin: 0 auto; 
         max-width: 720px !important;
 
         .lesson-info {
@@ -558,10 +567,6 @@
                 margin-top: 20px; 
             }
         }
-    }
-    .lesson-activity {
-        background-color: rgba($gray,0.3);
-        padding: 30px;
     }
 }
 

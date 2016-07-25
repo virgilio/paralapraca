@@ -1,5 +1,7 @@
 // Activities
 .course-activity {
+    background-color: rgba($gray,0.3);
+    padding: 30px;
     position: relative;
 
     .question {
@@ -110,6 +112,16 @@
         input {
             outline: none !important;
             display: none;
+        }
+
+        span {
+            margin-left: 15px;
+            &.icons {
+                margin: 0 auto;
+                span {
+                    margin: 0 auto;
+                }
+            }
         }
 
         // Replace icons

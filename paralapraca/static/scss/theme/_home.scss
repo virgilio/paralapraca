@@ -95,3 +95,15 @@
         }
     }
 }
+
+.contact-form {
+    .submit {
+        text-align: right;
+        .btn {
+            margin-left: 10px;
+        }
+        .btn.clean {
+            margin-right: 0;
+        }
+    }
+}
