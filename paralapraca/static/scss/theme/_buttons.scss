@@ -51,3 +51,24 @@ a {
         @include button-hover($orange,#fff,transparent,$orange);
     }
 }
+
+// lesson's activities buttons
+
+.course-activity {
+    .btn-default {
+        @extend %icon-angle-right;
+        @include button-hover(#fff,#fff,$pink,darken($pink,10%));
+        margin-left: 0;
+    }
+    .btn-info {
+        @extend %icon-undo;
+        @include button-hover(#fff,#fff,$purple,darken($purple,10%));
+    }
+    .btn:nth-child(3) {
+        @extend %icon-checked;
+    }
+    .btn-success:last-child {
+        @extend %icon-angle-right;
+        @include button-hover(#fff,#fff,$blue,darken($blue,10%));
+    }
+}

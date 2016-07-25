@@ -255,7 +255,6 @@
     }
     // END LESSONS
     .next-lesson {
-        background-color: #fff;
         height: 347px;
         text-align: center;
         @media (min-width: $screen-lg-min) {
@@ -269,11 +268,6 @@
         .centered {
             @include vertical-align(middle);
             width: 98%;
-        }
-        .btn {
-            span {
-                margin-right: 10px;
-            }
         }
     }
     // COURSE INSTRUCTORS - Course intro
@@ -551,12 +545,26 @@
     }
 }
 
-// Define max-width of course-content div
 .course-lesson {
-    .course-content {
+    .lesson-content {
         max-width: 720px !important;
+
+        .lesson-info {
+            margin-top: 30px; 
+            .page-header {
+                margin-bottom: 20px; 
+            }
+            .lesson-materials {
+                margin-top: 20px; 
+            }
+        }
+    }
+    .lesson-activity {
+        background-color: rgba($gray,0.3);
+        padding: 30px;
     }
 }
+
 .course-intro {
     .course-content {
         max-width: 1050px !important;

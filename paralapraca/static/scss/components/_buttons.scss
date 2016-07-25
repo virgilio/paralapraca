@@ -207,3 +207,38 @@ a {
         @include button-hover($brand-primary,#fff,transparent,$brand-primary);
     }
 }
+
+// lesson's activities buttons
+
+.course-activity {
+    .btn {
+        @extend .btn-sm;
+        margin-left: 10px;
+    }
+    .btn-default {
+        @extend %icon-angle-right;
+        @include button-hover(#fff,#fff,$brand-primary,darken($brand-primary,10%));
+        margin-left: 0;
+    }
+    .btn-info {
+        @extend %icon-undo;
+    }
+    .btn:nth-child(3) {
+        @extend %icon-checked;
+    }
+    .btn-success:last-child {
+        @extend %icon-angle-right;
+        @include button-hover(#fff,#fff,$brand-primary,darken($brand-primary,10%));
+    }
+}
+
+.next-lesson {
+    .btn {
+        @extend .btn-sm;
+        @extend %icon-angle-right;
+        @include button-hover(#fff,#fff,$brand-primary,darken($brand-primary,10%));
+        .fa {
+            display: none;
+        }
+    }
+}

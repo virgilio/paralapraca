@@ -66,34 +66,6 @@ wrapper-course-lesson
                    ng-class="{watching: unit==currentUnit, done: unit.progress.complete}">
                        <span ng-bind="unit.position+1">1</span>
                 </a>
-                <a href="#" class="unit current">
-                    <span>2</span>
-                </a>
-                <a href="#" class="unit">
-                    <span>3</span>
-                </a>
-                <a href="#" class="unit">
-                    <span>4</span>
-                </a>
-                <a href="#" class="unit">
-                    <span>5</span>
-                </a>
-                <a href="#" class="unit">
-                    <span>6</span>
-                </a>
-                <a href="#" class="unit">
-                    <span>7</span>
-                </a>
-                <a href="#" class="unit">
-                    <span>8</span>
-                </a>
-                <a href="#" class="unit">
-                    <span>9</span>
-                </a>
-                <a href="#" class="unit">
-                    <span>10</span>
-                </a>
-
                 {% endverbatim %}
             </div>
         </div>
@@ -117,10 +89,10 @@ wrapper-course-lesson
     {% endblock %}
     <!-- END UNITS NAVIGATION FOR PHONES -->
 
-    <!-- COURSE CONTENT -->
-    <section class="course-content">
-
-        {% block lesson_video %}
+    <!-- LESSON CONTENT -->
+    {% block lesson_video %}
+    <div class="course-content lesson-content">
+        <!-- LESSON VIDEO -->
         <!--
         this class exists to circunvent a flash + youtube api error
         in which if the video div is really hidden the api breaks
@@ -128,9 +100,39 @@ wrapper-course-lesson
         <div ng-class="{hidder: section!='video'}" class="video embed-responsive embed-responsive-16by9">
             <div class="embed-responsive-item" id="youtube-player" youtube-player></div>
         </div>
+        <!-- END LESSON VIDEO -->
+
+        <!-- LESSON INFO -->
+        <div class="lesson-info">
+            <div class="lesson-name">
+                <div class="page-header">
+                    <h2>{{ lesson.name }}</h2>
+                </div>
+                <div class="description">{{ lesson.desc|timtec_markdown }}</div>
+            </div>
+            <div class="lesson-materials">
+                {% block lesson_adicional_material %}
+                <div class="secondary-page-header">
+                    <h3><i class="fa fa-angle-double-right"></i> {% trans 'Addicional materials' %}</h3>
+                </div>
+                <span ng-bind-html="currentUnit.side_notes|markdown"></span>
+                <p ng-if="!currentUnit.side_notes">{% trans 'This unit has no addicional materials' %}</p>
+                {% endblock %}
+            </div>
+        </div>
+        <!-- END LESSON INFO -->
+    </div>
+    <!-- END LESSON CONTENT -->
+
+    <div class="course-content lesson-activity container-fluid">
+
+        <!-- LESSON ACTIVITY -->
         <div ng-show="section=='activity'" class="course-activity">
             <ng:include src="activityTemplateUrl"></ng:include>
         </div>
+        <!-- END LESSON ACTIVITY -->
+
+        <!-- LESSON COMMENTS -->
         <div ng-show="section=='comment'" class="comment">
             <div class="panel panel-default" style="min-height: 368px;">
                 <div class="panel-heading">
@@ -144,6 +146,9 @@ wrapper-course-lesson
                 </div>
             </div>
         </div>
+        <!-- END LESSON COMMENTS -->
+
+        <!-- NEXT LESSON -->
         <div ng-show="section=='end'" class="next-lesson">
             <div class="centered">
                 {% if next_url %}
@@ -153,33 +158,10 @@ wrapper-course-lesson
                 {% endif %}
             </div>
         </div>
-        {% endblock %}
+        <!-- END NEXT LESSON -->
 
-        <nav class="course-lessons hidden-xs">
-            <div class="row">
-                <div class="col-lg-12">
-                    <h1>{{ lesson.name }}</h1>
-                    <div class="description">{{ lesson.desc|timtec_markdown }}</div>
-                </div>
-            </div>
-        </nav>
-
-        <div class="materials">
-            {% block lesson_adicional_material %}
-            <!-- SIDENOTES -->
-            <div class="side-notes">
-                <div class="page-header-double">
-                    <h3><i class="fa fa-angle-double-right"></i> {% trans 'Addicional materials' %}</h3>
-                </div>
-                <span ng-bind-html="currentUnit.side_notes|markdown"></span>
-                <p ng-if="!currentUnit.side_notes">{% trans 'This unit has no addicional materials' %}</p>
-            </div>
-            <!-- END SIDENOTES -->
-            {% endblock %}
-        </div>
-
-    </section>
-    <!-- END COURSE CONTENT -->
+    </div>
+    {% endblock %}
 
     <div class="student-notes" ng-controller="NoteCtrl">
         <button class="btn show-note" ng-show="!show_notes" ng-click="show_notes=true">abrir anotações</button>

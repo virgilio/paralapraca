@@ -1,18 +1,13 @@
 // Activities
 .course-activity {
-    border: 1px solid $gray-lighter;
-    padding: 40px 20px;
-    position:relative;
+    position: relative;
 
     .question {
         h1 {
-            border-bottom: 1px solid $gray-lighter;
-            // color: rgb(44,61,147);
-            color: $brand-info;
-            font-family: "Questrial";
-            margin-bottom: 40px;
-            padding-bottom: 20px;
-            text-align: center;
+            color: $brand-primary;
+            font-family: $headings-font-family;
+            font-size: 30px;
+            margin: 0 0 30px 0;
         }
     }
 
@@ -22,7 +17,6 @@
 
     .simplechoice-answers {
         .answer {
-            border-bottom: 1px solid $gray-lighter;
             font-size: 16px;
             label {
                 vertical-align: top;
@@ -37,7 +31,6 @@
 
     .multiplechoice-answers {
         .answer {
-            border-bottom: 1px solid $gray-lighter;
             font-size: 16px;
             label {
                 vertical-align: top;
@@ -52,7 +45,6 @@
 
     .trueorfalse-answers {
         .answer {
-            border-bottom: 1px solid $gray-lighter;
             font-size: 16px;
             margin: 10px 0;
             padding: 10px 0;
@@ -61,13 +53,19 @@
 
     .relationship-answers {
         .answer {
-            border-bottom: 1px solid $gray-lighter;
             font-size: 16px;
             margin: 10px 0;
             padding: 10px 0;
             > * {
                 line-height: 2;
             }
+        }
+    }
+
+    .alert {
+        font-weight: $bold;
+        .fa {
+            margin-right: 5px;
         }
     }
 
@@ -80,14 +78,123 @@
     }
 
     .wrong {
-        color:$brand-danger;
+        color: $brand-danger;
     }
 
     .correct {
-        color:$brand-success;
+        color: $brand-success;
     }
 
     table tr, table tr td {
         border:none;
+    }
+
+    .textcenter {
+        text-align: center;
+    }
+
+    .textright {
+        text-align: right;
+    }
+
+    // Flat UI Styles
+    // Checkbox & Radio
+    // --------------------------------------------------
+
+    .checkbox,
+    .radio {
+        margin-bottom: 12px;
+        position: relative;
+        @include transition(color .25s linear);
+
+        input {
+            outline: none !important;
+            display: none;
+        }
+
+        // Replace icons
+        // --------------------------------------------------
+        .icons {
+            color: $gray;
+            display: block !important;
+            height: 21px;
+            left: 0;
+            margin: 0 auto;
+            position: absolute;
+            right: 0;
+            top: 0;
+            width: 21px;
+            text-align: center;
+            line-height: 23px;
+            font-size: 23px;
+            @include transition(color .25s linear);
+
+            .first-icon,
+            .second-icon {
+                position: absolute;
+                left: 0;
+                top: 0;
+                @include opacity(100);
+            }
+            .second-icon {
+                @include opacity(0);
+            }
+        }
+
+        // Alternate States
+        // --------------------------------------------------
+
+        // Hover State
+        &:hover {
+            cursor:pointer;
+            .first-icon {
+                @include opacity(0);
+            }
+            .second-icon {
+                @include opacity(100);
+            }
+        }
+
+        // Checked State
+        &.checked {
+            color: $link-color;
+
+            .icons {
+                color: $brand-success;
+            }
+            .first-icon {
+                @include opacity(0);
+            }
+            .second-icon {
+                @include opacity(100);
+            }
+        }
+
+        // Disabled state
+        &.disabled {
+            cursor: default;
+            color: mix($gray, white, 38%);
+
+            .icons {
+                color: mix($gray, white, 38%);
+                }
+                .first-icon {
+                    @include opacity(100);
+                }
+                .second-icon {
+                    @include opacity(0);
+                }
+                &.checked {
+                .icons {
+                    color: mix($gray, white, 38%);
+                }
+                .first-icon {
+                    @include opacity(0);
+                }
+                .second-icon {
+                    @include opacity(100);
+                }
+            }
+        }
     }
 }
