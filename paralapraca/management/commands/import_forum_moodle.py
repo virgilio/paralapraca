@@ -49,6 +49,10 @@ class Command(BaseCommand):
         fOG, _ = Forum.objects.get_or_create(title='Fórum Olinda - Gestão Paralapraca')
         fGM, _ = Forum.objects.get_or_create(title='Fórum Gestão Municipal')
 
+        # Forum Geral is marked as public by default
+        fGE.is_public = True
+        fGE.save()
+
         # Create the nedded tags for the migrations
         tOrg, _ = Tag.objects.get_or_create(name='Organização de Ambiente')
         tArt, _ = Tag.objects.get_or_create(name='Artes Visuais')
@@ -63,7 +67,6 @@ class Command(BaseCommand):
         if not Group.objects.filter(name='Avante'):
             print("Import users and their groups before running this script.")
             sys.exit()
-        # import pdb; pdb.set_trace()
 
         # Get every possible group in wich users can be put in
         gAv = Group.objects.get(name='Avante')
