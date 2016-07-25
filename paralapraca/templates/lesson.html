@@ -7,7 +7,9 @@
 
 {% block js %}
 {{ block.super }}
+{% javascript 'markdown' %}
 {% javascript 'lesson' %}
+{% javascript 'notes' %}
 
 <script type="text/javascript">
 window.lessonId = {{ lesson.pk }};
@@ -38,7 +40,7 @@ wrapper-course-lesson
 {% block content %}
 
 <!-- COURSE -->
-<div class="course course-lesson">
+<div class="course course-lesson" ng-controller="MainCtrl">
 
     <!-- HEADER -->
     {% include "_course-header-inline.html"  with course=lesson.course %}
@@ -116,7 +118,7 @@ wrapper-course-lesson
     <!-- END UNITS NAVIGATION FOR PHONES -->
 
     <!-- COURSE CONTENT -->
-    <section class="course-content" ng-controller="MainCtrl">
+    <section class="course-content">
 
         {% block lesson_video %}
         <!--
@@ -179,17 +181,19 @@ wrapper-course-lesson
     </section>
     <!-- END COURSE CONTENT -->
 
-    <div class="student-notes">
-        <button class="btn show-note">abrir anotações</button>
-        <div class="notes-container">
+    <div class="student-notes" ng-controller="NoteCtrl">
+        <button class="btn show-note" ng-show="!show_notes" ng-click="show_notes=true">abrir anotações</button>
+        <div class="notes-container" ng-show="show_notes">
             <div class="notes-header">
                 <h4>anotação</h4>
-                <a href="" class="all-notes">ver todas as anotações do curso</a>
-                <button class="btn btn-link hide-note">esconder</button>
-                <button class="btn btn-xs btn-success save-note">salvar</button>
+                {% verbatim %}
+                <a href="/course/{{ lesson.course }}/mynotes/" class="all-notes">ver todas as anotações do curso</a>
+                {% endverbatim %}
+                <button class="btn btn-link hide-note" ng-click="show_notes=false">esconder</button>
+                <button class="btn btn-xs btn-success save-note" ng-click="save_note()">salvar</button>
             </div>
             <div class="notes-content">
-                Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt.
+                <textarea class="notes-content" ng-model="note_text"></textarea>
             </div>
         </div>
     </div>
