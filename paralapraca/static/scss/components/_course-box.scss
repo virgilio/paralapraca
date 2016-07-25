@@ -6,6 +6,7 @@
 .course-box {
     color: #000;
     margin-bottom: 30px;
+    height: 175px;
 
     .course-progress {
         .progress {
@@ -26,9 +27,11 @@
     }
     .course-description {
         .course-title {
-            font-size: 30px;
-            line-height: 90%;
+            font-size: 26px;
+            line-height: 100%;
             margin: 5px 0;
+            max-height: 80px;
+            overflow: hidden;
         }
         .course-info {
             font-size: $font-size-small;
@@ -40,6 +43,8 @@
                 display: block;
                 font-size: $font-size-base;
                 font-weight: $bold;
+                max-height: 40px;
+                overflow: hidden; 
             }
         }
     }
