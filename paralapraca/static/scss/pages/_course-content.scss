@@ -121,6 +121,12 @@
                 @media screen and (min-width: $screen-lg-min) {
                     font-size: 16px;
                 }
+                .lesson-name {
+                    @extend %icon-caret-down;
+                    &:after {
+                        margin-left: 5px;
+                    }
+                }
             }
             .dropdown-menu {
                 border: 0;
