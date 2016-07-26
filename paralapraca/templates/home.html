@@ -39,13 +39,13 @@ home
                             <input name="password" type="password" class="form-control" id="password" placeholder="senha">
                         </div>
                         <button type="submit" class="btn btn-submit">entrar</button>
-                        <!--<div class="checkbox">-->
-                            <!--<label>-->
-                                <!--<input type="checkbox" value="rememberme"> Lembrar do meu usuário neste computador.-->
-                            <!--</label>-->
-                        <!--</div>-->
+                        <div class="checkbox">
+                            <label>
+                                <input name="remember" type="checkbox" value="1"> Lembrar do meu usuário neste computador.
+                            </label>
+                        </div>
                     </fieldset>
-                    <p class="info">Esqueceu sua senha? <a href="#">Clique aqui para recuperá-la</a></p>
+                    <p class="info">Esqueceu sua senha? <a href="{% url 'account_reset_password' %}">Clique aqui para recuperá-la</a></p>
                 </form>
             </div>
         </div>
