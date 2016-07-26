@@ -74,7 +74,7 @@
 </head>
 <body {% if in_admin %}id="admin"{% else %}id="notadmin"{% endif %}
       {% spaceless %}{% block body_attrs %}{% endblock %}{% endspaceless %}
-      class="{% if user.is_authenticated %}user-logged{% else %}user-unlogged{% endif %} main-nav-opened">
+      class="{% if user.is_authenticated %}logged{% else %}anonymous{% endif %} main-nav-opened">
 
     <div class="site-wrapper">
         {% block header %}

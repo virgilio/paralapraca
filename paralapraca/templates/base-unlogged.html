@@ -72,7 +72,7 @@
         })();
     </script>
 </head>
-<body {% if in_admin %}id="admin"{% else %}id="notadmin"{% endif %} {% spaceless %}{% block body_attrs %}{% endblock %}{% endspaceless %} class="user-unlogged">
+<body {% if in_admin %}id="admin"{% else %}id="notadmin"{% endif %} {% spaceless %}{% block body_attrs %}{% endblock %}{% endspaceless %} class="anonymous">
 
     {% block header %}
     {% include 'header-unlogged.html' %}
