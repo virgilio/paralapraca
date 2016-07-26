@@ -36,11 +36,10 @@ class Command(BaseCommand):
                         row[fieldname] = row[fieldname][:size]
 
                 user, created = User.objects.get_or_create(email=row['email'][:29])
-                if user.username != row['username'][:29] and not User.objects.filter(username=row['username'][:29]).exists():
+                if created and not User.objects.filter(username=row['username'][:29]):
                     user.username = row['username'][:29]
-                else:
+                elif created:
                     user.username = row['email'][:29].split('@')[0]
-                    print(row['email'][:29].split('@')[0])
 
                 user.first_name = row['firstname'][:29]
                 user.last_name = row['lastname'][:29]
