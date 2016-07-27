@@ -83,13 +83,13 @@
 
         {% verbatim %}
         <div ng-repeat="forum in forums">
-            <div class="line one-column">
+            <div class="line one-column" ng-if="forum.latest_topics.length>0">
                 <div class="column">
                     <h3 class="section-title">{{ forum.title }}</h3>
                 </div>
             </div>
 
-            <div class="forum-list">
+            <div class="forum-list" ng-if="forum.latest_topics.length>0">
                 <table>
                     <thead>
                         <tr>
@@ -103,7 +103,7 @@
                         <tr ng-repeat="topic in forum.latest_topics">
                             <td>
                                 <a ng-href="/discussion/topic/##{{ topic.id }}"><span class="thread-name">{{ topic.title }}</span></a>
-                                <span class="last-update">Última atividade em <b>{{ topic.last_update | date: "dd/MM/yyyy' às 'HH:mm"}}</b></span>
+                                <span class="last-update">Última atividade em <b>{{ topic.last_activity_at | date: "dd/MM/yyyy' às 'HH:mm"}}</b></span>
                             </td>
                             <td>
                                 <span class="action replies small">{{ topic.count_replies }}</span>
