@@ -3,7 +3,10 @@
 
 .profile.page {
     @include card(rgba(#fff,0.3));
-    padding: 30px; 
+    padding: 15px; 
+    @media screen and (min-width: $screen-md-min) {
+        padding: 30px;
+    }
 
     .profile-info {
         a {

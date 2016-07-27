@@ -38,7 +38,12 @@
 }
 
 .profile-bio {
-    margin-left: 155px;
+    @media screen and (max-width: $screen-sm-max) {
+        clear: both;
+    }
+    @media screen and (min-width: $screen-md-min) {
+        margin-left: 155px;
+    }
     p {
         font-size: $font-size-base;
         line-height: $line-height-computed;
@@ -49,7 +54,17 @@
 }
 
 .profile-edit {
-    float: right;
+    @media screen and (max-width: $screen-xs-max) {
+        position: absolute;
+        right: 15px;
+        top: 30px;
+    }
+    @media screen and (max-width: $screen-xs-max) {
+
+    }
+    @media screen and (min-width: $screen-sm-min) {
+        float: right;
+    }
 }
 
 .profile-certificates {
@@ -58,13 +73,19 @@
     padding-top: 30px;
 
     .course-box {
-        .course-thumb {
-            padding-right: 0 !important;
+        @media screen and (min-width: $screen-sm-min) {
+            .course-thumb {
+                padding-right: 0 !important;
+            }
         }
         .progress-label {
+            display: none;
             color: #000;
             font-size: $font-size-base;
             line-height: 100%;
+            @media screen and (min-width: $screen-sm-min) {
+                display: block;
+            }
         }
         .see-certificate {
             border: 0;
