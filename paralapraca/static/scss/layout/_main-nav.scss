@@ -4,13 +4,12 @@
 .main-nav {
     background-color: $main-nav-bg-color; 
     bottom: 0;
-    left: 0;
+    left: -250px;
     top: 0;
     position: fixed;
-    @include transition(width 0.5s ease);
-    width: 100px; 
+    @include transition(all 0.5s ease);
+    width: 85px;
     z-index: 1000;
-
     a {
         color: #fff;
     }
@@ -18,9 +17,17 @@
         @extend .list-unstyled;
         color: #fff;
     }
+    @media screen and (min-width: $screen-xs-min) {
+        left: 0;
+    }
+    @media screen and (min-width: $screen-sm-min) {
+        left: 0;
+        width: 100px; 
+    }
 }
 .main-nav-opened { // when the offcanvas menu is opened
     .main-nav {
+        left: 0;
         width: 250px;
     }
 }
@@ -28,8 +35,11 @@
 .user-nav {
     font-size: $font-size-small;
     font-weight: $semi-bold;
-    margin: 105px 10px 10px; 
+    margin: 80px 10px 10px; 
     text-align: center;
+    @media screen and (min-width: $screen-sm-min) {
+        margin-top: 105px;
+    }
     li {
         margin-bottom: 15px;
         @media screen and (min-height: 768px) {
@@ -90,8 +100,11 @@
 .main-nav-opened { // when the offcanvas menu is opened
     .user-nav {
         font-size: $font-size-large;
-        margin: 105px 25px 25px; 
+        margin: 80px 25px 25px; 
         text-align: left;
+        @media screen and (min-width: $screen-sm-min) {
+            margin-top: 105px;
+        }
         a {
             &:before {
                 display: inline-block;

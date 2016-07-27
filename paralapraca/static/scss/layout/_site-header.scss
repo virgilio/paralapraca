@@ -4,36 +4,55 @@
 .site-header {
     background-color: $site-header-bg-color;
     box-shadow: 2px 2px 4px 0 rgba(0, 0, 0, 0.5);
-    height: 80px;
-    overflow: hidden;
+    height: 60px;
     @include transition(width 0.5s ease);
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
     z-index: 1010;
+    @media screen and (min-width: $screen-sm-min) {
+        height: 80px;
+    }
 }
 
 .user-info {
     box-sizing: border-box;
     color: #000;
     cursor: pointer;
-    height: 80px;
-    padding: 10px;
+    height: 60px;
+    padding: 6px;
     position: absolute;
     top: 0;
     left: 0;
-    width: 100px;
+    width: 54px;
+    z-index: 1;
+    @media screen and (min-width: $screen-xs-min) {
+        width: 85px;
+    }
+    @media screen and (min-width: $screen-sm-min) {
+        height: 80px;
+        padding: 10px;
+        width: 100px;
+    }
     .user-icon {
         border-radius: 100%;
         box-shadow: 2px 2px 4px 0 rgba(0, 0, 0, 0.5);
-        height: 40px;
+        height: 34px;
         margin: 0 auto; 
         text-align: center; 
-        width: 40px;
-        img {
+        width: 34px;
+        @media screen and (min-width: $screen-sm-min) {
             height: 40px;
-            width: 40px;
+            width: 40px
+        }
+        img {
+            height: 34px;
+            width: 34px;
+            @media screen and (min-width: $screen-sm-min) {
+                height: 40px;
+                width: 40px
+            }
         }
     }
     .user-name {
@@ -41,22 +60,32 @@
         float: left;
         font-size: $font-size-base;
         font-weight: $semi-bold;
-        margin-top: 10px;
+        margin-top: 8px;
         text-align: left;
+        @media screen and (min-width: $screen-sm-min) {
+            margin-top: 10px;
+        }
     }
     .menu-label {
         display: block;
-        font-size: $font-size-small;
-        font-weight: $semi-bold;
-        margin-top: 5px;
-        text-align: center; 
+        font-size: 10px;
+        font-weight: $bold;
+        margin-top: 2px;
+        text-align: center;
+        @media screen and (min-width: $screen-sm-min) {
+            font-size: $font-size-small;
+            margin-top: 5px;
+        } 
     }
 }
 
 .main-nav-opened { // when the offcanvas menu is opened
     .user-info {
-        padding: 20px 25px;
+        padding: 12px 25px;
         width: 250px;
+        @media screen and (min-width: $screen-sm-min) {
+            padding: 20px 25px;
+        }
         .user-icon {
             float: left;
             margin-right: 10px;
@@ -71,34 +100,44 @@
 }
 
 .site-logo {
-    height: 80px;
-    @include transition(all 0.5s ease);
+    height: 60px;
     position: absolute;
-    left: 15px;
+    left: 0;
+    right: 0;
+    text-align: center;
     @media screen and (min-width: $screen-sm-min) {
-        left: 150px;
-        right: 0;
+        height: 80px;
+        left: 100px;
     }
     h1 {
-        margin: 0;
+        margin: 0; 
         width: 100%;
-        @media screen and (min-width: $screen-sm-min) {
-            text-align: center;
-        }
     }
     a {
         display: block;
     }
     img {
-        margin: 25px 0; 
-        max-height: 30px;
+        margin: 18px 0;
+        max-height: 24px;
+        @media screen and (min-width: $screen-sm-min) {
+            margin: 25px 0;
+            max-height: 30px; 
+        }
     }
 }
 
 .main-nav-opened { // when the offcanvas menu is opened
     .site-logo {
+        display: none;
+        @media screen and (min-width: $screen-xs-min) {
+            display: block;
+            left: 270px;
+            text-align: left;
+        }
         @media screen and (min-width: $screen-sm-min) {
+            display: block;
             left: 250px;
+            text-align: center;
         }
     }
 }
@@ -106,8 +145,15 @@
 .user-tools {
     @extend %list-inline;
     position: absolute;
-    right: 15px;
-    top: 20px;
+    right: 8px;
+    top: 16px;
+    @media screen and (min-width: $screen-xs-min) {
+        top: 10px;
+    }
+    @media screen and (min-width: $screen-sm-min) {
+        right: 15px;
+        top: 20px;
+    }
     li {
         margin-left: 15px;
     }
@@ -115,15 +161,26 @@
         display: inline-block;
         font-size: $font-size-small;
         font-weight: 700;
+        height: 26px;
         line-height: 120%;
+        overflow: hidden;
         text-align: center; 
         text-transform: lowercase;
+        width: 26px;
         @include link-hover(#000,#000,transparent,#000);
         border-bottom-width: 2px !important;
+        @media screen and (min-width: $screen-xs-min) {
+            height: initial;
+            width: initial;
+            overflow: initial; 
+        }
         &:before {
             display: block;
-            font-size: $font-size-large;
-            margin-bottom: 5px;
+            font-size: 22px;
+            @media screen and (min-width: $screen-xs-min) {
+                font-size: $font-size-large;
+                margin-bottom: 5px;
+            }
         }
     }
     .chat {
@@ -139,19 +196,34 @@
     min-width: 300px;
     max-width: 420px;
     position: fixed;
-    right: 19px;
-    top: 80px;
+    right: 0px;
+    top: 60px;
     z-index: 1100;
+    @media screen and (min-width: $screen-sm-min) {
+        right: 19px;
+        top: 80px;
+    }
     &:before {
-        border-left: 20px solid transparent;
-        border-right: 20px solid transparent;
-        border-bottom: 20px solid $gray-light;
+        border-left: 15px solid transparent;
+        border-right: 15px solid transparent;
+        border-bottom: 15px solid $gray-light;
         content: "";
         height: 0;
         width: 0;
         position: absolute;
-        right: 15px;
-        top: -20px;
+        right: 7px;
+        top: -15px;
+        @media screen and (min-width: $screen-xs-min) {
+            right: 31px;
+            top: -10px;
+        }
+        @media screen and (min-width: $screen-sm-min) {
+            border-left: 20px solid transparent;
+            border-right: 20px solid transparent;
+            border-bottom: 20px solid $gray-light;
+            right: 15px;
+            top: -20px;
+        }
     }
     .notifications-title {
         background-color: $gray-light;
