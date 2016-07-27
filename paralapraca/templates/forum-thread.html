@@ -21,7 +21,7 @@
         <div class="widget-topbar">
             <div class="line">
                 <div class="pull-left">
-                    <h2 class="title">Fóruns > Avante e Entremeios</h2>
+                    <h2 class="title" ng-cloak>Fóruns > {{ topic.forum.title }}</h2>
                 </div>
                 <div class="pull-right">
                     <a href="/discussion/forum/" class="btn btn-link goback"><span>voltar para os tópicos</span></a>
@@ -33,14 +33,13 @@
             <div class="column">
                 <div class="forum-thread" ng-cloak>
                     <div class="user-icon">
-                        <img src="http://placehold.it/40" alt="Joana Terra">
+                        <img src="http://placehold.it/40" alt="{{ topic.author.name }}">
                     </div>
                     <div class="info">
                         <h4 class="thread-header"><span class="thread-title">{{ topic.title }}</span> por <span class="user-name"> {{ topic.author.name }}</span></h4>
                     </div>
                     <div class="tags">
                         <a href="#" class="tag" ng-repeat="tag in topic.tags">#{{ tag.name }}</a>
-                        <a href="#" class="tag">#lorem</a>
                     </div>
 
                     <div class="thread-post" ng-bind-html="topic.content"></div>
@@ -58,30 +57,30 @@
                         </div>
                     </div>
 
-                    <form class="comments-form" ng-if="topic.show_comment_input">
-                        <!--<div class="tools">-->
-                            <!--<button class="bold"><span class="sr-only">negrito</span><span aria-hidden="true">N</span></button>-->
-                            <!--<button class="italic"><span class="sr-only">itálico</span><span aria-hidden="true">I</span></button>-->
-                            <!--<button class="underline"><span class="sr-only">sublinhado</span><span aria-hidden="true">S</span></button>-->
-                            <!--<button><span class="sr-only">inserir imagem</span><i class="fa fa-picture-o" aria-hidden="true"></i></button>-->
-                            <!--<button><span class="sr-only">inserir vídeo</span><i class="fa fa-youtube" aria-hidden="true"></i></button>-->
-                        <!--</div>-->
+                    <form class="comments-form" ng-show="topic.show_comment_input">
                         <textarea ui-tinymce="tinymceOptions"
-                                  ng-model="new_comment"
+                                  ng-model="topic.new_comment"
                                   placeholder="Escreva aqui o seu comentário"></textarea>
-                        <button class="btn btn-xs btn-success reply">comentar</button>
-                        <button class="btn btn-xs btn-danger delete">descartar</button>
+                        <button class="btn btn-xs btn-success reply" ng-click="save_comment(topic, null)">comentar</button>
+                        <button class="btn btn-xs btn-danger delete" ng-click="topic.show_comment_input=false">descartar</button>
                     </form>
 
                     <div class="comments">
                         <h3 class="comments-title">Comentários</h3>
                         <div class="thread" ng-repeat="comment in topic.comments">
                             <div class="user-icon">
-                                <img src="http://placehold.it/40" alt="Maria Alice dos Anjos">
+                                <img src="http://placehold.it/40" alt="{{ comment.author.name }}">
                             </div>
                             <div class="info">
                                 <span class="user-name">{{ comment.author.name }}</span>
                                 <div class="comment-post" ng-bind-html="comment.text"></div>
+                                <form class="comments-form" ng-show="comment.show_comment_input">
+                                    <textarea ui-tinymce="tinymceOptions"
+                                              ng-model="comment.new_comment"
+                                              placeholder="Escreva aqui o seu comentário"></textarea>
+                                    <button class="btn btn-xs btn-success reply" ng-click="save_comment(topic, comment);comment.show_comment_input=false;">comentar</button>
+                                    <button class="btn btn-xs btn-danger delete" ng-click="comment.show_comment_input=false">descartar</button>
+                                </form>
                             </div>
                             <div class="actions">
                                 <div class="pull-left">
@@ -98,25 +97,18 @@
 
                             <div class="thread" ng-repeat="reply in comment.comment_replies">
                                 <div class="user-icon">
-                                    <img src="http://placehold.it/40" alt="Roberta Reis">
+                                    <img src="http://placehold.it/40" alt="{{ comment.author.name }}">
                                 </div>
                                 <div class="info">
                                     <span class="user-name">{{ reply.author.name }}</span>
                                     <div class="comment-post" ng-bind-html="reply.text"></div>
-                                    <!--<div class="comment-post">-->
-                                        <!--<form class="comments-form">-->
-                                            <!--<div class="tools">-->
-                                                <!--<button class="bold"><span class="sr-only">negrito</span><span aria-hidden="true">N</span></button>-->
-                                                <!--<button class="italic"><span class="sr-only">itálico</span><span aria-hidden="true">I</span></button>-->
-                                                <!--<button class="underline"><span class="sr-only">sublinhado</span><span aria-hidden="true">S</span></button>-->
-                                                <!--<button><span class="sr-only">inserir imagem</span><i class="fa fa-picture-o" aria-hidden="true"></i></button>-->
-                                                <!--<button><span class="sr-only">inserir vídeo</span><i class="fa fa-youtube" aria-hidden="true"></i></button>-->
-                                            <!--</div>-->
-                                            <!--<textarea>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur auctor lacinia sem, eu cursus sem malesuada eu. Duis blandit accumsan metus ac auctor.</textarea>-->
-                                            <!--<button class="btn btn-xs btn-success reply">comentar</button>-->
-                                            <!--<button class="btn btn-xs btn-danger delete">descartar</button>-->
-                                        <!--</form>-->
-                                    <!--</div>-->
+                                    <form class="comments-form" ng-show="reply.show_comment_input">
+                                        <textarea ui-tinymce="tinymceOptions"
+                                                  ng-model="comment.new_comment"
+                                                  placeholder="Escreva aqui o seu comentário"></textarea>
+                                        <button class="btn btn-xs btn-success reply" ng-click="save_comment(topic, comment);reply.show_comment_input=false;">comentar</button>
+                                        <button class="btn btn-xs btn-danger delete" ng-click="reply.show_comment_input=false">descartar</button>
+                                    </form>
                                 </div>
                                 <div class="actions">
                                     <div class="pull-left">
