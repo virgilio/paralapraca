@@ -46,7 +46,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="progress-label column">{{course.percent_progress}} completo</div>
+                    <div class="progress-label column">{{course.percent_progress}}% completo</div>
                 </div>
                 <div class="line two-column">
                     <div class="course-thumb column">
@@ -149,7 +149,7 @@
                     <img ng-src="{{topic.author.picture}}" alt="{{topic.author.first_name}}" />
                 </div>
                 <div class="info">
-                    <b>{{topic.author.first_name}}</b> comentou no tópico <a href="../discussion/topic/##{{topic.id}}" class="thread-name">{{topic.title}}</a>
+                    <b>{{topic.author.first_name}}</b> comentou no tópico <a href="/discussion/topic/##{{topic.id}}" class="thread-name">{{topic.title}}</a>
                     no fórum <a href="#">{{topic.forum.title}}</a></span>
                 </div>
                 <div class="actions">
