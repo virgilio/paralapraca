@@ -12,14 +12,18 @@
         border-bottom: 1px solid #000;
         margin-bottom: 6px;
         padding-top: 6px;
+        padding-bottom: 10px; 
+        @media screen and (min-width: $screen-md-min) {
+            padding-bottom: 0px; 
+        }
         .course-title {
             color: #000;
-            display: inline-block;
             font-size: 30px;
-            margin-right: 10px;
-        }
-        .btn {
-            text-transform: lowercase;
+            margin-top: 0;
+            @media screen and (min-width: $screen-md-min) {
+                display: inline-block;
+                margin-right: 10px;
+            }
         }
         .btn + .btn {
             margin-left: 10px;
@@ -60,6 +64,9 @@
             div:last-child {
                 text-align: right; 
             }
+        }
+        .btn + .btn {
+            margin-left: 10px;
         }
     }
 }
