@@ -6,8 +6,9 @@
 .course-box {
     color: #000;
     margin-bottom: 30px;
-    height: 175px;
-
+    @media screen and (min-width: $screen-lg-min) {
+        height: 175px;
+    }
     .course-progress {
         .progress {
             border-radius: 0px;
@@ -18,7 +19,12 @@
     .progress-label {
         font-size: 9px;
         font-weight: 700;
-        line-height: 60%;
+        line-height: 100%;
+        margin-top: -20px;
+        @media screen and (min-width: $screen-sm-min) {
+            line-height: 60%;
+            margin-top: 0;
+        }
     }
     .course-thumb-bg {
         background-position: center;
