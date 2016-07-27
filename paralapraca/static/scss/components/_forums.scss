@@ -16,7 +16,9 @@
     .info {
         color: $gray;
         font-size: 13px;
-        margin-bottom: 5px;
+        margin-bottom: 5px; 
+        overflow: hidden;
+        padding-bottom: 1px;
         a {
             font-size: $font-size-base;
             font-weight: $bold;

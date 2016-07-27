@@ -76,10 +76,14 @@
     padding: 15px;
 
     .thread-header {
-        margin: 0 0 10px 0;
+        display: inline-block;
+        margin: 10px 0 10px 0;
         font-family: $font-family-sans-serif;
         .user-name {
             font-size: 16px;
+        }
+        .last-edit {
+            font-size: $font-size-base;
         }
     }
     .thread-title {
@@ -109,7 +113,7 @@
         }
     }
     .comments {
-        border-top: 1px solid $brand-primary;
+        border-top: 1px solid $gray-light;
         margin-top: 20px;
         padding-top: 20px;
         > .thread {
@@ -133,6 +137,7 @@
         }
         .actions {
             margin: 0 0 5px 50px;
+            padding-bottom: 1px;
         }
         .comments-form {
             margin-top: 0px; 
@@ -142,7 +147,7 @@
         }
     }
     .comments-title {
-        color: $brand-primary;
+        color: $gray-light;
         font-family: $font-family-sans-serif;
         font-size: $font-size-base;
         font-weight: $extra-bold;

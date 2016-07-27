@@ -172,8 +172,10 @@
 // Course content (used on course intro and lesson page)
 // -----------------------------------------------------
 
-.course {
-    margin-top: -50px;
+@media screen and (min-width: $screen-md-min) {
+    .course {
+        margin-top: -50px;
+    }
 }
 
 .course-content {

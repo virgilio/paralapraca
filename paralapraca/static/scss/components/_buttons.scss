@@ -77,6 +77,11 @@
             vertical-align: middle;
         }
     }
+    &.jump-to {
+        @extend %icon-caret-down;
+        @include link-hover(#fff,#fff,#fff,transparent);
+        font-weight: $normal;
+    }
     &.notes {
         @extend %icon-notes;
     }
@@ -210,7 +215,7 @@ a {
 
 // lesson's activities buttons
 
-.course-activity {
+/* .course-activity {
     .btn {
         @extend .btn-sm;
         margin-left: 10px;
@@ -230,7 +235,7 @@ a {
         @extend %icon-angle-right;
         @include button-hover(#fff,#fff,$brand-primary,darken($brand-primary,10%));
     }
-}
+} */
 
 .next-lesson {
     .btn {
