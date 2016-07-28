@@ -41,6 +41,18 @@ a.action {
         }
     }
 }
+
+.forum-list {
+    .action {
+        &.liked, &.used, &.replies {
+            color: $orange;
+            &:before {
+                color: $orange;
+            }
+        }
+    }
+}
+
 %forum-tags, %forum-categories {
     border: 1px solid $orange;
     color: $orange;

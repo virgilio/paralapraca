@@ -77,13 +77,14 @@
 
     .thread-header {
         display: inline-block;
-        margin: 10px 0 10px 0;
+        margin: 0;
         font-family: $font-family-sans-serif;
         .user-name {
             font-size: 16px;
         }
         .last-edit {
-            font-size: $font-size-base;
+            display: block;
+            margin-top: 5px;
         }
     }
     .thread-title {
@@ -102,6 +103,10 @@
     .tags {
         display: inline-block;
         margin: 0 0 5px 0;
+    }
+    .last-edit {
+        color: $gray;
+        font-size: $font-size-small;
     }
     .thread-post {
         background-color: rgba(155,155,155,0.3);
@@ -158,31 +163,34 @@
 .forum-list {
     table {
         width: 100%;
-    }
-    thead {
-        th {
-            font-size: $font-size-small;
-            font-weight: normal;
-            color: $gray;
-            padding: 0 0 5px;
+        thead {
+            th {
+                font-size: $font-size-small;
+                font-weight: normal;
+                color: $gray;
+                padding: 0 0 5px;
+            }
+        }
+        tbody {
+            tr {
+                &:nth-child(odd) {
+                    background-color: rgba(#fff,0.4);
+                }
+                &.new {
+                    background-color: rgba($gray,0.1);
+                    border-bottom: solid 2px rgba(194, 194, 194, 0.7);
+                }
+            }
+            td {
+                padding: 10px 0;
+                &:first-child {
+                    padding-left: 20px;
+                }
+            }
         }
     }
-    tbody {
-        tr {
-            &:nth-child(odd) {
-                background-color: rgba(#fff,0.5);
-            }
-            &.new {
-                background-color: rgba(155,155,155,0.2);
-                border-bottom: solid 2px rgba(194, 194, 194, 0.7);
-            }
-        }
-        td {
-            padding: 10px 0;
-            &:first-child {
-                padding-left: 20px;
-            }
-        }
+    .info {
+        margin-top: 10px;
     }
     .thread-name {
         color: #000;
