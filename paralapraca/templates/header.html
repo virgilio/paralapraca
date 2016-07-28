@@ -46,7 +46,7 @@
             <li class="notifications-item" ng-repeat="notification in notifications">
                 <span class="icon"><img ng-src="{{notification.user.picture || 'http://placehold.it/40'}}"></span>
                 <span class="info"><b>{{notification.topic.author.first_name || notification.topic.author.first_name}}</b> {{notification.action | actionFilter }} tópico <a href="/discussion/topic/##{{notification.topic.id}}">{{notification.topic.title}}</a> no fórum <a href="#">{{notification.topic.forum.title}}</a></span>
-                <span class="date">em {{notification.date | date: "dd/MM/yyyy' às 'HH:mm"}}</span>
+                <span class="date">há {{notification.date | dateFilter }}</span>
             </li>
         {% endverbatim %}
         </ul>
