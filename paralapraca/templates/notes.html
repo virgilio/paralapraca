@@ -31,36 +31,36 @@ notes my-notes
         <p ng-if="courses.length == 0">
             {% trans "You have not made any notes yet." %}
         </p>
-
+        {% verbatim %}
         <div class="courses courses-list" ng-repeat="course in courses">
             <div class="line">
                 <div class="header">
-                    {% verbatim angularjs %}
                     <h3 class="course-title">{{course.name}}</h3>
-                    {% endverbatim angularjs %}
-                    <a href="/course/{% verbatim angularjs %}{{course.slug}}{% endverbatim angularjs %}/intro/" class="btn btn-xs btn-primary">{% trans 'Home' %}</a>
-                    <a href="/course/{% verbatim angularjs %}{{course.slug}}{% endverbatim angularjs %}/intro/" class="btn btn-xs btn-info">{% trans 'Resume course' %}</a>
+                    <a href="/course/{{course.slug}}/intro/" class="btn btn-xs btn-primary">Início</a>
+                    <a href="/course/{{course.slug}}/resume/" class="btn btn-xs btn-info">Continuar curso</a>
                 </div>
                 <div class="notes-info">
-                    você tem {% verbatim angularjs %}{{course.course_notes_number}}{% endverbatim angularjs %} {% trans 'notes' %}
-                    <button class="btn btn-link btn-sm show-all">ver todas</button>
-                    <button class="btn btn-link btn-sm hide-all">esconder</button>
+                    você tem {{course.course_notes_number}} notas
+                    <!--<button class="btn btn-link btn-sm show-all" ng-click="course.show_notes=true">ver todas</button>-->
+                    <!--<button class="btn btn-link btn-sm hide-all" ng-click="course.show_notes=false">esconder</button>-->
                 </div>
-                <h4 class="lesson-title">Capítulo 2 - Lorem Ipsum Dolor Sit Amet</h4>
-                <div class="notes-list">
-                    <h5 class="unit-title">Unidade 1 - Lorem Ipsum Dolor Sit Amet</h5>
+                <div ng-repeat="lesson in course.lessons_notes"></div>
+                <h4 class="lesson-title">{{ lesson.name }}</h4>
+                <div class="notes-list" ng-repeat="unit in lesson.units_notes">
+                    <h5 class="unit-title">{{ unit.name }}</h5>
                     <div class="note-content">
                         <div class="row">
-                            <div class="col-sm-7 col-md-8 col-lg-9">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus...</div>
+                            <div class="col-sm-7 col-md-8 col-lg-9">{{ unit.user_note.text }}</div>
                             <div class="col-sm-5 col-md-4 col-lg-3">
-                                <button class="btn btn-xs btn-success edit">editar</button>
-                                <button class="btn btn-xs btn-danger delete">descartar</button>
+                                <!--<button class="btn btn-xs btn-success edit">editar</button>-->
+                                <!--<button class="btn btn-xs btn-danger delete">descartar</button>-->
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+        {% endverbatim %}
     </section>
 </div>
 <!-- CONTAINER -->
