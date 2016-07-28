@@ -108,184 +108,184 @@ wrapper-course-lesson
         <div class="lesson-activity container-fluid">
                 <!-- LESSON ACTIVITY -->
                 <div ng-show="section=='activity'" class="course-activity">
-                    <!--<ng:include src="activityTemplateUrl"></ng:include>-->
+                    <ng:include src="activityTemplateUrl"></ng:include>
 
                     <!-- atividade especial aberta -->
 
-                    <div class="open-activity">
-                        <div class="topbar">
-                            <a href="" class="btn btn-link jump-to">ver prévia e comentários</a>
-                        </div>
+                    <!--<div class="open-activity">-->
+                        <!--<div class="topbar">-->
+                            <!--<a href="" class="btn btn-link jump-to">ver prévia e comentários</a>-->
+                        <!--</div>-->
 
-                        <h2 class="title">Atividade Especial Aberta</h2>
+                        <!--<h2 class="title">Atividade Especial Aberta</h2>-->
 
-                        <p class="intro">Texto introdutório Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies.</p>
+                        <!--<p class="intro">Texto introdutório Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies.</p>-->
 
-                        <p class="textcenter">
-                            <img src="http://placehold.it/500x200" alt="">
-                        </p>
+                        <!--<p class="textcenter">-->
+                            <!--<img src="http://placehold.it/500x200" alt="">-->
+                        <!--</p>-->
 
-                        <div class="your-activity forums thread">
-                            <h3 class="title">Sua atividade:</h3>
-                            <div class="forum-thread" ng-cloak>
-                                <div class="user-icon">
-                                    <img src="http://placehold.it/40" alt="{{ topic.author.name }}">
-                                </div>
-                                <div class="info">
-                                    <h4 class="thread-header pull-left">por <span class="user-name">Aluno Padrão</span> <span class="last-edit">última edição: há 3 horas</span></h4>
+                        <!--<div class="your-activity forums thread">-->
+                            <!--<h3 class="title">Sua atividade:</h3>-->
+                            <!--<div class="forum-thread" ng-cloak>-->
+                                <!--<div class="user-icon">-->
+                                    <!--<img src="http://placehold.it/40" alt="{{ topic.author.name }}">-->
+                                <!--</div>-->
+                                <!--<div class="info">-->
+                                    <!--<h4 class="thread-header pull-left">por <span class="user-name">Aluno Padrão</span> <span class="last-edit">última edição: há 3 horas</span></h4>-->
 
-                                    <button class="btn btn-sm btn-success edit pull-right">editar</button>
-                                </div>
+                                    <!--<button class="btn btn-sm btn-success edit pull-right">editar</button>-->
+                                <!--</div>-->
 
-                                <div class="thread-post">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                                </div>
+                                <!--<div class="thread-post">-->
+                                    <!--<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>-->
+                                <!--</div>-->
 
-                                <div class="actions">
-                                    <div class="pull-left">
-                                        <a ng-click="topic.show_comment_input=true" class="action replies">comentar</a>
-                                    </div>
-                                    <div class="pull-right">
-                                        <span class="action replies">{{ topic.count_replies }} respostas</span>
-                                    </div>
-                                </div>
+                                <!--<div class="actions">-->
+                                    <!--<div class="pull-left">-->
+                                        <!--<a ng-click="topic.show_comment_input=true" class="action replies">comentar</a>-->
+                                    <!--</div>-->
+                                    <!--<div class="pull-right">-->
+                                        <!--<span class="action replies">{{ topic.count_replies }} respostas</span>-->
+                                    <!--</div>-->
+                                <!--</div>-->
 
-                                <form class="comments-form" ng-show="topic.show_comment_input">
-                                    <textarea ui-tinymce="tinymceOptions"
-                                              ng-model="topic.new_comment"
-                                              placeholder="Escreva aqui o seu comentário"></textarea>
-                                    <button class="btn btn-xs btn-success reply" ng-click="save_comment(topic, null)">comentar</button>
-                                    <button class="btn btn-xs btn-danger delete" ng-click="topic.show_comment_input=false">descartar</button>
-                                </form>
+                                <!--<form class="comments-form" ng-show="topic.show_comment_input">-->
+                                    <!--<textarea ui-tinymce="tinymceOptions"-->
+                                              <!--ng-model="topic.new_comment"-->
+                                              <!--placeholder="Escreva aqui o seu comentário"></textarea>-->
+                                    <!--<button class="btn btn-xs btn-success reply" ng-click="save_comment(topic, null)">comentar</button>-->
+                                    <!--<button class="btn btn-xs btn-danger delete" ng-click="topic.show_comment_input=false">descartar</button>-->
+                                <!--</form>-->
 
-                                <div class="comments">
-                                    <h3 class="comments-title">Comentários</h3>
-                                    <div class="thread">
-                                        <div class="user-icon">
-                                            <img src="http://placehold.it/40" alt="{{ comment.author.name }}">
-                                        </div>
-                                        <div class="info">
-                                            <span class="user-name">Maria Alice dos Anjos</span>
-                                            <div class="comment-post">
-                                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation!</p>
-                                            </div>
-                                        </div>
-                                        <div class="actions">
-                                            <div class="pull-left">
-                                                <a ng-click="comment.show_comment_input=true" class="action replies">comentar</a>
-                                            </div>
-                                        </div>
+                                <!--<div class="comments">-->
+                                    <!--<h3 class="comments-title">Comentários</h3>-->
+                                    <!--<div class="thread">-->
+                                        <!--<div class="user-icon">-->
+                                            <!--<img src="http://placehold.it/40" alt="{{ comment.author.name }}">-->
+                                        <!--</div>-->
+                                        <!--<div class="info">-->
+                                            <!--<span class="user-name">Maria Alice dos Anjos</span>-->
+                                            <!--<div class="comment-post">-->
+                                                <!--<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation!</p>-->
+                                            <!--</div>-->
+                                        <!--</div>-->
+                                        <!--<div class="actions">-->
+                                            <!--<div class="pull-left">-->
+                                                <!--<a ng-click="comment.show_comment_input=true" class="action replies">comentar</a>-->
+                                            <!--</div>-->
+                                        <!--</div>-->
 
-                                        <div class="thread">
-                                            <div class="user-icon">
-                                                <img src="http://placehold.it/40" alt="{{ comment.author.name }}">
-                                            </div>
-                                            <div class="info">
-                                                <span class="user-name">Maria Alice dos Anjos</span>
-                                                <div class="comment-post">
-                                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation!</p>
-                                                </div>
-                                            </div>
-                                            <div class="actions">
-                                                <div class="pull-left">
-                                                    <a ng-click="comment.show_comment_input=true" class="action replies">comentar</a>
-                                                </div>
-                                            </div>
+                                        <!--<div class="thread">-->
+                                            <!--<div class="user-icon">-->
+                                                <!--<img src="http://placehold.it/40" alt="{{ comment.author.name }}">-->
+                                            <!--</div>-->
+                                            <!--<div class="info">-->
+                                                <!--<span class="user-name">Maria Alice dos Anjos</span>-->
+                                                <!--<div class="comment-post">-->
+                                                    <!--<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation!</p>-->
+                                                <!--</div>-->
+                                            <!--</div>-->
+                                            <!--<div class="actions">-->
+                                                <!--<div class="pull-left">-->
+                                                    <!--<a ng-click="comment.show_comment_input=true" class="action replies">comentar</a>-->
+                                                <!--</div>-->
+                                            <!--</div>-->
 
-                                            <div class="thread" ng-repeat="reply in comment.comment_replies">
-                                                <div class="user-icon">
-                                                    <img src="http://placehold.it/40" alt="{{ comment.author.name }}">
-                                                </div>
-                                                <div class="info">
-                                                    <span class="user-name">{{ reply.author.name }}</span>
-                                                    <div class="comment-post" ng-bind-html="reply.text"></div>
-                                                    <form class="comments-form" ng-show="reply.show_comment_input">
-                                                        <textarea ui-tinymce="tinymceOptions"
-                                                                  ng-model="comment.new_comment"
-                                                                  placeholder="Escreva aqui o seu comentário"></textarea>
-                                                        <button class="btn btn-xs btn-success reply" ng-click="save_comment(topic, comment);reply.show_comment_input=false;">comentar</button>
-                                                        <button class="btn btn-xs btn-danger delete" ng-click="reply.show_comment_input=false">descartar</button>
-                                                    </form>
-                                                </div>
-                                                <div class="actions">
-                                                    <div class="pull-left">
-                                                        <a ng-click="comment_like(reply)"
-                                                           ng-class="{ 'active': reply.user_like }"
-                                                           class="action liked">gostei</a>
-                                                        <a ng-click="reply.show_comment_input=true" class="action replies">comentar</a>
-                                                    </div>
-                                                    <div class="pull-right">
-                                                        <span class="action liked">{{ reply.count_likes }} curtiram</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="thread">
-                                        <div class="user-icon">
-                                            <img src="http://placehold.it/40" alt="{{ comment.author.name }}">
-                                        </div>
-                                        <div class="info">
-                                            <span class="user-name">Maria Alice dos Anjos</span>
-                                            <div class="comment-post">
-                                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation!</p>
-                                            </div>
-                                        </div>
-                                        <div class="actions">
-                                            <div class="pull-left">
-                                                <a ng-click="comment.show_comment_input=true" class="action replies">comentar</a>
-                                            </div>
-                                        </div>
+                                            <!--<div class="thread" ng-repeat="reply in comment.comment_replies">-->
+                                                <!--<div class="user-icon">-->
+                                                    <!--<img src="http://placehold.it/40" alt="{{ comment.author.name }}">-->
+                                                <!--</div>-->
+                                                <!--<div class="info">-->
+                                                    <!--<span class="user-name">{{ reply.author.name }}</span>-->
+                                                    <!--<div class="comment-post" ng-bind-html="reply.text"></div>-->
+                                                    <!--<form class="comments-form" ng-show="reply.show_comment_input">-->
+                                                        <!--<textarea ui-tinymce="tinymceOptions"-->
+                                                                  <!--ng-model="comment.new_comment"-->
+                                                                  <!--placeholder="Escreva aqui o seu comentário"></textarea>-->
+                                                        <!--<button class="btn btn-xs btn-success reply" ng-click="save_comment(topic, comment);reply.show_comment_input=false;">comentar</button>-->
+                                                        <!--<button class="btn btn-xs btn-danger delete" ng-click="reply.show_comment_input=false">descartar</button>-->
+                                                    <!--</form>-->
+                                                <!--</div>-->
+                                                <!--<div class="actions">-->
+                                                    <!--<div class="pull-left">-->
+                                                        <!--<a ng-click="comment_like(reply)"-->
+                                                           <!--ng-class="{ 'active': reply.user_like }"-->
+                                                           <!--class="action liked">gostei</a>-->
+                                                        <!--<a ng-click="reply.show_comment_input=true" class="action replies">comentar</a>-->
+                                                    <!--</div>-->
+                                                    <!--<div class="pull-right">-->
+                                                        <!--<span class="action liked">{{ reply.count_likes }} curtiram</span>-->
+                                                    <!--</div>-->
+                                                <!--</div>-->
+                                            <!--</div>-->
+                                        <!--</div>-->
+                                    <!--</div>-->
+                                    <!--<div class="thread">-->
+                                        <!--<div class="user-icon">-->
+                                            <!--<img src="http://placehold.it/40" alt="{{ comment.author.name }}">-->
+                                        <!--</div>-->
+                                        <!--<div class="info">-->
+                                            <!--<span class="user-name">Maria Alice dos Anjos</span>-->
+                                            <!--<div class="comment-post">-->
+                                                <!--<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation!</p>-->
+                                            <!--</div>-->
+                                        <!--</div>-->
+                                        <!--<div class="actions">-->
+                                            <!--<div class="pull-left">-->
+                                                <!--<a ng-click="comment.show_comment_input=true" class="action replies">comentar</a>-->
+                                            <!--</div>-->
+                                        <!--</div>-->
 
-                                        <div class="thread">
-                                            <div class="user-icon">
-                                                <img src="http://placehold.it/40" alt="{{ comment.author.name }}">
-                                            </div>
-                                            <div class="info">
-                                                <span class="user-name">Maria Alice dos Anjos</span>
-                                                <div class="comment-post">
-                                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation!</p>
-                                                </div>
-                                            </div>
-                                            <div class="actions">
-                                                <div class="pull-left">
-                                                    <a ng-click="comment.show_comment_input=true" class="action replies">comentar</a>
-                                                </div>
-                                            </div>
+                                        <!--<div class="thread">-->
+                                            <!--<div class="user-icon">-->
+                                                <!--<img src="http://placehold.it/40" alt="{{ comment.author.name }}">-->
+                                            <!--</div>-->
+                                            <!--<div class="info">-->
+                                                <!--<span class="user-name">Maria Alice dos Anjos</span>-->
+                                                <!--<div class="comment-post">-->
+                                                    <!--<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation!</p>-->
+                                                <!--</div>-->
+                                            <!--</div>-->
+                                            <!--<div class="actions">-->
+                                                <!--<div class="pull-left">-->
+                                                    <!--<a ng-click="comment.show_comment_input=true" class="action replies">comentar</a>-->
+                                                <!--</div>-->
+                                            <!--</div>-->
 
-                                            <div class="thread" ng-repeat="reply in comment.comment_replies">
-                                                <div class="user-icon">
-                                                    <img src="http://placehold.it/40" alt="{{ comment.author.name }}">
-                                                </div>
-                                                <div class="info">
-                                                    <span class="user-name">{{ reply.author.name }}</span>
-                                                    <div class="comment-post" ng-bind-html="reply.text"></div>
-                                                    <form class="comments-form" ng-show="reply.show_comment_input">
-                                                        <textarea ui-tinymce="tinymceOptions"
-                                                                  ng-model="comment.new_comment"
-                                                                  placeholder="Escreva aqui o seu comentário"></textarea>
-                                                        <button class="btn btn-xs btn-success reply" ng-click="save_comment(topic, comment);reply.show_comment_input=false;">comentar</button>
-                                                        <button class="btn btn-xs btn-danger delete" ng-click="reply.show_comment_input=false">descartar</button>
-                                                    </form>
-                                                </div>
-                                                <div class="actions">
-                                                    <div class="pull-left">
-                                                        <a ng-click="comment_like(reply)"
-                                                           ng-class="{ 'active': reply.user_like }"
-                                                           class="action liked">gostei</a>
-                                                        <a ng-click="reply.show_comment_input=true" class="action replies">comentar</a>
-                                                    </div>
-                                                    <div class="pull-right">
-                                                        <span class="action liked">{{ reply.count_likes }} curtiram</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                                            <!--<div class="thread" ng-repeat="reply in comment.comment_replies">-->
+                                                <!--<div class="user-icon">-->
+                                                    <!--<img src="http://placehold.it/40" alt="{{ comment.author.name }}">-->
+                                                <!--</div>-->
+                                                <!--<div class="info">-->
+                                                    <!--<span class="user-name">{{ reply.author.name }}</span>-->
+                                                    <!--<div class="comment-post" ng-bind-html="reply.text"></div>-->
+                                                    <!--<form class="comments-form" ng-show="reply.show_comment_input">-->
+                                                        <!--<textarea ui-tinymce="tinymceOptions"-->
+                                                                  <!--ng-model="comment.new_comment"-->
+                                                                  <!--placeholder="Escreva aqui o seu comentário"></textarea>-->
+                                                        <!--<button class="btn btn-xs btn-success reply" ng-click="save_comment(topic, comment);reply.show_comment_input=false;">comentar</button>-->
+                                                        <!--<button class="btn btn-xs btn-danger delete" ng-click="reply.show_comment_input=false">descartar</button>-->
+                                                    <!--</form>-->
+                                                <!--</div>-->
+                                                <!--<div class="actions">-->
+                                                    <!--<div class="pull-left">-->
+                                                        <!--<a ng-click="comment_like(reply)"-->
+                                                           <!--ng-class="{ 'active': reply.user_like }"-->
+                                                           <!--class="action liked">gostei</a>-->
+                                                        <!--<a ng-click="reply.show_comment_input=true" class="action replies">comentar</a>-->
+                                                    <!--</div>-->
+                                                    <!--<div class="pull-right">-->
+                                                        <!--<span class="action liked">{{ reply.count_likes }} curtiram</span>-->
+                                                    <!--</div>-->
+                                                <!--</div>-->
+                                            <!--</div>-->
+                                        <!--</div>-->
+                                    <!--</div>-->
+                                <!--</div>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
 
                 </div>
                 <!-- END LESSON ACTIVITY -->
