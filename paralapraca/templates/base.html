@@ -76,7 +76,7 @@
       {% spaceless %}{% block body_attrs %}{% endblock %}{% endspaceless %}
       class="{% if user.is_authenticated %}logged{% else %}anonymous{% endif %}">
 
-    <div class="site-wrapper">
+    <div class="site-wrapper" ng-class="{'main-nav-opened': main_nav_opend}">
         {% block header %}
         {% if user.is_authenticated %}
             {% include 'header.html' %}
