@@ -4,7 +4,7 @@
 
     app.controller('HeaderCtrl', ['$scope','Notification',
         function ($scope, Notification) {
-            $scope.show_notification = true;
+            $scope.show_notification = false;
             $scope.notifications_loaded = false;
             $scope.notifications = Notification.query(function(res){
                 $scope.notifications_loaded = true;
