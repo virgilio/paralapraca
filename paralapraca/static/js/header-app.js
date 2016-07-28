@@ -3,5 +3,6 @@
 
     var app = angular.module('header', [
         'header.controllers',
+        'discussion.services'
     ]);
 })(angular);
