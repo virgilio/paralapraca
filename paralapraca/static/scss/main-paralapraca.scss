@@ -23,8 +23,10 @@
 @import "base/_helpers";
 
 //== Components styles
+@import "components/_actions-menu";
 @import "components/_buttons";
 @import "components/_course-box";
+@import "components/_editable-content";
 @import "components/_headers";
 @import "components/_forums";
 @import "components/_widgets";

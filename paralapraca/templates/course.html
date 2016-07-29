@@ -49,25 +49,23 @@ wrapper-course-intro
     {% if in_admin %}
         <!-- ACTIONS -->
         <div class="actions-menu" fixed-bar>
-            <div class="container">
+            <div class="container-fluid">
                 <div class="actions-buttons align-left">
                     <!-- LEFT BUTTON GROUP -->
-                    <button class="btn btn-success" ng-click="saveCourse()">{% trans 'Save' %} | <i class="fa fa-save"></i></button>
-                    <button class="btn btn-success" title="{% trans 'Export course and download' %}" ng-click="export_course()">{% trans 'Export' %} | <i class="fa fa-download"></i></button>
+                    <button class="btn btn-success save" ng-click="saveCourse()">{% trans 'Save' %}</button>
+                    <button class="btn btn-success download" title="{% trans 'Export course and download' %}" ng-click="export_course()">{% trans 'Export' %}</button>
                     <!-- END LEFT BUTTON GROUP -->
                 </div>
                 {% include 'administration/_alert.html' %}
                 <div class="actions-buttons align-right">
                     <!-- RIGHT BUTTON GROUP -->
-                    <button class="btn btn-danger" title="{% trans 'Delete course' %}" ng-click="deleteCourse()">{% trans 'Delete' %} | <i class="fa fa-trash-o"></i></button>
+                    <button class="btn btn-danger delete" title="{% trans 'Delete course' %}" ng-click="deleteCourse()">{% trans 'Delete' %}</button>
                     <!-- RIGHT BUTTON GROUP -->
                 </div>
-
             </div>
         </div>
         <!-- END ACTIONS -->
     {% endif %}
-
 
     {% if in_admin %}
     <!-- HEADER -->

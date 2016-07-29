@@ -53,6 +53,9 @@
     &.delete {
         @extend %icon-delete;
     }
+    &.download {
+        @extend %icon-download;
+    }
     &.edit {
         @extend %icon-edit;
     }

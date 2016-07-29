@@ -35,6 +35,9 @@
     &-discussion {
         @include icon(before, discussion);
     }
+    &-download {
+        @include icon(before, download);
+    }
     &-edit {
         @include icon(before, edit);
     }

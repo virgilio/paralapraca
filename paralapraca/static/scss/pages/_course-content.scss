@@ -99,6 +99,9 @@
         .tools {
             @extend %icon-tools;
         }
+        .forum {
+            @extend %icon-forum;
+        }
         .dropdown {
             display: inline-block;
         }
