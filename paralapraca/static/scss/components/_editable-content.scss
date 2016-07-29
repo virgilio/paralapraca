@@ -1,10 +1,10 @@
 %editable {
     padding: 3px 0 0 0;
-    background-color: lighten($brand-warning, 45%);
-    color: $gray-light;
+    background-color: rgba($gray-lighter,0.5);
+    color: $gray;
     transition: all 0.3s;
     &:hover {
-        background-color: lighten($brand-warning, 40%);
+        background-color: rgba($gray-lighter,0.7);
     }
 }
 %editable-input {
@@ -45,10 +45,11 @@
     margin: 3px 0 10px;
     input {
         color: #999;
-        width: 98%; //pau gozado do chrome!!!
+        width: 98%;
     }
 }
 .editable-text-box {
+    @extend %editable;
     cursor: pointer;
     word-break: break-word;
     padding: 4px;
@@ -71,7 +72,7 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     content: '\f040';
-    color: lighten(black, 70%);
+    color: $gray-light;
     display: inline-block;
 }
 .editable-title:after {
