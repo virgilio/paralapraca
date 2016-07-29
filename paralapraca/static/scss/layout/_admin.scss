@@ -1,0 +1,140 @@
+// ADMIN STYLES
+// ********************************************************************* //
+#admin {
+    // COURSE, FORUM
+    // ********************************************************************* //
+    .course,
+    .forum {
+        &.course-lesson {
+            .video,
+            .activity {
+                border: 0;
+                margin-top: 20px;
+                @media (min-width: $screen-md-min) and (max-width: $screen-md-max) {
+                    width: 65%;
+                }
+                @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
+                    width: 88%;
+                }
+                @media (max-width: $screen-xs-max) {
+                    margin-top: 86px;
+                }
+                .current-video,
+                .add-activity {
+                    border: 1px solid $gray-lighter;
+                    overflow: hidden;
+                }
+            }
+            .activity {
+                .editable-title {
+                    margin-bottom: 10px;
+                    float: left;
+                    width: 93%;
+                }
+                .question .btn-danger {
+                    float: right;
+                }
+                .alert-info {
+                    clear: both;
+                }
+            }
+            .add-side-notes {
+                margin-top: 20px;
+            }
+        }
+        // ADD CONTENT - Admin
+        // ********************************************************************* //
+        .add-content {
+            margin-bottom: 0px;
+            .video-activity-buttons {
+                button {
+                    font-size: 11px;
+                    margin-bottom: 10px;
+                    padding: 10px 20px;
+                }
+                @media (max-width: 560px) {
+                    .col-xs-6 {
+                        width: 100%;
+                        &.textright {
+                            text-align: left;
+                        }
+                    }
+                }
+            }
+            .secondary-header {
+                .unit {
+                    float: left;
+                    font-size: 18px;
+                    margin-top: 3px;
+                }
+                .editable-text {
+                    margin: 0 40px 0 80px;
+                    input {
+                        font-size: 18px;
+                    }
+                }
+                .btn {
+                    float: right;
+                    margin: -28px 0 0 0;
+                }
+            }
+        }
+        // END CONTENT
+        // ADD VIDEO, THUMBNAIL, ACTIVITIES
+        .add-video-intro,
+        .add-thumbnail,
+        .add-activity {
+            color: $brand-danger;
+            height: 489px;
+            &:before {
+                content: '';
+                height: 100%;
+                @include vertical-align(middle);
+            }
+            .centered {
+                @include vertical-align(middle);
+                text-align: center;
+                width: 98%;
+            }
+            .icon-youtube-play {
+                display: block;
+                font-size: 54px;
+            }
+        }
+        @media (max-width: 400px) {
+            .add-thumbnail {
+                .centered {
+                    input {
+                        width: 260px;
+                    }
+                }
+            }
+        }
+        // ORGANIZING LESSONS AND INSTRUCTORS
+        .lessons.organizing-lessons,
+        .instructors.organizing-instructors {
+            margin-bottom: 10px;
+            .lesson, .instructor {
+                border-bottom: 1px solid $gray-lighter;
+                margin-bottom: 0;
+                margin-top: 10px;
+                padding-bottom: 10px;
+                .title {
+                    display: inline-block;
+                    font-size: 14px;
+                    margin-left: 10px;
+                }
+                .fa.fa-bars {
+                    cursor: move;
+                }
+                .fa.fa-minus-circle {
+                    cursor: pointer;
+                    color: $brand-danger;
+                }
+            }
+            .submit {
+                margin-top: 10px;
+            }
+        }
+    }
+}

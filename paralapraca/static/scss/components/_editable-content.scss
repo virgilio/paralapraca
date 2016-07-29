@@ -17,6 +17,9 @@
         width: 98%;
     }
 }
+.editable-content {
+    @extend %editable;
+}
 .editable-title {
     @extend %editable;
     @extend %editable-input;
@@ -59,6 +62,7 @@
         line-height: 120px;
     }
 }
+.editable-content:after,
 .editable-title:after,
 .editable-slug:after,
 .editable-text:after,

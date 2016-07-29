@@ -28,6 +28,10 @@ $btn-border-radius-base:         20px !default;
 $btn-border-radius-large:        20px !default;
 $btn-border-radius-small:        20px !default;
 
+$btn-default-color:              #fff;
+$btn-default-bg:                 #555;
+$btn-default-border:             transparent;
+
 //** Default `.form-control` border radius
 // This has no effect on `<select>`s in some browsers, due to the limited stylability of `<select>`s in CSS.
 $input-border-radius:            20px !default;
