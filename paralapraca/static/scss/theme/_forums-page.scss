@@ -1,6 +1,14 @@
 // Forums' pages
 // --------------------------------------------------
 
+.forums-page {
+    .widget-header {
+        .new-topic {
+            @include button-hover(#fff,#fff,lighten($orange,20%),lighten($orange,10%));
+        }
+    }
+}
+
 .thread {
     .widget-topbar {
         border-color: $orange;

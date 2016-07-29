@@ -2,6 +2,14 @@
 // --------------------------------------------------
 
 .forums-page {
+    .widget-header {
+        .widget-title {
+            display: inline-block;
+        }
+        .new-topic {
+            margin: -12px 0 0 15px;
+        }
+    }
     .user-update {
         height: 65px;
     }
