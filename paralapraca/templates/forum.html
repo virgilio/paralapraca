@@ -46,13 +46,12 @@
           {% verbatim %}
             <div class="user-update column" ng-repeat="topic in latest_topics">
                 <div class="user-icon">
-                    <img src="http://placehold.it/40" alt="{{ topic.author.name }}">
-                    <!--<img ng-src="{{ topic.author.picture }}"-->
-                             <!--err-src="http://placehold.it/40"-->
-                             <!--alt="{{ topic.author.name }}">-->
+                    <img ng-src="{{ topic.author.picture }}" alt="{{ topic.author.name }}">
                 </div>
                 <div class="info">
-                    <b>{{ topic.author.name }}</b> comentou no tópico <a href="/discussion/topic/##{{ topic.id }}" class="thread-name">{{ topic.title }}</a> no fórum <a href="#">{{ topic.forum.title }}</a></span>
+                    <a ng-href="/profile/{{ topic.author.username }}">
+                      <b>{{ topic.author.name }}</b>
+                    </a> comentou no tópico <a href="/discussion/topic/##{{ topic.id }}" class="thread-name">{{ topic.title }}</a> no fórum <a href="#">{{ topic.forum.title }}</a>
                 </div>
                 <div class="actions">
                     <span class="action replies">{{  topic.count_replies }} resposta</span>
