@@ -2,8 +2,13 @@
     'use strict';
     var app = angular.module('header.controllers', []);
 
-    app.controller('HeaderCtrl', ['$scope','Notification',
-        function ($scope, Notification) {
+    app.controller('HeaderCtrl', [
+        '$scope',
+        'Notification',
+        'CurrentUser',
+        function ($scope, Notification, CurrentUser) {
+
+            $scope.user = CurrentUser;
             $scope.show_notification = false;
             $scope.notifications_loaded = false;
             $scope.notifications = Notification.query(function(res){
@@ -52,8 +57,6 @@
             angular.forEach(labels,function(val,time_unit){
                 time_int = Math.floor(diff/val);
                 if(diff>=val && time_int > 0) {
-                                    console.log(time_int+" "+time_unit)
-
                     if(time_int > 1) {
                         if(time_unit == "mês") {
                             time_unit = 'meses';

@@ -3,6 +3,7 @@
 
     var app = angular.module('header', [
         'header.controllers',
-        'discussion.services'
+        'discussion.services',
+        'djangular',
     ]);
 })(angular);

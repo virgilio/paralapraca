@@ -5,12 +5,14 @@
 {% javascript 'plpc-header' %}
 
 <header ng-controller="HeaderCtrl" class="site-header" role="navigation">
-    <div class="user-info" ng-click="$parent.main_nav_opend = !$parent.main_nav_opend">
+    <div class="user-info" ng-click="$parent.main_nav_opend = !$parent.main_nav_opend" ng-cloak>
         {% if user.is_authenticated %}
             {% block header_user_menu %}
-                <div class="user-icon"><img src="http://placehold.it/40" alt="{{ user }}" class="img-circle"></div>
-                <div class="user-name">{{ user }}</div>
+                {% verbatim %}
+                <div class="user-icon"><img ng-src="{{ user.picture }}" alt="{{ user.name }}" class="img-circle"></div>
+                <div class="user-name">{{ user.name }}</div>
                 <div class="menu-label">menu</div>
+                {% endverbatim %}
             {% endblock %}
         {% endif %}
     </div>
