@@ -9,7 +9,9 @@
                 {% include "_course-details-inline.html" with course=course %}
 
                 {% block lesson_headder %}
+                  {% if lesson %}
                     {% include '_lesson_header.html' %}
+                  {% endif %}
                 {% endblock %}
             </div>
             {% if course.first_lesson.slug %}
