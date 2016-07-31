@@ -49,15 +49,14 @@ class Command(BaseCommand):
 
                 # Find out if the user being currently imported already is in the database
                 # Email is considered a suitable key for this task
-                if User.objects.filter(email=row['email'][:29]).exists():
-                    user = User.objects.get(email=row['email'][:29])
+                if User.objects.filter(email=row['email']).exists():
+                    user = User.objects.get(email=row['email'])
                     if row['remocao'] == '1':
                         # deactivate this user's profile
                         user.is_active = False
                         group = row.pop('grupo')
                         user.groups.add(Group.objects.get(name=group))
                         user.save()
-                        print("User "+row['email'][:29]+" has been deactivated.\n")
                     else:
                         # put this user in the specified group
                         group = row.pop('grupo')
@@ -66,17 +65,15 @@ class Command(BaseCommand):
                         user.save()
                 else:
                     # If the user can't be found, it must be created
-                    # TODO create the new username based on the first words of its names
+                    username = row['email'][:28].split('@')[0] + "3"
                     nu = User.objects.create(
-                        username=row['email'][:29], # django has a 30 char limitation in the following fields
+                        username=username, # django has a 30 char limitation in the following fields
                         first_name=row['username'].split(' ', 1)[0][:29],
                         last_name=row['username'].split(' ', 1)[1][:29],
-                        email=row['email'][:29],
+                        email=row['email'],
                     )
                     nu.is_active = True
                     nu.accepted_terms = False
                     group = row.pop('grupo')
                     user.groups.add(Group.objects.get(name=group))
                     nu.save()
-
-                    print("User "+row['email'][:29]+" couldn't be found in the database and has been created.\n")

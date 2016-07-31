@@ -204,7 +204,7 @@ class Command(BaseCommand):
                 topics[row['id']] = Topic.objects.create(
                     forum=destination['forum'],
                     title=row['name'].encode('utf-8'),
-                    author=User.objects.get(email=row['email'][:29]),
+                    author=User.objects.get(email=row['email']),
                     last_activity_at=last_activity_at,
                     created_at=last_activity_at,
                     updated_at=last_activity_at,
@@ -282,7 +282,7 @@ class Command(BaseCommand):
                         comments[row['id']] = Comment.objects.create(
                             topic=topics[row['discussion']],
                             text=row['message'],
-                            author=User.objects.get(email=row['email'][:29]),
+                            author=User.objects.get(email=row['email']),
                             parent=parent_comment,
                             created_at = created,
                             updated_at = modified,
@@ -291,7 +291,7 @@ class Command(BaseCommand):
                         comments[row['id']] = Comment.objects.create(
                             topic=topics[row['discussion']],
                             text=row['message'],
-                            author=User.objects.get(email=row['email'][:29]),
+                            author=User.objects.get(email=row['email']),
                             created_at = created,
                             updated_at = modified,
                         )

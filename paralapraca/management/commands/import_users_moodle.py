@@ -1,8 +1,7 @@
 # -*- coding: utf-8 -*-
 from django.core.management.base import BaseCommand, CommandError
-from django.contrib.auth import get_user_model, models
+from django.contrib.auth import get_user_model
 from django.db import transaction
-from django.db.models import Q
 
 import unicodecsv
 
@@ -29,17 +28,16 @@ class Command(BaseCommand):
         # This file comes from moodle's DB and generates only deactivated users
         with open(files[0], 'r') as csvfile:
             readf = unicodecsv.DictReader(csvfile)
-            count = 0
             for row in readf:
                 for fieldname, size in sizes.items():
                     if fieldname in row:
                         row[fieldname] = row[fieldname][:size]
 
-                user, created = User.objects.get_or_create(email=row['email'][:29])
+                user, created = User.objects.get_or_create(email=row['email'])
                 if created and not User.objects.filter(username=row['username'][:29]):
                     user.username = row['username'][:29]
                 elif created:
-                    user.username = row['email'][:29].split('@')[0]
+                    user.username = row['email'][:28].split('@')[0] + "2"
 
                 user.first_name = row['firstname'][:29]
                 user.last_name = row['lastname'][:29]
