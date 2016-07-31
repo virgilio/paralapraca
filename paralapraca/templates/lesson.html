@@ -63,7 +63,7 @@ wrapper-course-lesson
                    href="#/{{$index+1}}"
                    class="has-tooltip unit done" data-toggle="tooltip"
                    ng-repeat="unit in lesson.units"
-                   ng-class="{watching: unit==currentUnit, done: unit.progress.complete}">
+                   ng-class="{'current': unit==currentUnit, 'done': unit.progress.complete}">
                        <span ng-bind="unit.position+1">1</span>
                 </a>
                 {% endverbatim %}
@@ -334,7 +334,7 @@ wrapper-course-lesson
                         <!--<h3><i class="fa fa-angle-double-right"></i> {% trans 'Addicional materials' %}</h3>-->
                     </div>
                     <span ng-bind-html="currentUnit.side_notes|markdown"></span>
-                    <p ng-if="!currentUnit.side_notes">{% trans 'This unit has no addicional materials' %}</p>
+                    <!--<p ng-if="!currentUnit.side_notes">{% trans 'This unit has no addicional materials' %}</p>-->
                     {% endblock %}
                 </div>
             </div>
