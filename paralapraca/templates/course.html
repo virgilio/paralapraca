@@ -48,14 +48,14 @@ wrapper-course-intro
             <div class="container-fluid">
                 <div class="actions-buttons align-left">
                     <!-- LEFT BUTTON GROUP -->
-                    <button class="btn btn-success save" ng-click="saveCourse()">{% trans 'Save' %}</button>
+                    <button class="btn btn-danger delete" title="{% trans 'Delete course' %}" ng-click="deleteCourse()">{% trans 'Delete' %}</button>
                     <button class="btn btn-success download" title="{% trans 'Export course and download' %}" ng-click="export_course()">{% trans 'Export' %}</button>
                     <!-- END LEFT BUTTON GROUP -->
                 </div>
                 {% include 'administration/_alert.html' %}
                 <div class="actions-buttons align-right">
                     <!-- RIGHT BUTTON GROUP -->
-                    <button class="btn btn-danger delete" title="{% trans 'Delete course' %}" ng-click="deleteCourse()">{% trans 'Delete' %}</button>
+                    <button class="btn btn-success save" ng-click="saveCourse()">{% trans 'Save' %}</button>
                     <!-- RIGHT BUTTON GROUP -->
                 </div>
             </div>
@@ -83,20 +83,20 @@ wrapper-course-intro
                 <div class="col-lg-6">
                     <button ng-click="mediaSection='video'"
                             ng-class="{'btn-success':mediaSection=='video'}"
-                            class="btn btn-default uppercase selected">{% trans 'Video' %}</button>
+                            class="btn btn-default selected">{% trans 'Video' %}</button>
 
-                    <button class="btn btn-default uppercase"
+                    <button class="btn btn-default"
                             ng-class="{'btn-success':mediaSection=='thumbnail'}"
                             ng-click="mediaSection='thumbnail'">{% trans 'Thumbnail' %}</button>
 
-                    <button class="btn btn-default uppercase"
+                    <button class="btn btn-default"
                             ng-class="{'btn-success':mediaSection=='homethumbnail'}"
                             ng-click="mediaSection='homethumbnail'">{% trans 'Home thumbnail' %}</button>
                 </div>
             </div>
             <!-- END ADD CONTENT -->
 
-            <section class="thumbnail" ng-show="mediaSection=='thumbnail'" ng-init="thumbfile=null">
+            <section class="course-thumbnail" ng-show="mediaSection=='thumbnail'" ng-init="thumbfile=null">
                 <div ng-show="addThumb" ng-init="addThumb=(thumbfile===null)">
                     <div class="add-thumbnail">
                         <div class="centered">
@@ -108,39 +108,33 @@ wrapper-course-intro
                                 <file ng-model="thumbfile" name="thumbnail" class="form-control"></file>
                             </div>
 
-                            <p>
-                                <br>
-                                <button class="btn btn-danger btn-lg uppercase"
-                                        ng-click="thumbfile=null; addThumb=!course.thumbnail_url">{% trans 'Cancel' %}</button>
+                            <button class="btn btn-danger delete"
+                                    ng-click="thumbfile=null; addThumb=!course.thumbnail_url">{% trans 'Cancel' %}</button>
 
-                                <button class="btn btn-success btn-lg uppercase"
-                                        ng-click="addThumb=(thumbfile===null); saveThumb()">{% trans 'Add' %}</button>
-
-                            </p>
+                            <button class="btn btn-success save"
+                                    ng-click="addThumb=(thumbfile===null); saveThumb()">{% trans 'Add' %}</button>
                         </div>
                     </div>
                 </div>
 
                 <div ng-show="!addThumb">
-                    <div>
-                        <img preview-image ng-model="thumbfile" class="img-responsive" ng-show="thumbfile"/>
-                        {% verbatim %}
-                        <img ng-src="{{course.thumbnail_url}}" class="img-responsive" ng-show="!thumbfile"/>
-                        {% endverbatim %}
-                    </div>
+                    <div class="add-thumbnail">
+                        <div class="centered">
+                            <img preview-image ng-model="thumbfile" class="img-responsive" ng-show="thumbfile"/>
+                            {% verbatim %}
+                            <img ng-src="{{course.thumbnail_url}}" class="img-responsive" ng-show="!thumbfile"/>
+                            {% endverbatim %}
 
-                    <div>
-                        <button class="btn-edit-thumbnail btn btn-success btn-sm uppercase"
-                                ng-click="addThumb=true">{% trans 'Change thumbnail' %}</button>
+                            <button class="btn-edit-thumbnail btn btn-success"
+                                    ng-click="addThumb=true">{% trans 'Change thumbnail' %}</button>
+                        </div>
                     </div>
                 </div>
             </section>
 
             <!-- Home thumbnail -->
-            <section class="thumbnail" ng-show="mediaSection=='homethumbnail'" ng-init="home_thumbfile=null">
-
+            <section class="course-thumbnail" ng-show="mediaSection=='homethumbnail'" ng-init="home_thumbfile=null">
                 <div ng-show="addHomeThumb" ng-init="addHomeThumb=(home_thumbfile===null)">
-
                     <div class="add-thumbnail">
                         <div class="centered">
                             <div class="form-group">
@@ -150,16 +144,12 @@ wrapper-course-intro
 
                                 <file ng-model="home_thumbfile" name="home_thumbnail" class="form-control"></file>
                             </div>
+                            <button class="btn btn-danger btn-lg uppercase"
+                                    ng-click="home_thumbfile=null; addHomeThumb=!course.home_thumbnail_url">{% trans 'Cancel' %}</button>
 
-                            <p>
-                                <br>
-                                <button class="btn btn-danger btn-lg uppercase"
-                                        ng-click="home_thumbfile=null; addHomeThumb=!course.home_thumbnail_url">{% trans 'Cancel' %}</button>
+                            <button class="btn btn-success btn-lg uppercase"
+                                    ng-click="addHomeThumb=(home_thumbfile===null); saveHomeThumb()">{% trans 'Add' %}</button>
 
-                                <button class="btn btn-success btn-lg uppercase"
-                                        ng-click="addHomeThumb=(home_thumbfile===null); saveHomeThumb()">{% trans 'Add' %}</button>
-
-                            </p>
                         </div>
                     </div>
                 </div>
@@ -167,13 +157,12 @@ wrapper-course-intro
                 <div ng-show="!addHomeThumb">
                     <div class="add-thumbnail">
                         <div class="centered">
-                            <img preview-image ng-model="home_thumbfile" class="img-thumbnail" />
+                            <img preview-image ng-model="home_thumbfile" class="img-responsive" />
                             {% verbatim %}
-                            <img ng-src="{{course.home_thumbnail_url}}" class="img-thumbnail" ng-show="!home_thumbfile"/>
+                            <img ng-src="{{course.home_thumbnail_url}}" class="img-responsive" ng-show="!home_thumbfile"/>
                             {% endverbatim %}
-                            <p><button class="btn btn-success btn-edit-thumbnail uppercase"
+                            <button class="btn btn-success btn-edit-thumbnail"
                                 ng-click="addHomeThumb=true">{% trans 'Change thumbnail' %}</button>
-                            </p>
                         </div>
                     </div>
                 </div>
@@ -210,18 +199,17 @@ wrapper-course-intro
                     <div class="centered">
                         <div class="form-group">
                             <i class="fa fa-youtube-play fa-4x"></i>
-                            <h1 class="top">{% trans 'Introduction video' %}</h1>
+                            <h1>{% trans 'Introduction video' %}</h1>
                             <input type="text" tabindex="8" ng-model="youtube_id" class="form-control"/>
                         </div>
-
-                        <p>
-                            <button class="btn btn-danger btn-lg uppercase"
+                        <div class="form-group">
+                            <button class="btn btn-danger delete"
                                     ng-click="course.intro_video.youtube_id=''">{% trans 'Cancel' %}</button>
                             <button tabindex="9"
-                                    class="btn btn-success btn-lg uppercase"
+                                    class="btn btn-success save"
                                     ng-show="!course.intro_video.youtube_id"
                                     ng-click="course.intro_video.youtube_id=youtube_id">{% trans 'Add' %}</button>
-                        </p>
+                        </div>
                     </div>
                 </div>
 

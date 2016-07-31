@@ -15,9 +15,7 @@
                 </div>
                 {% else %}
                 <div class="col-md-8">
-                    <h2 class="course-name">
-                        <a href="{% url 'administration.edit_course' course.id %}">{{ course.name }}</a>
-                    </h2>
+                    <h2 class="course-name">{{ course.name }}</h2>
                     {% include "_course-details-inline.html" with course=course %}
                 </div>
                 {% endif %}
