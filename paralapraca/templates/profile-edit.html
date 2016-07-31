@@ -2,32 +2,47 @@
 {% load i18n %}
 {% load staticfiles %}
 
+{% block js %} {{block.super}}
+<script type="text/javascript" src="{% static 'js/profile/profile.app.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/profile/profile.controllers.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/profile/profile.services.js' %}"></script>
+<script type="text/javascript" src="{% static 'tinymce-dist/tinymce.js' %}"></script>
+<script type="text/javascript" src="{% static 'angular-ui-tinymce/src/tinymce.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/ui.tinymce.config.js' %}"></script>
+{% endblock %}
+
 {% block wrapper_classes %}
 wrapper-course-lesson
 {% endblock %}
 
+{% block body_attrs %}
+  ng-app="profile"
+{% endblock %}
+
 {% block content %}
-<div class="profile page container-fluid">
-    <form class="form-horizontal" method="post" enctype="multipart/form-data">{% csrf_token %}
+<div class="profile page container-fluid" ng-controller="UserProfileController">
+    <form class="form-horizontal"
+          method="post"
+          enctype="multipart/form-data"
+          action="/profile/edit/">{% csrf_token %}
 
         <fieldset>
             <legend class="page-header">
                 <h2><i class="fa fa-angle-double-right"></i> {% trans "Profile Info" %}</h2>
             </legend>
-            
+
             <script type="text/javascript" charset="utf-8">
                 $(document).ready(function() {
                     function onFileSelected(event) {
                         var selectedFile = event.target.files[0];
                         var reader = new FileReader();
                         var imgtag = document.getElementById("profile-avatar");
-                        imgtag.title = selectedFile.name;
 
                         reader.onload = function(event) {
-                            imgtag.src = event.target.result;
+                            imgtag.style.backgroundImage = 'url(' + event.target.result + ')';
                         };
 
-                        reader.readAsDataURL(selectedFile);;
+                        reader.readAsDataURL(selectedFile);
                     }
 
                     function onImgNotFound(event) {
@@ -42,7 +57,7 @@ wrapper-course-lesson
             <div class="row">
                 <div class="col-xs-12 col-sm-4 col-md-3">
                     <label for="upload-avatar">
-                        <div class="profile-picture" style="background-image: url({{ form.instance.get_picture_url }});"></div>
+                        <div id="profile-avatar" class="profile-picture" style="background-image: url({{ form.instance.get_picture_url }});"></div>
                         <span class="btn btn-info btn-sm edit">{% trans "Upload avatar" %}</span>
                     </label>
 
@@ -106,7 +121,7 @@ wrapper-course-lesson
                     <div class="form-group{{ errors|yesno:" has-error,"}}">
                         <label class="col-xs-12 col-sm-3 col-lg-2 control-label">{% trans "Bio" %}</label>
                         <div class="col-xs-12 col-sm-9 col-lg-10">
-                            <textarea name="biography" class="form-control" rows="7" placeholder="Escreve um pouco sobre você...">{{form.biography.value}}</textarea>
+                            <textarea ui-tinymce ng-model="user_profile.biography" name="biography" class="form-control" rows="7" placeholder="Escreve um pouco sobre você...">{{form.biography.value}}</textarea>
                             {% for error in errors %}<small>{{error}}</small>{% endfor %}
                         </div>
                     </div>

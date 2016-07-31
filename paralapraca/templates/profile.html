@@ -3,9 +3,12 @@
 {% load staticfiles %}
 
 {% block js %} {{block.super}}
-<script type="text/javascript" src="{% static 'js/profile/app.js' %}"></script>
-<script type="text/javascript" src="{% static 'js/profile/controllers.js' %}"></script>
-<script type="text/javascript" src="{% static 'js/profile/services.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/profile/profile.app.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/profile/profile.controllers.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/profile/profile.services.js' %}"></script>
+<script type="text/javascript" src="{% static 'angular-ui-tinymce/src/tinymce.js' %}"></script>
+<script type="text/javascript" src="{% static 'tinymce-dist/tinymce.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/ui.tinymce.config.js' %}"></script>
 {% endblock %}
 
 {% block wrapper_classes %}
@@ -42,67 +45,69 @@ wrapper-course-lesson
             <p ng-if="user_profile.city" class="city">
                 {{user_profile.city}}
             </p>
-            <p class="site"><a href="{{user_profile.site}}" target="_blank">{{user_profile.site}}</a></p>
+            <p class="site" ng-if="user_profile.site">
+                <a href="{{user_profile.site}}" target="_blank">{{user_profile.site}}</a>
+            </p>
         </div>
         {% endverbatim %}
         <!--<span>2 cursos finalizados</span> | <span>1 certificado de conclusão</span>-->
         <div class="profile-bio">
             {% verbatim %}
-            <p>{{user_profile.biography}}</p>
+            <p ng-bind-html="user_profile.biography"></p>
             {% endverbatim %}
         </div>
 
     </div>
 
-    <div class="profile-certificates">
+    <!--<div class="profile-certificates">-->
 
-    <!-- ng-if="user_profile.certificates.length>0" -->
-        
-        <div class="page-header">
-            <h2><i class="fa fa-angle-double-right"></i> {% trans 'Finished courses' %}</h2>
-        </div>
+    <!--&lt;!&ndash; ng-if="user_profile.certificates.length>0" &ndash;&gt;-->
+        <!---->
+        <!--<div class="page-header">-->
+            <!--<h2><i class="fa fa-angle-double-right"></i> {% trans 'Finished courses' %}</h2>-->
+        <!--</div>-->
 
-        <div class="widget">
+        <!--<div class="widget">-->
 
-        <!-- ng-repeat="certificate in user_profile.certificates" -->
+        <!--&lt;!&ndash; ng-repeat="certificate in user_profile.certificates" &ndash;&gt;-->
 
-            <div class="courses line two-column fifty-fifty">
-                <div class="course-box column">
-                    <div class="line two-column">
-                        <div class="course-thumb column">
-                            <div class="course-thumb-bg" style="background-image: url(http://placehold.it/800x600);"></div>
-                            <a class="btn see-certificate" href="#">ver certificado</a>
-                        </div>
-                        <div class="course-description column">
-                            <div class="progress-label">módulo concluído</div>
-                            <h3 class="course-title">Formação de Formadores</h3>
-                            <div class="course-info">
-                                <p><b>Iniciado em:</b> 00/00/0000 | <b>Cidade:</b> Camaçari</p>
-                                <p><b>Finalizado em:</b> 00/00/0000</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="course-box column">
-                    <div class="line two-column">
-                        <div class="course-thumb column">
-                            <div class="course-thumb-bg" style="background-image: url(http://placehold.it/800x600);"></div>
-                            <a class="btn see-certificate" href="#">ver certificado</a>
-                        </div>
-                        <div class="course-description column">
-                            <div class="progress-label">módulo concluído</div>
-                            <h3 class="course-title">Formação de Formadores</h3>
-                            <div class="course-info">
-                                <p><b>Iniciado em:</b> 00/00/0000 | <b>Cidade:</b> Camaçari</p>
-                                <p><b>Finalizado em:</b> 00/00/0000</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <!--<div class="courses line two-column fifty-fifty">-->
+                <!--<div class="course-box column">-->
+                    <!--<div class="line two-column">-->
+                        <!--<div class="course-thumb column">-->
+                            <!--<div class="course-thumb-bg" style="background-image: url(http://placehold.it/800x600);"></div>-->
+                            <!--<a class="btn see-certificate" href="#">ver certificado</a>-->
+                        <!--</div>-->
+                        <!--<div class="course-description column">-->
+                            <!--<div class="progress-label">módulo concluído</div>-->
+                            <!--<h3 class="course-title">Formação de Formadores</h3>-->
+                            <!--<div class="course-info">-->
+                                <!--<p><b>Iniciado em:</b> 00/00/0000 | <b>Cidade:</b> Camaçari</p>-->
+                                <!--<p><b>Finalizado em:</b> 00/00/0000</p>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!--<div class="course-box column">-->
+                    <!--<div class="line two-column">-->
+                        <!--<div class="course-thumb column">-->
+                            <!--<div class="course-thumb-bg" style="background-image: url(http://placehold.it/800x600);"></div>-->
+                            <!--<a class="btn see-certificate" href="#">ver certificado</a>-->
+                        <!--</div>-->
+                        <!--<div class="course-description column">-->
+                            <!--<div class="progress-label">módulo concluído</div>-->
+                            <!--<h3 class="course-title">Formação de Formadores</h3>-->
+                            <!--<div class="course-info">-->
+                                <!--<p><b>Iniciado em:</b> 00/00/0000 | <b>Cidade:</b> Camaçari</p>-->
+                                <!--<p><b>Finalizado em:</b> 00/00/0000</p>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
 
-        </div>
+        <!--</div>-->
 
-    </div>
+    <!--</div>-->
 </div>
 {% endblock %}
