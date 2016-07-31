@@ -5,10 +5,10 @@
 {% javascript 'plpc-header' %}
 
 <header ng-controller="HeaderCtrl" class="site-header" role="navigation">
-    <div class="user-info">
+    <div class="user-info" ng-click="$parent.main_nav_opend = !$parent.main_nav_opend">
         {% if user.is_authenticated %}
             {% block header_user_menu %}
-                <div class="user-icon" ng-click="$parent.main_nav_opend = !$parent.main_nav_opend"><img src="http://placehold.it/40" alt="{{ user }}" class="img-circle"></div>
+                <div class="user-icon"><img src="http://placehold.it/40" alt="{{ user }}" class="img-circle"></div>
                 <div class="user-name">{{ user }}</div>
                 <div class="menu-label">menu</div>
             {% endblock %}
