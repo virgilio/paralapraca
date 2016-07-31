@@ -322,16 +322,16 @@ wrapper-course-lesson
         <div class="lesson-content">
             <!-- LESSON INFO -->
             <div class="lesson-info">
-                <div class="lesson-name">
-                    <div class="page-header">
-                        <h2>{{ lesson.name }}</h2>
-                    </div>
-                    <div class="description">{{ lesson.desc|timtec_markdown }}</div>
-                </div>
+                <!--<div class="lesson-name">-->
+                    <!--<div class="page-header">-->
+                        <!--<h2>{{ lesson.name }}</h2>-->
+                    <!--</div>-->
+                    <!--<div class="description">{{ lesson.desc|timtec_markdown }}</div>-->
+                <!--</div>-->
                 <div class="lesson-materials">
                     {% block lesson_adicional_material %}
                     <div class="secondary-page-header">
-                        <h3><i class="fa fa-angle-double-right"></i> {% trans 'Addicional materials' %}</h3>
+                        <!--<h3><i class="fa fa-angle-double-right"></i> {% trans 'Addicional materials' %}</h3>-->
                     </div>
                     <span ng-bind-html="currentUnit.side_notes|markdown"></span>
                     <p ng-if="!currentUnit.side_notes">{% trans 'This unit has no addicional materials' %}</p>
