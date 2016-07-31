@@ -24,7 +24,7 @@ wrapper-course-lesson
     <div ng-hide="user_profile.$resolved">
         <p><i class="loading fa fa-refresh fa-spin"></i></p>
     </div>
-    <div ng-show="user_profile">
+    <div ng-show="user_profile" ng-if="user_profile">
         <div class="page-header">
             <h2><i class="fa fa-angle-double-right"></i> {% trans "Profile" %}</h2>
         </div>
@@ -33,7 +33,7 @@ wrapper-course-lesson
         <div class="profile-picture" style="background-image: url({{ user_profile.picture }});">
         </div>
 
-        <div class="profile-edit">
+        <div class="profile-edit" ng-show="user_profile.is_current_user">
             <a href="/profile/edit/" class="btn btn-success btn-sm edit">editar perfil</a>
         </div>
 
