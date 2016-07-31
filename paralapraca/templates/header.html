@@ -5,7 +5,7 @@
 {% javascript 'plpc-header' %}
 
 <header ng-controller="HeaderCtrl" class="site-header" role="navigation">
-    <div class="user-info" ng-click="$parent.main_nav_opend = !$parent.main_nav_opend" ng-cloak>
+    <div class="user-info" ng-click="toggle_main_nav_display()" ng-cloak>
         {% if user.is_authenticated %}
             {% block header_user_menu %}
                 {% verbatim %}

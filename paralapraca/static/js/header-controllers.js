@@ -1,14 +1,24 @@
 (function(angular){
     'use strict';
-    var app = angular.module('header.controllers', []);
+    var app = angular.module('header.controllers', ['ngCookies']);
 
     app.controller('HeaderCtrl', [
         '$scope',
+        '$rootScope',
+        '$cookies',
         'Notification',
         'CurrentUser',
-        function ($scope, Notification, CurrentUser) {
+        function ($scope, $rootScope, $cookies, Notification, CurrentUser) {
 
             $scope.user = CurrentUser;
+            // FIXME Refactor this unsing CurrentUser service.
+            $rootScope.is_main_nav_opened = $cookies.getObject('is_main_nav_opened');
+
+            $scope.toggle_main_nav_display = function() {
+                $rootScope.is_main_nav_opened = !$rootScope.is_main_nav_opened;
+                $cookies.put('is_main_nav_opened', $rootScope.is_main_nav_opened);
+            };
+
             $scope.show_notification = false;
             $scope.notifications_loaded = false;
             $scope.notifications = Notification.query(function(res){
