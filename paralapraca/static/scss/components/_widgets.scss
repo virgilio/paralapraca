@@ -112,8 +112,10 @@
         padding: 20px;
     }
     .user-update {
-        height: 100px;
         margin-bottom: 10px;
+        @media screen and (min-width: $screen-md-min) {
+            height: 95px;
+        }
     }
     .info {
         margin-left: 50px;
