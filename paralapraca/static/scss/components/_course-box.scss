@@ -9,6 +9,10 @@
     @media screen and (min-width: $screen-lg-min) {
         height: 175px;
     }
+    .course-link {
+        color: #000;
+        display: block;
+    }
     .course-progress {
         .progress {
             border-radius: 0px;
