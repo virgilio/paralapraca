@@ -11,7 +11,9 @@
         }
     }
     .user-update {
-        height: 65px;
+        @media screen and (min-width: $screen-md-min) {
+            height: 80px;
+        }
     }
 }
 
@@ -170,8 +172,12 @@
 
 .forum-list {
     table {
+        margin-bottom: 30px;
         width: 100%;
         thead {
+            @media screen and (max-width: $screen-sm-max) {
+                display: none;
+            }
             th {
                 font-size: $font-size-small;
                 font-weight: normal;
@@ -191,8 +197,21 @@
             }
             td {
                 padding: 10px 0;
+                @media screen and (max-width: $screen-sm-max) {
+                    display: block;
+                    float: left;
+                    padding: 10px 20px;
+                }
                 &:first-child {
                     padding-left: 20px;
+                    @media screen and (max-width: $screen-sm-max) {
+                        clear: both;
+                        display: block;
+                        width: 100%;
+                    }
+                    @media screen and (min-width: $screen-md-min) {
+                        width: 500px;
+                    }
                 }
             }
         }
@@ -205,6 +224,12 @@
         display: block;
         font-size: $font-size-base;
         font-weight: $semi-bold;
+        @media screen and (min-width: $screen-md-min) {
+            max-width: 460px;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+        }
     }
     .last-update {
         color: $gray;

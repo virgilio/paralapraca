@@ -37,6 +37,12 @@
             }
         }
     }
+
+    .all-courses {
+        .btn {
+            @include button-hover(#fff,#fff,$pink,darken($pink,10%));
+        }
+    }
 }
 
 // Forums widget

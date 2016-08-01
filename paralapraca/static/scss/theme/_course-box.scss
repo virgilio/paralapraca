@@ -13,4 +13,8 @@
     .continue {
         @include button-hover(#fff,#fff,$purple,darken($purple,10%));
     }
+    .see-report {
+        @include link-hover($purple,$purple,$purple,transparent);
+        font-weight: $bold;
+    }
 }

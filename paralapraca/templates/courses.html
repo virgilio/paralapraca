@@ -45,7 +45,9 @@ ng-app="my-courses"
                         </div>
                         <div class="line two-column fifty-fifty">
                             <div class="course-thumb column">
-                                <div class="course-thumb-bg" ng-style="{'background-image':'url('+course.thumbnail_url+')'}"></div>
+                                <a ng-href="/course/{{ course.slug }}/resume" class="course-link">
+                                    <div class="course-thumb-bg" ng-style="{'background-image':'url('+course.thumbnail_url+')'}"></div>
+                                </a>
                                 <!--<div ng-if="!course.home_thumbnail" class="course-thumb-bg"></div>-->
                                 <a ng-if="course.course_student"
                                    ng-href="/course/{{ course.slug }}/resume"
@@ -56,11 +58,14 @@ ng-app="my-courses"
                                    class="continue">começar módulo</a>
                             </div>
                             <div class="course-description column">
-                                <h3 class="course-title">{{ course.name }}</h3>
+                                <h3 class="course-title"><a ng-href="/course/{{ course.slug }}/resume"
+                                   class="course-link">{{ course.name }}</a></h3>
                                 <div  class="course-info">
-                                    <p ng-if="course.course_student"><b>Iniciado em:</b> {{course.course_student.course.start_date | date: "dd/MM/yyyy"}}</p>
-                                    <!--<p>você parou em <span class="unit-title">Nome da Unidade e Também o Nome da Aula</span></p>-->
-                                    <p ng-if="course.is_assistant_or_coordinator"><a ng-href="/course/{{ course.slug }}/reports">Ver relatório</a></p>
+                                    <a ng-href="/course/{{ course.slug }}/resume" class="course-link">
+                                        <p ng-if="course.course_student"><b>Iniciado em:</b> {{course.course_student.course.start_date | date: "dd/MM/yyyy"}}</p>
+                                        <!--<p>você parou em <span class="unit-title">Nome da Unidade e Também o Nome da Aula</span></p>-->
+                                    </a>
+                                    <p ng-if="course.is_assistant_or_coordinator"><a ng-href="/course/{{ course.slug }}/reports" class="see-report">Ver relatório</a></p>
                                     <p ng-if="!course.course_student">Você ainda não começou este móodulo </p>
                                 </div>
                                 <!--<p class="course-update"><strong>atualização:</strong> lorem ipsum dolor sit amet, consectetur adipiscing elit | <span>xx horas atrás</span></p>-->
