@@ -2,10 +2,8 @@
 // --------------------------------------------------
 
 .forums-page {
-    .widget-header {
-        .new-topic {
-            @include button-hover(#fff,#fff,lighten($orange,20%),lighten($orange,10%));
-        }
+    .new-topic {
+        @include button-hover(#fff,#fff,lighten($orange,20%),lighten($orange,10%));
     }
 }
 
@@ -26,4 +24,13 @@
     textarea {
         border: 2px solid $pink;
     }
+}
+
+.new-thread {
+    .form-control {
+        border-color: $orange;
+    }
+    .selected-forum {
+        color: $orange;
+    } 
 }

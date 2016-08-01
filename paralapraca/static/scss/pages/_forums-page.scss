@@ -218,3 +218,24 @@
         margin: 0; 
     }
 }
+
+.new-thread {
+    .form-control {
+        border: 2px solid $gray-light;
+        border-radius: 0;
+        box-shadow: none;
+        &:active, &:hover, &:focus {
+            box-shadow: none;
+        }
+    }
+    .help-text {
+        font-size: $font-size-small;
+        font-weight: $normal;
+    }
+    .selected-forum {
+        font-weight: $bold;
+    }
+    .selected-forum, .selected-tags, .selected-category {
+        margin: 12px 0 0 0;
+    }
+}
