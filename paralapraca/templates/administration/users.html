@@ -18,7 +18,7 @@ wrapper-course-lesson
 
 {% block content %}
 <!-- COURSES -->
-<section id="users" ng-app="users-admin" ng-controller="UsersAdminController">
+<section class="course users" ng-app="users-admin" ng-controller="UsersAdminController">
     <!-- ACTIONS -->
     <div class="actions-menu actions-menu-message" ng-hide="alert.hidden" fixed-bar>
         <div class="container">
@@ -26,14 +26,10 @@ wrapper-course-lesson
         </div>
     </div>
     <!-- END ACTIONS -->
-    <div class="container">
+    <div class="users-content page container-fluid">
         <!--  HEADER -->
-        <header>
-            <div class="row">
-                <div class="col-lg-6">
-                    <h1>{% trans 'Users' %}</h1>
-                </div>
-            </div>
+        <header class="page-header">
+            <h3>{% trans 'Users' %}</h3>
         </header>
         <!-- END HEADER -->
         <h3>{% trans 'Users found:' %} {% verbatim %}{{ total_users_found }}{% endverbatim %}</h3>
@@ -69,31 +65,35 @@ wrapper-course-lesson
 			<p>{% trans 'No users found' %}.</p>
 		</div>
         <section id="all-courses" class="user-list" ng-show="users_page.$resolved">
-            <table class="table table-list">
-                <tr>
-                    <th class="username">{% trans "Username" %}</th>
-                    <th class="email">{% trans "Email" %}</th>
-                    <th class="fullname">{% trans "Full name" %}</th>
-                    <th class="role text-center">{% trans 'Administrator' %}</th>
-                    <th class="role text-center">{% trans 'Active' %}</th>
-                    <th class="actions">{% trans "Actions" %}</th>
-                </tr>
-                <tr ng-repeat="user in users_page">
-                {% verbatim %}
-                    <td>{{ user.username }}</td>
-                    <td>{{ user.email }}</td>
-                    <td>{{ user.get_full_name }}</td>
-                    <td class="text-center">
-                        <input type="checkbox" ng-model="user.is_superuser" ng-change="update_user(user)">
-                    </td>
-                    <td class="text-center">
-                        <input type="checkbox" ng-model="user.is_active" ng-change="update_user(user)">
-                    </td>
-                    <td class="textcenter">
-                        <button class="btn btn-warning js-delete" ng-click="delete_user(user, $index)"><i class="fa fa-trash-o"></i></button>
-                    </td>
-                {% endverbatim %}
-                </tr>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th class="username">{% trans "Username" %}</th>
+                        <th class="email">{% trans "Email" %}</th>
+                        <th class="fullname">{% trans "Full name" %}</th>
+                        <th class="role text-center">{% trans 'Administrator' %}</th>
+                        <th class="role text-center">{% trans 'Active' %}</th>
+                        <th class="actions">{% trans "Actions" %}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="user in users_page">
+                    {% verbatim %}
+                        <td>{{ user.username }}</td>
+                        <td>{{ user.email }}</td>
+                        <td>{{ user.get_full_name }}</td>
+                        <td class="text-center">
+                            <input type="checkbox" ng-model="user.is_superuser" ng-change="update_user(user)">
+                        </td>
+                        <td class="text-center">
+                            <input type="checkbox" ng-model="user.is_active" ng-change="update_user(user)">
+                        </td>
+                        <td class="textcenter">
+                            <button class="btn btn-warning js-delete" ng-click="delete_user(user, $index)"><i class="fa fa-trash-o"></i></button>
+                        </td>
+                    {% endverbatim %}
+                    </tr>
+                </tbody>
             </table>
         </section>
         <pagination total-items="total_users_found"
