@@ -130,7 +130,7 @@
                     </div>
                     <div class="info">
                         <b>{{topic.author.first_name}}</b> comentou no tópico <a href="../discussion/topic/##{{topic.id}}" class="thread-name">{{topic.title}}</a>
-                        no fórum <a href="#">{{topic.forum.title}}</a></span>
+                        no fórum <a ng-href="/discussion/forum/#/{{ topic.forum }}">{{topic.forum_info.title}}</a></span>
                     </div>
                     <div class="actions">
                         <span class="action replies">{{topic.count_replies}} {{topic.count_replies > 1 || topic.count_replies == 0? 'respostas':'resposta'}}</span>
@@ -160,9 +160,10 @@
                 </div>
                 <div class="info">
                     <a ng-href="/profile/{{ topic.author.username }}"><b>{{topic.author.first_name}}</b></a> comentou no tópico <a href="/discussion/topic/##{{topic.id}}" class="thread-name">{{topic.title}}</a>
-                    no fórum <a href="#">{{topic.forum.title}}</a></span>
+                    no fórum <a ng-href="/discussion/forum/#/{{ topic.forum }}">{{topic.forum_info.title}}</a></span>
                 </div>
                 <div class="actions">
+
                     <span class="action replies">{{topic.count_replies}} {{topic.count_replies > 1 || topic.count_replies == 0? 'respostas':'resposta'}}</span>
                     <span class="action liked">{{topic.count_likes}} {{topic.count_likes > 1 || topic.count_likes == 0? 'gostaram':'gostou'}}</span>
                 </div>

@@ -27,7 +27,7 @@
         <header class="widget-header line two-column fifty-fifty">
             <div class="column">
                 <h2 class="widget-title">fóruns</h2>
-                <a class="btn btn-success new-topic" href="/discussion/forum/topic/new/" ><i class="fa fa-sign-in" aria-hidden="true"></i> criar novo tópico</a>
+                <a class="btn btn-success new-topic" href="/discussion/topic/new/" ><i class="fa fa-sign-in" aria-hidden="true"></i> criar novo tópico</a>
             </div>
             <div class="column">
                 <!--<form class="widget-filter form-inline">-->
@@ -51,7 +51,7 @@
                 <div class="info">
                     <a ng-href="/profile/{{ topic.author.username }}">
                       <b>{{ topic.author.name }}</b>
-                    </a> comentou no tópico <a href="/discussion/topic/##{{ topic.id }}" class="thread-name">{{ topic.title }}</a> no fórum <a href="#">{{ topic.forum.title }}</a>
+                    </a> comentou no tópico <a href="/discussion/topic/##{{ topic.id }}" class="thread-name">{{ topic.title }}</a> no fórum <a ng-href="/discussion/forum/#/{{ topic.forum }}">{{ topic.forum_info.title }}</a>
                 </div>
                 <div class="actions">
                     <span class="action replies">{{  topic.count_replies }} resposta</span>
@@ -65,7 +65,7 @@
         <div ng-repeat="forum in forums">
             <div class="line one-column" ng-if="forum.latest_topics.length>0">
                 <div class="column">
-                    <h3 class="section-title">{{ forum.title }}</h3>
+                    <h3 class="section-title"><a ng-href="/discussion/forum/#/{{ topic.forum }}">{{ forum.title }}</a></h3>
                 </div>
             </div>
 
