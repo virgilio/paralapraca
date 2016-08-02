@@ -4,6 +4,7 @@
     var app = angular.module('timtec.discussion', [
         'header',
         'discussion',
-        'djangular'
+        'djangular',
+        'django',
     ]);
 })(angular);
