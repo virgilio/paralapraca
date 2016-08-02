@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from django.core.management.base import BaseCommand, CommandError
-from django.contrib.auth import get_user_model, models
-from discussion.models import Group, Category, Forum, Topic, Comment, Tag, TopicNotification
+from django.contrib.auth import get_user_model
+from discussion.models import Group, Category, Forum, Topic, Comment, Tag
 from django.db import transaction
 from django.utils import timezone
 
@@ -29,15 +29,15 @@ class Command(BaseCommand):
         if not len(files) == 2:
             raise CommandError('Choose two files to import')
 
-        csv.field_size_limit(sys.maxsize) # increase max field size in the csv reader
+        csv.field_size_limit(sys.maxsize)  # increase max field size in the csv reader
 
         # Retrieve the admin superuser
         User = get_user_model()
 
         # Create all categories
-        catPauta, _ = Category.objects.get_or_create(name='Pautas',description='Pautas',color='FFF')
-        catReg, _ = Category.objects.get_or_create(name='Registros',description='Registros',color='FFF')
-        catDisc, _ = Category.objects.get_or_create(name='Discussões',description='Discussões',color='FFF')
+        catPauta, _ = Category.objects.get_or_create(name='Pautas', description='Pautas', color='FFF')
+        catReg, _ = Category.objects.get_or_create(name='Registros', description='Registros', color='FFF')
+        catDisc, _ = Category.objects.get_or_create(name='Discussões', description='Discussões', color='FFF')
 
         # Create all foruns
         fGE, _ = Forum.objects.get_or_create(title='Fórum Geral')
@@ -62,7 +62,6 @@ class Command(BaseCommand):
         tLit, _ = Tag.objects.get_or_create(name='Literatura')
         tMus, _ = Tag.objects.get_or_create(name='Música')
 
-
         # Test if the user groups have already been created
         if not Group.objects.filter(name='Avante'):
             print("Import users and their groups before running this script.")
@@ -72,108 +71,99 @@ class Command(BaseCommand):
         gAv = Group.objects.get(name='Avante')
         gEn = Group.objects.get(name='Entremeios')
         gAs = Group.objects.get(name='Assessoras')
-        gDu = Group.objects.get(name='Duplas')
-        gCo = Group.objects.get(name='Coordenadoras')
-        gGe = Group.objects.get(name='Gestores')
-        gCa = Group.objects.get(name='Camaçari')
-        gMac = Group.objects.get(name='Maceió')
-        gMar = Group.objects.get(name='Maracanaú')
-        gOl = Group.objects.get(name='Olinda')
-        gNa = Group.objects.get(name='Natal')
 
         # Assign groups to its respectives forums
         # Forum Assessoras
         fAS.groups.add(gAs, gAv, gEn)
 
-
         # Holds all the necesseary exchange info for each source and destination forum in the migration
         exchange = {
             4: {
-                'forum' : fGE,
-                'category' : catDisc,
+                'forum': fGE,
+                'category': catDisc,
             },
             15: {
-                'forum' : fAS,
+                'forum': fAS,
             },
             27: {
-                'forum' : fGE,
-                'category' : catReg,
-                'tag' : tOrg,
+                'forum': fGE,
+                'category': catReg,
+                'tag': tOrg,
             },
             22: {
-                'forum' : fGE,
-                'category' : catReg,
-                'tag' : tArt,
+                'forum': fGE,
+                'category': catReg,
+                'tag': tArt,
             },
             7: {
-                'forum' : fGE,
-                'category' : catPauta,
+                'forum': fGE,
+                'category': catPauta,
             },
             5: {
-                'forum' : fGE,
-                'category' : catReg,
-                'tag' : tPai,
+                'forum': fGE,
+                'category': catReg,
+                'tag': tPai,
             },
             23: {
-                'forum' : fGE,
-                'category' : catReg,
-                'tag' : tBri,
+                'forum': fGE,
+                'category': catReg,
+                'tag': tBri,
             },
             25: {
-                'forum' : fGE,
-                'category' : catReg,
-                'tag' : tExp,
+                'forum': fGE,
+                'category': catReg,
+                'tag': tExp,
             },
             6: {
-                'forum' : fGE,
-                'category' : catReg,
+                'forum': fGE,
+                'category': catReg,
             },
             18: {
-                'forum' : fGE,
-                'category' : catPauta,
-                'tag' : tLit,
+                'forum': fGE,
+                'category': catPauta,
+                'tag': tLit,
             },
             26: {
-                'forum' : fGE,
-                'category' : catReg,
-                'tag' : tMus,
+                'forum': fGE,
+                'category': catReg,
+                'tag': tMus,
             },
             20: {
-                'forum' : fGE,
-                'category' : catPauta,
-                'tag' : tMus,
+                'forum': fGE,
+                'category': catPauta,
+                'tag': tMus,
             },
             8: {
-                'forum' : fGE,
-                'category' : catPauta,
-                'category2' : catReg,
+                'forum': fGE,
+                'category': catPauta,
+                'category2': catReg,
             },
             16: {
-                'forum' : fGE,
-                'category' : catPauta,
-                'tag' : tArt,
+                'forum': fGE,
+                'category': catPauta,
+                'tag': tArt,
             },
             52: {
-                'forum' : fGE,
+                'forum': fGE,
             },
             21: {
-                'forum' : fCG,
+                'forum': fCG,
             },
             47: {
-                'forum' : fGM,
+                'forum': fGM,
             },
             51: {
-                'forum' : fGE,
-                'category' : catPauta,
-                'tag' : tBri,
+                'forum': fGE,
+                'category': catPauta,
+                'tag': tBri,
             },
             17: {
-                'forum' : fGE,
-                'category' : catPauta,
-                'tag' : tExp,
+                'forum': fGE,
+                'category': catPauta,
+                'tag': tExp,
             },
             43: {
-                'forum' : fMG,
+                'forum': fMG,
             },
         }
 
@@ -187,7 +177,6 @@ class Command(BaseCommand):
                 for fieldname, size in sizes.items():
                     if fieldname in row:
                         row[fieldname] = row[fieldname][:size]
-
 
                 # Find out wich forum is the corret one for the current topic
                 destination = exchange.get(int(row['forum']))
@@ -209,6 +198,8 @@ class Command(BaseCommand):
                     created_at=last_activity_at,
                     updated_at=last_activity_at,
                 )
+
+                # TODO: store new and old topic id in a csv for future reference
 
                 # Add all categories relevant to this topic1
                 if 'category' in destination:
@@ -284,18 +275,20 @@ class Command(BaseCommand):
                             text=row['message'],
                             author=User.objects.get(email=row['email']),
                             parent=parent_comment,
-                            created_at = created,
-                            updated_at = modified,
+                            created_at=created,
+                            updated_at=modified,
                         )
                     else:
                         comments[row['id']] = Comment.objects.create(
                             topic=topics[row['discussion']],
                             text=row['message'],
                             author=User.objects.get(email=row['email']),
-                            created_at = created,
-                            updated_at = modified,
+                            created_at=created,
+                            updated_at=modified,
                         )
 
                     count += 1
                     if count % 100 == 0:
                         print '.',
+
+                    # TODO: store new and old comment id in a csv for future reference
