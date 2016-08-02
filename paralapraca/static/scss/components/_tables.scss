@@ -1,0 +1,48 @@
+.table {
+    margin-bottom: 30px;
+    width: 100%;
+    thead {
+        @media screen and (max-width: $screen-sm-max) {
+            display: none;
+        }
+        th {
+            font-size: $font-size-small;
+            font-weight: normal;
+            color: $gray;
+            padding: 0 0 5px;
+            text-transform: lowercase;
+        }
+    }
+    tbody {
+        td {
+            padding: 10px 0;
+            vertical-align: middle !important;
+            @media screen and (max-width: $screen-sm-max) {
+                display: block;
+                float: left;
+                padding: 10px 20px;
+            }
+            &:first-child {
+                padding-left: 20px;
+                @media screen and (max-width: $screen-sm-max) {
+                    clear: both;
+                    display: block;
+                    width: 100%;
+                }
+                @media screen and (min-width: $screen-md-min) {
+                    width: 500px;
+                }
+            }
+        }
+    }
+    &.table-striped {
+        tbody {
+            tr {
+                &.new {
+                    background-color: rgba($gray,0.1);
+                    border-bottom: solid 2px rgba(194, 194, 194, 0.7);
+                }
+            }
+        }
+    }
+}

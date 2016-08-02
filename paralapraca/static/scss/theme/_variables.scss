@@ -61,6 +61,22 @@ $state-danger-bg:                $brand-danger !default;
 $state-danger-border:            transparent !default;
 
 
+//== Tables
+//
+//## Customizes the `.table` component with basic values, each used across all table variations.
+
+//** Default background color used for all tables.
+$table-bg:                      transparent !default;
+//** Background color used for `.table-striped`.
+$table-bg-accent:               rgba(#fff,0.4) !default;
+//** Background color used for `.table-hover`.
+$table-bg-hover:                rgba(#fff,0.4) !default;
+$table-bg-active:               $table-bg-hover !default;
+
+//** Border color for table and cell borders.
+$table-border-color:            transparent !default;
+
+
 // Override base theme variables 
 // --------------------------------------------------
 
