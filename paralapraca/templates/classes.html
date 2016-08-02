@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+
+{% load staticfiles %}
+{% load i18n %}
+
+{% block wrapper_classes %}
+wrapper-course-lesson
+{% endblock %}
+
+{% block content %}
+<div class="modal fade" id="class-modal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content" ng-app>
+            {% include '_create_class_modal.html' %}
+        </div>
+    </div>
+</div>
+
+<div class="course course-classes">
+    {% include "_course-header-inline.html"  with course=course %}
+    <section class="classes-content page container-fluid">
+    	<header class="page-header">
+            <div class="row">
+                <div class="col-xs-6 col-sm-8 col-md-9">
+                    <h3>{% trans 'Classes' %}</h3>
+                </div>
+                <div class="col-xs-6 col-sm-4 col-md-3">
+                    <a class="btn btn-sm btn-primary" data-toggle="modal" data-target="#class-modal">{% trans 'Add class' %}</a>
+                </div>
+            </div>
+        </header>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th class="classname">{% trans "Class name" %}</th>
+                    <th class="assistant">{% trans "Assistant Professor" %}</th>
+                    <th class="students">{% trans "Students" %}</th>
+                    <th class="actions">{% trans "Actions" %}</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for class in object_list %}
+                <tr>
+                    <td><a href="{% url 'class' pk=class.id %}">{{ class.name }}</a></td>
+                    <td>{{ class.assistant | default:'' }}</td>
+                    <td>{{ class.students.count }}</td>
+                    <td class="actions">
+                        <form method="post" action="{% url 'class-delete' pk=class.id %}">
+                            <a href="{% url 'class' pk=class.id %}" class="btn btn-sm btn-success edit">editar</a>
+                            {% csrf_token %}
+                            {% if class.course.default_class.id != class.id %}
+                                <button type="submit" class="btn btn-sm btn-danger delete">deletar</button>
+                            {% endif %}
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </section>
+</div>
+{% endblock %}
