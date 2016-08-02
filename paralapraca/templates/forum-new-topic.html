@@ -14,7 +14,7 @@
 
 {% block content %}
 
-<div ng-controller="TopicCtrl">
+<div ng-controller="NewTopicCtrl">
 
     {% verbatim %}
     <section class="forums forums-page forums-widget thread widget container-fluid">
@@ -33,34 +33,31 @@
             <div class="column">
                 <form class="new-thread">
                     <div class="form-group">
-                        <label for="thread-name">Como se chamará o novo tópico? <span class="help-text">máximo de xx caracteres</span></label>
-                        <input type="text" class="form-control" id="thread-name" placeholder="Escreva o título aqui">
-                    </div>
-                    <div class="form-group">
                         <div class="row">
                             <div class="col-sm-6">
                                 <label for="thread-forum">Em qual fórum ele deve estar? <span class="help-text">escolha apenas um</span></label>
-                                <select class="form-control" id="thread-forum">
+                                <select ng-model="new_topic.forum" class="form-control" id="thread-forum"
+                                        ng-options="forum.id as forum.title for forum in forums" >
                                     <option>Escolha o fórum</option>
-                                    <option>Fórum</option>
-                                    <option>Fórum</option>
-                                    <option>Fórum</option>
-                                    <option>Fórum</option>
                                 </select>
                             </div>
-                            <div class="col-sm-6">
+                            <!-- <div class="col-sm-6">
                                 <div class="help-text">fórum escolhido</div>
                                 <div class="selected-forum">Avante e Entremeios</div>
-                            </div>
+                            </div> -->
                         </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="thread-name">Como se chamará o novo tópico? <span class="help-text">máximo de xx caracteres</span></label>
+                        <input ng-model="new_topic.title" type="text" class="form-control" id="thread-name" placeholder="Escreva o título aqui">
                     </div>
                     <div class="form-group">
                         <label for="thread-text">Texto do tópico <span class="help-text">máximo de xx caracteres</span></label>
                         <textarea ui-tinymce="tinymceOptions"
-                                  ng-model="comment.new_comment"
+                                  ng-model="new_topic.content"
                                   placeholder="Escreva aqui o seu comentário" id="thread-text"></textarea>
                     </div>
-                    <div class="form-group">
+                    <!-- <div class="form-group">
                         <div class="row">
                             <div class="col-sm-6">
                                 <label for="thread-tags">Para terminar, escolha algumas tags <span class="help-text">máximo de xx tags</span></label>
@@ -99,8 +96,8 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <button class="btn btn-success new-topic"><i class="fa fa-sign-in" aria-hidden="true"></i> postar novo tópico</button>
+                    </div> -->
+                    <button ng-disabled="sending" ng-click="save_topic()" class="btn btn-success new-topic"><i class="fa fa-sign-in" aria-hidden="true"></i> postar novo tópico</button>
                 </form>
             </div>
         </div>
