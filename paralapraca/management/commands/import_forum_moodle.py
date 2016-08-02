@@ -18,6 +18,15 @@ sizes = {
     'first_name': 30,
 }
 
+csv.register_dialect(
+    'dialeto',
+    delimiter=',',
+    quotechar='"',
+    doublequote=True,
+    skipinitialspace=True,
+    lineterminator='\r\n',
+    quoting=csv.QUOTE_MINIMAL)
+
 
 class Command(BaseCommand):
     args = 'file'
@@ -67,7 +76,7 @@ class Command(BaseCommand):
             print("Import users and their groups before running this script.")
             sys.exit()
 
-        # Get every possible group in wich users can be put in
+        # Get relevant groups in wich users can be put in
         gAv = Group.objects.get(name='Avante')
         gEn = Group.objects.get(name='Entremeios')
         gAs = Group.objects.get(name='Assessoras')
@@ -170,6 +179,12 @@ class Command(BaseCommand):
         # The following variable will store every discussion in a dictionary
         topics = {}
 
+        # Prepare the data for csv archiving
+        topics_csv = []
+        topics_csv.append(['id_moodle', 'id_django'])
+        comments_csv = []
+        comments_csv.append(['id_moodle', 'id_django'])
+
         with open(files[0], 'r') as csvfile:
             readf = unicodecsv.DictReader(csvfile)
             count = 0
@@ -199,7 +214,8 @@ class Command(BaseCommand):
                     updated_at=last_activity_at,
                 )
 
-                # TODO: store new and old topic id in a csv for future reference
+                # Store new and old topic id in a csv for future reference
+                topics_csv.append([row['id'], topics[row['id']].id])
 
                 # Add all categories relevant to this topic1
                 if 'category' in destination:
@@ -214,6 +230,13 @@ class Command(BaseCommand):
                 count += 1
                 if count % 100 == 0:
                     print '.',
+
+        # Now that all the topics have been writeen in the Django database,
+        # we must store the association data in a csv file
+        with open('topicos_migrados.csv', 'w') as file:
+            w = csv.writer(file, dialect='dialeto')
+            for row in topics_csv:
+                w.writerow(row)
 
         with open(files[1], 'r') as csvfile:
             readf = unicodecsv.DictReader(csvfile)
@@ -287,8 +310,16 @@ class Command(BaseCommand):
                             updated_at=modified,
                         )
 
+                    # Store new and old comment id in a csv for future reference
+                    comments_csv.append([row['id'], comments[row['id']].id])
+
                     count += 1
                     if count % 100 == 0:
                         print '.',
 
-                    # TODO: store new and old comment id in a csv for future reference
+        # Now that all the comments have been writeen in the Django database,
+        # we must store the association data in a csv file
+        with open('comentarios_migrados.csv', 'w') as file:
+            w = csv.writer(file, dialect='dialeto')
+            for row in comments_csv:
+                w.writerow(row)
