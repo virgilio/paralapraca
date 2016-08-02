@@ -15,7 +15,7 @@ wrapper-course-lesson
 
 {% block content %}
 
-<section id="certificate" ng-app="certification" ng-controller="CertificateTemplateCtrl">
+<section class="course certificate" ng-app="certification" ng-controller="CertificateTemplateCtrl">
 
     <!-- ACTIONS -->
     <div class="actions-menu" fixed-bar>
@@ -31,13 +31,9 @@ wrapper-course-lesson
 
     {% include "_admin_header_inline.html" with course=course %}
 
-    <section id="certificate-content" class="container">
-        <header class="secondary-header">
-            <div class="row">
-                <div class="col-sm-12">
-                    <h1>{% trans "Certificate Settings" %}</h1>
-                </div>
-            </div>
+    <section class="certificate-content page container-fluid">
+        <header class="page-header">
+            <h3>{% trans "Certificate Settings" %}</h3>
         </header>
 
         <!-- Nav tabs -->
