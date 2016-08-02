@@ -22,7 +22,7 @@ wrapper-course-lesson
 {% endblock %}
 
 {% block content %}
-<div id="stats" class="course-stats" ng-app="reports">
+<div class="course course-stats" ng-app="reports">
 
     {% if in_admin %}
         {% include "_admin_header_inline.html" with course=course %}
@@ -30,14 +30,10 @@ wrapper-course-lesson
         {% include "_course-header-inline.html"  with course=course %}
     {% endif %}
 
-    <section id="stats-content" class="container" ng-controller="ReportsCtrl">
+    <section class="stats-content page container-fluid" ng-controller="ReportsCtrl">
 
-        <header class="secondary-header">
-            <div class="row">
-                <div class="col-sm-9">
-                    <h1>{% trans "Course reports" %}</h1>
-                </div>
-            </div>
+        <header class="page-header">
+            <h3>{% trans "Course reports" %}</h3>
         </header>
 
         <!-- FILTERS -->
@@ -46,8 +42,8 @@ wrapper-course-lesson
             <form class="form-inline">
                 <!-- ROW -->
                 <div class="row">
-                    <div class="col-md-5 col-sm-8">
-                        <label for="filter-class"> {% trans "Filter classes" %}:
+                    <div class="col-lg-5 col-sm-6">
+                        <label for="filter-class"> <span>{% trans "Filter classes" %}:</span>
                             <select class="form-control" id="filter-class" ng-model="filters.selected_class" ng-change="filter_stats()">
                                 <optgroup label="Liste por:">
                                     <option ng-if="my_classes.length" value="my_classes">Minhas turmas</option>
@@ -63,20 +59,17 @@ wrapper-course-lesson
                             </select>
                         </label>
                     </div>
-                    <div class="filter-keyword col-md-3 col-sm-5 textright">
+                    <div class="filter-keyword col-md-3 col-sm-6">
                         <input type="text" ng-model="filters.textsearch" placeholder="{% trans 'Keyword' %}" class="form-control">
                     </div>
-                    <!-- END COL-LG-3 -->
-                    <!-- COL-LG-3 -->
-                    <div class="filter-ordering col-md-2 col-sm-5 textright">
+                    <div class="filter-ordering col-lg-3 col-md-2 col-sm-6">
                         <select ng-model="ordering" class="form-control">
                             <option value="name">{% trans 'Name' %}</option>
                             <option value="course_progress">{% trans 'Progress' %}</option>
                         </select>
                     </div>
-                    <!-- END COL-LG-3 -->
-                    <div class="filter-reverse col-md-2 col-sm-2 textright">
-                        <button class="btn btn-info btn-block" ng-class="{active:reverse}" ng-click="reverse=!reverse">{% trans 'Invert' %}</button>
+                    <div class="filter-reverse col-md-1 col-sm-6">
+                        <button class="btn btn-sm btn-primary" ng-class="{active:reverse}" ng-click="reverse=!reverse">{% trans 'Invert' %}</button>
                     </div>
                 </div>
                 <!-- END ROW -->
