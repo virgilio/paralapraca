@@ -21,7 +21,7 @@
 
             $scope.show_notification = false;
             $scope.notifications_loaded = false;
-            $scope.notifications = Notification.query(function(res){
+            $scope.notifications = Notification.query({limit_to: 10}, function(res){
                 $scope.notifications_loaded = true;
             });
         }
