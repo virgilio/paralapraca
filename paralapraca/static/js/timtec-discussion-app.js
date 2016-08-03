@@ -5,6 +5,5 @@
         'header',
         'discussion',
         'djangular',
-        'django',
     ]);
 })(angular);
