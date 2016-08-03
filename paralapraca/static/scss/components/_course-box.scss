@@ -58,13 +58,18 @@
             }
         }
     }
-    .continue {
+    .continue, .start {
         border-radius: 0;
         display: block;
         font-weight: $bold;
         padding: 3px;
         text-align: center; 
+    }
+    .continue {
         @include button-hover(#fff,#fff,$brand-primary,darken($brand-primary,10%));
+    }
+    .start {
+        @include button-hover(#fff,#fff,$brand-success,darken($brand-success,10%));
     }
     .course-update {
         @extend %icon-attention;
