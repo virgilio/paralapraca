@@ -24,7 +24,7 @@
             <!--</div>-->
         </div>
 
-        <header class="widget-header line two-column fifty-fifty">
+        <header class="widget-header line two-column fifty-fifty" ng-if="!forum_single">
             <div class="column">
                 <h2 class="widget-title">fóruns</h2>
                 <a class="btn btn-success new-topic" href="/discussion/topic/new/" ><i class="fa fa-sign-in" aria-hidden="true"></i> criar novo tópico</a>
@@ -36,13 +36,25 @@
             </div>
         </header>
 
-        <div class="line one-column">
+        <header class="widget-header line one-column" ng-if="forum_single">
+            <div class="column">
+                <h2 ng-if="forum_single" class="widget-title">{% verbatim %}{{forum.title}} {% endverbatim %}</h2>
+                <a class="btn btn-success new-topic" href="/discussion/topic/new/" ><i class="fa fa-sign-in" aria-hidden="true"></i> criar novo tópico</a>
+            </div>
+            <div class="column">
+                <!--<form class="widget-filter form-inline">-->
+                    <!--<input class="form-control" type="text" placeholder="Busca nos fóruns...">-->
+                <!--</form>-->
+            </div>
+        </header>
+
+        <div class="line one-column" ng-if="!forum_single">
             <div class="column">
                 <h3 class="section-title">últimas postagens</h3>
             </div>
         </div>
 
-        <div class="line two-column fifty-fifty">
+        <div class="line two-column fifty-fifty" ng-if="!forum_single">
           {% verbatim %}
             <div class="user-update column" ng-repeat="topic in latest_topics">
                 <div class="user-icon">
@@ -51,7 +63,7 @@
                 <div class="info">
                     <a ng-href="/profile/{{ topic.author.username }}">
                       <b>{{ topic.author.name }}</b>
-                    </a> comentou no tópico <a href="/discussion/topic/##{{ topic.id }}" class="thread-name">{{ topic.title }}</a> no fórum <a ng-href="/discussion/forum/#/{{ topic.forum }}">{{ topic.forum_info.title }}</a>
+                    </a> comentou no tópico <a href="/discussion/topic/##{{ topic.id }}" class="thread-name">{{ topic.title }}</a> no fórum <a ng-href="/discussion/forum/##{{ topic.forum }}">{{ topic.forum_info.title }}</a>
                 </div>
                 <div class="actions">
                     <span class="action replies">{{  topic.count_replies }} resposta</span>
@@ -63,9 +75,15 @@
 
         {% verbatim %}
         <div ng-repeat="forum in forums">
-            <div class="line one-column" ng-if="forum.latest_topics.length>0">
+            <div class="line one-column" ng-if="forum.latest_topics.length>0 && !forum_single">
                 <div class="column">
-                    <h3 class="section-title"><a ng-href="/discussion/forum/#/{{ topic.forum }}">{{ forum.title }}</a></h3>
+                    <h3 class="section-title"><a ng-href="/discussion/forum/##{{ forum.id }}">{{ forum.title }}</a></h3>
+                </div>
+            </div>
+
+            <div class="line one-column" ng-if="forum_single">
+                <div class="column">
+                    <h3 class="section-title"><span ng-if="!topics_loaded">Carregando tópicos...</span></h3>
                 </div>
             </div>
 
