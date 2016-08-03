@@ -39,7 +39,7 @@
 }
 
 .comments-form {
-    margin-top: 20px;
+    margin: 20px 0 10px;
     overflow: hidden; 
     width: 100%;
     .tools {
@@ -67,6 +67,9 @@
                 text-decoration: underline;
             }
         }
+    }
+    .mce-tinymce {
+        margin-bottom: 15px;
     }
     textarea {
         border: 2px solid $brand-info;
