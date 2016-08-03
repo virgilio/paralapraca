@@ -167,9 +167,6 @@
                     <span class="action replies">{{topic.count_replies}} {{topic.count_replies > 1 || topic.count_replies == 0? 'respostas':'resposta'}}</span>
                     <span class="action liked">{{topic.count_likes}} {{topic.count_likes > 1 || topic.count_likes == 0? 'gostaram':'gostou'}}</span>
                 </div>
-                <div class="tags">
-                    <span ng-repeat="tag in topic.tags" class="tag">#{{tag.name}}</span>
-                </div>
             </div>
             {% endverbatim %}
 
