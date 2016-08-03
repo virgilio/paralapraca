@@ -47,11 +47,11 @@ notes my-notes
                             ng-init="course.show_notes=false"
                             ng-class="$comment.user_like ? 'hide-all': 'show-all'"
                             ng-click="course.show_notes=!course.show_notes">
-                      <span ng-show="!course.show_notes"
+                        <span ng-show="!course.show_notes"
                           translate
                           translate-n="course.course_notes_number"
-                          translate-plural="ver todas">Ver</span>
-                      <spam ng-show="course.show_notes">oculltar</spam>
+                          translate-plural="ver todas">ver</span>
+                        <span ng-show="course.show_notes">ocultar</span>
                     </button>
                 </div>
                 <div ng-repeat="lesson in course.lessons_notes" ng-show="course.show_notes">
