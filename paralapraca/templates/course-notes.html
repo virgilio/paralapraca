@@ -35,17 +35,36 @@ notes course-notes
 
             {% verbatim angularjs %}
             <div id="lesson-{{ lesson.position }}" class="lesson" ng-repeat="lesson in lessons">
-                <h1><span>Aula</span> <a href="/course/{{lesson.course}}/lesson/{{lesson.slug}}">{{ lesson.name }}</a></h1>
-                <div ng-repeat="unit in lesson.units_notes">
-                    <div class="note">
-                        <div class="row">
-                            <div class="col-lg-10 col-sm-9 col-xs-9">
-                                <p><strong>Unidade {{unit.position + 1}}: {{unit.title}}</strong></p>
-                                <pre class="note-content">{{ unit.user_note.text }}</pre>
-                            </div>
-                            <div class="col-lg-2 col-sm-3 col-xs-3 textright">
-                                <!-- <button class="btn btn-warning">Editar</button> -->
-                                <button class="btn btn-danger" ng-click="delele_note(lesson, unit, unit.user_note)"><i class="fa fa-trash-o"></i></button>
+                <h4 class="lesson-title">{{ lesson.name }}</h4>
+                <div class="notes-info">
+                    <span translate
+                          translate-n="course.course_notes_number"
+                          translate-plural="você tem {{$count}} notas">você tem 1 nota</span>
+                    <button class="btn btn-link btn-sm"
+                            ng-init="course.show_notes=false"
+                            ng-class="$comment.user_like ? 'hide-all': 'show-all'"
+                            ng-click="course.show_notes=!course.show_notes">
+                        <span ng-show="!course.show_notes"
+                          translate
+                          translate-n="course.course_notes_number"
+                          translate-plural="ver todas">ver</span>
+                        <span ng-show="course.show_notes">oculltar</span>
+                    </button>
+                </div>
+                <div ng-show="course.show_notes">
+                    <div class="notes-list" ng-repeat="unit in lesson.units_notes">
+                        <h5 class="unit-title">{{ unit.name }}</h5>
+                        <div class="note-content">
+                            <div class="row">
+                                <div class="col-sm-7 col-md-8 col-lg-9">
+                                    {{ unit.user_note.text }}
+                                </div>
+                                <div class="col-sm-5 col-md-4 col-lg-3">
+                                <!--<a ng-href="/course/{{ course.slug }}/lesson/{{ lesson.slug }}/#/{{ unit.id }}"-->
+                                 <!--class="btn btn-xs btn-success edit">editar (vai para o curso)</a>-->
+                                <button class="btn btn-xs btn-danger delete"
+                                      ng-click="delele_note(course, lesson, unit, unit.user_note)">descartar</button>
+                                </div>
                             </div>
                         </div>
                     </div>
