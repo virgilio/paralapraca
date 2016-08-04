@@ -58,10 +58,18 @@
             background: $orange;
         }
         .unit {
+            &.current {
+                span {
+                    background-color: $orange;
+                }
+            }
             &.current, &.done {
                 background: $orange;
                 &:hover {
                     background: darken($orange, 10%);
+                    span {
+                        background: darken($orange, 10%);
+                    }
                 }
             }
         }

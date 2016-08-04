@@ -34,14 +34,14 @@ ng-app="my-courses"
 
                 <!-- COURSE -->
                 <div class="course-box course-widget" ng-repeat="course in courses">
-                    <div class="row">
-                        <div ng-if="course.course_student" class="course-progress col-sm-5 col-md-4">
+                    <div ng-if="course.course_student" class="row">
+                        <div class="course-progress col-sm-5 col-md-4">
                             <div class="progress">
                                 <div class="progress-bar" role="progressbar" aria-valuenow="{{course.course_student.percent_progress}}" aria-valuemin="0" aria-valuemax="100" style="width: {{course.course_student.percent_progress}}%;">
                                 </div>
                             </div>
                         </div>
-                        <div ng-if="course.course_student" class="progress-label col-sm-7 col-md-8">{{course.course_student.percent_progress}}% completo</div>
+                        <div class="progress-label col-sm-7 col-md-8">{{course.course_student.percent_progress}}% completo</div>
                     </div>
                     <div class="row">
                         <div class="course-thumb col-sm-5 col-md-4">
@@ -63,7 +63,7 @@ ng-app="my-courses"
                             <div  class="course-info">
                                 <a ng-href="/course/{{ course.slug }}/resume" class="course-link">
                                     <p ng-if="course.course_student"><b>Iniciado em:</b> {{course.course_student.course.start_date | date: "dd/MM/yyyy"}}</p>
-                                    <p>você parou em <span class="unit-title">número e nome do capítulo</span></p>
+                                    <!--<p>você parou em <span class="unit-title">número e nome do capítulo</span></p>-->
                                 </a>
                                 <p ng-if="course.is_assistant_or_coordinator"><a ng-href="/course/{{ course.slug }}/reports" class="see-report">Ver relatório</a></p>
                                 <p ng-if="!course.course_student">Você ainda não começou este módulo </p>
