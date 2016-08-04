@@ -53,7 +53,7 @@ wrapper-course-lesson
         <!-- UNITS -->
         <div class="container-fluid">
             <div class="progress">
-                <div class="progress-bar" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style="width: 0;"></div>
+                <div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;"></div>
             </div>
             <div class="units">
                 <span class="units-title">{% trans 'Units' %}</span>
@@ -157,7 +157,7 @@ wrapper-course-lesson
                         <!--<h3><i class="fa fa-angle-double-right"></i> {% trans 'Addicional materials' %}</h3>-->
                     </div>
                     <span ng-bind-html="currentUnit.side_notes|markdown"></span>
-                    <p ng-if="!currentUnit.side_notes">{% trans 'This unit has no addicional materials' %}</p>
+                    <!--<p ng-if="!currentUnit.side_notes">{% trans 'This unit has no addicional materials' %}</p>-->
                     {% endblock %}
                 </div>
             </div>
