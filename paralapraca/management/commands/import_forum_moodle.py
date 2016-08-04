@@ -51,16 +51,18 @@ class Command(BaseCommand):
         # Create all foruns
         fGE, _ = Forum.objects.get_or_create(title='Fórum Geral')
         fAS, _ = Forum.objects.get_or_create(title='Fórum Assessoras')
-        fNG, _ = Forum.objects.get_or_create(title='Fórum Natal - Gestão Paralapraca')
-        fMG, _ = Forum.objects.get_or_create(title='Fórum Maracanaú - Gestão Paralapraca')
-        fCG, _ = Forum.objects.get_or_create(title='Fórum Camaçari - Gestão Paralapraca')
-        fMG, _ = Forum.objects.get_or_create(title='Fórum Maracanaú - Gestão Paralapraca')
-        fOG, _ = Forum.objects.get_or_create(title='Fórum Olinda - Gestão Paralapraca')
-        fGM, _ = Forum.objects.get_or_create(title='Fórum Gestão Municipal')
+        fNG, _ = Forum.objects.get_or_create(title='Fórum Natal - Assessoras')
+        fMG, _ = Forum.objects.get_or_create(title='Fórum Maracanaú - Assessoras')
+        fCG, _ = Forum.objects.get_or_create(title='Fórum Camaçari - Assessoras')
+        fMA, _ = Forum.objects.get_or_create(title='Fórum Maceió - Assessoras')
+        fOG, _ = Forum.objects.get_or_create(title='Fórum Olinda - Assessoras')
+        fGM, _ = Forum.objects.get_or_create(title='Fórum Geral - Gestão Municipal')
 
-        # Forum Geral is marked as public by default
-        fGE.is_public = True
-        fGE.save()
+        fNGest, _ = Forum.objects.get_or_create(title='Fórum Natal Gestores')
+        fCGest, _ = Forum.objects.get_or_create(title='Fórum Camaçari Gestores')
+        fOGest, _ = Forum.objects.get_or_create(title='Fórum Olinda Gestores')
+        fMarGest, _ = Forum.objects.get_or_create(title='Fórum Marcanaú Gestores')
+        fMacGest, _ = Forum.objects.get_or_create(title='Fórum Maceió Gestores')
 
         # Create the nedded tags for the migrations
         tOrg, _ = Tag.objects.get_or_create(name='Organização de Ambiente')
@@ -80,10 +82,66 @@ class Command(BaseCommand):
         gAv = Group.objects.get(name='Avante')
         gEn = Group.objects.get(name='Entremeios')
         gAs = Group.objects.get(name='Assessoras')
+        gDu = Group.objects.get(name='Duplas')
+        gCo = Group.objects.get(name='Coordenadoras')
+        gGe = Group.objects.get(name='Gestores')
+        gCa = Group.objects.get(name='Camaçari')
+        gMac = Group.objects.get(name='Maceió')
+        gMar = Group.objects.get(name='Maracanaú')
+        gOl = Group.objects.get(name='Olinda')
+        gNa = Group.objects.get(name='Natal')
+
+        gAN = Group.objects.get(name='Assessoras Natal')
+        gAC = Group.objects.get(name='Assessoras Camaçari')
+        gAO = Group.objects.get(name='Assessoras Olinda')
+        gAM = Group.objects.get(name='Assessoras Maracanaú')
+        gAMc = Group.objects.get(name='Assessoras Maceió')
+
+        gGestN = Group.objects.get(name='Gestores Natal')
+        gGestC = Group.objects.get(name='Gestores Camaçari')
+        gGestO = Group.objects.get(name='Gestores Olinda')
+        gGestMar = Group.objects.get(name='Gestores Maracanaú')
+        gGestMac = Group.objects.get(name='Gestores Maceió')
 
         # Assign groups to its respectives forums
+        # Forum Geral
+        fGE.groups.add(gAv, gEn, gAs, gDu, gCo, gCa, gMac, gMar, gOl, gNa, gAN, gAC, gAO, gAM, gAMc, gGestN, gGestC, gGestO, gGestMar, gGestMac)
+
         # Forum Assessoras
         fAS.groups.add(gAs, gAv, gEn)
+
+        # Forum Natal Assessoras
+        fNG.groups.add(gAN, gAv, gEn)
+
+        # Forum Camaçari Assessoras
+        fCG.groups.add(gAC, gAv, gEn)
+
+        # Forum Olinda Assessoras
+        fOG.groups.add(gAO, gAv, gEn)
+
+        # Fórum Maracanaú Assessoras
+        fMG.groups.add(gAM, gAv, gEn)
+
+        # Fórum Maceió Assessoras
+        fMA.groups.add(gAMc, gAv, gEn)
+
+        # Fórum Geral - Gestão Municipal
+        fGM.groups.add(gGe, gAv, gEn)
+
+        # Fórum Natal Gestores
+        fNGest.groups.add(gGestN, gAv, gEn)
+
+        # Fórum Camaçari Gestores
+        fCGest.groups.add(gGestC, gAv, gEn)
+
+        # Fórum Olinda Gestores
+        fOGest.groups.add(gGestO, gAv, gEn)
+
+        # Fórum Maracanaú Gestores
+        fMarGest.groups.add(gGestMar, gAv, gEn)
+
+        # Fórum Maceió Gestores
+        fMacGest.groups.add(gGestMac, gAv, gEn)
 
         # Holds all the necesseary exchange info for each source and destination forum in the migration
         exchange = {
