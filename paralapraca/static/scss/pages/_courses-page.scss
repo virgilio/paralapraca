@@ -2,6 +2,36 @@
 // --------------------------------------------------
 
 .courses-page {
+    .page-header {
+        h2 {
+            color: $brand-primary;
+        }
+    }
+    .course-box {
+        margin-bottom: 60px;
+        .course-thumb-bg {
+            height: 140px;
+        }
+        .course-progress {
+            .progress {
+                height: 7px;
+            }
+        }
+        .progress-label {
+            font-size: $font-size-base;
+        }
+        .course-description {
+            .course-title {
+                font-size: 48px;
+            }
+            .course-info {
+                font-size: $font-size-base;
+                .unit-title {
+                    font-size: 20px;
+                }
+            }
+        }
+    }
     .course-filters {
         ul {
             background-color: $gray;
