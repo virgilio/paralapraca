@@ -101,6 +101,32 @@
         }
         .dropdown {
             display: inline-block;
+            .dropdown-menu {
+                background-color: $gray-lighter;
+                border: 0;
+                border-radius: 0;
+                padding: 0;
+                li {
+                    a {
+                        border: 0;
+                        max-width: initial;
+                        padding: 6px 12px;
+                        text-align: left;
+                        width: 100%;
+                        &:hover {
+                            background-color: darken($gray-lighter,5%);
+                        }
+                    }
+                    &:nth-child(even) {
+                        a {
+                            background-color: darken($gray-lighter,10%);
+                            &:hover {
+                                background-color: darken($gray-lighter,15%);
+                            }
+                        } 
+                    }
+                }
+            }
         }
     }
     .lesson-units {
