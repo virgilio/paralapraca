@@ -34,14 +34,14 @@ ng-app="my-courses"
 
                 <!-- COURSE -->
                 <div class="course-box course-widget" ng-repeat="course in courses">
-                    <div class="row">
-                        <div ng-if="course.course_student" class="course-progress col-sm-5 col-md-4">
+                    <div ng-if="course.course_student" class="row">
+                        <div class="course-progress col-sm-5 col-md-4">
                             <div class="progress">
                                 <div class="progress-bar" role="progressbar" aria-valuenow="{{course.course_student.percent_progress}}" aria-valuemin="0" aria-valuemax="100" style="width: {{course.course_student.percent_progress}}%;">
                                 </div>
                             </div>
                         </div>
-                        <div ng-if="course.course_student" class="progress-label col-sm-7 col-md-8">{{course.course_student.percent_progress}}% completo</div>
+                        <div class="progress-label col-sm-7 col-md-8">{{course.course_student.percent_progress}}% completo</div>
                     </div>
                     <div class="row">
                         <div class="course-thumb col-sm-5 col-md-4">
