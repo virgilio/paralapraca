@@ -21,7 +21,7 @@
                     <a href="{% url 'course_intro' course.slug %}" class="intro {% if '/intro/' in request.path %}active{% endif %}">{% trans 'Home' %}</a>
                     <a href="{% url 'resume_course' course.slug %}" class="resume {% if '/lesson/' in request.path %}active{% endif %}">{% trans 'Resume course' %}</a>
                     <a href="{% url 'user_course_notes' course.slug %}" class="notes {% if '/mynotes/' in request.path %}active{% endif %}">{%  trans 'Course notes' %}</a>
-                    <a href="{% url 'course_material' course.slug %}" class="materials {% if '/material/' in request.path %}active{% endif %}">{%  trans 'Course material' %}</a>
+                    <a href="{% url 'course_material' course.slug %}" class="materials {% if '/material/' in request.path %}active{% endif %}">Menu de referências</a>
                     {% if user|is_assistant_or_coordinator:course %}
                         <div class="dropdown">
                             <a class="tools course-tools dropdown-toggle{% if '/messages/' in request.path or '/reports/' in request.path or '/classes/' in request.path %} active{% endif %}"
