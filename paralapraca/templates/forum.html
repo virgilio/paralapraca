@@ -81,11 +81,12 @@
                 </div>
             </div>
 
-            <div class="line one-column" ng-if="forum_single">
-                <div class="column">
+            <div class="line one-column" >
+
+            </div>
+            <div class="column" ng-if="forum_single">
                     <h3 class="section-title"><span ng-if="!topics_loaded">Carregando tópicos...</span></h3>
                 </div>
-            </div>
 
             <div class="forum-list" ng-if="forum.latest_topics.length>0">
                 <table class="table table-striped">
@@ -112,7 +113,7 @@
                             </td>
                             <td>
                                 <div class="tags">
-                                    <span ng-repeat="tag in topic.tags" class="tag">{{ tag.name }}</span>
+                                    <span ng-repeat="tag in topic.tags" class="tag">#{{ tag.name }}</span>
                                 </div>
                             </td>
                         </tr>
