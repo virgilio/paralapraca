@@ -46,32 +46,32 @@ class Command(BaseCommand):
         # Create all categories
         catPauta, _ = Category.objects.get_or_create(name='Pautas', description='Pautas', color='FFF')
         catReg, _ = Category.objects.get_or_create(name='Registros', description='Registros', color='FFF')
-        catDisc, _ = Category.objects.get_or_create(name='Discussões', description='Discussões', color='FFF')
+        catDisc, _ = Category.objects.get_or_create(name='Discussões'.decode('utf-8'), description='Discussões'.decode('utf-8'), color='FFF')
 
         # Create all foruns
-        fGE, _ = Forum.objects.get_or_create(title='Fórum Geral')
-        fAS, _ = Forum.objects.get_or_create(title='Fórum Assessoras')
-        fNG, _ = Forum.objects.get_or_create(title='Fórum Natal - Assessoras')
-        fMG, _ = Forum.objects.get_or_create(title='Fórum Maracanaú - Assessoras')
-        fCG, _ = Forum.objects.get_or_create(title='Fórum Camaçari - Assessoras')
-        fMA, _ = Forum.objects.get_or_create(title='Fórum Maceió - Assessoras')
-        fOG, _ = Forum.objects.get_or_create(title='Fórum Olinda - Assessoras')
-        fGM, _ = Forum.objects.get_or_create(title='Fórum Geral - Gestão Municipal')
+        fGE, _ = Forum.objects.get_or_create(title='Fórum Geral'.decode('utf-8'))
+        fAS, _ = Forum.objects.get_or_create(title='Fórum Assessoras'.decode('utf-8'))
+        fNG, _ = Forum.objects.get_or_create(title='Fórum Natal - Assessoras'.decode('utf-8'))
+        fMG, _ = Forum.objects.get_or_create(title='Fórum Maracanaú - Assessoras'.decode('utf-8'))
+        fCG, _ = Forum.objects.get_or_create(title='Fórum Camaçari - Assessoras'.decode('utf-8'))
+        fMA, _ = Forum.objects.get_or_create(title='Fórum Maceió - Assessoras'.decode('utf-8'))
+        fOG, _ = Forum.objects.get_or_create(title='Fórum Olinda - Assessoras'.decode('utf-8'))
+        fGM, _ = Forum.objects.get_or_create(title='Fórum Geral - Gestão Municipal'.decode('utf-8'))
 
-        fNGest, _ = Forum.objects.get_or_create(title='Fórum Natal Gestores')
-        fCGest, _ = Forum.objects.get_or_create(title='Fórum Camaçari Gestores')
-        fOGest, _ = Forum.objects.get_or_create(title='Fórum Olinda Gestores')
-        fMarGest, _ = Forum.objects.get_or_create(title='Fórum Marcanaú Gestores')
-        fMacGest, _ = Forum.objects.get_or_create(title='Fórum Maceió Gestores')
+        fNGest, _ = Forum.objects.get_or_create(title='Fórum Natal Gestores'.decode('utf-8'))
+        fCGest, _ = Forum.objects.get_or_create(title='Fórum Camaçari Gestores'.decode('utf-8'))
+        fOGest, _ = Forum.objects.get_or_create(title='Fórum Olinda Gestores'.decode('utf-8'))
+        fMarGest, _ = Forum.objects.get_or_create(title='Fórum Marcanaú Gestores'.decode('utf-8'))
+        fMacGest, _ = Forum.objects.get_or_create(title='Fórum Maceió Gestores'.decode('utf-8'))
 
         # Create the nedded tags for the migrations
-        tOrg, _ = Tag.objects.get_or_create(name='Organização de Ambiente')
-        tArt, _ = Tag.objects.get_or_create(name='Artes Visuais')
-        tPai, _ = Tag.objects.get_or_create(name='Paisagens Culturais')
-        tBri, _ = Tag.objects.get_or_create(name='Brincar')
-        tExp, _ = Tag.objects.get_or_create(name='Exploração de Mundo')
-        tLit, _ = Tag.objects.get_or_create(name='Literatura')
-        tMus, _ = Tag.objects.get_or_create(name='Música')
+        tOrg, _ = Tag.objects.get_or_create(name='Organização de Ambiente'.decode('utf-8'))
+        tArt, _ = Tag.objects.get_or_create(name='Artes Visuais'.decode('utf-8'))
+        tPai, _ = Tag.objects.get_or_create(name='Paisagens Culturais'.decode('utf-8'))
+        tBri, _ = Tag.objects.get_or_create(name='Brincar'.decode('utf-8'))
+        tExp, _ = Tag.objects.get_or_create(name='Exploração de Mundo'.decode('utf-8'))
+        tLit, _ = Tag.objects.get_or_create(name='Literatura'.decode('utf-8'))
+        tMus, _ = Tag.objects.get_or_create(name='Música'.decode('utf-8'))
 
         # Test if the user groups have already been created
         if not Group.objects.filter(name='Avante'):
@@ -85,23 +85,23 @@ class Command(BaseCommand):
         gDu = Group.objects.get(name='Duplas')
         gCo = Group.objects.get(name='Coordenadoras')
         gGe = Group.objects.get(name='Gestores')
-        gCa = Group.objects.get(name='Camaçari')
-        gMac = Group.objects.get(name='Maceió')
-        gMar = Group.objects.get(name='Maracanaú')
+        gCa = Group.objects.get(name=u'Camaçari')
+        gMac = Group.objects.get(name=u'Maceió')
+        gMar = Group.objects.get(name=u'Maracanaú')
         gOl = Group.objects.get(name='Olinda')
         gNa = Group.objects.get(name='Natal')
 
         gAN = Group.objects.get(name='Assessoras Natal')
-        gAC = Group.objects.get(name='Assessoras Camaçari')
+        gAC = Group.objects.get(name=u'Assessoras Camaçari')
         gAO = Group.objects.get(name='Assessoras Olinda')
-        gAM = Group.objects.get(name='Assessoras Maracanaú')
-        gAMc = Group.objects.get(name='Assessoras Maceió')
+        gAM = Group.objects.get(name=u'Assessoras Maracanaú')
+        gAMc = Group.objects.get(name=u'Assessoras Maceió')
 
         gGestN = Group.objects.get(name='Gestores Natal')
-        gGestC = Group.objects.get(name='Gestores Camaçari')
+        gGestC = Group.objects.get(name=u'Gestores Camaçari')
         gGestO = Group.objects.get(name='Gestores Olinda')
-        gGestMar = Group.objects.get(name='Gestores Maracanaú')
-        gGestMac = Group.objects.get(name='Gestores Maceió')
+        gGestMar = Group.objects.get(name=u'Gestores Maracanaú')
+        gGestMac = Group.objects.get(name=u'Gestores Maceió')
 
         # Assign groups to its respectives forums
         # Forum Geral
@@ -265,7 +265,7 @@ class Command(BaseCommand):
 
                 topics[row['id']] = Topic.objects.create(
                     forum=destination['forum'],
-                    title=row['name'].encode('utf-8'),
+                    title=row['name'],
                     author=User.objects.get(email=row['email']),
                     last_activity_at=last_activity_at,
                     created_at=last_activity_at,
@@ -360,6 +360,7 @@ class Command(BaseCommand):
                             updated_at=modified,
                         )
                     else:
+
                         comments[row['id']] = Comment.objects.create(
                             topic=topics[row['discussion']],
                             text=row['message'],
