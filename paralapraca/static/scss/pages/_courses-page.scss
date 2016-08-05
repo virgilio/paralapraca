@@ -22,8 +22,9 @@
         }
         .course-description {
             .course-title {
-                font-size: 40px;
+                font-size: 48px;
                 margin-top: 0;
+                max-height: initial;
             }
             .course-info {
                 font-size: $font-size-base;
