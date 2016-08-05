@@ -4,9 +4,11 @@
 {% load i18n %}
 {% load timtec_markdown %}
 {% load is_assistant_or_coordinator %}
+{% load compress %}
 
 {% if in_admin %}
     {% block js %} {{block.super}}
+    {% compress js %}
     <script type="text/javascript" src="{% static 'js/new-course/app.js' %}">// must be the 1º</script>
     <script type="text/javascript" src="{% static 'js/factories/timtec-models.js' %}">// must be the 2º</script>
     <script type="text/javascript" src="{% static 'js/filters/text.js' %}"></script>
@@ -19,6 +21,8 @@
     <script type="text/javascript" src="{% static 'js/new-course/controllers.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/markdown/app.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/markdown/filters.js' %}"></script>
+    {% endcompress %}
+
     <script>
         window.course_id = {{ course.pk }};
     </script>
@@ -244,7 +248,7 @@ wrapper-course-intro
                     <!-- ABSTRACT -->
                     <div class="abstract">
                         <div class="secondary-page-header first">
-                            <h3><i ng-class="{'blink-text-danger':errors.abstract}" class="fa fa-angle-double-right"></i> {% trans 'Abstract' %}</h3>
+                            <h3><i ng-class="{'blink-text-danger':errors.abstract}" class="fa fa-angle-double-right"></i> Apresentação</h3>
                         </div>
                         {% if in_admin %}
                             <modalmarkdowneditor tabindex="2" on-save="saveCourse()" title="{% trans 'Abstract' %}" content="course.abstract"></modalmarkdowneditor>
@@ -270,7 +274,9 @@ wrapper-course-intro
                     <!-- REQUIREMENT -->
                     <div class="requirement">
                         <div class="secondary-page-header">
-                            <h3 class="top"><i ng-class="{'blink-text-danger':errors.requirement}" class="fa fa-angle-double-right"></i> {% trans "What do I have to know?" %}</h3>
+                            <h3 class="top" ng-show="course.requirement">
+                                <i ng-class="{'blink-text-danger':errors.requirement}" class="fa fa-angle-double-right"></i> {% trans "What do I have to know?" %}
+                            </h3>
                         </div>
                         {% if in_admin %}
                             <modalmarkdowneditor tabindex="7" on-save="saveCourse()" title="{% trans 'Requirements' %}" content="course.requirement"></modalmarkdowneditor>
@@ -365,7 +371,7 @@ wrapper-course-intro
             <section class="lessons" id="lesson-list">
                 <!-- PAGE-HEADER-DOUBLE -->
                 <div class="secondary-page-header">
-                    <h3><i class="fa fa-angle-double-right"></i> {% trans "Lessons" %}</h3>
+                    <h3><i class="fa fa-angle-double-right"></i> Capítulos</h3>
                 </div>
                 <!-- END PAGE-HEADER-DOUBLE -->
 
