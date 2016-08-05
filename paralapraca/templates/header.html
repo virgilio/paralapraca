@@ -1,8 +1,16 @@
 {% load i18n %}
 {% load is_coordinator %}
-{% load pipeline %}
+{% load staticfiles %}
+{% load compress %}
 
-{% javascript 'plpc-header' %}
+
+{% compress js %}
+<script type="text/javascript" src="{% static 'js/header-controllers.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/header-directives.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/header-filters.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/header-app.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/discussion-services.js' %}"></script>
+{% endcompress %}
 
 <header ng-controller="HeaderCtrl" class="site-header" role="navigation">
     <div class="user-info" ng-click="toggle_main_nav_display()" ng-cloak>
@@ -37,21 +45,7 @@
     {% if user.is_authenticated %}
     <div ng-if="show_notification" class="notifications-panel" ng-cloak>
         <h2 class="notifications-title">Notificações</h2>
-        <ul class="notifications-list">
-        {% verbatim %}
-            <li class="notifications-item" ng-if="!notifications_loaded">
-                <span class="info">Carregando notificações&hellip;</span>
-            </li>
-            <li class="notifications-item" ng-if="notifications.length === 0 && notifications_loaded">
-                <span class="info">Sem notificações</span>
-            </li>
-            <li class="notifications-item" ng-repeat="notification in notifications">
-                <span class="icon"><img ng-src="{{notification.user.picture || 'http://placehold.it/40'}}"></span>
-                <span class="info"><b>{{notification.topic.author.first_name || notification.topic.author.first_name}}</b> {{notification.action | actionFilter }} tópico <a href="/discussion/topic/##{{notification.topic.id}}">{{notification.topic.title}}</a> no fórum <a href="#">{{notification.topic.forum.title}}</a></span>
-                <span class="date">há {{notification.date | dateFilter }}</span>
-            </li>
-        {% endverbatim %}
-        </ul>
+        <notifications ng-model="notifications"></notifications>
         <!--<a href="#" class="see-more">ver todos</a>-->
     </div>
 {% endif %}
