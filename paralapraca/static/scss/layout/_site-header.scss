@@ -39,8 +39,8 @@
         border-radius: 100%;
         box-shadow: 2px 2px 4px 0 rgba(0, 0, 0, 0.5);
         height: 34px;
-        margin: 0 auto; 
-        text-align: center; 
+        margin: 0 auto;
+        text-align: center;
         width: 34px;
         @media screen and (min-width: $screen-sm-min) {
             height: 40px;
@@ -75,7 +75,7 @@
         @media screen and (min-width: $screen-sm-min) {
             font-size: $font-size-small;
             margin-top: 5px;
-        } 
+        }
     }
 }
 
@@ -110,7 +110,7 @@
         left: 100px;
     }
     h1 {
-        margin: 0; 
+        margin: 0;
         width: 100%;
     }
     a {
@@ -121,7 +121,7 @@
         max-height: 24px;
         @media screen and (min-width: $screen-sm-min) {
             margin: 25px 0;
-            max-height: 30px; 
+            max-height: 30px;
         }
     }
 }
@@ -164,7 +164,7 @@
         height: 26px;
         line-height: 120%;
         overflow: hidden;
-        text-align: center; 
+        text-align: center;
         text-transform: lowercase;
         width: 26px;
         @include link-hover(#000,#000,transparent,#000);
@@ -172,7 +172,7 @@
         @media screen and (min-width: $screen-xs-min) {
             height: initial;
             width: initial;
-            overflow: initial; 
+            overflow: initial;
         }
         &:before {
             display: block;
@@ -237,14 +237,15 @@
     .notifications-list {
         background-color: #fff;
         list-style: none;
-        height: 490px;
+        height: auto;
+        max-height: 490px;
         margin-bottom: 0;
-        overflow: hidden;  
+        overflow: auto;
         padding: 0;
         .notifications-item {
             border-bottom: 1px solid rgba($gray-light,0.3);
             font-size: 11px;
-            overflow: hidden; 
+            overflow: hidden;
             padding: 10px;
             &.not-read {
                 background-color: rgba($gray-light,0.15);
@@ -283,7 +284,7 @@
         font-weight: $bold;
         line-height: 11px;
         padding: 5px;
-        text-align: center; 
-        text-decoration: none; 
+        text-align: center;
+        text-decoration: none;
     }
 }
