@@ -24,7 +24,7 @@
                     <h2 class="title" ng-cloak>Fóruns > {{ topic.forum_info.title }}</h2>
                 </div>
                 <div class="pull-right">
-                    <a href="/discussion/forum/" class="btn btn-link goback"><span>voltar para os tópicos</span></a>
+                    <a ng-href="/discussion/forum-detail/##{{ topic.forum }}" class="btn btn-link goback"><span>voltar para os tópicos</span></a>
                 </div>
             </div>
         </div>
@@ -51,7 +51,7 @@
                             <a ng-click="topic.show_comment_input=true" class="action replies">comentar</a>
                         </div>
                         <div class="pull-right">
-                            <span class="action liked">{{ topic.count_likes }} curtiram</span>
+                            <span class="action liked">{{ topic.count_likes }} gostaram</span>
                             <!--<span class="action used">7 usaram</span>-->
                             <span class="action replies">{{ topic.count_replies }} respostas</span>
                         </div>
@@ -92,7 +92,7 @@
                                     <a ng-click="comment.show_comment_input=true" class="action replies">comentar</a>
                                 </div>
                                 <div class="pull-right">
-                                    <span class="action liked">{{ comment.count_likes }} curtiram</span>
+                                    <span class="action liked">{{ comment.count_likes }} gostaram</span>
                                     <!--<span class="action replies">30 respostas</span>-->
                                 </div>
                             </div>
@@ -122,7 +122,7 @@
                                         <a ng-click="reply.show_comment_input=true" class="action replies">comentar</a>
                                     </div>
                                     <div class="pull-right">
-                                        <span class="action liked">{{ reply.count_likes }} curtiram</span>
+                                        <span class="action liked">{{ reply.count_likes }} gostaram</span>
                                     </div>
                                 </div>
                             </div>

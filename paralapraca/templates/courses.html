@@ -30,49 +30,48 @@ ng-app="my-courses"
                 <h2><i class="fa fa-angle-double-right"></i> Módulos</h2>
             </header>
             {% verbatim %}
-            <section class="courses-list row" ng-cloak>
-                <div class="col-md-8 col-lg-9">
-                    <!-- COURSE -->
-                    <div class="course-box course-widget widget" ng-repeat="course in courses">
-                        <div class="line two-column fifty-fifty">
-                            <div ng-if="course.course_student" class="course-progress column">
-                                <div class="progress">
-                                    <div class="progress-bar" role="progressbar" aria-valuenow="{{course.course_student.percent_progress}}" aria-valuemin="0" aria-valuemax="100" style="width: {{course.course_student.percent_progress}}%;">
-                                    </div>
-                                </div>
-                            </div>
-                            <div ng-if="course.course_student" class="progress-label column">{{course.course_student.percent_progress}}% completo</div>
-                        </div>
-                        <div class="line two-column fifty-fifty">
-                            <div class="course-thumb column">
-                                <a ng-href="/course/{{ course.slug }}/resume" class="course-link">
-                                    <div class="course-thumb-bg" ng-style="{'background-image':'url('+course.thumbnail_url+')'}"></div>
-                                </a>
-                                <!--<div ng-if="!course.home_thumbnail" class="course-thumb-bg"></div>-->
-                                <a ng-if="course.course_student"
-                                   ng-href="/course/{{ course.slug }}/resume"
-                                   class="continue">continuar módulo</a>
+            <section class="courses-list" ng-cloak>
 
-                                <a ng-if="course.course_student===undefined"
-                                   ng-href="/course/{{ course.slug }}/resume"
-                                   class="start">começar módulo</a>
-                            </div>
-                            <div class="course-description column">
-                                <h3 class="course-title"><a ng-href="/course/{{ course.slug }}/resume"
-                                   class="course-link">{{ course.name }}</a></h3>
-                                <div  class="course-info">
-                                    <a ng-href="/course/{{ course.slug }}/resume" class="course-link">
-                                        <p ng-if="course.course_student"><b>Iniciado em:</b> {{course.course_student.course.start_date | date: "dd/MM/yyyy"}}</p>
-                                        <!--<p>você parou em <span class="unit-title">Nome da Unidade e Também o Nome da Aula</span></p>-->
-                                    </a>
-                                    <p ng-if="course.is_assistant_or_coordinator"><a ng-href="/course/{{ course.slug }}/reports" class="see-report">Ver relatório</a></p>
-                                    <p ng-if="!course.course_student">Você ainda não começou este móodulo </p>
+                <!-- COURSE -->
+                <div class="course-box course-widget" ng-repeat="course in courses">
+                    <div ng-if="course.course_student" class="row">
+                        <div class="course-progress col-sm-5 col-md-4">
+                            <div class="progress">
+                                <div class="progress-bar" role="progressbar" aria-valuenow="{{course.course_student.percent_progress}}" aria-valuemin="0" aria-valuemax="100" style="width: {{course.course_student.percent_progress}}%;">
                                 </div>
-                                <!--<p class="course-update"><strong>atualização:</strong> lorem ipsum dolor sit amet, consectetur adipiscing elit | <span>xx horas atrás</span></p>-->
+                            </div>
+                        </div>
+                        <div class="progress-label col-sm-7 col-md-8">{{course.course_student.percent_progress}}% completo</div>
+                    </div>
+                    <div class="row">
+                        <div class="course-thumb col-sm-5 col-md-4">
+                            <a ng-href="/course/{{ course.slug }}/resume" class="course-link">
+                                <div class="course-thumb-bg" ng-style="{'background-image':'url('+course.thumbnail_url+')'}"></div>
+                            </a>
+                            <!--<div ng-if="!course.home_thumbnail" class="course-thumb-bg"></div>-->
+                            <a ng-if="course.course_student"
+                               ng-href="/course/{{ course.slug }}/resume"
+                               class="continue">continuar módulo</a>
+
+                            <a ng-if="course.course_student===undefined"
+                               ng-href="/course/{{ course.slug }}/intro"
+                               class="start">começar módulo</a>
+                        </div>
+                        <div class="course-description col-sm-7 col-md-8">
+                            <h3 class="course-title"><a ng-href="/course/{{ course.slug }}/resume"
+                               class="course-link">{{ course.name }}</a></h3>
+                            <div  class="course-info">
+                                <a ng-href="/course/{{ course.slug }}/resume" class="course-link">
+                                    <p ng-if="course.course_student"><b>Iniciado em:</b> {{course.course_student.course.start_date | date: "dd/MM/yyyy"}}</p>
+                                    <!--<p>você parou em <span class="unit-title">número e nome do capítulo</span></p>-->
+                                </a>
+                                <p ng-if="course.is_assistant_or_coordinator"><a ng-href="/course/{{ course.slug }}/reports" class="see-report">Ver relatório</a></p>
+                                <p ng-if="!course.course_student">Você ainda não começou este módulo </p>
                             </div>
                         </div>
                     </div>
                 </div>
+
                 <!--<div class="col-md-4 col-lg-3">-->
                     <!--<div class="course-filters">-->
                         <!--&lt;!&ndash;  FORM INLINE &ndash;&gt;-->
