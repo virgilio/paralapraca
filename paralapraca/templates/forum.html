@@ -63,7 +63,7 @@
                 <div class="info">
                     <a ng-href="/profile/{{ topic.author.username }}">
                       <b>{{ topic.author.name }}</b>
-                    </a> comentou no tópico <a href="/discussion/topic/##{{ topic.id }}" class="thread-name">{{ topic.title }}</a> no fórum <a ng-href="/discussion/forum/##{{ topic.forum }}">{{ topic.forum_info.title }}</a>
+                    </a> comentou no tópico <a href="/discussion/topic/##{{ topic.id }}" class="thread-name">{{ topic.title }}</a> no fórum <a ng-href="/discussion/forum-detail/##{{ topic.forum }}">{{ topic.forum_info.title }}</a>
                 </div>
                 <div class="actions">
                     <span class="action replies">{{  topic.count_replies }} resposta</span>
@@ -77,7 +77,7 @@
         <div ng-repeat="forum in forums">
             <div class="line one-column" ng-if="forum.latest_topics.length>0 && !forum_single">
                 <div class="column">
-                    <h3 class="section-title"><a ng-href="/discussion/forum/##{{ forum.id }}">{{ forum.title }}</a></h3>
+                    <h3 class="section-title"><a ng-href="/discussion/forum-detail/##{{ forum.id }}">{{ forum.title }}</a></h3>
                 </div>
             </div>
 
