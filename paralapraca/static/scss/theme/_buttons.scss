@@ -68,6 +68,9 @@ a {
     &.attach {
         @include button-hover(#fff,#fff,$purple,darken($purple,10%));
     }
+    &.new-topic {
+        @include button-hover(#fff,#fff,lighten($orange,20%),lighten($orange,10%));
+    }
     &.reply {
         @include button-hover(#fff,#fff,$pink,darken($pink,10%));
     }

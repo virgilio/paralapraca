@@ -86,6 +86,9 @@
     &-map-pin {
         @include icon(before, map-pin);
     }
+    &-new-topic {
+        @include icon(before, new-topic);
+    }
     &-notes {
         @include icon(before, notes);
     }
