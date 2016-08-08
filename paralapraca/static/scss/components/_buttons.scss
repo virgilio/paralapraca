@@ -91,6 +91,9 @@
         @include link-hover(rgba(#fff,0.8),#fff,rgba(#fff,0.8),#fff);
         font-weight: $normal;
     }
+    &.new-topic {
+        @extend %icon-new-topic;
+    }
     &.notes {
         @extend %icon-notes;
     }
