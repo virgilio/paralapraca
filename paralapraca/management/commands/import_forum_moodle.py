@@ -254,6 +254,10 @@ class Command(BaseCommand):
                 # Find out wich forum is the corret one for the current topic
                 destination = exchange.get(int(row['forum']))
 
+                if not destination:
+                    print("The given CSV file has at least one unkonwn forum. Aborting.")
+                    sys.exit()
+
                 last_activity_at = timezone.make_aware(
                     datetime.datetime.fromtimestamp(
                         float(
