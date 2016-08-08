@@ -13,10 +13,10 @@
 {% endblock %}
 
 {% block content %}
+<ng-view></ng-view>
 
-<div ng-controller="NewTopicCtrl">
-
-    {% verbatim %}
+{% verbatim %}
+<script type="text/ng-template" id="topic-new.html">
     <section class="forums forums-page forums-widget thread widget container-fluid">
         <div class="widget-topbar">
             <div class="line">
@@ -24,7 +24,7 @@
                     <h2 class="title" ng-cloak>Fóruns > Novo Tópico</h2>
                 </div>
                 <div class="pull-right">
-                    <a href="/discussion/forum/" class="btn btn-link goback"><span>voltar para fóruns</span></a>
+                    <a href="/discussion/" class="btn btn-link goback"><span>voltar para fóruns</span></a>
                 </div>
             </div>
         </div>
@@ -102,8 +102,6 @@
             </div>
         </div>
     </section>
-    {% endverbatim %}
-
-</div>
-
+</script>
+{% endverbatim %}
 {% endblock %}

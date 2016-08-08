@@ -14,9 +14,11 @@
 
 {% block content %}
 
-<div ng-controller="ForumCtrl" ng-cloak>
+<ng-view></ng-view>
 
-    <section class="forums forums-page forums-widget widget container-fluid">
+{% verbatim %}
+<script type="text/ng-template" id="forum.html">
+    <section class="forums forums-page forums-widget widget container-fluid" ng-cloak>
         <div class="widget-topbar line one-column">
             <!--<div class="column">-->
                 <!--<button class="btn btn-link clean">limpar filtro</button>-->
@@ -27,12 +29,18 @@
         <header class="widget-header line two-column fifty-fifty" ng-if="!forum_single">
             <div class="column">
                 <h2 class="widget-title">fóruns</h2>
-                <a class="btn btn-success new-topic" href="/discussion/topic/new/" ><i class="fa fa-sign-in" aria-hidden="true"></i> criar novo tópico</a>
+                <a class="btn btn-success new-topic"
+                   href="/discussion/topic/new/#!/topic/new/"><i class="fa fa-sign-in" aria-hidden="true"></i> criar novo tópico</a>
             </div>
             <div class="column">
                 <form class="widget-filter form-inline">
                     <div>
-                    <input class="form-control" type="text" placeholder="Busca nos fóruns..." ng-model="search" uib-typeahead="result.title for result in getResults($viewValue)" typeahead-loading="search_loading">
+                    <input class="form-control"
+                           type="text"
+                           placeholder="Busca nos fóruns..."
+                           ng-model="search"
+                           uib-typeahead="result.title for result in getResults($viewValue)"
+                           typeahead-loading="search_loading">
                     <!-- for testing -->
                     <span style="
                         position: absolute;
@@ -51,13 +59,14 @@
 
         <header class="widget-header line one-column" ng-if="forum_single">
             <div class="column">
-                <h2 ng-if="forum_single" class="widget-title">{% verbatim %}{{forum.title}} {% endverbatim %}</h2>
-                <a class="btn btn-success new-topic" href="/discussion/topic/new/" ><i class="fa fa-sign-in" aria-hidden="true"></i> criar novo tópico</a>
+                <h2 ng-if="forum_single" class="widget-title">{{forum.title}}</h2>
+                <a class="btn btn-success new-topic"
+                   href="/discussion/topic/new/#!/topic/new/" ><i class="fa fa-sign-in" aria-hidden="true"></i> criar novo tópico</a>
             </div>
             <div class="column">
-                <form class="widget-filter form-inline">
+                <!-- <form class="widget-filter form-inline">
                     <input class="form-control" type="text" placeholder="Busca nos fóruns..." ng-model="search" uib-typeahead="result for results in getResults($viewValue)" typeahead-loading="loadingLocations" typeahead-no-results="noResults">
-                </form>
+                </form> -->
             </div>
         </header>
 
@@ -68,7 +77,6 @@
         </div>
 
         <div class="line two-column fifty-fifty" ng-if="!forum_single">
-          {% verbatim %}
             <div class="user-update column" ng-repeat="topic in latest_topics">
                 <div class="user-icon">
                     <img ng-src="{{ topic.author.picture }}" alt="{{ topic.author.name }}">
@@ -76,21 +84,19 @@
                 <div class="info">
                     <a ng-href="/profile/{{ topic.author.username }}">
                       <b>{{ topic.author.name }}</b>
-                    </a> comentou no tópico <a href="/discussion/topic/##{{ topic.id }}" class="thread-name">{{ topic.title }}</a> no fórum <a ng-href="/discussion/forum-detail/##{{ topic.forum }}">{{ topic.forum_info.title }}</a>
+                  </a> comentou no tópico <a href="/discussion/topic/#!/topic/{{ topic.id }}" class="thread-name">{{ topic.title }}</a> no fórum <a ng-href="/discussion/#!/forum/{{ topic.forum }}">{{ topic.forum_info.title }}</a>
                 </div>
                 <div class="actions">
                     <span class="action replies">{{  topic.count_replies }} resposta</span>
                     <span class="action liked">{{ topic.count_likes }} gostaram</span>
                 </div>
             </div>
-          {% endverbatim %}
         </div>
 
-        {% verbatim %}
         <div ng-repeat="forum in forums">
             <div class="line one-column" ng-if="forum.latest_topics.length>0 && !forum_single">
                 <div class="column">
-                    <h3 class="section-title"><a ng-href="/discussion/forum-detail/##{{ forum.id }}">{{ forum.title }}</a></h3>
+                    <h3 class="section-title"><a ng-href="/discussion/#!/forum/{{ forum.id }}">{{ forum.title }}</a></h3>
                 </div>
             </div>
 
@@ -114,7 +120,7 @@
                     <tbody>
                         <tr ng-repeat="topic in forum.latest_topics">
                             <td>
-                                <a ng-href="/discussion/topic/##{{ topic.id }}"><span class="thread-name">{{ topic.title }}</span></a>
+                                <a ng-href="/discussion/topic/#!/topic/{{ topic.id }}"><span class="thread-name">{{ topic.title }}</span></a>
                                 <span class="last-update">Última atividade em <b>{{ topic.last_activity_at | date: "dd/MM/yyyy' às 'HH:mm"}}</b></span>
                             </td>
                             <td>
@@ -153,10 +159,7 @@
                 </table>
             </div>
         </div>
-        {% endverbatim %}
-
     </section>
-
-</div>
-
+</script>
+{% endverbatim %}
 {% endblock %}

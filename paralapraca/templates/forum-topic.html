@@ -13,10 +13,10 @@
 {% endblock %}
 
 {% block content %}
+<ng-view></ng-view>
 
-<div ng-controller="TopicCtrl">
-
-    {% verbatim %}
+{% verbatim %}
+<script type="text/ng-template" id="topic-detail.html">
     <section class="forums forums-page forums-widget thread widget container-fluid">
         <div class="widget-topbar">
             <div class="line">
@@ -24,7 +24,7 @@
                     <h2 class="title" ng-cloak>Fóruns > {{ topic.forum_info.title }}</h2>
                 </div>
                 <div class="pull-right">
-                    <a ng-href="/discussion/forum-detail/##{{ topic.forum }}" class="btn btn-link goback"><span>voltar para os tópicos</span></a>
+                    <a ng-href="/discussion/#!/forum/{{ topic.forum }}" class="btn btn-link goback"><span>voltar para os tópicos</span></a>
                 </div>
             </div>
         </div>
@@ -39,7 +39,7 @@
                         <h4 class="thread-header"><span class="thread-title">{{ topic.title }}</span> por <span class="user-name"> <a ng-href="/profile/{{ topic.author.username }}">{{ topic.author.name }}</a></span></h4>
                     </div>
                     <div class="tags">
-                        <a href="#" class="tag" ng-repeat="tag in topic.tags">#{{ tag.name }}</a>
+                        <a href="" class="tag" ng-repeat="tag in topic.tags">#{{ tag.name }}</a>
                     </div>
 
                     <div class="thread-post" ng-bind-html="topic.content"></div>
@@ -58,7 +58,7 @@
                     </div>
 
                     <form class="comments-form" ng-show="topic.show_comment_input">
-                        <textarea ui-tinymce="tinymceOptions"
+                        <textarea ui-tinymce
                                   ng-model="topic.new_comment"
                                   placeholder="Escreva aqui o seu comentário"></textarea>
                         <button class="btn btn-xs btn-success reply" ng-click="save_comment(topic, null)">comentar</button>
@@ -77,7 +77,7 @@
                                 </span>
                                 <div class="comment-post" ng-bind-html="comment.text"></div>
                                 <form class="comments-form" ng-show="comment.show_comment_input">
-                                    <textarea ui-tinymce="tinymceOptions"
+                                    <textarea ui-tinymce
                                               ng-model="comment.new_comment"
                                               placeholder="Escreva aqui o seu comentário"></textarea>
                                     <button class="btn btn-xs btn-success reply" ng-click="save_comment(topic, comment);comment.show_comment_input=false;">comentar</button>
@@ -107,7 +107,7 @@
                                     </span>
                                     <div class="comment-post" ng-bind-html="reply.text"></div>
                                     <form class="comments-form" ng-show="reply.show_comment_input">
-                                        <textarea ui-tinymce="tinymceOptions"
+                                        <textarea ui-tinymce
                                                   ng-model="comment.new_comment"
                                                   placeholder="Escreva aqui o seu comentário"></textarea>
                                         <button class="btn btn-xs btn-success reply" ng-click="save_comment(topic, comment);reply.show_comment_input=false;">comentar</button>
@@ -131,10 +131,7 @@
                 </div>
             </div>
         </div>
-
     </section>
-    {% endverbatim %}
-
-</div>
-
+</script>
+{% endverbatim %}
 {% endblock %}
