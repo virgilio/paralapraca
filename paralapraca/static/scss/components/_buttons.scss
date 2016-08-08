@@ -45,6 +45,9 @@
     &.add {
         @extend %icon-add;
     }
+    &.attach {
+        @extend %icon-file;
+    }
     &.clean {
         @extend %icon-undo;
         @include link-hover(#fff,#fff,#fff,transparent);

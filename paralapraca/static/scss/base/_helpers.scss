@@ -47,6 +47,9 @@
     &-expand {
         @include icon(after, expand);
     }
+    &-file {
+        @include icon(before, file);
+    }
     &-film {
         @include icon(before, film);
     }
@@ -67,6 +70,9 @@
     }
     &-like {
         @include icon(before, like);
+    }
+    &-link {
+        @include icon(before, link);
     }
     &-login {
         @include icon(before, login);
