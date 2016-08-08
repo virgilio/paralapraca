@@ -272,9 +272,6 @@ class Command(BaseCommand):
                     updated_at=last_activity_at,
                 )
 
-                # Store new and old topic id in a csv for future reference
-                topics_csv.append([row['id'], topics[row['id']].id])
-
                 # Add all categories relevant to this topic1
                 if 'category' in destination:
                     topics[row['id']].categories.add(destination['category'])
@@ -287,14 +284,7 @@ class Command(BaseCommand):
 
                 count += 1
                 if count % 100 == 0:
-                    print '.',
-
-        # Now that all the topics have been writeen in the Django database,
-        # we must store the association data in a csv file
-        with open('topicos_migrados.csv', 'w') as file:
-            w = csv.writer(file, dialect='dialeto')
-            for row in topics_csv:
-                w.writerow(row)
+                    print ('.')
 
         with open(files[1], 'r') as csvfile:
             readf = unicodecsv.DictReader(csvfile)
@@ -337,6 +327,11 @@ class Command(BaseCommand):
                     disc.updated_at = modified
                     disc.save()
 
+                    # Store new and old topic id in a csv for future reference
+                    # Note that the moodle id saved here corresponds to the "comment" that holds the topic text in the moodle database.
+                    # This number is important, since it is also used to associate both topics and comments to attachments in moodle
+                    topics_csv.append([row['id'], disc.id])
+
                 else:
                     # If we got here, the current comment has another comment as a parent
                     # Now, we must resolve the parent id to the first comment in the nesting tree
@@ -374,7 +369,14 @@ class Command(BaseCommand):
 
                     count += 1
                     if count % 100 == 0:
-                        print '.',
+                        print ('.')
+
+        # Now that all the topics have been writeen in the Django database,
+        # we must store the association data in a csv file
+        with open('topicos_migrados.csv', 'w') as file:
+            w = csv.writer(file, dialect='dialeto')
+            for row in topics_csv:
+                w.writerow(row)
 
         # Now that all the comments have been writeen in the Django database,
         # we must store the association data in a csv file
