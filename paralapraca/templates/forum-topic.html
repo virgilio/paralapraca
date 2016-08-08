@@ -44,6 +44,18 @@
 
                     <div class="thread-post" ng-bind-html="topic.content"></div>
 
+                    <!--
+                    DIV DE ARQUIVOS ANEXOS: deve ficar dentro da div.thread-post
+
+                    <div class="post-attachments">
+                        <span>3 arquivos anexos:</span>
+                        <ul>
+                            <li><a href="">lorem_ipsum_dolor_site_amet.pdf</a></li>
+                            <li><a href="">lorem_ipsum_dolor_site_amet.pdf</a></li>
+                            <li><a href="">lorem_ipsum_dolor_site_amet.pdf</a></li>
+                        </ul>
+                    </div> -->
+
                     <div class="actions">
                         <div class="pull-left">
                             <a ng-click="topic_like(topic)" ng-class="{ 'active': topic.user_like }" class="action liked">gostei</a>
@@ -61,8 +73,9 @@
                         <textarea ui-tinymce
                                   ng-model="topic.new_comment"
                                   placeholder="Escreva aqui o seu comentário"></textarea>
-                        <button class="btn btn-xs btn-success reply" ng-click="save_comment(topic, null)">comentar</button>
-                        <button class="btn btn-xs btn-danger delete" ng-click="topic.show_comment_input=false">descartar</button>
+                        <!-- <button class="btn btn-xs btn-primary attach pull-left">anexar arquivo</button> -->
+                        <button class="btn btn-xs btn-success reply pull-right" ng-click="save_comment(topic, null)">comentar</button>
+                        <button class="btn btn-xs btn-danger delete pull-right" ng-click="topic.show_comment_input=false">descartar</button>
                     </form>
 
                     <div class="comments">
@@ -80,8 +93,9 @@
                                     <textarea ui-tinymce
                                               ng-model="comment.new_comment"
                                               placeholder="Escreva aqui o seu comentário"></textarea>
-                                    <button class="btn btn-xs btn-success reply" ng-click="save_comment(topic, comment);comment.show_comment_input=false;">comentar</button>
-                                    <button class="btn btn-xs btn-danger delete" ng-click="comment.show_comment_input=false">descartar</button>
+                                    <!-- <button class="btn btn-xs btn-primary attach pull-left">anexar arquivo</button> -->
+                                    <button class="btn btn-xs btn-success reply pull-right" ng-click="save_comment(topic, comment);comment.show_comment_input=false;">comentar</button>
+                                    <button class="btn btn-xs btn-danger delete pull-right" ng-click="comment.show_comment_input=false">descartar</button>
                                 </form>
                             </div>
                             <div class="actions">
@@ -110,8 +124,9 @@
                                         <textarea ui-tinymce
                                                   ng-model="comment.new_comment"
                                                   placeholder="Escreva aqui o seu comentário"></textarea>
-                                        <button class="btn btn-xs btn-success reply" ng-click="save_comment(topic, comment);reply.show_comment_input=false;">comentar</button>
-                                        <button class="btn btn-xs btn-danger delete" ng-click="reply.show_comment_input=false">descartar</button>
+                                        <!-- <button class="btn btn-xs btn-primary attach pull-left">anexar arquivo</button> -->
+                                        <button class="btn btn-xs btn-success reply pull-right" ng-click="save_comment(topic, comment);reply.show_comment_input=false;">comentar</button>
+                                        <button class="btn btn-xs btn-danger delete pull-right" ng-click="reply.show_comment_input=false">descartar</button>
                                     </form>
                                 </div>
                                 <div class="actions">

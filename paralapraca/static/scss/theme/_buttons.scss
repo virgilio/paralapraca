@@ -64,6 +64,21 @@ a {
     }
 }
 
+.btn {
+    &.attach {
+        @include button-hover(#fff,#fff,$purple,darken($purple,10%));
+    }
+    &.reply {
+        @include button-hover(#fff,#fff,$pink,darken($pink,10%));
+    }
+}
+
+.comments-form {
+    .btn.delete {
+        @include button-hover(#fff,#fff,$gray,darken($gray,10%));
+    }
+}
+
 // lesson's activities buttons
 
 /* .course-activity {

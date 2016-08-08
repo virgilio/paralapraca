@@ -20,6 +20,18 @@
     }
 }
 
+
+.post-attachments {
+    border: 1px solid $purple;
+    color: $purple;
+    ul {
+        border-color: rgba($purple,0.7);
+    }
+    a {
+        @include link-hover($purple,$purple,$purple,transparent);
+    }
+}
+
 .comments-form {
     textarea {
         border: 2px solid $pink;
