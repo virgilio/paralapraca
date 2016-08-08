@@ -52,9 +52,9 @@ class Command(BaseCommand):
         with open(files[0], 'r') as csvfile:
             readf = unicodecsv.DictReader(csvfile)
             for row in readf:
-                if not row['filename']:
+                if row['filename'] == '.':
                     print("skipped: " + row['filename'])
-                    continue  # If there is no filename data in the moodle table, this file must be skipped
+                    continue  # If there is no valid filename data in the moodle table, this file must be skipped
 
                 # Check if the current attachment belongs to a imported topic or comment
                 cur = db.cursor()
