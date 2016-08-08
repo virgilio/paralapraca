@@ -30,9 +30,22 @@
                 <a class="btn btn-success new-topic" href="/discussion/topic/new/" ><i class="fa fa-sign-in" aria-hidden="true"></i> criar novo tópico</a>
             </div>
             <div class="column">
-                <!--<form class="widget-filter form-inline">-->
-                    <!--<input class="form-control" type="text" placeholder="Busca nos fóruns...">-->
-                <!--</form>-->
+                <form class="widget-filter form-inline">
+                    <div>
+                    <input class="form-control" type="text" placeholder="Busca nos fóruns..." ng-model="search" uib-typeahead="result.title for result in getResults($viewValue)" typeahead-loading="search_loading">
+                    <!-- for testing -->
+                    <span style="
+                        position: absolute;
+                        margin-top: 0.8em;
+                        display: block;
+                        padding: 0.5em;
+                        border-radius: 0.5em;
+                        background: white;
+                        z-index: 10000;
+                    " ng-show="search_loading">carregando sugestões</span>
+                    </div>
+                    <!-- endfor -->
+                </form>
             </div>
         </header>
 
@@ -42,9 +55,9 @@
                 <a class="btn btn-success new-topic" href="/discussion/topic/new/" ><i class="fa fa-sign-in" aria-hidden="true"></i> criar novo tópico</a>
             </div>
             <div class="column">
-                <!--<form class="widget-filter form-inline">-->
-                    <!--<input class="form-control" type="text" placeholder="Busca nos fóruns...">-->
-                <!--</form>-->
+                <form class="widget-filter form-inline">
+                    <input class="form-control" type="text" placeholder="Busca nos fóruns..." ng-model="search" uib-typeahead="result for results in getResults($viewValue)" typeahead-loading="loadingLocations" typeahead-no-results="noResults">
+                </form>
             </div>
         </header>
 
