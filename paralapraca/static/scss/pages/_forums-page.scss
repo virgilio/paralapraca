@@ -17,16 +17,21 @@
         background-color: transparent;
         border-top: 4px solid $brand-primary;
         margin-bottom: 5px;
+        padding: 7px 0;
         .line {
             border-bottom: 1px solid $brand-primary;
             color: $brand-primary;
             margin: 0 15px; 
-            padding-bottom: 10px;
+            padding-bottom: 7px;
             .title {
                 font-size: 18px;
                 font-weight: $semi-bold;
+                margin: 5px 0;
             }
-            .btn.goback {
+            .new-topic {
+                margin-right: 10px;
+            }
+            .goback {
                 @include link-hover($brand-primary,$brand-primary,$brand-primary,transparent);
             }
         }
