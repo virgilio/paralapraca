@@ -110,30 +110,59 @@
                 }
             }
         }
+        .organize-lessons {
+            .secondary-page-header {
+                margin-bottom: 30px;
+                h3 {
+                    display: inline-block;
+                    margin-right: 15px;
+                }
+                .btn {
+                    margin-top: -10px;
+                }
+            }
+            .lesson-units-nav {
+                margin-bottom: 10px;
+            }
+            .btn.add {
+                display: block;
+                width: 145px;
+                margin: 10px auto; 
+            }
+        }
         // ORGANIZING LESSONS AND INSTRUCTORS
         .lessons.organizing-lessons,
         .instructors.organizing-instructors {
-            margin-bottom: 10px;
+            margin-bottom: 30px;
             .lesson, .instructor {
-                border-bottom: 1px solid $gray-lighter;
+                border-bottom: 1px solid $gray;
                 margin-bottom: 0;
                 margin-top: 10px;
                 padding-bottom: 10px;
                 .title {
-                    display: inline-block;
-                    font-size: 14px;
-                    margin-left: 10px;
+                    display: block;
+                    float: left;
+                    font-size: $font-size-large;
+                    font-weight: $semi-bold;
+                    margin: 4px 10px;
                 }
-                .fa.fa-bars {
-                    cursor: move;
+                .handle {
+                    float: left;
+                    .btn {
+                        cursor: move;
+                    }
                 }
                 .fa.fa-minus-circle {
                     cursor: pointer;
                     color: $brand-danger;
                 }
             }
+            .actions {
+                text-align: right;
+            }
             .submit {
                 margin-top: 10px;
+                text-align: right;
             }
         }
     }
