@@ -61,6 +61,7 @@
                             <a ng-click="topic_like(topic)" ng-class="{ 'active': topic.user_like }" class="action liked">gostei</a>
                             <!--<a class="action used">usar</a>-->
                             <a ng-click="topic.show_comment_input=true" class="action replies">comentar</a>
+                            <!-- <span class="last-edit">xx de xx de xxxx às xxhxx</span> -->
                         </div>
                         <div class="pull-right">
                             <span class="action liked">{{ topic.count_likes }} gostaram</span>
@@ -104,6 +105,7 @@
                                        ng-class="{ 'active': comment.user_like }"
                                        class="action liked">gostei</a>
                                     <a ng-click="comment.show_comment_input=true" class="action replies">comentar</a>
+                                    <!-- <span class="last-edit">xx de xx de xxxx às xxhxx</span> -->
                                 </div>
                                 <div class="pull-right">
                                     <span class="action liked">{{ comment.count_likes }} gostaram</span>
@@ -135,6 +137,7 @@
                                            ng-class="{ 'active': reply.user_like }"
                                            class="action liked">gostei</a>
                                         <a ng-click="reply.show_comment_input=true" class="action replies">comentar</a>
+                                        <!-- <span class="last-edit">xx de xx de xxxx às xxhxx</span> -->
                                     </div>
                                     <div class="pull-right">
                                         <span class="action liked">{{ reply.count_likes }} gostaram</span>

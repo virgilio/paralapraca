@@ -112,7 +112,7 @@
         margin: 0 0 5px 0;
     }
     .last-edit {
-        color: $gray;
+        color: lighten($gray-light,10%);
         font-size: $font-size-small;
     }
     .thread-post {
