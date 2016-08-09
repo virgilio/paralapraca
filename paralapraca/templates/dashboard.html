@@ -36,8 +36,8 @@
 
         {% verbatim %}
         <div class="courses line two-column fifty-fifty">
-            <div class="course-box column" ng-repeat="course in my_courses">
-                <div class="line two-column">
+            <div class="course-box column" ng-repeat="course in courses">
+                <div ng-if="course.course_student" class="line two-column">
                     <div class="course-progress column">
                         <div class="progress">
                             <div class="progress-bar" role="progressbar"
@@ -53,28 +53,31 @@
                     <div class="course-thumb column">
                         <a href="/course/{{ course.course.slug }}/resume" class="course-link">
                             <div class="course-thumb-bg"
-                                 style="background-image: url({{course.course.home_thumbnail_url || 'http://placehold.it/800x600'}});">
+                                 style="background-image: url({{course.home_thumbnail_url || 'http://placehold.it/800x600'}});">
                             </div>
-                            <span class="btn continue">continuar módulo</span>
+                            <a ng-if="course.course_student"
+                               ng-href="/course/{{ course.slug }}/resume"
+                               class="continue">continuar módulo</a>
+
+                            <a ng-if="course.course_student===undefined"
+                               ng-href="/course/{{ course.slug }}/intro"
+                               class="start">começar módulo</a>
+                            <!-- <span class="btn continue">continuar módulo</span> -->
                         </a>
                     </div>
                     <div class="course-description column">
-                        <h3 class="course-title"><a href="/course/{{ course.course.slug }}/resume" class="course-link">{{course.course.name}}</a></h3>
+                        <h3 class="course-title"><a href="/course/{{ course.slug }}/resume" class="course-link">{{ course.name }}</a></h3>
                         <div class="course-info">
                             <a href="/course/{{ course.course.slug }}/resume" class="course-link">
-                            <p><b>Iniciado em:</b> {{course.course.start_date | date: "dd/MM/yyyy"}}</p>
+                            <p><b>Iniciado em:</b> {{course.course_student.start_date | date: "dd/MM/yyyy"}}</p>
                             <!--|<p><b>Cidade:</b> Camaçari</p>-->
                             <!--<p>você parou em <span class="unit-title">{{course.current_class.name}}</span></p>-->
                             </a>
-                            <p ng-if="course.course.is_assistant_or_coordinator"><a ng-href="/course/{{ course.course.slug }}/reports" class="see-report">Ver relatório</a></p>
+                            <p ng-if="course.is_assistant_or_coordinator"><a ng-href="/course/{{ course.slug }}/reports" class="see-report">Ver relatório</a></p>
+                            <p ng-if="!course.course_student">Você ainda não começou este módulo </p>
                         </div>
                     </div>
                 </div>
-                <!--<div class="line one-column">-->
-                    <!--<div class="column">-->
-                        <!--<p class="course-update"><strong>atualização:</strong> lorem ipsum dolor sit amet, consectetur adipiscing elit | <span>xx horas atrás</span></p>-->
-                    <!--</div>-->
-                <!--</div>-->
             </div>
         </div>
         {% endverbatim %}
