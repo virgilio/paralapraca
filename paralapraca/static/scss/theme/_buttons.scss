@@ -5,18 +5,27 @@
 
 .action {
     &.liked {
-        &:before {
+        &.active {
             color: $orange;
+            &:before {
+                color: $orange;
+            }
         }
     }
     &.used {
-        &:before {
+        &.active {
             color: $purple;
+            &:before {
+                color: $purple;
+            }
         }
     }
     &.replies {
-        &:before {
+        &.active {
             color: $pink;
+            &:before {
+                color: $pink;
+            }
         }
     }
 }
