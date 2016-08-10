@@ -58,9 +58,9 @@ body {
     // when the main navbar is opened
     .main-nav-opened {
         .wrapper {
-            left: 250px;
+            left: 245px;
             @media screen and (min-width: $screen-md-min) {
-                padding-right: 250px;
+                padding-right: 245px;
             }
         }
     }

@@ -2,9 +2,9 @@
 // --------------------------------------------------
 
 .main-nav {
-    background-color: $main-nav-bg-color; 
+    background-image: url(../img/bg-menu.png);
     bottom: 0;
-    left: -250px;
+    left: -245px;
     top: 0;
     position: fixed;
     @include transition(all 0.5s ease);
@@ -28,7 +28,7 @@
 .main-nav-opened { // when the offcanvas menu is opened
     .main-nav {
         left: 0;
-        width: 250px;
+        width: 245px;
     }
 }
 
