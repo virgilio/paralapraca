@@ -46,17 +46,19 @@
 
                     <div class="thread-post" ng-bind-html="topic.content"></div>
 
-                    <!--
-                    DIV DE ARQUIVOS ANEXOS: deve ficar dentro da div.thread-post
+                    
+                    <!-- DIV DE ARQUIVOS ANEXOS: deve ficar dentro da div.thread-post
 
                     <div class="post-attachments">
-                        <span>3 arquivos anexos:</span>
-                        <ul>
-                            <li><a href="">lorem_ipsum_dolor_site_amet.pdf</a></li>
-                            <li><a href="">lorem_ipsum_dolor_site_amet.pdf</a></li>
-                            <li><a href="">lorem_ipsum_dolor_site_amet.pdf</a></li>
-                        </ul>
-                    </div> -->
+                        <div class="attachments">
+                            <span>3 arquivos anexos:</span>
+                            <ul>
+                                <li><a href="">lorem_ipsum_dolor_site_amet.pdf</a></li>
+                                <li><a href="">lorem_ipsum_dolor_site_amet.pdf</a></li>
+                                <li><a href="">lorem_ipsum_dolor_site_amet.pdf</a></li>
+                            </ul>
+                        </div>
+                    </div>-->
 
                     <div class="actions">
                         <div class="pull-left">
@@ -100,6 +102,17 @@
                                     <button class="btn btn-xs btn-success reply pull-right" ng-click="save_comment(topic, comment);comment.show_comment_input=false;">comentar</button>
                                     <button class="btn btn-xs btn-danger delete pull-right" ng-click="comment.show_comment_input=false">descartar</button>
                                 </form>
+                                <!-- <button class="btn btn-xs attached"><u>3 arquivos anexos</u> + ...</button>
+                                <div class="post-attachments">
+                                    <div class="attachments">
+                                        <span>3 arquivos anexos:</span>
+                                        <ul>
+                                            <li><a href="">lorem_ipsum_dolor_site_amet.pdf</a></li>
+                                            <li><a href="">lorem_ipsum_dolor_site_amet.pdf</a></li>
+                                            <li><a href="">lorem_ipsum_dolor_site_amet.pdf</a></li>
+                                        </ul>
+                                    </div>
+                                </div>-->
                             </div>
                             <div class="actions">
                                 <div class="pull-left">
@@ -132,6 +145,17 @@
                                         <button class="btn btn-xs btn-success reply pull-right" ng-click="save_comment(topic, comment);reply.show_comment_input=false;">comentar</button>
                                         <button class="btn btn-xs btn-danger delete pull-right" ng-click="reply.show_comment_input=false">descartar</button>
                                     </form>
+                                    <!-- <button class="btn btn-xs attached"><u>3 arquivos anexos</u> + ...</button>
+                                    <div class="post-attachments">
+                                        <div class="attachments">
+                                            <span>3 arquivos anexos:</span>
+                                            <ul>
+                                                <li><a href="">lorem_ipsum_dolor_site_amet.pdf</a></li>
+                                                <li><a href="">lorem_ipsum_dolor_site_amet.pdf</a></li>
+                                                <li><a href="">lorem_ipsum_dolor_site_amet.pdf</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>-->
                                 </div>
                                 <div class="actions">
                                     <div class="pull-left">

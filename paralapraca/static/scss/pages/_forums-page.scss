@@ -168,17 +168,20 @@
         font-family: $font-family-sans-serif;
         font-size: $font-size-base;
         font-weight: $extra-bold;
-        margin: 0 0 20px 0; 
+        margin: 0 0 20px 0;
+        text-transform: lowercase; 
     }
 }
 
 .post-attachments {
-    border: 1px solid $brand-primary;
-    border-radius: 10px;
-    color: $brand-primary;
-    display: inline-block;
-    font-size: $font-size-small;
-    padding: 8px;
+    .attachments {
+        border: 1px solid $brand-primary;
+        border-radius: 10px;
+        color: $brand-primary;
+        display: inline-block;
+        font-size: $font-size-small;
+        padding: 8px;
+    }
     span {
         @extend %icon-file;
         font-weight: $semi-bold;
@@ -202,6 +205,16 @@
     }
     a {
         @include link-hover($brand-primary,$brand-primary,$brand-primary,transparent);
+    }
+}
+
+.forums {
+    .post-attachments {
+        a {
+            font-size: $font-size-small;
+            font-weight: $normal;
+            @include link-hover($brand-primary,$brand-primary,$brand-primary,transparent);
+        }
     }
 }
 

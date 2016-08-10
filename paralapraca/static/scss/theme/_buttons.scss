@@ -5,18 +5,27 @@
 
 .action {
     &.liked {
-        &:before {
+        &.active {
             color: $orange;
+            &:before {
+                color: $orange;
+            }
         }
     }
     &.used {
-        &:before {
+        &.active {
             color: $purple;
+            &:before {
+                color: $purple;
+            }
         }
     }
     &.replies {
-        &:before {
+        &.active {
             color: $pink;
+            &:before {
+                color: $pink;
+            }
         }
     }
 }
@@ -67,6 +76,10 @@ a {
 .btn {
     &.attach {
         @include button-hover(#fff,#fff,$purple,darken($purple,10%));
+    }
+    &.attached {
+        border-color: $purple !important;
+        @include button-hover($purple,$purple,transparent,transparent);
     }
     &.new-topic {
         @include button-hover(#fff,#fff,lighten($orange,20%),lighten($orange,10%));
