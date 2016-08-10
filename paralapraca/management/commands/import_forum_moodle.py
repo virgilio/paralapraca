@@ -211,10 +211,18 @@ class Command(BaseCommand):
                 'tag': tArt,
             },
             52: {
-                'forum': fGE,
+                'forum': fCG,
+            },
+            44: {
+                'forum': fCGest,
+            },
+            52: {
+                'forum': fCG,
             },
             21: {
-                'forum': fCG,
+                'forum': fGE,
+                'category': catPauta,
+                'tag': tOrg,
             },
             47: {
                 'forum': fGM,
@@ -222,14 +230,22 @@ class Command(BaseCommand):
             51: {
                 'forum': fGE,
                 'category': catPauta,
-                'tag': tBri,
+                'tag': tExp,
             },
-            17: {
+            46: {
                 'forum': fGE,
                 'category': catPauta,
                 'tag': tExp,
             },
+            17: {
+                'forum': fGE,
+                'category': catPauta,
+                'tag': tBri,
+            },
             43: {
+                'forum': fMacGest,
+            },
+            48: {
                 'forum': fMG,
             },
         }
