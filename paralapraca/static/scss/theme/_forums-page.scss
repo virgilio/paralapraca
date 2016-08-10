@@ -16,13 +16,23 @@
 
 
 .post-attachments {
-    border: 1px solid $purple;
-    color: $purple;
+    .attachments {
+        border: 1px solid $purple;
+        color: $purple;
+    }
     ul {
         border-color: rgba($purple,0.7);
     }
     a {
         @include link-hover($purple,$purple,$purple,transparent);
+    }
+}
+
+.forums {
+    .post-attachments {
+        a {
+            @include link-hover($purple,$purple,$purple,transparent);
+        }
     }
 }
 

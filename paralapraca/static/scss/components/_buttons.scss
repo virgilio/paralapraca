@@ -45,8 +45,13 @@
     &.add {
         @extend %icon-add;
     }
-    &.attach {
+    &.attach, &.attached {
         @extend %icon-file;
+    }
+    &.attached {
+        border: 1px solid $brand-primary !important;
+        font-weight: $semi-bold;
+        @include button-hover($brand-primary,$brand-primary,transparent,transparent);
     }
     &.clean {
         @extend %icon-undo;
