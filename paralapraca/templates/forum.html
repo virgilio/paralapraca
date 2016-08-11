@@ -68,18 +68,21 @@
         </div>
 
         <div ng-repeat="forum in forums">
-            <div class="line one-column" ng-if="forum.latest_topics.length>0 && !forum_single">
+            <div class="line one-column" ng-if="!forum_single">
                 <div class="column">
                     <h3 class="section-title"><a ng-href="/discussion/#!/forum/{{ forum.id }}">{{ forum.title }}</a></h3>
                 </div>
             </div>
 
-            <div class="line one-column" >
+            <div class="line one-column">
 
             </div>
-            <div class="column" ng-if="forum_single">
-                    <h3 class="section-title"><span ng-if="!topics_loaded">Carregando tópicos...</span></h3>
-                </div>
+            <div class="column" ng-if="!topics_loaded">
+                <h3 class="section-title"><span>Carregando tópicos...</span></h3>
+            </div>
+            <div class="column" ng-if="forum.latest_topics.length==0 && topics_loaded">
+                <h3 class="section-title"><span>Nenhum tópico ainda</span></h3>
+            </div>
 
             <div class="forum-list" ng-if="forum.latest_topics.length>0">
                 <table class="table table-striped">
@@ -95,7 +98,7 @@
                         <tr ng-repeat="topic in forum.latest_topics">
                             <td>
                                 <a ng-href="/discussion/topic/#!/topic/{{ topic.id }}"><span class="thread-name">{{ topic.title }}</span></a>
-                                <span class="last-update">Última atividade em <b>{{ topic.last_activity_at | date: "dd/MM/yyyy' às 'HH:mm"}}</b></span>
+                                <span class="last-update">Última atividade <b>{{ topic.last_activity_at | dateFilter }}</b></span>
                             </td>
                             <td>
                                 <span class="action replies small">{{ topic.count_replies }}</span>
