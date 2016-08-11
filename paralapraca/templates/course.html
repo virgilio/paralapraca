@@ -462,14 +462,14 @@ wrapper-course-intro
 
                 {% verbatim %}
                 <a href="/admin/courses/{{course.id}}/lessons/new" class="btn btn-default add">{% endverbatim %}{% trans 'Add lesson' %}</a>
-                
+
             </section>
             {% else %}
                 {% if user.is_authenticated and course.has_started %}
                 <section class="lessons lesson-list">
                     <!-- PAGE-HEADER-DOUBLE -->
                     <div class="secondary-page-header">
-                        <h3><i class="fa fa-angle-double-right"></i> {% trans "Lessons" %}</h3>
+                        <h3><i class="fa fa-angle-double-right"></i> Capítulos</h3>
                     </div>
                     <!-- END PAGE-HEADER-DOUBLE -->
                     <!-- FOR LESSON IN COURSE.PUBLIC_LESSONS -->
