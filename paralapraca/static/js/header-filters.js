@@ -29,9 +29,9 @@
                 now = new Date(),
                 diff = now.getTime() - past.getTime(),
                 labels = {
-                    'ano': 31536000000,
+                    //'ano': 31536000000,
                     'mês': 2592000000,
-                    'semana': 604800000,
+                    //'semana': 604800000,
                     'dia': 86400000,
                     'hora': 3600000,
                     'minuto': 60000,
@@ -42,18 +42,21 @@
             angular.forEach(labels,function(val,time_unit){
                 time_int = Math.floor(diff/val);
                 if(diff>=val && time_int > 0) {
-                    if(time_int > 1) {
-                        if(time_unit == "mês") {
-                            time_unit = 'meses';
-                        }
-                        else {
-                            time_unit = time_unit+'s';
-                        }
+                    if(time_int > 1 && time_unit != "mês") {
+                        time_unit = time_unit+'s';
                     }
-                    filtered.push(time_int+" "+time_unit);
+                    filtered.push({
+                        'time_int':time_int,
+                        'time_unit':time_unit
+                    });
                 }
             });
-            return filtered[0];
+            if(filtered[0].time_unit == "mês" && filtered[0].time_int > 1) {
+                return "em "+past.getDate()+"/"+(past.getMonth()+1)+"/"+past.getFullYear()+", às "+past.getHours()+":"+past.getMinutes();
+            }
+            else {
+                return "há "+filtered[0].time_int+" "+filtered[0].time_unit;
+            }
         }
     });
 
