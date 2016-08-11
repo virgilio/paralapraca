@@ -45,21 +45,30 @@ ng-app="my-courses"
                     </div>
                     <div class="row">
                         <div class="course-thumb col-sm-5 col-md-4">
-                            <a ng-href="/course/{{ course.slug }}/resume" class="course-link">
-                                <div class="course-thumb-bg" ng-style="{'background-image':'url('+course.thumbnail_url+')'}"></div>
-                            </a>
-                            <!--<div ng-if="!course.home_thumbnail" class="course-thumb-bg"></div>-->
-                            <a ng-if="course.course_student"
-                               ng-href="/course/{{ course.slug }}/resume"
-                               class="continue">continuar módulo</a>
-
-                            <a ng-if="course.course_student===undefined"
-                               ng-href="/course/{{ course.slug }}/intro"
-                               class="start">começar módulo</a>
+                            <div ng-if="course.course_student">
+                                <a ng-href="/course/{{ course.slug }}/resume" class="course-link">
+                                    <div class="course-thumb-bg" ng-style="{'background-image':'url('+course.thumbnail_url+')'}"></div>
+                                </a>
+                                <a ng-href="/course/{{ course.slug }}/resume"
+                                   class="continue">continuar módulo</a>
+                            </div>
+                            <div ng-if="course.course_student===undefined">
+                                <a ng-href="/course/{{ course.slug }}/intro" class="course-link">
+                                   <div class="course-thumb-bg" ng-style="{'background-image':'url('+course.thumbnail_url+')'}"></div>
+                                </a>
+                                <a ng-href="/course/{{ course.slug }}/intro"
+                                   class="start">começar módulo</a>
+                            </div>
                         </div>
                         <div class="course-description col-sm-7 col-md-8">
-                            <h3 class="course-title"><a ng-href="/course/{{ course.slug }}/resume"
-                               class="course-link">{{ course.name }}</a></h3>
+                            <h3 class="course-title">
+                                <a ng-if="course.course_student===undefined"
+                                   ng-href="/course/{{ course.slug }}/intro"
+                                   class="course-link">{{ course.name }}</a>
+                                <a ng-if="course.course_student"
+                                   ng-href="/course/{{ course.slug }}/resume"
+                                   class="course-link">{{ course.name }}</a>
+                            </h3>
                             <div  class="course-info">
                                 <a ng-href="/course/{{ course.slug }}/resume" class="course-link">
                                     <p ng-if="course.course_student"><b>Iniciado em:</b> {{course.course_student.start_date | date: "dd/MM/yyyy"}}</p>
