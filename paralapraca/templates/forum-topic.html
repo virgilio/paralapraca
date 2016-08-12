@@ -44,21 +44,30 @@
                         <a href="" class="tag" ng-repeat="tag in topic.tags">#{{ tag.name }}</a>
                     </div>
 
-                    <div class="thread-post" ng-bind-html="topic.content"></div>
+                    <div class="thread-post">
+                        <div ng-bind-html="topic.content"></div>
 
-
-                    <!-- DIV DE ARQUIVOS ANEXOS: deve ficar dentro da div.thread-post
-
-                    <div class="post-attachments">
-                        <div class="attachments">
-                            <span>3 arquivos anexos:</span>
-                            <ul>
-                                <li><a href="">lorem_ipsum_dolor_site_amet.pdf</a></li>
-                                <li><a href="">lorem_ipsum_dolor_site_amet.pdf</a></li>
-                                <li><a href="">lorem_ipsum_dolor_site_amet.pdf</a></li>
-                            </ul>
+                        <!-- TODO: transformar em diretiva -->
+                        <button class="btn btn-xs attached"
+                                ng-show="(topic.files.length > 1) && !topic.show_files"
+                                ng-click="topic.show_files=true">
+                            <u>{{topic.files.length}} arquivos anexos</u> + ...
+                        </button>
+                        <div class="post-attachments"
+                             ng-show="(topic.files.length === 1) || topic.show_files">
+                            <div class="attachments">
+                                <span translate
+                                      translate-n="topic.files.length"
+                                      translate-plural="{{$count}} arquivos anexos:">1 arquivo anexo:</span>
+                                <ul>
+                                    <li ng-repeat="file in topic.files">
+                                        <a ng-href="{{file.file}}">{{file.name}}</a>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
-                    </div>-->
+                        <!-- END TODO: transformar em diretiva -->
+                    </div>
 
                     <div class="actions">
                         <div class="pull-left">
@@ -106,17 +115,26 @@
                                     <button class="btn btn-xs btn-success reply pull-right" ng-click="save_comment(topic, comment);comment.show_comment_input=false;">comentar</button>
                                     <button class="btn btn-xs btn-danger delete pull-right" ng-click="comment.show_comment_input=false">descartar</button>
                                 </form>
-                                <!-- <button class="btn btn-xs attached"><u>3 arquivos anexos</u> + ...</button>
-                                <div class="post-attachments">
+                                <!-- TODO: transformar em diretiva -->
+                                <button class="btn btn-xs attached"
+                                        ng-show="(comment.files.length > 1) && !comment.show_files"
+                                        ng-click="comment.show_files=true">
+                                    <u>{{comment.files.length}} arquivos anexos</u> + ...
+                                </button>
+                                <div class="post-attachments"
+                                     ng-show="(comment.files.length > 1) ||comment.show_files">
                                     <div class="attachments">
-                                        <span>3 arquivos anexos:</span>
+                                        <span translate
+                                              translate-n="comment.files.length"
+                                              translate-plural="{{$count}} arquivos anexos:">1 arquivo anexo:</span>
                                         <ul>
-                                            <li><a href="">lorem_ipsum_dolor_site_amet.pdf</a></li>
-                                            <li><a href="">lorem_ipsum_dolor_site_amet.pdf</a></li>
-                                            <li><a href="">lorem_ipsum_dolor_site_amet.pdf</a></li>
+                                            <li ng-repeat="file in comment.files">
+                                                <a ng-href="{{file.file}}">{{file.name}}</a>
+                                            </li>
                                         </ul>
                                     </div>
-                                </div>-->
+                                </div>
+                                <!-- TODO END: transformar em diretiva -->
                             </div>
                             <div class="actions">
                                 <div class="pull-left">
@@ -151,17 +169,26 @@
                                         <button class="btn btn-xs btn-success reply pull-right" ng-click="save_comment(topic, comment);reply.show_comment_input=false;">comentar</button>
                                         <button class="btn btn-xs btn-danger delete pull-right" ng-click="reply.show_comment_input=false">descartar</button>
                                     </form>
-                                    <!-- <button class="btn btn-xs attached"><u>3 arquivos anexos</u> + ...</button>
-                                    <div class="post-attachments">
+                                    <!-- TODO: transformar em diretiva -->
+                                    <button class="btn btn-xs attached"
+                                            ng-show="(reply.files.length > 1) && !reply.show_files"
+                                            ng-click="reply.show_files=true">
+                                        <u>{{reply.files.length}} arquivos anexos</u> + ...
+                                    </button>
+                                    <div class="post-attachments"
+                                         ng-show="(reply.files.length > 1) ||reply.show_files">
                                         <div class="attachments">
-                                            <span>3 arquivos anexos:</span>
+                                            <span translate
+                                                  translate-n="reply.files.length"
+                                                  translate-plural="{{$count}} arquivos anexos:">1 arquivo anexo:</span>
                                             <ul>
-                                                <li><a href="">lorem_ipsum_dolor_site_amet.pdf</a></li>
-                                                <li><a href="">lorem_ipsum_dolor_site_amet.pdf</a></li>
-                                                <li><a href="">lorem_ipsum_dolor_site_amet.pdf</a></li>
+                                                <li ng-repeat="file in reply.files">
+                                                    <a ng-href="{{file.file}}">{{file.name}}</a>
+                                                </li>
                                             </ul>
                                         </div>
-                                    </div>-->
+                                    </div>
+                                    <!-- TODO END: transformar em diretiva -->
                                 </div>
                                 <div class="actions">
                                     <div class="pull-left">
