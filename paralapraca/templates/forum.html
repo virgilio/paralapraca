@@ -73,15 +73,15 @@
                     <h3 class="section-title"><a ng-href="/discussion/#!/forum/{{ forum.id }}">{{ forum.title }}</a></h3>
                 </div>
             </div>
-
-            <div class="line one-column">
-
-            </div>
-            <div class="column" ng-if="!topics_loaded">
+            <!-- <div class="column" ng-show="( forum_single && !topics_loaded ) || !forums.$resolved">
                 <h3 class="section-title"><span>Carregando tópicos...</span></h3>
-            </div>
-            <div class="column" ng-if="forum.latest_topics.length==0 && topics_loaded">
-                <h3 class="section-title"><span>Nenhum tópico ainda</span></h3>
+            </div> -->
+            <div class="column" ng-show="forum.latest_topics.length==0 && forums.$resolved">
+                    <span>Este fórum ainda não possui nenhum tópico.</span>
+                    <!-- FIXME -->
+                    <br>
+                    <br>
+                    <br>
             </div>
 
             <div class="forum-list" ng-if="forum.latest_topics.length>0">
