@@ -9,8 +9,12 @@
             font-size: $font-size-small;
             font-weight: normal;
             color: $gray;
-            padding: 0 0 5px;
+            padding: 0 0 5px !important;
             text-transform: lowercase;
+
+            &:first-child {
+                padding-left: 20px !important;
+            }
         }
     }
     tbody {
