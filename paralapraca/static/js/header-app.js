@@ -7,5 +7,6 @@
         'header.filters',
         'discussion.services',
         'djangular',
+        'gettext',
     ]);
 })(angular);

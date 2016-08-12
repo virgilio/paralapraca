@@ -8,6 +8,6 @@
     <li class="notifications-item" ng-repeat="notification in notifications">
         <span class="icon"><img ng-src="{{notification.user.picture || 'http://placehold.it/40'}}"></span>
         <span class="info"><b><a ng-href="/profile/{{ notification.comment_like.user.username || notification.topic_like.user.username || notification.comment.user.username || notification.topic.author.username}}">{{notification.comment_like.user.first_name || notification.topic_like.user.first_name || notification.comment.user.first_name || notification.topic.author.first_name}}</a></b> {{notification.action | actionFilter }} tópico <a ng-href="/discussion/topic/#!/topic/{{notification.topic.id}}/">{{notification.topic.title}}</a> no fórum <a href="/discussion/#!/forum/{{notification.topic.forum.id}}">{{notification.topic.forum.title}}</a></span>
-        <span class="date">há {{notification.date | dateFilter }}</span>
+        <span class="date"> {{notification.date | dateFilter }}</span>
     </li>
 </ul>

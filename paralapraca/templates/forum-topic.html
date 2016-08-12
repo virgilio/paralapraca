@@ -46,7 +46,7 @@
 
                     <div class="thread-post" ng-bind-html="topic.content"></div>
 
-                    
+
                     <!-- DIV DE ARQUIVOS ANEXOS: deve ficar dentro da div.thread-post
 
                     <div class="post-attachments">
@@ -68,9 +68,13 @@
                             <!-- <span class="last-edit">xx de xx de xxxx às xxhxx</span> -->
                         </div>
                         <div class="pull-right">
-                            <span class="action liked">{{ topic.count_likes }} gostaram</span>
+                            <span translate
+                                  translate-n="topic.count_replies"
+                                  translate-plural="{{$count}} respostas">1 resposta</span>
                             <!--<span class="action used">7 usaram</span>-->
-                            <span class="action replies">{{ topic.count_replies }} respostas</span>
+                            <span translate
+                                  translate-n="topic.count_likes"
+                                  translate-plural="{{$count}} gostaram">1 gostou</span>
                         </div>
                     </div>
 
@@ -123,7 +127,9 @@
                                     <!-- <span class="last-edit">xx de xx de xxxx às xxhxx</span> -->
                                 </div>
                                 <div class="pull-right">
-                                    <span class="action liked">{{ comment.count_likes }} gostaram</span>
+                                    <span translate
+                                          translate-n="comment.count_likes"
+                                          translate-plural="{{$count}} gostaram">1 gostou</span>
                                     <!--<span class="action replies">30 respostas</span>-->
                                 </div>
                             </div>
@@ -166,7 +172,9 @@
                                         <!-- <span class="last-edit">xx de xx de xxxx às xxhxx</span> -->
                                     </div>
                                     <div class="pull-right">
-                                        <span class="action liked">{{ reply.count_likes }} gostaram</span>
+                                        <span translate
+                                              translate-n="reply.count_likes"
+                                              translate-plural="{{$count}} gostaram">1 gostou</span>
                                     </div>
                                 </div>
                             </div>
