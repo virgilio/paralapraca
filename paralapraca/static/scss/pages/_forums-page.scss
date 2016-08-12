@@ -228,7 +228,7 @@
         font-size: $font-size-base;
         font-weight: $semi-bold;
         @media screen and (min-width: $screen-md-min) {
-            max-width: 460px;
+            max-width: 220px;
             overflow: hidden;
             white-space: nowrap;
             text-overflow: ellipsis;
@@ -244,6 +244,27 @@
     }
     .tags {
         margin: 0; 
+    }
+    table {
+        tbody {
+            td {
+                @media screen and (max-width: $screen-sm-max) {
+                    &:first-child, &.last-child {
+                        clear: both;
+                        display: block;
+                        width: 100%;
+                    }
+                }
+                @media screen and (min-width: $screen-md-min) {
+                    &:first-child {
+                        width: 300px;
+                    }
+                    &:nth-child(2), &:nth-child(3) {
+                        width: 115px;
+                    }
+                }
+            }
+        }
     }
 }
 
