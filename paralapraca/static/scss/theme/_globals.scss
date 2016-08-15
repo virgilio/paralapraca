@@ -7,3 +7,38 @@
     @include card(rgba($light-blue,0.6));
     padding: 30px;
 }
+
+// Wrapper for the tooltip content
+.tooltip-inner {
+    color: #000;
+    background-color: #fff;
+    padding: 8px 12px;
+}
+
+.tooltip {
+    color: #000;
+    &.top .tooltip-arrow {
+        border-top-color: #fff;
+    }
+    &.top-left .tooltip-arrow {
+        border-top-color: #fff;
+    }
+    &.top-right .tooltip-arrow {
+        border-top-color: #fff;
+    }
+    &.right .tooltip-arrow {
+        border-right-color: #fff;
+    }
+    &.left .tooltip-arrow {
+        border-left-color: #fff;
+    }
+    &.bottom .tooltip-arrow {
+        border-bottom-color: #fff;
+    }
+    &.bottom-left .tooltip-arrow {
+        border-bottom-color: #fff;
+    }
+    &.bottom-right .tooltip-arrow {
+        border-bottom-color: #fff;
+    }
+}

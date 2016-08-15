@@ -9,13 +9,17 @@
             font-size: $font-size-small;
             font-weight: normal;
             color: $gray;
-            padding: 0 0 5px;
+            padding: 0 0 5px !important;
             text-transform: lowercase;
+
+            &:first-child {
+                padding-left: 20px !important;
+            }
         }
     }
     tbody {
         td {
-            padding: 10px 0;
+            padding: 10px 0 !important;
             vertical-align: middle !important;
             @media screen and (max-width: $screen-sm-max) {
                 display: block;
@@ -30,7 +34,7 @@
                     width: 100%;
                 }
                 @media screen and (min-width: $screen-md-min) {
-                    width: 500px;
+                    width: 300px;
                 }
             }
         }

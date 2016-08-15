@@ -9,7 +9,7 @@
             padding: 15px;
         }
         @media screen and (min-width: $screen-sm-min) {
-            display: table; 
+            display: table;
             .line {
                 display: table-row;
                 > div {
@@ -21,16 +21,16 @@
             }
         }
         @media screen and (min-width: 947px) {
-            margin: 0 auto; 
+            margin: 0 auto;
         }
         h2 {
             font-weight: bold;
-            margin: 0; 
+            margin: 0;
         }
         p {
             font-size: 2.5vmax;
             font-weight: $bold;
-            margin: 0; 
+            margin: 0;
             @media screen and (min-width: $screen-sm-min) {
                 font-size: 18px;
             }
@@ -60,13 +60,17 @@
             h2 {
                font-size: 5.5vmax;
                 line-height: 95%;
-                margin-bottom: 15px;
+                margin-bottom: 60px;
                 @media screen and (min-width: $screen-sm-min) {
                     font-size: 50px;
-                } 
+                }
             }
             p {
                 margin-bottom: 15px;
+                a {
+                    color: #fff;
+                    text-decoration: underline;
+                }
             }
             .btn-register {
                 background-color: $green;
@@ -81,7 +85,7 @@
                 }
             }
         }
-        .use { 
+        .use {
             background: url(../img/home-print.png) $light-blue bottom right no-repeat;
             background-size: 86%;
             min-height: 62vw;
@@ -90,7 +94,7 @@
             }
 
             p {
-                margin: 0 0 15px 30px; 
+                margin: 0 0 15px 30px;
             }
         }
     }
