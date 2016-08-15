@@ -45,7 +45,7 @@ notes my-notes
                           translate-plural="você tem {{$count}} notas">você tem 1 nota</span>
                     <button class="btn btn-link btn-sm"
                             ng-init="course.show_notes=false"
-                            ng-class="$comment.user_like ? 'hide-all': 'show-all'"
+                            ng-class="course.show_notes ? 'hide-all': 'show-all'"
                             ng-click="course.show_notes=!course.show_notes">
                         <span ng-show="!course.show_notes"
                           translate
