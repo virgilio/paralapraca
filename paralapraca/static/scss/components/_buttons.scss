@@ -80,8 +80,8 @@
         font-weight: $normal;
     }
     &.hide-all {
-        @extend %icon-caret-up; 
-        @include link-hover(#000,#000,#000,transparent);
+        @extend %icon-chevron-up; 
+        @include link-hover($gray,#000,$gray,#000);
         font-weight: $normal;
     }
     &.hide-note {
@@ -92,7 +92,7 @@
         }
     }
     &.jump-to {
-        @extend %icon-caret-down;
+        @extend %icon-chevron-down;
         @include link-hover(rgba(#fff,0.8),#fff,rgba(#fff,0.8),#fff);
         font-weight: $normal;
     }
@@ -106,8 +106,8 @@
         @extend %icon-reply;
     }
     &.show-all {
-        @extend %icon-caret-down; 
-        @include link-hover(#000,#000,#000,transparent);
+        @extend %icon-chevron-down; 
+        @include link-hover($gray,#000,$gray,#000);
         font-weight: $normal;
     }
     &.show-note {

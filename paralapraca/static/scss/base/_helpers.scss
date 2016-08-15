@@ -20,6 +20,12 @@
     &-caret-up {
         @include icon(after, caret-up);
     }
+    &-chevron-down {
+        @include icon(after, chevron-down);
+    }
+    &-chevron-up {
+        @include icon(after, chevron-up);
+    }
     &-chat {
         @include icon(before, chat);
     }
