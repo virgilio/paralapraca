@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from django.core.management.base import BaseCommand, CommandError
-from django.contrib.auth import get_user_model, models
+from django.contrib.auth import get_user_model
 from django.contrib.auth.models import Group
 from django.db import transaction
 
@@ -67,7 +67,7 @@ class Command(BaseCommand):
                     # If the user can't be found, it must be created
                     username = row['email'][:28].split('@')[0] + "3"
                     nu = User.objects.create(
-                        username=username, # django has a 30 char limitation in the following fields
+                        username=username,  # django has a 30 char limitation in the following fields
                         first_name=row['username'].split(' ', 1)[0][:29],
                         last_name=row['username'].split(' ', 1)[1][:29],
                         email=row['email'],
