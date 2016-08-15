@@ -70,7 +70,17 @@
         <div ng-repeat="forum in forums">
             <div class="line one-column" ng-if="!forum_single">
                 <div class="column">
-                    <h3 class="section-title"><a ng-href="/discussion/#!/forum/{{ forum.id }}">{{ forum.title }}</a></h3>
+                    <h3 class="section-title">
+                        <a ng-href="/discussion/#!/forum/{{ forum.id }}">{{ forum.title }}</a>
+                        <button class="btn btn-link btn-sm"
+                            ng-if="forum.latest_topics.length>0"
+                            ng-init="forum.show_forum=true"
+                            ng-class="forum.show_forum ? 'hide-all': 'show-all'"
+                            ng-click="forum.show_forum=!forum.show_forum">
+                            <span ng-show="!forum.show_forum">ver</span>
+                            <span ng-show="forum.show_forum">ocultar</span>
+                        </button>
+                    </h3>
                 </div>
             </div>
             <!-- <div class="column" ng-show="( forum_single && !topics_loaded ) || !forums.$resolved">
@@ -84,7 +94,7 @@
                     <br>
             </div>
 
-            <div class="forum-list" ng-if="forum.latest_topics.length>0">
+            <div class="forum-list" ng-show="forum.show_forum" ng-if="forum.latest_topics.length>0">
                 <table class="table table-striped">
                     <thead>
                         <tr>
