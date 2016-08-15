@@ -181,13 +181,13 @@
         display: inline-block;
         font-size: $font-size-small;
         padding: 8px;
-    }
-    span {
-        @extend %icon-file;
-        font-weight: $semi-bold;
-        &:before {
-            margin-right: 5px;
-            vertical-align: bottom;
+        > span {
+            @extend %icon-file;
+            font-weight: $semi-bold;
+            &:before {
+                margin-right: 5px;
+                vertical-align: bottom;
+            }
         }
     }
     ul {
