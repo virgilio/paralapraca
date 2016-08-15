@@ -13,7 +13,7 @@
             text-transform: lowercase;
 
             &:first-child {
-                padding-left: 20px !important;
+                padding-left: 15px !important;
             }
         }
     }
@@ -24,10 +24,10 @@
             @media screen and (max-width: $screen-sm-max) {
                 display: block;
                 float: left;
-                padding: 10px 20px;
+                padding: 10px 15px !important;
             }
             &:first-child {
-                padding-left: 20px;
+                padding-left: 15px !important;
                 @media screen and (max-width: $screen-sm-max) {
                     clear: both;
                     display: block;
