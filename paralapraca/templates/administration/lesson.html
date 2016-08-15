@@ -1,8 +1,10 @@
 {% extends 'base.html' %}
 {% load static %}
 {% load i18n %}
+{% load compress %}
 
 {% block js %} {{block.super}}
+{% compress js %}
 <script type="text/javascript" src="{% static 'app/admin.lesson.app.js' %}"></script>
 <script type="text/javascript" src="{% static 'app/controllers/admin.lesson.controllers.js' %}"></script>
 <script type="text/javascript" src="{% static 'js/core-services.js' %}"></script>
@@ -15,6 +17,7 @@
 <script type="text/javascript" src="{% static 'js/directives/markdowneditor.js' %}"></script>
 <script type="text/javascript" src="{% static 'js/directives/codemirror.js' %}"></script>
 <script type="text/javascript" src="{% static 'js/directives/sortable.js' %}"></script>
+{% endcompress %}
 {% endblock %}
 
 {% block body_attrs %}
