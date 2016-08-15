@@ -228,7 +228,7 @@
         font-size: $font-size-base;
         font-weight: $semi-bold;
         @media screen and (min-width: $screen-md-min) {
-            max-width: 220px;
+            max-width: 260px;
             overflow: hidden;
             white-space: nowrap;
             text-overflow: ellipsis;
