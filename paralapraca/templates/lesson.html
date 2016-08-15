@@ -1,15 +1,37 @@
 {% extends "base.html" %}
 
 {% load i18n %}
-{% load pipeline %}
 {% load staticfiles %}
 {% load timtec_markdown %}
+{% load compress %}
 
 {% block js %}
 {{ block.super }}
-{% javascript 'markdown' %}
-{% javascript 'lesson' %}
-{% javascript 'notes' %}
+{% compress js %}
+<!-- Markdown -->
+<script type="text/javascript" src="{% static 'js/vendor/pagedown/Markdown.Converter.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/vendor/pagedown/Markdown.Editor.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/vendor/pagedown/Markdown.Sanitizer.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/markdown/app.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/markdown/filters.js' %}"></script>
+
+<!-- Lesson -->
+<script type="text/javascript" src="{% static 'js/activities/app.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/activities/controllers.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/activities/directives.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/activities/services.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/lesson/app.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/lesson/controllers.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/lesson/services.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/directives/markdowneditor.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/directives/codemirror.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/directives/layout.js' %}"></script>
+
+<!-- Notes -->
+<script type="text/javascript" src="{% static 'js/notes/app.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/notes/controllers.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/notes/services.js' %}"></script>
+{% endcompress %}
 
 <script type="text/javascript">
 window.lessonId = {{ lesson.pk }};
