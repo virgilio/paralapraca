@@ -57,12 +57,30 @@
                                   ng-model="new_topic.content"
                                   placeholder="Escreva aqui o seu comentário"></textarea>
                     </div>
-                    <!--
-                    
+
                     <div class="form-group">
-                        <button class="btn btn-xs btn-primary attach">anexar arquivo</button>
+                        <button id="select-file-topic"
+                               class="btn btn-xs btn-primary attach"
+                               ngf-select="uploadCommentFiles($file, new_topic)"
+                               ngf-multiple="false">anexar arquivo</button>
+                    </div>
+                    <div class="form-group">
+                        <div class="post-attachments"
+                           ng-show="new_topic.files">
+                            <div class="attachments">
+                                <span translate
+                                      translate-n="new_topic.files.length"
+                                      translate-plural="{{$count}} arquivos anexos:">1 arquivo anexo:</span>
+                                <ul>
+                                    <li ng-repeat="file in new_topic.files">
+                                        <a ng-href="{{file.file}}">{{file.name}}</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
 
+                    <!--
                     <div class="form-group">
                         <div class="row">
                             <div class="col-sm-6">
