@@ -14,7 +14,6 @@
                 color: #fff;
                 cursor: pointer;
                 font-weight: $bold;
-                text-transform: lowercase;
                 @include transition(all 0.5s ease);
             }
             &.active, &:active {
