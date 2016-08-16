@@ -202,14 +202,14 @@ wrapper-course-lesson
     {% endblock %}
 
     <div class="student-notes" ng-controller="NoteCtrl">
-        <button class="btn show-note" ng-show="!show_notes" ng-click="show_notes=true">abrir anotações</button>
+        <button class="btn btn-success show-note" ng-show="!show_notes" ng-click="show_notes=true">abrir anotações</button>
         <div class="notes-container" ng-show="show_notes">
             <div class="notes-header">
                 <h4>anotação</h4>
                 {% verbatim %}
                 <a href="/course/{{ lesson.slug }}/mynotes/" class="all-notes">ver todas as anotações do curso</a>
                 {% endverbatim %}
-                <button class="btn btn-link hide-note" ng-click="show_notes=false">esconder</button>
+                <button class="btn btn-xs btn-success hide-note" ng-click="show_notes=false">esconder</button>
                 <button class="btn btn-xs btn-success save" ng-click="save_note()">salvar</button>
             </div>
             <div class="notes-content">

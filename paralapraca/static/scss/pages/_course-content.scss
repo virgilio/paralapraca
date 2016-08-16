@@ -454,7 +454,7 @@
         right: 0;
         left: 100px;
         .notes-header {
-            background-color: $gray;
+            background-color: $brand-success;
             border-radius: 10px 10px 0 0;
             padding: 10px 15px;
             h4 {
@@ -475,13 +475,19 @@
                     margin-left: 5px;
                 }
             }
+            .btn {
+                font-weight: $semi-bold;
+            }
             .save {
                 float: right;
                 margin: -2px 15px 0 0; 
+                &:before {
+                    vertical-align: middle;
+                }
             }
             .hide-note {
                 float: right;
-                margin: 2px 0 0 0; 
+                margin: -2px 0 0 0; 
             }
         }
         .notes-content {
