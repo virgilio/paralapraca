@@ -82,10 +82,26 @@ a {
         @include button-hover($purple,$purple,transparent,transparent);
     }
     &.new-topic {
-        @include button-hover(#fff,#fff,lighten($orange,20%),lighten($orange,10%));
+        @include button-hover(#fff,#fff,lighten($orange,20%),$orange);
     }
     &.reply {
         @include button-hover(#fff,#fff,$pink,darken($pink,10%));
+    }
+}
+
+.courses-widget {
+    .btn {
+        &.list-all, &.see-stats {
+            @include button-hover(#fff,#fff,lighten($purple,20%),$purple);
+        }
+    }
+}
+
+.forums-widget {
+    .btn {
+        &.list-all, &.see-stats {
+            @include button-hover(#fff,#fff,lighten($orange,20%),$orange);
+        }
     }
 }
 

@@ -31,6 +31,7 @@
 .btn {
     border-color: transparent !important;
     font-weight: $bold;
+    max-height: 33px;
     text-transform: lowercase;
     @include transition(all 0.2s ease);
     &:focus {
@@ -38,6 +39,7 @@
     }
     &:before { // icon margin
         margin-right: 5px;
+        vertical-align: middle;
     }
     &:after { // icon margin
         margin-left: 5px;
@@ -90,6 +92,9 @@
             vertical-align: middle;
         }
     }
+    &.list-all {
+        @extend %icon-list;
+    }
     &.jump-to {
         @extend %icon-chevron-down;
         @include link-hover(rgba(#fff,0.8),#fff,rgba(#fff,0.8),#fff);
@@ -104,6 +109,15 @@
     &.reply {
         @extend %icon-reply;
     }
+    &.save {
+        @extend %icon-checked;
+    }
+    &.see-stats {
+        @extend %icon-stats;
+        &:before {
+            vertical-align: baseline;
+        }
+    }
     &.show-all {
         @extend %icon-chevron-down; 
         @include link-hover($gray,#000,$gray,#000);
@@ -116,9 +130,6 @@
             margin-left: 10px;
             vertical-align: middle;
         }
-    }
-    &.save {
-        @extend %icon-checked;
     }
 }
 

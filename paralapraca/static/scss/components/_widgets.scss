@@ -27,11 +27,21 @@
     }
 }
 
+.widget-header {
+    .btn {
+        margin-top: -16px;
+    }
+    .btn + .btn {
+        margin-left: 10px;
+    }
+}
+
 .widget-title {
+    display: inline-block;
     font-size: 50px;
     font-weight: bold;
     line-height: 90%;
-    margin: 0;
+    margin: 0 20px 0 0;
 }
 
 .widget-filter {

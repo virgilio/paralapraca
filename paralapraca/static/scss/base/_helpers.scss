@@ -80,6 +80,9 @@
     &-link {
         @include icon(before, link);
     }
+    &-list {
+        @include icon(before, list);
+    }
     &-login {
         @include icon(before, login);
     }
@@ -124,6 +127,9 @@
     }
     &-site {
         @include icon(before, site);
+    }
+    &-stats {
+        @include icon(before, stats);
     }
     &-tools {
         @include icon(before, tools);
