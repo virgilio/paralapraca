@@ -7,6 +7,7 @@
 
 {% block js %}
 {{ block.super }}
+<script type="text/javascript" src="{% static 'tinymce-dist/tinymce.js' %}"></script>
 {% compress js %}
 <!-- Markdown -->
 <script type="text/javascript" src="{% static 'js/vendor/pagedown/Markdown.Converter.js' %}"></script>
@@ -33,7 +34,6 @@
 <script type="text/javascript" src="{% static 'js/notes/services.js' %}"></script>
 
 <!-- Discussion activity -->
-<script type="text/javascript" src="{% static 'tinymce-dist/tinymce.js' %}"></script>
 <script type="text/javascript" src="{% static 'js/timtec-discussion-app.js' %}"></script>
 <script type="text/javascript" src="{% static 'js/discussion-app.js' %}"></script>
 <script type="text/javascript" src="{% static 'js/discussion-controllers.js' %}"></script>
