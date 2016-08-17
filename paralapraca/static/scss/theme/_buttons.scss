@@ -82,7 +82,7 @@ a {
         @include button-hover($purple,$purple,transparent,transparent);
     }
     &.new-topic {
-        @include button-hover(#fff,#fff,lighten($orange,20%),$orange);
+        @include button-hover(#fff,#fff,rgba($orange,0.6),$orange);
     }
     &.reply {
         @include button-hover(#fff,#fff,$pink,darken($pink,10%));
@@ -92,7 +92,7 @@ a {
 .courses-widget {
     .btn {
         &.list-all, &.see-stats {
-            @include button-hover(#fff,#fff,lighten($purple,20%),$purple);
+            @include button-hover(#fff,#fff,rgba($purple,0.6),$purple);
         }
     }
 }
@@ -100,7 +100,7 @@ a {
 .forums-widget {
     .btn {
         &.list-all, &.see-stats {
-            @include button-hover(#fff,#fff,lighten($orange,20%),$orange);
+            @include button-hover(#fff,#fff,rgba($orange,0.6),$orange);
         }
     }
 }
