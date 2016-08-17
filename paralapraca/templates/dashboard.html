@@ -23,7 +23,7 @@
                 <h2 class="widget-title">Meus módulos</h2>
 
                 <a href="/courses/" class="btn btn-success list-all">Todos os módulos</a>
-                
+
                 <!-- visto apenas por assessoras
                     <a class="btn btn-success see-stats" href="#">ver estatísticas</a>
                 -->
@@ -46,29 +46,30 @@
                     <div class="course-progress column">
                         <div class="progress">
                             <div class="progress-bar" role="progressbar"
-                                 aria-valuenow="{{course.percent_progress}}" aria-valuemin="0" aria-valuemax="100"
-                                 style="width: {{course.percent_progress}}%;">
+                                 aria-valuenow="{{course.course_student.percent_progress}}" aria-valuemin="0" aria-valuemax="100"
+                                 style="width: {{course.course_student.percent_progress}}%;">
                             </div>
                         </div>
                     </div>
-                    <div class="progress-label column">{{course.percent_progress}}% completo</div>
+                    <div class="progress-label column">{{course.course_student.percent_progress}}% completo</div>
                 </div>
 
                 <div class="line two-column">
                     <div class="course-thumb column">
-                        <a href="/course/{{ course.course.slug }}/resume" class="course-link">
-                            <div class="course-thumb-bg"
-                                 style="background-image: url({{course.home_thumbnail_url || 'http://placehold.it/800x600'}});">
+                            <div ng-if="course.course_student">
+                                <a ng-href="/course/{{ course.slug }}/resume" class="course-link">
+                                    <div class="course-thumb-bg" ng-style="{'background-image':'url('+course.thumbnail_url+')'}"></div>
+                                </a>
+                                <a ng-href="/course/{{ course.slug }}/resume"
+                                   class="continue">continuar módulo</a>
                             </div>
-                            <a ng-if="course.course_student"
-                               ng-href="/course/{{ course.slug }}/resume"
-                               class="continue">continuar módulo</a>
-
-                            <a ng-if="course.course_student===undefined"
-                               ng-href="/course/{{ course.slug }}/intro"
-                               class="start">começar módulo</a>
-                            <!-- <span class="btn continue">continuar módulo</span> -->
-                        </a>
+                            <div ng-if="course.course_student===undefined">
+                                <a ng-href="/course/{{ course.slug }}/intro" class="course-link">
+                                   <div class="course-thumb-bg" ng-style="{'background-image':'url('+course.thumbnail_url+')'}"></div>
+                                </a>
+                                <a ng-href="/course/{{ course.slug }}/intro"
+                                   class="start">começar módulo</a>
+                            </div>
                     </div>
                     <div class="course-description column">
                         <h3 class="course-title"><a href="/course/{{ course.slug }}/resume" class="course-link">{{ course.name }}</a></h3>
@@ -94,15 +95,15 @@
         <header class="widget-header line one-column">
             <div class="column">
                 <h2 class="widget-title">Fóruns</h2>
-                
+
                 <a class="btn btn-success list-all" href="/discussion/">mostrar todos</a>
-                
+
                 <a class="btn btn-success new-topic" href="/discussion/topic/new/#!/topic/new/">criar novo tópico</a>
-                
+
                 <!-- visto apenas por assessoras
                     <a class="btn btn-success see-stats" href="#">ver estatísticas</a>
                 -->
-                
+
                 <!-- <form class="widget-filter form-inline">
                     <input class="form-control" type="text" placeholder="Busca nos fóruns...">
                 </form> -->
