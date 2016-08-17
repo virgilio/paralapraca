@@ -15,6 +15,9 @@ body {
         .home {
             margin-top: -63px !important;
         }
+        .btn {
+            max-height: initial;
+        }
     }
     &.logged {
         background-image: url(../img/bg.jpg);
