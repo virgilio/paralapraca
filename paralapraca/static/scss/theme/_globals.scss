@@ -11,34 +11,34 @@
 // Wrapper for the tooltip content
 .tooltip-inner {
     color: #000;
-    background-color: #fff;
+    background-color: #eee;
     padding: 8px 12px;
 }
 
 .tooltip {
     color: #000;
     &.top .tooltip-arrow {
-        border-top-color: #fff;
+        border-top-color: #eee;
     }
     &.top-left .tooltip-arrow {
-        border-top-color: #fff;
+        border-top-color: #eee;
     }
     &.top-right .tooltip-arrow {
-        border-top-color: #fff;
+        border-top-color: #eee;
     }
     &.right .tooltip-arrow {
-        border-right-color: #fff;
+        border-right-color: #eee;
     }
     &.left .tooltip-arrow {
-        border-left-color: #fff;
+        border-left-color: #eee;
     }
     &.bottom .tooltip-arrow {
-        border-bottom-color: #fff;
+        border-bottom-color: #eee;
     }
     &.bottom-left .tooltip-arrow {
-        border-bottom-color: #fff;
+        border-bottom-color: #eee;
     }
     &.bottom-right .tooltip-arrow {
-        border-bottom-color: #fff;
+        border-bottom-color: #eee;
     }
 }
