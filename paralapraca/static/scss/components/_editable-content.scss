@@ -80,11 +80,23 @@
     display: inline-block;
 }
 .editable-title:after {
-    margin-left: -32px;
+    margin-left: -20px;
+    @media screen and (min-width: $screen-sm-min) {
+        margin-left: -15px;
+    }
+    @media screen and (min-width: $screen-md-min) {
+        margin-left: -10px;
+    }
 }
 .editable-slug:after,
 .editable-text:after {
-    margin-left: -16px;
+    margin-left: -20px;
+    @media screen and (min-width: $screen-sm-min) {
+        margin-left: -15px;
+    }
+    @media screen and (min-width: $screen-md-min) {
+        margin-left: -10px;
+    }
 }
 .editable p:last-child:after {
     font-size: 16px;

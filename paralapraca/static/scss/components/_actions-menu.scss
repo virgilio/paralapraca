@@ -27,12 +27,11 @@
     }
     .actions-buttons {
         display: inline-block;
-        position: absolute;
         &.align-left {
-            left: -15px;
+            float: left;
         }
         &.align-right {
-            right: -15px;
+            float: right;
         }
     }
 }

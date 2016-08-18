@@ -63,19 +63,19 @@
             }
             .secondary-header {
                 .unit {
-                    float: left;
                     font-size: 18px;
-                    margin-top: 3px;
+                    margin: 5px 5px 0 0;
                 }
                 .editable-text {
-                    margin: 0 40px 0 80px;
+                    width: 100%;
                     input {
                         font-size: 18px;
                     }
                 }
-                .btn {
-                    float: right;
-                    margin: -28px 0 0 0;
+                @media screen and (min-width: $screen-sm-min) {
+                    .btn {
+                        float: right;
+                    }
                 }
             }
         }
