@@ -90,7 +90,7 @@
                 <p class="empty-forum">Este fórum ainda não possui nenhum tópico.</p>
             </div>
 
-            <div class="forum-list" ng-show="forum.show_forum" ng-if="forum.latest_topics.length>0">
+            <div class="forum-list" ng-show="forum.show_forum || forum_single" ng-if="forum.latest_topics.length>0">
                 <table class="table table-striped">
                     <thead>
                         <tr>
