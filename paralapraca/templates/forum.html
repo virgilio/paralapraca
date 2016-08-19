@@ -19,15 +19,47 @@
 {% verbatim %}
 <script type="text/ng-template" id="forum.html">
     <section class="forums forums-page forums-widget widget container-fluid" ng-cloak>
-        <div class="widget-topbar line one-column">
-            <!--<div class="column">-->
-                <!--<button class="btn btn-link clean">limpar filtro</button>-->
-                <!--<button class="btn btn-link filter">filtrar por tags e categorias</button>-->
-            <!--</div>-->
+        <!-- <div class="widget-topbar line one-column">
+            <div class="column">
+                <button class="btn btn-link clean">limpar filtro</button>
+                <button class="btn btn-link filter">filtrar por tags e categorias</button>
+            </div>
+        </div> -->
+        <div class="widget-topbar line two-column fifty-fifty" style="padding-top: 0">
+            <div ng-show="filters.categories">
+                <div style="background: #C74E00;padding-top: 5px; padding-bottom: 5px; margin-bottom: 10px" class="col-xs-12">
+                    <span class="col-sm-2">
+                        categorias
+                    </span>
+                    <span class="col-sm-8">
+                        tags
+                    </span>
+                    <span class="col-sm-2">
+                        opções
+                    </span>
+                </div>
+                <div class="col-xs-12">
+                    <div class="col-sm-2">
+                        <a style="background: #fff !important; border-color: #fff !important; cursor: pointer; margin-bottom: 3px"
+                           ng-click="forumFilter('rem','cat',category)"
+                           class="category"
+                           ng-repeat="category in filters.categories track by $index"><span>{{category.name}} <b>&times;</b></span></a>
+                    </div>
+                    <div class="col-sm-8">
+                        <a style="background: #fff !important; border-color: #fff !important; cursor: pointer; margin-bottom: 3px"
+                           ng-click="forumFilter('rem','tag',tag)"
+                           class="tag"
+                           ng-repeat="tag in filters.tags track by $index"><span>#{{tag.name}} <b>&times;</b></span></a>
+                    </div>
+                    <div class="col-sm-2" ng-show="forum_search">
+                        <button class="btn btn-link clean" ng-click="forumFilter('clear')">limpar</button>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <header class="widget-header line one-column">
-            <div class="column">
+            <div class="column" ng-style="forum_single && {'border-bottom':'1px solid #de6f10','padding-bottom':'5px','margin-bottom':'5px'}">
                 <h2 ng-if="forum_single" class="widget-title">{{forum.title}}</h2>
                 <h2 ng-if="!forum_single" class="widget-title">fóruns</h2>
                 <a class="btn btn-success new-topic"
@@ -40,13 +72,13 @@
             </div>
         </header>
 
-        <div class="line one-column" ng-if="!forum_single">
+        <div class="line one-column" ng-if="!forum_single && !forum_search">
             <div class="column">
                 <h3 class="section-title">últimas postagens</h3>
             </div>
         </div>
 
-        <div class="line two-column fifty-fifty" ng-if="!forum_single">
+        <div class="line two-column fifty-fifty" ng-if="!forum_single && !forum_search">
             <div class="user-update column" ng-repeat="topic in latest_topics">
                 <div class="user-icon">
                     <img ng-src="{{ topic.author.picture }}" alt="{{ topic.author.name }}">
@@ -111,11 +143,17 @@
                                 <span class="action liked small">{{ topic.count_likes }}</span>
                             </td>
                             <td>
-                                <span ng-repeat="category in topic.categories" class="category">{{ category.name }}</span>
+                                <span ng-repeat="category in topic.categories"
+                                      ng-click="forumFilter('add','cat',category)"
+                                      class="category"
+                                      style="cursor:pointer">{{ category.name }}</span>
                             </td>
                             <td>
                                 <div class="tags">
-                                    <span ng-repeat="tag in topic.tags" class="tag">#{{ tag.name }}</span>
+                                <span ng-repeat="tag in topic.tags"
+                                      ng-click="forumFilter('add','tag',tag)"
+                                      class="category"
+                                      style="cursor:pointer">#{{ tag.name }}</span>
                                 </div>
                             </td>
                         </tr>
