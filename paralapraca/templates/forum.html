@@ -96,82 +96,84 @@
         </div>
 
         <div ng-repeat="forum in forums">
-            <div class="line one-column" ng-if="!forum_single">
-                <div class="column">
-                    <h3 class="section-title">
-                        <a ng-href="/discussion/#!/forum/{{ forum.id }}">{{ forum.title }}</a>
-                        <button class="btn btn-link btn-sm"
-                            ng-if="forum.latest_topics.length>0"
-                            ng-init="forum.show_forum=true"
-                            ng-class="forum.show_forum ? 'hide-all': 'show-all'"
-                            ng-click="forum.show_forum=!forum.show_forum">
-                            <span ng-show="!forum.show_forum">ver</span>
-                            <span ng-show="forum.show_forum">ocultar</span>
-                        </button>
-                    </h3>
+            <div ng-hide="filters!==undefined && forum.topics.length===0">
+                <div class="line one-column" ng-if="!forum_single">
+                    <div class="column">
+                        <h3 class="section-title">
+                            <a ng-href="/discussion/#!/forum/{{ forum.id }}">{{ forum.title }}</a>
+                            <button class="btn btn-link btn-sm"
+                                ng-if="forum.topics.length>0"
+                                ng-init="forum.show_forum=true"
+                                ng-class="forum.show_forum ? 'hide-all': 'show-all'"
+                                ng-click="forum.show_forum=!forum.show_forum">
+                                <span ng-show="!forum.show_forum">ver</span>
+                                <span ng-show="forum.show_forum">ocultar</span>
+                            </button>
+                        </h3>
+                    </div>
                 </div>
-            </div>
-            <!-- <div class="column" ng-show="( forum_single && !topics_loaded ) || !forums.$resolved">
-                <h3 class="section-title"><span>Carregando tópicos...</span></h3>
-            </div> -->
-            <div class="column" ng-show="forum.latest_topics.length==0 && forums.$resolved">
-                <p class="empty-forum">Este fórum ainda não possui nenhum tópico.</p>
-            </div>
+                <!-- <div class="column" ng-show="( forum_single && !topics_loaded ) || !forums.$resolved">
+                    <h3 class="section-title"><span>Carregando tópicos...</span></h3>
+                </div> -->
+                <div class="column" ng-show="forum.topics.length==0 && forums.$resolved">
+                    <p class="empty-forum">Este fórum ainda não possui nenhum tópico.</p>
+                </div>
 
-            <div class="forum-list" ng-show="forum.show_forum || forum_single" ng-if="forum.latest_topics.length>0">
-                <table class="table table-striped">
-                    <thead>
-                        <tr>
-                            <th>tópico</th>
-                            <th>reações</th>
-                            <th>categorias</th>
-                            <th>tags</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr ng-repeat="topic in forum.latest_topics">
-                            <td>
-                                <a ng-href="/discussion/topic/#!/topic/{{ topic.id }}"><span class="thread-name">{{ topic.title }}</span></a>
-                                <span class="last-update">Última atividade <b>{{ topic.last_activity_at | dateFilter }}</b></span>
-                            </td>
-                            <td>
-                                <span class="action replies small">{{ topic.count_replies }}</span>
-                                <span class="action liked small">{{ topic.count_likes }}</span>
-                            </td>
-                            <td>
-                                <a ng-repeat="category in topic.categories"
-                                      ng-click="forumFilter('add','cat',category)"
-                                      class="category">{{ category.name }}</a>
-                            </td>
-                            <td>
-                                <div class="tags">
-                                <a ng-repeat="tag in topic.tags"
-                                      ng-click="forumFilter('add','tag',tag)"
-                                      class="tag">#{{ tag.name }}</a>
-                                </div>
-                            </td>
-                        </tr>
-                        <!--<tr class="new">-->
-                            <!--<td>-->
-                                <!--<span class="thread-name">Lorem ipsum dolor sit amet</span>-->
-                                <!--<span class="last-update">Última atividade <b>há 2 horas</b></span>-->
-                            <!--</td>-->
-                            <!--<td>-->
-                                <!--<span class="action replies small">1</span>-->
-                                <!--<span class="action liked small">4</span>-->
-                                <!--<span class="action used small">7</span>-->
-                            <!--</td>-->
-                            <!--<td>-->
-                                <!--<span class="category discussion">discussão</span>-->
-                            <!--</td>-->
-                            <!--<td>-->
-                                <!--<div class="tags">-->
-                                    <!--<span class="tag">#lorem</span><span class="tag">#ipsum</span><span class="tag">#lorem</span>-->
-                                <!--</div>-->
-                            <!--</td>-->
-                        <!--</tr>-->
-                    </tbody>
-                </table>
+                <div class="forum-list" ng-show="forum.show_forum || forum_single" ng-if="forum.topics.length>0">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>tópico</th>
+                                <th>reações</th>
+                                <th>categorias</th>
+                                <th>tags</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="topic in forum.topics">
+                                <td>
+                                    <a ng-href="/discussion/topic/#!/topic/{{ topic.id }}"><span class="thread-name">{{ topic.title }}</span></a>
+                                    <span class="last-update">Última atividade <b>{{ topic.last_activity_at | dateFilter }}</b></span>
+                                </td>
+                                <td>
+                                    <span class="action replies small">{{ topic.count_replies }}</span>
+                                    <span class="action liked small">{{ topic.count_likes }}</span>
+                                </td>
+                                <td>
+                                    <a ng-repeat="category in topic.categories"
+                                          ng-click="forumFilter('add','cat',category)"
+                                          class="category">{{ category.name }}</a>
+                                </td>
+                                <td>
+                                    <div class="tags">
+                                    <a ng-repeat="tag in topic.tags"
+                                          ng-click="forumFilter('add','tag',tag)"
+                                          class="tag">#{{ tag.name }}</a>
+                                    </div>
+                                </td>
+                            </tr>
+                            <!--<tr class="new">-->
+                                <!--<td>-->
+                                    <!--<span class="thread-name">Lorem ipsum dolor sit amet</span>-->
+                                    <!--<span class="last-update">Última atividade <b>há 2 horas</b></span>-->
+                                <!--</td>-->
+                                <!--<td>-->
+                                    <!--<span class="action replies small">1</span>-->
+                                    <!--<span class="action liked small">4</span>-->
+                                    <!--<span class="action used small">7</span>-->
+                                <!--</td>-->
+                                <!--<td>-->
+                                    <!--<span class="category discussion">discussão</span>-->
+                                <!--</td>-->
+                                <!--<td>-->
+                                    <!--<div class="tags">-->
+                                        <!--<span class="tag">#lorem</span><span class="tag">#ipsum</span><span class="tag">#lorem</span>-->
+                                    <!--</div>-->
+                                <!--</td>-->
+                            <!--</tr>-->
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </section>
