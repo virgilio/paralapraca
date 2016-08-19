@@ -40,3 +40,21 @@
         margin-left: 50px;
     }
 }
+
+.filters {
+    padding: 0 !important;
+    .filters-header {
+        background-color: darken($brand-primary,10%);
+        font-size: $font-size-small;
+        font-weight: $semi-bold;
+        overflow: hidden; 
+        padding: 5px 0;
+    }
+    .filters-options {
+        overflow: hidden;
+        padding: 7px 0; 
+    }
+    .category, .tag {
+        @include button-hover($gray,$gray,#fff,$brand-info);
+    }
+}
