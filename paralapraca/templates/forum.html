@@ -25,25 +25,41 @@
                 <button class="btn btn-link filter">filtrar por tags e categorias</button>
             </div>
         </div> -->
-        <div class="widget-topbar line two-column fifty-fifty">
-            <div class="column" ng-show="filters.categories">
-                <strong>categorias: </strong>
-                <a ng-click="forumFilter('rem','cat',category)" ng-repeat="category in filters.categories track by $index"><span>{{category.name}} &times;</span></a>
-            </div>
-            <div class="column" ng-show="filters.tags">
-                <strong>tags: </strong>
-                <a ng-click="forumFilter('rem','tag',tag)" ng-repeat="tag in filters.tags track by $index"><span>{{tag.name}} &times;</span></a>
-            </div>
-            <div class="column" ng-show="forum_search">
-                <button class="btn btn-link clean" ng-click="forumFilter('clear')">limpar filtro</button>
+        <div class="widget-topbar line two-column fifty-fifty" style="padding-top: 0">
+            <div ng-show="filters.categories">
+                <div style="background: #C74E00;padding-top: 5px; padding-bottom: 5px; margin-bottom: 10px" class="col-xs-12">
+                    <span class="col-sm-2">
+                        categorias
+                    </span>
+                    <span class="col-sm-8">
+                        tags
+                    </span>
+                    <span class="col-sm-2">
+                        opções
+                    </span>
+                </div>
+                <div class="col-xs-12">
+                    <div class="col-sm-2">
+                        <a style="background: #fff !important; border-color: #fff !important; cursor: pointer; margin-bottom: 3px"
+                           ng-click="forumFilter('rem','cat',category)"
+                           class="category"
+                           ng-repeat="category in filters.categories track by $index"><span>{{category.name}} <b>&times;</b></span></a>
+                    </div>
+                    <div class="col-sm-8">
+                        <a style="background: #fff !important; border-color: #fff !important; cursor: pointer; margin-bottom: 3px"
+                           ng-click="forumFilter('rem','tag',tag)"
+                           class="tag"
+                           ng-repeat="tag in filters.tags track by $index"><span>#{{tag.name}} <b>&times;</b></span></a>
+                    </div>
+                    <div class="col-sm-2" ng-show="forum_search">
+                        <button class="btn btn-link clean" ng-click="forumFilter('clear')">limpar</button>
+                    </div>
+                </div>
             </div>
         </div>
 
         <header class="widget-header line one-column">
-            <div class="column" ng-style="forum_single && {
-                                                            'border-bottom':'1px solid #de6f10',
-                                                            'padding-bottom':'5px',
-                                                            'margin-bottom':'5px'}">
+            <div class="column" ng-style="forum_single && {'border-bottom':'1px solid #de6f10','padding-bottom':'5px','margin-bottom':'5px'}">
                 <h2 ng-if="forum_single" class="widget-title">{{forum.title}}</h2>
                 <h2 ng-if="!forum_single" class="widget-title">fóruns</h2>
                 <a class="btn btn-success new-topic"
