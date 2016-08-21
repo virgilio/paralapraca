@@ -152,6 +152,12 @@
                                     </div>
                                 </td>
                             </tr>
+                            <tr ng-show="!forum_single && !forum_search" class="empty-forum">
+                                <td>
+                                    <a class="section-title" ng-href="/discussion/#!/forum/{{ forum.id }}"><strong>Ver todos os tópicos deste fórum</strong>
+                                    </a>
+                               </td>
+                            </tr>
                             <!--<tr class="new">-->
                                 <!--<td>-->
                                     <!--<span class="thread-name">Lorem ipsum dolor sit amet</span>-->
