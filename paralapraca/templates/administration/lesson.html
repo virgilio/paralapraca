@@ -112,67 +112,69 @@ wrapper-course-lesson
             </div>
         </div>
 
-        <div class="video-activity-buttons">
-            <button class="btn btn-default"
-                ng-class="{'btn-info': section === 'video'}"
-                ng-click="section ='video'">{% trans 'Video' %}</button>
+        <div class="course-video">
+            <div class="video-activity-buttons">
+                <button class="btn btn-default"
+                    ng-class="{'btn-info': section === 'video'}"
+                    ng-click="section ='video'">{% trans 'Video' %}</button>
 
-            <button class="btn btn-default"
-                ng-class="{'btn-info': section === 'activity'}"
-                ng-click="section ='activity'">{% trans 'Activity' %}</button>
+                <button class="btn btn-default"
+                    ng-class="{'btn-info': section === 'activity'}"
+                    ng-click="section ='activity'">{% trans 'Activity' %}</button>
+            </div>
+
+            <!-- VIDEO SECTION -->
+            <div class="video" ng-class="{'hidder': section !== 'video'}">
+
+                <div class="waiting textcenter jumbotron"
+                     style="height: 419px"
+                     ng-show="currentUnit.video.youtube_id && !playerReady">
+                    <div class="middle">
+                        <i class="fa fa-refresh fa-5x"></i>
+                    </div>
+                </div>
+
+                <!-- ADD-VIDEO-INTRO -->
+                <div class="add-video-intro" ng-hide="currentUnit.video">
+                    <!-- CENTERED -->
+                    <div class="centered">
+                        <i class="fa fa-youtube-play fa-4x"></i>
+                        <h1>{% trans 'Unit video' %}</h1>
+                        <div class="form-group">
+                            <input type="text" class="form-control"
+                                   ng-model="currentUnit.intended_youtube_id"/>
+                        </div>
+                        <div class="form-group">
+                            <button class="btn btn-danger delete"
+                                    ng-click="currentUnit.intended_youtube_id=''">{% trans 'Cancel' %}</button>
+
+                            <button class="btn btn-success save"
+                                    ng-click="setCurrentUnitVideo()">{% trans 'Add' %}</button>
+                        </div>
+                    </div>
+                    <!-- END CENTERED -->
+                </div>
+
+                <div class="current-video" ng-class="{'hidder': currentUnit.video == null}">
+
+                    <div class="embed-responsive embed-responsive-16by9">
+                        <div class="embed-responsive-item" id="youtube-player" youtube-player></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-9 col-xs-12">
+                            <p class="video-title" ng-bind="currentUnit.video.name"></p>
+                        </div>
+                        <div class="col-sm-3 col-xs-12">
+                            <button class="btn-edit-video btn btn-success btn-sm pull-right"
+                                    ng-click="currentUnit.video = null">{% trans 'Change video' %}</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- END ADD-VIDEO-INTRO -->
+
+            </div>
+            <!-- END VIDEO SECTION -->
         </div>
-
-        <!-- VIDEO SECTION -->
-        <div class="video" ng-class="{'hidder': section !== 'video'}">
-
-            <div class="waiting textcenter jumbotron"
-                 style="height: 419px"
-                 ng-show="currentUnit.video.youtube_id && !playerReady">
-                <div class="middle">
-                    <i class="fa fa-refresh fa-5x"></i>
-                </div>
-            </div>
-
-            <!-- ADD-VIDEO-INTRO -->
-            <div class="add-video-intro" ng-hide="currentUnit.video">
-                <!-- CENTERED -->
-                <div class="centered">
-                    <i class="fa fa-youtube-play fa-4x"></i>
-                    <h1>{% trans 'Unit video' %}</h1>
-                    <div class="form-group">
-                        <input type="text" class="form-control"
-                               ng-model="currentUnit.intended_youtube_id"/>
-                    </div>
-                    <div class="form-group">
-                        <button class="btn btn-danger delete"
-                                ng-click="currentUnit.intended_youtube_id=''">{% trans 'Cancel' %}</button>
-
-                        <button class="btn btn-success save"
-                                ng-click="setCurrentUnitVideo()">{% trans 'Add' %}</button>
-                    </div>
-                </div>
-                <!-- END CENTERED -->
-            </div>
-
-            <div class="current-video" ng-class="{'hidder': currentUnit.video == null}">
-
-                <div class="embed-responsive embed-responsive-16by9">
-                    <div class="embed-responsive-item" id="youtube-player" youtube-player></div>
-                </div>
-                <div class="row">
-                    <div class="col-xs-6">
-                        <p ng-bind="currentUnit.video.name"></p>
-                    </div>
-                    <div class="col-xs-6 textright">
-                        <button class="btn-edit-video btn btn-success btn-sm uppercase"
-                                ng-click="currentUnit.video = null">{% trans 'Change video' %}</button>
-                    </div>
-                </div>
-            </div>
-            <!-- END ADD-VIDEO-INTRO -->
-
-        </div>
-        <!-- END VIDEO SECTION -->
 
         <!-- ACTIVITIES SECTION -->
         <div class="activity" ng-show="section==='activity'">
