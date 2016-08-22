@@ -1,11 +1,21 @@
 {% extends 'base.html' %}
 {% load i18n %}
-{% load is_coordinator %}
-{% load pipeline %}
+{% load staticfiles %}
+{% load compress %}
 
 {% block js %}
     {{ block.super }}
-    {% javascript 'timtec-discussion' %}
+    <script type="text/javascript" src="{% static 'tinymce-dist/tinymce.js' %}"></script>
+    {% compress js %}
+    <script type="text/javascript" src="{% static 'js/timtec-discussion-app.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/discussion-app.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/discussion-controllers.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/discussion-services.js' %}"></script>
+    <script type="text/javascript" src="{% static 'angular-ui-tinymce/src/tinymce.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/ui.tinymce.config.js' %}"></script>
+    <script type="text/javascript" src="{% static 'ng-file-upload/ng-file-upload.js' %}"></script>
+    {% endcompress %}
+
 {% endblock %}
 
 {% block body_attrs %}

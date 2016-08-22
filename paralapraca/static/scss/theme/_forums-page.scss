@@ -42,6 +42,12 @@
     }
 }
 
+.see-all-topics {
+    .btn {
+        @include button-hover(#fff,#fff,rgba($orange,0.6),$orange);
+    }
+}
+
 .new-thread {
     .form-control {
         border-color: $orange;
