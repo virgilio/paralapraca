@@ -568,12 +568,6 @@
             text-align: center; 
             width: 20px;
             @include button-hover(#fff,#fff,#9b9b9b,darken(#9b9b9b, 10%));
-            &.unit-2 {
-                margin: -9px 0 0 2%; 
-            }
-            &.unit-3 {
-                margin: -9px 0 0 1%; 
-            }
             &.current {
                 box-sizing: border-box;
                 height: 29px;

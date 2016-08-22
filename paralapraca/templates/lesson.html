@@ -97,7 +97,8 @@ wrapper-course-lesson
                    href="#/{{$index+1}}"
                    class="has-tooltip unit"
                    ng-repeat="unit in lesson.units"
-                   ng-class="{'current': unit==currentUnit, 'done': unit.progress.complete}">
+                   ng-class="{'current': unit==currentUnit, 'done': unit.progress.complete}"
+                   ng-style="{'margin-left': (6 - lesson.units.length/5.5) + '%'}">
                        <span ng-bind="unit.position+1">1</span>
                 </a>
                 {% endverbatim %}
