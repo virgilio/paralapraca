@@ -53,7 +53,7 @@
                     </div>
 
                     <div class="thread-post">
-                        <div ng-bind-html="topic.content"></div>
+                        <div ng-bind-html="get_as_safe_html(topic.content)"></div>
 
                         <!-- TODO: transformar em diretiva -->
                         <button class="btn btn-xs attached"
@@ -135,7 +135,7 @@
                                   <a ng-href="/profile/{{ comment.author.username }}">{{ comment.author.name }}</a>
                                 </span>
                                 <div class="comment-post">
-                                    <div ng-bind-html="comment.text"></div>
+                                    <div ng-bind-html="get_as_safe_html(comment.text)"></div>
 
                                     <!-- TODO: transformar em diretiva -->
                                     <button class="btn btn-xs attached"
@@ -213,7 +213,7 @@
                                       <a ng-href="/profile/{{ reply.author.username }}">{{ reply.author.name }}</a>
                                     </span>
                                     <div class="comment-post">
-                                        <div ng-bind-html="reply.text"></div>
+                                        <div ng-bind-html="get_as_safe_html(reply.text)"></div>
                                         <!-- TODO: transformar em diretiva -->
                                         <button class="btn btn-xs attached"
                                                 ng-show="(reply.files.length > 1) && !reply.show_files"
