@@ -80,47 +80,39 @@
                         </div>
                     </div>
 
-                    <!--
+
                     <div class="form-group">
                         <div class="row">
                             <div class="col-sm-6">
-                                <label for="thread-tags">Para terminar, escolha algumas tags <span class="help-text">máximo de xx tags</span></label>
-                                <select class="form-control" id="thread-tags" multiple>
-                                    <option>tag</option>
-                                    <option>tag</option>
-                                    <option>tag</option>
-                                    <option>tag</option>
-                                    <option>tag</option>
+                                <label for="thread-tags">Para terminar, escolha algumas tags</label>
+                                <select ng-model="new_topic.tags" class="form-control" id="thread-forum"
+                                          ng-options="tag.id as tag.name for tag in tags" multiple>
                                 </select>
                             </div>
-                            <div class="col-sm-6">
+                            <!-- <div class="col-sm-6">
                                 <div class="help-text">tags escolhidas</div>
                                 <div class="selected-tags tags">
-                                    <a href="#" class="tag">#tag</a> <a href="#" class="tag">#tag</a> <a href="#" class="tag">#tag</a> <a href="#" class="tag">#tag</a>
+                                    <a href="#" class="tag" ng-repeat="tag in new_topic.tags">#{{tag}}</a>
                                 </div>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="row">
                             <div class="col-sm-6">
-                                <label for="thread-forum">Qual a categoria do seu tópico? <span class="help-text">escolha apenas uma</span></label>
-                                <select class="form-control" id="thread-forum">
-                                    <option>Escolha a categoria</option>
-                                    <option>Categoria</option>
-                                    <option>Categoria</option>
-                                    <option>Categoria</option>
-                                    <option>Categoria</option>
+                                <label for="thread-forum">Quais as categorias do seu tópico? <!-- <span class="help-text">escolha apenas uma</span> --></label>
+                                <select class="form-control" id="thread-forum" ng-model="new_topic.categories" ng-options="category.id as category.name for category in categories" multiple>
+                                    <option>Escolha as categorias</option>
                                 </select>
                             </div>
-                            <div class="col-sm-6">
+                            <!-- <div class="col-sm-6">
                                 <div class="help-text">categoria escolhida</div>
                                 <div class="selected-category">
-                                    <span class="category discussion">discussão</span>
+                                    <span class="category discussion" ng-repeat="category in new_topic.categories">{{category}}</span>
                                 </div>
-                            </div>
+                            </div> -->
                         </div>
-                    </div> -->
+                    </div>
                     <button ng-disabled="sending" ng-click="save_topic()" class="btn btn-success new-topic">postar novo tópico</button>
                 </form>
             </div>
