@@ -76,7 +76,7 @@ class Command(BaseCommand):
                         )
 
                     # Attach the file to the topic
-                    topic.attachment.add(attachment)
+                    topic.files.add(attachment)
                     topic.save()
                     print(".")
 
@@ -98,6 +98,6 @@ class Command(BaseCommand):
                         )
 
                         # Attach the file to the topic
-                        comment.attachment.add(attachment)
+                        comment.files.add(attachment)
                         comment.save()
                         print(".")
