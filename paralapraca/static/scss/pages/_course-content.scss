@@ -192,6 +192,11 @@
             max-width: 400px;
         }
     }
+    .editable-title:after {
+        @media screen and (min-width: $screen-md-min) {
+            margin-left: -15px;
+        }
+    }
 }
 
 // Course content (used on course intro and lesson page)
@@ -599,14 +604,18 @@
         // ADD UNIT
         .add-unit {
             background-color: $brand-success;
-            line-height: 2;
+            font-size: $font-size-small;
+            font-weight: normal;
             padding: 0;
+            position: relative;
             text-align: center;
             &:hover {
                 background-color: darken($brand-success, 10%);
             }
             i {
-                position: static;
+                left: 5px;
+                top: 5px;
+                position: absolute;
             }
         }
         // END ADD UNIT

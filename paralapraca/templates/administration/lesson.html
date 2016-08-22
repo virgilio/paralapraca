@@ -91,30 +91,35 @@ wrapper-course-lesson
                     <button class="btn btn-sm btn-danger delete" ng-click="removeCurrentUnit()" title="{% trans 'Delete this unit' %}">{% trans 'Delete this unit' %}</button>
                 </div>
             </div>
+        </div>
 
-
-            <div id="video-activity-buttons">
-                <button class="btn btn-default"
-                        ng-class="{'btn-info': section === 'video'}"
-                        ng-click="section ='video'">{% trans 'Video' %}</button>
-
-                <button class="btn btn-default"
-                        ng-class="{'btn-info': section === 'activity'}"
-                        ng-click="section ='activity'">{% trans 'Activity' %}</button>
+        <div class="lesson-units-nav">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%;"></div>
+            </div>
+            <div class="units">
+                <span class="units-title">{% trans 'Chapters' %}</span>
+                {% verbatim %}
+                <span class="has-tooltip unit"
+                      ng-repeat="u in lesson.units"
+                      title="{{u.title}}"
+                      ng-click="$parent.selectUnit(u);"
+                      ng-class="{current: $parent.currentUnit == u}">
+                      <span ng-bind="$index + 1"></span>
+                </span>
+                {% endverbatim %}
+                <a href="" class="unit add-unit" ng-click="addUnit()"><i class="fa fa-plus"></i></a>
             </div>
         </div>
 
-        <div class="units">
-            {% verbatim %}
-            <a href="" class="unit" ng-repeat="u in lesson.units"
-               title="{{u.title}}"
-               ng-click="$parent.selectUnit(u);"
-               ng-class="{current: $parent.currentUnit == u}">
-               <span ng-bind="$index + 1"></span>
-               <i class="fa fa-list" ng-show="u.activities"></i>
-           </a>
-            {% endverbatim %}
-            <a href="" class="add-unit unit" ng-click="addUnit()"><i class="fa fa-plus"></i></a>
+        <div class="video-activity-buttons">
+            <button class="btn btn-default"
+                ng-class="{'btn-info': section === 'video'}"
+                ng-click="section ='video'">{% trans 'Video' %}</button>
+
+            <button class="btn btn-default"
+                ng-class="{'btn-info': section === 'activity'}"
+                ng-click="section ='activity'">{% trans 'Activity' %}</button>
         </div>
 
         <!-- VIDEO SECTION -->
