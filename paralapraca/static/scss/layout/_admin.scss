@@ -10,7 +10,12 @@
                 .editable-title {
                     margin-bottom: 10px;
                     float: left;
-                    width: 93%;
+                    width: 90%;
+                    &:after {
+                        @media screen and (min-width: $screen-sm-min) {
+                            margin-left: -20px;
+                        }
+                    }
                 }
                 .question .btn-danger {
                     float: right;
@@ -22,8 +27,16 @@
             .add-side-notes {
                 margin-top: 20px;
             }
-            .course-video {
-                margin-top: 70px;
+            .course-video, .activity {
+                margin: 0 auto 40px;
+                max-width: 720px;
+            }
+            .activity {
+                margin-top: 25px;
+
+                .btn-activity {
+                    margin-bottom: 10px;
+                }
             }
         }
 
@@ -53,7 +66,8 @@
         }
         .video-activity-buttons {
             clear: both;
-            margin: 10px 0; 
+            margin: 70px auto 0;
+            max-width: 720px;
         }
         // END CONTENT
         // ADD VIDEO, THUMBNAIL, ACTIVITIES

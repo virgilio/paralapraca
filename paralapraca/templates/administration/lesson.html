@@ -112,19 +112,19 @@ wrapper-course-lesson
             </div>
         </div>
 
-        <div class="course-video">
-            <div class="video-activity-buttons">
-                <button class="btn btn-default"
-                    ng-class="{'btn-info': section === 'video'}"
-                    ng-click="section ='video'">{% trans 'Video' %}</button>
+        <div class="video-activity-buttons">
+            <button class="btn btn-default"
+                ng-class="{'btn-info': section === 'video'}"
+                ng-click="section ='video'">{% trans 'Video' %}</button>
 
-                <button class="btn btn-default"
-                    ng-class="{'btn-info': section === 'activity'}"
-                    ng-click="section ='activity'">{% trans 'Activity' %}</button>
-            </div>
+            <button class="btn btn-default"
+                ng-class="{'btn-info': section === 'activity'}"
+                ng-click="section ='activity'">{% trans 'Activity' %}</button>
+        </div>
 
+        <div class="course-video" ng-class="{'hidder': section !== 'video'}">
             <!-- VIDEO SECTION -->
-            <div class="video" ng-class="{'hidder': section !== 'video'}">
+            <div class="video">
 
                 <div class="waiting textcenter jumbotron"
                      style="height: 419px"
@@ -178,45 +178,43 @@ wrapper-course-lesson
 
         <!-- ACTIVITIES SECTION -->
         <div class="activity" ng-show="section==='activity'">
-            <div class="row">
-                <div class="panel panel-default" ng-show="currentActivity">
-                    <div class="panel-heading clearfix">
-                        <span ng-repeat="activity in currentUnit.activities">
-                            <button class="btn btn-default"
-                                ng-class="{'btn-info':currentActivity==activity}"
-                                ng-click="selectActivity(activity)"
-                                ng-bind="$index+1"></button>
-                            &nbsp;
-                        </span>
+            <div class="panel panel-default" ng-show="currentActivity">
+                <div class="panel-heading clearfix">
+                    <span ng-repeat="activity in currentUnit.activities">
+                        <button class="btn btn-default"
+                            ng-class="{'btn-info':currentActivity==activity}"
+                            ng-click="selectActivity(activity)"
+                            ng-bind="$index+1"></button>
+                        &nbsp;
+                    </span>
 
-                        <button class="btn btn btn-success"
-                            ng-click="currentActivity=null">+</button>
-                    </div>
-
-                    <div class="panel-body">
-                        <ng-include src="loadActivityTemplateUrl()"></ng-include>
-                        <hr/>
-                        <p>{% trans 'The text bellow will be shown to students when they correctly finish this activity.' %}</p>
-                        <markdowneditor title="{% trans 'Comment' %}" content="currentActivity.comment"></markdowneditor>
-                    </div>
+                    <button class="btn btn btn-success"
+                        ng-click="currentActivity=null">+</button>
                 </div>
 
-                <div class="add-activity textcenter" ng-hide="currentActivity">
-                    <!-- CENTERED -->
-                    <div class="centered">
-                        <i class="fa fa-pencil fa-4x"></i>
-                        <h1 class="top">{% trans 'Unit activity' %}</h1>
-                        {% verbatim %}
-                        <div class="col-md-4 col-sm-12" ng-repeat="type in activityTypes">
-                            <button class="activity-btn btn btn-default"
-                                    ng-click="addNewActivity(type.name)">
-                                {{type.label}}
-                            </button>
-                        </div>
-                        {% endverbatim %}
-                    </div>
-                    <!-- END CENTERED -->
+                <div class="panel-body">
+                    <ng-include src="loadActivityTemplateUrl()"></ng-include>
+                    <hr/>
+                    <p>{% trans 'The text bellow will be shown to students when they correctly finish this activity.' %}</p>
+                    <markdowneditor title="{% trans 'Comment' %}" content="currentActivity.comment"></markdowneditor>
                 </div>
+            </div>
+
+            <div class="add-activity textcenter" ng-hide="currentActivity">
+                <!-- CENTERED -->
+                <div class="centered">
+                    <i class="fa fa-pencil fa-4x"></i>
+                    <h1 class="top">{% trans 'Unit activity' %}</h1>
+                    {% verbatim %}
+                    <div class="col-md-4 col-sm-12" ng-repeat="type in activityTypes">
+                        <button class="btn btn-default btn-activity"
+                                ng-click="addNewActivity(type.name)">
+                            {{type.label}}
+                        </button>
+                    </div>
+                    {% endverbatim %}
+                </div>
+                <!-- END CENTERED -->
             </div>
         </div>
         <!-- END ACTIVITIES SECTION -->
