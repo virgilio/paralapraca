@@ -14,6 +14,14 @@
         background-color: #C74E00;
     }
     .category, .tag {
-        @include button-hover($gray,$gray,#fff,$yellow);
+        @include button-hover($gray,$gray,$yellow,#fff);
+    }
+}
+
+.filter-box {
+    background-color: $orange;
+
+    .first-letter {
+        background-color: darken($orange,7%);
     }
 }

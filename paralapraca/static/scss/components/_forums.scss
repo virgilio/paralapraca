@@ -55,6 +55,58 @@
         padding: 7px 0; 
     }
     .category, .tag {
-        @include button-hover($gray,$gray,#fff,$brand-info);
+        @include button-hover($gray,$gray,$brand-info,#fff);
+        &.selected {
+            @include button-hover($gray,$gray,#fff,#fff);
+        }
+    }
+}
+
+.filter-box {
+    background-color: $brand-primary;
+    max-width: 470px;
+    position: absolute;
+    top: 38px;
+    right: 0;
+    z-index: 1000;
+
+    .categories, .tags {
+        margin: 0; 
+        padding: 15px 40px 25px;
+    }
+    .categories {
+        text-align: center; 
+    }
+    .filter-title {
+        color: #fff;
+        font-family: $font-family-sans-serif;
+        font-size: $font-size-base;
+        font-weight: $bold;
+        margin: 0; 
+        padding: 10px 40px;
+        text-align: center; 
+    }
+    .first-letter {
+        background-color: darken($brand-primary,7%);
+        border-radius: 100%;
+        color: #fff;
+        display: inline-block;
+        font-size: $font-size-small;
+        font-weight: $bold;
+        line-height: 200%;
+        height: 24px;
+        margin-bottom: 5px;
+        width: 24px;
+        text-align: center; 
+    }
+    .tag {
+        margin-bottom: 5px;
+    }
+    .filter-buttons {
+        padding: 0 20px 20px;
+        text-align: right; 
+        .btn + .btn {
+            margin-left: 10px;
+        }
     }
 }

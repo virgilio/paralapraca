@@ -19,12 +19,65 @@
 {% verbatim %}
 <script type="text/ng-template" id="forum.html">
     <section class="forums forums-page forums-widget widget container-fluid" ng-cloak>
-        <!-- <div class="widget-topbar line one-column">
+
+        <div class="widget-topbar line one-column">
             <div class="column">
-                <button class="btn btn-link clean">limpar filtro</button>
-                <button class="btn btn-link filter">filtrar por tags e categorias</button>
+                <button class="btn btn-link filter pull-right">filtrar</button>
             </div>
-        </div> -->
+
+            <div class="filters filter-box">
+                <h3 class="filter-title">Selecione a categoria</h3>
+                <div class="categories">
+                    <a class="category discussion">discussões</a>
+                    <a class="category schedule selected">pauta</a>
+                    <a class="category record">registro</a>
+                </div>
+                <h3 class="filter-title">Selecione as tags</h3>
+                <div class="tags">
+                    <span class="first-letter">A</span>
+                    <a class="tag selected">#tag</a>
+                    <a class="tag selected">#tag</a>
+                    <a class="tag">#tag</a>
+                    <a class="tag">#tag</a>
+                    
+                    <span class="first-letter">B</span>
+                    <a class="tag">#tag</a>
+                    <a class="tag selected">#tag</a>
+                    <a class="tag selected">#tag</a>
+                    <a class="tag">#tag</a>
+
+                    <span class="first-letter">C</span>
+                    <a class="tag">#tag</a>
+                    <a class="tag">#tag</a>
+                    <a class="tag">#tag</a>
+                    <a class="tag selected">#tag</a>
+
+                    <span class="first-letter">D</span>
+                    <a class="tag selected">#tag</a>
+                    <a class="tag">#tag</a>
+                    <a class="tag">#tag</a>
+                    <a class="tag">#tag</a>
+
+                    <span class="first-letter">E</span>
+                    <a class="tag">#tag</a>
+                    <a class="tag selected">#tag</a>
+                    <a class="tag">#tag</a>
+                    <a class="tag">#tag</a>
+
+                    <span class="first-letter">F</span>
+                    <a class="tag">#tag</a>
+                    <a class="tag">#tag</a>
+                    <a class="tag selected">#tag</a>
+                    <a class="tag">#tag</a>
+                </div>
+                <div class="filter-buttons">
+                    <button class="btn btn-link cancel">cancelar</button>
+                    <button class="btn btn-link clean">limpar</button>
+                    <button class="btn btn-xs btn-success save">pronto</button>
+                </div>
+            </div>
+        </div>
+
         <div class="widget-topbar line one-column filters" ng-show="filters.categories">
             <div class="filters-header">
                 <span class="col-sm-2">
