@@ -73,6 +73,20 @@ a {
     }
 }
 
+.new-thread {
+    .form-control {
+        .btn-default {
+            @extend %forum-categories;
+            @include button-hover($orange,#fff,transparent,$orange);
+            border: 1px solid $orange !important;
+
+            .close {
+                color: $orange;
+            }
+        }
+    }
+}
+
 .btn {
     &.attach {
         @include button-hover(#fff,#fff,$purple,darken($purple,10%));

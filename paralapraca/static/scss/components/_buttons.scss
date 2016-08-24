@@ -248,6 +248,29 @@ a {
     }
 }
 
+.new-thread {
+    .form-control {
+        .btn-default {
+            @extend %forum-categories;
+            @include button-hover($brand-primary,#fff,transparent,$brand-primary);
+            border: 1px solid $brand-primary !important;
+
+            .close {
+                opacity: 1;
+                color: $brand-primary;
+                line-height: 0.9em !important;
+                text-shadow: 0;
+                transition: color 0.5s ease;
+            }
+            &:hover, &:active, &:hover {
+                .close {
+                    color: #fff;
+                }
+            }
+        }
+    }
+}
+
 // lesson's activities buttons
 
 /* .course-activity {
