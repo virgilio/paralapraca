@@ -5,6 +5,10 @@
 
 {% block js %}
     {{ block.super }}
+    {% compress css %}
+        <link rel="stylesheet" type="text/css" href="{% static 'angular-ui-select/dist/select.css' %}">
+    {% endcompress %}
+
     <script type="text/javascript" src="{% static 'tinymce-dist/tinymce.js' %}"></script>
     {% compress js %}
     <script type="text/javascript" src="{% static 'js/timtec-discussion-app.js' %}"></script>
@@ -16,7 +20,6 @@
     <script type="text/javascript" src="{% static 'ng-file-upload/ng-file-upload.js' %}"></script>
     <script type="text/javascript" src="{% static 'angular-sanitize/angular-sanitize.js' %}"></script>
     <script type="text/javascript" src="{% static 'angular-ui-select/dist/select.js' %}"></script>
-    <link rel="stylesheet" type="text/css" href="{% static 'angular-ui-select/dist/select.css' %}">
     {% endcompress %}
 
 {% endblock %}
