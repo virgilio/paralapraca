@@ -94,6 +94,7 @@
                         </div>
                         <div class="pull-right">
                             <span class="action replies"
+                                  ng-class="{ 'active': topic.count_replies }"
                                   translate
                                   translate-n="topic.count_replies"
                                   translate-plural="{{$count}} respostas">1 resposta</span>
