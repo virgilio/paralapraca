@@ -4,7 +4,7 @@
 <header class="main-header">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-8">
+            <div class="col-sm-6 col-md-8">
                 <h2 class="course-name">{{ course.name }}</h2>
                 {% include "_course-details-inline.html" with course=course %}
 
@@ -15,7 +15,7 @@
                 {% endblock %}
             </div>
             {% if course.first_lesson.slug %}
-            <div class="col-md-4">
+            <div class="col-sm-6 col-md-4">
                 <!-- COURSE-SECTION-NAV -->
                 <nav class="course-sections">
                     <a href="{% url 'course_intro' course.slug %}" class="intro {% if '/intro/' in request.path %}active{% endif %}">Início do módulo</a>

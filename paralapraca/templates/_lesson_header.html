@@ -22,6 +22,9 @@
 
         <!-- LESSON NAVIGATION FOR PHONE -->
         <div class="lesson-units-mobile">
+            <span class="lesson-breadcrumb">
+                você está no Capítulo: 
+            </span>
             <select onchange="document.location=this.value" class="form-control">
                 <option>{{lesson.name}}</option>
                 {% for list_lesson in lesson.course.public_lessons %}

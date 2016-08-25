@@ -55,7 +55,7 @@
         }
     }
     .course-sections {
-        @media screen and (min-width: $screen-md-min) {
+        @media screen and (min-width: $screen-sm-min) {
             text-align: right; 
         }
         a {
@@ -184,13 +184,23 @@
     }
     .lesson-units-mobile {
         display: block;
-        margin: 10px 0;
+        font-size: $font-size-small;
+        .form-control {
+            background-color: transparent;
+            border-radius: 0;
+            box-shadow: none;
+            color: #000;
+            display: inline-block;
+            font-size: $font-size-small;
+            font-weight: $bold;
+            height: 20px;
+            max-width: 120px;
+            padding: 0;
+        }
         @media screen and (min-width: $screen-md-min) {
             display: none;
         }
-        .form-control {
-            max-width: 400px;
-        }
+        
     }
 }
 
@@ -514,7 +524,11 @@
 
 .course {
     .lesson-units-nav {
+        display: none;
         position: relative;
+        @media screen and (min-width: $screen-sm-min) {
+            display: block;
+        }
         .line {
             background: $brand-primary;
             background: -moz-linear-gradient(left, $brand-primary 0%, $brand-primary 50%, $gray-light 50%, $gray-light 100%);

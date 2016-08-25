@@ -111,7 +111,7 @@ wrapper-course-lesson
 
     <!-- UNITS NAVIGATION FOR PHONES -->
     {% block units_nav_mobile %}
-        <div class="visible-xs">
+        <div class="lesson-units-nav-mobile col-xs-12 visible-xs">
             {% verbatim %}
             <select ng-model="selectedIndex" ng-change="locationChange(selectedIndex)" class="form-control">
                 <option ng-repeat="unit in lesson.units"
