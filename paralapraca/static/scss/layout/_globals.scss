@@ -28,6 +28,9 @@ body {
             overflow: hidden;
             position: relative;
             width: 100%;
+            @media screen and (min-width: $screen-md-min) {
+                min-height: 768px;
+            }
         }
         // content wrapper
         .wrapper {
