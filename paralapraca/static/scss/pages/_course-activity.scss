@@ -64,6 +64,34 @@
         }
     }
 
+    .slides {
+        margin: -30px; 
+        .slides-navigation {
+            background-color: $brand-primary;
+            color: #fff;
+            padding: 8px;
+            text-align: center;
+        }
+        .previous, .next, .slides-number {
+            display: inline-block;
+        }
+        .previous, .next {
+            color: #fff;
+            cursor: pointer;
+            font-size: $font-size-small;
+            font-weight: $semi-bold;
+        }
+        .slides-number {
+            background-color: #fff;
+            border-radius: 25px;
+            color: $brand-primary;
+            font-size: $font-size-large;
+            font-weight: $bold;
+            margin: 0 10px; 
+            padding: 10px 20px;
+        }
+    }
+
     .alert {
         font-weight: $bold;
         .fa {
