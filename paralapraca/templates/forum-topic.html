@@ -90,7 +90,7 @@
                             <a ng-click="topic_like(topic)" ng-class="{ 'active': topic.user_like }" class="action liked">gostei</a>
                             <!--<a class="action used">usar</a>-->
                             <a ng-click="topic.show_comment_input=true" class="action replies">comentar</a>
-                            <!-- <span class="last-edit">xx de xx de xxxx às xxhxx</span> -->
+                            <span class="last-edit">última edição {{ topic.last_activity_at | dateFilter }}</span>
                         </div>
                         <div class="pull-right">
                             <span class="action replies"
@@ -174,7 +174,7 @@
                                        ng-class="{ 'active': comment.user_like }"
                                        class="action liked">gostei</a>
                                     <a ng-click="comment.show_comment_input=true" class="action replies">comentar</a>
-                                    <!-- <span class="last-edit">xx de xx de xxxx às xxhxx</span> -->
+                                    <span class="last-edit">{{ comment.updated_at | date : "d 'de' MMMM 'de' yyyy 'às' HH'h'mm" }}</span>
                                 </div>
                                 <div class="pull-right">
                                     <span class="action liked"
@@ -275,7 +275,7 @@
                                            ng-class="{ 'active': reply.user_like }"
                                            class="action liked">gostei</a>
                                         <a ng-click="reply.show_comment_input=true" class="action replies">comentar</a>
-                                        <!-- <span class="last-edit">xx de xx de xxxx às xxhxx</span> -->
+                                        <span class="last-edit">{{ reply.updated_at | date : "d 'de' MMMM 'de' yyyy 'às' HH'h'mm" }}</span>
                                     </div>
                                     <div class="pull-right">
                                         <span class="action liked"

@@ -25,6 +25,9 @@
 
     app.filter('dateFilter',function(){
         return function(dt) {
+            if (dt === undefined){
+              return;
+            }
             var past = new Date(dt),
                 now = new Date(),
                 diff = now.getTime() - past.getTime(),
