@@ -25,7 +25,7 @@
                         <a ng-href="{% url 'administration.edit_course' course.id %}"
                            class="intro{% if course_intro_admin %} active{% endif %}">{% trans 'Home' %}</a>
                         <a ng-href="{% url 'administration.course_material' course.id %}"
-                           class="materials{% if '/material/' in request.path %} active{% endif %}">{%  trans 'Course material' %}</a>
+                           class="materials{% if '/material/' in request.path %} active{% endif %}">Menu de referências</a>
                         <a ng-href="{% url 'administration.forum' course.id %}"
                            class="forum{% if '/forum/' in request.path %} active{% endif %}">{% trans 'Forum' %}</a>
                         <div class="dropdown">
