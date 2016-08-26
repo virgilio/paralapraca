@@ -450,7 +450,10 @@
     position: fixed;
     bottom: 0;
     right: 0;
-    left: 100px;
+    left: 0;
+    @media screen and (min-width: $screen-sm-min) {
+        left: 100px;
+    } 
     .show-note {
         position: fixed;
         bottom: 0;
@@ -462,7 +465,10 @@
         position: fixed;
         bottom: 0;
         right: 0;
-        left: 100px;
+        left: 0;
+        @media screen and (min-width: $screen-sm-min) {
+            left: 100px;
+        }
         .notes-header {
             background-color: $brand-success;
             border-radius: 10px 10px 0 0;
@@ -477,12 +483,15 @@
             }
             .all-notes {
                 @extend %icon-angle-right;
-                display: inline-block;
+                display: none;
                 font-size: $font-size-small;
                 line-height: $font-size-small;
                 @include link-hover(#fff,#fff,#fff,transparent);
                 &:after {
                     margin-left: 5px;
+                }
+                @media screen and (min-width: $screen-sm-min) {
+                    display: inline-block;
                 }
             }
             .btn {
