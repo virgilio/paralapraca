@@ -101,7 +101,7 @@
                     </a> comentou no tópico <a href="/discussion/topic/#!/topic/{{ topic.id }}" class="thread-name">{{ topic.title }}</a> no fórum <a ng-href="/discussion/#!/forum/{{ topic.forum }}">{{ topic.forum_info.title }}</a>
                 </div>
                 <div class="actions">
-                  <span class="last-update">Última atividade <b>{{ topic.last_activity_at | dateFilter }}</b></span>
+                    <span class="action last-update">Última atividade <b>{{ topic.last_activity_at | dateFilter }}</b></span>
                     <span class="action replies"
                           ng-class="{ 'active': topic.count_replies }"
                           translate
