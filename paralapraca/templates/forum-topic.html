@@ -93,17 +93,17 @@
                             <span class="last-edit">última edição {{ topic.last_activity_at | dateFilter }}</span>
                         </div>
                         <div class="pull-right">
+                          <span class="action liked"
+                                ng-class="{ 'active': topic.count_likes }"
+                                translate
+                                translate-n="topic.count_likes"
+                                translate-plural="{{$count}} gostaram">1 gostou</span>
                             <span class="action replies"
                                   ng-class="{ 'active': topic.count_replies }"
                                   translate
                                   translate-n="topic.count_replies"
                                   translate-plural="{{$count}} respostas">1 resposta</span>
                             <!--<span class="action used">7 usaram</span>-->
-                            <span class="action liked"
-                                  ng-class="{ 'active': topic.count_likes }"
-                                  translate
-                                  translate-n="topic.count_likes"
-                                  translate-plural="{{$count}} gostaram">1 gostou</span>
                         </div>
                     </div>
 
