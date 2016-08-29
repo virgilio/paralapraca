@@ -102,7 +102,7 @@
                                   ng-class="{ 'active': topic.count_replies }"
                                   translate
                                   translate-n="topic.count_replies"
-                                  translate-plural="{{$count}} respostas">1 resposta</span>
+                                  translate-plural="{{$count}} comentários">1 comentário</span>
                             <!--<span class="action used">7 usaram</span>-->
                         </div>
                     </div>
@@ -173,7 +173,7 @@
                                     <a ng-click="comment_like(comment)"
                                        ng-class="{ 'active': comment.user_like }"
                                        class="action liked">gostei</a>
-                                    <a ng-click="comment.show_comment_input=true" class="action replies">comentar</a>
+                                    <a ng-click="comment.show_comment_input=true" class="action replies">responder</a>
                                     <span class="last-edit">{{ comment.updated_at | date : "d 'de' MMMM 'de' yyyy 'às' HH'h'mm" }}</span>
                                 </div>
                                 <div class="pull-right">
@@ -195,7 +195,7 @@
                                            class="btn btn-xs btn-primary attach pull-left"
                                            ngf-select="uploadCommentFiles($file, comment)"
                                            ngf-multiple="false">anexar arquivo</button>
-                                    <button class="btn btn-xs btn-success reply pull-right" ng-click="save_comment(topic, comment);comment.show_comment_input=false;">comentar</button>
+                                    <button class="btn btn-xs btn-success reply pull-right" ng-click="save_comment(topic, comment);comment.show_comment_input=false;">responder</button>
                                     <button class="btn btn-xs btn-danger delete pull-right" ng-click="comment.show_comment_input=false">descartar</button>
                                     <div class="post-attachments"
                                          ng-show="comment.new_comment_files">
@@ -252,7 +252,7 @@
                                                 class="btn btn-xs btn-primary attach pull-left"
                                                 ngf-select="uploadCommentFiles($file, comment)"
                                                 ngf-multiple="false">anexar arquivo</button>
-                                        <button class="btn btn-xs btn-success reply pull-right" ng-click="save_comment(topic, comment);reply.show_comment_input=false;">comentar</button>
+                                        <button class="btn btn-xs btn-success reply pull-right" ng-click="save_comment(topic, comment);reply.show_comment_input=false;">responder</button>
                                         <button class="btn btn-xs btn-danger delete pull-right" ng-click="reply.show_comment_input=false">descartar</button>
                                         <div class="post-attachments"
                                              ng-show="comment.new_comment_files">
@@ -274,7 +274,7 @@
                                         <a ng-click="comment_like(reply)"
                                            ng-class="{ 'active': reply.user_like }"
                                            class="action liked">gostei</a>
-                                        <a ng-click="reply.show_comment_input=true" class="action replies">comentar</a>
+                                        <a ng-click="reply.show_comment_input=true" class="action replies">responder</a>
                                         <span class="last-edit">{{ reply.updated_at | date : "d 'de' MMMM 'de' yyyy 'às' HH'h'mm" }}</span>
                                     </div>
                                     <div class="pull-right">
