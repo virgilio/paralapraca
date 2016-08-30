@@ -29,19 +29,27 @@
 
 .widget-header {
     .btn {
-        margin-top: -16px;
+        margin-top: 10px;
+        @media screen and (min-width: $screen-sm-min) {
+            margin-top: -16px;
+        }
     }
-    .btn + .btn {
-        margin-left: 10px;
+    @media screen and (min-width: $screen-sm-min) {
+        .btn + .btn {
+            margin-left: 10px;
+        }
     }
 }
 
 .widget-title {
-    display: inline-block;
-    font-size: 50px;
+    font-size: 44px;
     font-weight: bold;
     line-height: 90%;
     margin: 0 20px 0 0;
+    @media screen and (min-width: $screen-xs-min) {
+        display: inline-block;
+        font-size: 50px;
+    }
 }
 
 .widget-filter {
