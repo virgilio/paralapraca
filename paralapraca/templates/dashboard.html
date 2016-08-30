@@ -175,14 +175,14 @@
                     no fórum <a ng-href="/discussion/#!/forum/{{ topic.forum }}">{{topic.forum_info.title}}</a></span>
                 </div>
                 <div class="actions">
-                    <span class="action replies"
-                          ng-class="{ 'active': topic.count_replies }">{{topic.count_replies}} {{topic.count_replies > 1 || topic.count_replies == 0? 'respostas':'resposta'}}</span>
+                    <span class="action last-update">Última atividade <b>{{ topic.last_activity_at | dateFilter }}</b></span>
                     <span class="action liked"
                           ng-class="{ 'active': topic.count_likes }">{{topic.count_likes}} {{topic.count_likes > 1 || topic.count_likes == 0? 'gostaram':'gostou'}}</span>
+                    <span class="action replies"
+                          ng-class="{ 'active': topic.count_replies }">{{topic.count_replies}} {{topic.count_replies > 1 || topic.count_replies == 0? 'comentários':'comentário'}}</span>
                 </div>
             </div>
             {% endverbatim %}
-
             </div>
         </div>
     </section>

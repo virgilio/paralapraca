@@ -90,10 +90,10 @@ wrapper-course-lesson
                 <div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;"></div>
             </div>
             <div class="units">
-                <span class="units-title">{% trans 'Units' %}</span>
+                <span class="units-title">Unidades</span>
                 {% verbatim %}
                 <a data-placement="right"
-                   title="{{unit.video.name}}"
+                   title="{{unit.title}}"
                    href="#/{{$index+1}}"
                    class="has-tooltip unit"
                    ng-repeat="unit in lesson.units"

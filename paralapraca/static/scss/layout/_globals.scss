@@ -3,6 +3,12 @@
 
 //## Set shared styles for all pages
 //##
+
+html {
+    height: 100%;
+    min-height: 100%;
+}
+
 body {
     &.anonymous {
         background-color: #f6f6f6;
@@ -22,15 +28,15 @@ body {
     &.logged {
         background-image: url(../img/bg.jpg);
         background-color: transparent;
+        height: 100%;
+        min-height: 100%;
 
         // wrap the whole content of the site to prevent overflow on mobile devices
         .site-wrapper {
             overflow: hidden;
             position: relative;
+            min-height: 100%;
             width: 100%;
-            @media screen and (min-width: $screen-md-min) {
-                min-height: 768px;
-            }
         }
         // content wrapper
         .wrapper {

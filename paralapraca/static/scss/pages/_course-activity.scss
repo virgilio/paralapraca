@@ -64,6 +64,74 @@
         }
     }
 
+    .slides {
+        margin: -30px; 
+        img {
+            margin: 0 auto; 
+        }
+        .slides-navigation {
+            background-color: $brand-primary;
+            clear: both;
+            color: #fff;
+            padding: 8px;
+            text-align: center;
+        }
+        .previous, .next, .slides-number {
+            display: inline-block;
+        }
+        .previous, .next {
+            color: #fff;
+            cursor: pointer;
+            font-size: $font-size-small;
+            font-weight: $semi-bold;
+            height: 45px;
+            line-height: 40px;
+            position: relative;
+            vertical-align: bottom;
+            text-indent: -999999px;
+            @media screen and (min-width: $screen-xs-min) {
+                text-indent: 0;
+            }
+        }
+        .previous {
+            padding-right: 45px;
+            &:after {
+                border-top: 20px solid transparent;
+                border-right: 35px solid #fff;
+                border-bottom: 20px solid transparent;
+                content: '';
+                height: 0;
+                width: 0;
+                position: absolute;   
+                right: 0;
+                top: 2px;
+            }
+        }
+        .next {
+            padding-left: 45px;
+            &:before {
+                border-top: 20px solid transparent;
+                border-left: 35px solid #fff;
+                border-bottom: 20px solid transparent;
+                content: '';
+                height: 0;
+                width: 0;
+                position: absolute;   
+                left: 0;
+                top: 2px;
+            }
+        }
+        .slides-number {
+            background-color: #fff;
+            border-radius: 25px;
+            color: $brand-primary;
+            font-size: $font-size-large;
+            font-weight: $bold;
+            margin: 0 20px; 
+            padding: 10px 20px;
+        }
+    }
+
     .alert {
         font-weight: $bold;
         .fa {

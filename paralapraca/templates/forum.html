@@ -98,19 +98,20 @@
                 <div class="info">
                     <a ng-href="/profile/{{ topic.author.username }}">
                       <b>{{ topic.author.name }}</b>
-                  </a> comentou no tópico <a href="/discussion/topic/#!/topic/{{ topic.id }}" class="thread-name">{{ topic.title }}</a> no fórum <a ng-href="/discussion/#!/forum/{{ topic.forum }}">{{ topic.forum_info.title }}</a>
+                    </a> comentou no tópico <a href="/discussion/topic/#!/topic/{{ topic.id }}" class="thread-name">{{ topic.title }}</a> no fórum <a ng-href="/discussion/#!/forum/{{ topic.forum }}">{{ topic.forum_info.title }}</a>
                 </div>
                 <div class="actions">
-                    <span class="action replies"
-                          ng-class="{ 'active': topic.count_replies }"
-                          translate
-                          translate-n="topic.count_replies"
-                          translate-plural="{{$count}} respostas">1 resposta</span>
+                    <span class="action last-update">Última atividade <b>{{ topic.last_activity_at | dateFilter }}</b></span>
                     <span class="action liked"
                           ng-class="{ 'active': topic.count_likes }"
                           translate
                           translate-n="topic.count_likes"
                           translate-plural="{{$count}} gostaram">1 gostou</span>
+                    <span class="action replies"
+                          ng-class="{ 'active': topic.count_replies }"
+                          translate
+                          translate-n="topic.count_replies"
+                          translate-plural="{{$count}} comentários">1 comentário</span>
                 </div>
             </div>
         </div>

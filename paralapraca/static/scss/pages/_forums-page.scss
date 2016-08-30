@@ -227,7 +227,7 @@
         font-size: $font-size-base;
         font-weight: $semi-bold;
         @media screen and (min-width: $screen-md-min) {
-            max-width: 260px;
+            max-width: 400px;
             overflow: hidden;
             white-space: nowrap;
             text-overflow: ellipsis;
@@ -256,7 +256,7 @@
                 }
                 @media screen and (min-width: $screen-md-min) {
                     &:first-child {
-                        width: 300px;
+                        width: 450px;
                     }
                     &:nth-child(2), &:nth-child(3) {
                         width: 115px;

@@ -223,8 +223,8 @@
 
         <div class="line">
             <div class="welcome">
-                <h2>O novo AVA estará no ar daqui a pouco!</h2>
-                <p>Volte em breve para conhecer a nova plataforma!</p>
+                <h2>O AVA está em manutenção e volta daqui a pouco.</h2>
+                <p></p>
             </div>
         </div>
     </section>
@@ -247,119 +247,6 @@
 </div>
 <!-- END FOOTER -->
 
-
-
-
-
-
-<!-- Modal -->
-<div id="login-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-        <h3 id="loginModalLabel" class="textcenter">
-          <i class="fa fa-smile-o"></i><br/>You need to sign in or up to see this content
-        </h3>
-      </div>
-      <div class="modal-body">
-        <div class="row">
-          <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-            <div class="panel left-xs right-xs top-xs">
-              <div class="panel-heading left-xs right-xs">
-                <h3 class="bottom-xs top-xs"><i class="fa fa-angle-double-right"></i> Entrar</h3>
-              </div>
-
-              <div class="panel-body bottom-xs left-xs right-xs top-xs">
-                <form class="form-horizontal" method="post" action="/accounts/login/"><input type='hidden' name='csrfmiddlewaretoken' value='uBDs1Z8qfLEXg0P5GovQLQDjCrjNACYM' />
-                  <div class="form-group">
-                    <label class="col-lg-3 col-md-3 col-sm-12 col-xs-12">Login</label>
-                    <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
-                      <input name="login" type="text" class="form-control"
-                      value="" placeholder="E-mail or username"/>
-
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <label class="col-lg-3 col-md-3 col-sm-12 col-xs-12">Senha</label>
-                    <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
-                      <input name="password" type="password" class="form-control" placeholder="Senha">
-
-
-                    </div>
-                  </div>
-                  <div class="submit">
-                    <div class="row">
-                      <div class="col-lg-5 col-lg-offset-3 col-md-5 col-md-offset-3 col-sm-7 col-xs-12">
-                        <a href="/accounts/password/reset/">Forgot my password</a>
-                      </div>
-                      <div class="col-lg-4 col-md-4 col-sm-5 col-xs-12 textright">
-                        <button class="btn btn-success col-xs-12">Entrar</button>
-                      </div>
-                    </div>
-                  </div>
-                  <input type="hidden" name="next" />
-                </form>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-            <div class="panel bottom-xs left-xs right-xs top-xs">
-              <div class="panel-heading left-xs right-xs">
-                <h3 class="bottom-xs"><i class="fa fa-angle-double-right"></i> Cadastro</h3>
-              </div>
-
-              <div class="panel-body bottom-xs left-xs right-xs top-xs">
-                <form onclick="event.stopPropagation()" method="post" action="/accounts/signup/" class="form-horizontal"><input type='hidden' name='csrfmiddlewaretoken' value='uBDs1Z8qfLEXg0P5GovQLQDjCrjNACYM' />
-                  <div class="form-group">
-                    <label class="col-lg-3 col-md-3 col-sm-12 col-xs-12">Nome de usuário</label>
-                    <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
-                      <input name="username" type="text" class="form-control" placeholder="Choose an username">
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <label class="col-lg-3 col-md-3 col-sm-12 col-xs-12">E-mail</label>
-                    <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
-                      <input name="email" type="email" class="form-control" placeholder="Insert your e-mail">
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <label class="col-lg-3 col-md-3 col-sm-12 col-xs-12">Senha</label>
-                    <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
-                      <p><input name="password1" type="password" class="form-control" placeholder="A really strong password"></p>
-                      <input name="password2" type="password" class="form-control" placeholder="Confirm your password">
-                    </div>
-                  </div>
-
-
-
-                  <div class="submit textright">
-                    <div class="row">
-                      <div class="col-lg-4 col-lg-offset-8 col-md-5 col-md-offset-7 col-sm-7 col-sm-offset-5 col-xs-12 textright">
-                        <button class="btn btn-success col-xs-12">Cadastro</button>
-                      </div>
-                    </div>
-                  </div>
-                  <input type="hidden" name="next" />
-                </form>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!--
-        <div class="divider bottom-xs top-xs"></div>
-        <p class="bottom textcenter">
-
-                <a href="/accounts/facebook/login/">Facebook connect</a>
-
-
-        </p>
-        -->
-      </div>
-    </div>
-  </div>
-</div>
 
     <script type="text/javascript" charset="utf-8">
         $(document).ready(function() {
