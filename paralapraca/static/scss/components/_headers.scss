@@ -10,9 +10,14 @@
     }
     h1, h2, h3, h4, h5, h6 {
         color: $brand-primary;
-        font-size: 48px;
+        font-size: 5.9vmax;
         font-weight: bold;
+        line-height: 0.9;
         margin: 0; 
+        @media screen and (min-width: $screen-xs-min) {
+            font-size: 48px;
+            line-height: 1;
+        }
     }
 }
 
@@ -28,8 +33,13 @@
     }
     h1, h2, h3, h4, h5, h6 {
         color: $brand-primary;
-        font-size: 36px;
+        font-size: 5vmax;
         font-weight: bold;
+        line-height: 0.9;
         margin: 0; 
+        @media screen and (min-width: $screen-xs-min) {
+            font-size: 36px;
+            line-height: 1;
+        }
     }
 }
