@@ -84,51 +84,76 @@
             cursor: pointer;
             font-size: $font-size-small;
             font-weight: $semi-bold;
-            height: 45px;
-            line-height: 40px;
+            height: 34px;
+            line-height: 32px;
             position: relative;
             vertical-align: bottom;
             text-indent: -999999px;
             @media screen and (min-width: $screen-xs-min) {
                 text-indent: 0;
             }
+            @media screen and (min-width: $screen-md-min) {
+                height: 45px;
+                line-height: 40px;
+            }
         }
         .previous {
-            padding-right: 45px;
+            padding-right: 40px;
+            @media screen and (min-width: $screen-md-min) {
+                padding-right: 45px;
+            }
             &:after {
-                border-top: 20px solid transparent;
-                border-right: 35px solid #fff;
-                border-bottom: 20px solid transparent;
+                border-top: 15px solid transparent;
+                border-right: 25px solid #fff;
+                border-bottom: 15px solid transparent;
                 content: '';
                 height: 0;
                 width: 0;
                 position: absolute;   
                 right: 0;
                 top: 2px;
+                @media screen and (min-width: $screen-md-min) {
+                    border-top: 20px solid transparent;
+                    border-right: 35px solid #fff;
+                    border-bottom: 20px solid transparent;
+                }
             }
         }
         .next {
-            padding-left: 45px;
+            padding-left: 40px;
+            @media screen and (min-width: $screen-md-min) {
+                padding-left: 45px;
+            }
             &:before {
-                border-top: 20px solid transparent;
-                border-left: 35px solid #fff;
-                border-bottom: 20px solid transparent;
+                border-top: 15px solid transparent;
+                border-left: 25px solid #fff;
+                border-bottom: 15px solid transparent;
                 content: '';
                 height: 0;
                 width: 0;
                 position: absolute;   
                 left: 0;
                 top: 2px;
+                @media screen and (min-width: $screen-md-min) {
+                    border-top: 20px solid transparent;
+                    border-left: 35px solid #fff;
+                    border-bottom: 20px solid transparent;
+                }
             }
         }
         .slides-number {
             background-color: #fff;
             border-radius: 25px;
             color: $brand-primary;
-            font-size: $font-size-large;
+            font-size: 16px;
             font-weight: $bold;
-            margin: 0 20px; 
-            padding: 10px 20px;
+            margin: 0 15px; 
+            padding: 6px 15px;
+            @media screen and (min-width: $screen-md-min) {
+                font-size: $font-size-large;
+                margin: 0 20px; 
+                padding: 10px 20px;
+            }
         }
     }
 
