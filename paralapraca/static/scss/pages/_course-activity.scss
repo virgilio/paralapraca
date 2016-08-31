@@ -308,3 +308,9 @@
         }
     }
 }
+
+@media screen and (max-width: $screen-xs-max) {
+    .lesson-activity {
+        padding: 0;
+    }
+}
