@@ -16,8 +16,11 @@
         }
         .course-title {
             color: #000;
-            font-size: 30px;
+            font-size: 4.8vmax;
             margin-top: 0;
+            @media screen and (min-width: $screen-xs-min) {
+                font-size: 30px;
+            }
             @media screen and (min-width: $screen-md-min) {
                 display: inline-block;
                 margin-right: 10px;
