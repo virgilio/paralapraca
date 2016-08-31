@@ -4,7 +4,7 @@
 .forums {
     .info {
         .thread-name {
-            @include link-hover($orange,$orange,$orange,transparent);
+            @include link-hover($orange,$orange,transparent,$orange);
         }
     }
 }

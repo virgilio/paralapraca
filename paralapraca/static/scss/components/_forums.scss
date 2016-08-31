@@ -22,7 +22,7 @@
         a {
             font-size: $font-size-base;
             font-weight: $bold;
-            @include link-hover($gray-dark,$gray-dark,$gray-dark,transparent);
+            @include link-hover($gray-dark,$gray-dark,transparent,$gray-dark);
         }
         .user-name {
             color: $gray-dark;
@@ -30,7 +30,7 @@
             font-weight: $bold;
         }
         .thread-name {
-            @include link-hover($brand-primary,$brand-primary,$brand-primary,transparent);
+            @include link-hover($brand-primary,$brand-primary,transparent,$brand-primary);
         }
     }
     .actions {
