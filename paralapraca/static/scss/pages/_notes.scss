@@ -16,7 +16,7 @@
         }
         .course-title {
             color: #000;
-            font-size: 4.8vmax;
+            font-size: 4.4vmax;
             margin-top: 0;
             @media screen and (min-width: $screen-xs-min) {
                 font-size: 30px;
@@ -45,12 +45,16 @@
         font-family: $font-family-sans-serif;
         font-size: 16px;
         font-weight: $extra-bold;
-        margin: 15px 0; 
+        @media screen and (min-width: $screen-xs-min) {
+            margin: 15px 0; 
+        }
     }
     .notes-list {
-        border-left: 1px solid $gray;
         margin-bottom: 30px;
-        padding-left: 20px;
+        @media screen and (min-width: $screen-xs-min) {
+            border-left: 1px solid $gray;
+            padding-left: 20px;
+        }
     }
     .unit-title {
         color: #000;

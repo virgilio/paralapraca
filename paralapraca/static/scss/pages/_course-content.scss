@@ -218,7 +218,9 @@
         .page-header {
             h1, h2, h3, h4, h5, h6 {
                 color: #000;
-                font-size: 36px;
+                @media screen and (min-width: $screen-xs-min) {
+                    font-size: 36px;
+                }
             }
             .btn {
                 float: right;
