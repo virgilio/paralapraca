@@ -4,7 +4,10 @@
 .main-header {
     background-color: $gray-lighter;
     color: #000;
-    padding: 20px 0;
+    padding: 15px 0;
+    @media screen and (min-width: $screen-xs-min) {
+        padding: 20px 0;
+    }
     .page-header {
         border: 0;
         margin: 0;
@@ -55,28 +58,69 @@
         }
     }
     .course-sections {
+        border-bottom: 1px solid #c9a30d;
+        border-top: 1px solid #c9a30d;
+        margin: 10px -15px 0;
+        @media screen and (min-width: $screen-sm-min) {
+            border: 0;
+            margin: 0;
+        }
         @media screen and (min-width: $screen-sm-min) {
             text-align: right; 
         }
         a {
-            border-bottom: 2px solid transparent;
+            border-right: 1px solid #c9a30d;
+            color: #000;
             display: inline-block;
-            font-size: 10px;
+            font-size: 1.5vmax;
             font-weight: $bold;
-            max-width: 58px;
+            padding: 2.5%;
             vertical-align: top;
-            text-align: center;
-            @include link-hover(#000,#000,transparent,#000);
-            border-bottom-width: 2px !important;
+            text-align: center; 
+            width: 24.1%;
+            &:last-of-type {
+                border-right: 0;
+            }
+            @media screen and (min-width: $screen-xs-min) {
+                font-size: 10px;
+                padding: 2.5% 4%;
+            }
+            @media screen and (min-width: $screen-sm-min) {
+                @include link-hover(#000,#000,transparent,#000);
+                border-bottom-width: 2px !important;
+                border-right: 0;
+                max-width: 58px;
+                padding: 0;
+                width: initial;
+            }
             @media screen and (min-width: $screen-lg-min) {
                 font-size: 11px;
                 max-width: 68px;
             }
             &:before {
                 display: block;
-                font-size: $font-size-base;
+                font-size: $font-size-large;
+                @media screen and (min-width: $screen-sm-min) {
+                    font-size: $font-size-base;
+                }
                 @media screen and (min-width: $screen-lg-min) {
                     font-size: $font-size-large;
+                }
+            }
+        }
+        &.admin-menu {
+            a {
+                padding: 2% 1.5% 2% 0.5%;
+                width: 19.1%;
+                &:last-of-type {
+                    border-right: 1px solid #c9a30d;
+                }
+                @media screen and (min-width: $screen-sm-min) {
+                    padding: 0;
+                    width: initial;
+                    &:last-of-type {
+                        border-right: 0;
+                    }
                 }
             }
         }
@@ -99,7 +143,18 @@
             @extend %icon-forum;
         }
         .dropdown {
-            display: inline-block;
+            float: right;
+            padding: 2% 1.5% 2% 0.5%;
+            @media screen and (min-width: $screen-sm-min) {
+                display: inline-block;
+                float: none;
+                padding: 0;
+            }
+            .tools {
+                border: 0 !important;
+                padding: 0;
+                width: initial;
+            }
             .dropdown-menu {
                 background-color: $gray-lighter;
                 border: 0;
@@ -129,11 +184,7 @@
         }
     }
     .lesson-units {
-        display: none;
         margin-top: 5px;
-        @media screen and (min-width: $screen-md-min) {
-            display: block;
-        }
         .lesson-list-dropdown {
             .dropdown-toggle {
                 background: transparent;
@@ -183,24 +234,25 @@
         }
     }
     .lesson-units-mobile {
+        border: 1px solid #c9a30d;
+        border-radius: 11px;
         display: block;
         font-size: $font-size-small;
+        height: 21px;
+        margin-top: 5px;
+        padding: 0 10px;
         .form-control {
             background-color: transparent;
             border-radius: 0;
             box-shadow: none;
             color: #000;
-            display: inline-block;
+            float: left;
             font-size: $font-size-small;
             font-weight: $bold;
-            height: 20px;
-            max-width: 120px;
-            padding: 0;
-        }
-        @media screen and (min-width: $screen-md-min) {
-            display: none;
-        }
-        
+            height: 21px;
+            margin-top: -19px;
+            padding: 0 0 0 125px;
+        }        
     }
 }
 
@@ -208,7 +260,7 @@
 // -----------------------------------------------------
 
 .course {
-    @media screen and (min-width: $screen-md-min) {
+    @media screen and (min-width: 1025px) {
         margin-top: -50px;
     }
     .page {
