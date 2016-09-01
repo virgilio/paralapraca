@@ -66,7 +66,10 @@
     .note-content {
         background: rgba(255,255,255,0.5);
         overflow: hidden;
-        padding: 15px;
+        padding: 10px;
+        @media screen and (min-width: $screen-xs-min) {
+            padding: 15px;
+        }
         .row {
             div:last-child {
                 text-align: right; 
