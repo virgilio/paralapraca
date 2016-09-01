@@ -37,11 +37,14 @@
     }
     .course-description {
         .course-title {
-            font-size: 26px;
+            font-size: 4.2vmax;
             line-height: 100%;
             margin: 5px 0;
             max-height: 80px;
             overflow: hidden;
+            @media screen and (min-width: $screen-xs-min) {
+                font-size: 26px;
+            }
         }
         .course-info {
             font-size: $font-size-small;

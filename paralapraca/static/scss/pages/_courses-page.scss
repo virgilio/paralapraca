@@ -7,6 +7,12 @@
             color: $brand-primary;
         }
     }
+    .courses-list {
+        margin-top: 40px;
+        @media screen and (min-width: $screen-xs-min) {
+            margin-top: 0;
+        }
+    }
     .course-box {
         margin-bottom: 60px;
         .course-thumb-bg {
@@ -17,17 +23,24 @@
                 height: 7px;
             }
         }
-        @media screen and (min-width: $screen-sm-min) {
-            .progress-label {
+        .progress-label {
+            @media screen and (min-width: $screen-sm-min) {
                 font-size: $font-size-base;
             }
-            .course-description {
-                .course-title {
-                    font-size: 48px;
+        }
+        .course-description {
+            .course-title {
+                @media screen and (min-width: $screen-sm-min) {
+                    font-size: 36px;
                     margin-top: 0;
                     max-height: initial;
                 }
-                .course-info {
+                @media screen and (min-width: $screen-md-min) {
+                    font-size: 48px;
+                }
+            }
+            .course-info {
+                @media screen and (min-width: $screen-sm-min) {
                     font-size: $font-size-base;
                     .unit-title {
                         font-size: 20px;
