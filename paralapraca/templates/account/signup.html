@@ -39,7 +39,7 @@
             <div class="form-group{% if errors or form.non_field_errors %} has-error{% endif %}">
                 <i class="fa fa-lock" aria-hidden="true"></i>
                 <label for="password1" class="sr-only">{% trans "Password" %}</label>
-                <input name="password1" type="password1" id="password" class="form-control" placeholder="{% trans 'Really strong password' %}">
+                <input name="password1" type="password" id="password" class="form-control" placeholder="{% trans 'Really strong password' %}">
             </div>
             {% endwith %}
 
@@ -47,7 +47,7 @@
             <div class="form-group{% if errors or form.non_field_errors %} has-error{% endif %}">
                 <i class="fa fa-lock" aria-hidden="true"></i>
                 <label for="password2" class="sr-only">{% trans 'Password confirmation' %}</label>
-                <input name="password2" type="password2" class="form-control" placeholder="{% trans 'Password confirmation' %}">
+                <input name="password2" type="password" class="form-control" placeholder="{% trans 'Password confirmation' %}">
             </div>
             {% endwith %}
 
@@ -63,14 +63,14 @@
 
             <button class="btn btn-submit">{% trans "Sign Up" %}</button>
         </fieldset>
-        <p class="info">
+        <!-- <p class="info">
             {% load socialaccount %}
             <a href="{% provider_login_url 'facebook' method='oauth2' %}">Facebook Connect</a>
             {% for provider in openid_providers %}
             <span> | </span>
             <a href="{% provider_login_url "openid" openid=provider.openid_url  next=current_path %}">{{ provider.name }}</a>
             {% endfor %}
-        </p>
+        </p> -->
     </form>
 
 </div>
