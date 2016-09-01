@@ -59,6 +59,8 @@ body {
             }
             @media screen and (min-width: $screen-md-min) {
                 padding-bottom: 130px;
+            }
+            @media screen and (min-width: 1025px) {
                 top: 130px;
             }
         }
