@@ -82,10 +82,6 @@ body {
 //##
 .page {
     @include card(rgba($gray,0.5));
-
-    .page-header {
-        margin-bottom: 30px;
-    }
 }
 
 //## Minor layout adjusts on form controls styles
