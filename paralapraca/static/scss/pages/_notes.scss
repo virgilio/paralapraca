@@ -72,7 +72,11 @@
         }
         .row {
             div:last-child {
-                text-align: right; 
+                margin-top: 15px;
+                @media screen and (min-width: $screen-sm-min) {
+                    margin-top: 0;
+                    text-align: right;
+                } 
             }
         }
         .btn + .btn {
