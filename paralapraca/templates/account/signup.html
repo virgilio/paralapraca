@@ -51,16 +51,17 @@
             </div>
             {% endwith %}
 
-            {% with errors=form.accept_terms.errors %}
-            <div class="checkbox{{ errors|yesno:' has-error,' }}">
-                <label for="accept_terms" class="terms">
-                    <input name="accept_terms" id="accept_terms" type="checkbox" style="display:inline-block;" {% if form.accept_terms.value %}checked=""{% endif %}>
-                    {% url 'flatpage' url='/terms' as terms_url %}
-                    {% blocktrans %}I agree to the <a href="{{ terms_url }}" target="_blank">Terms of Use</a>{% endblocktrans %}
-                </label>
-            </div>
-            {% endwith %}
-
+            {% if terms_required %}
+              {% with errors=form.accept_terms.errors %}
+              <div class="checkbox{{ errors|yesno:' has-error,' }}">
+                  <label for="accept_terms" class="terms">
+                      <input name="accept_terms" id="accept_terms" type="checkbox" style="display:inline-block;" {% if form.accept_terms.value %}checked=""{% endif %}>
+                      {% url 'flatpage' url='/terms' as terms_url %}
+                      {% blocktrans %}I agree to the <a href="{{ terms_url }}" target="_blank">Terms of Use</a>{% endblocktrans %}
+                  </label>
+              </div>
+              {% endwith %}
+            {% endif %}
             <button class="btn btn-submit">{% trans "Sign Up" %}</button>
         </fieldset>
         <!-- <p class="info">
