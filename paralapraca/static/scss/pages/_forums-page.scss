@@ -215,6 +215,15 @@
             @include link-hover($brand-primary,$brand-primary,$brand-primary,transparent);
         }
     }
+    .last-update {
+        color: $gray;
+        display: block;
+        font-size: $font-size-small;
+        font-weight: $normal;
+        b {
+            font-weight: $bold;
+        }
+    }
 }
 
 .forum-list {
@@ -233,16 +242,11 @@
             text-overflow: ellipsis;
         }
     }
-    .last-update {
-        color: $gray;
-        display: block;
-        font-size: $font-size-small;
-        b {
-            font-weight: $semi-bold;
-        }
-    }
     .tags {
         margin: 0; 
+    }
+    .last-update {
+        margin-top: 2px;
     }
     table {
         tbody {
