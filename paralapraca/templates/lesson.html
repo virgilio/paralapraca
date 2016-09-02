@@ -211,11 +211,12 @@ wrapper-course-lesson
                 <a href="/course/{{ lesson.slug }}/mynotes/" class="all-notes">ver todas as anotações do curso</a>
                 {% endverbatim %}
                 <button class="btn btn-xs btn-success hide-note" ng-click="show_notes=false">esconder</button>
-                <button class="btn btn-xs btn-success save" ng-click="save_note()">salvar</button>
+                <button class="btn btn-xs btn-success save" ng-click="save_note(); show_success_message=true">salvar</button>
             </div>
             <div class="notes-content">
                 <textarea ng-model="note_text"></textarea>
             </div>
+            <div class="notes-success-message" ng-show="show_success_message" ng-click="show_success_message=false">anotação salva com sucesso!</div>
         </div>
     </div>
 
