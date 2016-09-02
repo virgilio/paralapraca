@@ -57,7 +57,10 @@
                         <h4 class="thread-header"><span class="thread-title">{{ topic.title }}</span> por <a class="user-name" ng-href="/profile/{{ topic.author.username }}">{{ topic.author.name }}</a></h4>
                     </div>
                     <div class="tags">
-                        <a href="" class="tag" ng-repeat="tag in topic.tags">#{{ tag.name }}</a>
+                        <a class="tag" ng-repeat="category in topic.categories">#{{ category.name }}</a>
+                    </div>
+                    <div class="tags">
+                        <a class="tag" ng-repeat="tag in topic.tags">#{{ tag.name }}</a>
                     </div>
 
                     <div class="thread-post">
