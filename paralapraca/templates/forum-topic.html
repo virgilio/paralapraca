@@ -54,7 +54,7 @@
                         <img ng-src="{{ topic.author.picture }}" alt="{{ topic.author.name }}">
                     </div>
                     <div class="info">
-                        <h4 class="thread-header"><span class="thread-title">{{ topic.title }}</span> por <span class="user-name"> <a ng-href="/profile/{{ topic.author.username }}">{{ topic.author.name }}</a></span></h4>
+                        <h4 class="thread-header"><span class="thread-title">{{ topic.title }}</span> por <a class="user-name" ng-href="/profile/{{ topic.author.username }}">{{ topic.author.name }}</a></h4>
                     </div>
                     <div class="tags">
                         <a href="" class="tag" ng-repeat="tag in topic.tags">#{{ tag.name }}</a>
@@ -90,7 +90,7 @@
                             <a ng-click="topic_like(topic)" ng-class="{ 'active': topic.user_like }" class="action liked">gostei</a>
                             <!--<a class="action used">usar</a>-->
                             <a ng-click="topic.show_comment_input=true" class="action replies">comentar</a>
-                            <span class="last-edit">última edição {{ topic.last_activity_at | dateFilter }}</span>
+                            <span class="last-update">última edição {{ topic.last_activity_at | dateFilter }}</span>
                         </div>
                         <div class="pull-right">
                           <span class="action liked"
