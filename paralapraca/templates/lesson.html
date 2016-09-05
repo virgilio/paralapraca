@@ -127,7 +127,6 @@ wrapper-course-lesson
     <!-- LESSON CONTENT -->
     {% block lesson_video %}
     <div class="course-content">
-
         <div class="lesson-content">
             <!-- LESSON VIDEO -->
             <!--
@@ -142,6 +141,9 @@ wrapper-course-lesson
 
         <div class="lesson-activity container-fluid">
                 <!-- LESSON ACTIVITY -->
+                {% verbatim %}
+                <h3 class="unit-name" ng-show="currentUnit.title && section == 'activity'">{{currentUnit.title}}</h3>
+                {% endverbatim %}
                 <div ng-show="section=='activity'" class="course-activity">
                     <ng:include src="activityTemplateUrl"></ng:include>
 
