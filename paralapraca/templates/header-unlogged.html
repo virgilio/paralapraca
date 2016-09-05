@@ -3,6 +3,17 @@
 
 <header class="site-header" role="navigation">
     {% block header_navbar %}
+
+    <button class="btn btn-link visible-xs site-nav-open collapse-site-nav" type="button">
+        <i class="fa fa-bars" aria-hidden="true"></i>
+        menu
+    </button>
+
+    <!-- <button class="btn btn-link visible-xs collapse-site-nav" type="button">
+        <i class="fa fa-times" aria-hidden="true"></i>
+        fechar
+    </button> -->
+
     <nav class="site-nav">
         <ul>
             <li><a href="{% url 'account_login' %}">Entrar!</a></li>
@@ -12,6 +23,7 @@
             <li><a href="#" data-toggle="modal" data-target="#modal-contact">Contato</a></li>
         </ul>
     </nav>
+
     <div class="site-logo">
         <h1>
             <a href="/"><img src="/static/img/site-logo-black.svg" alt="{{ site.name }}" class="img-responsive"></a>
