@@ -18,16 +18,16 @@
             color: $gray-dark;
             font-size: 2.5vmax;
             font-weight: $semi-bold;
-            left: 2vmax;
+            position: absolute;
             text-align: center;
-            z-index: 3000;
+            z-index: 2000;
             top: 2vmax;
 
             &.site-nav-open {
-                position: absolute;
+                left: 2vmax;
             }
             &.site-nav-close {
-                position: fixed;
+                right: 2vmax;
             }
             i {
                 display: block;
@@ -44,7 +44,7 @@
                 position: fixed;
                 top: 0;
                 width: 45vmax;
-                z-index: 2000;
+                z-index: 3000;
                 transition: all 0.5s ease;
                 &.site-nav-opened {
                     left: 0;
