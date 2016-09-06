@@ -159,25 +159,20 @@
     }
     a {
         display: inline-block;
-        font-size: $font-size-small;
-        font-weight: 700;
-        height: 26px;
+        font-size: 1.6vmax;
+        font-weight: $bold;
         line-height: 120%;
         overflow: hidden;
         text-align: center;
-        width: 26px;
         @include link-hover(#000,#000,transparent,#000);
         border-bottom-width: 2px !important;
         @media screen and (min-width: $screen-xs-min) {
-            height: initial;
-            width: initial;
-            overflow: initial;
+            font-size: $font-size-small;
         }
         &:before {
             display: block;
-            font-size: 22px;
+            font-size: $font-size-large;
             @media screen and (min-width: $screen-xs-min) {
-                font-size: $font-size-large;
                 margin-bottom: 5px;
             }
         }
