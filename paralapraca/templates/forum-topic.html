@@ -50,42 +50,144 @@
         <div class="line one-column">
             <div class="column">
                 <div class="forum-thread" ng-cloak>
-                    <div class="user-icon">
-                        <img ng-src="{{ topic.author.picture }}" alt="{{ topic.author.name }}">
-                    </div>
-                    <div class="info">
-                        <h4 class="thread-header"><span class="thread-title">{{ topic.title }}</span> por <a class="user-name" ng-href="/profile/{{ topic.author.username }}">{{ topic.author.name }}</a></h4>
-                    </div>
-                    <div class="tags">
-                        <a class="tag" ng-repeat="category in topic.categories">#{{ category.name }}</a>
-                    </div>
-                    <div class="tags">
-                        <a class="tag" ng-repeat="tag in topic.tags">#{{ tag.name }}</a>
-                    </div>
-
-                    <div class="thread-post">
-                        <div ng-bind-html="get_as_safe_html(topic.content)"></div>
-
-                        <!-- TODO: transformar em diretiva -->
-                        <button class="btn btn-xs attached"
-                                ng-show="(topic.files.length > 1) && !topic.show_files"
-                                ng-click="topic.show_files=true">
-                            <u>{{topic.files.length}} arquivos anexos</u> + ...
-                        </button>
-                        <div class="post-attachments"
-                             ng-show="(topic.files.length === 1) || topic.show_files">
-                            <div class="attachments">
-                                <span translate
-                                      translate-n="topic.files.length"
-                                      translate-plural="{{$count}} arquivos anexos:">1 arquivo anexo:</span>
-                                <ul>
-                                    <li ng-repeat="file in topic.files">
-                                        <a ng-href="{{file.file}}">{{file.name}}</a>
-                                    </li>
-                                </ul>
+                    <form class="new-thread" name="topic_form" novalidate ng-show="updating" ng-submit="topic_form.$valid && update_topic()">
+                        <div class="form-group">
+                            <div class="row">
+                              <div class="col-sm-6">
+                                  <h3 class="title" ng-cloak>Editar Tópico</h3>
+                              </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <label for="thread-forum">Em qual fórum ele deve estar? <span class="help-text">escolha apenas um</span></label>
+                                    <select ng-model="topic.forum" name="forum" class="form-control" id="thread-forum"
+                                            ng-options="forum.id as forum.title for forum in forums" required>
+                                        <option>Escolha o fórum</option>
+                                    </select>
+                                </div>
+                                <!-- <div class="col-sm-6">
+                                    <div class="help-text">fórum escolhido</div>
+                                    <div class="selected-forum">Avante e Entremeios</div>
+                                </div> -->
                             </div>
                         </div>
-                        <!-- END TODO: transformar em diretiva -->
+                        <div class="form-group">
+                            <label for="thread-name">Título do tópico<span class="help-text">(campo obrigatório)</span></label>
+                            <input ng-model="topic.title" name="title" type="text" class="form-control" id="thread-name" placeholder="Escreva o título aqui" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="thread-text">Texto do tópico</label>
+                            <textarea ui-tinymce
+                                      ng-model="topic.content"
+                                      placeholder="Escreva aqui sua resposta" required></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <button id="select-file-topic"
+                                   class="btn btn-xs btn-primary attach"
+                                   ngf-select="uploadTopicFiles($file, topic)"
+                                   ngf-multiple="false">anexar arquivo</button>
+                        </div>
+                        <div class="form-group">
+                            <div class="post-attachments"
+                               ng-show="topic.files">
+                                <div class="attachments">
+                                    <span translate
+                                          translate-n="topic.files.length"
+                                          translate-plural="{{$count}} arquivos anexos:">1 arquivo anexo:</span>
+                                    <ul>
+                                        <li ng-repeat="file in topic.files">
+                                            <a ng-href="{{file.file}}">{{file.name}}</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <label for="thread-forum">Qual a categoria do seu tópico? <span class="help-text">escolha apenas uma (campo obrigatório)</span></label>
+                                    <ui-select multiple limit="1" ng-model="topic.categories" theme="bootstrap" title="Escolha as categorias..." required>
+                                      <ui-select-match placeholder="Selecione uma categoria...">{{$item.name}}</ui-select-match>
+                                      <ui-select-choices repeat="category in categories | filter: {name: $select.search}" group-by="">
+                                        <div ng-if="!tag.isTag" ng-bind-html="category.name + tag.isTag | highlight: $select.search"></div>
+                                      </ui-select-choices>
+                                    </ui-select>
+                                </div>
+                                <!-- <div class="col-sm-6">
+                                    <div class="help-text">categoria escolhida</div>
+                                    <div class="selected-category">
+                                        <span class="category discussion" ng-repeat="category in new_topic.categories">{{category}}</span>
+                                    </div>
+                                </div> -->
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <label for="thread-tags">Para terminar, escolha algumas tags</label>
+
+                                    <ui-select multiple tagging="tagTransform" ng-model="topic.tags" theme="bootstrap" title="Escolha algumas tags...">
+                                      <ui-select-match placeholder="Selecione uma tag...">#{{$item.name}}</ui-select-match>
+                                      <ui-select-choices repeat="tag in tags | filter: {name: $select.search}" group-by="">
+                                        <div ng-if="tag.isTag" ng-bind-html="(tag.name | highlight: $select.search) +' (nova tag)'"></div>
+                                        <div ng-if="!tag.isTag" ng-bind-html="tag.name + tag.isTag | highlight: $select.search"></div>
+                                      </ui-select-choices>
+                                    </ui-select>
+                                </div>
+                                <!-- <div class="col-sm-6">
+                                    <div class="help-text">tags escolhidas</div>
+                                    <div class="selected-tags tags">
+                                        <a href="#" class="tag" ng-repeat="tag in new_topic.tags">#{{tag}}</a>
+                                    </div>
+                                </div> -->
+                            </div>
+                        </div>
+
+                        <button type="submit"
+                                class="btn btn-success new-topic">postar nova resposta</button>
+                    </form>
+
+                    <div ng-show="!updating">
+                      <div class="user-icon">
+                          <img ng-src="{{ topic.author.picture }}" alt="{{ topic.author.name }}">
+                      </div>
+                      <div class="info">
+                          <h4 class="thread-header"><span class="thread-title">{{ topic.title }}</span> por <a class="user-name" ng-href="/profile/{{ topic.author.username }}">{{ topic.author.name }}</a></h4>
+                          <button class="btn btn-sm btn-success edit pull-right" ng-click="updating=true" ng-show="topic.author.id == user.id && !updating">editar</button>
+                      </div>
+                      <div class="tags">
+                          <a class="tag" ng-repeat="category in topic.categories">#{{ category.name }}</a>
+                      </div>
+                      <div class="tags">
+                          <a class="tag" ng-repeat="tag in topic.tags">#{{ tag.name }}</a>
+                      </div>
+
+                      <div class="thread-post">
+                          <div ng-bind-html="get_as_safe_html(topic.content)"></div>
+
+                          <!-- TODO: transformar em diretiva -->
+                          <button class="btn btn-xs attached"
+                                  ng-show="(topic.files.length > 1) && !topic.show_files"
+                                  ng-click="topic.show_files=true">
+                              <u>{{topic.files.length}} arquivos anexos</u> + ...
+                          </button>
+                          <div class="post-attachments"
+                               ng-show="(topic.files.length === 1) || topic.show_files">
+                              <div class="attachments">
+                                  <span translate
+                                        translate-n="topic.files.length"
+                                        translate-plural="{{$count}} arquivos anexos:">1 arquivo anexo:</span>
+                                  <ul>
+                                      <li ng-repeat="file in topic.files">
+                                          <a ng-href="{{file.file}}">{{file.name}}</a>
+                                      </li>
+                                  </ul>
+                              </div>
+                          </div>
+                          <!-- END TODO: transformar em diretiva -->
+                      </div>
                     </div>
 
                     <div class="actions">
