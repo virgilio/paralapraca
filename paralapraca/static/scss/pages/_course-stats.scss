@@ -2,6 +2,7 @@
 // --------------------------------------------------
 
 .course-stats {
+    color: #000;
     .filters {
         font-size: $font-size-small;
         margin-bottom: 20px;
@@ -14,6 +15,10 @@
             }
         }
         .form-control {
+            border: 2px solid $brand-primary;
+            border-radius: 0;
+            box-shadow: none;
+            padding: 3px 3px 1px 3px !important;
             font-size: $font-size-small;
         }
         label {
@@ -51,6 +56,22 @@
                     width: 100%;
                 }
             } 
+        }
+    }
+    .students-total {
+        span {
+            color: $brand-primary;
+        }
+    }
+    .user-icon {
+        float: left;
+        height: 40px;
+        margin-right: 10px;
+        width: 40px;
+        img {
+            border-radius: 50%;
+            height: 40px;
+            width: 40px;
         }
     }
 }

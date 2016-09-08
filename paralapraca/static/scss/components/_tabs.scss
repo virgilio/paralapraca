@@ -1,0 +1,29 @@
+// Tabs
+// -------------------------
+// Give the tabs something to sit on
+.nav-tabs {
+    border-bottom: 1px solid $brand-primary;
+    font-weight: $bold;
+    > li {
+        > a {
+            border: 1px solid $brand-primary;
+            border-radius: 15px 15px 0 0;
+            color: $brand-primary;
+            font-size: 13px;
+            padding: 5px 15px;
+            &:hover {
+                background-color: $brand-primary;
+                border-color: $brand-primary;
+                color: #fff;
+            }
+        }
+        // Active state, and its :hover to override normal :hover
+        &.active > a {
+            &, &:hover, &:focus {
+                color: #fff;
+                background-color: $brand-primary;
+                border: 1px solid $brand-primary;
+            }
+        }
+    }
+}

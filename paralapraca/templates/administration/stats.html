@@ -59,20 +59,20 @@ wrapper-course-lesson
                             </select>
                         </label>
                     </div>
-                    <div class="filter-keyword col-md-3 col-sm-6">
-                        <input type="text" ng-model="filters.textsearch" placeholder="{% trans 'Keyword' %}" class="form-control">
+                    <div class="filter-keyword col-md-4 col-sm-6">
+                        <input type="text" ng-model="filters.textsearch" placeholder="Digite uma palavra-chave" class="form-control">
                     </div>
                     <div class="filter-ordering col-lg-3 col-md-2 col-sm-6">
                         <select ng-model="ordering" class="form-control">
-                            <option value="name">{% trans 'Name' %}</option>
+                            <option value="name">Ordenar por nome</option>
                             <option value="course_progress">{% trans 'Progress' %}</option>
                         </select>
                     </div>
-                    <div class="filter-reverse col-md-1 col-sm-6">
-                        <button class="btn btn-sm btn-primary" ng-class="{active:reverse}" ng-click="reverse=!reverse">{% trans 'Invert' %}</button>
-                    </div>
                 </div>
                 <!-- END ROW -->
+                <div class="filter-reverse pull-right">
+                    <button class="btn btn-sm" ng-class="{active:reverse}" ng-click="reverse=!reverse"><i class="fa fa-refresh" aria-hidden="true"></i> Inverter ordem da lista</button>
+                </div>
             </form>
             <!-- END FORM INLINE -->
         </div>
@@ -81,20 +81,28 @@ wrapper-course-lesson
         <section class="row">
             <div class="col-xs-12">
                 <ul class="nav nav-tabs">
-                    <li class="active"><a href="#students" data-toggle="tab">{% trans "Students" %}</a></li>
-                    <li><a href="#lessons" data-toggle="tab">{% trans "Lessons" %}</a></li>
+                    <li class="active">
+                        <a href="#students" data-toggle="tab">
+                            <i class="fa fa-graduation-cap" aria-hidden="true"></i>
+                            {% trans "Students" %}
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#lessons" data-toggle="tab">
+                            <i class="fa fa-book" aria-hidden="true"></i>
+                            {% trans "Chapters" %}
+                        </a>
+                    </li>
                 </ul>
 
                 <div class="tab-content">
-                    <div class="tab-pane fade in active" id="students">
-                        <div class="col-lg-12" ng-hide="users_reports.$resolved">
+                    <div class="tab-pane fade in active" class="students-list" id="students">
+                        <div ng-hide="users_reports.$resolved">
                             <p>{% trans 'Loading students report' %}...   <i class="loading fa fa-refresh fa-spin"></i></p>
                         </div>
-                        <div class="row" ng-show="users_reports.$resolved">
-                            <div class="col-sm-8">
-                                <h3>{% trans 'Students progress' %}</h3>
-                                <h4>{% trans 'Total number of students' %}: {% verbatim %}{{ users_reports.length }}{% endverbatim %}</h4   >
-                            </div>
+                        <div ng-show="users_reports.$resolved">
+                            <h3>{% trans 'Students progress' %}</h3>
+                            <p class="students-total">{% trans 'Total number of students' %}: <span>{% verbatim %}{{ users_reports.length }}{% endverbatim %}</span></p>
                             <!--
                             <div class="col-sm-4 textright">
                                 <input type="text" placeholder="{% blocktrans %}Search student{% endblocktrans %}" class="form-control search-filter">
@@ -105,8 +113,17 @@ wrapper-course-lesson
                             <li ng-repeat="user in (filteredList = (users_reports | orderBy:ordering:reverse | filter:filters.check))">
                                 <div class="row">
                                 {% verbatim %}
-                                    <div class="col-md-3 col-sm-4 col-xs-10"><strong>{{ user.name }}<br>({{ user.email }})</strong></div>
-                                    <div class="col-lg-1 col-xs-2 textright">{{ user.course_progress }}%</div>
+                                    <div class="col-xs-1">
+                                        <div class="user-icon">
+                                            <img ng-src="#" alt="Nome Usuário" src="#">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3 col-sm-4 col-xs-9">
+                                        <strong>{{ user.name }}<br>({{ user.email }})</strong>
+                                    </div>
+                                    <div class="col-lg-1 col-xs-2 textright">
+                                        {{ user.course_progress }}%
+                                    </div>
                                     <div class="col-md-2 col-sm-3 hidden-xs">
                                         <div class="progress">
                                             <div class="progress-bar" style="width:{{ user.course_progress }}%;"></div>
@@ -114,8 +131,8 @@ wrapper-course-lesson
                                     </div>
                                 {% endverbatim %}
                                     <div class="col-md-2 col-sm-3 col-xs-12 textright">
-                                        <span class="label label-default pointer" ng-click="show_user_progress_details(user);showLessons=!showLessons">
-                                            {% trans 'Show lessons' %}
+                                        <span class="btn btn-sm btn-primary" ng-click="show_user_progress_details(user);showLessons=!showLessons">
+                                            Mostrar capítulos
                                             <i class="fa" ng-class="{'fa fa-caret-down':!showLessons,'fa fa-caret-up':showLessons}"></i>
                                         </span>
                                     </div>
@@ -126,7 +143,7 @@ wrapper-course-lesson
                                         <div class="lesson" ng-repeat="lesson in user.lessons_stats.lessons_progress">
                                             {% verbatim %}
                                             <div class="row">
-                                                <div class="col-lg-5 col-md-6 col-sm-7 col-xs-10">{{ lesson.name }}</div>
+                                                <div class="col-sm-offset-1 col-lg-5 col-md-6 col-sm-7 col-xs-10">{{ lesson.name }}</div>
                                                 <div class="col-md-1 col-sm-2 col-xs-2 textright">{{ lesson.progress | number:0 }}%</div>
                                                 <div class="col-md-2 col-sm-3 hidden-xs">
                                                     <div class="progress">

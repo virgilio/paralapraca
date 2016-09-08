@@ -28,6 +28,7 @@
     line-height: 1.2;
     padding: 0;
 }
+
 .btn {
     border-color: transparent !important;
     font-weight: $bold;
@@ -307,6 +308,16 @@ a {
         @include button-hover(#fff,#fff,$brand-primary,darken($brand-primary,10%));
         .fa {
             display: none;
+        }
+    }
+}
+
+.course-stats {
+    .filters {
+        .filter-reverse {
+            .btn {
+                @include button-hover($brand-primary,$brand-primary,#fff,$gray-lighter);
+            }
         }
     }
 }
