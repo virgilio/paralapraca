@@ -195,7 +195,7 @@
                             <!--<a class="action used">usar</a>-->
                             <a ng-click="topic.show_comment_input=true" class="action replies">comentar</a>
                             <a class="action edit" ng-click="updating=true" ng-show="topic.author.id == user.id && !updating">editar</a>
-                            <span class="last-update">última edição {{ topic.last_activity_at | dateFilter }}</span>
+                            <span class="last-update">última edição {{ topic.updated_at | date : "d 'de' MMMM 'de' yyyy 'às' HH'h'mm" }}</span>
                         </div>
                         <div class="pull-right">
                           <span class="action liked"
