@@ -21,7 +21,9 @@
     <script type="text/javascript" src="{% static 'angular-sanitize/angular-sanitize.js' %}"></script>
     <script type="text/javascript" src="{% static 'angular-ui-select/dist/select.js' %}"></script>
     {% endcompress %}
-
+    <script type="text/javascript">
+        tinyMCE.baseURL = '/static/tinymce-dist/';
+    </script>
 {% endblock %}
 
 {% block body_attrs %}
