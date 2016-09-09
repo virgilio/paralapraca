@@ -22,6 +22,9 @@
     <script type="text/javascript" src="{% static 'angular-ui-select/dist/select.js' %}"></script>
     <link rel="stylesheet" type="text/css" href="{% static 'angular-ui-select/dist/select.css' %}">
     {% endcompress %}
+    <script type="text/javascript">
+        tinyMCE.baseURL = '/static/tinymce-dist/';
+    </script>
 
 {% endblock %}
 
