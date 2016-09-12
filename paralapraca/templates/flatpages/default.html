@@ -26,7 +26,9 @@
 {% block title %}
 {{ flatpage.title }}
 {% endblock %}
-
+{% block body_attrs %}
+  ng-app="core"
+{% endblock %}
 {% block content %}
 <div class="flatpage" ng-app="core" ng-controller="FlatPageCtrl">
 
