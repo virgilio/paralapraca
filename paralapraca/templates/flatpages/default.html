@@ -16,14 +16,16 @@
             <script type="text/javascript" src="{% static 'js/directives/fixedBar.js' %}"></script>
             <script type="text/javascript" src="{% static 'js/directives/alertPopup.js' %}"></script>
             <script type="text/javascript" src="{% static 'js/directives/markdowneditor.js' %}"></script>
-            {% if not user.is_authenticated %}
-                <script type="text/javascript" src="{% static 'js/header-controllers.js' %}"></script>
-                <script type="text/javascript" src="{% static 'js/header-directives.js' %}"></script>
-                <script type="text/javascript" src="{% static 'js/header-filters.js' %}"></script>
-                <script type="text/javascript" src="{% static 'js/header-app.js' %}"></script>
-                <script type="text/javascript" src="{% static 'js/discussion-services.js' %}"></script>
-            {% endif %}
             {% endcompress %}
+            {% if not user.is_authenticated %}
+                {% compress js %}
+                    <script type="text/javascript" src="{% static 'js/header-controllers.js' %}"></script>
+                    <script type="text/javascript" src="{% static 'js/header-directives.js' %}"></script>
+                    <script type="text/javascript" src="{% static 'js/header-filters.js' %}"></script>
+                    <script type="text/javascript" src="{% static 'js/header-app.js' %}"></script>
+                    <script type="text/javascript" src="{% static 'js/discussion-services.js' %}"></script>
+                {% endcompress %}
+            {% endif %}
         <script>
             window.page_url = '{{ flatpage.url }}';
         </script>
