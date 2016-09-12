@@ -1,16 +1,29 @@
 {% extends "base.html" %}
 {% load i18n %}
 {% load django_markdown %}
-{% load pipeline %}
+{% load staticfiles %}
+{% load compress %}
 
 {% if user.is_superuser %}
     {% block js %}
-		{{block.super}}
-        {% javascript 'core' %}
-    <script>
-        window.page_url = '{{ flatpage.url }}';
-    </script>
-	{% endblock %}
+            {% compress js %}
+            <script type="text/javascript" src="{% static 'js/core/app.js' %}"></script>
+            <script type="text/javascript" src="{% static 'js/core/controllers.js' %}"></script>
+            <script type="text/javascript" src="{% static 'js/core/services.js' %}"></script>
+            <script type="text/javascript" src="{% static 'js/core/filters.js' %}"></script>
+            <script type="text/javascript" src="{% static 'angular-tweet-filter/index.js' %}"></script>
+            <script type="text/javascript" src="{% static 'angular-sortable-view/src/angular-sortable-view.min.js' %}"></script>
+            <script type="text/javascript" src="{% static 'js/directives/fixedBar.js' %}"></script>
+            <script type="text/javascript" src="{% static 'js/directives/fixedBar.js' %}"></script>
+            <script type="text/javascript" src="{% static 'js/directives/fixedBar.js' %}"></script>
+            <script type="text/javascript" src="{% static 'js/directives/fixedBar.js' %}"></script>
+            <script type="text/javascript" src="{% static 'js/directives/alertPopup.js' %}"></script>
+            <script type="text/javascript" src="{% static 'js/directives/markdowneditor.js' %}"></script>
+            {% endcompress %}
+        <script>
+            window.page_url = '{{ flatpage.url }}';
+        </script>
+	  {% endblock %}
 {% endif %}
 
 {% block title %}
@@ -23,7 +36,7 @@
 		{% block content-header %}
         <h2>{{ flatpage.title }}</h2>
 		{% endblock %}
-        
+
         <div class="content">
     	   {{ flatpage.content|markdown }}
         </div>
