@@ -7,7 +7,12 @@
             display: inline-block;
         }
         .new-topic {
-            margin: -12px 0 0 15px;
+            @media screen and (max-width: $screen-xs-max) {
+                float: right;
+            }
+            @media screen and (min-width: $screen-sm-min) {
+                margin: -12px 0 0 0;
+            }
         }
     }
 }

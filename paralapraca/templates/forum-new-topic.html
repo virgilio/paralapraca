@@ -22,6 +22,9 @@
     <script type="text/javascript" src="{% static 'angular-ui-select/dist/select.js' %}"></script>
     <link rel="stylesheet" type="text/css" href="{% static 'angular-ui-select/dist/select.css' %}">
     {% endcompress %}
+    <script type="text/javascript">
+        tinyMCE.baseURL = '/static/tinymce-dist/';
+    </script>
 
 {% endblock %}
 
@@ -48,13 +51,13 @@
 
         <div class="line one-column">
             <div class="column">
-                <form class="new-thread">
+                <form class="new-thread" name="newthread" novalidate ng-submit="newthread.$valid && save_topic()">
                     <div class="form-group">
                         <div class="row">
                             <div class="col-sm-6">
                                 <label for="thread-forum">Em qual fórum ele deve estar? <span class="help-text">escolha apenas um</span></label>
-                                <select ng-model="new_topic.forum" class="form-control" id="thread-forum"
-                                        ng-options="forum.id as forum.title for forum in forums" >
+                                <select ng-model="new_topic.forum" name="forum" class="form-control" id="thread-forum"
+                                        ng-options="forum.id as forum.title for forum in forums" required>
                                     <option>Escolha o fórum</option>
                                 </select>
                             </div>
@@ -65,14 +68,14 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="thread-name">Como se chamará o novo tópico?</label>
-                        <input ng-model="new_topic.title" type="text" class="form-control" id="thread-name" placeholder="Escreva o título aqui">
+                        <label for="thread-name">Como se chamará o novo tópico? <span class="help-text">(campo obrigatório)</span></label>
+                        <input ng-model="new_topic.title" name="title" type="text" class="form-control" id="thread-name" placeholder="Escreva o título aqui" required>
                     </div>
                     <div class="form-group">
-                        <label for="thread-text">Texto do tópico</label>
+                        <label for="thread-text">Texto do tópico <span class="help-text">(campo obrigatório)</span></label>
                         <textarea ui-tinymce
                                   ng-model="new_topic.content"
-                                  placeholder="Escreva aqui o seu comentário"></textarea>
+                                  placeholder="Escreva aqui o seu comentário" name="content" required></textarea>
                     </div>
 
                     <div class="form-group">
@@ -100,8 +103,8 @@
                     <div class="form-group">
                         <div class="row">
                             <div class="col-sm-6">
-                                <label for="thread-forum">Qual a categoria do seu tópico? <span class="help-text">escolha apenas uma</span></label>
-                                <ui-select multiple limit="1" ng-model="new_topic.categories" theme="bootstrap" title="Escolha as categorias...">
+                                <label for="thread-forum">Qual a categoria do seu tópico? <span class="help-text">escolha apenas uma (campo obrigatório)</span></label>
+                                <ui-select multiple limit="1" ng-model="new_topic.categories" theme="bootstrap" title="Escolha as categorias..." required>
                                   <ui-select-match placeholder="Selecione uma categoria...">{{$item.name}}</ui-select-match>
                                   <ui-select-choices repeat="category in categories | filter: {name: $select.search}" group-by="">
                                     <div ng-if="!tag.isTag" ng-bind-html="category.name + tag.isTag | highlight: $select.search"></div>
@@ -137,7 +140,7 @@
                             </div> -->
                         </div>
                     </div>
-                    <button ng-click="save_topic()" class="btn btn-success new-topic">postar novo tópico</button>
+                    <button type="submit" class="btn btn-success new-topic">postar novo tópico</button>
                 </form>
             </div>
         </div>

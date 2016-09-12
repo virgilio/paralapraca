@@ -81,7 +81,7 @@ wrapper-course-lesson
     <!-- END HEADER -->
 
     <!-- UNITS NAVIGATION FOR TABLET AND DESKTOP -->
-    <div class="lesson-units-nav">
+    <div class="lesson-units-nav hidden-xs">
         <div class="line"></div>
         {% block units_nav %}
         <!-- UNITS -->
@@ -109,25 +109,9 @@ wrapper-course-lesson
     </div>
     <!-- END UNITS NAVIGATION FOR TABLET AND DESKTOP -->
 
-    <!-- UNITS NAVIGATION FOR PHONES -->
-    {% block units_nav_mobile %}
-        <div class="lesson-units-nav-mobile col-xs-12 visible-xs">
-            {% verbatim %}
-            <select ng-model="selectedIndex" ng-change="locationChange(selectedIndex)" class="form-control">
-                <option ng-repeat="unit in lesson.units"
-                        ng-value="$index+1"
-                        ng-selected="unit==currentUnit"
-                        value="{{$index+1}}">{% endverbatim %}{% trans 'Unit' %}{% verbatim %} {{ unit.position + 1 }}</option>
-            </select>
-        </div>
-        {% endverbatim %}
-    {% endblock %}
-    <!-- END UNITS NAVIGATION FOR PHONES -->
-
     <!-- LESSON CONTENT -->
     {% block lesson_video %}
     <div class="course-content">
-
         <div class="lesson-content">
             <!-- LESSON VIDEO -->
             <!--
@@ -142,6 +126,9 @@ wrapper-course-lesson
 
         <div class="lesson-activity container-fluid">
                 <!-- LESSON ACTIVITY -->
+                {% verbatim %}
+                <h3 class="unit-name" ng-show="currentUnit.title && section == 'activity'">{{currentUnit.title}}</h3>
+                {% endverbatim %}
                 <div ng-show="section=='activity'" class="course-activity">
                     <ng:include src="activityTemplateUrl"></ng:include>
 

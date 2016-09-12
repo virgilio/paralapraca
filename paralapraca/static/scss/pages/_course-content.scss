@@ -4,7 +4,7 @@
 .main-header {
     background-color: $gray-lighter;
     color: #000;
-    padding: 15px 0;
+    padding: 15px 0 0;
     @media screen and (min-width: $screen-xs-min) {
         padding: 20px 0;
     }
@@ -233,27 +233,34 @@
             }
         }
     }
-    .lesson-units-mobile {
-        border: 1px solid #c9a30d;
-        border-radius: 11px;
+}
+
+.lesson-units-mobile, .lesson-units-nav-mobile {
+    border: 1px solid #c9a30d;
+    border-radius: 14px;
+    display: block;
+    font-size: $font-size-small;
+    height: 26px;
+    margin-top: 5px;
+    padding: 0 10px;
+    .lesson-breadcrumb {
         display: block;
+        margin-top: 3px;
+    }   
+    .form-control {
+        background-color: transparent;
+        border-radius: 0;
+        box-shadow: none;
+        color: #000;
+        float: left;
         font-size: $font-size-small;
-        height: 21px;
-        margin-top: 5px;
-        padding: 0 10px;
-        .form-control {
-            background-color: transparent;
-            border-radius: 0;
-            box-shadow: none;
-            color: #000;
-            float: left;
-            font-size: $font-size-small;
-            font-weight: $bold;
-            height: 21px;
-            margin-top: -19px;
-            padding: 0 0 0 125px;
-        }        
-    }
+        font-weight: $bold;
+        height: 18px;
+        margin-top: -18px;
+        padding: 0 0 0 50px;
+        position: relative;
+        z-index: 1;
+    }        
 }
 
 // Course content (used on course intro and lesson page)
@@ -287,8 +294,12 @@
 }
 
 .course-content {
-    margin: 40px auto;  
+    margin: 25px auto;  
     padding: 0 15px;
+
+    @media screen and (min-width: $screen-xs-min) {
+        margin: 40px auto;
+    }
 
     // COURSE SUMMARY - Course intro
     // ********************************************************************* //
@@ -671,6 +682,12 @@
                     }
                 }
             }
+            span {
+                border-radius: 100%;
+                display: block;
+                height: inherit;
+                width: inherit;
+            }
         }
         // END UNIT
         // ADD UNIT
@@ -730,6 +747,12 @@
             }
         }
     }
+}
+
+.unit-name {
+    color: #000;
+    font-size: 25px;
+    margin-top: 0px;
 }
 
 .course-intro {

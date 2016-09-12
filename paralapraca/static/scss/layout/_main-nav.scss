@@ -63,6 +63,7 @@
     }
     a {
         @include link-hover(#fff,#fff,transparent,#fff);
+        display: inline-block;
         border-bottom-width: 2px !important;
         &:before {
             display: block;
