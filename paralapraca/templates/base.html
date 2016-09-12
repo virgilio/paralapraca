@@ -75,7 +75,7 @@
     </script>
 </head>
 <body {% if in_admin %}id="admin"{% else %}id="notadmin"{% endif %}
-      {% spaceless %}{% block body_attrs %}{% endblock %}{% endspaceless %}
+      {% spaceless %}{% block body_attrs %}ng-app{% endblock %}{% endspaceless %}
       class="{% if user.is_authenticated %}logged{% else %}anonymous{% endif %}">
 
     <div class="site-wrapper" ng-class="{'main-nav-opened': is_main_nav_opened}">
