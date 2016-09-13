@@ -73,17 +73,37 @@
             </div>
         </div>
 
-        <header class="widget-header line one-column">
-            <div class="column" ng-style="forum_single && {'border-bottom':'1px solid #de6f10','padding-bottom':'5px','margin-bottom':'5px'}">
-                <h2 ng-if="forum_single" class="widget-title">{{forum.title}}</h2>
-                <h2 ng-if="!forum_single" class="widget-title">fóruns</h2>
-                <a class="btn btn-success new-topic"
-                   href="/discussion/topic/new/#!/topic/new/" > criar novo tópico</a>
+        <header ng-if="forum_single" class="widget-topbar breadcrumb">
+            <div class="line">
+                <div class="pull-left">
+                    <h2 class="title" ng-cloak>Fóruns > {{forum.title}}</h2>
+                </div>
+                <div class="pull-right hidden-xs">
+                    <a class="btn btn-sm btn-success new-topic"
+                   href="/discussion/topic/new/#!/topic/new/">criar novo tópico</a>
+                    <a ng-href="/discussion/#!/forum/" class="btn btn-link goback"><span>voltar para o fórum</span></a>
+                </div>
+                <div class="pull-right dropdown visible-xs">
+                    <button class="btn btn-default list-all dropdown-toggle" type="button" id="dropdownOptions" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                        opções
+                    </button>
+                    <ul class="dropdown-menu dropdown-options" aria-labelledby="dropdownOptions">
+                        <li><a href="/discussion/topic/new/#!/topic/new/">criar novo tópico</a></li>
+                        <li><a ng-href="/discussion/#!/forum/">voltar para o fórum</a></li>
+                    </ul>
+                </div>
             </div>
+        </header>
+
+        <header ng-if="!forum_single" class="widget-header line one-column">
             <div class="column">
-                <!-- <form class="widget-filter form-inline">
+                <h2 class="widget-title">Fóruns</h2>
+                <a class="btn btn-success new-topic"
+                   href="/discussion/topic/new/#!/topic/new/">criar novo tópico</a>
+
+                <!--<form class="widget-filter form-inline">
                     <input class="form-control" type="text" placeholder="Busca nos fóruns..." ng-model="search" uib-typeahead="result for results in getResults($viewValue)" typeahead-loading="loadingLocations" typeahead-no-results="noResults">
-                </form> -->
+                </form>-->
             </div>
         </header>
 

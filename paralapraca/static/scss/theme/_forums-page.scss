@@ -1,20 +1,6 @@
 // Forums' pages
 // --------------------------------------------------
 
-.thread {
-    .widget-topbar {
-        border-color: $orange;
-        .line {
-            border-color: $orange;
-            color: $orange;
-            .btn.goback {
-                @include link-hover($orange,$orange,$orange,transparent);
-            }
-        }
-    }
-}
-
-
 .post-attachments {
     .attachments {
         border: 1px solid $purple;

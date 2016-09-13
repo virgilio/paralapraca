@@ -3,6 +3,17 @@
 
 .widget-topbar {
     background-color: $orange;
+
+    &.breadcrumb {
+        border-color: $orange;
+        .line {
+            border-color: $orange;
+            color: $orange;
+            .btn.goback {
+                @include link-hover($orange,$orange,$orange,transparent);
+            }
+        }
+    }
 }
 
 .section-title {
