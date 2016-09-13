@@ -1,0 +1,12 @@
+.dropdown-menu {
+    border: 0;
+    border-radius: 15px;
+    box-shadow: none;
+    > li {
+        > a {
+            font-size: $font-size-small;
+            font-weight: $bold;
+            text-align: right;
+        }
+    }
+}

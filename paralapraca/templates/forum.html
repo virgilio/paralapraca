@@ -78,10 +78,19 @@
                 <div class="pull-left">
                     <h2 class="title" ng-cloak>Fóruns > {{forum.title}}</h2>
                 </div>
-                <div class="pull-right">
+                <div class="pull-right hidden-xs">
                     <a class="btn btn-sm btn-success new-topic"
                    href="/discussion/topic/new/#!/topic/new/">criar novo tópico</a>
                     <a ng-href="/discussion/#!/forum/" class="btn btn-link goback"><span>voltar para o fórum</span></a>
+                </div>
+                <div class="pull-right dropdown visible-xs">
+                    <button class="btn btn-default list-all dropdown-toggle" type="button" id="dropdownOptions" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                        opções
+                    </button>
+                    <ul class="dropdown-menu dropdown-options" aria-labelledby="dropdownOptions">
+                        <li><a href="/discussion/topic/new/#!/topic/new/">criar novo tópico</a></li>
+                        <li><a ng-href="/discussion/#!/forum/">voltar para o fórum</a></li>
+                    </ul>
                 </div>
             </div>
         </header>
