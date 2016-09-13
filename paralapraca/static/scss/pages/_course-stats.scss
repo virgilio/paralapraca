@@ -58,10 +58,12 @@
             } 
         }
         .filter-reverse {
-            margin: 10px 0 -20px;
-            .btn {
-                position: relative;
-                z-index: 1;
+            @media screen and (min-width: $screen-sm-min) {
+                margin: 10px 0 -20px;
+                .btn {
+                    position: relative;
+                    z-index: 1;
+                }
             }
         }
     }
