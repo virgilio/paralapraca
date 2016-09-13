@@ -36,18 +36,27 @@
 {% verbatim %}
 <script type="text/ng-template" id="topic-detail.html">
     <section class="forums forums-page forums-widget thread widget container-fluid">
-        <div class="widget-topbar">
+        <header class="widget-topbar breadcrumb">
             <div class="line">
                 <div class="pull-left">
                     <h2 class="title" ng-cloak>Fóruns > {{ topic.forum_info.title }}</h2>
                 </div>
-                <div class="pull-right">
+                <div class="pull-right hidden-xs">
                     <a class="btn btn-sm btn-success new-topic"
                    href="/discussion/topic/new/#!/topic/new/">criar novo tópico</a>
-                    <a ng-href="/discussion/#!/forum/{{ topic.forum }}" class="btn btn-link goback"><span>voltar para os tópicos</span></a>
+                    <a ng-href="/discussion/#!/forum/{{ topic.forum }}" class="btn btn-link goback"><span>voltar</span></a>
+                </div>
+                <div class="pull-right dropdown visible-xs">
+                    <button class="btn btn-default list-all dropdown-toggle" type="button" id="dropdownOptions" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                        opções
+                    </button>
+                    <ul class="dropdown-menu dropdown-options" aria-labelledby="dropdownOptions">
+                        <li><a href="/discussion/topic/new/#!/topic/new/">criar novo tópico</a></li>
+                        <li><a ng-href="/discussion/#!/forum/{{ topic.forum }}">voltar para os tópicos</a></li>
+                    </ul>
                 </div>
             </div>
-        </div>
+        </header>
 
         <div class="line one-column">
             <div class="column">

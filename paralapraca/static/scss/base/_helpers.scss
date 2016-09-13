@@ -32,6 +32,9 @@
     &-checked {
         @include icon(before, checked);
     }
+    &-checkmark {
+        @include icon(before, checkmark);
+    }
     &-compress {
         @include icon(after, compress);
     }
@@ -130,6 +133,9 @@
     }
     &-stats {
         @include icon(before, stats);
+    }
+    &-times {
+        @include icon(before, times);
     }
     &-tools {
         @include icon(before, tools);

@@ -2,6 +2,7 @@
 // --------------------------------------------------
 
 .course-stats {
+    color: #000;
     .filters {
         font-size: $font-size-small;
         margin-bottom: 20px;
@@ -14,6 +15,10 @@
             }
         }
         .form-control {
+            border: 2px solid $brand-primary;
+            border-radius: 0;
+            box-shadow: none;
+            padding: 3px 3px 1px 3px !important;
             font-size: $font-size-small;
         }
         label {
@@ -51,6 +56,113 @@
                     width: 100%;
                 }
             } 
+        }
+        .filter-reverse {
+            @media screen and (min-width: $screen-sm-min) {
+                margin: 10px 0 -20px;
+                .btn {
+                    position: relative;
+                    z-index: 1;
+                }
+            }
+        }
+    }
+    .nav-tabs {
+        .fa {
+            font-size: 17px;
+            margin-right: 2px;
+            vertical-align: text-bottom;
+        }
+    }
+    .students-total {
+        span {
+            color: $brand-primary;
+            font-weight: bold;
+        }
+    }
+    .user-icon {
+        float: left;
+        height: 40px;
+        margin-right: 10px;
+        width: 40px;
+        img {
+            border-radius: 50%;
+            height: 40px;
+            width: 40px;
+        }
+    }
+    .progress {
+        box-shadow: none;
+    }
+    .progress-label {
+        font-size: $font-size-base;
+        font-weight: $semi-bold;
+        margin-bottom: 4px;
+        @media screen and (min-width: $screen-xs-min) {
+            font-size: $font-size-small;
+        }
+    }
+    .course-progress {
+        .progress-label {
+            color: $brand-primary;
+        }
+        .progress {
+            border-radius: 15px;
+            height: 15px;
+        }
+    }
+    .chapter-progress {
+        .progress-label {
+            color: $gray-dark;
+        }
+        .progress {
+            border-radius: 7px;
+            height: 7px;
+            .progress-bar {
+                background-color: $gray-dark;
+            }
+        }
+    }
+    .textright {
+        text-align: right;
+    }
+    .activity {
+        margin-bottom: 15px;
+        .activity-name {
+            font-size: $font-size-small;
+            font-weight: $bold;
+            padding-left: 20px;
+        }
+        .stats {
+            color: #000;
+            font-size: 11px;
+            font-weight: $bold;
+            .icon {
+                border-radius: 100%;
+                display: inline-block;
+                font-size: 16px;
+                height: 27px;
+                margin-right: 5px;
+                width: 27px;
+                vertical-align: middle;
+                text-align: center; 
+                &:before {
+                    color: #fff;
+                    vertical-align: middle;
+                }
+            }
+            &.done {
+                .icon {
+                    background-color: #87b727;
+                    @extend %icon-checkmark;
+                }
+            }
+            &.undone {
+                .icon {
+                    background-color: #d51317;
+                    @extend %icon-times;
+                }
+            }
         }
     }
 }
