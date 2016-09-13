@@ -21,13 +21,13 @@
             position: absolute;
             text-align: center;
             z-index: 2000;
-            top: 2vmax;
+            top: 1vmax;
 
             &.site-nav-open {
-                left: 2vmax;
+                left: 1vmax;
             }
             &.site-nav-close {
-                right: 2vmax;
+                right: 1vmax;
             }
             i {
                 display: block;
@@ -46,7 +46,7 @@
                 width: 45vmax;
                 z-index: 3000;
                 transition: all 0.5s ease;
-                &.site-nav-opened {
+                &.opened {
                     left: 0;
                 }
                 ul {
