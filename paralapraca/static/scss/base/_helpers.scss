@@ -8,6 +8,12 @@
     &-add {
         @include icon(before, add);
     }
+    &-add-image {
+        @include icon(before, thumbnail);
+    }
+    &-add-video {
+        @include icon(before, video);
+    }
     &-angle-right {
         @include icon(after, angle-right);
     }

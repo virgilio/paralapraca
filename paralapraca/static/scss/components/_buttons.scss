@@ -29,6 +29,18 @@
     padding: 0;
 }
 
+.btn-danger {
+    &.btn-inverse {
+        @include button-hover($brand-danger,lighten($brand-danger,10%),#fff,#fff);
+    }
+}
+
+.btn-primary {
+    &.btn-inverse {
+        @include button-hover($brand-primary,lighten($brand-primary,10%),#fff,#fff);
+    }
+}
+
 .btn {
     border-color: transparent !important;
     font-weight: $bold;
@@ -51,6 +63,18 @@
     }
     &.add {
         @extend %icon-add;
+    }
+    &.add-image {
+        @extend %icon-add-image;
+        &:before {
+            vertical-align: baseline;
+        }
+    }
+    &.add-video {
+        @extend %icon-add-video;
+        &:before {
+            vertical-align: bottom;
+        }
     }
     &.attach, &.attached {
         @extend %icon-file;

@@ -54,14 +54,14 @@ wrapper-course-intro
             <div class="container-fluid">
                 <div class="actions-buttons align-left">
                     <!-- LEFT BUTTON GROUP -->
-                    <button class="btn btn-danger delete" title="{% trans 'Delete course' %}" ng-click="deleteCourse()">{% trans 'Delete' %}</button>
-                    <button class="btn btn-success download" title="{% trans 'Export course and download' %}" ng-click="export_course()">{% trans 'Export' %}</button>
+                    <button class="btn btn-sm btn-danger btn-inverse delete" title="{% trans 'Delete course' %}" ng-click="deleteCourse()">apagar módulo</button>
+                    <button class="btn btn-sm btn-primary btn-inverse download" title="{% trans 'Export course and download' %}" ng-click="export_course()">exportar módulo</button>
                     <!-- END LEFT BUTTON GROUP -->
                 </div>
                 {% include 'administration/_alert.html' %}
                 <div class="actions-buttons align-right">
                     <!-- RIGHT BUTTON GROUP -->
-                    <button class="btn btn-success save" ng-click="saveCourse()">{% trans 'Save' %}</button>
+                    <button class="btn btn-sm btn-success save" ng-click="saveCourse()">salvar alterações</button>
                     <!-- RIGHT BUTTON GROUP -->
                 </div>
             </div>
@@ -85,20 +85,18 @@ wrapper-course-intro
         <div class="course-video" ng-init="mediaSection='video'">
         {% if in_admin %}
             <!-- ADD CONTENT -->
-            <div class="add-content row">
-                <div class="col-lg-6">
-                    <button ng-click="mediaSection='video'"
-                            ng-class="{'btn-success':mediaSection=='video'}"
-                            class="btn btn-default selected">{% trans 'Video' %}</button>
+            <div class="add-content">
+                <button class="btn btn-primary add-video"
+                        ng-class="{'btn-inverse':mediaSection=='video'}"
+                        ng-click="mediaSection='video'">{% trans 'Video' %}</button>
 
-                    <button class="btn btn-default"
-                            ng-class="{'btn-success':mediaSection=='thumbnail'}"
-                            ng-click="mediaSection='thumbnail'">{% trans 'Thumbnail' %}</button>
+                <button class="btn btn-primary add-image"
+                        ng-class="{'btn-inverse':mediaSection=='thumbnail'}"
+                        ng-click="mediaSection='thumbnail'">{% trans 'Thumbnail' %}</button>
 
-                    <button class="btn btn-default"
-                            ng-class="{'btn-success':mediaSection=='homethumbnail'}"
-                            ng-click="mediaSection='homethumbnail'">{% trans 'Home thumbnail' %}</button>
-                </div>
+                <button class="btn btn-primary add-image"
+                        ng-class="{'btn-inverse':mediaSection=='homethumbnail'}"
+                        ng-click="mediaSection='homethumbnail'">{% trans 'Home thumbnail' %}</button>
             </div>
             <!-- END ADD CONTENT -->
 
@@ -263,7 +261,7 @@ wrapper-course-intro
                     <!-- APPLCATION -->
                     <div class="application">
                         <div class="secondary-page-header">
-                            <h3 class="top"><i ng-class="{'blink-text-danger':errors.application}" class="fa fa-angle-double-right"></i> {% trans "Why do this course?" %}</h3>
+                            <h3><i ng-class="{'blink-text-danger':errors.application}" class="fa fa-angle-double-right"></i> {% trans "Why do this course?" %}</h3>
                         </div>
                         {% if in_admin %}
                             <modalmarkdowneditor tabindex="6" on-save="saveCourse()" title="{% trans 'Application' %}" content="course.application"></modalmarkdowneditor>
@@ -276,7 +274,7 @@ wrapper-course-intro
                     <!-- REQUIREMENT -->
                     <div class="requirement">
                         <div class="secondary-page-header">
-                            <h3 class="top" ng-show="course.requirement">
+                            <h3 ng-show="course.requirement">
                                 <i ng-class="{'blink-text-danger':errors.requirement}" class="fa fa-angle-double-right"></i> {% trans "What do I have to know?" %}
                             </h3>
                         </div>
@@ -304,15 +302,15 @@ wrapper-course-intro
                         </div>
 
                         <div class="course-status btn-group">
-                            <button class="btn btn-success dropdown-toggle" data-toggle="dropdown"
+                            <button class="published dropdown-toggle" data-toggle="dropdown"
                             ng-if="course.isPublished()"><span class="status-label">{% trans 'Published' %}</span> <span class="caret"></span></button>
 
-                            <button class="btn btn-danger dropdown-toggle" data-toggle="dropdown"
+                            <button class="draft dropdown-toggle" data-toggle="dropdown"
                             ng-if="course.isDraft()"><span class="status-label">{% trans 'Draft' %}</span> <span class="caret"></span></button>
                             </button>
                             <ul class="dropdown-menu" role="menu">
-                                <li ng-if="course.isDraft()"><button class="btn btn-success" ng-click="publishCourse()">{% trans 'Published' %}</button></li>
-                                <li ng-if="course.isPublished()"><button class="btn btn-danger" ng-click="set_course_as_draft()">{% trans 'Draft' %}</button></li>
+                                <li ng-if="course.isDraft()"><button class="published" ng-click="publishCourse()">{% trans 'Published' %}</button></li>
+                                <li ng-if="course.isPublished()"><button class="draft" ng-click="set_course_as_draft()">{% trans 'Draft' %}</button></li>
                             </ul>
                         </div>
 
