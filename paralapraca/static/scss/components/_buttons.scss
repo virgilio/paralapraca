@@ -37,7 +37,7 @@
     @include transition(all 0.2s ease);
     @media screen and (max-width: $screen-xs-max) {
         font-size: $font-size-small;
-        padding: 3px 6px;        
+        padding: 3px 6px;
     }
     &:focus {
         outline: 0;
@@ -63,7 +63,7 @@
     &.clean {
         @extend %icon-undo;
         @include link-hover(#fff,#fff,#fff,transparent);
-        margin-right: 20px; 
+        margin-right: 20px;
     }
     &.continue {
         @extend %icon-angle-right;
@@ -78,16 +78,16 @@
         @extend %icon-edit;
     }
     &.filter {
-        @extend %icon-filter; 
+        @extend %icon-filter;
         @include link-hover(#fff,#fff,#fff,transparent);
     }
     &.goback {
-        @extend %icon-goback; 
+        @extend %icon-goback;
         @include link-hover(#fff,#fff,#fff,transparent);
         font-weight: $normal;
     }
     &.hide-all {
-        @extend %icon-chevron-up; 
+        @extend %icon-chevron-up;
         @include link-hover($gray,#000,$gray,#000);
         font-weight: $normal;
     }
@@ -124,7 +124,7 @@
         }
     }
     &.show-all {
-        @extend %icon-chevron-down; 
+        @extend %icon-chevron-down;
         @include link-hover($gray,#000,$gray,#000);
         font-weight: $normal;
     }
@@ -185,7 +185,7 @@
     }
 }
 
-a.action { 
+a.action {
     &.liked {
         @include link-hover($gray,$brand-primary,$gray,$brand-primary);
         &.active {
@@ -226,7 +226,7 @@ a.action {
 }
 
 .tag {
-    @extend %forum-tags;  
+    @extend %forum-tags;
 }
 
 .category {
