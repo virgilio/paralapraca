@@ -3,8 +3,14 @@
 #admin {
     // COURSE, FORUM
     // ********************************************************************* //
-    .course,
-    .forum {
+    .course {
+        &.course-intro {
+            .course-info {
+                .secondary-page-header {
+                    margin-bottom: 0;
+                }
+            }
+        }
         &.course-lesson {
             .video,
             .activity {

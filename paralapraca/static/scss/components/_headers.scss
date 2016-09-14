@@ -27,7 +27,7 @@
 // Secondary page's headers
 // --------------------------------------------------
 
-.secondary-page-header {
+.primary-page-header {
     border: 0;
     margin: 20px 0 10px;
     padding: 0;
@@ -43,6 +43,26 @@
         @media screen and (min-width: $screen-xs-min) {
             font-size: 36px;
             line-height: 1;
+        }
+    }
+}
+
+.secondary-page-header {
+    border: 0;
+    margin: 20px 0 10px;
+    padding: 0;
+    &:first-child, &.first {
+        margin-top: 0;
+    }
+    h1, h2, h3, h4, h5, h6 {
+        color: $brand-primary;
+        font-family: $font-family-sans-serif;
+        font-size: 4.5vmax;
+        font-weight: bold;
+        line-height: 1.2;
+        margin: 0; 
+        @media screen and (min-width: $screen-xs-min) {
+            font-size: 20px;
         }
     }
 }

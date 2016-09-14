@@ -311,8 +311,18 @@
     }
     .course-status {
         button {
+            background: #fff;
+            border: 2px solid;
+            font-weight: $bold;
+            height: 30px;
             text-align: left;
-            width: 115px;
+            width: 230px;
+            &.published {
+                border-color: #87b727;
+            }
+            &.draft {
+                border-color: #d51317;
+            }
         }
         .status-label {
             float: left;
@@ -777,6 +787,10 @@
                         width: 40%;
                     }
                 }
+            }
+
+            .another-info {
+                margin-top: 30px;
             }
         }
     }
