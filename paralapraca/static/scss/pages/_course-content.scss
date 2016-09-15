@@ -721,10 +721,10 @@
             background: transparent;
             margin-bottom: 30px;
             .title {
-                color: $gray;
+                color: #000;
                 font-family: $font-family-sans-serif;
                 font-size: 3vmax;
-                font-weight: $extra-bold; 
+                font-weight: $bold; 
                 margin: 0 0 10px; 
                 @media screen and (min-width: $screen-xs-min) {
                     font-size: 24px;
@@ -736,6 +736,14 @@
                 margin-bottom: 30px;
                 @media screen and (min-width: $screen-xs-min) {
                     font-size: 16px;
+                }
+            }
+            .options {
+                text-align: right;
+                @media screen and (min-width: $screen-sm-min) {
+                    .btn + .btn {
+                        margin-top: 10px;
+                    }
                 }
             }
         }

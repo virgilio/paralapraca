@@ -426,7 +426,7 @@ wrapper-course-intro
                     <div class="col-sm-9 col-xs-12">
 
                         <div class="row">
-                            <div class="col-sm-9">
+                            <div class="col-md-9 col-sm-8">
                                 <h4 class="title">
                                     <a {% verbatim %}href="lessons/{{lesson.id}}"{% endverbatim %} class="title" ng-bind="lesson.name">{% trans 'Lesson name' %}</a>
                                 </h4>
@@ -435,9 +435,9 @@ wrapper-course-intro
                                     <div ng-bind-html="lesson.desc|markdown"></div>
                                 </div>
                             </div>
-                            <div class="col-sm-3">
+                            <div class="options col-md-3 col-sm-4">
                                 <button class="btn btn-sm btn-primary btn-inverse edit" ng-click="">editar capítulo</button>
-                                <button class="btn btn-sm btn-danger btn-inverse delete" ng-click="">apagar capítulo</button>
+                                <button class="btn btn-sm btn-danger btn-inverse delete" ng-click="deleteLesson(lesson)">apagar capítulo</button>
                             </div>
                         </div>
 
