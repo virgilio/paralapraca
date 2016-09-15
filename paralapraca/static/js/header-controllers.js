@@ -20,8 +20,6 @@
             };
 
             $scope.show_notification = false;
-
-            $scope.notifications = Notification.query({limit_to: 10});
         }
     ]);
 
