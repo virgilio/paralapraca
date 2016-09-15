@@ -137,6 +137,9 @@
     &-site {
         @include icon(before, site);
     }
+    &-sort {
+        @include icon(before, sort);
+    }
     &-stats {
         @include icon(before, stats);
     }

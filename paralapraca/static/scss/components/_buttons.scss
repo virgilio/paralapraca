@@ -160,6 +160,9 @@
             vertical-align: middle;
         }
     }
+    &.sort {
+        @extend %icon-sort;
+    }
 }
 
 // used on forum's page

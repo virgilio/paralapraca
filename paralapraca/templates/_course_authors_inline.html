@@ -5,10 +5,8 @@
 
     {% if in_admin %}
         <div class="secondary-page-header">
-            <h3><i class="fa fa-angle-double-right"></i> {% trans 'Instructors'%}</h3>
+            <h3><i class="fa fa-angle-double-right"></i> Autores do módulo</h3>
         </div>
-
-        <p><a href="" ng-click="organizingInstructors=true" ng-hide="organizingInstructors" class="btn btn-sm btn-success edit">{% trans 'Organize Instructors'%}</a></p>
 
         <div class="instructors organizing-instructors" ng-show="organizingInstructors" sortable="courseProfessors" on-update="repositionInstructors()">
 
@@ -48,7 +46,9 @@
         </div>
         <!-- END INSTRUCTOR -->
 
-        <a ng-click="open_professor_modal()" class="btn btn-sm btn-default add">{% trans 'Add instructor' %}</a>
+        <a ng-click="open_professor_modal()" class="btn btn-sm btn-primary btn-inverse add">Adicionar autor</a>
+
+        <a href="" ng-click="organizingInstructors=true" ng-hide="organizingInstructors" class="btn btn-sm btn-primary btn-inverse sort">Ordenar</a>
     {% else %}
         {% if course.course.course_authors.all %}
         <div class="page-header-double top">

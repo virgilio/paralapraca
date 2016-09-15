@@ -359,7 +359,7 @@ wrapper-course-intro
             <section class="lessons lesson-list organize-lessons">
                 <!-- PAGE-HEADER-DOUBLE -->
                 <div class="primary-page-header">
-                    <h3><i class="fa fa-angle-double-right"></i> Capítulos</h3> <a href="" ng-click="organizingLessons=true" ng-show="!organizingLessons" class="btn btn-sm btn-success edit">{% trans 'Organize lesson' %}</a>
+                    <h3><i class="fa fa-angle-double-right"></i> Capítulos</h3> <a href="" ng-click="organizingLessons=true" ng-show="!organizingLessons" class="btn btn-sm btn-primary btn-inverse sort">ordenar</a>
                 </div>
                 <!-- END PAGE-HEADER-DOUBLE -->
 
@@ -406,8 +406,8 @@ wrapper-course-intro
                     <!-- END LESSON -->
 
                     <div class="submit">
-                        <button class="btn btn-sm btn-danger delete" ng-click="organizingLessons=false">{% trans 'Cancel' %}</button>
-                        <button class="btn btn-sm btn-success save" ng-click="saveAllLessons()">{% trans 'Save' %}</button>
+                        <button class="btn btn-sm btn-danger btn-inverse delete" ng-click="organizingLessons=false">{% trans 'Cancel' %}</button>
+                        <button class="btn btn-sm btn-success btn-inverse save" ng-click="saveAllLessons()">{% trans 'Save' %}</button>
                     </div>
                 </div>
                 <!-- END ORGANIZING LESSONS -->
@@ -415,7 +415,7 @@ wrapper-course-intro
                 <!--  LESSON  -->
                 <div class="lesson row" ng-repeat="lesson in lessons" ng-hide="organizingLessons">
                     <!--  COL-LG-3  -->
-                    <div class="col-lg-3 col-sm-3 col-sm-3 hidden-xs">
+                    <div class="col-sm-3 hidden-xs">
                         {% verbatim %}
                         <img ng-src="{{ lesson.thumbnail }}" class="img-responsive">
                         {% endverbatim %}
@@ -423,14 +423,25 @@ wrapper-course-intro
                     <!--  END COL-LG-3  -->
 
                     <!--  COL-LG-9  -->
-                    <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
-                        <h4 class="title">
-                            <a {% verbatim %}href="lessons/{{lesson.id}}"{% endverbatim %} class="title" ng-bind="lesson.name">{% trans 'Lesson name' %}</a>
-                        </h4>
-                        <div class="description">
-                            <div ng-bind-html="lesson.desc|markdown"></div>
+                    <div class="col-sm-9 col-xs-12">
+
+                        <div class="row">
+                            <div class="col-sm-9">
+                                <h4 class="title">
+                                    <a {% verbatim %}href="lessons/{{lesson.id}}"{% endverbatim %} class="title" ng-bind="lesson.name">{% trans 'Lesson name' %}</a>
+                                </h4>
+                                <p><i class="fa fa-youtube-play"></i> <small>{% verbatim %}{{ lesson.countVideos() }}{% endverbatim %} {% trans 'videos' %}</small> | <i class="fa fa-list"></i> <small>{% verbatim %}{{ lesson.countActivities() }}{% endverbatim %} {% trans 'activities' %}</small></p>
+                                <div class="description">
+                                    <div ng-bind-html="lesson.desc|markdown"></div>
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <button class="btn btn-sm btn-primary btn-inverse edit" ng-click="">editar capítulo</button>
+                                <button class="btn btn-sm btn-danger btn-inverse delete" ng-click="">apagar capítulo</button>
+                            </div>
                         </div>
-                        <div class="lesson-units_ratios-nav" ng-show="lesson.units">
+
+                        <div class="lesson-units-nav" ng-show="lesson.units">
                             <div class="progress">
                                 <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%;"></div>
                             </div>
@@ -447,8 +458,6 @@ wrapper-course-intro
                                 {% endverbatim %}
                             </div>
                         </div>
-
-                        <p><i class="fa fa-youtube-play"></i> <small>{% verbatim %}{{ lesson.countVideos() }}{% endverbatim %} {% trans 'videos' %}</small> | <i class="fa fa-list"></i> <small>{% verbatim %}{{ lesson.countActivities() }}{% endverbatim %} {% trans 'activities' %}</small></p>
 
                     </div>
                     <!--  END COL-LG-9  -->
