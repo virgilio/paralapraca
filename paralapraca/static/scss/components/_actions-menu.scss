@@ -3,9 +3,12 @@
 
 .actions-menu {
     background-color: $gray-lighter;
-    height: 52px;
+    height: 46px;
     padding: 10px 0;
     position: relative;
+    @media screen and (min-width: $screen-sm-min) {
+        height: 52px;
+    }
     .container-fluid {
         position: relative;
     }
@@ -36,11 +39,15 @@
     }
 }
 .actions-menu-scroll {
-    left: 100px;
+    left: 0;
     position: fixed;
     right: 0;
-    top: 80px !important;
-    z-index: 1000;
+    top: 60px !important;
+    z-index: 900;
+    @media screen and (min-width: $screen-sm-min) {
+        left: 100px;
+        top: 80px !important;
+    }
 }
 .actions-menu-message {
     background-color: transparent !important;

@@ -717,6 +717,13 @@
     }
     // END COURSE UNITS
     .lesson-list {
+        .primary-page-header {
+            h3 {
+                display: inline-block;
+                margin: 0 15px 15px 0;
+                vertical-align: middle;
+            }
+        }
         .lesson {
             background: transparent;
             margin-bottom: 30px;
@@ -785,7 +792,10 @@
             .column {
                 background-color: $gray-lighter;
                 box-sizing: border-box;
-                padding: 30px;
+                padding: 20px;
+                @media screen and (min-width: $screen-xs-min) {
+                    padding: 30px;
+                }
                 @media screen and (min-width: $screen-md-min) {
                     width: 60%;
                 }

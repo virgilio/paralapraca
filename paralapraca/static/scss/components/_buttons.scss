@@ -31,13 +31,13 @@
 
 .btn-danger {
     &.btn-inverse {
-        @include button-hover($brand-danger,lighten($brand-danger,10%),#fff,#fff);
+        @include button-hover($brand-danger,#fff,#fff,$brand-danger);
     }
 }
 
 .btn-primary {
     &.btn-inverse {
-        @include button-hover($brand-primary,lighten($brand-primary,10%),#fff,#fff);
+        @include button-hover($brand-primary,#fff,#fff,$brand-primary);
     }
 }
 

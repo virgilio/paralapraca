@@ -54,14 +54,23 @@ wrapper-course-intro
             <div class="container-fluid">
                 <div class="actions-buttons align-left">
                     <!-- LEFT BUTTON GROUP -->
-                    <button class="btn btn-sm btn-danger btn-inverse delete" title="{% trans 'Delete course' %}" ng-click="deleteCourse()">apagar módulo</button>
-                    <button class="btn btn-sm btn-primary btn-inverse download" title="{% trans 'Export course and download' %}" ng-click="export_course()">exportar módulo</button>
+                    <button class="btn btn-sm btn-danger btn-inverse delete" title="{% trans 'Delete course' %}" ng-click="deleteCourse()">
+                        <span class="visible-xs-inline">apagar</span>
+                        <span class="hidden-xs">apagar módulo</span>
+                    </button>
+                    <button class="btn btn-sm btn-primary btn-inverse download" title="{% trans 'Export course and download' %}" ng-click="export_course()">
+                        <span class="visible-xs-inline">exportar</span>
+                        <span class="hidden-xs">exportar módulo</span>
+                    </button>
                     <!-- END LEFT BUTTON GROUP -->
                 </div>
                 {% include 'administration/_alert.html' %}
                 <div class="actions-buttons align-right">
                     <!-- RIGHT BUTTON GROUP -->
-                    <button class="btn btn-sm btn-success save" ng-click="saveCourse()">salvar alterações</button>
+                    <button class="btn btn-sm btn-success save" ng-click="saveCourse()">
+                        <span class="visible-xs-inline">salvar</span>
+                        <span class="hidden-xs">salvar alterações</span>
+                    </button>
                     <!-- RIGHT BUTTON GROUP -->
                 </div>
             </div>
@@ -465,7 +474,7 @@ wrapper-course-intro
                 <!--  END LESSON  -->
 
                 {% verbatim %}
-                <a href="/admin/courses/{{course.id}}/lessons/new" class="btn btn-default add">{% endverbatim %}{% trans 'Add lesson' %}</a>
+                <a href="/admin/courses/{{course.id}}/lessons/new" class="btn btn-primary btn-inverse add">{% endverbatim %}adicionar aula</a>
 
             </section>
             {% else %}
