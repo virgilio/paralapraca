@@ -445,7 +445,7 @@ wrapper-course-intro
                                 </div>
                             </div>
                             <div class="options col-md-3 col-sm-4">
-                                <button class="btn btn-sm btn-primary btn-inverse edit" ng-click="">editar capítulo</button>
+                                <a {% verbatim %}href="lessons/{{lesson.id}}"{% endverbatim %} class="btn btn-sm btn-primary btn-inverse edit">editar capítulo</a>
                                 <button class="btn btn-sm btn-danger btn-inverse delete" ng-click="deleteLesson(lesson)">apagar capítulo</button>
                             </div>
                         </div>
