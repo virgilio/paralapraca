@@ -26,7 +26,7 @@
     font-family: $headings-font-family;
     font-size: 28px;
     input {
-        font-weight: $normal;
+        font-weight: $bold;
     }
 }
 .editable-secondary-title {
@@ -45,9 +45,6 @@
     font-size: 14px;
     margin-top: 3px;
     width: 150px;
-    input {
-        font-weight: $bold;
-    }
 }
 .editable-text {
     @extend %editable;

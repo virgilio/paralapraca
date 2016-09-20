@@ -5,6 +5,7 @@
             <div class="row">
                 {% if course_intro_admin %}
                 <div class="col-md-8">
+                    <div class="help-text"><i class="fa fa-caret-down" aria-hidden="true"></i> Edite abaixo o nome e o link do módulo</div>
                     <div class="editable-title"><input type="text" ng-model="course.name" placeholder="{% trans 'Course name' %}"></div>
                     <div class="course-slug clearfix">
                       <label>http://{{ site.domain }}/course/</label>
@@ -17,6 +18,21 @@
                 <div class="col-md-8">
                     <h2 class="course-name">{{ course.name }}</h2>
                     {% include "_course-details-inline.html" with course=course %}
+                    <div class="editable-title"><input type="text" ng-model="lesson.name" placeholder="{% trans 'Lesson name' %}"></div>
+
+                    <nav class="chapters">
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-sm"><span ng-bind="lesson.name"></span>&nbsp;</button>
+                            <button type="button" class="btn btn-sm dropdown-toggle" data-toggle="dropdown">
+                                <i class="fa fa-chevron-down"></i>
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li ng-repeat="l in lessons">
+                                    <a href="" ng-bind="l.name" ng-click="setLesson(l)"></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </nav>
                 </div>
                 {% endif %}
                 <div class="col-md-4">
@@ -55,5 +71,30 @@
             </div>
             <!-- END ROW -->
         </div>
+
     </header>
     <!-- MAIN-HEADER -->
+
+    {% if not course_intro_admin %}
+    <!-- UNITS NAVIGATION FOR TABLET AND DESKTOP -->
+    <div class="lesson-units-nav hidden-xs">
+        <div class="line"></div>
+        <div class="container-fluid">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;"></div>
+            </div>
+            <div class="units">
+                <span class="units-title">Unidades</span>
+                {% verbatim %}
+                <a href="" class="unit" ng-repeat="u in lesson.units"
+                   title="{{u.title}}"
+                   ng-click="$parent.selectUnit(u);"
+                   ng-class="{current: $parent.currentUnit == u}">
+                   <span ng-bind="$index + 1"></span>
+               </a>
+                {% endverbatim %}
+                <a href="" class="add-unit unit" ng-click="addUnit()"><i class="fa fa-plus"></i></a>
+            </div>
+        </div>
+    </div>
+    {% endif %}
