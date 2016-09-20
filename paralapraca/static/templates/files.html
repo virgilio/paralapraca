@@ -1,0 +1,24 @@
+<div class="form-group">
+    <div class="post-attachments"
+       ng-show="files || progress">
+        <div class="attachments">
+            <span translate
+                  translate-n="files.length"
+                  translate-plural="{{$count}} arquivos anexos:">1 arquivo anexo:</span>
+            <ul>
+                <li ng-repeat="(i, file) in files">
+                    <a ng-href="{{file.file}}">{{file.name}}</a>
+                </li>
+            </ul>
+            {{isTopic}}
+            <div class="post-attachments attachments" style="display: inline-block; width: 100%; height: inherit; margin: 3px; border: 0px" ng-show="progress >= 0 && progress != 100">
+              <strong>Carregando novo arquivo...</strong>
+              {{progress + '%'}}
+              <div style="width: 100%; height: 10px; border: 1px solid #993671; border-radius: 10px;">
+                  <div style="width:{{progress}}%; height: 100%; font-size: smaller; background-color: #993671;">
+                  </div>
+              </div>
+            </div>
+        </div>
+    </div>
+</div>
