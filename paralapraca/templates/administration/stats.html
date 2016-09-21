@@ -157,7 +157,7 @@ wrapper-course-lesson
                                             <div class="activity" ng-repeat="activity in lesson.activities">
                                                 <div class="row">
                                                     <div class="col-sm-offset-1 col-sm-4 col-xs-8">
-                                                          <div class="activity-name">{{activity.name}}</div>
+                                                          <div class="activity-name"><a href="../lesson/{{lesson.slug}}/#/{{activity.position+1}}" target="_blank">{{activity.name}}</a></div>
                                                     </div>
                                                     <div class="col-sm-3 col-xs-4 textright">
                                                         <div class="stats" ng-class="{ 'done': activity.done == 'true', 'undone': activity.done == 'false' }">
