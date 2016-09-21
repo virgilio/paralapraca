@@ -165,4 +165,90 @@
             }
         }
     }
+    .students-total {
+        span {
+            color: $brand-primary;
+            font-weight: bold;
+        }
+    }
+    .user-icon {
+        float: left;
+        height: 40px;
+        margin-right: 10px;
+        width: 40px;
+        img {
+            border-radius: 50%;
+            height: 40px;
+            width: 40px;
+        }
+    }
+    .progress {
+        box-shadow: none;
+    }
+    .progress-label {
+        font-size: $font-size-base;
+        font-weight: $semi-bold;
+        margin-bottom: 4px;
+        @media screen and (min-width: $screen-xs-min) {
+            font-size: $font-size-small;
+        }
+    }
+    .course-progress {
+        .progress-label {
+            color: $brand-primary;
+        }
+        .progress {
+            border-radius: 15px;
+            height: 15px;
+        }
+    }
+    .chapter-progress {
+        .progress-label {
+            color: $gray-dark;
+        }
+        .progress {
+            border-radius: 7px;
+            height: 7px;
+            .progress-bar {
+                background-color: $gray-dark;
+            }
+        }
+    }
+    .textright {
+        text-align: right;
+    }
+    .activity {
+        margin-bottom: 15px;
+        .stats {
+            color: #000;
+            font-size: 11px;
+            font-weight: $bold;
+            .icon {
+                border-radius: 100%;
+                display: inline-block;
+                font-size: 16px;
+                height: 27px;
+                margin-right: 5px;
+                width: 27px;
+                vertical-align: middle;
+                text-align: center; 
+                &:before {
+                    color: #fff;
+                    vertical-align: middle;
+                }
+            }
+            &.done {
+                .icon {
+                    background-color: #87b727;
+                    @extend %icon-checkmark;
+                }
+            }
+            &.undone {
+                .icon {
+                    background-color: #d51317;
+                    @extend %icon-times;
+                }
+            }
+        }
+    }
 }

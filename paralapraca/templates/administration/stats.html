@@ -21,8 +21,12 @@ wrapper-course-lesson
     </script>
 {% endblock %}
 
+{% block body_attrs %}
+    ng-app="reports"
+{% endblock %}
+
 {% block content %}
-<div class="course course-stats" ng-app="reports">
+<div class="course course-stats">
 
     {% if in_admin %}
         {% include "_admin_header_inline.html" with course=course %}
@@ -115,7 +119,7 @@ wrapper-course-lesson
                                 {% verbatim %}
                                     <div class="col-sm-1 col-xs-2">
                                         <div class="user-icon">
-                                            <img src="http://placehold.it/50" alt="Nome do Usuário">
+                                            <img src="{{ user.picture }}" alt="{{ user.name }}">
                                         </div>
                                     </div>
                                     <div class="col-sm-4 col-xs-8">
@@ -124,7 +128,7 @@ wrapper-course-lesson
                                     </div>
                                     <div class="col-md-3 col-sm-4 col-xs-2 course-progress">
                                         <span class="progress-label">{{ user.course_progress }}%</span>
-                                        <div class="progress hidden-xs"> 
+                                        <div class="progress hidden-xs">
                                             <div class="progress-bar" style="width:{{ user.course_progress }}%;"></div>
                                         </div>
                                     </div>
@@ -150,33 +154,21 @@ wrapper-course-lesson
                                                     </div>
                                                 </div>
                                             </div>
+                                            <div class="activity" ng-repeat="activity in lesson.activities">
+                                                <div class="row">
+                                                    <div class="col-sm-offset-1 col-sm-4 col-xs-8">
+                                                          <div class="activity-name">{{activity.name}}</div>
+                                                    </div>
+                                                    <div class="col-sm-3 col-xs-4 textright">
+                                                        <div class="stats" ng-class="{ 'done': activity.done == 'true', 'undone': activity.done == 'false' }">
+                                                            <span class="icon"></span>
+                                                            <span ng-show="activity.done == 'true'">Feito</span>
+                                                            <span ng-hide="activity.done == 'true'">Não Feito</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                             {% endverbatim %}
-                                        </div>
-                                        <div class="activity">
-                                            <div class="row">
-                                                <div class="col-sm-offset-1 col-sm-4 col-xs-8">
-                                                    <div class="activity-name">Atividade 1</div>
-                                                </div>
-                                                <div class="col-sm-3 col-xs-4 textright">
-                                                    <div class="stats done">
-                                                        <span class="icon"></span>
-                                                        Feito
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="activity">
-                                            <div class="row">
-                                                <div class="col-sm-offset-1 col-sm-4 col-xs-8">
-                                                    <div class="activity-name">Atividade 1</div>
-                                                </div>
-                                                <div class="col-sm-3 col-xs-4 textright">
-                                                    <div class="stats undone">
-                                                        <span class="icon"></span>
-                                                        Não feito
-                                                    </div>
-                                                </div>
-                                            </div>
                                         </div>
 
                                     </div>
