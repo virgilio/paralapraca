@@ -359,58 +359,5 @@
                 color: $gray;
             }
         }
-
-        .uib-datepicker-popup.dropdown-menu {
-            background: #87b727;
-            border-radius: 0;
-            padding: 3px;
-
-            .btn-default {
-                background: transparent;
-                color: $gray;
-                padding: 4px 6px;
-
-                &.active {
-                    background-color: $brand-primary;
-                    box-shadow: none;
-                    color: #fff;
-                }
-                .text-muted {
-                    color: $gray-light;
-                }
-                .text-info {
-                    font-size: 10px;
-                }
-            }
-            thead {
-                tr:last-child {
-                    background: rgba(255, 255, 255, 0.7);
-                    th {
-                        padding: 1px 0 4px;
-                    }
-                    small {
-                        font-weight: $semi-bold;
-                    }
-                }
-            }
-            tbody {
-                background: rgba(255, 255, 255, 0.5);
-
-                .uib-month, .uib-year {
-                    .btn-default {
-                        font-size: 11px;
-                        margin: 3px; 
-                        .text-info {
-                            color: $brand-primary;
-                        }
-                        &.active {
-                            .text-info {
-                                color: #fff;
-                            }
-                        }
-                    }
-                }
-            }
-        }
     }
 }

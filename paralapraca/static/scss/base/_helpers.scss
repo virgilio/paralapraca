@@ -29,6 +29,12 @@
     &-chevron-down {
         @include icon(after, chevron-down);
     }
+    &-chevron-left {
+        @include icon(before, chevron-left);
+    }
+    &-chevron-right {
+        @include icon(before, chevron-right);
+    }
     &-chevron-up {
         @include icon(after, chevron-up);
     }
