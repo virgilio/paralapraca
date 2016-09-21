@@ -1,6 +1,11 @@
 <div class="form-group">
+    <button class="btn btn-xs attached"
+            ng-show="(files.length > 1) && !editable && !show_files"
+            ng-click="show_files=true">
+        <u>{{files.length}} arquivos anexos</u> + ...
+    </button>
     <div class="post-attachments"
-       ng-show="files || progress">
+       ng-show="(((files && editable) || progress) || show_files) || files.length == 1">
         <div class="attachments">
             <span translate
                   translate-n="files.length"
@@ -10,7 +15,6 @@
                     <a ng-href="{{file.file}}">{{file.name}}</a>
                 </li>
             </ul>
-            {{isTopic}}
             <div class="post-attachments attachments" style="display: inline-block; width: 100%; height: inherit; margin: 3px; border: 0px" ng-show="progress >= 0 && progress != 100">
               <strong>Carregando novo arquivo...</strong>
               {{progress + '%'}}
