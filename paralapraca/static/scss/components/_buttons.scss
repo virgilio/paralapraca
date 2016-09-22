@@ -39,6 +39,11 @@
     &.btn-inverse {
         @include button-hover($brand-primary,#fff,#fff,$brand-primary);
     }
+    &.btn-transparent {
+        @include button-hover($brand-primary,$brand-primary,transparent,transparent);
+        border-color: $brand-primary !important;
+        cursor: default !important;
+    }
 }
 
 .btn {
@@ -55,6 +60,7 @@
         outline: 0;
     }
     &:before { // icon margin
+        font-size: 15px;
         margin-right: 5px;
         vertical-align: middle;
     }

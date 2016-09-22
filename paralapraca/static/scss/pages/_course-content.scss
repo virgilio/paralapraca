@@ -713,10 +713,23 @@
                 }
             }
             .options {
+                margin-bottom: 10px;
                 text-align: right;
                 @media screen and (min-width: $screen-sm-min) {
                     .btn + .btn {
                         margin-top: 10px;
+                    }
+                }
+                .lesson-status {
+                    margin-bottom: 10px;
+                    @media screen and (min-width: $screen-sm-min) {
+                        .btn + .btn {
+                            margin-top: 0px;
+                        }
+                        .fa {
+                            font-size: 15px;
+                            margin-right: 3px;
+                        }
                     }
                 }
             }
