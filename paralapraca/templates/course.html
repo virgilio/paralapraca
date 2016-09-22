@@ -271,7 +271,7 @@ wrapper-course-intro
                     <div class="another-info">
                         <div class="secondary-page-header">
                             {% if in_admin %}
-                                <div class="editable-secondary-title"><input type="text" ng-model="" value="{% trans "Why do this course?" %}"></div>
+                                <div class="editable-secondary-title"><input type="text" value="{% trans "Why do this course?" %}"></div>
                             {% else %}
                                 <h3><i ng-class="{'blink-text-danger':errors.application}" class="fa fa-angle-double-right"></i> {% trans "Why do this course?" %}
                             {% endif %}
