@@ -133,6 +133,21 @@
             }
         }
 
+        .handle {
+            float: left;
+            margin-left: -40px;
+            margin-top: 6.5%;
+            .btn {
+                height: 40px;
+                max-height: 40px;
+                width: 40px;
+                &:before {
+                    font-size: 20px;
+                    margin-right: 0;
+                }
+            }
+        }
+
         // COURSE INFO
         .course-status {
             margin-top: 5px; 
