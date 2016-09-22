@@ -81,10 +81,10 @@
                     <div class="form-group">
                         <button id="select-file-topic"
                                class="btn btn-xs btn-primary attach"
-                               ngf-select="uploadCommentFiles($file, new_topic)"
+                               ngf-select="uploadTopicFiles($file, new_topic)"
                                ngf-multiple="false">anexar arquivo</button>
                     </div>
-                    <files files="new_topic.files" progress="new_topic.progress" isTopic="verdadeiro"></files>
+                    <files files="new_topic.files" progress="new_topic.progress" editable="true"></files>
 
                     <div class="form-group">
                         <div class="row">

@@ -101,7 +101,7 @@
                                    ngf-select="uploadTopicFiles($file, topic)"
                                    ngf-multiple="false">anexar arquivo</button>
                         </div>
-                        <files files="topic.files" progress="topic.progress"></files>
+                        <files files="topic.files" editable="true" progress="topic.progress"></files>
 
                         <div class="form-group">
                             <div class="row">
@@ -148,6 +148,7 @@
                                 class="btn btn-success new-topic">salvar</button>
                     </form>
                     <!-- /Edição de tópico -->
+                    <!-- Exibição de tópico -->
                     <div ng-show="!updating">
                       <div class="user-icon">
                           <img ng-src="{{ topic.author.picture }}" alt="{{ topic.author.name }}">
@@ -168,7 +169,7 @@
                           <files files="topic.files" editable="false"></files>
                       </div>
                     </div>
-
+                    <!-- /Exibição de tópico -->
                     <div class="actions">
                         <div class="pull-left">
                             <a ng-click="topic_like(topic)" ng-class="{ 'active': topic.user_like }" class="action liked">gostei</a>
@@ -192,18 +193,18 @@
                         </div>
                     </div>
                     <!-- Novo comentário -->
-                    <form class="comments-form" ng-show="topic.show_comment_input">
+                    <form class="comments-form" ng-if="topic.show_comment_input" ng-init="comment = new_comment()">
                         <textarea ui-tinymce
-                                  ng-model="topic.new_comment"
+                                  ng-model="comment.text"
                                   placeholder="Escreva aqui o seu comentário"></textarea>
                         <button id="select-file-topic"
                                class="btn btn-xs btn-primary attach pull-left"
-                               ngf-select="uploadCommentFiles($file, topic, new_comment_progress)"
+                               ngf-select="uploadCommentFiles($file, comment)"
                                ngf-multiple="false">anexar arquivo</button>
-                        <button class="btn btn-xs btn-success reply pull-right" ng-click="save_comment(topic, null)">comentar</button>
+                        <button class="btn btn-xs btn-success reply pull-right" ng-click="save_comment(comment, null); topic.show_comment_input=false">comentar</button>
                         <button class="btn btn-xs btn-danger delete pull-right" ng-click="topic.show_comment_input=false">descartar</button>
 
-                        <files files="topic.new_comment_files" editable="true"></files>
+                        <files files="comment.files" editable="true"></files>
                     </form>
                     <!-- /Novo comentário -->
                     <div class="comments">
@@ -258,17 +259,17 @@
                             </div>
                             <!-- Criar nova resposta a comentário -->
                             <div class="info">
-                                <form class="comments-form" ng-show="comment.show_comment_input">
+                                <form class="comments-form" ng-if="comment.show_comment_input" ng-init="reply = new_comment()">
                                     <textarea ui-tinymce
-                                              ng-model="comment.new_comment"
+                                              ng-model="reply.text"
                                               placeholder="Escreva aqui o seu comentário"></textarea>
                                     <button id="select-file-comment"
                                            class="btn btn-xs btn-primary attach pull-left"
-                                           ngf-select="uploadCommentFiles($file, comment)"
+                                           ngf-select="uploadCommentFiles($file, reply)"
                                            ngf-multiple="false">anexar arquivo</button>
-                                    <button class="btn btn-xs btn-success reply pull-right" ng-click="save_comment(topic, comment);comment.show_comment_input=false;">responder</button>
+                                    <button class="btn btn-xs btn-success reply pull-right" ng-click="save_comment(reply, comment);comment.show_comment_input=false;">responder</button>
                                     <button class="btn btn-xs btn-danger delete pull-right" ng-click="comment.show_comment_input=false">descartar</button>
-                                    <files files="comment.new_comment_files" editable="true"></files>
+                                    <files files="reply.files" editable="true"></files>
                                 </form>
                             </div>
                             <!-- /Criar nova resposta a comentário -->
@@ -305,17 +306,17 @@
                                     <!-- /Edição de resposta a um comentário -->
 
                                     <!-- Criação de resposta à resposta de um comentário -->
-                                    <form class="comments-form" ng-show="reply.show_comment_input">
+                                    <form class="comments-form" ng-if="reply.show_comment_input" ng-init="new_reply = new_comment()">
                                         <textarea ui-tinymce
-                                                  ng-model="comment.new_comment"
+                                                  ng-model="new_reply.text"
                                                   placeholder="Escreva aqui o seu comentário"></textarea>
                                         <button id="select-file-reply"
                                                 class="btn btn-xs btn-primary attach pull-left"
-                                                ngf-select="uploadCommentFiles($file, comment)"
+                                                ngf-select="uploadCommentFiles($file, new_reply)"
                                                 ngf-multiple="false">anexar arquivo</button>
-                                        <button class="btn btn-xs btn-success reply pull-right" ng-click="save_comment(topic, comment);reply.show_comment_input=false;">responder</button>
+                                        <button class="btn btn-xs btn-success reply pull-right" ng-click="save_comment(new_reply, comment);reply.show_comment_input=false;">responder</button>
                                         <button class="btn btn-xs btn-danger delete pull-right" ng-click="reply.show_comment_input=false">descartar</button>
-                                        <files files="comment.new_comment_files" editable="true"></files>
+                                        <files files="new_reply.files" editable="true"></files>
                                     </form>
                                     <!-- /Criação de resposta à resposta de um comentário -->
                                 </div>
