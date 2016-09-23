@@ -133,10 +133,27 @@
             }
         }
 
+        .lesson {
+            .handle {
+                float: left;
+                margin-left: -40px;
+                margin-top: 6.5%;
+            }
+        }
+        .instructors {
+            .title {
+                color: #000;
+                font-size: 20px;
+                font-weight: $bold;
+            }
+            .handle {
+                margin-right: 10px;
+            }
+            .submit {
+                margin: 20px 0 10px;
+            }
+        }
         .handle {
-            float: left;
-            margin-left: -40px;
-            margin-top: 6.5%;
             .btn {
                 height: 40px;
                 max-height: 40px;
