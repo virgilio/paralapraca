@@ -36,11 +36,36 @@ wrapper-course-lesson
     <div class="actions-menu" fixed-bar>
         <div class="container-fluid">
             <div class="actions-buttons align-left">
-                <button class="btn btn-sm btn-danger btn-inverse delete" ng-click="deleteLesson()">apagar capítulo</button>
+                <button class="btn btn-sm btn-danger btn-inverse delete" ng-click="deleteLesson()">
+                    <span class="visible-xs-inline">apagar</span>
+                    <span class="hidden-xs">apagar capítulo</span>
+                </button>
             </div>
             <div class="actions-buttons align-right">
-                <button class="btn btn-sm btn-primary btn-inverse save" ng-click="saveLesson()">salvar alterações</button>
-                <button class="btn btn-sm btn-primary" ng-click="publishLesson();">publicar</button>
+                <!-- <button class="btn btn-sm btn-primary" ng-click="publishLesson();">publicar</button> -->
+
+                <div class="btn-group lesson-status">
+                    <button type="button" class="btn btn-sm btn-primary">
+                        <i class="fa fa-users" aria-hidden="true"></i> {% trans 'Published' %}
+                    </button>
+                    <span class="btn btn-sm btn-primary btn-transparent">
+                        <i class="fa fa-pencil" aria-hidden="true"></i> {% trans 'Draft' %}
+                    </span>
+                </div>
+
+                <div class="btn-group lesson-status">
+                    <span class="btn btn-sm btn-primary btn-transparent">
+                        <i class="fa fa-users" aria-hidden="true"></i> {% trans 'Published' %}
+                    </span>
+                    <button type="button" class="btn btn-sm btn-primary">
+                        <i class="fa fa-pencil" aria-hidden="true"></i> {% trans 'Draft' %}
+                    </button>
+                </div>
+
+                <button class="btn btn-sm btn-primary btn-inverse save" ng-click="saveLesson()">
+                    <span class="visible-xs-inline">salvar</span>
+                    <span class="hidden-xs">salvar alterações</span>
+                </button>
             </div>
             {% include 'administration/_alert.html' %}
         </div>
