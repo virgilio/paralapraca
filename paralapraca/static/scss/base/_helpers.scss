@@ -8,6 +8,12 @@
     &-add {
         @include icon(before, add);
     }
+    &-add-image {
+        @include icon(before, thumbnail);
+    }
+    &-add-video {
+        @include icon(before, video);
+    }
     &-angle-right {
         @include icon(after, angle-right);
     }
@@ -22,6 +28,12 @@
     }
     &-chevron-down {
         @include icon(after, chevron-down);
+    }
+    &-chevron-left {
+        @include icon(before, chevron-left);
+    }
+    &-chevron-right {
+        @include icon(before, chevron-right);
     }
     &-chevron-up {
         @include icon(after, chevron-up);
@@ -130,6 +142,9 @@
     }
     &-site {
         @include icon(before, site);
+    }
+    &-sort {
+        @include icon(before, sort);
     }
     &-stats {
         @include icon(before, stats);

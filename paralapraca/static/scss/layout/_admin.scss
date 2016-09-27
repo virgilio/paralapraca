@@ -3,8 +3,25 @@
 #admin {
     // COURSE, FORUM
     // ********************************************************************* //
-    .course,
-    .forum {
+    .course {
+        .help-text {
+            color: $gray-light;
+            font-size: 11px;
+            margin-bottom: 5px;
+        }
+        .main-header {
+            padding: 10px 0;
+            .course-sections {
+                margin-top: 10px;
+            }
+        }
+        &.course-intro {
+            .course-info {
+                .secondary-page-header {
+                    margin-bottom: 0;
+                }
+            }
+        }
         &.course-lesson {
             .video,
             .activity {
@@ -46,6 +63,11 @@
         // ********************************************************************* //
         .add-content {
             margin-bottom: 0px;
+            .help-text {
+                color: #000;
+                font-size: 12px;
+                font-weight: $bold;
+            }
             .video-activity-buttons {
                 button {
                     font-size: 11px;
@@ -110,59 +132,205 @@
                 }
             }
         }
-        .organize-lessons {
-            .secondary-page-header {
-                margin-bottom: 30px;
-                h3 {
-                    display: inline-block;
-                    margin-right: 15px;
-                }
-                .btn {
-                    margin-top: -10px;
-                }
-            }
-            .lesson-units-nav {
-                margin-bottom: 10px;
-            }
-            .btn.add {
-                display: block;
-                width: 145px;
-                margin: 10px auto; 
+
+        .lesson {
+            .handle {
+                float: left;
+                margin-left: -40px;
+                margin-top: 6.5%;
             }
         }
-        // ORGANIZING LESSONS AND INSTRUCTORS
-        .lessons.organizing-lessons,
-        .instructors.organizing-instructors {
-            margin-bottom: 30px;
-            .lesson, .instructor {
-                border-bottom: 1px solid $gray;
-                margin-bottom: 0;
-                margin-top: 10px;
-                padding-bottom: 10px;
-                .title {
-                    display: block;
-                    float: left;
-                    font-size: $font-size-large;
-                    font-weight: $semi-bold;
-                    margin: 4px 10px;
-                }
-                .handle {
-                    float: left;
-                    .btn {
-                        cursor: move;
-                    }
-                }
-                .fa.fa-minus-circle {
-                    cursor: pointer;
-                    color: $brand-danger;
-                }
+        .instructors {
+            .title {
+                color: #000;
+                font-size: 20px;
+                font-weight: $bold;
             }
-            .actions {
-                text-align: right;
+            .handle {
+                margin-right: 10px;
             }
             .submit {
-                margin-top: 10px;
-                text-align: right;
+                margin: 20px 0 10px;
+            }
+        }
+        .handle {
+            .btn {
+                height: 40px;
+                max-height: 40px;
+                width: 40px;
+                &:before {
+                    font-size: 20px;
+                    margin-right: 0;
+                }
+            }
+        }
+
+        // COURSE INFO
+        .course-status {
+            margin-top: 5px; 
+            &.btn-group.open .dropdown-toggle {
+                box-shadow: none;
+            }
+            button {
+                color: #fff;
+                &.published {
+                    background: #87b727;
+                }
+                &.draft {
+                    background: #d51317;
+                }
+            }
+            .status-label {
+                float: left;
+            }
+            .caret {
+                float: right;
+                margin: 8px 0 0 10px;
+            }
+            .dropdown-menu {
+                margin: 0;
+                min-width: initial;
+                padding: 0;
+                li {
+                    margin: 0 !important;
+                }
+            }
+        }
+        .percentage-bubble {
+            background: #87b727;
+            border-radius: 100%;
+            color: #fff;
+            display: inline-block;
+            float: right;
+            font-weight: $bold;
+            height: 50px;
+            padding: 13px 0px;
+            text-align: center;
+            width: 50px;
+        }
+        .percentage-input {
+            /*removes default webkit styles*/
+            -webkit-appearance: none;
+
+            background: transparent;
+            
+            /*fix for FF unable to apply focus style bug */
+            border: 1px solid transparent;
+            
+            /*required for proper track sizing in FF*/
+            max-width: 270px;
+            width: 100%;
+
+            margin-top: 15px;
+
+            &::-webkit-slider-runnable-track {
+                max-width: 270px;
+                width: 100%;
+                height: 5px;
+                background: $gray;
+                border: none;
+                border-radius: 3px;
+            }
+            &::-webkit-slider-thumb {
+                -webkit-appearance: none;
+                border: 1px solid $gray;
+                cursor: pointer;
+                height: 20px;
+                width: 20px;
+                border-radius: 50%;
+                background: $gray-lighter;
+                margin-top: -4px;
+            }
+            &:focus {
+                outline: none;
+            }
+            &:focus::-webkit-slider-runnable-track {
+                background: $gray
+            }
+
+            &::-moz-range-track {
+                max-width: 270px;
+                width: 100%;
+                height: 5px;
+                background: $gray;
+                border: none;
+                border-radius: 3px;
+            }
+            &::-moz-range-thumb {
+                border: 1px solid $gray;
+                cursor: pointer;
+                height: 20px;
+                width: 20px;
+                border-radius: 50%;
+                background: $gray-lighter;
+            }
+
+            /*hide the outline behind the border*/
+            &:-moz-focusring{
+                outline: 1px solid transparent;
+                outline-offset: -1px;
+            }
+
+            &::-ms-track {
+                max-width: 270px;
+                width: 100%;
+                height: 5px;
+                
+                /*remove bg colour from the track, we'll use ms-fill-lower and ms-fill-upper instead */
+                background: transparent;
+                
+                /*leave room for the larger thumb to overflow with a transparent border */
+                border-color: transparent;
+                border-width: 6px 0;
+
+                /*remove default tick marks*/
+                color: transparent;
+            }
+            &::-ms-fill-lower {
+                background: $gray;
+                border-radius: 10px;
+            }
+            &::-ms-fill-upper {
+                background: $gray;
+                border-radius: 10px;
+            }
+            &::-ms-thumb {
+                border: 1px solid $gray;
+                cursor: pointer;
+                height: 20px;
+                width: 20px;
+                border-radius: 50%;
+                background: $gray-lighter;
+            }
+            &:focus::-ms-fill-lower {
+                background: $gray;
+            }
+            &:focus::-ms-fill-upper {
+                background: $gray;
+            }
+        }
+        .date-input {
+            margin-top: 5px;
+            width: 230px;
+            .form-control {
+                border: 2px solid $brand-success;
+                box-shadow: none;
+                color: $gray;
+                font-weight: $bold;
+                padding: 1px 6px;
+
+                &::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+                    color: $gray;
+                }
+                &::-moz-placeholder { /* Firefox 19+ */
+                    color: $gray;
+                }
+                &:-ms-input-placeholder { /* IE 10+ */
+                    color: $gray;
+                }
+                &:-moz-placeholder { /* Firefox 18- */
+                    color: $gray;
+                }
             }
         }
     }

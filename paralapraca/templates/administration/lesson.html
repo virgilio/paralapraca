@@ -17,6 +17,7 @@
 <script type="text/javascript" src="{% static 'js/directives/markdowneditor.js' %}"></script>
 <script type="text/javascript" src="{% static 'js/directives/codemirror.js' %}"></script>
 <script type="text/javascript" src="{% static 'js/directives/sortable.js' %}"></script>
+<script type="text/javascript" src="{% static 'ng-file-upload/ng-file-upload.js' %}"></script>
 {% endcompress %}
 {% endblock %}
 
@@ -36,11 +37,11 @@ wrapper-course-lesson
     <div class="actions-menu" fixed-bar>
         <div class="container-fluid">
             <div class="actions-buttons align-left">
-                <button class="btn btn-danger delete" ng-click="deleteLesson()">{% trans 'Delete' %}</button>
+                <button class="btn btn-sm btn-danger btn-inverse delete" ng-click="deleteLesson()">apagar capítulo</button>
             </div>
             <div class="actions-buttons align-right">
-                <button class="btn btn-success save" ng-click="saveLesson()">{% trans 'Save' %}</button>
-                <button class="btn btn-warning" ng-click="publishLesson();">{% trans 'Publish' %}</button>
+                <button class="btn btn-sm btn-primary btn-inverse save" ng-click="saveLesson()">salvar alterações</button>
+                <button class="btn btn-sm btn-primary" ng-click="publishLesson();">publicar</button>
             </div>
             {% include 'administration/_alert.html' %}
         </div>
@@ -52,32 +53,12 @@ wrapper-course-lesson
     <!-- COURSE-CONTENT -->
     <section class="course-content container-fluid">
 
-        <nav class="lesson-units">
-            <div class="btn-group">
-                <button type="button" class="btn btn-sm btn-default"><span ng-bind="lesson.name"></span>&nbsp;</button>
-                <button type="button" class="btn btn-sm btn-default dropdown-toggle" data-toggle="dropdown">
-                    <i class="fa fa-chevron-down"></i>
-                </button>
-                <ul class="dropdown-menu">
-                    <li ng-repeat="l in lessons">
-                        <a href="" ng-bind="l.name" ng-click="setLesson(l)"></a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-
-        <nav class="course-lessons">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="editable-title"><input type="text" ng-model="lesson.name" placeholder="{% trans 'Lesson name' %}"></div>
-                    <div class="editable-text">
-                        <input type="text" ng-model="lesson.desc" placeholder="{% trans 'Lesson description' %}">
-                    </div>
+        <div class="add-content" ng-init="section='video'">
+            <div class="secondary-header">
+                <div class="editable-text">
+                    <input type="text" ng-model="lesson.desc" placeholder="{% trans 'Lesson description' %}">
                 </div>
             </div>
-        </nav>
-
-        <div class="add-content" ng-init="section='video'">
             <div class="secondary-header row">
                 <div class="col-sm-2 col-md-1">
                     <div class="unit">{% trans 'Unit' %}:</div>
@@ -88,34 +69,22 @@ wrapper-course-lesson
                     </div>
                 </div>
                 <div class="col-sm-3 col-md-2">
-                    <button class="btn btn-sm btn-danger delete" ng-click="removeCurrentUnit()" title="{% trans 'Delete this unit' %}">{% trans 'Delete this unit' %}</button>
+                    <button class="btn btn-sm btn-danger btn-inverse delete" ng-click="removeCurrentUnit()" title="{% trans 'Delete this unit' %}">{% trans 'Delete this unit' %}</button>
                 </div>
             </div>
 
 
             <div id="video-activity-buttons">
-                <button class="btn btn-default"
-                        ng-class="{'btn-info': section === 'video'}"
+                <button class="btn btn-primary btn-inverse add-video"
+                        ng-class="{'btn-primary': section === 'video'}"
                         ng-click="section ='video'">{% trans 'Video' %}</button>
 
-                <button class="btn btn-default"
-                        ng-class="{'btn-info': section === 'activity'}"
+                <button class="btn btn-primary btn-inverse add-activity"
+                        ng-class="{'btn-primary ': section === 'activity'}"
                         ng-click="section ='activity'">{% trans 'Activity' %}</button>
             </div>
         </div>
 
-        <div class="units">
-            {% verbatim %}
-            <a href="" class="unit" ng-repeat="u in lesson.units"
-               title="{{u.title}}"
-               ng-click="$parent.selectUnit(u);"
-               ng-class="{current: $parent.currentUnit == u}">
-               <span ng-bind="$index + 1"></span>
-               <i class="fa fa-list" ng-show="u.activities"></i>
-           </a>
-            {% endverbatim %}
-            <a href="" class="add-unit unit" ng-click="addUnit()"><i class="fa fa-plus"></i></a>
-        </div>
 
         <!-- VIDEO SECTION -->
         <div class="video" ng-class="{'hidder': section !== 'video'}">

@@ -26,6 +26,7 @@
 @import "components/_actions-menu";
 @import "components/_buttons";
 @import "components/_course-box";
+@import "components/_datepicker";
 @import "components/_dropdown";
 @import "components/_editable-content";
 @import "components/_headers";
@@ -59,6 +60,7 @@
 // there are the specific's theme styles
 
 //== Base styles
+@import "theme/_actions-menu";
 @import "theme/_buttons";
 @import "theme/_course-activity";
 @import "theme/_course-content";
