@@ -670,14 +670,16 @@
         // ADD UNIT
         .add-unit {
             background-color: $brand-success;
-            line-height: 2;
+            line-height: 20px;
             padding: 0;
             text-align: center;
             &:hover {
                 background-color: darken($brand-success, 10%);
             }
             i {
-                position: static;
+                &:before {
+
+                }
             }
         }
         // END ADD UNIT
