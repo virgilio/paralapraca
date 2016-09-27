@@ -322,8 +322,8 @@ wrapper-course-intro
                             </h3>
                         </div>
                         {% endverbatim %}
-                        <div class="help-text">Arraste para esquerda ou direita. Mínimo de XX%.</div>
-                        <input type="range" max="100" min="0" class="percentage-input"
+                        <div class="help-text">Arraste para esquerda ou direita. Mínimo de 50%.</div>
+                        <input type="range" max="100" min="50" class="percentage-input"
                             ng-model="course.min_percent_to_complete" />
 
                         <div class="secondary-page-header">
@@ -408,7 +408,7 @@ wrapper-course-intro
                             </div>
                             <div class="options col-sm-4">
 
-                                <div class="btn-group lesson-status" ng-show="lesson.status=='draft'">
+                                <!-- <div class="btn-group lesson-status" ng-show="lesson.status=='draft'">
                                     <button type="button" class="btn btn-sm btn-primary"
                                         ng-click="lesson.status='published'">
                                         <i class="fa fa-users" aria-hidden="true"></i> {% trans 'Published' %}
@@ -426,7 +426,7 @@ wrapper-course-intro
                                         ng-click="lesson.status='draft'">
                                         <i class="fa fa-pencil" aria-hidden="true"></i> {% trans 'Draft' %}
                                     </button>
-                                </div>
+                                </div> -->
 
                                 <a {% verbatim %}href="lessons/{{lesson.id}}"{% endverbatim %} class="btn btn-sm btn-primary btn-inverse edit">editar capítulo</a>
                                 <button class="btn btn-sm btn-danger btn-inverse delete" ng-click="deleteLesson(lesson)">apagar capítulo</button>
@@ -459,7 +459,7 @@ wrapper-course-intro
                 <div class="lessons" ng-show="organizingLessons" sortable="lessons" on-update="repositionLessons()">
                     <!-- LESSON -->
                     <div class="lesson" ng-repeat="lesson in lessons">
-                        
+
                         <div class="row">
 
                             <div class="handle"><div class="btn btn-default sort"><span class="sr-only">ordenar</span></div></div>
