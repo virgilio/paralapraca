@@ -23,6 +23,43 @@
             }
         }
         &.course-lesson {
+            .chapter-title-wrapper {
+                margin: 8px 0 10px; 
+                > div {
+                    display: inline-block;
+                }
+                > div + div {
+                    margin-left: 5px;
+                }
+                .chapter-title-wrapper {
+                    .chapter-breadcrumb {
+                        font-size: $font-size-small;
+                        @media screen and (min-width: $screen-md-min) {
+                            font-size: 16px;
+                        }
+                    }
+                }
+                .chapter-nav {
+                    position: relative;
+                }
+            }
+            .chapter-certification {
+                margin: 0 0 15px;
+                > div {
+                    display: inline-block;
+                }
+                > div + div {
+                    margin-left: 5px;
+                }
+                .certification-label {
+                    color: $gray-dark;
+                    font-size: $font-size-small;
+                }
+            }
+            .course-sections {
+                margin-top: 25px;
+            }
+
             .video,
             .activity {
                 border: 0;
