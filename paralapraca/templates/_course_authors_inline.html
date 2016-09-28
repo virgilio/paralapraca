@@ -25,13 +25,10 @@
             <a class="instructor-wrapper" href="" ng-click="open_professor_modal(professor)">
                 <div class="instructor-photo">
                     {% verbatim %}
-                    <img ng-src="{{ professor.get_picture_url || professor.user_info.picture || '/static/img/avatar-default.png'}}"
-                         class="img-thumbnail">
+                    <img ng-src="{{ professor.get_picture_url || professor.user_info.picture || '/static/img/avatar-default.png'}}">
                     {% endverbatim %}
                 </div>
-                <div class="secondary-page-header">
-                    <h4 class="fullname" ng-bind="professor.name || professor.user_info.name">{% trans 'Name' %}</h4>
-                </div>
+                <h4 class="fullname" ng-bind="professor.name || professor.user_info.name">{% trans 'Name' %}</h4>
                 {% verbatim %}
                 <p class="editable editable-text-box" ng-bind-html="(professor.biography || professor.user_info.biography)|markdown"></p>
                 {% endverbatim %}
