@@ -164,6 +164,7 @@
                     <p class="empty-forum">Este fórum ainda não possui nenhum tópico.</p>
                 </div>
 
+                <!-- List topics in a specific forum -->
                 <div class="forum-list" ng-show="forum.show_forum || forum_single" ng-if="forum.topics.length>0">
                     <table class="table table-striped">
                         <thead>
@@ -197,31 +198,18 @@
                                     </div>
                                 </td>
                             </tr>
-                            <!--<tr class="new">-->
-                                <!--<td>-->
-                                    <!--<span class="thread-name">Lorem ipsum dolor sit amet</span>-->
-                                    <!--<span class="last-update">Última atividade <b>há 2 horas</b></span>-->
-                                <!--</td>-->
-                                <!--<td>-->
-                                    <!--<span class="action replies small">1</span>-->
-                                    <!--<span class="action liked small">4</span>-->
-                                    <!--<span class="action used small">7</span>-->
-                                <!--</td>-->
-                                <!--<td>-->
-                                    <!--<span class="category discussion">discussão</span>-->
-                                <!--</td>-->
-                                <!--<td>-->
-                                    <!--<div class="tags">-->
-                                        <!--<span class="tag">#lorem</span><span class="tag">#ipsum</span><span class="tag">#lorem</span>-->
-                                    <!--</div>-->
-                                <!--</td>-->
-                            <!--</tr>-->
                         </tbody>
                     </table>
+
+                    <div ng-show="forum_single" style="display: flex; justify-content: center;">
+                        <ul uib-pagination boundary-links="true" total-items="forum_topics_total" ng-model="forum.current_page" rotate="true" force-ellipses="true" max-size="forum_page_size" ng-change="pageChanged()" class="pagination" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="primeira página" last-text="última página"></ul>
+                    </div>
+
                     <div ng-show="!forum_single && !forum_search" class="see-all-topics">
                         <a class="btn btn-sm btn-primary" ng-href="/discussion/#!/forum/{{ forum.id }}">Ver todos os tópicos deste fórum</a>
                     </div>
                 </div>
+                <!-- /List topics in a specific forum -->
             </div>
         </div>
     </section>
