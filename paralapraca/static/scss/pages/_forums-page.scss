@@ -203,10 +203,37 @@
             &:before {
                 margin-right: 8px;
             }
+            .delete {
+                cursor: pointer;
+                margin-left: 5px;
+                &:before {
+                    color: $brand-primary;
+                    content: '\f057';
+                    font-style: normal;
+                    font-weight: normal;
+                    font-family: $icon-font-family;
+                    font-size: 16px;
+                    vertical-align: middle;
+                }
+            }
         }
     }
     a {
         @include link-hover($brand-primary,$brand-primary,$brand-primary,transparent);
+    }
+    .loading {
+        margin: 10px;
+        .loading-bar {
+            border: 1px solid $brand-primary;
+            border-radius: 10px;
+            height: 10px;
+            width: 100%;
+            div {
+                background-color: $brand-primary;
+                border-radius: 8px;
+                height: 8px;
+            }
+        } 
     }
 }
 
