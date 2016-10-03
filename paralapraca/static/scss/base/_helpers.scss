@@ -20,6 +20,9 @@
     &-attention {
         @include icon(before, attention);
     }
+    &-backward {
+        @include icon(before, backward);
+    }
     &-caret-down {
         @include icon(after, caret-down);
     }
@@ -79,6 +82,9 @@
     }
     &-forum {
         @include icon(before, forum);
+    }
+    &-forward {
+        @include icon(after, forward);
     }
     &-goback {
         @include icon(before, goback);

@@ -1,0 +1,31 @@
+<div class="form-group">
+    <button class="btn btn-xs attached"
+            ng-show="(files.length > 1) && !editable && !show_files"
+            ng-click="show_files=true">
+        <u>{{files.length}} arquivos anexos</u> + ...
+    </button>
+    <div class="post-attachments"
+       ng-show="(((files.length>0 && editable) || progress) || show_files) || files.length == 1">
+        <div class="attachments">
+            <span translate
+                  translate-n="files.length"
+                  translate-plural="{{$count}} arquivos anexos:">1 arquivo anexo:</span>
+            <ul>
+                <li ng-repeat="(i, file) in files">
+                    <a ng-href="{{file.file}}" target="_blank">{{file.name}}</a>
+                    <span style="display: flex; justify-content: center; align-items:center; float: right; background-color: #993671; margin-left: 5px; border-radius: 50%; width: 15px; height: 15px;" ng-show="editable" ng-click="deleteFile(i)">
+                        <a style="font-weight: bold; font-size: 1em; border-bottom-color: transparent !important; color: white; text-align: center;">x</a>
+                  </span>
+                </li>
+            </ul>
+            <div class="post-attachments attachments" style="display: inline-block; width: 100%; height: inherit; margin: 3px; border: 0px" ng-show="progress >= 0 && progress != 100">
+              <strong>Carregando novo arquivo...</strong>
+              {{progress + '%'}}
+              <div style="width: 100%; height: 10px; border: 1px solid #993671; border-radius: 10px;">
+                  <div style="width:{{progress}}%; height: 100%; font-size: smaller; background-color: #993671;">
+                  </div>
+              </div>
+            </div>
+        </div>
+    </div>
+</div>

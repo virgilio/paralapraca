@@ -15,6 +15,11 @@
 wrapper-course-lesson
 {% endblock %}
 
+{% block body_attrs %}
+  ng-app="header"
+{% endblock %}
+
+
 {% block content %}
 
 <!-- class-modal -->
@@ -24,18 +29,19 @@ wrapper-course-lesson
             <form role="form" method="post" action="{% url 'class-add-users' pk=class.id %}">
                 {% csrf_token %}
                 <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Fechar</span></button>
                     <h4 class="modal-title" id="class-modal-label">{{ object.name }}</h4>
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
-                        <label for="class-users-list">{% trans 'Users' %}</label>
-                        <textarea id="class-users-list" class="form-control" rows="10" placeholder="Paste users list here, one user per line." name="students_text"></textarea>
+                        <label for="class-users-list">Usuários</label>
+                        <textarea id="class-users-list" class="form-control" rows="10" placeholder="Copie a lista de usuários aqui. Apenas um usuário por linha." name="students_text"></textarea>
+                        <input type="checkbox" name="auto_enroll" value="True"> Matricular usuários?
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary">{% trans 'Add users' %}</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+                    <button type="submit" class="btn btn-primary">Adicionar usuários</button>
                 </div>
             </form>
         </div>

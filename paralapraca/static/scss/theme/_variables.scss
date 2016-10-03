@@ -101,3 +101,23 @@ $link-color:        $brand-primary;
 $font-family-serif: "Neuton", Georgia, "Times New Roman", Times, serif;
 
 $headings-font-family: $font-family-serif;
+
+//== Pagination
+//
+//##
+
+$pagination-color:                     #fff;
+$pagination-bg:                        $orange;
+$pagination-border:                    transparent;
+
+$pagination-hover-color:               #fff;
+$pagination-hover-bg:                  darken($orange,10%);
+$pagination-hover-border:              transparent;
+
+$pagination-active-color:              #fff;
+$pagination-active-bg:                 $yellow;
+$pagination-active-border:             transparent;
+
+$pagination-disabled-color:            #fff;
+$pagination-disabled-bg:               rgba($orange,0.8);
+$pagination-disabled-border:           transparent;

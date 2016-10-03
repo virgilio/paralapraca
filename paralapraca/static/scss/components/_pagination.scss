@@ -1,0 +1,44 @@
+.pagination-wrapper {
+    text-align: center;
+
+    .pagination {
+        > li {
+            padding: 0 2px;
+            > a {
+                border-radius: 15px;
+                font-size: $font-size-small;
+                font-weight: $semi-bold;
+                height: 25px;
+                line-height: 1;
+                margin: 0 5px; 
+                padding: 5px 10px;
+            }
+            &:first-child {
+                > a {
+                    @extend %icon-backward;
+                    &:before {
+                        margin-right: 5px;
+                        vertical-align: middle;
+                    }
+                }
+            }
+            &:last-child {
+                > a {
+                    @extend %icon-forward;
+                    &:after {
+                        margin-left: 5px;
+                        vertical-align: middle;
+                    }
+                }
+            }
+            &.pagination-prev, &.pagination-next {
+                a {
+                    font-size: 26px;
+                    line-height: 0.7;
+                    padding: 0;
+                    width: 25px;
+                }
+            }
+        }
+    }
+}
