@@ -72,9 +72,11 @@
             border-right: 1px solid #c9a30d;
             color: #000;
             display: inline-block;
-            font-size: 10px;
+            font-size: 9px;
             font-weight: $bold;
-            padding: 2.5%;
+            height: 65px;
+            margin-left: -1%;
+            padding: 2%;
             vertical-align: top;
             text-align: center; 
             width: 24.1%;
@@ -82,34 +84,29 @@
                 border-right: 0;
             }
             @media screen and (min-width: $screen-xs-min) {
+                height: initial;
+                font-size: 10px;
                 padding: 2.5% 4%;
             }
             @media screen and (min-width: $screen-sm-min) {
                 @include link-hover(#000,#000,transparent,#000);
                 border-bottom-width: 2px !important;
                 border-right: 0;
-                max-width: 58px;
+                margin: 0 5px; 
                 padding: 0;
                 width: initial;
             }
-            @media screen and (min-width: $screen-lg-min) {
-                max-width: 68px;
+            @media screen and (min-width: $screen-md-min) {
+                margin: 0 8px; 
             }
             &:before {
                 display: block;
                 font-size: $font-size-large;
-                @media screen and (min-width: $screen-sm-min) {
-                    font-size: $font-size-base;
-                }
-                @media screen and (min-width: $screen-lg-min) {
-                    font-size: $font-size-large;
-                }
             }
         }
         &.admin-menu {
             a {
-                padding: 2% 1.5% 2% 0.5%;
-                width: 19.1%;
+                width: 20.5%;
                 &:last-of-type {
                     border-right: 1px solid #c9a30d;
                 }
@@ -142,16 +139,24 @@
         }
         .dropdown {
             float: right;
-            padding: 2% 1.5% 2% 0.5%;
+            height: 65px;
+            width: 18%;
             @media screen and (min-width: $screen-sm-min) {
                 display: inline-block;
                 float: none;
+                height: initial;
                 padding: 0;
+                width: initial;
             }
             .tools {
                 border: 0 !important;
-                padding: 0;
+                height: 65px;
+                padding: 15% 24%;
                 width: initial;
+                @media screen and (min-width: $screen-sm-min) {
+                    height: initial;
+                    padding: initial;
+                }
             }
             .dropdown-menu {
                 background-color: $gray-lighter;
@@ -161,6 +166,7 @@
                 li {
                     a {
                         border: 0;
+                        margin: 0; 
                         max-width: initial;
                         padding: 6px 12px;
                         text-align: left;

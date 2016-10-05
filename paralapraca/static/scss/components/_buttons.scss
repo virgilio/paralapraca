@@ -138,6 +138,10 @@
     &.new-topic {
         @extend %icon-new-topic;
     }
+    &.next-activity {
+        @extend %icon-forward;
+        margin: -4px 0 0 10px; 
+    }
     &.notes {
         @extend %icon-notes;
     }
