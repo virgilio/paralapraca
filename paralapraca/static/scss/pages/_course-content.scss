@@ -675,13 +675,13 @@
             background-color: $brand-success;
             line-height: 20px;
             padding: 0;
-            text-align: center;
+            text-align: left;
             &:hover {
                 background-color: darken($brand-success, 10%);
             }
             i {
                 &:before {
-
+                    margin: 0 0 0 4px;
                 }
             }
         }

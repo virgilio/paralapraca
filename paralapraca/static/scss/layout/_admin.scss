@@ -56,6 +56,16 @@
                     font-size: $font-size-small;
                 }
             }
+            .certification-swichter {
+                .btn {
+                    border-color: $gray-darker !important;
+                    font-size: 10px;
+                }
+                .non-active {
+                    background: transparent;
+                    color: $gray-darker;
+                }
+            }
             .course-sections {
                 margin-top: 25px;
             }
