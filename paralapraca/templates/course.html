@@ -95,18 +95,20 @@ wrapper-course-intro
         {% if in_admin %}
             <!-- ADD CONTENT -->
             <div class="add-content">
-                <div class="help-text">Qual é a melhor opção para apresentar esse módulo?</div>
-                <button class="btn btn-primary add-video"
-                        ng-class="{'btn-inverse':mediaSection=='video'}"
-                        ng-click="mediaSection='video'">{% trans 'Video' %}</button>
+                <div class="add-buttons">
+                    <div class="help-text">Qual é a melhor opção para apresentar esse módulo?</div>
+                    <button class="btn btn-sm btn-primary add-video"
+                            ng-class="{'btn-inverse':mediaSection=='video'}"
+                            ng-click="mediaSection='video'">{% trans 'Video' %}</button>
 
-                <button class="btn btn-primary add-image"
-                        ng-class="{'btn-inverse':mediaSection=='thumbnail'}"
-                        ng-click="mediaSection='thumbnail'">{% trans 'Thumbnail' %}</button>
+                    <button class="btn btn-sm btn-primary add-image"
+                            ng-class="{'btn-inverse':mediaSection=='thumbnail'}"
+                            ng-click="mediaSection='thumbnail'">{% trans 'Thumbnail' %}</button>
 
-                <button class="btn btn-primary add-image"
-                        ng-class="{'btn-inverse':mediaSection=='homethumbnail'}"
-                        ng-click="mediaSection='homethumbnail'">{% trans 'Home thumbnail' %}</button>
+                    <button class="btn btn-sm btn-primary add-image"
+                            ng-class="{'btn-inverse':mediaSection=='homethumbnail'}"
+                            ng-click="mediaSection='homethumbnail'">{% trans 'Home thumbnail' %}</button>
+                </div>
             </div>
             <!-- END ADD CONTENT -->
 
@@ -115,17 +117,16 @@ wrapper-course-intro
                     <div class="add-thumbnail">
                         <div class="centered">
                             <div class="form-group">
-                                <i class="fa fa-picture-o fa-4x"></i>
-                                <h1 class="bottom top">{% trans 'Thumbnail' %}</h1>
+                                <h4 class="bottom top">{% trans 'Thumbnail' %}</h4>
                                 <p>({% trans "min-width" %}: 845px)</p>
 
                                 <file ng-model="thumbfile" name="thumbnail" class="form-control"></file>
                             </div>
 
-                            <button class="btn btn-danger delete"
+                            <button class="btn btn-sm btn-default delete"
                                     ng-click="thumbfile=null; addThumb=!course.thumbnail_url">{% trans 'Cancel' %}</button>
 
-                            <button class="btn btn-success save"
+                            <button class="btn btn-sm btn-primary save"
                                     ng-click="addThumb=(thumbfile===null); saveThumb()">{% trans 'Add' %}</button>
                         </div>
                     </div>
@@ -139,7 +140,7 @@ wrapper-course-intro
                             <img ng-src="{{course.thumbnail_url}}" class="img-responsive" ng-show="!thumbfile"/>
                             {% endverbatim %}
 
-                            <button class="btn-edit-thumbnail btn btn-success"
+                            <button class="btn btn-sm btn-primary btn-edit-thumbnail add-image"
                                     ng-click="addThumb=true">{% trans 'Change thumbnail' %}</button>
                         </div>
                     </div>
@@ -152,16 +153,13 @@ wrapper-course-intro
                     <div class="add-thumbnail">
                         <div class="centered">
                             <div class="form-group">
-                                <i class="fa fa-picture-o fa-4x"></i>
-                                <h1 class="bottom top">{% trans 'Home thumbnail' %}</h1>
-                                <p></p>
-
+                                <h4>{% trans 'Home thumbnail' %}</h4>
                                 <file ng-model="home_thumbfile" name="home_thumbnail" class="form-control"></file>
                             </div>
-                            <button class="btn btn-danger btn-lg uppercase"
+                            <button class="btn btn-sm btn-default delete"
                                     ng-click="home_thumbfile=null; addHomeThumb=!course.home_thumbnail_url">{% trans 'Cancel' %}</button>
 
-                            <button class="btn btn-success btn-lg uppercase"
+                            <button class="btn btn-sm btn-primary save"
                                     ng-click="addHomeThumb=(home_thumbfile===null); saveHomeThumb()">{% trans 'Add' %}</button>
 
                         </div>
@@ -175,7 +173,7 @@ wrapper-course-intro
                             {% verbatim %}
                             <img ng-src="{{course.home_thumbnail_url}}" class="img-responsive" ng-show="!home_thumbfile"/>
                             {% endverbatim %}
-                            <button class="btn btn-success btn-edit-thumbnail"
+                            <button class="btn btn-sm btn-primary btn-edit-thumbnail add-image"
                                 ng-click="addHomeThumb=true">{% trans 'Change thumbnail' %}</button>
                         </div>
                     </div>
@@ -200,10 +198,10 @@ wrapper-course-intro
                     </div>
                     <div class="row">
                         <div class="col-lg-10">
-                            <p class="video-title editable-content" ng-model="course.intro_video.name" placeholder="Nome do vídeo" contenteditable><p>
+                            <p class="video-title editable-content" ng-model="course.intro_video.name" placeholder="Nome do vídeo" contenteditable></p>
                         </div>
-                        <div class="col-lg-2 textcenter">
-                            <button class="btn-edit-video btn btn-success btn-sm uppercase"
+                        <div class="col-lg-2">
+                            <button class="btn btn-sm btn-default btn-edit-video add-video"
                                     ng-click="course.intro_video.youtube_id=''">{% trans 'Change video' %}</button>
                         </div>
                     </div>
@@ -212,15 +210,15 @@ wrapper-course-intro
                 <div class="add-video-intro" ng-show="!course.intro_video.youtube_id">
                     <div class="centered">
                         <div class="form-group">
-                            <i class="fa fa-youtube-play fa-4x"></i>
-                            <h1>{% trans 'Introduction video' %}</h1>
-                            <input type="text" tabindex="8" ng-model="youtube_id" class="form-control"/>
+                            <h4>Ei, você ainda não escolheu o vídeo!</h4>
+                            <p>Adicione um vídeo colando seu link no espaço abaixo:</p>
+                            <input type="text" ng-model="youtube_id" class="form-control"/>
                         </div>
                         <div class="form-group">
-                            <button class="btn btn-danger delete"
+                            <button class="btn btn-sm btn-default delete"
                                     ng-click="course.intro_video.youtube_id=''">{% trans 'Cancel' %}</button>
                             <button tabindex="9"
-                                    class="btn btn-success save"
+                                    class="btn btn-sm btn-primary save"
                                     ng-show="!course.intro_video.youtube_id"
                                     ng-click="course.intro_video.youtube_id=youtube_id">{% trans 'Add' %}</button>
                         </div>

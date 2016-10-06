@@ -8,8 +8,14 @@
     &-add {
         @include icon(before, add);
     }
+    &-add-activity {
+        @include icon(before, activity);
+    }
     &-add-image {
         @include icon(before, thumbnail);
+    }
+    &-add-slides {
+        @include icon(before, slides);
     }
     &-add-video {
         @include icon(before, video);

@@ -84,7 +84,7 @@
                     margin-top: 86px;
                 }
                 .current-video,
-                .add-activity {
+                .add-activity-wrapper {
                     border: 1px solid $gray-lighter;
                     overflow: hidden;
                 }
@@ -147,13 +147,19 @@
                     }
                 }
             }
+            .add-buttons {
+                margin-top: 20px;
+
+                .btn + .btn {
+                    margin-left: 5px;
+                }
+            }
         }
         // END CONTENT
         // ADD VIDEO, THUMBNAIL, ACTIVITIES
         .add-video-intro,
         .add-thumbnail,
-        .add-activity {
-            color: $brand-danger;
+        .add-activity-wrapper {
             height: 489px;
             &:before {
                 content: '';
@@ -165,9 +171,19 @@
                 text-align: center;
                 width: 98%;
             }
-            .icon-youtube-play {
-                display: block;
-                font-size: 54px;
+            h4 {
+                color: $brand-primary;
+                font-size: 36px;
+            }
+            p {
+                font-size: 16px;
+            }
+            .form-control {
+                background: rgba(255,255,255,0.8);
+                border-radius: 0;
+                box-shadow: none;
+                margin: 0 auto;
+                max-width: 440px;
             }
         }
         @media (max-width: 400px) {

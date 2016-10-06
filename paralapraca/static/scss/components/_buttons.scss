@@ -60,7 +60,6 @@
         outline: 0;
     }
     &:before { // icon margin
-        font-size: 15px;
         margin-right: 5px;
         vertical-align: middle;
     }
@@ -70,17 +69,17 @@
     &.add {
         @extend %icon-add;
     }
+    &.add-activity {
+        @extend %icon-add-activity;
+    }
     &.add-image {
         @extend %icon-add-image;
-        &:before {
-            vertical-align: baseline;
-        }
+    }
+    &.add-slides {
+        @extend %icon-add-slides;
     }
     &.add-video {
         @extend %icon-add-video;
-        &:before {
-            vertical-align: bottom;
-        }
     }
     &.attach, &.attached {
         @extend %icon-file;
