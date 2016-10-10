@@ -32,27 +32,59 @@
 
 a.action {
     &.liked {
-        @include link-hover($gray,$orange,$gray,$orange);
+        color: $gray;
+        &:hover {
+            color: $orange;
+        }
+        span {
+            @include link-hover($gray,$orange,transparent,$orange);
+        }
         &.active {
-            @include link-hover($orange,$orange,$orange,$orange);
+            span {
+                @include link-hover($orange,$orange,transparent,$orange);
+            }
         }
     }
     &.used {
-        @include link-hover($gray,$purple,$gray,$purple);
+        color: $gray;
+        &:hover {
+            color: $purple;
+        }
+        span {
+            @include link-hover($gray,$purple,transparent,$purple);
+        }
         &.active {
-            @include link-hover($purple,$purple,$purple,$purple);
+            span { 
+                @include link-hover($purple,$purple,transparent,$purple);
+            }
         }
     }
     &.replies {
-        @include link-hover($gray,$pink,$gray,$pink);
+        color: $gray;
+        &:hover {
+            color: $pink;
+        }
+        span {
+            @include link-hover($gray,$pink,transparent,$pink);
+        }
         &.active {
-            @include link-hover($pink,$pink,$pink,$pink);
+            span {
+                @include link-hover($pink,$pink,transparent,$pink);
+            }
         }
     }
     &.edit {
-        @include link-hover($gray,$pink,$gray,$pink);
+        color: $gray;
+        &:hover {
+            color: $pink;
+        }
+        span {
+            @include link-hover($gray,$pink,transparent,$pink);
+        }
         &.active {
-            @include link-hover($pink,$pink,$pink,$pink);
+            span {
+                @include link-hover($pink,$pink,transparent,$pink);
+            }
         }
     }
 }

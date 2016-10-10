@@ -224,21 +224,45 @@
 
 a.action {
     &.liked {
-        @include link-hover($gray,$brand-primary,$gray,$brand-primary);
+        color: $gray;
+        &:hover {
+            color: $brand-primary;
+        }
+        span {
+            @include link-hover($gray,$brand-primary,transparent,$brand-primary);
+        }
         &.active {
-            @include link-hover($brand-primary,$brand-primary,$brand-primary,$brand-primary);
+            span {
+                @include link-hover($brand-primary,$brand-primary,transparent,$brand-primary);
+            }
         }
     }
     &.used {
-        @include link-hover($gray,$brand-success,$gray,$brand-success);
+        color: $gray;
+        &:hover {
+            color: $brand-success;
+        }
+        span {
+            @include link-hover($gray,$brand-success,transparent,$brand-success);
+        }
         &.active {
-            @include link-hover($brand-success,$brand-success,$brand-success,$brand-success);
+            span {
+                @include link-hover($brand-success,$brand-success,transparent,$brand-success);
+            }
         }
     }
     &.replies {
-        @include link-hover($gray,$brand-info,$gray,$brand-info);
+        color: $gray;
+        &:hover {
+            color: $brand-info;
+        }
+        span {
+            @include link-hover($gray,$brand-info,transparent,$brand-info);
+        }
         &.active {
-            @include link-hover($brand-info,$brand-info,$brand-info,$brand-info);
+            span {
+                @include link-hover($brand-info,$brand-info,transparent,$brand-info);
+            }
         }
     }
 }
