@@ -2,10 +2,13 @@
 // --------------------------------------------------
 
 .actions-menu {
-    background-color: $brand-primary;
-    height: 52px;
+    background-color: $gray-lighter;
+    height: 46px;
     padding: 10px 0;
     position: relative;
+    @media screen and (min-width: $screen-sm-min) {
+        height: 52px;
+    }
     .container-fluid {
         position: relative;
     }
@@ -34,13 +37,29 @@
             float: right;
         }
     }
+    .tt-popup {
+        position: absolute;
+        left: 15px;
+        right: 15px;
+        .alert {
+            margin-bottom: 0;
+            padding: 7px 15px;
+            .close {
+                padding: 4px 0;
+            }
+        }
+    }
 }
 .actions-menu-scroll {
-    left: 100px;
+    left: 0;
     position: fixed;
     right: 0;
-    top: 80px !important;
-    z-index: 1000;
+    top: 60px !important;
+    z-index: 900;
+    @media screen and (min-width: $screen-sm-min) {
+        left: 100px;
+        top: 80px !important;
+    }
 }
 .actions-menu-message {
     background-color: transparent !important;

@@ -8,11 +8,20 @@
     &-add {
         @include icon(before, add);
     }
+    &-add-image {
+        @include icon(before, thumbnail);
+    }
+    &-add-video {
+        @include icon(before, video);
+    }
     &-angle-right {
         @include icon(after, angle-right);
     }
     &-attention {
         @include icon(before, attention);
+    }
+    &-backward {
+        @include icon(before, backward);
     }
     &-caret-down {
         @include icon(after, caret-down);
@@ -23,6 +32,12 @@
     &-chevron-down {
         @include icon(after, chevron-down);
     }
+    &-chevron-left {
+        @include icon(before, chevron-left);
+    }
+    &-chevron-right {
+        @include icon(before, chevron-right);
+    }
     &-chevron-up {
         @include icon(after, chevron-up);
     }
@@ -31,6 +46,9 @@
     }
     &-checked {
         @include icon(before, checked);
+    }
+    &-checkmark {
+        @include icon(before, checkmark);
     }
     &-compress {
         @include icon(after, compress);
@@ -64,6 +82,9 @@
     }
     &-forum {
         @include icon(before, forum);
+    }
+    &-forward {
+        @include icon(after, forward);
     }
     &-goback {
         @include icon(before, goback);
@@ -128,8 +149,14 @@
     &-site {
         @include icon(before, site);
     }
+    &-sort {
+        @include icon(before, sort);
+    }
     &-stats {
         @include icon(before, stats);
+    }
+    &-times {
+        @include icon(before, times);
     }
     &-tools {
         @include icon(before, tools);

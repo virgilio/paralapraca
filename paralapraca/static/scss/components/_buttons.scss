@@ -28,16 +28,39 @@
     line-height: 1.2;
     padding: 0;
 }
+
+.btn-danger {
+    &.btn-inverse {
+        @include button-hover($brand-danger,#fff,#fff,$brand-danger);
+    }
+}
+
+.btn-primary {
+    &.btn-inverse {
+        @include button-hover($brand-primary,#fff,#fff,$brand-primary);
+    }
+    &.btn-transparent {
+        @include button-hover($brand-primary,$brand-primary,transparent,transparent);
+        border-color: $brand-primary !important;
+        cursor: default !important;
+    }
+}
+
 .btn {
     border-color: transparent !important;
     font-weight: $bold;
     max-height: 33px;
     text-transform: lowercase;
     @include transition(all 0.2s ease);
+    @media screen and (max-width: $screen-xs-max) {
+        font-size: $font-size-small;
+        padding: 3px 6px;
+    }
     &:focus {
         outline: 0;
     }
     &:before { // icon margin
+        font-size: 15px;
         margin-right: 5px;
         vertical-align: middle;
     }
@@ -46,6 +69,18 @@
     }
     &.add {
         @extend %icon-add;
+    }
+    &.add-image {
+        @extend %icon-add-image;
+        &:before {
+            vertical-align: baseline;
+        }
+    }
+    &.add-video {
+        @extend %icon-add-video;
+        &:before {
+            vertical-align: bottom;
+        }
     }
     &.attach, &.attached {
         @extend %icon-file;
@@ -58,7 +93,7 @@
     &.clean {
         @extend %icon-undo;
         @include link-hover(#fff,#fff,#fff,transparent);
-        margin-right: 20px; 
+        margin-right: 20px;
     }
     &.continue {
         @extend %icon-angle-right;
@@ -73,16 +108,16 @@
         @extend %icon-edit;
     }
     &.filter {
-        @extend %icon-filter; 
+        @extend %icon-filter;
         @include link-hover(#fff,#fff,#fff,transparent);
     }
     &.goback {
-        @extend %icon-goback; 
+        @extend %icon-goback;
         @include link-hover(#fff,#fff,#fff,transparent);
         font-weight: $normal;
     }
     &.hide-all {
-        @extend %icon-chevron-up; 
+        @extend %icon-chevron-up;
         @include link-hover($gray,#000,$gray,#000);
         font-weight: $normal;
     }
@@ -103,6 +138,10 @@
     &.new-topic {
         @extend %icon-new-topic;
     }
+    &.next-activity {
+        @extend %icon-forward;
+        margin: -4px 0 0 10px; 
+    }
     &.notes {
         @extend %icon-notes;
     }
@@ -119,7 +158,7 @@
         }
     }
     &.show-all {
-        @extend %icon-chevron-down; 
+        @extend %icon-chevron-down;
         @include link-hover($gray,#000,$gray,#000);
         font-weight: $normal;
     }
@@ -130,6 +169,9 @@
             margin-left: 10px;
             vertical-align: middle;
         }
+    }
+    &.sort {
+        @extend %icon-sort;
     }
 }
 
@@ -180,7 +222,7 @@
     }
 }
 
-a.action { 
+a.action {
     &.liked {
         @include link-hover($gray,$brand-primary,$gray,$brand-primary);
         &.active {
@@ -221,7 +263,7 @@ a.action {
 }
 
 .tag {
-    @extend %forum-tags;  
+    @extend %forum-tags;
 }
 
 .category {
@@ -302,6 +344,16 @@ a {
         @include button-hover(#fff,#fff,$brand-primary,darken($brand-primary,10%));
         .fa {
             display: none;
+        }
+    }
+}
+
+.course-stats {
+    .filters {
+        .filter-reverse {
+            .btn {
+                @include button-hover($brand-primary,$brand-primary,#fff,$gray-lighter);
+            }
         }
     }
 }

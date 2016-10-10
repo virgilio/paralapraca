@@ -38,6 +38,7 @@
 <script type="text/javascript" src="{% static 'js/discussion-app.js' %}"></script>
 <script type="text/javascript" src="{% static 'js/discussion-controllers.js' %}"></script>
 <script type="text/javascript" src="{% static 'js/discussion-services.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/discussion-directives.js' %}"></script>
 <script type="text/javascript" src="{% static 'angular-ui-tinymce/src/tinymce.js' %}"></script>
 <script type="text/javascript" src="{% static 'js/ui.tinymce.config.js' %}"></script>
 <script type="text/javascript" src="{% static 'ng-file-upload/ng-file-upload.js' %}"></script>
@@ -81,7 +82,7 @@ wrapper-course-lesson
     <!-- END HEADER -->
 
     <!-- UNITS NAVIGATION FOR TABLET AND DESKTOP -->
-    <div class="lesson-units-nav">
+    <div class="lesson-units-nav hidden-xs">
         <div class="line"></div>
         {% block units_nav %}
         <!-- UNITS -->
@@ -109,25 +110,9 @@ wrapper-course-lesson
     </div>
     <!-- END UNITS NAVIGATION FOR TABLET AND DESKTOP -->
 
-    <!-- UNITS NAVIGATION FOR PHONES -->
-    {% block units_nav_mobile %}
-        <div class="lesson-units-nav-mobile col-xs-12 visible-xs">
-            {% verbatim %}
-            <select ng-model="selectedIndex" ng-change="locationChange(selectedIndex)" class="form-control">
-                <option ng-repeat="unit in lesson.units"
-                        ng-value="$index+1"
-                        ng-selected="unit==currentUnit"
-                        value="{{$index+1}}">{% endverbatim %}{% trans 'Unit' %}{% verbatim %} {{ unit.position + 1 }}</option>
-            </select>
-        </div>
-        {% endverbatim %}
-    {% endblock %}
-    <!-- END UNITS NAVIGATION FOR PHONES -->
-
     <!-- LESSON CONTENT -->
     {% block lesson_video %}
     <div class="course-content">
-
         <div class="lesson-content">
             <!-- LESSON VIDEO -->
             <!--
@@ -142,6 +127,9 @@ wrapper-course-lesson
 
         <div class="lesson-activity container-fluid">
                 <!-- LESSON ACTIVITY -->
+                {% verbatim %}
+                <h3 class="unit-name" ng-show="currentUnit.title && section == 'activity'">{{currentUnit.title}}</h3>
+                {% endverbatim %}
                 <div ng-show="section=='activity'" class="course-activity">
                     <ng:include src="activityTemplateUrl"></ng:include>
 
@@ -168,7 +156,7 @@ wrapper-course-lesson
                 <div ng-show="section=='end'" class="next-lesson">
                     <div class="centered">
                         {% if next_url %}
-                            <a class="btn btn-info btn-lg" href="{{ next_url }}"><span>Vá para a próxima aula</span><i class="fa fa-caret-right"></i></a>
+                            <a class="btn btn-info btn-lg" href="{{ next_url }}"><span>Vá para a próxima unidade</span><i class="fa fa-caret-right"></i></a>
                         {% else %}
                             <a class="btn btn-info btn-lg" href="{% url 'course_intro' lesson.course.slug %}"><span>Voltar para home do curso</span><i class="fa fa-caret-right"></i></a>
                         {% endif %}

@@ -60,41 +60,51 @@
         float: left;
         font-size: $font-size-base;
         font-weight: $semi-bold;
-        margin-top: 8px;
+        margin: 15px 0 0 10px;
         text-align: left;
-        @media screen and (min-width: $screen-sm-min) {
-            margin-top: 10px;
+        @media screen and (min-width: $screen-xs-min) {
+            margin: 10px 0 0 10px;
         }
     }
-    .menu-label {
+    .menu-label, .hide-menu {
         display: block;
-        font-size: 10px;
+        font-size: 1.6vmax;
         font-weight: $bold;
-        margin-top: 2px;
+        margin-top: 4px;
         text-align: center;
+        @media screen and (min-width: $screen-xs-min) {
+            font-size: 10px;
+        }
         @media screen and (min-width: $screen-sm-min) {
             font-size: $font-size-small;
             margin-top: 5px;
         }
     }
+    .hide-menu {
+        display: none;
+    }
 }
 
 .main-nav-opened { // when the offcanvas menu is opened
     .user-info {
-        padding: 12px 25px;
-        width: 250px;
+        width: 245px;
         @media screen and (min-width: $screen-sm-min) {
             padding: 20px 25px;
         }
         .user-icon {
             float: left;
-            margin-right: 10px;
+            margin: 0 5px; 
         }
         .user-name {
             display: block;
         }
         .menu-label {
             display: none;
+        }
+        @media screen and (max-width: $screen-xs-max) {
+            .hide-menu {
+                display: block;
+            }
         }
     }
 }
@@ -159,25 +169,20 @@
     }
     a {
         display: inline-block;
-        font-size: $font-size-small;
-        font-weight: 700;
-        height: 26px;
+        font-size: 1.6vmax;
+        font-weight: $bold;
         line-height: 120%;
         overflow: hidden;
         text-align: center;
-        width: 26px;
         @include link-hover(#000,#000,transparent,#000);
         border-bottom-width: 2px !important;
         @media screen and (min-width: $screen-xs-min) {
-            height: initial;
-            width: initial;
-            overflow: initial;
+            font-size: $font-size-small;
         }
         &:before {
             display: block;
-            font-size: 22px;
+            font-size: $font-size-large;
             @media screen and (min-width: $screen-xs-min) {
-                font-size: $font-size-large;
                 margin-bottom: 5px;
             }
         }
@@ -195,8 +200,8 @@
     min-width: 300px;
     max-width: 420px;
     position: fixed;
-    right: 0px;
-    top: 60px;
+    right: 15px;
+    top: 61px;
     z-index: 1100;
     @media screen and (min-width: $screen-sm-min) {
         right: 19px;

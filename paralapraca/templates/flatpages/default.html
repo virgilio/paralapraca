@@ -1,31 +1,52 @@
 {% extends "base.html" %}
 {% load i18n %}
 {% load django_markdown %}
-{% load pipeline %}
+{% load staticfiles %}
+{% load compress %}
 
 {% if user.is_superuser %}
     {% block js %}
-		{{block.super}}
-        {% javascript 'core' %}
-    <script>
-        window.page_url = '{{ flatpage.url }}';
-    </script>
-	{% endblock %}
+            {% compress js %}
+            <script type="text/javascript" src="{% static 'js/core/app.js' %}"></script>
+            <script type="text/javascript" src="{% static 'js/core/controllers.js' %}"></script>
+            <script type="text/javascript" src="{% static 'js/core/services.js' %}"></script>
+            <script type="text/javascript" src="{% static 'js/core/filters.js' %}"></script>
+            <script type="text/javascript" src="{% static 'angular-tweet-filter/index.js' %}"></script>
+            <script type="text/javascript" src="{% static 'angular-sortable-view/src/angular-sortable-view.min.js' %}"></script>
+            <script type="text/javascript" src="{% static 'js/directives/fixedBar.js' %}"></script>
+            <script type="text/javascript" src="{% static 'js/directives/alertPopup.js' %}"></script>
+            <script type="text/javascript" src="{% static 'js/directives/markdowneditor.js' %}"></script>
+            {% endcompress %}
+            {% if not user.is_authenticated %}
+                {% compress js %}
+                    <script type="text/javascript" src="{% static 'js/header-controllers.js' %}"></script>
+                    <script type="text/javascript" src="{% static 'js/header-directives.js' %}"></script>
+                    <script type="text/javascript" src="{% static 'js/header-filters.js' %}"></script>
+                    <script type="text/javascript" src="{% static 'js/header-app.js' %}"></script>
+                    <script type="text/javascript" src="{% static 'js/discussion-services.js' %}"></script>
+                {% endcompress %}
+            {% endif %}
+        <script>
+            window.page_url = '{{ flatpage.url }}';
+        </script>
+	  {% endblock %}
 {% endif %}
 
 {% block title %}
 {{ flatpage.title }}
 {% endblock %}
-
+{% block body_attrs %}
+  ng-app="core"
+{% endblock %}
 {% block content %}
 <div class="flatpage" ng-app="core" ng-controller="FlatPageCtrl">
 
 		{% block content-header %}
-        <h2>{{ flatpage.title }}</h2>
+        <h2 ng-bind-html="flatpage.title"></h2>
 		{% endblock %}
-        
-        <div class="content">
-    	   {{ flatpage.content|markdown }}
+
+        <div class="content" ng-bind-html="flatpage.content">
+
         </div>
 
 </div>

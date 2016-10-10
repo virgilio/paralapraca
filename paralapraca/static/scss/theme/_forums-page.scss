@@ -1,20 +1,6 @@
 // Forums' pages
 // --------------------------------------------------
 
-.thread {
-    .widget-topbar {
-        border-color: $orange;
-        .line {
-            border-color: $orange;
-            color: $orange;
-            .btn.goback {
-                @include link-hover($orange,$orange,$orange,transparent);
-            }
-        }
-    }
-}
-
-
 .post-attachments {
     .attachments {
         border: 1px solid $purple;
@@ -22,9 +8,24 @@
     }
     ul {
         border-color: rgba($purple,0.7);
+        li {
+            .delete {
+                &:before {
+                    color: $purple;
+                }
+            }
+        }
     }
     a {
         @include link-hover($purple,$purple,$purple,transparent);
+    }
+    .loading {
+        .loading-bar {
+            border-color: $purple;
+            div {
+                background-color: $purple;
+            }
+        } 
     }
 }
 

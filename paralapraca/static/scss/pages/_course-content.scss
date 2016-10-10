@@ -4,7 +4,7 @@
 .main-header {
     background-color: $gray-lighter;
     color: #000;
-    padding: 15px 0;
+    padding: 15px 0 0;
     @media screen and (min-width: $screen-xs-min) {
         padding: 20px 0;
     }
@@ -28,7 +28,7 @@
     .course-slug {
         margin-bottom: 5px;
         label {
-            color: $gray-light;
+            color: #000;
             font-weight: normal;
         }
     }
@@ -72,9 +72,11 @@
             border-right: 1px solid #c9a30d;
             color: #000;
             display: inline-block;
-            font-size: 1.5vmax;
+            font-size: 9px;
             font-weight: $bold;
-            padding: 2.5%;
+            height: 65px;
+            margin-left: -1%;
+            padding: 2%;
             vertical-align: top;
             text-align: center; 
             width: 24.1%;
@@ -82,6 +84,7 @@
                 border-right: 0;
             }
             @media screen and (min-width: $screen-xs-min) {
+                height: initial;
                 font-size: 10px;
                 padding: 2.5% 4%;
             }
@@ -89,29 +92,21 @@
                 @include link-hover(#000,#000,transparent,#000);
                 border-bottom-width: 2px !important;
                 border-right: 0;
-                max-width: 58px;
+                margin: 0 5px; 
                 padding: 0;
                 width: initial;
             }
-            @media screen and (min-width: $screen-lg-min) {
-                font-size: 11px;
-                max-width: 68px;
+            @media screen and (min-width: $screen-md-min) {
+                margin: 0 8px; 
             }
             &:before {
                 display: block;
                 font-size: $font-size-large;
-                @media screen and (min-width: $screen-sm-min) {
-                    font-size: $font-size-base;
-                }
-                @media screen and (min-width: $screen-lg-min) {
-                    font-size: $font-size-large;
-                }
             }
         }
         &.admin-menu {
             a {
-                padding: 2% 1.5% 2% 0.5%;
-                width: 19.1%;
+                width: 20.5%;
                 &:last-of-type {
                     border-right: 1px solid #c9a30d;
                 }
@@ -144,16 +139,24 @@
         }
         .dropdown {
             float: right;
-            padding: 2% 1.5% 2% 0.5%;
+            height: 65px;
+            width: 18%;
             @media screen and (min-width: $screen-sm-min) {
                 display: inline-block;
                 float: none;
+                height: initial;
                 padding: 0;
+                width: initial;
             }
             .tools {
                 border: 0 !important;
-                padding: 0;
+                height: 65px;
+                padding: 15% 24%;
                 width: initial;
+                @media screen and (min-width: $screen-sm-min) {
+                    height: initial;
+                    padding: initial;
+                }
             }
             .dropdown-menu {
                 background-color: $gray-lighter;
@@ -163,6 +166,7 @@
                 li {
                     a {
                         border: 0;
+                        margin: 0; 
                         max-width: initial;
                         padding: 6px 12px;
                         text-align: left;
@@ -233,27 +237,34 @@
             }
         }
     }
-    .lesson-units-mobile {
-        border: 1px solid #c9a30d;
-        border-radius: 11px;
+}
+
+.lesson-units-mobile, .lesson-units-nav-mobile {
+    border: 1px solid #c9a30d;
+    border-radius: 14px;
+    display: block;
+    font-size: $font-size-small;
+    height: 26px;
+    margin-top: 5px;
+    padding: 0 10px;
+    .lesson-breadcrumb {
         display: block;
+        margin-top: 3px;
+    }   
+    .form-control {
+        background-color: transparent;
+        border-radius: 0;
+        box-shadow: none;
+        color: #000;
+        float: left;
         font-size: $font-size-small;
-        height: 21px;
-        margin-top: 5px;
-        padding: 0 10px;
-        .form-control {
-            background-color: transparent;
-            border-radius: 0;
-            box-shadow: none;
-            color: #000;
-            float: left;
-            font-size: $font-size-small;
-            font-weight: $bold;
-            height: 21px;
-            margin-top: -19px;
-            padding: 0 0 0 125px;
-        }        
-    }
+        font-weight: $bold;
+        height: 18px;
+        margin-top: -18px;
+        padding: 0 0 0 50px;
+        position: relative;
+        z-index: 1;
+    }        
 }
 
 // Course content (used on course intro and lesson page)
@@ -287,8 +298,12 @@
 }
 
 .course-content {
-    margin: 40px auto;  
+    margin: 25px auto;  
     padding: 0 15px;
+
+    @media screen and (min-width: $screen-xs-min) {
+        margin: 40px auto;
+    }
 
     // COURSE SUMMARY - Course intro
     // ********************************************************************* //
@@ -296,27 +311,6 @@
         .btn-info .text-info {
             // data selecionada dentro do datepicker
             color: #fff;
-        }
-    }
-    .course-status {
-        button {
-            text-align: left;
-            width: 115px;
-        }
-        .status-label {
-            float: left;
-        }
-        .caret {
-            float: right;
-            margin-top: 8px;
-        }
-        .dropdown-menu {
-            margin: 0;
-            min-width: initial;
-            padding: 0;
-            li {
-                margin: 0 !important;
-            }
         }
     }
     // COURSE LESSONS - Course intro
@@ -396,23 +390,20 @@
             margin-bottom: 10px;
             margin-top: 10px;
         }
-        h1.fullname {
-            @include bottom(0, 0);
-            font-size: 21px;
+        .fullname {
+            color: #000;
+            font-family: $font-family-sans-serif;
+            font-size: 18px;
+            font-weight: $bold;
             text-transform: none;
         }
-        h2.job-title {
+        .job-title {
             border-bottom: 1px solid $gray-lighter;
             @include bottom(9px, 9px);
             font-size: 14px;
         }
-        .editable {
-            &:hover {
-                background-color: lighten($brand-warning, 45%);
-            }
-        }
         .instructor-photo {
-            margin-bottom: 20px;
+            margin-bottom: 10px;
             max-width: 260px;
         }
         .instructor-wrapper {
@@ -481,7 +472,7 @@
     .activity,
     .course-thumbnail {
         background-color: rgba(#fff,0.5);
-        margin-top: 25px;
+        margin-top: 10px;
         // padding: 15px;
         .video-title {
             background-color: $gray-lighter;
@@ -686,6 +677,12 @@
                     }
                 }
             }
+            span {
+                border-radius: 100%;
+                display: block;
+                height: inherit;
+                width: inherit;
+            }
         }
         // END UNIT
         // ADD UNIT
@@ -705,14 +702,21 @@
     }
     // END COURSE UNITS
     .lesson-list {
+        .primary-page-header {
+            h3 {
+                display: inline-block;
+                margin: 0 15px 15px 0;
+                vertical-align: middle;
+            }
+        }
         .lesson {
             background: transparent;
             margin-bottom: 30px;
             .title {
-                color: $gray;
+                color: #000;
                 font-family: $font-family-sans-serif;
                 font-size: 3vmax;
-                font-weight: $extra-bold; 
+                font-weight: $bold; 
                 margin: 0 0 10px; 
                 @media screen and (min-width: $screen-xs-min) {
                     font-size: 24px;
@@ -724,6 +728,27 @@
                 margin-bottom: 30px;
                 @media screen and (min-width: $screen-xs-min) {
                     font-size: 16px;
+                }
+            }
+            .options {
+                margin-bottom: 10px;
+                text-align: right;
+                @media screen and (min-width: $screen-sm-min) {
+                    .btn + .btn {
+                        margin-top: 10px;
+                    }
+                }
+                .lesson-status {
+                    margin-bottom: 10px;
+                    @media screen and (min-width: $screen-sm-min) {
+                        .btn + .btn {
+                            margin-top: 0px;
+                        }
+                        .fa {
+                            font-size: 15px;
+                            margin-right: 3px;
+                        }
+                    }
                 }
             }
         }
@@ -747,6 +772,12 @@
     }
 }
 
+.unit-name {
+    color: #000;
+    font-size: 25px;
+    margin-top: 0px;
+}
+
 .course-intro {
     .course-content {
         max-width: 1050px !important;
@@ -759,7 +790,10 @@
             .column {
                 background-color: $gray-lighter;
                 box-sizing: border-box;
-                padding: 30px;
+                padding: 20px;
+                @media screen and (min-width: $screen-xs-min) {
+                    padding: 30px;
+                }
                 @media screen and (min-width: $screen-md-min) {
                     width: 60%;
                 }
@@ -769,6 +803,10 @@
                         width: 40%;
                     }
                 }
+            }
+
+            .another-info {
+                margin-top: 30px;
             }
         }
     }
@@ -793,68 +831,6 @@ ul.uploaded-files-list {
     li {
         border-bottom: 1px solid $gray-lighter;
         padding: 5px 0;
-    }
-}
-.modal-professor {
-    .step1 {
-        margin-bottom: 30px;
-        p {
-            float: left;
-            font-weight: bold;
-            margin: 7px 10px 0 0;
-            text-transform: initial;
-        }
-    }
-    .step2-1 {
-        margin-bottom: 30px;
-    }
-    .selected-user {
-        p {
-            font-weight: bold;
-            margin-bottom: 5px;
-        }
-        span {
-            display: inline-block;
-            margin-right: 10px;
-        }
-    }
-    .upload-avatar {
-        margin-bottom: 0;
-        @media (min-width: $screen-md-min) {
-            width: 100%;
-        }
-        img {
-            width: 100%;
-        }
-        .thumbnail {
-            margin: 0px;
-            @media (min-width: $screen-md-min) {
-                margin: 0px auto 0px;
-                max-width: 100%;
-            }
-        }
-    }
-    label {
-        input[type="checkbox"] {
-            float: left;
-            margin-right: 5px;
-        }
-    }
-    .user-photo-wrapper {
-        @media (max-width: $screen-xs-max) {
-            margin-bottom: 30px;
-        }
-    }
-    .user-name-wrapper {
-        #user-name {
-            margin-bottom: 5px;
-        }
-    }
-    .user-bio-wrapper {
-        margin: 15px 0;
-        .form-group {
-            margin-bottom: 5px;
-        }
     }
 }
 .course-material {

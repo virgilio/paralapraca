@@ -46,6 +46,16 @@
         font-size: 16px;
         margin-bottom: 15px;
     }
+    .action {
+        &.liked, &.used, &.replies {
+            &.active {
+                color: $brand-primary;
+                &:before {
+                    color: $brand-primary;
+                }
+            }
+        }
+    }
     .user-activity {
         .title {
             color: #000;
@@ -97,5 +107,13 @@
                 padding: 7px 0;
             }
         }
+        .action {
+            &.replies {
+                color: $brand-primary;
+                &:before {
+                    color: $brand-primary;
+                }
+            }
+        } 
     }
 }

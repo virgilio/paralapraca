@@ -15,12 +15,16 @@
     <script type="text/javascript" src="{% static 'js/discussion-app.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/discussion-controllers.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/discussion-services.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/discussion-directives.js' %}"></script>
     <script type="text/javascript" src="{% static 'angular-ui-tinymce/src/tinymce.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/ui.tinymce.config.js' %}"></script>
     <script type="text/javascript" src="{% static 'ng-file-upload/ng-file-upload.js' %}"></script>
     <script type="text/javascript" src="{% static 'angular-sanitize/angular-sanitize.js' %}"></script>
     <script type="text/javascript" src="{% static 'angular-ui-select/dist/select.js' %}"></script>
     {% endcompress %}
+    <script type="text/javascript">
+        tinyMCE.baseURL = '/static/tinymce-dist/';
+    </script>
 
 {% endblock %}
 
@@ -70,17 +74,37 @@
             </div>
         </div>
 
-        <header class="widget-header line one-column">
-            <div class="column" ng-style="forum_single && {'border-bottom':'1px solid #de6f10','padding-bottom':'5px','margin-bottom':'5px'}">
-                <h2 ng-if="forum_single" class="widget-title">{{forum.title}}</h2>
-                <h2 ng-if="!forum_single" class="widget-title">fóruns</h2>
-                <a class="btn btn-success new-topic"
-                   href="/discussion/topic/new/#!/topic/new/" > criar novo tópico</a>
+        <header ng-if="forum_single" class="widget-topbar breadcrumb">
+            <div class="line">
+                <div class="pull-left">
+                    <h2 class="title" ng-cloak>Fóruns > {{forum.title}}</h2>
+                </div>
+                <div class="pull-right hidden-xs">
+                    <a class="btn btn-sm btn-success new-topic"
+                   href="/discussion/topic/new/#!/topic/new/">criar novo tópico</a>
+                    <a ng-href="/discussion/#!/forum/" class="btn btn-link goback"><span>voltar para o fórum</span></a>
+                </div>
+                <div class="pull-right dropdown visible-xs">
+                    <button class="btn btn-default list-all dropdown-toggle" type="button" id="dropdownOptions" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                        opções
+                    </button>
+                    <ul class="dropdown-menu dropdown-options" aria-labelledby="dropdownOptions">
+                        <li><a href="/discussion/topic/new/#!/topic/new/">criar novo tópico</a></li>
+                        <li><a ng-href="/discussion/#!/forum/">voltar para o fórum</a></li>
+                    </ul>
+                </div>
             </div>
+        </header>
+
+        <header ng-if="!forum_single" class="widget-header line one-column">
             <div class="column">
-                <!-- <form class="widget-filter form-inline">
+                <h2 class="widget-title">Fóruns</h2>
+                <a class="btn btn-success new-topic"
+                   href="/discussion/topic/new/#!/topic/new/">criar novo tópico</a>
+
+                <!--<form class="widget-filter form-inline">
                     <input class="form-control" type="text" placeholder="Busca nos fóruns..." ng-model="search" uib-typeahead="result for results in getResults($viewValue)" typeahead-loading="loadingLocations" typeahead-no-results="noResults">
-                </form> -->
+                </form>-->
             </div>
         </header>
 
@@ -140,6 +164,7 @@
                     <p class="empty-forum">Este fórum ainda não possui nenhum tópico.</p>
                 </div>
 
+                <!-- List topics in a specific forum -->
                 <div class="forum-list" ng-show="forum.show_forum || forum_single" ng-if="forum.topics.length>0">
                     <table class="table table-striped">
                         <thead>
@@ -154,7 +179,7 @@
                             <tr ng-repeat="topic in forum.topics">
                                 <td>
                                     <a ng-href="/discussion/topic/#!/topic/{{ topic.id }}"><span class="thread-name">{{ topic.title }}</span></a>
-                                    <span class="last-update">Última atividade <b>{{ topic.last_activity_at | dateFilter }}</b></span>
+                                    <span class="last-update">Por <b><a style="color: #333333;" ng-href="/profile/{{ topic.author.username }}">{{topic.author.first_name + " " + topic.author.last_name}}</a></b> | Última atividade <b>{{ topic.last_activity_at | dateFilter }}</b></span>
                                 </td>
                                 <td>
                                     <span class="action replies small">{{ topic.count_replies }}</span>
@@ -173,31 +198,18 @@
                                     </div>
                                 </td>
                             </tr>
-                            <!--<tr class="new">-->
-                                <!--<td>-->
-                                    <!--<span class="thread-name">Lorem ipsum dolor sit amet</span>-->
-                                    <!--<span class="last-update">Última atividade <b>há 2 horas</b></span>-->
-                                <!--</td>-->
-                                <!--<td>-->
-                                    <!--<span class="action replies small">1</span>-->
-                                    <!--<span class="action liked small">4</span>-->
-                                    <!--<span class="action used small">7</span>-->
-                                <!--</td>-->
-                                <!--<td>-->
-                                    <!--<span class="category discussion">discussão</span>-->
-                                <!--</td>-->
-                                <!--<td>-->
-                                    <!--<div class="tags">-->
-                                        <!--<span class="tag">#lorem</span><span class="tag">#ipsum</span><span class="tag">#lorem</span>-->
-                                    <!--</div>-->
-                                <!--</td>-->
-                            <!--</tr>-->
                         </tbody>
                     </table>
+
+                    <div ng-show="forum_single" class="pagination-wrapper">
+                        <ul uib-pagination boundary-links="true" total-items="forum_topics_total" ng-model="forum.current_page" rotate="true" force-ellipses="true" max-size="forum_page_size" ng-change="pageChanged()" class="pagination" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="primeira página" last-text="última página"></ul>
+                    </div>
+
                     <div ng-show="!forum_single && !forum_search" class="see-all-topics">
                         <a class="btn btn-sm btn-primary" ng-href="/discussion/#!/forum/{{ forum.id }}">Ver todos os tópicos deste fórum</a>
                     </div>
                 </div>
+                <!-- /List topics in a specific forum -->
             </div>
         </div>
     </section>

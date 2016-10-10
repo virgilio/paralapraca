@@ -1,0 +1,140 @@
+@media screen and (min-width: $screen-md-min) {
+    .modal-dialog {
+        width: 775px;
+    }
+}
+
+.modal {
+    .text-editor {
+        .btn {
+            border: 1px solid $gray !important;
+            border-bottom: 0px !important;
+            border-radius: 10px 10px 0px 0px; 
+            &:hover {
+                color: #000;
+            }
+        }
+    }
+}
+
+.modal-content {
+    background: rgba(255,255,255,0.9);
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+}
+
+.modal-header {
+    border-top: 5px solid $brand-primary;
+    border-bottom: 0px;
+    .close {
+        margin-top: 4px;
+    }
+}
+
+.modal-footer {
+    border-top: 0;
+}
+
+.modal-title {
+    border-bottom: 2px solid $brand-primary;
+    color: #000;
+    font-family: $font-family-sans-serif;
+    font-weight: $bold;
+    line-height: 1;
+    padding: 0 0 8px; 
+}
+
+.close {
+    font-size: $font-size-small;
+    opacity: 0.8;
+}
+
+.modal-professor {
+    .modal-body {
+        padding: 0;
+
+        .step1, .step2 {
+            background: #fff;
+            margin: 0 15px;
+            padding: 15px;
+        }
+        .step1 {
+            p {
+                float: left;
+                font-weight: bold;
+                margin: 5px 10px 0 0;
+            }
+        }
+    }
+    .step2-1 {
+        margin-bottom: 30px;
+    }
+    .selected-user {
+        p {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        span {
+            display: inline-block;
+            margin-right: 10px;
+        }
+    }
+    .upload-avatar {
+        margin-bottom: 0;
+        @media (min-width: $screen-md-min) {
+            width: 100%;
+        }
+        img {
+            width: 100%;
+        }
+        .thumbnail {
+            margin: 0px;
+            @media (min-width: $screen-md-min) {
+                margin: 0px auto 0px;
+                max-width: 100%;
+            }
+        }
+    }
+    label {
+        input[type="checkbox"] {
+            float: left;
+            margin-right: 5px;
+        }
+    }
+    .user-photo-wrapper {
+        @media (max-width: $screen-xs-max) {
+            margin-bottom: 30px;
+        }
+        .thumb {
+            margin: 10px 0 0; 
+        }
+    }
+    .user-name-wrapper {
+        #user-name {
+            margin-bottom: 5px;
+        }
+    }
+    .user-bio-wrapper {
+        margin: 15px 0;
+        .form-group {
+            margin-bottom: 5px;
+        }
+    }
+    label {
+        font-weight: $semi-bold;
+    }
+    .form-control {
+        border: 2px solid $brand-primary;
+        border-radius: 0;
+        box-shadow: none;
+        &:hover, &:focus, &:active {
+            border: 2px solid $brand-primary;
+            border-radius: 0;
+            box-shadow: none;
+        }
+    }
+    .check {
+        font-size: $font-size-small;
+    }
+}

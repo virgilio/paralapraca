@@ -54,6 +54,7 @@
                     });
                 }
             });
+            if(filtered[0] === undefined) return ""; // prevent runtime error with undefined
             if(filtered[0].time_unit == "mês" && filtered[0].time_int > 1) {
                 return "em "+past.getDate()+"/"+(past.getMonth()+1)+"/"+past.getFullYear()+", às "+past.getHours()+":"+past.getMinutes();
             }

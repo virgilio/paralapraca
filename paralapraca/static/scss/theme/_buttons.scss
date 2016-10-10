@@ -30,7 +30,7 @@
     }
 }
 
-a.action { 
+a.action {
     &.liked {
         @include link-hover($gray,$orange,$gray,$orange);
         &.active {
@@ -44,6 +44,12 @@ a.action {
         }
     }
     &.replies {
+        @include link-hover($gray,$pink,$gray,$pink);
+        &.active {
+            @include link-hover($pink,$pink,$pink,$pink);
+        }
+    }
+    &.edit {
         @include link-hover($gray,$pink,$gray,$pink);
         &.active {
             @include link-hover($pink,$pink,$pink,$pink);
