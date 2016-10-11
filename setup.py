@@ -48,12 +48,14 @@ setup(
     long_description=readme + '\n\n' + history,
     author='Bruno Martin',
     author_email='bruno@hacklab.com.br',
-    url='https://github.com/brunosmartin/paralapraca',
+    url='https://github.com/hacklabr/paralapraca',
     packages=[
         'paralapraca',
     ],
     include_package_data=True,
-    install_requires=[],
+    install_requires=[
+        'django-oauth-toolkit',
+    ],
     zip_safe=False,
     keywords='paralapraca',
     classifiers=[
