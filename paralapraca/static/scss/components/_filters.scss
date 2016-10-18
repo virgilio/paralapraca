@@ -1,0 +1,15 @@
+.filters {
+    font-size: $font-size-small;
+
+    .form-control {
+        border: 2px solid $brand-primary;
+        border-radius: 0;
+        box-shadow: none;
+        padding: 3px 3px 1px 3px !important;
+        font-size: $font-size-small;
+        &:active, &:focus, &:hover {
+            border: 2px solid $brand-primary;
+            box-shadow: none;
+        }
+    }
+}

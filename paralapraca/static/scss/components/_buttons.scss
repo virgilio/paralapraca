@@ -372,12 +372,10 @@ a {
     }
 }
 
-.course-stats {
-    .filters {
-        .filter-reverse {
-            .btn {
-                @include button-hover($brand-primary,$brand-primary,#fff,$gray-lighter);
-            }
+.filters {
+    .filter-reverse {
+        .btn {
+            @include button-hover($brand-primary,$brand-primary,#fff,$gray-lighter);
         }
     }
 }
