@@ -101,7 +101,7 @@
             </li>
             <li ng-repeat="file_obj in course_material.files">
               {% verbatim %}
-                <a ng-href="/media/{{ file_obj.file }}">{{file_obj.file|filename}}</a>
+                <a ng-href="{{ file_obj.file }}">{{file_obj.file|filename}}</a>
                 <button type="submit" ng-click="delete_file(file_obj)" class="btn btn-xs btn-warning pull-right">
                   <i class="fa fa-trash-o"></i>
                 </button>
