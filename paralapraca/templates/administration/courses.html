@@ -75,13 +75,9 @@ wrapper-course-lesson
 
     <!-- ACTIONS -->
     <div class="actions-menu" fixed-bar>
-        <div class="container">
-            <div class="row">
-                <div class="col-xs-12 textright">
-                    <a class="btn btn-sm btn-primary btn-inverse add" data-toggle="modal" data-target="#new-course-modal">{% trans 'Create course' %}</a>
-                    <a class="btn btn-sm btn-primary btn-inverse download" ng-click="import_course_modal()">{% trans 'Import course' %}</a>
-                </div>
-            </div>
+        <div class="container-fluid">
+            <a class="btn btn-sm btn-primary btn-inverse add" data-toggle="modal" data-target="#new-course-modal">{% trans 'Create course' %}</a>
+            <a class="btn btn-sm btn-primary btn-inverse download" ng-click="import_course_modal()">{% trans 'Import course' %}</a>
         </div>
     </div>
     <!-- END ACTIONS -->
