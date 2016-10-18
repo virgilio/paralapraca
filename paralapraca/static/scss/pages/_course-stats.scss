@@ -4,7 +4,6 @@
 .course-stats {
     color: #000;
     .filters {
-        font-size: $font-size-small;
         margin-bottom: 20px;
 
         .row > div {
@@ -13,13 +12,6 @@
                 height: 40px;
                 margin-bottom: 0;
             }
-        }
-        .form-control {
-            border: 2px solid $brand-primary;
-            border-radius: 0;
-            box-shadow: none;
-            padding: 3px 3px 1px 3px !important;
-            font-size: $font-size-small;
         }
         label {
             margin-bottom: 0;

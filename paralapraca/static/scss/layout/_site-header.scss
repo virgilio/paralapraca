@@ -256,7 +256,7 @@
             }
             a {
                 font-weight: $bold;
-                @include link-hover($gray-dark,$gray-dark,$gray-dark,transparent);
+                @include link-hover($gray-dark,$gray-dark,transparent,$gray-dark);
             }
             .icon {
                 border-radius: 100%;
