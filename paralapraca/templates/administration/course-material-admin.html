@@ -59,10 +59,10 @@
         <div class="col-sm-9 col-lg-9">
             <h3 style="display: inline-block;">Menu de referências</h3>
             <div class="pull-right" style="display: inline-block;">
-              <button class="btn btn-sm btn-success edit" ng-click="editando=true" ng-show="!course_material.text && !editando">criar texto</button>
+              <button class="btn btn-sm btn-success edit" ng-click="course_material.editando=true" ng-show="!course_material.text && !editando">criar texto</button>
             </div>
             <div class="pull-right" style="display: inline-block;" ng-show="course_material.text && !editando">
-              <button class="btn btn-sm btn-success edit" ng-click="editando=true">editar</button>
+              <button class="btn btn-sm btn-success edit" ng-click="course_material.editando=true">editar</button>
             </div>
         </div>
       </header>
@@ -76,21 +76,22 @@
           <div class="" style="
     margin-top: 10px; background-color: rgba(238,238,238,0.7); padding: 15px; display:flex;justify-content:center;align-items:center;" ng-show="!course_material.text && !editando">
               <div style="width: 100%; font-size: larger;">
-                Escreva aqui o texto que as alunas verão na área de menu de referências.
+                Escreva aqui o texto que as alunas verão na área de Menu de Referências.
               </div>
           </div>
           <!-- /Explicação inicial sobre material de curso -->
           <!-- Visualização do material de curso -->
           <div class="" style="
-    margin-top: 10px; background-color: rgba(238,238,238,0.7); padding: 15px;" ng-show="course_material.text && !editando" ng-bind-html="get_as_safe_html(course_material.text)"></div>
+    margin-top: 10px; background-color: rgba(238,238,238,0.7); padding: 15px;" ng-show="course_material.text && !course_material.editando" ng-bind-html="get_as_safe_html(course_material.text)"></div>
           <!-- /Visualização do material de curso -->
           <!-- Edição do material do curso -->
-          <form name="new_material_text" class="new-thread" novalidate ng-submit="new_material_text.$valid && save_course_material()" ng-show="editando">
+          <form name="new_material_text" class="new-thread" novalidate ng-if="course_material.editando" ng-submit="course_material.text = text; new_material_text.$valid && save_course_material()" ng-init="text = course_material.text">
             <div class="form-group">
-              <textarea ui-tinymce ng-model="course_material.text" placeholder="Escreva seu texto aqui" name="content" ng-hide="!course_materials.$resolved" required></textarea>
+              <textarea ui-tinymce ng-model="text" placeholder="Escreva seu texto aqui" name="content" ng-hide="!course_materials.$resolved" required></textarea>
             </div>
             <div class="form-group">
-              <button type="submit" class="btn btn-success new-topic">salvar</button>
+              <input type="submit" value="salvar" class="btn btn-success new-topic"/>
+              <input type="button" value="cancelar" class="btn btn-warning" ng-click="course_material.editando=false;" />
             </div>
           </form>
           <!-- /Edição do material do curso -->
