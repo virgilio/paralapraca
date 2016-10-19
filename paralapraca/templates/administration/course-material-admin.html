@@ -64,11 +64,24 @@
           <div class="col-lg-12" ng-hide="course_materials.$resolved">
             <i class="loading fa fa-refresh fa-spin"></i>
           </div>
-          <div class="row">
-            <button class="btn btn-sm btn-success edit pull-right" ng-click="editando=true" ng-show="!editando">editar</button>
+          <!-- Explicação inicial sobre material de curso -->
+          <div class="row" style="
+    margin-top: 10px; background-color: rgba(238,238,238,0.7); padding: 15px; display:flex;justify-content:center;align-items:center;" ng-show="!course_material.text && !editando">
+              <div style="width: 100%; font-size: larger;">
+                Escreva aqui o texto que as alunas verão na área de menu de referências.
+              </div>
+              <div style="clear: both;">
+                <button class="btn btn-sm btn-success edit" ng-click="editando=true">criar texto</button>
+              </div>
+          </div>
+          <!-- /Explicação inicial sobre material de curso -->
+          <!-- Visualização do material de curso -->
+          <div class="row" ng-show="course_material.text && !editando">
+            <button class="btn btn-sm btn-success edit pull-right" ng-click="editando=true">editar</button>
           </div>
           <div class="row" style="
-    margin-top: 10px; background-color: rgba(238,238,238,0.7); padding: 15px;" ng-show="course_material.text && !editando" ng-bind-html="get_as_safe_html(course_material.text)">Carregando...</div>
+    margin-top: 10px; background-color: rgba(238,238,238,0.7); padding: 15px;" ng-show="course_material.text && !editando" ng-bind-html="get_as_safe_html(course_material.text)"></div>
+          <!-- /Visualização do material de curso -->
           <!-- Edição do material do curso -->
           <form name="new_material_text" class="new-thread" novalidate ng-submit="new_material_text.$valid && save_course_material()" ng-show="editando">
             <div class="form-group">
