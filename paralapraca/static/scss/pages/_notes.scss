@@ -2,36 +2,12 @@
 // --------------------------------------------------
 
 .notes {
-    .line {
-        margin-bottom: 30px;
-        &:last-child {
-            margin-bottom: 0;
-        }
-    }
     .header {
-        margin-bottom: 6px;
-        padding-top: 6px;
-        @media screen and (min-width: $screen-md-min) {
-            padding-bottom: 0px; 
-        }
-        .course-title {
-            color: #000;
-            font-size: 4.4vmax;
-            margin-top: 0;
-            @media screen and (min-width: $screen-xs-min) {
-                font-size: 30px;
-            }
-            @media screen and (min-width: $screen-md-min) {
-                display: inline-block;
-                margin-right: 10px;
-            }
-        }
         .btn + .btn {
             margin-left: 10px;
         }
     }
     .notes-info {
-        border-top: 1px solid #000;
         color: #000;
         font-size: $font-size-small;
         font-weight: $bold;

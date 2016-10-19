@@ -2,6 +2,52 @@
 {% load i18n %}
 {% load staticfiles %}
 {% load timtec_markdown %}
+{% load compress %}
+
+{% block js %}
+{{ block.super }}
+<script type="text/javascript" src="{% static 'tinymce-dist/tinymce.js' %}"></script>
+{% compress js %}
+<script type="text/javascript" src="{% static 'js/core-services.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/new-course/directives.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/filters/text.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/directives/alertPopup.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/directives/waiting-screen.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/directives/contenteditable.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/directives/fixedBar.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/directives/markdowneditor.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/directives/codemirror.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/directives/sortable.js' %}"></script>
+
+<!-- Course Material -->
+<script type="text/javascript" src="{% static 'js/course_material/app.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/course_material/controllers.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/course_material/directives.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/course_material/filters.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/course_material/services.js' %}"></script>
+
+<!-- Django Discussion -->
+<script type="text/javascript" src="{% static 'js/timtec-discussion-app.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/discussion-app.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/discussion-controllers.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/discussion-services.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/discussion-directives.js' %}"></script>
+<script type="text/javascript" src="{% static 'angular-ui-tinymce/src/tinymce.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/ui.tinymce.config.js' %}"></script>
+<script type="text/javascript" src="{% static 'ng-file-upload/ng-file-upload.js' %}"></script>
+<script type="text/javascript" src="{% static 'angular-sanitize/angular-sanitize.js' %}"></script>
+<script type="text/javascript" src="{% static 'angular-ui-select/dist/select.js' %}"></script>
+
+{% endcompress %}
+<script type="text/javascript">
+		tinyMCE.baseURL = '/static/tinymce-dist/';
+</script>
+{% endblock %}
+
+{% block body_attrs %}
+  ng-app="courseMaterial"
+{% endblock %}
+
 
 {% block wrapper_classes %}
 wrapper-course-lesson
@@ -25,26 +71,23 @@ wrapper-course-lesson
 			</div>
 
             <!-- ASIDE -->
-            <!-- <aside class="col-sm-3 col-lg-3">
+            <aside class="col-sm-3 col-lg-3">
                 <ul class="uploaded-files-list">
                     <li><h5>{% trans "Files" %}</h5></li>
                     {% for file in course_material.files.all %}
                     <li><a href="{{ file.file.url }}" target="_blank">{{ file.file.name }}</a></li>
                     {% endfor %}
                 </ul>
-            </aside> -->
+            </aside>
             <!-- END ASIDE -->
         </div>
     </section>
     <!-- END MAIN CONTENT-->
 </div>
+<script type="text/javascript">
+$(document).ready( function(){
+	$('#course-material-text p a').attr('target', '_blank');
+});
+</script>
 <!-- END CONTAINER -->
-{% endblock %}
-
-{% block js %}
-    <script type="text/javascript">
-        $(document).ready( function(){
-            $('#course-material-text p a').attr('target', '_blank');
-        });
-    </script>
 {% endblock %}

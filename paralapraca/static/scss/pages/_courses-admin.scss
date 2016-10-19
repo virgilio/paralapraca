@@ -1,0 +1,67 @@
+.courses-admin {
+    color: #000;
+
+    .filters {
+        margin-bottom: 20px;
+
+        label {
+            margin: 5px 1px 0 0;
+            @media screen and (min-width: $screen-sm-min) {
+                margin: 5px 1px 10px 0;
+            }
+            @media screen and (min-width: $screen-md-min) {
+                margin: 5px 1px 0 0;
+            }
+            @media screen and (min-width: $screen-lg-min) {
+                margin: 5px 10px 0 0;
+            }
+        }
+        .filter-keyword, .filter-ordering {
+            .form-control {
+                display: block;
+                margin-bottom: 10px;
+                width: 100%;
+                @media screen and (min-width: $screen-sm-min) {
+                    margin-bottom: 0;
+                }
+            }
+        }
+        .filter-reverse {
+            .btn {
+                margin-top: 3px;
+            }
+        }
+    }
+
+    .courses-list {
+        .course-title {
+            font-size: 3.8vmax;
+            vertical-align: sub;
+            @media screen and (min-width: $screen-xs-min) {
+                font-size: 26px;
+            }
+            a {
+                color: #000;
+            }
+        }
+        .course-date {
+            font-size: $font-size-small;
+            margin-right: 10px;
+        }
+        .lesson-list {
+            margin-top: 20px;
+        }
+        .lesson {
+            margin-bottom: 15px;
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+            .lesson-name {
+                color: #000;
+                font-weight: $bold;
+                margin-left: 10px;
+            }
+        }
+    }
+}

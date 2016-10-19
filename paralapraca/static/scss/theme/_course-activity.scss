@@ -46,6 +46,32 @@
         font-size: 16px;
         margin-bottom: 15px;
     }
+    .action {
+        &.liked, &.used, &.replies {
+            &.active {
+                color: $brand-primary;
+                &:before {
+                    color: $brand-primary;
+                }
+            }
+        }
+    }
+    a.action {
+        &.liked, &.used, &.replies {
+            color: $gray;
+            &:hover {
+                color: $brand-primary;
+            }
+            span {
+                @include link-hover($gray,$brand-primary,transparent,$brand-primary);
+            }
+            &.active {
+                span {
+                    @include link-hover($brand-primary,$brand-primary,transparent,$brand-primary);
+                }
+            }
+        }
+    }
     .user-activity {
         .title {
             color: #000;
@@ -95,6 +121,30 @@
         thead {
             th {
                 padding: 7px 0;
+            }
+        }
+        .action {
+            &.liked, &.used, &.replies {
+                color: $brand-primary;
+                &:before {
+                    color: $brand-primary;
+                }
+            }
+        } 
+        a.action {
+            &.liked, &.used, &.replies {
+                color: $gray;
+                &:hover {
+                    color: $brand-primary;
+                }
+                span {
+                    @include link-hover($gray,$brand-primary,transparent,$brand-primary);
+                }
+                &.active {
+                    span {
+                        @include link-hover($brand-primary,$brand-primary,transparent,$brand-primary);
+                    }
+                }
             }
         }
     }
