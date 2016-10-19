@@ -1,0 +1,17 @@
+#admin {
+    .course-material {
+        .page-header {
+            h3 {
+                display: inline-block;
+            }
+        }
+        .materials-message {
+            background-color: rgba(255,255,255,0.4);
+            padding: 15px;
+        }
+        .dropzone {
+            font-weight: $bold;
+            text-align: center;
+        }
+    }
+}

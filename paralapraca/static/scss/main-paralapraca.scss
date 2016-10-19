@@ -49,6 +49,7 @@
 //== Pages styles
 @import "pages/_course-activity";
 @import "pages/_course-content";
+@import "pages/_course-material";
 @import "pages/_course-stats";
 @import "pages/_courses-admin";
 @import "pages/_courses-page";
@@ -58,6 +59,7 @@
 @import "pages/_profile";
 
 //== Vendor style
+@import "vendor/_dropzone.scss";
 //@import "vendor/flatui/checkbox-and-radio.scss";
 
 // Import theme's files
