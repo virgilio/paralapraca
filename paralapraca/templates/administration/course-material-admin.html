@@ -53,33 +53,35 @@
     {% include "_admin_header_inline.html" with course=course %}
 
     <!-- MAIN CONTENT -->
-    <section class="course-content page container-fluid">
+    <section class="course-content page container-fluid" ng-controller="CourseMaterialEditorCtrl">
 
       <header class="page-header">
-        <h3>Menu de referências</h3>
+        <div class="col-sm-9 col-lg-9">
+            <h3 style="display: inline-block;">Menu de referências</h3>
+            <div class="pull-right" style="display: inline-block;">
+              <button class="btn btn-sm btn-success edit" ng-click="editando=true" ng-show="!course_material.text && !editando">criar texto</button>
+            </div>
+            <div class="pull-right" style="display: inline-block;" ng-show="course_material.text && !editando">
+              <button class="btn btn-sm btn-success edit" ng-click="editando=true">editar</button>
+            </div>
+        </div>
       </header>
 
-      <div class="" ng-controller="CourseMaterialEditorCtrl">
+      <div class="">
         <div class="col-sm-9 col-lg-9">
           <div class="col-lg-12" ng-hide="course_materials.$resolved">
             <i class="loading fa fa-refresh fa-spin"></i>
           </div>
           <!-- Explicação inicial sobre material de curso -->
-          <div class="row" style="
+          <div class="" style="
     margin-top: 10px; background-color: rgba(238,238,238,0.7); padding: 15px; display:flex;justify-content:center;align-items:center;" ng-show="!course_material.text && !editando">
               <div style="width: 100%; font-size: larger;">
                 Escreva aqui o texto que as alunas verão na área de menu de referências.
               </div>
-              <div style="clear: both;">
-                <button class="btn btn-sm btn-success edit" ng-click="editando=true">criar texto</button>
-              </div>
           </div>
           <!-- /Explicação inicial sobre material de curso -->
           <!-- Visualização do material de curso -->
-          <div class="row" ng-show="course_material.text && !editando">
-            <button class="btn btn-sm btn-success edit pull-right" ng-click="editando=true">editar</button>
-          </div>
-          <div class="row" style="
+          <div class="" style="
     margin-top: 10px; background-color: rgba(238,238,238,0.7); padding: 15px;" ng-show="course_material.text && !editando" ng-bind-html="get_as_safe_html(course_material.text)"></div>
           <!-- /Visualização do material de curso -->
           <!-- Edição do material do curso -->
