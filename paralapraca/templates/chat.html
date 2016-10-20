@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block wrapper_classes %}{{ block.super }}
+chat rocketchat
+{% endblock %}
+
+{% block content %}
+<iframe src="{{ rocketchat.address }}" name="auth_iframe"></iframe>
+{% endblock %}
