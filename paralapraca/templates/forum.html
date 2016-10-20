@@ -7,6 +7,7 @@
     {{ block.super }}
     {% compress css %}
         <link rel="stylesheet" type="text/css" href="{% static 'angular-ui-select/dist/select.css' %}">
+        <link rel='stylesheet' href="{% static 'angular-loading-bar/src/loading-bar.css' %}" type='text/css' media='all' />
     {% endcompress %}
 
     <script type="text/javascript" src="{% static 'tinymce-dist/tinymce.js' %}"></script>
@@ -21,6 +22,7 @@
     <script type="text/javascript" src="{% static 'ng-file-upload/ng-file-upload.js' %}"></script>
     <script type="text/javascript" src="{% static 'angular-sanitize/angular-sanitize.js' %}"></script>
     <script type="text/javascript" src="{% static 'angular-ui-select/dist/select.js' %}"></script>
+    <script type='text/javascript' src="{% static 'angular-loading-bar/src/loading-bar.js' %}"></script>
     {% endcompress %}
     <script type="text/javascript">
         tinyMCE.baseURL = '/static/tinymce-dist/';
