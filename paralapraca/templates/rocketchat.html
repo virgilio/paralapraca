@@ -10,7 +10,7 @@
         <h2>Carreagando ...</h2>
         <script type="text/javascript">
             window.parent.postMessage({
-              event: 'call-custom-oauth-login',
+              externalCommand: 'call-custom-oauth-login',
               service: '{{ rocketchat.service }}'
             }, '*');
 
