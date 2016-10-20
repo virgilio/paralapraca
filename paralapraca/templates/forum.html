@@ -179,7 +179,7 @@
                             <tr ng-repeat="topic in forum.topics">
                                 <td>
                                     <a ng-href="/discussion/topic/#!/topic/{{ topic.id }}"><span class="thread-name">{{ topic.title }}</span></a>
-                                    <span class="last-update">Por <b><a style="color: #333333;" ng-href="/profile/{{ topic.author.username }}">{{topic.author.first_name + " " + topic.author.last_name}}</a></b> | Última atividade <b>{{ topic.last_activity_at | dateFilter }}</b></span>
+                                    <span class="last-update">Por <a ng-href="/profile/{{ topic.author.username }}">{{topic.author.first_name + " " + topic.author.last_name}}</a> | Última atividade <b>{{ topic.last_activity_at | dateFilter }}</b></span>
                                 </td>
                                 <td>
                                     <span class="action replies small">{{ topic.count_replies }}</span>

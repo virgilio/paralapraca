@@ -4,7 +4,6 @@
 .course-stats {
     color: #000;
     .filters {
-        font-size: $font-size-small;
         margin-bottom: 20px;
 
         .row > div {
@@ -13,13 +12,6 @@
                 height: 40px;
                 margin-bottom: 0;
             }
-        }
-        .form-control {
-            border: 2px solid $brand-primary;
-            border-radius: 0;
-            box-shadow: none;
-            padding: 3px 3px 1px 3px !important;
-            font-size: $font-size-small;
         }
         label {
             margin-bottom: 0;
@@ -249,6 +241,23 @@
                     @extend %icon-times;
                 }
             }
+        }
+    }
+    .lessons {
+        list-style: none;
+        margin-top: 20px;
+        padding: 0;
+        .lesson {
+            margin-bottom: 10px;
+        }
+        .lesson-name {
+            font-weight: $bold;
+            @media screen and (min-width: $screen-sm-min) {
+                padding-top: 15px;
+            }
+        }
+        .progress {
+            margin-bottom: 0;
         }
     }
 }

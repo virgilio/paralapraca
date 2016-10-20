@@ -18,9 +18,9 @@
                 <div class="col-md-8">
                     <h2 class="course-name">{{ course.name }}</h2>
                     {% include "_course-details-inline.html" with course=course %}
-                    <div class="editable-title"><input type="text" ng-model="lesson.name" placeholder="{% trans 'Lesson name' %}"></div>
+                    <div class="editable-title" ng-show="lesson.name"><input type="text" ng-model="lesson.name" placeholder="{% trans 'Lesson name' %}"></div>
 
-                    <nav class="chapters">
+                    <nav class="chapters" ng-show="lesson.name">
                         <div class="btn-group">
                             <button type="button" class="btn btn-sm"><span ng-bind="lesson.name"></span>&nbsp;</button>
                             <button type="button" class="btn btn-sm dropdown-toggle" data-toggle="dropdown">
@@ -79,7 +79,7 @@
     <!-- UNITS NAVIGATION FOR TABLET AND DESKTOP -->
     <div class="lesson-units-nav hidden-xs">
         <div class="line"></div>
-        <div class="container-fluid">
+        <div class="container-fluid" ng-show="lesson.name">
             <div class="progress">
                 <div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;"></div>
             </div>

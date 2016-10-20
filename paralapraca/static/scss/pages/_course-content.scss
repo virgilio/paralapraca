@@ -845,7 +845,18 @@ ul.uploaded-files-list {
         }
     }
     .uploaded-files-list {
+        h4 {
+            font-family: $font-family-sans-serif;
+            font-size: $font-size-base;
+            font-weight: $bold; 
+        }
         li {
+            height: 35px;
+            width: 100%;
+        }
+        a {
+            display: inline-block;
+            float: left;
             overflow: hidden;
             white-space: nowrap;
             text-overflow: ellipsis;

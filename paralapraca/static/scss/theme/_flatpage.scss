@@ -6,6 +6,7 @@
     h2 {
         color: $orange;
         font-size: 48px;
+        font-weight: $bold;
         margin: 0 0 20px 0; 
     }
     .content {
@@ -48,6 +49,20 @@
         img {
             float: right;
             margin: 0 0 20px 20px; 
+        }
+    }
+}
+
+.logged {
+    .flatpage {
+        margin: 0 auto !important; 
+        max-width: 1050px;
+        
+        h2 {
+            margin: 15px;
+            @media screen and (min-width: $screen-md-min) {
+                margin: 15px 0; 
+            }
         }
     }
 }
