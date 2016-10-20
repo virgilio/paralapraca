@@ -2,51 +2,47 @@
 {% load i18n %}
 {% load staticfiles %}
 {% load compress %}
-
 {% block js %}
-  {{ block.super }}
-  <script type="text/javascript" src="{% static 'tinymce-dist/tinymce.js' %}"></script>
-  {% compress js %}
-      <script type="text/javascript" src="{% static 'js/course_material/app.js' %}"></script>
-      <script type="text/javascript" src="{% static 'js/course_material/controllers.js' %}"></script>
-      <script type="text/javascript" src="{% static 'js/course_material/services.js' %}"></script>
-      <script type="text/javascript" src="{% static 'js/course_material/directives.js' %}"></script>
-      <script type="text/javascript" src="{% static 'js/course_material/filters.js' %}"></script>
-      <script type="text/javascript" src="{% static 'js/directives/markdowneditor.js' %}"></script>
-      <script type="text/javascript" src="{% static 'dropzone/downloads/dropzone.js' %}"></script>
-      <script type="text/javascript" src="{% static 'angular-dropzone/lib/angular-dropzone.js' %}"></script>
-      <script type="text/javascript" src="{% static 'js/directives/alertPopup.js' %}"></script>
-      <script type="text/javascript" src="{% static 'js/directives/fixedBar.js' %}"></script>
-      <script type="text/javascript" src="{% static 'angular-ui-tinymce/src/tinymce.js' %}"></script>
-      <script type="text/javascript" src="{% static 'js/ui.tinymce.config.js' %}"></script>
-  {% endcompress %}
-  <script type="text/javascript">
-      tinyMCE.baseURL = '/static/tinymce-dist/';
-  </script>
+{{ block.super }}
+<script type="text/javascript" src="{% static 'tinymce-dist/tinymce.js' %}"></script>
+{% compress js %}
+<script type="text/javascript" src="{% static 'js/course_material/app.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/course_material/controllers.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/course_material/services.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/course_material/directives.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/course_material/filters.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/directives/markdowneditor.js' %}"></script>
+<script type="text/javascript" src="{% static 'dropzone/downloads/dropzone.js' %}"></script>
+<script type="text/javascript" src="{% static 'angular-dropzone/lib/angular-dropzone.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/directives/alertPopup.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/directives/fixedBar.js' %}"></script>
+<script type="text/javascript" src="{% static 'angular-ui-tinymce/src/tinymce.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/ui.tinymce.config.js' %}"></script>
+{% endcompress %}
+<script type="text/javascript">
+    tinyMCE.baseURL = '/static/tinymce-dist/';
+</script>
 {% endblock %}
-
 {% block body_attrs %}
-  ng-app="courseMaterial"
+ng-app="courseMaterial"
 {% endblock %}
-
 {% block wrapper_classes %}
-  wrapper-course-lesson
+wrapper-course-lesson
 {% endblock %}
-
 {% block content %}
-
-  <script>
+<script>
     window.course_id = {{ course.pk }};
-  </script>
+</script>
 
-  <!-- CONTAINER -->
-  <div class="course course-material" ng-app="courseMaterial">
+<!-- CONTAINER -->
+<div class="course course-material" ng-app="courseMaterial">
+
     <!-- ACTIONS -->
     <div class="actions-menu actions-menu-message" ng-hide="alert.hidden" fixed-bar>
-      <div class="container">
-        <div class="actions-buttons"></div>
-        {% include 'administration/_alert.html' %}
-      </div>
+        <div class="container">
+            <div class="actions-buttons"></div>
+            {% include 'administration/_alert.html' %}
+        </div>
     </div>
     <!-- END ACTIONS -->
 
@@ -55,80 +51,69 @@
     <!-- MAIN CONTENT -->
     <section class="course-content page container-fluid" ng-controller="CourseMaterialEditorCtrl">
 
-      <header class="page-header">
-        <div class="col-sm-9 col-lg-9">
-            <h3 style="display: inline-block;">Menu de referências</h3>
-            <div class="pull-right" style="display: inline-block;">
-              <button class="btn btn-sm btn-success edit" ng-click="course_material.editando=true" ng-show="!course_material.text && !editando">criar texto</button>
-            </div>
-            <div class="pull-right" style="display: inline-block;" ng-show="course_material.text && !editando">
-              <button class="btn btn-sm btn-success edit" ng-click="course_material.editando=true">editar</button>
-            </div>
-        </div>
-      </header>
+        <div class="row">
+            <div class="col-sm-9 col-lg-9">
+                <header class="page-header">
+                    <h3>Menu de referências</h3>
+                    <button class="btn btn-sm btn-primary edit pull-right" ng-click="course_material.editando=true" ng-show="!course_material.text && !course_material.editando">criar texto</button>
+                    <button class="btn btn-sm btn-primary edit pull-right" ng-show="course_material.text && !course_material.editando" ng-click="course_material.editando=true">editar</button>
+                </header>
 
-      <div class="">
-        <div class="col-sm-9 col-lg-9">
-          <div class="col-lg-12" ng-hide="course_materials.$resolved">
-            <i class="loading fa fa-refresh fa-spin"></i>
-          </div>
-          <!-- Explicação inicial sobre material de curso -->
-          <div class="" style="
-    margin-top: 10px; background-color: rgba(238,238,238,0.7); padding: 15px; display:flex;justify-content:center;align-items:center;" ng-show="!course_material.text && !course_material.editando">
-              <div style="width: 100%; font-size: larger;">
-                Escreva aqui o texto que as alunas verão na área de Menu de Referências.
-              </div>
-          </div>
-          <!-- /Explicação inicial sobre material de curso -->
-          <!-- Visualização do material de curso -->
-          <div class="" style="
-    margin-top: 10px; background-color: rgba(238,238,238,0.7); padding: 15px;" ng-show="course_material.text && !course_material.editando" ng-bind-html="get_as_safe_html(course_material.text)"></div>
-          <!-- /Visualização do material de curso -->
-          <!-- Edição do material do curso -->
-          <form name="new_material_text" class="new-thread" novalidate ng-if="course_material.editando" ng-submit="course_material.text = text; new_material_text.$valid && save_course_material()" ng-init="text = course_material.text">
-            <div class="form-group">
-              <textarea ui-tinymce ng-model="text" placeholder="Escreva seu texto aqui" name="content" ng-hide="!course_materials.$resolved" required></textarea>
-            </div>
-            <div class="form-group">
-              <input type="submit" value="salvar" class="btn btn-success new-topic"/>
-              <input type="button" value="cancelar" class="btn btn-warning" ng-click="course_material.editando=false;" />
-            </div>
-          </form>
-          <!-- /Edição do material do curso -->
-        </div>
+                <div ng-hide="course_materials.$resolved">
+                    <i class="loading fa fa-refresh fa-spin"></i>
+                </div>
 
-        <!-- ASIDE -->
-        <aside class="col-sm-3 col-lg-3">
-          <form action="{% url 'file_upload' course.slug %}" class="dropzone textcenter" ng-dropzone id="file-dropzone">
-            <div>
-              <p>
-                <strong>{% trans 'Drop' %}</strong>
-                {% trans 'files to upload' %}<br>{% trans '(or click)' %}</p>
+                <!-- Explicação inicial sobre material de curso -->
+                <div class="materials-message" ng-show="!course_material.editando && !course_material.text">
+                    Escreva aqui o texto que as alunas verão na área de menu de referências.
+                </div>
+                <!-- /Explicação inicial sobre material de curso -->
+
+                <!-- Visualização do material de curso -->
+                <div class="materials-message" ng-show="course_material.text && !course_material.editando" ng-bind-html="get_as_safe_html(course_material.text)"></div>
+                <!-- /Visualização do material de curso -->
+
+                <!-- Edição do material do curso -->
+                <form name="new_material_text" class="new-thread" novalidate ng-if="course_material.editando" ng-submit="course_material.text = text; new_material_text.$valid && save_course_material()" ng-init="text = course_material.text">
+                    <div class="form-group">
+                        <textarea ui-tinymce ng-model="text" placeholder="Escreva seu texto aqui" name="content" ng-hide="!course_materials.$resolved" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="salvar" class="btn btn-sm btn-success save"/>
+                        <input type="button" value="cancelar" class="btn btn-sm btn-warning" ng-click="course_material.editando=false;" />
+                    </div>
+                </form>
+                <!-- /Edição do material do curso -->
             </div>
-            {% csrf_token %}
-            {% verbatim %}
-              <input type="hidden" name="course_material" value="{{ course_material.id }}" id="id_course_material">
-            {% endverbatim %}
-          </form>
-          <p ng-show="course_material.files.length==0">{% trans 'No files in course material' %}</p>
-          <ul class="uploaded-files-list" ng-show="course_material.files.length>0">
-            <li>
-              <h5>{% trans "Files" %}</h5>
-            </li>
-            <li ng-repeat="file_obj in course_material.files">
-              {% verbatim %}
-                <a ng-href="{{ file_obj.file }}">{{file_obj.file|filename}}</a>
-                <button type="submit" ng-click="delete_file(file_obj)" class="btn btn-xs btn-warning pull-right">
-                  <i class="fa fa-trash-o"></i>
-                </button>
-              {% endverbatim %}
-            </li>
-          </ul>
-        </aside>
-        <!-- END ASIDE -->
-      </div>
+
+            <!-- ASIDE -->
+            <aside class="col-sm-3 col-lg-3">
+                <form action="{% url 'file_upload' course.slug %}" class="dropzone textcenter" ng-dropzone id="file-dropzone">
+                    {% trans 'Drop' %} {% trans 'files to upload' %}<br>{% trans '(or click)' %}
+                    {% csrf_token %}
+                    {% verbatim %}
+                    <input type="hidden" name="course_material" value="{{ course_material.id }}" id="id_course_material">
+                    {% endverbatim %}
+                </form>
+                <p ng-show="course_material.files.length==0">{% trans 'No files in course material' %}</p>
+                <ul class="uploaded-files-list" ng-show="course_material.files.length>0">
+                    <li>
+                        <h4>{% trans "Files" %}</h4>
+                    </li>
+                    <li ng-repeat="file_obj in course_material.files">
+                        {% verbatim %}
+                        <a ng-href="{{ file_obj.file }}">{{file_obj.file|filename}}</a>
+                        <button type="submit" ng-click="delete_file(file_obj)" class="btn btn-xs btn-warning pull-right"><i class="fa fa-times" aria-hidden="true"></i><span class="sr-only">deletar material</span></button>
+                        {% endverbatim %}
+                    </li>
+                </ul>
+            </aside>
+            <!-- END ASIDE -->
+        </div>
+        <!-- END ROW -->
+
     </section>
     <!-- END MAIN CONTENT-->
-  </div>
-  <!-- END CONTAINER -->
+</div>
+<!-- END CONTAINER -->
 {% endblock %}
