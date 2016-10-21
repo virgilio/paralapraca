@@ -13,9 +13,13 @@
 wrapper-course-lesson
 {% endblock %}
 
+{% block body_attrs %}
+ng-app="certification"
+{% endblock %}
+
 {% block content %}
 
-<section class="course certificate" ng-app="certification" ng-controller="CertificateTemplateCtrl">
+<section class="course certificate" ng-controller="CertificateTemplateCtrl">
 
     <!-- ACTIONS -->
     <div class="actions-menu" fixed-bar>
