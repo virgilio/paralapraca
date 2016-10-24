@@ -13,7 +13,7 @@
     ]);
 
     app.config(['cfpLoadingBarProvider', function(cfpLoadingBarProvider) {
-        cfpLoadingBarProvider.spinnerTemplate = '<div class="" style="top: 0; bottom: 0; left: 0; right: 0; position: fixed; background: rgba(255,255,255,0.6);"></div><div class="fa fa-spinner" style="position: absolute; right: 1000px; bottom: 50px;"></div>';
+        cfpLoadingBarProvider.spinnerTemplate = '<div class="loading-background"></div><div class="loading-spinner fa fa-spinner fa-pulse fa-4x"></div>';
     }]);
 
 })(angular);

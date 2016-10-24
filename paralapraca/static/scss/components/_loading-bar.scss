@@ -1,0 +1,21 @@
+#loading-bar {
+    .bar {
+        background-color: $brand-primary !important;
+    }
+}
+
+.loading-background {
+    background: rgba(255,255,255,0.6);
+    bottom: 0;
+    left: 0;
+    top: 0;
+    right: 0;
+    position: fixed;
+}
+
+.loading-spinner {
+    color: $brand-primary !important;
+    position: absolute;
+    left: 52%;
+    top: 50%;
+}
