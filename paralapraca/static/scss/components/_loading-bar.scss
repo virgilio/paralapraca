@@ -2,6 +2,12 @@
     .bar {
         background-color: $brand-primary !important;
     }
+    .peg {
+        -moz-box-shadow: $brand-primary 1px 0 6px 1px !important;
+        -ms-box-shadow: $brand-primary 1px 0 6px 1px !important;
+        -webkit-box-shadow: $brand-primary 1px 0 6px 1px !important;
+        box-shadow: $brand-primary 1px 0 6px 1px !important;
+    }
 }
 
 .loading-background {
