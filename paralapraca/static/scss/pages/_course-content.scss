@@ -883,8 +883,8 @@ ul.uploaded-files-list {
             width: 100%;
         }
         a {
-            display: inline-block;
             float: left;
+            max-width: 80%;
             overflow: hidden;
             white-space: nowrap;
             text-overflow: ellipsis;
