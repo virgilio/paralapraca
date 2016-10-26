@@ -22,7 +22,7 @@ ng-app="users-admin"
 
 {% block content %}
 <!-- COURSES -->
-<section class="course users" ng-app="users-admin" ng-controller="UsersAdminController">
+<section class="users" ng-app="users-admin" ng-controller="UsersAdminController">
     <!-- ACTIONS -->
     <div class="actions-menu actions-menu-message" ng-hide="alert.hidden" fixed-bar>
         <div class="container">
@@ -31,87 +31,139 @@ ng-app="users-admin"
     </div>
     <!-- END ACTIONS -->
     <div class="users-content page container-fluid">
+        <div class="page-breadcrumb">
+            Administração > Usuários e grupos
+        </div>
         <!--  HEADER -->
         <header class="page-header">
-            <h3>{% trans 'Users' %}</h3>
+            <h2>{% trans 'Administração de usuários e grupos' %}</h2>
         </header>
         <!-- END HEADER -->
-        <h3>{% trans 'Users found:' %} {% verbatim %}{{ total_users_found }}{% endverbatim %}</h3>
+        
         <div class="filters">
             <form role="form" class="form-inline" method="GET">
-                <div class="filter-checkbox form-group">
+                <div class="form-group">
+                    <label class="sr-only" for="keyword">{% trans 'Keyword' %}</label>
+                    <input type="text"
+                           placeholder="{% trans 'Digite uma palavra-chave' %}"
+                           class="form-control" id="keyword"
+                           name="keyword"
+                           ng-model="filters.keyword">
+                </div>
+                <div class="form-group filter-checkbox">
                     <div class="checkbox">
                         <label>
                             <input type="checkbox" name="admin" ng-model="filters.admin"> {% trans 'Administrators' %}
                         </label>
                         <label>
-                            <input type="checkbox" name="admin" ng-model="filters.blocked"> {% trans 'Blockeds' %}
+                            <input type="checkbox" name="admin" ng-model="filters.blocked"> {% trans 'Inativos' %}
                         </label>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="sr-only" for="keyword">{% trans 'Keyword' %}</label>
-                    <input type="text"
-                           placeholder="{% trans 'Keyword' %}"
-                           class="form-control" id="keyword"
-                           name="keyword"
-                           ng-model="filters.keyword">
-                    <button class="btn btn-info" ng-click="filter_users()">{% trans 'Filter' %}</button>
+                    <button class="btn btn-sm btn-primary search" ng-click="filter_users()">{% trans 'Buscar' %}</button>
                 </div>
             </form>
             <!-- END FORM INLINE -->
         </div>
         <!-- END FILTERS -->
-		<div class="col-lg-12" ng-hide="users_page.$resolved">
-			<p>{% trans 'Loading users list' %}...   <i class="loading fa fa-refresh fa-spin"></i></p>
-		</div>
-        <div class="col-lg-12" ng-if="users_page.$resolved && users_page.length==0">
-			<p>{% trans 'No users found' %}.</p>
-		</div>
-        <section id="all-courses" class="user-list" ng-show="users_page.$resolved">
-            <table class="table table-striped">
-                <thead>
-                    <tr>
-                        <th class="username">{% trans "Username" %}</th>
-                        <th class="email">{% trans "Email" %}</th>
-                        <th class="fullname">{% trans "Full name" %}</th>
-                        <th class="role text-center">{% trans 'Administrator' %}</th>
-                        <th class="role text-center">{% trans 'Active' %}</th>
-                        <th class="actions">{% trans "Actions" %}</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr ng-repeat="user in users_page">
-                    {% verbatim %}
-                        <td>{{ user.username }}</td>
-                        <td>{{ user.email }}</td>
-                        <td>{{ user.get_full_name }}</td>
-                        <td class="text-center">
-                            <input type="checkbox" ng-model="user.is_superuser" ng-change="update_user(user)">
-                        </td>
-                        <td class="text-center">
-                            <input type="checkbox" ng-model="user.is_active" ng-change="update_user(user)">
-                        </td>
-                        <td class="textcenter">
-                            <button class="btn btn-warning js-delete" ng-click="delete_user(user, $index)"><i class="fa fa-trash-o"></i></button>
-                        </td>
-                    {% endverbatim %}
-                    </tr>
-                </tbody>
-            </table>
-        </section>
-        <pagination total-items="total_users_found"
-                    items-per-page="50"
-                    ng-model="current_page"
-                    ng-change="page_changed()"
-                    max-size="5"
-                    boundary-links="true"
-                    previous-text="{% trans 'Previous' %}"
-                    next-text="{% trans 'Next' %}"
-                    first-text="{% trans 'First' %}"
-                    last-text="{% trans 'Last' %}"
-                	ng-hide="filtered">
-        </pagination>
+        <ul class="nav nav-tabs">
+            <li class="active">
+                <a href="#users" data-toggle="tab">
+                    {% trans "Users" %}
+                </a>
+            </li>
+            <li>
+                <a href="#groups" data-toggle="tab">
+                    {% trans "Groups" %}
+                </a>
+            </li>
+        </ul>
+        
+        <div class="tab-content">
+            <div class="tab-pane fade in active" class="users-list" id="users">
+
+                <h3>Lista de usuários</h3>
+                
+                <div class="col-lg-12" ng-hide="users_page.$resolved">
+                    <p>{% trans 'Loading users list' %}... <i class="loading fa fa-refresh fa-spin"></i></p>
+                </div>
+                <div class="col-lg-12" ng-if="users_page.$resolved && users_page.length==0">
+                    <p>{% trans 'No users found' %}.</p>
+                </div>
+                <section ng-show="users_page.$resolved">
+                    <p class="users-tital">{% trans 'Users found:' %} {% verbatim %}<span>{{ total_users_found }}</span>{% endverbatim %}</p>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th class="username-email">{% trans "Nome e e-mail de usuário" %}</th>
+                                <th class="fullname">{% trans "Nome completo" %}</th>
+                                <th class="groups">{% trans "Grupos" %}</th>
+                                <th class="role">{% trans 'Administrator' %}</th>
+                                <th class="active">{% trans 'Active' %}</th>
+                                <th class="actions">{% trans "Actions" %}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="user in users_page">
+                            {% verbatim %}
+                                <td>
+                                    <div class="user-icon">
+                                        <img src="{{ user.picture }}" alt="{{ user.name }}">
+                                    </div>
+                                    {{ user.name }}
+                                    {{ user.email }}
+                                </td>
+                                <td>{{ user.get_full_name }}</td>
+                                <td>Maracanaú, Avante, Olinda, Assessoras</td>
+                                <td class="text-center">
+                                    <input type="checkbox" ng-model="user.is_superuser" ng-change="update_user(user)">
+                                </td>
+                                <td class="text-center">
+                                    <input type="checkbox" ng-model="user.is_active" ng-change="update_user(user)">
+                                </td>
+                                <td class="textcenter">
+                                    <button class="btn btn-danger btn-inverse trash js-delete" ng-click="delete_user(user, $index)"></button>
+                                </td>
+                            {% endverbatim %}
+                            </tr>
+                        </tbody>
+                    </table>
+                </section>
+
+                <pagination total-items="total_users_found"
+                            items-per-page="50"
+                            ng-model="current_page"
+                            ng-change="page_changed()"
+                            max-size="5"
+                            boundary-links="true"
+                            previous-text="{% trans 'Previous' %}"
+                            next-text="{% trans 'Next' %}"
+                            first-text="{% trans 'First' %}"
+                            last-text="{% trans 'Last' %}"
+                        	ng-hide="filtered">
+                </pagination>
+            </div>
+
+            <div class="tab-pane fade in" class="groups-list" id="groups">
+                <section>
+                    grupos
+                </section>
+
+                <pagination total-items="total_users_found"
+                            items-per-page="50"
+                            ng-model="current_page"
+                            ng-change="page_changed()"
+                            max-size="5"
+                            boundary-links="true"
+                            previous-text="{% trans 'Previous' %}"
+                            next-text="{% trans 'Next' %}"
+                            first-text="{% trans 'First' %}"
+                            last-text="{% trans 'Last' %}"
+                            ng-hide="filtered">
+                </pagination>
+            </div>
+        </div>
     </div>
 
 </section>

@@ -146,6 +146,9 @@
     &-schedule {
         @include icon(before, schedule);
     }
+    &-search {
+        @include icon(before, search);
+    }
     &-site {
         @include icon(before, site);
     }
@@ -160,6 +163,9 @@
     }
     &-tools {
         @include icon(before, tools);
+    }
+    &-trash {
+        @include icon(before, trash);
     }
     &-undo {
         @include icon(before, undo);

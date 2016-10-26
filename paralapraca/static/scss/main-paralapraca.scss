@@ -35,6 +35,7 @@
 @import "components/_filters";
 @import "components/_forums";
 @import "components/_modals";
+@import "components/_page-breadcrumb";
 @import "components/_pagination";
 @import "components/_tables";
 @import "components/_tabs";
@@ -58,6 +59,7 @@
 @import "pages/_my-courses";
 @import "pages/_notes";
 @import "pages/_profile";
+@import "pages/_users";
 
 //== Vendor style
 @import "vendor/_dropzone.scss";
@@ -85,6 +87,7 @@
 @import "theme/_login";
 @import "theme/_my-courses";
 @import "theme/_notes";
+@import "theme/_page-breadcrumb";
 @import "theme/_profile";
 @import "theme/_site-footer";
 @import "theme/_site-header";

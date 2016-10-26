@@ -151,6 +151,9 @@
     &.save {
         @extend %icon-checked;
     }
+    &.search {
+        @extend %icon-search;
+    }
     &.see-stats {
         @extend %icon-stats;
         &:before {
@@ -172,6 +175,14 @@
     }
     &.sort {
         @extend %icon-sort;
+    }
+    &.trash {
+        @extend %icon-trash;
+        padding: 3px 9px;
+        &:before {
+            font-size: $font-size-large;
+            margin-right: 0;
+        }
     }
 }
 
