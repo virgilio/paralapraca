@@ -156,12 +156,11 @@
                           <files files="topic.files" editable="false"></files>
                       </div>
                     </div>
-                    <!-- /Exibição de tópico -->
                     <div class="actions">
                         <div class="pull-left">
                             <a ng-click="topic_like(topic)" ng-class="{ 'active': topic.user_like }" class="action liked"><span>gostei</span></a>
                             <!--<a class="action used">usar</a>-->
-                            <a ng-click="scroll_new_comment(topic)" class="action replies"><span>comentar</span></a>
+                            <a ng-click="topic.show_comment_input = true;" class="action replies"><span>comentar</span></a>
                             <a class="action edit" ng-click="updating=true" ng-show="topic.author.id == user.id && !updating">editar</a>
                             <span class="last-update">última edição {{ topic.updated_at | date : "d 'de' MMMM 'de' yyyy 'às' HH'h'mm" }}</span>
                         </div>
@@ -179,6 +178,24 @@
                             <!--<span class="action used">7 usaram</span>-->
                         </div>
                     </div>
+                    <!-- /Exibição de tópico -->
+                    <!-- Novo comentário -->
+                    <div id="new-comment">
+                        <form class="comments-form" ng-if="topic.show_comment_input" ng-init="comment = new_comment()">
+                            <textarea ui-tinymce
+                                      ng-model="comment.text"
+                                      placeholder="Escreva aqui o seu comentário"></textarea>
+                            <button id="select-file-topic"
+                                   class="btn btn-xs btn-primary attach pull-left"
+                                   ngf-select="uploadCommentFiles($file, comment)"
+                                   ngf-multiple="false">anexar arquivo</button>
+                            <button class="btn btn-xs btn-success reply pull-right" ng-click="save_comment(comment, null); topic.show_comment_input=false">comentar</button>
+                            <button class="btn btn-xs btn-danger delete pull-right" ng-click="topic.show_comment_input=false">descartar</button>
+
+                            <files files="comment.files" editable="true" progress="comment.progress"></files>
+                        </form>
+                    </div>
+                    <!-- /Novo comentário -->
                     <div class="comments">
                         <h3 class="comments-title">Comentários</h3>
                         <!-- Exibição de um comentário -->
@@ -302,25 +319,7 @@
                             <!-- /Criar nova resposta a comentário -->
                         </div>
                         <!-- /Exibição de um comentário -->
-
-                        <!-- Novo comentário -->
-                        <div id="new-comment">
-                            <form class="comments-form" ng-if="topic.show_comment_input" ng-init="comment = new_comment()">
-                                <textarea ui-tinymce
-                                          ng-model="comment.text"
-                                          placeholder="Escreva aqui o seu comentário"></textarea>
-                                <button id="select-file-topic"
-                                       class="btn btn-xs btn-primary attach pull-left"
-                                       ngf-select="uploadCommentFiles($file, comment)"
-                                       ngf-multiple="false">anexar arquivo</button>
-                                <button class="btn btn-xs btn-success reply pull-right" ng-click="save_comment(comment, null); topic.show_comment_input=false">comentar</button>
-                                <button class="btn btn-xs btn-danger delete pull-right" ng-click="topic.show_comment_input=false">descartar</button>
-
-                                <files files="comment.files" editable="true" progress="comment.progress"></files>
-                            </form>
-                        </div>
-                        <!-- /Novo comentário -->
-
+                        <a id="last-comment"></a>
                     </div>
                 </div>
             </div>
