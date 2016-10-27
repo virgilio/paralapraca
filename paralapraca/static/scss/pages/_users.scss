@@ -1,0 +1,54 @@
+.users {
+    .filters {
+        .form-group {
+            margin-right: 15px; 
+        }
+        #keyword {
+            width: 300px;
+        }
+        .checkbox {
+            label + label {
+                margin-left: 15px; 
+            }
+        }
+    }
+    .nav-tabs {
+        margin-top: 40px; 
+    }
+}
+
+.users-list { 
+    color: #000;
+    
+    h3 {
+        font-weight: bold;
+        margin: 30px 0 5px; 
+    }
+    .users-total {
+        margin-bottom: 20px;
+        span {
+            color: $brand-primary;
+            font-weight: $bold;
+        }
+    }
+    table {
+        th {
+            color: $gray;
+            font-size: $font-size-small;
+            font-weight: $normal;
+            padding: 0 15px 5px 0;
+            text-transform: lowercase;
+            &:last-child {
+                padding-right: 0;
+            }
+        }
+        td {
+            padding: 0 15px 15px 0;
+            vertical-align: top;
+            &:last-child {
+                padding-right: 0;
+            }
+        }
+    }
+
+}

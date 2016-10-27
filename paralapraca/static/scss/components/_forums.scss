@@ -2,17 +2,6 @@
 // --------------------------------------------------
 
 .forums {
-    .user-icon {
-        float: left;
-        height: 40px;
-        margin-right: 10px;
-        width: 40px;
-        img {
-            border-radius: 50%;
-            height: 40px;
-            width: 40px;
-        }
-    }
     .info {
         color: $gray;
         font-size: 13px;
@@ -56,5 +45,17 @@
     }
     .category, .tag {
         @include button-hover($gray,$gray,#fff,$brand-info);
+    }
+}
+
+.user-icon {
+    float: left;
+    height: 40px;
+    margin-right: 10px;
+    width: 40px;
+    img {
+        border-radius: 50%;
+        height: 40px;
+        width: 40px;
     }
 }

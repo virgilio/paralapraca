@@ -81,7 +81,7 @@ ng-app="users-admin"
         </ul>
         
         <div class="tab-content">
-            <div class="tab-pane fade in active" class="users-list" id="users">
+            <div class="tab-pane fade in active users-list" id="users">
 
                 <h3>Lista de usuários</h3>
                 
@@ -92,7 +92,7 @@ ng-app="users-admin"
                     <p>{% trans 'No users found' %}.</p>
                 </div>
                 <section ng-show="users_page.$resolved">
-                    <p class="users-tital">{% trans 'Users found:' %} {% verbatim %}<span>{{ total_users_found }}</span>{% endverbatim %}</p>
+                    <p class="users-total">Total de {% verbatim %}<span>{{ total_users_found }}{% endverbatim %} usuários cadastrados</span></p>
                     <table>
                         <thead>
                             <tr>
@@ -111,11 +111,11 @@ ng-app="users-admin"
                                     <div class="user-icon">
                                         <img src="{{ user.picture }}" alt="{{ user.name }}">
                                     </div>
-                                    {{ user.name }}
-                                    {{ user.email }}
+                                    <b>{{ user.name }}</b><br>
+                                    ({{ user.email }})
                                 </td>
-                                <td>{{ user.get_full_name }}</td>
-                                <td>Maracanaú, Avante, Olinda, Assessoras</td>
+                                <td>{{ user.name }} {{ user.get_full_name }}</td>
+                                <td><b>Maracanaú, Avante, Olinda, Assessoras</b></td>
                                 <td class="text-center">
                                     <input type="checkbox" ng-model="user.is_superuser" ng-change="update_user(user)">
                                 </td>
@@ -145,7 +145,7 @@ ng-app="users-admin"
                 </pagination>
             </div>
 
-            <div class="tab-pane fade in" class="groups-list" id="groups">
+            <div class="tab-pane fade in groups-list" id="groups">
                 <section>
                     grupos
                 </section>
