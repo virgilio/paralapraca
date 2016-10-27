@@ -17,20 +17,23 @@
     }
 }
 
-.users-list { 
-    color: #000;
-    
+.users-list, .groups-list {
     h3 {
         font-weight: bold;
         margin: 30px 0 5px; 
     }
-    .users-total {
+    .total {
         margin-bottom: 20px;
         span {
             color: $brand-primary;
             font-weight: $bold;
         }
     }
+}
+
+.users-list { 
+    color: #000;
+
     table {
         th {
             color: $gray;

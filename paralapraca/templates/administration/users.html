@@ -92,7 +92,7 @@ ng-app="users-admin"
                     <p>{% trans 'No users found' %}.</p>
                 </div>
                 <section ng-show="users_page.$resolved">
-                    <p class="users-total">Total de {% verbatim %}<span>{{ total_users_found }}{% endverbatim %} usuários cadastrados</span></p>
+                    <p class="total">Total de {% verbatim %}<span>{{ total_users_found }}{% endverbatim %} usuários cadastrados</span></p>
                     <table>
                         <thead>
                             <tr>
@@ -147,7 +147,35 @@ ng-app="users-admin"
 
             <div class="tab-pane fade in groups-list" id="groups">
                 <section>
-                    grupos
+                    <h3>Lista de grupos</h3>
+
+                    <p class="total">Total de <span>xxxx grupos cadastrados</span></p>
+
+                    <div class="group-header row">
+                        <div class="col-lg-4">nome do grupo</div>
+                        <div class="col-lg-4">número de membros</div>
+                    </div>
+
+                    <div class="group-line row">
+                        <div class="col-lg-4">Adisciping lorem ipsum</div>
+                        <div class="col-lg-4">5 membros</div>
+                        <div class="col-lg-4">
+                            <button class="btn btn-sm btn-primary btn-inverse add">adicionar membros</button>
+                            <button class="btn btn-sm btn-primary btn-inverse">ver membros</button>
+                            <button class="btn btn-danger btn-inverse trash"></button>
+                        </div>
+
+                        <div class="group-members">
+                            <div class="member">
+                                <div class="user-icon">
+                                    <img src="{{ user.picture }}" alt="{{ user.name }}">
+                                </div>
+                                <b>{{ user.name }}</b><br>
+                                ({{ user.email }})
+                            </div>
+                            <button class="btn btn-sm btn-danger btn-inverse delete">remover do grupo</button>
+                        </div>
+                    </div>
                 </section>
 
                 <pagination total-items="total_users_found"
