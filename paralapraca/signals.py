@@ -1,33 +1,15 @@
 # -*- coding: utf-8 -*-
 import json
 import urllib2
+import logging
 from os import path
 from random import random
-
 from django.db.models.signals import post_save
-from django.conf import settings
 from django.contrib.auth import get_user_model
-from django.contrib.auth.signals import user_logged_out
 from django.dispatch import receiver
+from settings import *
 
-
-ROCKET_CHAT = getattr(settings, 'ROCKET_CHAT', {
-    'address'   : 'http://chat.paralapraca.org.br',
-    'service'   : 'paralapraca',
-    'auth_token': '',
-    'user_id'   : '',
-})
-
-API     = path.join(ROCKET_CHAT['address'], 'api/v1')
-HEADERS = {
-    'X-Auth-Token': ROCKET_CHAT['auth_token'],
-    'X-User-Id'   : ROCKET_CHAT['user_id'],
-    'Content-type':'application/json',
-}
-
-@receiver(user_logged_out, sender=get_user_model())
-def rc_logout_user(sender, user, request, **kwargz):
-    print 'test', sender, user
+logger = logging.getLogger(__package__)
 
 
 @receiver(post_save, sender=get_user_model())
@@ -51,5 +33,8 @@ def rc_create_user(sender, **kwargz):
     headers.update(HEADERS)
 
     request  = urllib2.Request(url, data, headers)
-    response = urllib2.urlopen(request)
-    return response.read()
+    try:
+        response = urllib2.urlopen(request)
+        return response.read()
+    except urllib2.HTTPError as e:
+        logger.error(e)
