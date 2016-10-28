@@ -151,29 +151,104 @@ ng-app="users-admin"
 
                     <p class="total">Total de <span>xxxx grupos cadastrados</span></p>
 
-                    <div class="group-header row">
-                        <div class="col-lg-4">nome do grupo</div>
-                        <div class="col-lg-4">número de membros</div>
+                    <div class="row header">
+                        <div class="col-sm-3 col-lg-4">nome do grupo</div>
+                        <div class="col-sm-3 col-lg-3">número de membros</div>
                     </div>
 
-                    <div class="group-line row">
-                        <div class="col-lg-4">Adisciping lorem ipsum</div>
-                        <div class="col-lg-4">5 membros</div>
-                        <div class="col-lg-4">
+                    <div class="row group">
+                        <div class="col-sm-3 col-lg-4 group-name">Adisciping lorem ipsum</div>
+                        <div class="col-sm-3 col-lg-3 members-number">5 membros</div>
+                        <div class="col-sm-6 col-lg-5 actions">
                             <button class="btn btn-sm btn-primary btn-inverse add">adicionar membros</button>
-                            <button class="btn btn-sm btn-primary btn-inverse">ver membros</button>
+                            <button class="btn btn-sm btn-primary btn-inverse"
+                                    ng-init="show_members=false"
+                                    ng-click="show_members=!show_members"
+                            >
+                                    ver membros
+                                    <i class="fa" ng-class="{'fa fa-caret-down':!show_members,'fa fa-caret-up':show_members}"></i>
+                            </button>
                             <button class="btn btn-danger btn-inverse trash"></button>
                         </div>
 
-                        <div class="group-members">
-                            <div class="member">
-                                <div class="user-icon">
-                                    <img src="{{ user.picture }}" alt="{{ user.name }}">
+                        <div class="container-fluid members" ng-show="show_members">
+                            <div class="row member-line">
+                                <div class="col-sm-5">
+                                    <div class="member-info">
+                                        <div class="user-icon">
+                                            <img src="{{ user.picture }}" alt="{{ user.name }}">
+                                        </div>
+                                        <b>Cecília Ramos Rodrigues</b><br>
+                                        (ceci.ramos@dominio.com.br)
+                                    </div>
                                 </div>
-                                <b>{{ user.name }}</b><br>
-                                ({{ user.email }})
+                                <div class="col-sm-3">
+                                    <button class="btn btn-sm btn-danger btn-inverse delete">remover do grupo</button>
+                                </div>
                             </div>
-                            <button class="btn btn-sm btn-danger btn-inverse delete">remover do grupo</button>
+
+                            <div class="row member-line">
+                                <div class="col-sm-5">
+                                    <div class="member-info">
+                                        <div class="user-icon">
+                                            <img src="{{ user.picture }}" alt="{{ user.name }}">
+                                        </div>
+                                        <b>Cecília Ramos Rodrigues</b><br>
+                                        (ceci.ramos@dominio.com.br)
+                                    </div>
+                                </div>
+                                <div class="col-sm-3">
+                                    <button class="btn btn-sm btn-danger btn-inverse delete">remover do grupo</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row group">
+                        <div class="col-sm-3 col-lg-4 group-name">Adisciping lorem ipsum</div>
+                        <div class="col-sm-3 col-lg-3 members-number">5 membros</div>
+                        <div class="col-sm-6 col-lg-5 actions">
+                            <button class="btn btn-sm btn-primary btn-inverse add">adicionar membros</button>
+                            <button class="btn btn-sm btn-primary btn-inverse"
+                                    ng-init="show_members=false"
+                                    ng-click="show_members=!show_members"
+                            >
+                                    ver membros
+                                    <i class="fa" ng-class="{'fa fa-caret-down':!show_members,'fa fa-caret-up':show_members}"></i>
+                            </button>
+                            <button class="btn btn-danger btn-inverse trash"></button>
+                        </div>
+
+                        <div class="container-fluid members" ng-show="show_members">
+                            <div class="row member-line">
+                                <div class="col-sm-5">
+                                    <div class="member-info">
+                                        <div class="user-icon">
+                                            <img src="{{ user.picture }}" alt="{{ user.name }}">
+                                        </div>
+                                        <b>Cecília Ramos Rodrigues</b><br>
+                                        (ceci.ramos@dominio.com.br)
+                                    </div>
+                                </div>
+                                <div class="col-sm-3">
+                                    <button class="btn btn-sm btn-danger btn-inverse delete">remover do grupo</button>
+                                </div>
+                            </div>
+
+                            <div class="row member-line">
+                                <div class="col-sm-5">
+                                    <div class="member-info">
+                                        <div class="user-icon">
+                                            <img src="{{ user.picture }}" alt="{{ user.name }}">
+                                        </div>
+                                        <b>Cecília Ramos Rodrigues</b><br>
+                                        (ceci.ramos@dominio.com.br)
+                                    </div>
+                                </div>
+                                <div class="col-sm-3">
+                                    <button class="btn btn-sm btn-danger btn-inverse delete">remover do grupo</button>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </section>

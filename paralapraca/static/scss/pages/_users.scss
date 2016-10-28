@@ -53,5 +53,42 @@
             }
         }
     }
+}
 
+.groups-list {
+    .header {
+        color: $gray;
+        font-size: $font-size-small;
+        font-weight: $normal;
+        margin-bottom: 5px;
+        text-transform: lowercase;
+    }
+    .group {
+        .group-name {
+            color: $brand-primary;
+            font-weight: $bold;
+        }
+        .members-number {
+            font-weight: $bold;
+        }
+    }
+    .group + .group {
+        margin-top: 15px;
+    } 
+    .members {
+        clear: both;
+        padding-top: 10px; 
+        .member-line + .member-line {
+            margin-top: 15px;
+        }
+        .member-info {
+            padding-left: 50px;
+        }
+    }
+    .actions {
+        text-align: right;
+        .btn + .btn {
+            margin-left: 5px;
+        }
+    }
 }
