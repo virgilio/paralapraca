@@ -4,6 +4,26 @@
 chat rocketchat
 {% endblock %}
 
+{% block body_attrs %}
+  ng-app="header"
+{% endblock %}
+
 {% block content %}
-<iframe src="{{ rocketchat.address }}" name="auth_iframe"></iframe>
+<iframe id="chat-frame" src="{{ rocketchat.address }}" name="chat"></iframe>
+{% endblock %}
+
+
+{% block footer %}
+<script type="text/javascript">(function triggerrc($){
+
+    $('#chat-frame').on('load', function(){
+        var iframeWindow = this.contentWindow;
+        iframeWindow.postMessage({
+            externalCommand: 'call-custom-oauth-login',
+            service: '{{ rocketchat.service }}'
+        }, '*');
+    });
+    window.addEventListener("message", console.log.bind(console), false);
+
+})(jQuery);</script>
 {% endblock %}

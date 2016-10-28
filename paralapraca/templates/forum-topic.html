@@ -156,12 +156,11 @@
                           <files files="topic.files" editable="false"></files>
                       </div>
                     </div>
-                    <!-- /Exibição de tópico -->
                     <div class="actions">
                         <div class="pull-left">
                             <a ng-click="topic_like(topic)" ng-class="{ 'active': topic.user_like }" class="action liked"><span>gostei</span></a>
                             <!--<a class="action used">usar</a>-->
-                            <a ng-click="topic.show_comment_input=true" class="action replies"><span>comentar</span></a>
+                            <a ng-click="topic.show_comment_input = true;" class="action replies"><span>comentar</span></a>
                             <a class="action edit" ng-click="updating=true" ng-show="topic.author.id == user.id && !updating">editar</a>
                             <span class="last-update">última edição {{ topic.updated_at | date : "d 'de' MMMM 'de' yyyy 'às' HH'h'mm" }}</span>
                         </div>
@@ -179,20 +178,23 @@
                             <!--<span class="action used">7 usaram</span>-->
                         </div>
                     </div>
+                    <!-- /Exibição de tópico -->
                     <!-- Novo comentário -->
-                    <form class="comments-form" ng-if="topic.show_comment_input" ng-init="comment = new_comment()">
-                        <textarea ui-tinymce
-                                  ng-model="comment.text"
-                                  placeholder="Escreva aqui o seu comentário"></textarea>
-                        <button id="select-file-topic"
-                               class="btn btn-xs btn-primary attach pull-left"
-                               ngf-select="uploadCommentFiles($file, comment)"
-                               ngf-multiple="false">anexar arquivo</button>
-                        <button class="btn btn-xs btn-success reply pull-right" ng-click="save_comment(comment, null); topic.show_comment_input=false">comentar</button>
-                        <button class="btn btn-xs btn-danger delete pull-right" ng-click="topic.show_comment_input=false">descartar</button>
+                    <div id="new-comment">
+                        <form class="comments-form" ng-if="topic.show_comment_input" ng-init="comment = new_comment()">
+                            <textarea ui-tinymce
+                                      ng-model="comment.text"
+                                      placeholder="Escreva aqui o seu comentário"></textarea>
+                            <button id="select-file-topic"
+                                   class="btn btn-xs btn-primary attach pull-left"
+                                   ngf-select="uploadCommentFiles($file, comment)"
+                                   ngf-multiple="false">anexar arquivo</button>
+                            <button class="btn btn-xs btn-success reply pull-right" ng-click="save_comment(comment, null); topic.show_comment_input=false">comentar</button>
+                            <button class="btn btn-xs btn-danger delete pull-right" ng-click="topic.show_comment_input=false">descartar</button>
 
-                        <files files="comment.files" editable="true" progress="comment.progress"></files>
-                    </form>
+                            <files files="comment.files" editable="true" progress="comment.progress"></files>
+                        </form>
+                    </div>
                     <!-- /Novo comentário -->
                     <div class="comments">
                         <h3 class="comments-title">Comentários</h3>
@@ -231,7 +233,7 @@
                                     <a ng-click="comment_like(comment)"
                                        ng-class="{ 'active': comment.user_like }"
                                        class="action liked"><span>gostei</span></a>
-                                    <a ng-click="comment.show_comment_input=true" class="action replies"><span>responder</span></a>
+                                    <a ng-click="new_reply(comment)" class="action replies"><span>responder</span></a>
                                     <a class="action edit" ng-click="comment.updating=true" ng-show="comment.author.id == user.id && !comment.updating">editar</a>
                                     <span class="last-update">{{ comment.updated_at | date : "d 'de' MMMM 'de' yyyy 'às' HH'h'mm" }}</span>
                                 </div>
@@ -244,23 +246,7 @@
                                     <!--<span class="action replies">30 respostas</span>-->
                                 </div>
                             </div>
-                            <!-- Criar nova resposta a comentário -->
-                            <div class="info">
-                                <form class="comments-form" ng-if="comment.show_comment_input" ng-init="reply = new_comment()">
-                                    <textarea ui-tinymce
-                                              ng-model="reply.text"
-                                              placeholder="Escreva aqui o seu comentário"></textarea>
-                                    <button id="select-file-comment"
-                                           class="btn btn-xs btn-primary attach pull-left"
-                                           ngf-select="uploadCommentFiles($file, reply)"
-                                           ngf-multiple="false">anexar arquivo</button>
-                                    <button class="btn btn-xs btn-success reply pull-right" ng-click="save_comment(reply, comment);comment.show_comment_input=false;">responder</button>
-                                    <button class="btn btn-xs btn-danger delete pull-right" ng-click="comment.show_comment_input=false">descartar</button>
-
-                                    <files files="reply.files" editable="true" progress="reply.progress"></files>
-                                </form>
-                            </div>
-                            <!-- /Criar nova resposta a comentário -->
+                            <!-- /Exibição de um comentário -->
 
                             <!-- Resposta a um comentário -->
                             <div class="thread" ng-repeat="reply in comment.comment_replies">
@@ -293,29 +279,13 @@
                                         <files files="changed_reply.files" editable="true" progress="changed_reply.progress"></files>
                                     </form>
                                     <!-- /Edição de resposta a um comentário -->
-
-                                    <!-- Criação de resposta à resposta de um comentário -->
-                                    <form class="comments-form" ng-if="reply.show_comment_input" ng-init="new_reply = new_comment()">
-                                        <textarea ui-tinymce
-                                                  ng-model="new_reply.text"
-                                                  placeholder="Escreva aqui o seu comentário"></textarea>
-                                        <button id="select-file-reply"
-                                                class="btn btn-xs btn-primary attach pull-left"
-                                                ngf-select="uploadCommentFiles($file, new_reply)"
-                                                ngf-multiple="false">anexar arquivo</button>
-                                        <button class="btn btn-xs btn-success reply pull-right" ng-click="save_comment(new_reply, comment);reply.show_comment_input=false;">responder</button>
-                                        <button class="btn btn-xs btn-danger delete pull-right" ng-click="reply.show_comment_input=false">descartar</button>
-
-                                        <files files="new_reply.files" editable="true" progress="new_reply.progress"></files>
-                                    </form>
-                                    <!-- /Criação de resposta à resposta de um comentário -->
                                 </div>
                                 <div class="actions">
                                     <div class="pull-left">
                                         <a ng-click="comment_like(reply)"
                                            ng-class="{ 'active': reply.user_like }"
                                            class="action liked"><span>gostei</span></a>
-                                        <a ng-click="reply.show_comment_input=true" class="action replies"><span>responder</span></a>
+                                        <a ng-click="new_reply(comment)" class="action replies"><span>responder</span></a>
                                         <a class="action edit" ng-click="reply.updating=true" ng-show="reply.author.id == user.id && !reply.updating">editar</a>
                                         <span class="last-update">{{ reply.updated_at | date : "d 'de' MMMM 'de' yyyy 'às' HH'h'mm" }}</span>
                                     </div>
@@ -329,8 +299,27 @@
                                 </div>
                             </div>
                             <!-- /Resposta a um comentário -->
+
+                            <!-- Criar nova resposta a comentário -->
+                            <div id="new-answer-{{comment.id}}" class="info">
+                                <form class="comments-form" ng-if="comment.show_comment_input" ng-init="reply = new_comment()">
+                                    <textarea ui-tinymce
+                                              ng-model="reply.text"
+                                              placeholder="Escreva aqui o seu comentário"></textarea>
+                                    <button id="select-file-comment"
+                                           class="btn btn-xs btn-primary attach pull-left"
+                                           ngf-select="uploadCommentFiles($file, reply)"
+                                           ngf-multiple="false">anexar arquivo</button>
+                                    <button class="btn btn-xs btn-success reply pull-right" ng-click="save_comment(reply, comment);comment.show_comment_input=false;">responder</button>
+                                    <button class="btn btn-xs btn-danger delete pull-right" ng-click="comment.show_comment_input=false">descartar</button>
+
+                                    <files files="reply.files" editable="true" progress="reply.progress"></files>
+                                </form>
+                            </div>
+                            <!-- /Criar nova resposta a comentário -->
                         </div>
                         <!-- /Exibição de um comentário -->
+                        <a id="last-comment"></a>
                     </div>
                 </div>
             </div>
