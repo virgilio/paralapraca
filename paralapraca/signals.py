@@ -35,6 +35,6 @@ def rc_create_user(sender, **kwargz):
     request  = urllib2.Request(url, data, headers)
     try:
         response = urllib2.urlopen(request)
-        return response.read()
+        logger.info('Created on RocketChat: %s' % response.read())
     except urllib2.HTTPError as e:
         logger.error(e)
