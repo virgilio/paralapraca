@@ -23,12 +23,14 @@ ng-app="certification"
 
     <!-- ACTIONS -->
     <div class="actions-menu" fixed-bar>
-        <div class="container">
-            <div class="actions-buttons">
-                <!--<button class="btn btn-danger">{% trans 'Cancel' %} | <i class="fa fa-times"></i></button>-->
-                <button class="btn btn-success" ng-click="saveTemplate()">{% trans 'Save' %} | <i class="fa fa-save"></i></button>
-            </div>
+        <div class="container-fluid">
+          <div class="row">
             {% include 'administration/_alert.html' %}
+            <div class="actions-buttons pull-right">
+                <!--<button class="btn btn-danger">{% trans 'Cancel' %} | <i class="fa fa-times"></i></button>-->
+                <button class="btn btn-sm btn-primary btn-inverse save" ng-click="saveTemplate()">{% trans 'Save' %}</button>
+            </div>
+          </div>  
         </div>
     </div>
     <!-- END ACTIONS -->
@@ -88,7 +90,7 @@ ng-app="certification"
                         <file ng-model="images.cert_logo" name="logo"></file>
                       </div>
 
-                      <div class="pull-left">Realizado em: {{ site.domain }}</div>
+                      <div>Realizado em: {{ site.domain }}</div>
                     </footer>
                 </div>
             </div>
