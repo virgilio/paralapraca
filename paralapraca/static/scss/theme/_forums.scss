@@ -13,7 +13,15 @@
     .filters-header {
         background-color: #C74E00;
     }
-    .category, .tag {
+    .category {
+        @include button-hover($gray,$gray,$yellow,#fff);
+    }
+    .tag {
         @include button-hover($gray,$gray,#fff,$yellow);
+    }
+    .form-group {
+        input[type=text] {
+            border-color: lighten($orange, 10%);
+        }
     }
 }

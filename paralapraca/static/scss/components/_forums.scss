@@ -54,7 +54,29 @@
         overflow: hidden;
         padding: 7px 0; 
     }
-    .category, .tag {
+    .category {
+        @include button-hover($gray,$gray,$brand-info,#fff);
+    }
+    .tag {
         @include button-hover($gray,$gray,#fff,$brand-info);
+        margin: 5px 3px 0 0;
+    }
+    .category, .tag {
+        font-size: 11px;
+        margin-right: 0;
+        &:before {
+            font-size: $font-size-base;
+        }
+        &.active {
+            @include button-hover($gray,$gray,#fff,#fff);
+        }
+    }
+    .form-group {
+        margin-bottom: 0;
+        .form-control {
+            height: 25px;
+            max-width: 265px;
+            padding: 0px 3px !important;
+        }
     }
 }

@@ -46,25 +46,34 @@
                 <button class="btn btn-link filter">filtrar por tags e categorias</button>
             </div>
         </div> -->
-        <div class="widget-topbar line one-column filters" ng-show="filters.categories">
+        <div class="widget-topbar line one-column filters">
             <div class="filters-header">
-                <span class="col-sm-2">
+                <span class="col-sm-3">
                     categorias
                 </span>
-                <span class="col-sm-8">
+                <span class="col-sm-7">
                     tags
                 </span>
                 <span class="col-sm-2">
                     opções
                 </span>
-            </div>
+            </div>  
             <div class="filters-options">
-                <div class="col-sm-2">
-                    <a ng-click="forumFilter('rem','cat',category)"
+                <div class="col-sm-3">
+                    <a class="category discussion">discussão</a>
+                    <a class="category schedule active">pauta</a>
+                    <a class="category record">registro</a>
+
+                    <!--<a ng-click="forumFilter('rem','cat',category)"
                        class="category"
-                       ng-repeat="category in filters.categories track by $index"><span>{{category.name}} <b>&times;</b></span></a>
+                       ng-repeat="category in filters.categories track by $index"><span>{{category.name}} <b>&times;</b></span></a>-->
                 </div>
-                <div class="col-sm-8">
+                <div class="col-sm-7">
+                    <form>
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Digite e escolha tags aqui">
+                        </div>
+                    </form>
                     <a ng-click="forumFilter('rem','tag',tag)"
                        class="tag"
                        ng-repeat="tag in filters.tags track by $index"><span>#{{tag.name}} <b>&times;</b></span></a>
