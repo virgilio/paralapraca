@@ -93,7 +93,7 @@ ng-app="course-permissions"
                             <div class="autocomplete">
                                 <input type="text" id="search-user" class="form-control" ng-model="asyncSelected"
                                         placeholder="{% trans 'Type the name, email or user name of the professor to search...' %}"
-                                        typeahead="user as user.formated_name for user in getUsers($viewValue)"
+                                        uib-typeahead="user as user.formated_name for user in getUsers($viewValue)"
                                         typeahead-loading="loadingLocations"
                                         typeahead-on-select="on_select_professor($model); asyncSelected = '';"
                                         typeahead-min-length="2"
