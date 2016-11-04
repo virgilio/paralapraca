@@ -7,9 +7,38 @@ from random import random
 from django.db.models.signals import post_save
 from django.contrib.auth import get_user_model
 from django.dispatch import receiver
+from activities.models import Answer
+from paralapraca.models import AnswerNotification
 from settings import *
 
 logger = logging.getLogger(__package__)
+
+
+@receiver(post_save, sender=Answer)
+def answer_created_or_updated(instance, **kwargz):
+
+    # All instructors of the corresponding course must be notified
+    notifiable_users = instance.activity.unit.lesson.course.professors
+    topic_id = instance.given.get('topic')
+
+    # Create the New Topic notification for appropriate users
+    for user in notifiable_users.all():
+        try:
+            notification = AnswerNotification.objects.get(
+                user=user,
+                topic_id=topic_id,
+                activity=instance.activity
+            )
+        except AnswerNotification.DoesNotExist:
+            notification = AnswerNotification.objects.create(
+                user=user,
+                topic_id=topic_id,
+                activity=instance.activity
+            )
+
+        notification.action = 'new_activity'
+        notification.is_read = False
+        notification.save()
 
 
 @receiver(post_save, sender=get_user_model())
