@@ -32,9 +32,9 @@ def rc_create_user(sender, **kwargz):
     headers = {'Content-Length': len(data)}
     headers.update(HEADERS)
 
-    request  = urllib2.Request(url, data, headers)
     try:
+        request = urllib2.Request(url, data, headers)
         response = urllib2.urlopen(request)
         logger.info('Created on RocketChat: %s' % response.read())
-    except urllib2.HTTPError as e:
+    except (urllib2.URLError, urllib2.HTTPError) as e:
         logger.error(e)
