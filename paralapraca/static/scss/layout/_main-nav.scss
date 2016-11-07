@@ -49,18 +49,6 @@
             margin-bottom: 0 !important;
         }
     }
-    .submenu {
-        border-bottom: 1px solid #fff;
-        margin-bottom: 20px;
-        padding-bottom: 20px; 
-        text-align: left; 
-        ul {
-            margin-top: 10px;
-            li {
-                margin-bottom: 10px;
-            }
-        }
-    }
     a {
         @include link-hover(#fff,#fff,transparent,#fff);
         display: inline-block;
@@ -69,6 +57,22 @@
             display: block;
             font-size: $font-size-large;
         }
+    }
+    .submenu {
+        margin-bottom: 20px;
+        ul { 
+            li {
+                font-size: 11px;
+                font-weight: $normal;
+                padding: 10px 0;
+                a {
+                    border-bottom-width: 1px !important;
+                }
+            }
+        }
+    }
+    .admin {
+        @extend %icon-briefcase;
     }
     .courses {
         @extend %icon-courses;
@@ -110,6 +114,17 @@
             &:before {
                 display: inline-block;
                 margin-right: 10px;
+            }
+        }
+        .submenu {
+            margin-bottom: 15px;
+            ul {
+                border-left: 1px solid;
+                padding-left: 10px;
+                li {
+                    font-size: 14px;   
+                    padding: 5px 0;  
+                }
             }
         }
     }

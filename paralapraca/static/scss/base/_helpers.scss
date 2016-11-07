@@ -23,6 +23,9 @@
     &-backward {
         @include icon(before, backward);
     }
+    &-briefcase {
+        @include icon(before, briefcase);
+    }
     &-caret-down {
         @include icon(after, caret-down);
     }

@@ -156,51 +156,83 @@
     @extend %list-inline;
     position: absolute;
     right: 8px;
-    top: 16px;
-    @media screen and (min-width: $screen-xs-min) {
-        top: 10px;
-    }
+    top: 17px;
     @media screen and (min-width: $screen-sm-min) {
         right: 15px;
         top: 20px;
     }
     li {
-        margin-left: 15px;
+        margin-left: 10px;
+        @media screen and (min-width: $screen-xs-min) {
+            margin-left: 15px;
+        }
     }
     a {
         display: inline-block;
         font-size: 1.6vmax;
         font-weight: $bold;
         line-height: 120%;
-        overflow: hidden;
         text-align: center;
-        @include link-hover(#000,#000,transparent,#000);
+        @include link-hover(#9b9b9b,#9b9b9b,transparent,#9b9b9b);
         border-bottom-width: 2px !important;
         @media screen and (min-width: $screen-xs-min) {
             font-size: $font-size-small;
         }
         &:before {
             display: block;
-            font-size: $font-size-large;
+            font-size: 24px;
             @media screen and (min-width: $screen-xs-min) {
+                font-size: $font-size-large;
                 margin-bottom: 5px;
             }
+        }
+        &.active {
+            @include link-hover(#000,#000,transparent,#000);
+        }
+    }
+    .chat, .notifications {
+        position: relative;
+        .bubble {
+            background-color: $brand-warning;
+            border-radius: 100%;
+            color: #fff;
+            display: block;
+            font-size: 10px;
+            height: 15px;
+            line-height: 15px;
+            position: absolute;
+            top: -3px;
+            right: -6px;
+            text-align: center;
+            width: 15px;
         }
     }
     .chat {
         @extend %icon-chat;
+        .bubble {
+            @media screen and (min-width: $screen-sm-min) {
+                top: -5px;
+                right: -5px;
+            }
+        }
     }
     .notifications {
         @extend %icon-notifications;
+        .bubble {
+            @media screen and (min-width: $screen-sm-min) {
+                top: -5px;
+                right: 18px;
+            }
+        }
     }
 }
 
 .notifications-panel {
     box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.24), 0 1px 1.5px 0 rgba(0, 0, 0, 0.12), 2px 2px 6px 0 rgba(0, 0, 0, 0.38);
-    min-width: 300px;
+    min-width: 320px;
     max-width: 420px;
     position: fixed;
-    right: 15px;
+    right: 0;
     top: 61px;
     z-index: 1100;
     @media screen and (min-width: $screen-sm-min) {
@@ -215,10 +247,9 @@
         height: 0;
         width: 0;
         position: absolute;
-        right: 7px;
+        right: 3px;
         top: -15px;
         @media screen and (min-width: $screen-xs-min) {
-            right: 31px;
             top: -10px;
         }
         @media screen and (min-width: $screen-sm-min) {
