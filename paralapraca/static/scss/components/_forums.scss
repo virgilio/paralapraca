@@ -56,6 +56,7 @@
     }
     .category {
         @include button-hover($gray,$gray,$brand-info,#fff);
+        margin-right: 0;
     }
     .tag {
         @include button-hover($gray,$gray,#fff,$brand-info);
@@ -63,7 +64,6 @@
     }
     .category, .tag {
         font-size: 11px;
-        margin-right: 0;
         &:before {
             font-size: $font-size-base;
         }
