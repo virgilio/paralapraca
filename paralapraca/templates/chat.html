@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load join_path %}
 
 {% block wrapper_classes %}{{ block.super }}
 chat rocketchat
@@ -9,7 +10,7 @@ chat rocketchat
 {% endblock %}
 
 {% block content %}
-<iframe id="chat-frame" src="{{ rocketchat.address }}channel/general" name="chat"></iframe>
+<iframe id="chat-frame" src="{% join_path rocketchat.address 'channel/general' %}" name="chat"></iframe>
 {% endblock %}
 
 
