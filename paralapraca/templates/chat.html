@@ -9,17 +9,18 @@ chat rocketchat
 {% endblock %}
 
 {% block content %}
-<iframe id="chat-frame" src="{{ rocketchat.address }}" name="chat"></iframe>
+<iframe id="chat-frame" src="{{ rocketchat.address }}channel/general" name="chat"></iframe>
 {% endblock %}
 
 
 {% block footer %}
 <script type="text/javascript">(function triggerrc($){
-    var tries = 10;
+    var tries = 100;
 
     var itid = setInterval(function(){
         if(tries-- < 1) {
             clearInterval(itid);
+            console.error('Falha na tentativa de login')
             return;
         }
 
@@ -34,7 +35,7 @@ chat rocketchat
     }, 300);
 
     window.addEventListener("message", function(data) {
-        if(data.eventName !== 'unread-changed') {
+        if(data.eventName === "custom-oauth-callback") {
             clearInterval(itid);
         }
     }, false);
