@@ -14,7 +14,7 @@
           </discussion>
           <answer ng-if="notification.action === 'new_activity'">
               <span class="icon"><img ng-src="{{notification.topic.author.picture || '/static/img/avatar-default.png'}}"></span>
-              <span class="info"><b><a ng-href="/profile/{{ notification.topic.author.username}}">{{notification.topic.author.first_name || notification.topic.author.username}}</a></b> respondeu a <a ng-href="{{notification.activity_url}}">uma atividade</a> no <a href="{{notification.course_url}}">{{notification.course_name}}</a></span>
+              <span class="info"><b><a ng-href="/profile/{{ notification.topic.author.username}}">{{notification.topic.author.first_name || notification.topic.author.username}}</a></b> respondeu a <a ng-href="{{notification.activity_url}}">uma atividade</a> no <a href="/course/{{notification.course_slug}}/intro/">{{notification.course_name}}</a></span>
               <span class="date"> {{notification.date | dateFilter }}</span>
           </answer>
         </li>
