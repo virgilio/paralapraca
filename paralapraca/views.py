@@ -7,7 +7,8 @@ from django.http import HttpResponse, HttpResponseForbidden
 from django.utils.decorators import method_decorator
 from django.views.decorators.csrf import csrf_exempt
 from django.views.generic.base import TemplateView, View
-from rest_framework import viewsets
+from rest_framework import viewsets, status
+from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
 from paralapraca.models import AnswerNotification
 from paralapraca.serializers import AnswerNotificationSerializer
@@ -68,6 +69,7 @@ class AnswerNotificationViewSet(viewsets.ModelViewSet):
     queryset = AnswerNotification.objects.all()
     serializer_class = AnswerNotificationSerializer
     permission_classes = [IsAuthenticated]
+    lookup_field = 'topic'
 
     def get_queryset(self):
         queryset = super(AnswerNotificationViewSet, self).get_queryset()
@@ -77,3 +79,14 @@ class AnswerNotificationViewSet(viewsets.ModelViewSet):
         if limit_to:
             queryset = queryset[:int(limit_to)]
         return queryset
+
+    def update(self, request, **kwargs):
+        # Find the corresponding AnswerNotification for this call and mark it as read
+        try:
+            notification = AnswerNotification.objects.get(topic=kwargs.get('topic'), user=request.user)
+            notification.is_read = True
+            notification.save(skip_date=True)
+            return Response(self.get_serializer(notification).data, status=status.HTTP_200_OK)
+        except AnswerNotification.DoesNotExist:
+            return Response(status=status.HTTP_404_NOT_FOUND)
+            pass
