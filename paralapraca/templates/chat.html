@@ -15,8 +15,8 @@ chat rocketchat
 
 
 {% block footer %}
-<script type="text/javascript">(function triggerrc($){
-    var tries = 100;
+<script type="text/javascript">jQuery(function triggerrc($){
+    var tries = 15;
 
     var itid = setInterval(function(){
         if(tries-- < 1) {
@@ -35,11 +35,16 @@ chat rocketchat
 
     }, 1000);
 
-    window.addEventListener("message", function(data) {
-        if(data.eventName === "custom-oauth-callback") {
+    window.addEventListener("message", function(resp) {
+        var data = resp.data;
+        var stop_login = data.eventName === "custom-oauth-callback"
+                      || (data.eventName === "status-changed" && data.data === "online")
+                      || data.eventName == "room-opened";
+
+        if( stop_login ) {
             clearInterval(itid);
         }
     }, false);
 
-})(jQuery);</script>
+});</script>
 {% endblock %}
