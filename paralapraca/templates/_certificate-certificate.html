@@ -1,0 +1,29 @@
+<div class="container">
+    <div class="certificate-container">
+        <div class="certificate-logos">
+            <img src="/static/img/logo-avante.png" alt="AVANTE" class="avante">
+            <img src="/static/img/site-logo-orange.svg" alt="{{ site.name }}" class="paralapraca">
+            <div class="institute-logo">
+                <img alt="Logo Instituto" src="{{ cert_template.cert_logo_url }}">
+            </div>
+        </div>            
+        <div class="certificate-title">Certificado</div>
+        <div class="certificate-info">
+            <p><strong>cert_template.organization_name</strong></p>
+            <p>confere a</p>
+            <p class="student">{{ object.course_student.user.get_full_name }}</p>
+            <p>o comprovante de conclusão do curso online <strong>{{ object.course_student.course.name }}</strong> que possui carga horária de <strong>40 horas</strong>.</p>
+        </div>
+        <footer>
+            <div class="credits-section">
+                <p><b>Emitido em:</b> {{ object.modified_date | date:"d/m/Y" }}</p>
+                <p><b>Realizado em:</b> ({{ site.domain }})</p>
+                <p><b>URL de validação:</b> <a href="{% url 'certificate' object.link_hash %}">{{ site.domain }}{% url 'certificate' object.link_hash %}</a></p>
+            </div>
+            <div class="coordinator-section">
+                {{ cert_template.name }}<br>
+                {{ cert_template.role }}
+            </div>
+        </footer>
+    </div>
+</div>

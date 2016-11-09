@@ -1,3 +1,8 @@
+#certificate-content {
+    .certificate-container {
+        margin-top: 30px;
+    }
+}
 .edit-certificates {
     margin-top: 20px;
 
@@ -5,49 +10,44 @@
         color: #000;
     }
 }
-.institute-logo {
-    margin: 0 auto; 
-    max-width: 300px;
-    padding: 1em;
-    position: relative;
-    text-align: center;
-    img {
-        max-height: 60px;
-    }
-}
 .certificate-container {
-    background: url('');
-    height: 550px;
-    max-width: 800px;
+    background-image: url('../img/bg-certificate.svg');
+    height: 504px;
+    max-width: 866px;
     margin: 0 auto;
+    padding: 30px;
+    position: relative;
+    .certificate-title {
+        font-family: $font-family-serif;
+        font-size: 64px;
+        line-height: 64px;
+        margin: 20px 0;
+        text-align: center;
+        text-transform: uppercase;
+    }
+    .certificate-info {
+        text-align: center;
+        .student {
+            font-family: $font-family-serif;
+            font-size: 22px;
+            font-weight: $bold;
+        }
+    }
+    .credits-section {
+        float: left;
+    }
     .coordinator-section {
-        margin: 0 auto; 
+        float: right;
         width: 200px;
     }
     footer {
         font-size: $font-size-small;
-        text-align: center;
+        overflow: hidden;
+        padding: 20px;
     }
     &.receipt {
-        background-image: url('');
-        .coordinator-section {
-
-        }
-        .student-name {
-
-        }
-        .coordinator-name {
-
-        }
-        .course-coordinator {
-
-        }
-        .logo {
-
-        }
-        footer {
-
-        }
+        background-image: url('../img/bg-receipt.svg');
+        padding: 60px 140px;
     }
 }
 .certificate-signature {
@@ -67,7 +67,15 @@
 }
 .certificate-admin {
     counter-reset: steps-counter;
-    position: relative;
+    .institute-logo {
+        max-width: 150px;
+        input {
+            width: 120px;
+        }
+    }
+    .certificate-info {
+
+    }
     .text-muted, .student {
         cursor: not-allowed;
     }
