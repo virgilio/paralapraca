@@ -49,9 +49,6 @@
 .widget-header {
     .btn {
         margin-top: 10px;
-        @media screen and (min-width: $screen-sm-min) {
-            margin-top: -16px;
-        }
     }
     @media screen and (min-width: $screen-sm-min) {
         .btn + .btn {
@@ -112,6 +109,15 @@
 .courses-widget {
     @include card(rgba($gray,0.5));
     color: #000;
+
+    .widget-header {
+        .btn {
+            margin-top: -14px;
+            @media screen and (min-width: $screen-sm-min) {
+                margin-top: -16px;
+            }
+        }
+    }
 
     .widget-filter {
         .form-control {
