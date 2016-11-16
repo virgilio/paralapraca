@@ -166,6 +166,8 @@
                 li {
                     a {
                         border: 0;
+                        font-size: $font-size-small;
+                        height: initial !important;
                         margin: 0; 
                         max-width: initial;
                         padding: 6px 12px;
@@ -234,6 +236,32 @@
                         } 
                     }
                 }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: $screen-xs-max) {
+    #admin {
+        .main-header {
+            .course-sections {
+                a {
+                    width: 25.5%;
+                    &:last-of-type {
+                        border-right: 1px solid #c9a30d;
+                    }
+                }
+                .dropdown {
+                    width: 24%;
+                    .tools {
+                        padding: 8% 30%;
+                        width: 100%;
+                    }
+                }
+            }
+            .dropdown .dropdown-menu li a {
+                border-right: 0;
+                width: 100%;
             }
         }
     }
@@ -848,7 +876,18 @@ ul.uploaded-files-list {
         }
     }
     .uploaded-files-list {
+        h4 {
+            font-family: $font-family-sans-serif;
+            font-size: $font-size-base;
+            font-weight: $bold; 
+        }
         li {
+            height: 35px;
+            width: 100%;
+        }
+        a {
+            float: left;
+            max-width: 80%;
             overflow: hidden;
             white-space: nowrap;
             text-overflow: ellipsis;

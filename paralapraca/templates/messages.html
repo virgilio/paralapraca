@@ -16,12 +16,14 @@ wrapper-course-lesson
     {% javascript 'messages' %}
 {% endblock %}
 
-
+{% block body_attrs %}
+  ng-app="messages"
+{% endblock %}
 
 {% block content %}
 
 <!--  COURSE CONTENT  -->
-<div class="course course-messages" ng-app="messages">
+<div class="course course-messages">
 
     {% if in_admin %}
         {% include "_admin_header_inline.html" with course=course %}

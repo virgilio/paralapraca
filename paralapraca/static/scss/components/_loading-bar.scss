@@ -1,0 +1,27 @@
+#loading-bar {
+    .bar {
+        background-color: $brand-primary !important;
+    }
+    .peg {
+        -moz-box-shadow: $brand-primary 1px 0 6px 1px !important;
+        -ms-box-shadow: $brand-primary 1px 0 6px 1px !important;
+        -webkit-box-shadow: $brand-primary 1px 0 6px 1px !important;
+        box-shadow: $brand-primary 1px 0 6px 1px !important;
+    }
+}
+
+.loading-background {
+    background: rgba(255,255,255,0.6);
+    bottom: 0;
+    left: 0;
+    top: 0;
+    right: 0;
+    position: fixed;
+}
+
+.loading-spinner {
+    color: $brand-primary !important;
+    position: absolute;
+    left: 52%;
+    top: 50%;
+}

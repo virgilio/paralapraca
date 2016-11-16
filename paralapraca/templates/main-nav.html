@@ -4,21 +4,6 @@
 <nav class="main-nav" role="navigation">
     <ul class="user-nav">
     {% if user.is_authenticated %}
-        {% if user.is_superuser %}
-            <!--<li class="submenu">-->
-                <!--<ul class="admin-nav">-->
-                    <!--<li><a href="{% url 'administration.home' %}">{% trans 'Home edit' %}</a></li>-->
-                    <!--<li><a href="{% url 'administration.courses' %}" id="admin-link">{% trans 'Courses' %}</a></li>-->
-                    <!--<li><a href="{% url 'administration.users' %}">{% trans 'Users' %}</a></li>-->
-                <!--</ul>-->
-            <!--</li>-->
-        {% elif user|is_coordinator %}
-            <!--<li class="submenu">-->
-                <!--<a href="{% url 'administration.courses' %}">-->
-                    <!--{% trans "Admin" %}-->
-                <!--</a>-->
-            <!--</li>-->
-        {% endif %}
         <li><a href="{% url 'profile' %}" class="profile">{% trans "Profile" %}</a></li>
         <li><a href="{% url 'user_notes' %}" class="notes">{% trans "Notes" %}</a></li>
         <!--<li><a href="{% url 'user_courses' %}" class="courses">{% trans 'Meus módulos' %}</a></li>-->
@@ -26,9 +11,30 @@
         <!--<li><a href="#" class="repositories">{% trans "Repository" %}</a></li>-->
         <li><a href="{% url 'discussion:forum-home' %}" class="forum">Fóruns</a></li>
         <!--<li><a href="#" class="help">{% trans "Help" %}</a></li>-->
+        <!-- <li><a href="{% url 'paralapraca:chat_screen' %}" class="profile">Chat</a></li> -->
+        {% if user.is_superuser %}
+        <li class="submenu">
+            <a class="admin"
+                ng-init="collapsedSubmenu=true"
+                ng-click="collapsedSubmenu=!collapsedSubmenu">
+                <span class="visible-xs-inline">Admin</span>
+                <span class="hidden-xs">Administração</span>
+            </a>
+            <ul uib-collapse="collapsedSubmenu">
+                <li><a href="{% url 'administration.courses' %}" id="admin-link">{% trans 'Módulos' %}</a></li>
+                <!--<li><a href="{% url 'administration.users' %}">{% trans 'Usuários e grupos' %}</a></li>-->
+            </ul>
+        </li>
+        {% elif user|is_coordinator %}
+        <li class="submenu">
+            <a href="{% url 'administration.courses' %}">
+                {% trans "Admin" %}
+            </a>
+        </li>
+        {% endif %}
         <li><a href="{% url 'timtec_logout' %}" class="logout">{% trans "Logout" %}</a></li>
     {% else %}
-        <li><a href="{% url 'courses' %}" class="courses">{% trans 'Courses' %}</a></li>
+        <li><a href="{% url 'courses' %}" class="courses">{% trans 'Módulos' %}</a></li>
         <li>
             <a href="#" class="dropdown-toggle login" data-toggle="dropdown">{% trans 'Sign In' %}</a>
             {% include '_login_modal.html' %}

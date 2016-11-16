@@ -31,6 +31,7 @@
 @import "components/_dropdown";
 @import "components/_editable-content";
 @import "components/_headers";
+@import "components/_loading-bar";
 @import "components/_filters";
 @import "components/_forums";
 @import "components/_modals";
@@ -47,8 +48,10 @@
 @import "layout/_main-nav";
 
 //== Pages styles
+@import "pages/_certificate";
 @import "pages/_course-activity";
 @import "pages/_course-content";
+@import "pages/_course-material";
 @import "pages/_course-stats";
 @import "pages/_courses-admin";
 @import "pages/_courses-page";
@@ -58,6 +61,7 @@
 @import "pages/_profile";
 
 //== Vendor style
+@import "vendor/_dropzone.scss";
 //@import "vendor/flatui/checkbox-and-radio.scss";
 
 // Import theme's files
@@ -67,6 +71,7 @@
 //== Base styles
 @import "theme/_actions-menu";
 @import "theme/_buttons";
+@import "theme/_certificate";
 @import "theme/_course-activity";
 @import "theme/_course-content";
 @import "theme/_course-box";
@@ -78,6 +83,7 @@
 @import "theme/_globals";
 @import "theme/_headers";
 @import "theme/_home";
+@import "theme/_loading-bar";
 @import "theme/_login";
 @import "theme/_my-courses";
 @import "theme/_notes";
@@ -85,3 +91,4 @@
 @import "theme/_site-footer";
 @import "theme/_site-header";
 @import "theme/_widgets";
+@import "theme/_chat"

@@ -1,0 +1,20 @@
+<html>
+    <head>
+        <style type="text/css">
+            h2 {
+                color: white;
+            }
+        </style>
+    </head>
+    <body>
+        <h2>Carreagando ...</h2>
+        <script type="text/javascript">
+            window.parent.postMessage({
+              externalCommand: 'call-custom-oauth-login',
+              service: '{{ rocketchat.service }}'
+            }, '*');
+
+            window.addEventListener("message", console.log.bind(console), false);
+        </script>
+    </body>
+</html>

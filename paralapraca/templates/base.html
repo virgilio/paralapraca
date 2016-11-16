@@ -7,7 +7,7 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
 
     <title>{% block title %}{{ site.name }}{% endblock %}</title>
 
@@ -31,8 +31,11 @@
     <script type="text/javascript" src="{% static 'js/vendor/pagedown/Markdown.Converter.js' %}" charset="utf-8"></script>
     <script type="text/javascript" src="{% static 'js/vendor/pagedown/Markdown.Editor.js' %}" charset="utf-8"></script>
     <script type="text/javascript" src="{% static 'js/vendor/pagedown/Markdown.Sanitizer.js' %}" charset="utf-8"></script>
+    <script type='text/javascript' src="{% static 'angular-loading-bar/src/loading-bar.js' %}"></script>
 
     {% block js %}{% endblock %}
+
+    <link rel='stylesheet' href="{% static 'angular-loading-bar/src/loading-bar.css' %}" type='text/css' media='all' />
 
     {% analytics %}
     <script type="text/javascript" charset="utf-8">

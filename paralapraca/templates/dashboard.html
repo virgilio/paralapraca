@@ -94,15 +94,25 @@
 
         <header class="widget-header line one-column">
             <div class="column">
-                <h2 class="widget-title">Fóruns</h2>
-
-                <a class="btn btn-success list-all" href="/discussion/">mostrar todos</a>
-
-                <a class="btn btn-success new-topic" href="/discussion/topic/new/#!/topic/new/">criar novo tópico</a>
-
-                <!-- visto apenas por assessoras
-                    <a class="btn btn-success see-stats" href="#">ver estatísticas</a>
-                -->
+                <div class="pull-left">
+                    <h2 class="widget-title">Fóruns</h2>
+                </div>
+                <div class="pull-right hidden-xs">
+                    <a class="btn btn-success list-all" href="/discussion/">mostrar todos</a>
+                    <a class="btn btn-success new-topic" href="/discussion/topic/new/#!/topic/new/">criar novo tópico</a>
+                    <!-- visto apenas por assessoras
+                        <a class="btn btn-success see-stats" href="#">ver estatísticas</a>
+                    -->
+                </div>
+                <div class="pull-right dropdown visible-xs">
+                    <button class="btn btn-default list-all dropdown-toggle" type="button" id="dropdownOptions" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                        opções
+                    </button>
+                    <ul class="dropdown-menu dropdown-options" aria-labelledby="dropdownOptions">
+                        <li><a href="/discussion/">mostrar todos</a></li>
+                        <li><a href="/discussion/topic/new/#!/topic/new/">criar novo tópico</a></li>
+                    </ul>
+                </div>
 
                 <!-- <form class="widget-filter form-inline">
                     <input class="form-control" type="text" placeholder="Busca nos fóruns...">

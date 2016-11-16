@@ -1,0 +1,15 @@
+#loading-bar {
+    .bar {
+        background-color: $orange !important;
+    }
+    .peg {
+        -moz-box-shadow: $orange 1px 0 6px 1px !important;
+        -ms-box-shadow: $orange 1px 0 6px 1px !important;
+        -webkit-box-shadow: $orange 1px 0 6px 1px !important;
+        box-shadow: $orange 1px 0 6px 1px !important;
+    }
+}
+
+.loading-spinner {
+    color: $orange !important;
+}

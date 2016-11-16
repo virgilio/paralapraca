@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% load join_path %}
+
+{% block wrapper_classes %}{{ block.super }}
+chat rocketchat
+{% endblock %}
+
+{% block body_attrs %}
+  ng-app="header"
+{% endblock %}
+
+{% block content %}
+<iframe id="chat-frame" src="{% join_path rocketchat.address 'channel/general' %}" name="chat"></iframe>
+{% endblock %}
+
+
+{% block footer %}
+<script type="text/javascript">jQuery(function triggerrc($){
+    var tries = 15;
+
+    var itid = setInterval(function(){
+        if(tries-- < 1) {
+            clearInterval(itid);
+            console.error('Falha na tentativa de login')
+            return;
+        }
+
+        $('#chat-frame').each(function(){
+            var iframeWindow = this.contentWindow;
+            iframeWindow.postMessage({
+                externalCommand: 'call-custom-oauth-login',
+                service: '{{ rocketchat.service }}'
+            }, '*');
+        });
+
+    }, 1000);
+
+    window.addEventListener("message", function(resp) {
+        var data = resp.data;
+        var stop_login = data.eventName === "custom-oauth-callback"
+                      || (data.eventName === "status-changed" && data.data === "online")
+                      || data.eventName == "room-opened";
+
+        if( stop_login ) {
+            clearInterval(itid);
+        }
+    }, false);
+
+});</script>
+{% endblock %}

@@ -21,6 +21,7 @@
     <script type="text/javascript" src="{% static 'ng-file-upload/ng-file-upload.js' %}"></script>
     <script type="text/javascript" src="{% static 'angular-sanitize/angular-sanitize.js' %}"></script>
     <script type="text/javascript" src="{% static 'angular-ui-select/dist/select.js' %}"></script>
+    <script type="text/javascript" src="{% static 'angular-scroll/angular-scroll.js' %}"></script>
     {% endcompress %}
     <script type="text/javascript">
         tinyMCE.baseURL = '/static/tinymce-dist/';
@@ -176,7 +177,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr ng-repeat="topic in forum.topics">
+                            <tr ng-repeat="topic in forum.topics" ng-class="{'new': topic.read !== true}">
                                 <td>
                                     <a ng-href="/discussion/topic/#!/topic/{{ topic.id }}"><span class="thread-name">{{ topic.title }}</span></a>
                                     <span class="last-update">Por <a ng-href="/profile/{{ topic.author.username }}">{{topic.author.first_name + " " + topic.author.last_name}}</a> | Última atividade <b>{{ topic.last_activity_at | dateFilter }}</b></span>
