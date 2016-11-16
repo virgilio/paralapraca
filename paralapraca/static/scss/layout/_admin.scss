@@ -74,12 +74,6 @@
             .activity {
                 border: 0;
                 margin-top: 20px;
-                @media (min-width: $screen-md-min) and (max-width: $screen-md-max) {
-                    width: 65%;
-                }
-                @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
-                    width: 88%;
-                }
                 @media (max-width: $screen-xs-max) {
                     margin-top: 86px;
                 }
@@ -90,16 +84,69 @@
                 }
             }
             .activity {
+                .editable-title, .editable-text, .editable-text-box {
+                    background-color: rgba(255,255,255,0.5);
+                }
                 .editable-title {
-                    margin-bottom: 10px;
                     float: left;
+                    margin-bottom: 10px;
+                    padding: 0 3px;
                     width: 93%;
+                }
+                .editable-text {
+                    display: inline-block;
+                    width: 90%;
                 }
                 .question .btn-danger {
                     float: right;
                 }
                 .alert-info {
                     clear: both;
+                }
+                markdowneditor {
+                    .btn {
+                        border: 1px solid $gray !important;
+                        border-bottom: 0 !important;
+                        border-radius: 8px 8px 0px 0px;
+                        &:hover {
+                            color: #000;
+                        }
+                    }
+                    textarea {
+                        border: 2px solid $brand-primary;
+                        border-radius: 0;
+                        box-shadow: none;
+                    }
+                }
+                .uib-datepicker-popup.dropdown-menu {
+                    background: $brand-primary;
+                    .uib-title {
+                        color: #fff;
+                    }
+                    .uib-right, .uib-left {
+                        background-color: rgba(255, 255, 255, 0.5);
+                        height: 28px;
+                        width: 28px;
+                    }
+                    .btn-default {
+                        &.active {
+                            background-color: $brand-primary;
+                        }
+                    }
+                    thead {
+                        th {
+                            padding: 2px 2px 4px;
+                        }
+                    }
+                    tbody {
+                        .uib-month, .uib-year {
+                            .btn-default {
+                                .text-info {
+                                    color: $brand-primary;
+                                }
+                            }
+                        }
+                    }
                 }
             }
             .add-side-notes {
@@ -184,6 +231,14 @@
                 box-shadow: none;
                 margin: 0 auto;
                 max-width: 440px;
+            }
+        }
+        .add-activity-wrapper {
+            .btn {
+                margin-bottom: 10px;
+            }
+            .centered {
+                text-align: left;
             }
         }
         @media (max-width: 400px) {

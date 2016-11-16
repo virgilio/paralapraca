@@ -42,7 +42,6 @@
     &.btn-transparent {
         @include button-hover($brand-primary,$brand-primary,transparent,transparent);
         border-color: $brand-primary !important;
-        cursor: default !important;
     }
 }
 
