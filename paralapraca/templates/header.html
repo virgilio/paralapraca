@@ -37,8 +37,8 @@
     {% if user.is_authenticated %}
         <ul class="user-tools">
             <li>
-                <a class="notifications active" ng-click="show_notification = !show_notification">
-                    <!--<span class="bubble">1</span>-->
+                <a class="notifications active" ng-click="toggle_notifications()">
+                    <span class="bubble" ng-show="unread.counter">{{unread.counter}}</span>
                     <span class="hidden-xs">Notificações</span>
                 </a>
             </li>
