@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from paralapraca.models import AnswerNotification
+from paralapraca.models import AnswerNotification, UnreadNotification
 from discussion.serializers import BaseTopicSerializer, BaseCommentSerializer, TopicLikeSerializer, CommentLikeSerializer
 
 
@@ -29,3 +29,10 @@ class AnswerNotificationSerializer(serializers.ModelSerializer):
 
     def get_course_slug(self, obj):
         return obj.activity.unit.lesson.course.slug
+
+
+class UnreadNotificationSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = UnreadNotification
+        fields = ('id', 'counter', )

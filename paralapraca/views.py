@@ -10,8 +10,8 @@ from django.views.generic.base import TemplateView, View
 from rest_framework import viewsets, status
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
-from paralapraca.models import AnswerNotification
-from paralapraca.serializers import AnswerNotificationSerializer
+from paralapraca.models import AnswerNotification, UnreadNotification
+from paralapraca.serializers import AnswerNotificationSerializer, UnreadNotificationSerializer
 
 
 ROCKET_CHAT = {
@@ -90,3 +90,20 @@ class AnswerNotificationViewSet(viewsets.ModelViewSet):
         except AnswerNotification.DoesNotExist:
             return Response(status=status.HTTP_404_NOT_FOUND)
             pass
+
+
+class UnreadNotificationViewSet(viewsets.ModelViewSet):
+
+    queryset = UnreadNotification.objects.all()
+    serializer_class = UnreadNotificationSerializer
+    permission_classes = [IsAuthenticated]
+
+    def update(self, request, pk=None):
+        # Since the frontend is sending a PUT request to this view, the counter must be reset
+        unread = UnreadNotification.objects.get(user=self.request.user)
+        unread.counter = 0
+        unread.save()
+        return Response(self.get_serializer(unread).data)
+
+    def get_queryset(self):
+        return UnreadNotification.objects.filter(user=self.request.user)
