@@ -106,4 +106,9 @@ class UnreadNotificationViewSet(viewsets.ModelViewSet):
         return Response(self.get_serializer(unread).data)
 
     def get_queryset(self):
-        return UnreadNotification.objects.filter(user=self.request.user)
+        # If the user is new, a new UnreadNotification must be created
+        queryset = UnreadNotification.objects.filter(user=self.request.user)
+        if queryset.count() == 0:
+            UnreadNotification.objects.create(user=self.request.user)
+            queryset = UnreadNotification.objects.filter(user=self.request.user)
+        return queryset
