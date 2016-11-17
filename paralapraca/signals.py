@@ -8,7 +8,7 @@ from django.db.models.signals import post_save
 from django.contrib.auth import get_user_model
 from django.dispatch import receiver
 from activities.models import Answer
-from paralapraca.models import AnswerNotification
+from paralapraca.models import AnswerNotification, UnreadNotification
 from settings import *
 
 logger = logging.getLogger(__package__)
@@ -39,6 +39,11 @@ def answer_created_or_updated(instance, **kwargz):
         notification.action = 'new_activity'
         notification.is_read = False
         notification.save()
+
+        # Increase the unread count for this user in 1
+        unread = UnreadNotification.objects.get(user=user)
+        unread.counter += 1
+        unread.save()
 
 
 @receiver(post_save, sender=get_user_model())
