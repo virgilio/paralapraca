@@ -97,8 +97,20 @@
                     display: inline-block;
                     width: 90%;
                 }
-                .question .btn-danger {
-                    float: right;
+                .question {
+                    overflow: hidden; 
+                    .btn-danger {
+                        float: right;
+                    }
+                }
+                .thumbnail {
+                    text-align: center;
+                    input[type='file'] {
+                        margin: 0 auto; 
+                    }
+                }
+                .textright {
+                    text-align: right;
                 }
                 .alert-info {
                     clear: both;
