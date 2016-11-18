@@ -97,15 +97,15 @@
             </div>
         </header>
 
-        <header ng-if="!forum_single" class="widget-header line one-column">
+        <header ng-if="!forum_single || forum_search" class="widget-header line one-column">
             <div class="column">
                 <h2 class="widget-title">Fóruns</h2>
                 <a class="btn btn-success new-topic"
                    href="/discussion/topic/new/#!/topic/new/">criar novo tópico</a>
 
-                <!-- <form class="widget-filter form-inline">
-                    <input class="form-control" type="text" placeholder="Busca nos fóruns..." ng-model="search" uib-typeahead="result for results in getResults($viewValue)" typeahead-loading="loadingLocations" typeahead-no-results="noResults">
-                </form> -->
+                <form class="widget-filter form-inline">
+                    <input class="form-control" type="text" placeholder="Busca nos fóruns..." ng-model="search" uib-typeahead="result for results in getResults($viewValue)" typeahead-loading="loadingLocations" typeahead-no-results="noResults" typeahead-min-length="2" typeahead-wait-ms="500">
+                </form>
             </div>
         </header>
 
@@ -164,6 +164,9 @@
                 <div class="column" ng-show="forum.topics.length==0 && forums.$resolved">
                     <p class="empty-forum">Este fórum ainda não possui nenhum tópico.</p>
                 </div>
+                <div class="column" ng-show="forum.topics.length==0 && forum_search">
+                    <p class="empty-forum">Nenhum resultado encontrado.</p>
+                </div>
 
                 <!-- List topics in a specific forum -->
                 <div class="forum-list" ng-show="forum.show_forum || forum_single" ng-if="forum.topics.length>0">
@@ -202,8 +205,8 @@
                         </tbody>
                     </table>
 
-                    <div ng-show="forum_single" class="pagination-wrapper">
-                        <ul uib-pagination boundary-links="true" total-items="forum_topics_total" ng-model="forum.current_page" rotate="true" force-ellipses="true" max-size="forum_page_size" ng-change="pageChanged()" class="pagination" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="primeira página" last-text="última página"></ul>
+                    <div ng-show="forum_single || forum_search" class="pagination-wrapper">
+                        <ul uib-pagination boundary-links="true" total-items="forum_topics_total" ng-model="forum.current_page" rotate="true" force-ellipses="true" max-size="forum_pages_max_number" items-per-page="forum_topics_page" ng-change="pageChanged()" class="pagination" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="primeira página" last-text="última página"></ul>
                     </div>
 
                     <div ng-show="!forum_single && !forum_search" class="see-all-topics">
