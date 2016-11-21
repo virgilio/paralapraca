@@ -41,9 +41,13 @@ def answer_created_or_updated(instance, **kwargz):
         notification.save()
 
         # Increase the unread count for this user in 1
-        unread = UnreadNotification.objects.get(user=user)
-        unread.counter += 1
-        unread.save()
+        # But only if the user already has a UnreadNotification instance
+        try:
+            unread = UnreadNotification.objects.get(user=user)
+            unread.counter += 1
+            unread.save()
+        except UnreadNotification.DoesNotExist:
+            pass
 
 
 @receiver(post_save, sender=get_user_model())
