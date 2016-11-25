@@ -58,15 +58,33 @@ wrapper-course-lesson
   ng-app="edit_class"
 {% endblock %}
 
-
 {% block content %}
-
 <!-- class-modal -->
 <div class="modal fade" id="class-modal" tabindex="-1" role="dialog" aria-labelledby="class-modal-label" aria-hidden="true">
     <div class="modal-dialog">
-        <div class="modal-content"></div>
+        <div class="modal-content">
+            <form role="form" method="post" action="{% url 'class-add-users' pk=class.id %}">
+                {% csrf_token %}
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Fechar</span></button>
+                    <h4 class="modal-title" id="class-modal-label">{{ object.name }}</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="class-users-list">Usuários</label>
+                        <textarea id="class-users-list" class="form-control" rows="10" placeholder="Copie a lista de usuários aqui. Apenas um usuário por linha." name="students_text"></textarea>
+                        <input type="checkbox" name="auto_enroll" value="True"> Matricular usuários?
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+                    <button type="submit" class="btn btn-primary">Adicionar usuários</button>
+                </div>
+            </form>
+        </div>
     </div>
 </div>
+
 
 <div class="course course-classes" ng-controller="ClassController">
     <!-- ACTIONS -->
@@ -100,17 +118,18 @@ wrapper-course-lesson
                     <div class="professor-assistant">
                         <label for="{{ form.assistant.id_for_label }}">{% trans 'Assistant Professor' %}:</label>
                         {% if user|is_course_coordinator:object.course %}
-                            <select class="form-control" ng-options="item.name for item in classe.course.professors track by item.id" ng-model="classe.assistant"></select>
+                            {% verbatim %}
+                            <ui-select multiple ng-model="classe.assistants" theme="bootstrap" title="Escolha os professores...">
+                                <ui-select-match placeholder="Escolha os professores...">{{$item.first_name + " " + $item.last_name}}</ui-select-match>
+                                <ui-select-choices repeat="professor in classe.course.professors" group-by="">
+                                    <div ng-bind-html="professor.first_name+' '+professor.last_name | highlight: $select.search"></div>
+                                </ui-select-choices>
+                            </ui-select>
+                            {% endverbatim %}
                         {% else %}
                             <label>{{ object.assistant }}</label>
                         {% endif %}
                     </div>
-                </div>
-                <div class="col-xs-3">
-                    <a class="btn btn-lg btn-danger uppercase"
-                       href="{% url 'course-evaluations' object.course.slug %}#/class-evaluations/{{ object.id }}">
-                        {% trans 'Certification' %}
-                    </a>
                 </div>
             </div>
         </header>
@@ -153,7 +172,12 @@ wrapper-course-lesson
 
         <div class="row">
             <div class="col-lg-12">
-                <p><label>{% trans 'Add students to this class' %}</label></p>
+                <div class="">
+                    <p><label>{% trans 'Add students to this class' %}</label></p>
+                    <div class="col-xs-3">
+                      <a class="btn btn-sm btn-primary" data-toggle="modal" data-target="#class-modal">Adicionar vários usuários</a>
+                    </div>
+                </div>
                 <div class="autocomplete">
                     <input type="text" id="search-user" class="form-control" ng-model="asyncSelected"
                                     placeholder="{% trans 'Type the name, email or user name of the professor to search...' %}"

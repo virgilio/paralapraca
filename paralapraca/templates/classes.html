@@ -28,7 +28,6 @@ wrapper-course-lesson
 <script type="text/javascript" src="{% static 'js/directives/waiting-screen.js' %}"></script>
 <script type="text/javascript" src="{% static 'js/edit-class/app.js' %}"></script>
 <script type="text/javascript" src="{% static 'js/edit-class/controllers.js' %}"></script>
-<script type="text/javascript" src="{% static 'js/edit-class/services.js' %}"></script>
 <script type="text/javascript" src="{% static 'checklist-model/checklist-model.js' %}"></script>
 <script type="text/javascript" src="{% static 'js/factories/timtec-models.js' %}"></script>
 {% endcompress %}
@@ -74,7 +73,11 @@ wrapper-course-lesson
                 {% for class in object_list %}
                 <tr>
                     <td><a href="{% url 'class' pk=class.id %}">{{ class.name }}</a></td>
-                    <td>{{ class.assistant | default:'' }}</td>
+                    <td>{% for assistant in class.assistants.all %}
+                            {{ assistant }}
+                            <br>
+                        {% endfor %}
+                        </td>
                     <td>{{ class.students.count }}</td>
                     <td class="actions">
                         <form method="post" action="{% url 'class-delete' pk=class.id %}">
