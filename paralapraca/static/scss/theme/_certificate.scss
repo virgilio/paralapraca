@@ -22,7 +22,7 @@
             }
         }
     }
-    &.receipt-admin {
+    &.receipt {
         .certificate-logos {
             height: 70px;
             .avante {
@@ -31,6 +31,9 @@
             .institute-logo {
                 right: 300px;
             }
+        }
+        footer {
+            padding: 40px 0;
         }
     }
 }
