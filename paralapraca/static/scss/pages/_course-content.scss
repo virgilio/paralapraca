@@ -241,32 +241,6 @@
     }
 }
 
-@media screen and (max-width: $screen-xs-max) {
-    #admin {
-        .main-header {
-            .course-sections {
-                a {
-                    width: 25.5%;
-                    &:last-of-type {
-                        border-right: 1px solid #c9a30d;
-                    }
-                }
-                .dropdown {
-                    width: 24%;
-                    .tools {
-                        padding: 8% 30%;
-                        width: 100%;
-                    }
-                }
-            }
-            .dropdown .dropdown-menu li a {
-                border-right: 0;
-                width: 100%;
-            }
-        }
-    }
-}
-
 .lesson-units-mobile, .lesson-units-nav-mobile {
     border: 1px solid #c9a30d;
     border-radius: 14px;
@@ -293,6 +267,12 @@
         position: relative;
         z-index: 1;
     }        
+}
+
+.help-text {
+    color: $gray-light;
+    font-size: 11px;
+    margin-bottom: 5px;
 }
 
 // Course content (used on course intro and lesson page)
