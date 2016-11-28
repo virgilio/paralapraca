@@ -30,7 +30,7 @@ wrapper-course-lesson
         <div>
             {% if object.course_student.user.is_profile_filled %}
                 <div class="row">
-                    <div class="container">
+                    <!-- <div class="container">
                         <a href="{% url 'certificate-download' object.link_hash %}"
                            class="btn btn-sm btn-primary pull-right hidden-print download">
                             {% if object.type == 'receipt' %}
@@ -39,7 +39,7 @@ wrapper-course-lesson
                             {% trans 'Baixar Certificado' %}
                             {% endif %}
                         </a>
-                    </div>
+                    </div> -->
                 </div>
                 {% if object.type == 'receipt' %}
                     {% include "_certificate-receipt.html" %}

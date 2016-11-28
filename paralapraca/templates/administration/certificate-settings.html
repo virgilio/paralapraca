@@ -30,7 +30,7 @@ ng-app="certification"
                 <!--<button class="btn btn-danger">{% trans 'Cancel' %} | <i class="fa fa-times"></i></button>-->
                 <button class="btn btn-sm btn-primary btn-inverse save" ng-click="saveTemplate()">{% trans 'Save' %}</button>
             </div>
-          </div>  
+          </div>
         </div>
     </div>
     <!-- END ACTIONS -->
@@ -97,6 +97,12 @@ ng-app="certification"
                           <div class="editable editable-text role-coordinator">
                               <input type="text" ng-model="ct.role" placeholder="Digite o cargo" />
                           </div>
+                          {% verbatim %}
+                          <div class="certificate-logos institute-logo">
+                              <file ng-model="images.signature" name="logo"></file>
+                              <img id="sig-logo" alt="Assinatura" preview-image ng-model="images.signature" ng-src="{{ ct.signature_url }}" class="img-responsive" />
+                          </div>
+                          {% endverbatim %}
                       </div>
                     </footer>
                 </div>
@@ -137,6 +143,12 @@ ng-app="certification"
                           <p class="editable editable-text role-coordinator">
                             <input type="text" ng-model="ct.role" placeholder="Digite o cargo">
                           </p>
+                          {% verbatim %}
+                          <div class="">
+                              <img id="sig-logo" alt="Assinatura" preview-image ng-model="images.signature" ng-src="{{ ct.signature_url }}" class="img-responsive" />
+                              <file ng-model="images.signature" name="logo"></file>
+                          </div>
+                          {% endverbatim %}
                       </div>
                   </footer>
                 </div>

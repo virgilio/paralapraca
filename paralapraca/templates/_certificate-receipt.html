@@ -3,11 +3,15 @@
 
 <div class="certificate-container receipt">
     <p class="text-uppercase student-name">{{ object.course_student.user.get_full_name }}{% if object.course_student.user.rg %}, RG {{ object.course_student.user.rg }} {% endif %}</p>
-    <p>Concluiu o curso online <em>{{ object.course.name }}</em> com carga
-      horária estimada de (40) horas em {{ object.created_date | date:"d/m/Y" }}.</p>
+    <p>Concluiu o <em>{{ object.course.name }}</em> com carga horária estimada em 40 horas em {{ object.created_date | date:"d/m/Y" }}.</p>
     <section class="coordinator-section">
       <p class="coordinator-name">{{ cert_template.name }}</p>
       <p class="course-coordinator">{{ cert_template.role }}</p>
+      {% if cert_template.signature_url %}
+      <div class="certificate-logos">
+          <img alt="Signature" style="max-width: 130px; position: absolute; right: 80px; top: 128px;" src="{{ cert_template.signature_url }}">
+      </div>
+      {% endif %}
     </section>
     <footer>
       <div class="pull-left credits-receipt">
@@ -19,7 +23,7 @@
             {% if cert_template.base_logo_url %}
                 <img class="img-responsive" src="{{ cert_template.base_logo_url }}">
             {% else %}
-                <img class="img-responsive" src="{% static 'img/logo.png' %}">
+                <img class="img-responsive" src="{% static 'img/logo-avante.png' %}">
             {% endif %}
           </div>
       {% endblock %}
