@@ -5,9 +5,10 @@
     <div class="certificate-container receipt">
       {% block certificate-logo %}
       <div class="certificate-logos">
-          <img src="/static/img/logo-avante.png" alt="AVANTE" class="avante">
+          <img src="/static/img/logo-avante.png" alt="AVANTE" class="avante" style="left: 159px; position: absolute;">
+          <img src="/static/img/site-logo-orange.svg" alt="{{ site.name }}" class="paralapraca" style="position: absolute; top: 29px; left: 301px;">
           <div class="institute-logo">
-            <img class="img-responsive" src="{{ cert_template.base_logo_url }}">
+            <img class="img-responsive" style="max-width: 200px; position: absolute; top: 17px;" src="{{ cert_template.cert_logo_url }}">
           </div>
       </div>
       {% endblock %}
@@ -20,21 +21,20 @@
           <p>com carga horária estimada em 40 horas em {{ object.created_date | date:"d/m/Y" }}.</p>
       </div>
 
-      <footer>
+      <footer style="display: table-cell; vertical-align: bottom;">
         <div class="credits-section">
             <p><b>Realizado em:</b> {{ site.domain }}</p>
             <p><b>URL de validação:</b> <a href="{% url 'certificate' object.link_hash %}">{{ site.domain }}{% url 'certificate' object.link_hash %}</a></p>
         </div>
         <div class="coordinator-section">
+            {% if cert_template.signature_url %}
+            <div class="certificate-logos">
+                <img alt="Signature" style="max-width: 130px; position: absolute; right: 227px; bottom: 66px;" src="{{ cert_template.signature_url }}">
+            </div>
+            {% endif %}
             <p class="name-coordinator">{{ cert_template.name }}</p>
             <p class="role-coordinator">{{ cert_template.role }}</p>
-            {% if cert_template.signature_url %}
-            {% verbatim %}  
-              <div class="">
-                  <img id="sig-logo" alt="Assinatura" ng-model="images.signature" ng-src="{{ ct.signature_url }}" class="img-responsive" />
-              </div>
-            {% endverbatim %}
-            {% endif %}
         </div>
+      </footer>
     </div>
 </div>
