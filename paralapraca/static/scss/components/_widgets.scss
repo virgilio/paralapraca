@@ -49,9 +49,6 @@
 .widget-header {
     .btn {
         margin-top: 10px;
-        @media screen and (min-width: $screen-sm-min) {
-            margin-top: -16px;
-        }
     }
     @media screen and (min-width: $screen-sm-min) {
         .btn + .btn {

@@ -5,6 +5,7 @@
 
 {% block js %}
     {{ block.super }}
+    {% javascript 'plpc-header' %}
     {% javascript 'course_permissions' %}
 
 {% endblock %}
@@ -13,9 +14,13 @@
 wrapper-course-lesson
 {% endblock %}
 
+{% block body_attrs %}
+ng-app="course-permissions"
+{% endblock %}
+
 {% block content %}
 
-<section class="course permissions" ng-app="course-permissions" ng-controller="PermissionsController">
+<section class="course permissions" ng-controller="PermissionsController">
 
 		<!-- ACTIONS -->
         <div class="actions-menu" fixed-bar>
@@ -88,7 +93,7 @@ wrapper-course-lesson
                             <div class="autocomplete">
                                 <input type="text" id="search-user" class="form-control" ng-model="asyncSelected"
                                         placeholder="{% trans 'Type the name, email or user name of the professor to search...' %}"
-                                        typeahead="user as user.formated_name for user in getUsers($viewValue)"
+                                        uib-typeahead="user as user.formated_name for user in getUsers($viewValue)"
                                         typeahead-loading="loadingLocations"
                                         typeahead-on-select="on_select_professor($model); asyncSelected = '';"
                                         typeahead-min-length="2"

@@ -2,6 +2,7 @@
     'use strict';
 
     var app = angular.module('header', [
+        'header.services',
         'header.controllers',
         'header.directives',
         'header.filters',
@@ -10,6 +11,7 @@
         'gettext',
         'ngAnimate',
         'angular-loading-bar',
+        'angular-click-outside',
     ]);
 
     app.config(['cfpLoadingBarProvider', function(cfpLoadingBarProvider) {

@@ -9,6 +9,11 @@
     {{ block.super }}
     {% javascript 'core' %}
     {% javascript 'certificate' %}
+    {% javascript 'edit-class' %}
+    <script>
+        window.course_id = {{ class.course.pk }};
+        window.class_id = {{ class.pk }};
+    </script>
 {% endblock %}
 
 {% block wrapper_classes %}
@@ -16,7 +21,7 @@ wrapper-course-lesson
 {% endblock %}
 
 {% block body_attrs %}
-  ng-app="header"
+  ng-app="edit_class"
 {% endblock %}
 
 

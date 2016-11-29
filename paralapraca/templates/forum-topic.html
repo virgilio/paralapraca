@@ -21,6 +21,7 @@
     <script type="text/javascript" src="{% static 'ng-file-upload/ng-file-upload.js' %}"></script>
     <script type="text/javascript" src="{% static 'angular-sanitize/angular-sanitize.js' %}"></script>
     <script type="text/javascript" src="{% static 'angular-ui-select/dist/select.js' %}"></script>
+    <script type="text/javascript" src="{% static 'angular-scroll/angular-scroll.js' %}"></script>
     {% endcompress %}
     <script type="text/javascript">
         tinyMCE.baseURL = '/static/tinymce-dist/';
@@ -189,7 +190,7 @@
                                    class="btn btn-xs btn-primary attach pull-left"
                                    ngf-select="uploadCommentFiles($file, comment)"
                                    ngf-multiple="false">anexar arquivo</button>
-                            <button class="btn btn-xs btn-success reply pull-right" ng-click="save_comment(comment, null); topic.show_comment_input=false">comentar</button>
+                            <button class="btn btn-xs btn-success reply pull-right" ng-click="save_comment(comment, null); topic.show_comment_input=false" du-smooth-scroll="last-comment">comentar</button>
                             <button class="btn btn-xs btn-danger delete pull-right" ng-click="topic.show_comment_input=false">descartar</button>
 
                             <files files="comment.files" editable="true" progress="comment.progress"></files>
@@ -233,7 +234,7 @@
                                     <a ng-click="comment_like(comment)"
                                        ng-class="{ 'active': comment.user_like }"
                                        class="action liked"><span>gostei</span></a>
-                                    <a ng-click="new_reply(comment)" class="action replies"><span>responder</span></a>
+                                    <a ng-click="comment.show_comment_input = true;" class="action replies" du-smooth-scroll="new-answer-{{comment.id}}"><span>responder</span></a>
                                     <a class="action edit" ng-click="comment.updating=true" ng-show="comment.author.id == user.id && !comment.updating">editar</a>
                                     <span class="last-update">{{ comment.updated_at | date : "d 'de' MMMM 'de' yyyy 'às' HH'h'mm" }}</span>
                                 </div>
@@ -285,7 +286,7 @@
                                         <a ng-click="comment_like(reply)"
                                            ng-class="{ 'active': reply.user_like }"
                                            class="action liked"><span>gostei</span></a>
-                                        <a ng-click="new_reply(comment)" class="action replies"><span>responder</span></a>
+                                        <a ng-click="comment.show_comment_input = true;" du-smooth-scroll="new-answer-{{comment.id}}" class="action replies"><span>responder</span></a>
                                         <a class="action edit" ng-click="reply.updating=true" ng-show="reply.author.id == user.id && !reply.updating">editar</a>
                                         <span class="last-update">{{ reply.updated_at | date : "d 'de' MMMM 'de' yyyy 'às' HH'h'mm" }}</span>
                                     </div>

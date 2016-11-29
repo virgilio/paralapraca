@@ -5,11 +5,13 @@
 
 
 {% compress js %}
+<script type="text/javascript" src="{% static 'js/header-services.js' %}"></script>
 <script type="text/javascript" src="{% static 'js/header-controllers.js' %}"></script>
 <script type="text/javascript" src="{% static 'js/header-directives.js' %}"></script>
 <script type="text/javascript" src="{% static 'js/header-filters.js' %}"></script>
 <script type="text/javascript" src="{% static 'js/header-app.js' %}"></script>
 <script type="text/javascript" src="{% static 'js/discussion-services.js' %}"></script>
+<script type="text/javascript" src="{% static 'angular-click-outside/clickoutside.directive.js' %}"></script>
 {% endcompress %}
 
 <header ng-controller="HeaderCtrl" class="site-header" role="navigation">
@@ -35,21 +37,31 @@
     {% endblock %}
 
     {% if user.is_authenticated %}
-        <ul class="user-tools">
+        {% verbatim %}
+        <ul id="top-right-menu" class="user-tools">
             <li>
-                <a class="notifications" ng-click="show_notification = !show_notification">Notificações</a>
+                <a class="notifications active" ng-click="toggle_notifications()">
+                    <span class="bubble" ng-show="unread.counter">{{unread.counter}}</span>
+                    <span class="hidden-xs">Notificações</span>
+                </a>
             </li>
-            <!--<li>-->
-                <!--<a class="chat" href="#">{% trans 'Chat' %}</a>-->
-            <!--</li>-->
+            <!-- <li>
+                <a class="chat" href="#">
+                    <span class="bubble">1</span>
+                    <span class="hidden-xs">{% trans 'Chat' %}</span>
+                </a>
+            </li> -->
         </ul>
+        {% endverbatim %}
     {% endif %}
 
     {% if user.is_authenticated %}
-    <div ng-if="show_notification" class="notifications-panel" ng-cloak>
-        <h2 class="notifications-title">Notificações</h2>
-        <notifications ng-model="notifications"></notifications>
-        <!--<a href="#" class="see-more">ver todos</a>-->
+    <div id="notification-wrapper" click-outside="show_notification = false" outside-if-not="notification-wrapper, top-right-menu">
+        <div ng-show="show_notification" class="notifications-panel" ng-cloak>
+            <h2 class="notifications-title">Notificações</h2>
+                <notifications ng-model="notifications"></notifications>
+            <!--<a href="#" class="see-more">ver todos</a>-->
+        </div>
     </div>
 {% endif %}
 
