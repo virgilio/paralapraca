@@ -39,34 +39,7 @@ ng-app="users-admin"
             <h2>{% trans 'Administração de usuários e grupos' %}</h2>
         </header>
         <!-- END HEADER -->
-        
-        <div class="filters">
-            <form role="form" class="form-inline" method="GET">
-                <div class="form-group">
-                    <label class="sr-only" for="keyword">{% trans 'Keyword' %}</label>
-                    <input type="text"
-                           placeholder="{% trans 'Digite uma palavra-chave' %}"
-                           class="form-control" id="keyword"
-                           name="keyword"
-                           ng-model="filters.keyword">
-                </div>
-                <div class="form-group filter-checkbox">
-                    <div class="checkbox">
-                        <label>
-                            <input type="checkbox" name="admin" ng-model="filters.admin"> {% trans 'Administrators' %}
-                        </label>
-                        <label>
-                            <input type="checkbox" name="admin" ng-model="filters.blocked"> {% trans 'Inativos' %}
-                        </label>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <button class="btn btn-sm btn-primary search" ng-click="filter_users()">{% trans 'Buscar' %}</button>
-                </div>
-            </form>
-            <!-- END FORM INLINE -->
-        </div>
-        <!-- END FILTERS -->
+
         <ul class="nav nav-tabs">
             <li class="active">
                 <a href="#users" data-toggle="tab">
@@ -79,12 +52,42 @@ ng-app="users-admin"
                 </a>
             </li>
         </ul>
-        
+
         <div class="tab-content">
             <div class="tab-pane fade in active users-list" id="users">
 
+
+              <!-- FILTERS -->
+              <div class="filters">
+                  <form role="form" class="form-inline" method="GET">
+                      <div class="form-group">
+                          <label class="sr-only" for="keyword">{% trans 'Keyword' %}</label>
+                          <input type="text"
+                                 placeholder="{% trans 'Digite uma palavra-chave' %}"
+                                 class="form-control" id="keyword"
+                                 name="keyword"
+                                 ng-model="filters.keyword">
+                      </div>
+                      <div class="form-group filter-checkbox">
+                          <div class="checkbox">
+                              <label>
+                                  <input type="checkbox" name="admin" ng-model="filters.admin"> {% trans 'Administrators' %}
+                              </label>
+                              <label>
+                                  <input type="checkbox" name="admin" ng-model="filters.blocked"> {% trans 'Inativos' %}
+                              </label>
+                          </div>
+                      </div>
+                      <div class="form-group">
+                          <button class="btn btn-sm btn-primary search" ng-click="filter_users()">{% trans 'Buscar' %}</button>
+                      </div>
+                  </form>
+                  <!-- END FORM INLINE -->
+              </div>
+              <!-- END FILTERS -->
+
                 <h3>Lista de usuários</h3>
-                
+
                 <div class="col-lg-12" ng-hide="users_page.$resolved">
                     <p>{% trans 'Loading users list' %}... <i class="loading fa fa-refresh fa-spin"></i></p>
                 </div>
@@ -96,12 +99,12 @@ ng-app="users-admin"
                     <table>
                         <thead>
                             <tr>
-                                <th class="username-email">{% trans "Nome e e-mail de usuário" %}</th>
-                                <th class="fullname">{% trans "Nome completo" %}</th>
-                                <th class="groups">{% trans "Grupos" %}</th>
-                                <th class="role">{% trans 'Administrator' %}</th>
-                                <th class="active">{% trans 'Active' %}</th>
-                                <th class="actions">{% trans "Actions" %}</th>
+                                <th class="username-email">Nome e e-mail de usuário</th>
+                                <th class="fullname">Nome completo</th>
+                                <th class="groups">Grupos</th>
+                                <th class="role">Administrator</th>
+                                <th class="active">Ativo</th>
+                                <th class="actions">Ações</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -109,13 +112,15 @@ ng-app="users-admin"
                             {% verbatim %}
                                 <td>
                                     <div class="user-icon">
-                                        <img src="{{ user.picture }}" alt="{{ user.name }}">
+                                        <img ng-src="{{ user.picture }}" alt="{{ user.name }}">
                                     </div>
                                     <b>{{ user.name }}</b><br>
                                     ({{ user.email }})
                                 </td>
                                 <td>{{ user.name }} {{ user.get_full_name }}</td>
-                                <td><b>Maracanaú, Avante, Olinda, Assessoras</b></td>
+                                <td>
+                                    <b ng-init="clean_groups(user.groups)" ng-repeat="(key, group) in user.groups">{{  key>0 ? ", " : "" }}{{group.name}}</b>
+                                </td>
                                 <td class="text-center">
                                     <input type="checkbox" ng-model="user.is_superuser" ng-change="update_user(user)">
                                 </td>
@@ -131,143 +136,138 @@ ng-app="users-admin"
                     </table>
                 </section>
 
-                <pagination total-items="total_users_found"
-                            items-per-page="50"
-                            ng-model="current_page"
-                            ng-change="page_changed()"
-                            max-size="5"
-                            boundary-links="true"
-                            previous-text="{% trans 'Previous' %}"
-                            next-text="{% trans 'Next' %}"
-                            first-text="{% trans 'First' %}"
-                            last-text="{% trans 'Last' %}"
-                        	ng-hide="filtered">
-                </pagination>
+                <div styke="display: flexbox; justify-content: center; align-items: center;">
+                    <ul uib-pagination boundary-links="true" total-items="total_users_found" ng-model="current_page" rotate="true" force-ellipses="true" max-size="5" items-per-page="50" ng-change="page_changed()" class="pagination" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="primeira página" last-text="última página" ng-hide="filtered"></ul>
+                </div>
             </div>
 
-            <div class="tab-pane fade in groups-list" id="groups">
+            {% verbatim %}
+            <div class="tab-pane fade in groups-list" id="groups" ng-controller="GroupAdminController">
                 <section>
-                    <h3>Lista de grupos</h3>
+                    <div class="row">
+                        <h3>Lista de grupos</h3>
+                        <p class="total">Total de <span>{{ groups.length }} grupos cadastrados</span></p>
 
-                    <p class="total">Total de <span>xxxx grupos cadastrados</span></p>
+                        <div class="col-md-3 col-sm-4" style="position: absolute; right: 174px; top: 250px;">
+                            <a class="btn btn-primary" ng-click="new_group()">Novo grupo</a>
+                        </div>
+                    </div>
 
                     <div class="row header">
                         <div class="col-sm-3 col-lg-4">nome do grupo</div>
                         <div class="col-sm-3 col-lg-3">número de membros</div>
                     </div>
 
-                    <div class="row group">
-                        <div class="col-sm-3 col-lg-4 group-name">Adisciping lorem ipsum</div>
-                        <div class="col-sm-3 col-lg-3 members-number">5 membros</div>
+                    <div class="row group" ng-repeat="group in groups">
+                        <div class="col-sm-3 col-lg-4 group-name">{{group.name}}</div>
+                        <div class="col-sm-3 col-lg-3 members-number">{{group.users.length}} membros</div>
                         <div class="col-sm-6 col-lg-5 actions">
-                            <button class="btn btn-sm btn-primary btn-inverse add">adicionar membros</button>
+                            <button class="btn btn-sm btn-primary btn-inverse add" ng-click="new_users(group)">adicionar membros</button>
                             <button class="btn btn-sm btn-primary btn-inverse"
                                     ng-init="show_members=false"
-                                    ng-click="show_members=!show_members"
-                            >
+                                    ng-click="show_members=!show_members">
                                     ver membros
                                     <i class="fa" ng-class="{'fa fa-caret-down':!show_members,'fa fa-caret-up':show_members}"></i>
                             </button>
-                            <button class="btn btn-danger btn-inverse trash"></button>
+                            <button class="btn btn-danger btn-inverse trash" ng-click="remove_group(group)"></button>
                         </div>
 
                         <div class="container-fluid members" ng-show="show_members">
-                            <div class="row member-line">
+                            <div class="row member-line" ng-repeat="user in group.users">
                                 <div class="col-sm-5">
                                     <div class="member-info">
                                         <div class="user-icon">
                                             <img src="{{ user.picture }}" alt="{{ user.name }}">
                                         </div>
-                                        <b>Cecília Ramos Rodrigues</b><br>
-                                        (ceci.ramos@dominio.com.br)
+                                        <b>{{ user.first_name }} {{ user.last_name }}</b><br>
+                                        ({{user.email}})
                                     </div>
                                 </div>
                                 <div class="col-sm-3">
-                                    <button class="btn btn-sm btn-danger btn-inverse delete">remover do grupo</button>
+                                    <button class="btn btn-sm btn-danger btn-inverse delete" ng-click="remove_user(group, user)">remover do grupo</button>
                                 </div>
                             </div>
 
-                            <div class="row member-line">
-                                <div class="col-sm-5">
-                                    <div class="member-info">
-                                        <div class="user-icon">
-                                            <img src="{{ user.picture }}" alt="{{ user.name }}">
-                                        </div>
-                                        <b>Cecília Ramos Rodrigues</b><br>
-                                        (ceci.ramos@dominio.com.br)
-                                    </div>
-                                </div>
-                                <div class="col-sm-3">
-                                    <button class="btn btn-sm btn-danger btn-inverse delete">remover do grupo</button>
-                                </div>
-                            </div>
                         </div>
                     </div>
 
-                    <div class="row group">
-                        <div class="col-sm-3 col-lg-4 group-name">Adisciping lorem ipsum</div>
-                        <div class="col-sm-3 col-lg-3 members-number">5 membros</div>
-                        <div class="col-sm-6 col-lg-5 actions">
-                            <button class="btn btn-sm btn-primary btn-inverse add">adicionar membros</button>
-                            <button class="btn btn-sm btn-primary btn-inverse"
-                                    ng-init="show_members=false"
-                                    ng-click="show_members=!show_members"
-                            >
-                                    ver membros
-                                    <i class="fa" ng-class="{'fa fa-caret-down':!show_members,'fa fa-caret-up':show_members}"></i>
-                            </button>
-                            <button class="btn btn-danger btn-inverse trash"></button>
-                        </div>
-
-                        <div class="container-fluid members" ng-show="show_members">
-                            <div class="row member-line">
-                                <div class="col-sm-5">
-                                    <div class="member-info">
-                                        <div class="user-icon">
-                                            <img src="{{ user.picture }}" alt="{{ user.name }}">
-                                        </div>
-                                        <b>Cecília Ramos Rodrigues</b><br>
-                                        (ceci.ramos@dominio.com.br)
-                                    </div>
-                                </div>
-                                <div class="col-sm-3">
-                                    <button class="btn btn-sm btn-danger btn-inverse delete">remover do grupo</button>
-                                </div>
-                            </div>
-
-                            <div class="row member-line">
-                                <div class="col-sm-5">
-                                    <div class="member-info">
-                                        <div class="user-icon">
-                                            <img src="{{ user.picture }}" alt="{{ user.name }}">
-                                        </div>
-                                        <b>Cecília Ramos Rodrigues</b><br>
-                                        (ceci.ramos@dominio.com.br)
-                                    </div>
-                                </div>
-                                <div class="col-sm-3">
-                                    <button class="btn btn-sm btn-danger btn-inverse delete">remover do grupo</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </section>
 
-                <pagination total-items="total_users_found"
-                            items-per-page="50"
-                            ng-model="current_page"
-                            ng-change="page_changed()"
-                            max-size="5"
-                            boundary-links="true"
-                            previous-text="{% trans 'Previous' %}"
-                            next-text="{% trans 'Next' %}"
-                            first-text="{% trans 'First' %}"
-                            last-text="{% trans 'Last' %}"
-                            ng-hide="filtered">
-                </pagination>
             </div>
+            {% endverbatim %}
         </div>
     </div>
+
+<!-- modal add user -->
+<script type="text/ng-template" id="newUserModal.html">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" ng-click="cancel()"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    {% verbatim %}
+                    <h4 class="modal-title" id="add-users-modal-label">Adicione usuários ao grupo "{{group.name}}"</h4>
+                    {% endverbatim %}
+                </div>
+                <div class="modal-body">
+                    <form role="form">
+                        <label for="search-user" class="control-label">Busca de usuários</label>
+                        <div class="autocomplete">
+                            <input type="text" id="search-user" class="form-control" ng-model="asyncSelected"
+                                    placeholder="{% trans 'Type the name, email or user name of the professor to search...' %}"
+                                    uib-typeahead="user as user.formated_name for user in getUsers($viewValue)"
+                                    typeahead-loading="loadingLocations"
+                                    typeahead-on-select="on_select_professor($model); asyncSelected = '';"
+                                    typeahead-min-length="2"
+                                    typeahead-wait-ms="500">
+                            <i ng-show="loadingLocations" class="loading fa fa-refresh fa-spin"></i>
+                        </div>
+                        <table class="table table-list" ng-show="new_users.length">
+                            <tr>
+                                <th class="fullname">{% trans "Full name" %}</th>
+                                <th class="email">{% trans "Email" %}</th>
+                                <th class="username">{% trans "Username" %}</th>
+                                <th class="actions">{% trans "Actions" %}</th>
+                            </tr>
+                            <tr ng-repeat="new_user in new_users">
+                                {% verbatim %}
+                                <td>{{new_user.name}}</td>
+                                <td>{{new_user.email}}</td>
+                                <td>{{new_user.username}}</td>
+                                {% endverbatim %}
+                                <td class="textcenter"><button class="btn btn-warning" ng-click="remove_new_professor($index)"><i class="fa fa-trash-o"></i></button></td>
+                            </tr>
+                        </table>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" ng-click="cancel()">Close</button>
+                    <button type="button" class="btn btn-primary" ng-click="add_professors()">{% trans 'Add users' %}</button>
+                </div>
+            </div>
+</script>
+
+<!-- model add group -->
+<script type="text/ng-template" id="newGroupModal.html">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" ng-click="cancel()"><span aria-hidden="true">&times;</span><span class="sr-only">Cancelar</span></button>
+                    {% verbatim %}
+                    <h4 class="modal-title" id="add-users-modal-label">Novo grupo</h4>
+                    {% endverbatim %}
+                </div>
+                <div class="modal-body">
+                    <form role="form">
+                        <label for="search-user" class="control-label">Nome do novo grupo</label>
+                        <div class="autocomplete">
+                            <input type="text" id="search-user" class="form-control" ng-model="group_name">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" ng-click="cancel()">Cancelar</button>
+                    <button type="button" class="btn btn-primary" ng-click="add_group()">Criar grupo</button>
+                </div>
+            </div>
+</script>
 
 </section>
 <!-- END COURSES -->

@@ -64,4 +64,16 @@
         }
     });
 
+    app.filter('charLimiter', ['$filter', function($filter) {
+        return function(input, max_length) {
+            if(input.length <= max_length){
+                // If the input is smaller than the length provided, do nothing
+                return input;
+            } else {
+                // Otherwise, limit the length of the content and add "..."
+                return $filter('limitTo')(input, max_length) + "...";
+            }
+        };
+    }]);
+
 })(window.angular);
