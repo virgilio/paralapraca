@@ -4,11 +4,6 @@
     // COURSE, FORUM
     // ********************************************************************* //
     .course {
-        .help-text {
-            color: $gray-light;
-            font-size: 11px;
-            margin-bottom: 5px;
-        }
         .main-header {
             padding: 10px 0;
             .course-sections {
@@ -331,6 +326,32 @@
                 &:-moz-placeholder { /* Firefox 18- */
                     color: $gray;
                 }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: $screen-xs-max) {
+    #admin {
+        .main-header {
+            .course-sections {
+                a {
+                    width: 25.5%;
+                    &:last-of-type {
+                        border-right: 1px solid #c9a30d;
+                    }
+                }
+                .dropdown {
+                    width: 24%;
+                    .tools {
+                        padding: 8% 30%;
+                        width: 100%;
+                    }
+                }
+            }
+            .dropdown .dropdown-menu li a {
+                border-right: 0;
+                width: 100%;
             }
         }
     }

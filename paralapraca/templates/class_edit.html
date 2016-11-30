@@ -2,14 +2,48 @@
 
 {% load staticfiles %}
 {% load i18n %}
-{% load pipeline %}
+{% load compress %}
 {% load is_course_coordinator %}
 
 {% block js %}
     {{ block.super }}
-    {% javascript 'core' %}
-    {% javascript 'certificate' %}
-    {% javascript 'edit-class' %}
+    {% compress css %}
+        <link rel="stylesheet" type="text/css" href="{% static 'angular-ui-select/dist/select.css' %}">
+    {% endcompress %}
+
+    {% compress js %}
+    <!-- Core -->
+    <script type="text/javascript" src="{% static 'js/core/app.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/core/controllers.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/core/services.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/core/filters.js' %}"></script>
+    <script type="text/javascript" src="{% static 'angular-tweet-filter/index.js' %}"></script>
+    <script type="text/javascript" src="{% static 'angular-sortable-view/src/angular-sortable-view.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/directives/fixedBar.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/directives/alertPopup.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/directives/markdowneditor.js' %}"></script>
+
+    <!-- Certificate -->
+    <script type="text/javascript" src="{% static 'js/certificate/app.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/certificate/controllers.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/certificate/filters.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/certificate/services.js' %}"></script>
+    <script type="text/javascript" src="{% static 'checklist-model/checklist-model.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/directives/file.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/directives/previewImage.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/directives/alertPopup.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/directives/fixedBar.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/factories/timtec-models.js' %}"></script>
+
+    <!-- Edit Class -->
+    <script type="text/javascript" src="{% static 'js/directives/waiting-screen.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/edit-class/app.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/edit-class/controllers.js' %}"></script>
+    <script type="text/javascript" src="{% static 'checklist-model/checklist-model.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/factories/timtec-models.js' %}"></script>
+    <script type="text/javascript" src="{% static 'angular-ui-select/dist/select.js' %}"></script>
+    {% endcompress %}
+
     <script>
         window.course_id = {{ class.course.pk }};
         window.class_id = {{ class.pk }};
@@ -24,9 +58,7 @@ wrapper-course-lesson
   ng-app="edit_class"
 {% endblock %}
 
-
 {% block content %}
-
 <!-- class-modal -->
 <div class="modal fade" id="class-modal" tabindex="-1" role="dialog" aria-labelledby="class-modal-label" aria-hidden="true">
     <div class="modal-dialog">
@@ -53,22 +85,19 @@ wrapper-course-lesson
     </div>
 </div>
 
-<div class="course course-classes">
+
+<div class="course course-classes" ng-controller="ClassController">
     <!-- ACTIONS -->
     <div class="actions-menu" fixed-bar>
-        <div class="container">
-            <div class="actions-buttons">
-                <form method="post" action="{% url 'class-delete' pk=class.id %}">
-                    {% csrf_token %}
-                    {% if object.course.default_class != object %}
-                        <button type="submit" class="btn btn-danger" title="{% trans 'Delete course' %}">{% trans 'Delete' %} | <i class="fa fa-trash-o"></i></button>
-                    {% endif %}
-                    <button class="btn btn-success" onclick="document.getElementById('mainForm').submit();return false;">{% trans 'Save' %} | <i class="fa fa-save"></i></button>
-                </form>
-
+        <div class="container-fluid">
+            <div class="pull-right">
+                <i ng-hide="classe.$resolved" class="loading fa fa-refresh fa-spin"></i>
+                <button class="btn btn-primary btn-sm save" ng-click="save()">
+                    {% trans 'Save' %}
+                </button>
             </div>
 
-            {# {% include 'administration/_alert.html' %} #}
+            {% include 'administration/_alert.html' %}
 
         </div>
     </div>
@@ -76,82 +105,125 @@ wrapper-course-lesson
 
     {% include "_course-header-inline.html"  with course=object.course %}
     <section class="classes-content page container-fluid">
-    	<header class="page-header">
-            <form id="mainForm" class="form-inline" method="post" action="">
-               {% csrf_token %}
+        <div class="help-text"><i class="fa fa-caret-down" aria-hidden="true"></i> Edite o nome da turma</div>
+        <div class="editable-title"><input type="text" ng-model="classe.name" placeholder="{% trans 'Class name' %}"></div>
 
-               <div class="row">
-                    <div class="col-lg-9">
-                        <div class="editable-title">
-                            {{ form.name }}
-                        </div>
-                    </div>
-                    <div class="col-lg-3">
-                        <a class="btn btn-sm btn-primary" data-toggle="modal" data-target="#class-modal">{% trans 'Add users' %}</a>
+        <div class="professor-assistant">
+            <label for="{{ form.assistant.id_for_label }}">{% trans 'Assistant Professor' %}:</label>
+            <span class="help-text"><i class="fa fa-caret-down" aria-hidden="true"></i> Escolha o professor assistente</span>
+            {% if user|is_course_coordinator:object.course %}
+                {% verbatim %}
+                <ui-select multiple ng-model="classe.assistants" theme="bootstrap" title="Escolha os professores...">
+                    <ui-select-match placeholder="Escolha os professores...">{{$item.first_name + " " + $item.last_name}}</ui-select-match>
+                    <ui-select-choices repeat="professor in classe.course.professors" group-by="">
+                        <div ng-bind-html="professor.first_name+' '+professor.last_name | highlight: $select.search"></div>
+                    </ui-select-choices>
+                </ui-select>
+                {% endverbatim %}
+            {% else %}
+                <label>{{ object.assistant }}</label>
+            {% endif %}
+        </div>
+
+        <div class="alert" role="alert"
+             ng-class="{'alert-success': classe.user_can_certificate, 'alert-danger': !classe.user_can_certificate}">
+            <div class="row">
+                <div class="col-xs-8">
+                    Selecione à direita se esta turma pode emitir ou não certificados.
+                </div>
+                <div class="col-xs-4">
+                    <div class="user-can-certificate text-right">
+                        <label for="can-certificate">
+                            <input
+                                ng-model="classe.user_can_certificate"
+                                ng-change="save()"
+                                type="checkbox"
+                                id="can-certificate" />
+                            Permite certificação
+                        </label>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-xs-9">
-                        <div class="professor-assistant">
-                            <label for="{{ form.assistant.id_for_label }}">{% trans 'Assistant Professor' %}:</label>
-                            {% if user|is_course_coordinator:object.course %}
-                                <select id="id_assistant"
-                                        name="assistant" class="form-control">
-                                    {% if not object.assistant.id %}
-                                        <option value>{% trans 'Select a professor' %}</option>
-                                    {% endif %}
-                                    {% for professor in object.course.professors.all %}
-                                        <option value="{{ professor.id }}" {% if professor.id == object.assistant.id %}selected{% endif %}>{{ professor }}</option>
-                                    {% endfor %}
-                                </select>
-                            {% else %}
-                                <label>{{ object.assistant }}</label>
-                            {% endif %}
-                        </div>
-                    </div>
-                    <div class="col-xs-3">
-                        <a class="btn btn-sm btn-primary"
-                           href="{% url 'course-evaluations' object.course.slug %}#/class-evaluations/{{ object.id }}">
-                            {% trans 'Certification' %}
-                        </a>
+            </div>
+        </div>
+
+        <div class="alert" role="alert" ng-show="classe.user_can_certificate"
+             ng-class="{'alert-success': classe.user_can_certificate_even_without_progress, 'alert-danger': !classe.user_can_certificate_even_without_progress}">
+            <div class="row">
+                <div class="col-xs-8">
+                    Marque se esta classe pode emitir certificados mesmo que o estudante não tenha atingido o progresso mínimo requerido.
+                </div>
+                <div class="col-xs-4">
+                    <div class="user-can-certificate text-right">
+                        <label for="can-certificate-progress">
+                            <input
+                                ng-model="classe.user_can_certificate_even_without_progress"
+                                ng-change="save()"
+                                type="checkbox"
+                                id="can-certificate-progress" />
+                            Permite certificação
+                        </label>
                     </div>
                 </div>
-            </form>
-        </header>
+            </div>
+        </div>
+
+        <form class="add-users">
+            <label for="search-user">{% trans 'Add students to this class' %}</label>
+            <div class="autocomplete">
+                <input type="text" id="search-user" class="form-control" ng-model="asyncSelected"
+                    placeholder="{% trans 'Type the name, email or user name of the professor to search...' %}"
+                    uib-typeahead="user as user.formated_name for user in getUsers($viewValue)"
+                    typeahead-loading="loadingLocations"
+                    typeahead-on-select="on_select_student($model); asyncSelected = '';"
+                    typeahead-min-length="2"
+                    typeahead-wait-ms="500">
+                <i ng-show="loadingLocations" class="loading fa fa-refresh fa-spin"></i>
+            </div>
+            <a class="btn btn-sm btn-primary add" data-toggle="modal" data-target="#class-modal">Adicionar vários usuários</a>
+        </form>
+
         <table class="table table-striped">
             <thead>
                 <tr>
                     <th class="classname">{% trans "Username" %}</th>
                     <th class="email">{% trans "Email" %}</th>
                     <th class="fullname">{% trans "Full name" %}</th>
+                    <th class="certificate" ng-show="classe.user_can_certificate">{% trans "Certificate" %}</th>
                     {% if object.course.default_class != object %}
-                    <th class="actions">{% trans "Actions" %}</th>
+                        <th class="actions">{% trans "Actions" %}</th>
                     {% endif %}
                 </tr>
             </thead>
             <tbody>
-                {% for student in object.students.all %}
-                <tr>
-                    <td>{{ student.username }}</td>
-                    <td>{{ student.email }}</td>
-                    <td>{{ student.get_full_name }}</td>
-                    {% if object.course.default_class != object %}
-                    <td class="actions">
-                        <form method="post" action="{% url 'class-remove-user' pk=class.id %}">
-                            {% csrf_token %}
-                            <input type="hidden" name="user_id" value="{{ student.id }}"></input>
-                            <button type="submit" class="btn btn-warning"><i class="fa fa-trash-o"></i></button>
-                        </form>
+                <tr ng-repeat='student in classe.students_details'>
+                    {% verbatim %}
+                    <td>{{ student.user.username }}</td>
+                    <td>{{ student.user.email }}</td>
+                    <td>{{ student.user.name }}</td>
+                    <td ng-show="classe.user_can_certificate">
+                        <input type='checkbox' ng-disabled='!student.certificate || !classe.user_can_certificate_even_without_progress && !student.can_emmit_receipt' ng-click="toggle_certificate($index)" ng-checked="student.certificate.type == 'certificate'">
                     </td>
-                    {% endif %}
+                    {% endverbatim %}
+
+                    <td class="actions">
+                        {% verbatim %}
+                        <a ng-click="remove_item($index)" class="btn btn-warning"><i class="fa fa-trash-o"></i></a>
+                        <a ng-hide="!student.certificate || !classe.user_can_certificate" ng-disabled='!student.can_emmit_receipt' ng-href="{{ student.certificate.url }}" class="btn btn-default" target="_blank" ng-class="{'btn-primary': student.certificate.type == 'certificate', 'disabled': !student.can_emmit_receipt }">
+                            <span ng-show="student.can_emmit_receipt && student.certificate.type == 'receipt'" title="Clique aqui para ver o comprovante deste estudante"><i class="fa fa-certificate"></i></span>
+                            <span ng-show="student.can_emmit_receipt && student.certificate.type == 'certificate'" title="Clique aqui para ver o certificado deste estudante"><i class="fa fa-certificate"></i></span>
+                            <span ng-show="!student.can_emmit_receipt" title="Não há certificados disponíveis"><i class="fa fa-certificate"></i></span>
+                        </a>
+                        {% endverbatim %}
+                    </td>
+
                 </tr>
-                {% empty %}
-                <tr>
+
+                <tr ng-hide="classe.students.length > 0">
                     <td colspan="4">{% trans 'No students found' %}</td>
                 </tr>
-                {% endfor %}
             </tbody>
         </table>
+
     </section>
 </div>
 {% endblock %}

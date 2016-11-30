@@ -1,0 +1,48 @@
+.course-classes {
+    .secondary-header {
+
+    }
+    .form-control {
+        border: 2px solid #006eb1;
+        border-radius: 0;
+        box-shadow: none;
+    }
+    .professor-assistant {
+        margin: 20px 0; 
+    }
+    .alert {
+        label {
+            margin-bottom: 0;
+            input {
+                float: left;
+                margin-right: 5px;
+            }
+        }
+    }
+    .add-users {
+        margin: 40px 0;
+        overflow: hidden; 
+        label {
+            float: left;
+            margin-top: 5px;
+        }
+        .autocomplete {
+            padding: 0 205px 0 195px;
+        }
+        .btn {
+            float: right;
+            margin-top: -33px;
+        }
+    }
+    .table {
+        tbody {
+            td {
+                &:first-child {
+                    @media screen and (min-width: $screen-md-min) {
+                        width: initial;
+                    }
+                }
+            }
+        }
+    }
+}
