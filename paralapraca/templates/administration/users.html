@@ -136,7 +136,7 @@ ng-app="users-admin"
                     </table>
                 </section>
 
-                <div styke="display: flexbox; justify-content: center; align-items: center;">
+                <div class="pagination-wrapper">
                     <ul uib-pagination boundary-links="true" total-items="total_users_found" ng-model="current_page" rotate="true" force-ellipses="true" max-size="5" items-per-page="50" ng-change="page_changed()" class="pagination" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="primeira página" last-text="última página" ng-hide="filtered"></ul>
                 </div>
             </div>
@@ -145,11 +145,12 @@ ng-app="users-admin"
             <div class="tab-pane fade in groups-list" id="groups" ng-controller="GroupAdminController">
                 <section>
                     <div class="row">
-                        <h3>Lista de grupos</h3>
-                        <p class="total">Total de <span>{{ groups.length }} grupos cadastrados</span></p>
-
-                        <div class="col-md-3 col-sm-4" style="position: absolute; right: 174px; top: 250px;">
-                            <a class="btn btn-primary" ng-click="new_group()">Novo grupo</a>
+                        <div class="col-xs-8">
+                            <h3>Lista de grupos</h3>
+                            <p class="total">Total de <span>{{ groups.length }} grupos cadastrados</span></p>
+                        </div>
+                        <div class="col-xs-4">
+                            <a class="btn btn-sm btn-primary add new-group" ng-click="new_group()">Novo grupo</a>
                         </div>
                     </div>
 
