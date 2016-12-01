@@ -64,10 +64,14 @@
             li {
                 font-size: 11px;
                 font-weight: $normal;
+                margin-bottom: 0;
                 padding: 10px 0;
                 a {
                     border-bottom-width: 1px !important;
                 }
+            }
+            li + li {
+                padding-top: 0;
             }
         }
     }

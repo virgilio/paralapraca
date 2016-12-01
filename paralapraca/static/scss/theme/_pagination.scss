@@ -1,0 +1,30 @@
+.forums {
+    .pagination {
+        > li {
+            > a, > span {
+                color: #fff;
+                background-color: $orange;
+            }
+        }
+        > li > a,
+        > li > span {
+            &:hover, &:focus {
+                color: #fff;
+                background-color: darken($orange,10%);;
+            }
+        }
+        > .active > a,
+        > .active > span {
+            &, &:hover, &:focus {
+                color: #fff;
+                background-color: $yellow;
+            }
+        }
+        > .disabled {
+            > span, > span:hover, > span:focus, > a, > a:hover, > a:focus {
+                color: #fff;
+                background-color: rgba($orange,0.8);
+            }
+        }
+    }
+}

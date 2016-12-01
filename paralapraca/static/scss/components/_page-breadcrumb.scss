@@ -1,0 +1,10 @@
+.page-breadcrumb {
+    border-bottom: 1px solid;
+    color: #000;
+    font-size: $font-size-large;
+    padding: 0 15px 10px;
+}
+
+.page-breadcrumb + .page-header {
+    margin-top: 25px; 
+}
