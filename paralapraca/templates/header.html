@@ -19,7 +19,7 @@
         {% if user.is_authenticated %}
             {% block header_user_menu %}
                 {% verbatim %}
-                <div class="user-icon">
+                <div class="user-icon" style="float: none;">
                     <img ng-src="{{ user.picture }}" alt="{{ user.name }}" class="img-circle">
                     <div class="menu-label">menu</div>
                     <div class="hide-menu">ocultar</div>
