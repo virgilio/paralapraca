@@ -3,9 +3,46 @@ from django.core.management.base import BaseCommand
 from django.contrib.auth import get_user_model
 from django.db.models import Q
 
-from pymongo import MongoClient
+from pymongo import MongoClient, errors
+from datetime import datetime
+import random
 
 User = get_user_model()
+
+# Connect to rocket's database
+client = MongoClient('mongodb', 27017)
+db = client.paralapraca
+rocket_channels = db.rocketchat_room
+rocket_users = db.users
+rocket_subscriptions = db.rocketchat_subscription
+
+
+def genMeteorID():
+    return('%024x' % random.randrange(16**24))
+
+
+def create_subscription(user, channel):
+    new_sub = {
+        "_id": genMeteorID(),
+        "open": "true",
+        "alert": "false",
+        "unread": 0,
+        "ts": datetime.now(),
+        "rid": channel['id'],
+        "name": channel['name'],
+        "t": "c",
+        "u": {
+            "_id": user['id'],
+            "username": user['username']
+        },
+        "_updatedAt": datetime.now(),
+        "ls": datetime.now()
+    }
+    try:
+        rocket_subscriptions.insert_one(new_sub)
+    except errors.DuplicateKeyError:
+        print("Duplicated subscription")
+        pass
 
 
 class Command(BaseCommand):
@@ -81,15 +118,10 @@ class Command(BaseCommand):
                         .distinct()
         )
 
-        # Connect to rocket's database
-        client = MongoClient('mongo-paralapraca.docker', 27017)
-        db = client.paralapraca
-        rocket_channels = db.rocketchat_room
-        rocket_users = db.users
-
         # Populate each channel
         # Geral
         print("-----------")
+        channel = {"id": "QRviDMnqyNSBTGNQh", "name": "geral"}
         usernames = []
         for user in users_geral:
             rocket_user = rocket_users.find_one({"emails": {"$elemMatch": {"address": user.email}}})
@@ -97,11 +129,13 @@ class Command(BaseCommand):
                 print(user.username + " " + user.email)
                 continue
             usernames.append(rocket_user['username'])
+            create_subscription({"id": rocket_user['_id'], "username": rocket_user['username']}, channel)
         print("Importing channel geral")
-        rocket_channels.update({"_id": "QRviDMnqyNSBTGNQh"}, {"$addToSet": {"usernames": {"$each": usernames}}})
+        rocket_channels.update({"_id": channel['id']}, {"$addToSet": {"usernames": {"$each": usernames}}})
 
         # Camaçari
         print("-----------")
+        channel = {"id": "tBggre83oJSjkTA4g", "name": "camacari"}
         usernames = []
         for user in users_camacari:
             rocket_user = rocket_users.find_one({"emails": {"$elemMatch": {"address": user.email}}})
@@ -109,11 +143,13 @@ class Command(BaseCommand):
                 print(user.username + " " + user.email)
                 continue
             usernames.append(rocket_user['username'])
+            create_subscription({"id": rocket_user['_id'], "username": rocket_user['username']}, channel)
         print("Importing channel camacari")
-        rocket_channels.update({"_id": "tBggre83oJSjkTA4g"}, {"$addToSet": {"usernames": {"$each": usernames}}})
+        rocket_channels.update({"_id": channel['id']}, {"$addToSet": {"usernames": {"$each": usernames}}})
 
         # Maracanaú
         print("-----------")
+        channel = {"id": "hTwXJ2uzsLgHzRieM", "name": "maracanau"}
         usernames = []
         for user in users_maracanau:
             rocket_user = rocket_users.find_one({"emails": {"$elemMatch": {"address": user.email}}})
@@ -121,11 +157,13 @@ class Command(BaseCommand):
                 print(user.username + " " + user.email)
                 continue
             usernames.append(rocket_user['username'])
+            create_subscription({"id": rocket_user['_id'], "username": rocket_user['username']}, channel)
         print("Importing channel maracanau")
-        rocket_channels.update({"_id": "hTwXJ2uzsLgHzRieM"}, {"$addToSet": {"usernames": {"$each": usernames}}})
+        rocket_channels.update({"_id": channel['id']}, {"$addToSet": {"usernames": {"$each": usernames}}})
 
         # Natal
         print("-----------")
+        channel = {"id": "ewBKkFrtg8RnSeJyw", "name": "natal"}
         usernames = []
         for user in users_natal:
             rocket_user = rocket_users.find_one({"emails": {"$elemMatch": {"address": user.email}}})
@@ -133,11 +171,13 @@ class Command(BaseCommand):
                 print(user.username + " " + user.email)
                 continue
             usernames.append(rocket_user['username'])
+            create_subscription({"id": rocket_user['_id'], "username": rocket_user['username']}, channel)
         print("Importing channel natal")
-        rocket_channels.update({"_id": "ewBKkFrtg8RnSeJyw"}, {"$addToSet": {"usernames": {"$each": usernames}}})
+        rocket_channels.update({"_id": channel['id']}, {"$addToSet": {"usernames": {"$each": usernames}}})
 
         # Olinda
         print("-----------")
+        channel = {"id": "GExqAwPhEoQa9n7N5", "name": "olinda"}
         usernames = []
         for user in users_olinda:
             rocket_user = rocket_users.find_one({"emails": {"$elemMatch": {"address": user.email}}})
@@ -145,11 +185,13 @@ class Command(BaseCommand):
                 print(user.username + " " + user.email)
                 continue
             usernames.append(rocket_user['username'])
+            create_subscription({"id": rocket_user['_id'], "username": rocket_user['username']}, channel)
         print("Importing channel olinda")
-        rocket_channels.update({"_id": "GExqAwPhEoQa9n7N5"}, {"$addToSet": {"usernames": {"$each": usernames}}})
+        rocket_channels.update({"_id": channel['id']}, {"$addToSet": {"usernames": {"$each": usernames}}})
 
         # Maceió
         print("-----------")
+        channel = {"id": "J9o5wYiNwhxLn38GF", "name": "maceio"}
         usernames = []
         for user in users_maceio:
             rocket_user = rocket_users.find_one({"emails": {"$elemMatch": {"address": user.email}}})
@@ -157,11 +199,13 @@ class Command(BaseCommand):
                 print(user.username + " " + user.email)
                 continue
             usernames.append(rocket_user['username'])
+            create_subscription({"id": rocket_user['_id'], "username": rocket_user['username']}, channel)
         print("Importing channel maceio")
-        rocket_channels.update({"_id": "J9o5wYiNwhxLn38GF"}, {"$addToSet": {"usernames": {"$each": usernames}}})
+        rocket_channels.update({"_id": channel['id']}, {"$addToSet": {"usernames": {"$each": usernames}}})
 
         # Gestores
         print("-----------")
+        channel = {"id": "8Hm5MQmTn3hxgKmH7", "name": "gestores"}
         usernames = []
         for user in users_gestores:
             rocket_user = rocket_users.find_one({"emails": {"$elemMatch": {"address": user.email}}})
@@ -169,5 +213,6 @@ class Command(BaseCommand):
                 print(user.username + " " + user.email)
                 continue
             usernames.append(rocket_user['username'])
+            create_subscription({"id": rocket_user['_id'], "username": rocket_user['username']}, channel)
         print("Importing channel gestores")
-        rocket_channels.update({"_id": "8Hm5MQmTn3hxgKmH7"}, {"$addToSet": {"usernames": {"$each": usernames}}})
+        rocket_channels.update({"_id": channel['id']}, {"$addToSet": {"usernames": {"$each": usernames}}})
