@@ -24,8 +24,8 @@ def genMeteorID():
 def create_subscription(user, channel):
     new_sub = {
         "_id": genMeteorID(),
-        "open": "true",
-        "alert": "false",
+        "open": True,
+        "alert": False,
         "unread": 0,
         "ts": datetime.now(),
         "rid": channel['id'],
@@ -205,7 +205,7 @@ class Command(BaseCommand):
 
         # Gestores
         print("-----------")
-        channel = {"id": "8Hm5MQmTn3hxgKmH7", "name": "gestores"}
+        channel = {"id": "LZxQypGvjoM6uvmcZ", "name": "gestores"}
         usernames = []
         for user in users_gestores:
             rocket_user = rocket_users.find_one({"emails": {"$elemMatch": {"address": user.email}}})
