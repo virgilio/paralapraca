@@ -30,7 +30,7 @@ def create_subscription(user, channel):
         "ts": datetime.now(),
         "rid": channel['id'],
         "name": channel['name'],
-        "t": "c",
+        "t": "p",
         "u": {
             "_id": user['id'],
             "username": user['username']
