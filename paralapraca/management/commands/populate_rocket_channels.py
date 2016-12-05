@@ -170,4 +170,4 @@ class Command(BaseCommand):
                 continue
             usernames.append(rocket_user['username'])
         print("Importing channel gestores")
-        rocket_channels.update({"_id": "LZxQypGvjoM6uvmcZ"}, {"$addToSet": {"usernames": {"$each": usernames}}})
+        rocket_channels.update({"_id": "8Hm5MQmTn3hxgKmH7"}, {"$addToSet": {"usernames": {"$each": usernames}}})
