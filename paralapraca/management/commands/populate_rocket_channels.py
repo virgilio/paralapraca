@@ -10,7 +10,7 @@ import random
 User = get_user_model()
 
 # Connect to rocket's database
-client = MongoClient('mongodb', 27017)
+client = MongoClient('mongo-paralapraca.docker', 27017)
 db = client.paralapraca
 rocket_channels = db.rocketchat_room
 rocket_users = db.users
