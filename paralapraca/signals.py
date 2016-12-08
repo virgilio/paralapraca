@@ -19,7 +19,11 @@ def answer_created_or_updated(instance, **kwargz):
 
     # All instructors of the corresponding course must be notified
     notifiable_users = instance.activity.unit.lesson.course.professors
-    topic_id = instance.given.get('topic')
+    topic_id = instance.given.get('topic', None)
+
+    # If this answer is not relative to a Discussion Activity, this signal must not notify professors
+    if topic_id is None:
+        return
 
     # Create the New Topic notification for appropriate users
     for user in notifiable_users.all():
