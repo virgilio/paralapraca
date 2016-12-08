@@ -12,15 +12,15 @@
             <p>Certificamos que</p>
             <p class="student">{{ object.course_student.user.get_full_name }}</p>
             <p>concluiu o <strong>{{ object.course_student.course.name }}</strong>,</p>
-            <p>em <strong>{{ object.modified_date | date:"d/m/Y" }}</strong> no ambiente virtual de aprendizagem do <strong>Programa Paralápraca</strong>,</p> <p>perfazendo o total de 40 horas.</p>
+            <p>em <strong>{{ object.modified_date | date:"d/m/Y" }}</strong> no ambiente virtual de aprendizagem do <strong>Programa Paralapracá</strong>,</p> <p>perfazendo o total de 40 horas.</p>
 
             <!-- <strong>{{ cert_template.organization_name }}</strong> -->
         </div>
         <footer>
             <div class="credits-section">
                 <p><b>Emitido em:</b> {{ object.modified_date | date:"d/m/Y" }}</p>
-                <p><b>Realizado em:</b> ({{ site.domain }})</p>
-                <p><b>URL de validação:</b> <a href="{% url 'certificate' object.link_hash %}">{{ site.domain }}{% url 'certificate' object.link_hash %}</a></p>
+                <p><b>Realizado em:</b> ava.paralapraca.org.br</p>
+                <p><b>URL de validação:</b> <a href="{% url 'certificate' object.link_hash %}">ava.paralapraca.org.br{% url 'certificate' object.link_hash %}</a></p>
             </div>
             <div class="coordinator-section" style="padding-top: 30px;">
                 {{ cert_template.name }}<br>
