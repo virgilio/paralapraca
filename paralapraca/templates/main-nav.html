@@ -12,9 +12,7 @@
         <!--<li><a href="#" class="repositories">{% trans "Repository" %}</a></li>-->
         <li><a href="{% url 'discussion:forum-home' %}" class="forum">Fóruns</a></li>
         <!--<li><a href="#" class="help">{% trans "Help" %}</a></li>-->
-        {% if user|has_group:"Avante" or user|has_group:"Entremeios" or user|has_group:"Assessoras" or user|has_group:"Assessoras Camaçari" or user|has_group:"Assessoras Maracanaú" or user|has_group:"Assessoras Olinda" or user|has_group:"Assessoras Natal" or user|has_group:"Assessoras Maceió"  %}
         <li><a href="{% url 'paralapraca:chat_screen' %}" class="profile">Chat</a></li>
-        {% endif %}
         {% if user.is_superuser %}
         <li class="submenu">
             <a class="admin"
