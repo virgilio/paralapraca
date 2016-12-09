@@ -26,10 +26,10 @@
             <p><b>Realizado em:</b> ava.paralapraca.org.br</p>
             <p><b>URL de validação:</b> <a href="{% url 'certificate' object.link_hash %}">ava.paralapraca.org.br{% url 'certificate' object.link_hash %}</a></p>
         </div>
-        <div class="coordinator-section">
+        <div class="coordinator-section" style="position: absolute; right: 100px; bottom: 53px;">
             {% if cert_template.signature_url %}
             <div class="certificate-logos">
-                <img alt="Signature" style="max-width: 130px; position: absolute; right: 227px; bottom: 66px;" src="{{ cert_template.signature_url }}">
+                <img alt="Signature" style="max-width: 130px; position: absolute; right: 68px; bottom: 66px;" src="{{ cert_template.signature_url }}">
             </div>
             {% endif %}
             <p class="name-coordinator">{{ cert_template.name }}</p>
