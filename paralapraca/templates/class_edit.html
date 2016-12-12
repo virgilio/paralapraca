@@ -91,9 +91,9 @@ wrapper-course-lesson
 
         <div class="professor-assistant">
             <label for="{{ form.assistant.id_for_label }}">{% trans 'Assistant Professor' %}:</label>
-            <span class="help-text"><i class="fa fa-caret-down" aria-hidden="true"></i> Escolha o professor assistente</span>
             {% if user|is_course_coordinator:object.course %}
                 {% verbatim %}
+                <span class="help-text"><i class="fa fa-caret-down" aria-hidden="true"></i> Escolha o professor assistente</span>
                 <ui-select multiple ng-model="classe.assistants" theme="bootstrap" title="Escolha os professores...">
                     <ui-select-match placeholder="Escolha os professores...">{{$item.first_name + " " + $item.last_name}}</ui-select-match>
                     <ui-select-choices repeat="professor in classe.course.professors" group-by="">
@@ -102,7 +102,14 @@ wrapper-course-lesson
                 </ui-select>
                 {% endverbatim %}
             {% else %}
-                <label>{{ object.assistant }}</label>
+                {% for assistant in object.assistants.all %}
+                    <label>
+                      {% if forloop.counter0 > 0%}
+                          |
+                      {% endif %}
+                      {{ assistant }}
+                    </label>
+                {% endfor %}
             {% endif %}
         </div>
 
