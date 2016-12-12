@@ -11,6 +11,7 @@
         <link rel="stylesheet" type="text/css" href="{% static 'angular-ui-select/dist/select.css' %}">
     {% endcompress %}
 
+    <script type="text/javascript" src="{% url 'djangular' %}"></script>
     {% compress js %}
     <script type="text/javascript" src="{% static 'js/directives/alertPopup.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/directives/fixedBar.js' %}"></script>
@@ -20,7 +21,6 @@
     <script type="text/javascript" src="{% static 'js/directives/waiting-screen.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/edit-class/app.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/edit-class/controllers.js' %}"></script>
-    <script type="text/javascript" src="{% url 'djangular' %}"></script>
     <script type="text/javascript" src="{% static 'checklist-model/checklist-model.js' %}"></script>
     <script type="text/javascript" src="{% static 'angular-ui-select/dist/select.js' %}"></script>
     {% endcompress %}
