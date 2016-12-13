@@ -7,8 +7,8 @@
 
 {% block js %}
 {{ block.super }}
-<script type="text/javascript" src="{% static 'tinymce-dist/tinymce.min.js' %}"></script>
 {% compress js %}
+<script type="text/javascript" src="{% static 'tinymce-dist/tinymce.js' %}"></script>
 <!-- Markdown -->
 <script type="text/javascript" src="{% static 'js/vendor/pagedown/Markdown.Converter.js' %}"></script>
 <script type="text/javascript" src="{% static 'js/vendor/pagedown/Markdown.Editor.js' %}"></script>
@@ -59,6 +59,10 @@ $(document).ready(function() {
 
     // startIntro();
 });
+</script>
+
+<script type="text/javascript">
+    tinyMCE.baseURL = '/static/tinymce-dist/';
 </script>
 
 {% endblock %}
