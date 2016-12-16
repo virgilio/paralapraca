@@ -86,7 +86,7 @@ tinymce.addI18n('pt_BR',{
 "Insert\/edit image": "Inserir\/editar imagem",
 "General": "Geral",
 "Advanced": "Avan\u00e7ado",
-"Source": "Endere\u00e7o da imagem",
+"Source": "Endere\u00e7o do vídeo no Youtube",
 "Border": "Borda",
 "Constrain proportions": "Manter propor\u00e7\u00f5es",
 "Vertical space": "Espa\u00e7amento vertical",
