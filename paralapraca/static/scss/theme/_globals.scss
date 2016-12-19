@@ -5,7 +5,7 @@
 //##
 .page {
     @include card(rgba($light-blue,0.6));
-    
+
     @media screen and (min-width: $screen-sm-min) {
         padding: 30px;
     }
@@ -44,4 +44,9 @@
     &.bottom-right .tooltip-arrow {
         border-bottom-color: #eee;
     }
+}
+
+// Remove status bar for all TinyMCE editors
+.mce-path {
+    display: none !important;
 }
