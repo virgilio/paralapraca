@@ -59,55 +59,36 @@ wrapper-course-lesson
 
     </div>
 
-    <!--<div class="profile-certificates">-->
+     <div class="profile-certificates">
 
-    <!--&lt;!&ndash; ng-if="user_profile.certificates.length>0" &ndash;&gt;-->
-        <!---->
-        <!--<div class="page-header">-->
-            <!--<h2><i class="fa fa-angle-double-right"></i> {% trans 'Finished courses' %}</h2>-->
-        <!--</div>-->
+    <div ng-if="valid_certificates">
 
-        <!--<div class="widget">-->
+        <div class="page-header">
+            <h2><i class="fa fa-angle-double-right"></i>Cursos finalizados</h2>
+        </div>
 
-        <!--&lt;!&ndash; ng-repeat="certificate in user_profile.certificates" &ndash;&gt;-->
+        <div class="widget">
+            {%verbatim%}
+            <div class="courses line two-column fifty-fifty">
+                <div class="course-box column" ng-repeat="certificate in user_profile.certificates | filter: { approved: 'true' }">
+                    <div class="line two-column">
+                        <div class="course-thumb column">
+                            <div class="course-thumb-bg" style="background-image: url({{certificate.course.home_thumbnail_url}});"></div>
+                            <a class="btn see-certificate" href="/certificate/{{certificate.link_hash}}/" target="_blank">ver
+                            {{ certificate.type==='receipt' ? 'comprovante' : 'certificado' }}</a>
+                        </div>
+                        <div class="course-description column">
+                            <div class="progress-label">módulo concluído</div>
+                            <h3 class="course-title">{{ certificate.course.name }}</h3>
+                            <div class="course-info">
+                                <p><b>Finalizado em:</b> {{ certificate.created_date | date : "d/M/yyyy"}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {%endverbatim%}
 
-            <!--<div class="courses line two-column fifty-fifty">-->
-                <!--<div class="course-box column">-->
-                    <!--<div class="line two-column">-->
-                        <!--<div class="course-thumb column">-->
-                            <!--<div class="course-thumb-bg" style="background-image: url(http://placehold.it/800x600);"></div>-->
-                            <!--<a class="btn see-certificate" href="#">ver certificado</a>-->
-                        <!--</div>-->
-                        <!--<div class="course-description column">-->
-                            <!--<div class="progress-label">módulo concluído</div>-->
-                            <!--<h3 class="course-title">Formação de Formadores</h3>-->
-                            <!--<div class="course-info">-->
-                                <!--<p><b>Iniciado em:</b> 00/00/0000 | <b>Cidade:</b> Camaçari</p>-->
-                                <!--<p><b>Finalizado em:</b> 00/00/0000</p>-->
-                            <!--</div>-->
-                        <!--</div>-->
-                    <!--</div>-->
-                <!--</div>-->
-                <!--<div class="course-box column">-->
-                    <!--<div class="line two-column">-->
-                        <!--<div class="course-thumb column">-->
-                            <!--<div class="course-thumb-bg" style="background-image: url(http://placehold.it/800x600);"></div>-->
-                            <!--<a class="btn see-certificate" href="#">ver certificado</a>-->
-                        <!--</div>-->
-                        <!--<div class="course-description column">-->
-                            <!--<div class="progress-label">módulo concluído</div>-->
-                            <!--<h3 class="course-title">Formação de Formadores</h3>-->
-                            <!--<div class="course-info">-->
-                                <!--<p><b>Iniciado em:</b> 00/00/0000 | <b>Cidade:</b> Camaçari</p>-->
-                                <!--<p><b>Finalizado em:</b> 00/00/0000</p>-->
-                            <!--</div>-->
-                        <!--</div>-->
-                    <!--</div>-->
-                <!--</div>-->
-            <!--</div>-->
-
-        <!--</div>-->
-
-    <!--</div>-->
+    </div>
 </div>
 {% endblock %}
