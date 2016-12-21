@@ -39,9 +39,6 @@
         // Image upload
         // enable title field in the Image dialog
         image_title: false,
-        image_class_list: [
-            {title: 'Imagem', value: 'tinymce-image'}
-        ],
         image_description: false,
         image_dimensions: false,
         // enable automatic uploads of images represented by blob or data URIs

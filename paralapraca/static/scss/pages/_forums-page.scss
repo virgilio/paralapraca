@@ -131,6 +131,10 @@
         p:last-child {
             margin-bottom: 0; 
         }
+        img {
+          max-width: 100%;
+          height: auto;
+        }
     }
     .comments {
         border-top: 1px solid $gray-light;
@@ -173,6 +177,11 @@
         font-weight: $extra-bold;
         margin: 0 0 20px 0;
     }
+}
+
+.thread .info img {
+  max-width: 100%;
+  height: auto;
 }
 
 .post-attachments {
