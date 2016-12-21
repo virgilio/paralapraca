@@ -56,6 +56,7 @@
             // or quirky browsers like IE, so you might want to add it to the DOM
             // just in case, and visually hide it. And do not forget do remove it
             // once you do not need it anymore.
+            document.body.appendChild(input);
 
             input.onchange = function() {
                 var file = this.files[0];
