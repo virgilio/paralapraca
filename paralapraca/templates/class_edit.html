@@ -156,7 +156,7 @@ wrapper-course-lesson
         </div>
 
         <form class="add-users">
-            <label for="search-user">{% trans 'Add students to this class' %}</label>
+            <label for="search-user">Adicionar alunos: </label>
             <div class="autocomplete">
                 <input type="text" id="search-user" class="form-control" ng-model="asyncSelected"
                     placeholder="{% trans 'Type the name, email or user name of the professor to search...' %}"
@@ -173,17 +173,17 @@ wrapper-course-lesson
         <table class="table table-striped">
             <thead>
                 <tr>
-                    <th class="classname">{% trans "Username" %}</th>
-                    <th class="email">{% trans "Email" %}</th>
-                    <th class="fullname">{% trans "Full name" %}</th>
-                    <th class="certificate" ng-show="classe.user_can_certificate">{% trans "Certificate" %}</th>
+                    <th class="classname">Nome de usuário</th>
+                    <th class="email">Email</th>
+                    <th class="fullname">Nome completo (ordem alfabética)</th>
+                    <th class="certificate" ng-show="classe.user_can_certificate">Certificado</th>
                     {% if object.course.default_class != object %}
-                        <th class="actions">{% trans "Actions" %}</th>
+                        <th class="actions">Ações</th>
                     {% endif %}
                 </tr>
             </thead>
             <tbody>
-                <tr ng-repeat='student in classe.students_details'>
+                <tr ng-repeat="student in classe.students_details | orderBy : 'user.name'">
                     {% verbatim %}
                     <td>{{ student.user.username }}</td>
                     <td>{{ student.user.email }}</td>
@@ -207,7 +207,7 @@ wrapper-course-lesson
                 </tr>
 
                 <tr ng-hide="classe.students.length > 0">
-                    <td colspan="4">{% trans 'No students found' %}</td>
+                    <td colspan="4">Nenhum aluno encontrado</td>
                 </tr>
             </tbody>
         </table>
