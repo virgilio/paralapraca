@@ -6,6 +6,8 @@
         'header.controllers',
         'header.directives',
         'header.filters',
+        'main-nav',
+        'main-nav.controllers',
         'discussion.services',
         'djangular',
         'gettext',

@@ -37,7 +37,7 @@
                 UnreadNotification.update({id: $scope.unread.id, ignoreLoadingBar: true}, function(unread){
                     $scope.unread = unread;
                 });
-            }
+            };
         }
     ]);
 

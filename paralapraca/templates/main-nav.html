@@ -2,7 +2,7 @@
 {% load is_coordinator %}
 {% load has_group %}
 
-<nav class="main-nav" role="navigation">
+<nav class="main-nav" role="navigation" ng-controller="MainNavCtrl">
     <ul class="user-nav">
     {% if user.is_authenticated %}
         <li><a href="{% url 'profile' %}" class="profile">{% trans "Profile" %}</a></li>
@@ -12,7 +12,14 @@
         <!--<li><a href="#" class="repositories">{% trans "Repository" %}</a></li>-->
         <li><a href="{% url 'discussion:forum-home' %}" class="forum">Fóruns</a></li>
         <!--<li><a href="#" class="help">{% trans "Help" %}</a></li>-->
-        <li><a href="{% url 'paralapraca:chat_screen' %}" class="profile">Chat</a></li>
+        <li>
+            {% verbatim %}
+            <a class="chat" href="/paralapraca/chat">
+                <span class="bubble" ng-show="chat.notifications">{{ chat.notifications }}</span>
+                <span class="">Chat</span>
+            </a>
+            {% endverbatim %}
+        </li>
         {% if user.is_superuser %}
         <li class="submenu">
             <a class="admin"

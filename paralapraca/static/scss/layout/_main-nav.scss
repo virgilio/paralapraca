@@ -78,6 +78,27 @@
     .admin {
         @extend %icon-briefcase;
     }
+    .chat {
+        @extend %icon-chat;
+        position: relative;
+        .bubble {
+            @media screen and (min-width: $screen-sm-min) {
+                display: block;
+            }
+            display: none;
+            background-color: $brand-warning;
+            border-radius: 100%;
+            color: #fff;
+            font-size: 10px;
+            height: 15px;
+            line-height: 15px;
+            position: absolute;
+            top: -3px;
+            right: -7px;
+            text-align: center;
+            width: 15px;
+        }
+    }
     .courses {
         @extend %icon-courses;
     }
@@ -126,9 +147,29 @@
                 border-left: 1px solid;
                 padding-left: 10px;
                 li {
-                    font-size: 14px;   
-                    padding: 5px 0;  
+                    font-size: 14px;
+                    padding: 5px 0;
                 }
+            }
+        }
+        .chat {
+            @extend %icon-chat;
+            .bubble {
+                @media screen and (min-width: $screen-sm-min) {
+                    display: block;
+                }
+                display: none;
+                background-color: $brand-warning;
+                border-radius: 100%;
+                color: #fff;
+                font-size: 10px;
+                height: 15px;
+                line-height: 15px;
+                position: absolute;
+                top: 265px;
+                right: 195px;
+                text-align: center;
+                width: 15px;
             }
         }
     }
