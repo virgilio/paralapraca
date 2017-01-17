@@ -778,6 +778,40 @@
             }
         }
     }
+    .live-lesson-content {
+        margin: 0 auto;
+        max-width: 1220px !important;
+        height: 100%;
+
+        #live-chat {
+            height: 300px;
+            width: 100%;
+        }
+
+        @media screen and (min-width: 800px) {
+            .video {
+                float: left;
+                width: 70%;
+            }
+
+            #live-chat {
+                width: 30%;
+                height: 500px;
+            }
+        }
+
+        @media screen and (min-width: 1200px) {
+            .video {
+                float: left;
+                width: 70%;
+            }
+
+            #live-chat {
+                width: 30%;
+                height: 700px;
+            }
+        }
+    }
 }
 
 .unit-name {

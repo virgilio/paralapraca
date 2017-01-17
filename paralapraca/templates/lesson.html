@@ -23,6 +23,7 @@
 <script type="text/javascript" src="{% static 'js/activities/services.js' %}"></script>
 <script type="text/javascript" src="{% static 'js/lesson/app.js' %}"></script>
 <script type="text/javascript" src="{% static 'js/lesson/controllers.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/lesson/directives.js' %}"></script>
 <script type="text/javascript" src="{% static 'js/lesson/services.js' %}"></script>
 <script type="text/javascript" src="{% static 'js/directives/markdowneditor.js' %}"></script>
 <script type="text/javascript" src="{% static 'js/directives/codemirror.js' %}"></script>
@@ -49,6 +50,7 @@
 window.lessonId = {{ lesson.pk }};
 // Content type id for object type core.Unit used by django generic relations.
 window.unit_content_type_id = {{ unit_content_type_id }};
+window.chat_address = '{{ rocketchat.address }}';
 
 $(document).ready(function() {
     $(".nav-tabs a").click(function(e) {
@@ -116,7 +118,8 @@ wrapper-course-lesson
     <!-- LESSON CONTENT -->
     {% block lesson_video %}
     <div class="course-content">
-        <div class="lesson-content">
+        {% verbatim %}
+        <div ng-class="{ 'live-lesson-content': currentUnit.chat_room, 'lesson-content': !currentUnit.chat_room }">
             <!-- LESSON VIDEO -->
             <!--
             this class exists to circunvent a flash + youtube api error
@@ -125,8 +128,10 @@ wrapper-course-lesson
             <div ng-class="{hidder: section!='video'}" class="video embed-responsive embed-responsive-16by9">
                 <div class="embed-responsive-item" id="youtube-player" youtube-player></div>
             </div>
+            <livechat ng-if="currentUnit.chat_room" chat-room="currentUnit.chat_room"></livechat>
             <!-- END LESSON VIDEO -->
         </div>
+        {% endverbatim %}
 
         <div class="lesson-activity container-fluid">
                 <!-- LESSON ACTIVITY -->
