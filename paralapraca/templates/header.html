@@ -70,5 +70,5 @@
 
 </header>
 {% if user.is_authenticated and request.get_full_path|stringformat:"s" != "/paralapraca/chat" %}
-
+<iframe id="chat-frame" width="0px" height="0px" src="http://chat.paralapraca.org.br/group/geral" name="chat"></iframe>
 {% endif %}
