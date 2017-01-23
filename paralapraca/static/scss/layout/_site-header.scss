@@ -115,25 +115,20 @@
     position: absolute;
     left: 0;
     right: 0;
-    text-align: center;
     @media screen and (min-width: $screen-sm-min) {
         height: 80px;
         left: 100px;
     }
     h1 {
         margin: 0;
+        height: 100%;
         width: 100%;
     }
     a {
-        display: block;
-    }
-    img {
-        margin: 18px 0;
-        max-height: 24px;
-        @media screen and (min-width: $screen-sm-min) {
-            margin: 25px 0;
-            max-height: 30px;
-        }
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
     }
 }
 
