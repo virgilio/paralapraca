@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+{% load compress %}
+{% load static %}
+{% load i18n %}
+
+{% block js %}
+    {{block.super}}
+    <script type="text/javascript" src="{% static 'tinymce-dist/tinymce.js' %}"></script>
+    {% compress js %}
+    <script type="text/javascript" src="{% static 'js/messages/app.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/messages/controllers.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/messages/services.js' %}"></script>
+    <script type="text/javascript" src="{% static 'checklist-model/checklist-model.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/factories/timtec-models.js' %}"></script>
+    <script type="text/javascript" src="{% static 'angular-ui-tinymce/src/tinymce.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/ui.tinymce.paralapraca.config.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/discussion-services.js' %}"></script>
+    <script type="text/javascript" src="{% static 'ng-file-upload/ng-file-upload.js' %}"></script>
+    {% endcompress %}
+{% endblock %}
+
+{% block body_attrs %}
+  ng-app="messages"
+{% endblock %}
+
+{% block content %}
+
+<!--  COURSE CONTENT  -->
+<div class="course course-messages">
+
+    <!-- COURSE-CONTENT -->
+    <section class="messages-content page container-fluid">
+        <header class="page-header">
+            <div class="row">
+                <div class="col-md-9 col-sm-8 col-xs-6">
+                    <h2>Avisos</h2>
+                </div>
+            </div>
+        </header>
+        {% block messages_content %}
+        <div class="messages" ng-controller="MessagesOverviewController">
+            <div class="message" ng-repeat="message in messages" ng-if="messages.length > 0">
+                <div class="row" ng-class="{'unread': !message.is_read}">
+                    <div class="col-lg-1 textright">
+                        {% verbatim %}
+                        <span class="date">{{ message.date|date:"dd/MM/yy" }}</span>
+                        {% endverbatim %}
+                    </div>
+                    <div class="col-lg-11">
+                        {% verbatim %}
+                        <h1 class="bottom">{{ message.subject }}</h1>
+                        {% endverbatim %}
+                        <div class="body">
+                        <span ng-bind-html="strip_html(message.message | limitTo : 500)"></span>
+                            {% verbatim %}<a ng-href="/course/{{message.course_slug}}/message/{{message.id}}">{% endverbatim %} Mais...</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="message" style="margin-bottom: 20px;" ng-if="messages.length == 0 || !messages">
+                <div class="row">
+                    <div class="col-lg-11">
+                        <div class="body">
+                          <span>
+                              Não há avisos importantes para você no momento.
+                          </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endblock %}
+    </section>
+    <!--  END COURSE CONTENT  -->
+
+
+
+
+
+
+</div>
+<!--  END COURSE CONTENT  -->
+
+{% endblock %}

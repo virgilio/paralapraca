@@ -1,0 +1,20 @@
+.messages {
+    h1 {
+        margin-top: 0px;
+    }
+    h2 {
+        margin-top: 0px;
+    }
+    img {
+        width: 100%;
+        height: auto;
+    }
+    .unread {
+        border-left-width: 4px;
+        border-left-color: #9c5286;
+        border-left-style: solid;
+    }
+    .message {
+        margin-bottom: 20px;
+    }
+}

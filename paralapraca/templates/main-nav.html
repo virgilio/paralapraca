@@ -8,7 +8,15 @@
         <li><a href="{% url 'profile' %}" class="profile">{% trans "Profile" %}</a></li>
         <li><a href="{% url 'user_notes' %}" class="notes">{% trans "Notes" %}</a></li>
         <!--<li><a href="{% url 'user_courses' %}" class="courses">{% trans 'Meus módulos' %}</a></li>-->
-        <li><a href="{% url 'courses' %}" class="courses">{% trans "Módulos" %}</a></li>
+        <li><a href="{% url 'courses' %}" class="courses">Módulos</a></li>
+        <li>
+            {% verbatim %}
+            <a class="messages" href="/messages/">
+                <span class="bubble" ng-show="messages_unread_count">{{ messages_unread_count }}</span>
+                <span class="">Avisos</span>
+            </a>
+            {% endverbatim %}
+        </li>
         <!--<li><a href="#" class="repositories">{% trans "Repository" %}</a></li>-->
         <li><a href="{% url 'discussion:forum-home' %}" class="forum">Fóruns</a></li>
         <!--<li><a href="#" class="help">{% trans "Help" %}</a></li>-->

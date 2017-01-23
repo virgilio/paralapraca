@@ -1,7 +1,9 @@
 {% extends "base.html" %}
-{% load pipeline %}
+{% load compress %}
 {% load static %}
 {% load i18n %}
+{% load is_assistant_or_coordinator %}
+{% load is_course_coordinator %}
 
 {% block wrapper_classes %}
 wrapper-course-lesson
@@ -13,7 +15,25 @@ wrapper-course-lesson
         window.course_id = {{ course.pk }};
         window.course_slug = '{{ course.slug }}';
     </script>
-    {% javascript 'messages' %}
+
+    <script type="text/javascript" src="{% static 'tinymce-dist/tinymce.js' %}"></script>
+    {% compress js %}
+    <script type="text/javascript" src="{% static 'js/messages/app.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/messages/controllers.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/messages/services.js' %}"></script>
+    <script type="text/javascript" src="{% static 'checklist-model/checklist-model.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/factories/timtec-models.js' %}"></script>
+    <script type="text/javascript" src="{% static 'angular-ui-tinymce/src/tinymce.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/ui.tinymce.paralapraca.config.js' %}"></script>
+
+    <script type="text/javascript" src="{% static 'js/discussion-services.js' %}"></script>
+    <script type="text/javascript" src="{% static 'ng-file-upload/ng-file-upload.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/ui.tinymce.paralapraca.config.js' %}"></script>
+    {% endcompress %}
+    <script type="text/javascript">
+        tinyMCE.baseURL = '/static/tinymce-dist/';
+    </script>
+
 {% endblock %}
 
 {% block body_attrs %}
@@ -36,32 +56,36 @@ wrapper-course-lesson
         <header class="page-header" ng-controller="NewMessageController">
             <div class="row">
                 <div class="col-md-9 col-sm-8 col-xs-6">
-                    <h2>{% trans "Messages" %}</h2>
+                    <h2>Avisos</h2>
                 </div>
+                {% if user|is_assistant_or_coordinator:course %}
                 <div class="col-md-3 col-sm-4 col-xs-6">
-                    <a class="btn btn-primary edit" ng-click="new_message()">{% trans "New Message" %}</a>
+                    <a class="btn btn-primary edit" ng-click="new_message()">Novo aviso</a>
                 </div>
+                {% endif %}
                     <script type="text/ng-template" id="newMessageModal.html">
                         <div class="modal-header">
                             <button type="button" class="close" ng-click="cancel()" aria-hidden="true">&times;</button>
-                            <h4 class="modal-title" id="myModalLabel">{% trans "New Message" %}</h4>
+                            <h4 class="modal-title" id="myModalLabel">Novo aviso</h4>
                         </div>
                         <div class="modal-body">
                             <div class="alert alert-danger" role="alert" ng-show="empty_msg_subject_error || empty_msg_body_error ">
                                 <ul>
-                                    <li ng-show="empty_msg_subject_error"><a href="#id-title">{% trans 'Fill the message subject' %}</a></li>
-                                    <li ng-show="empty_msg_body_error"><a href="#wmd-input">{% trans 'Fill the message body' %}</a></li>
+                                    <li ng-show="empty_msg_subject_error"><a href="#id-title">Assunto do aviso</a></li>
+                                    <li ng-show="empty_msg_body_error"><a href="#wmd-input">Texto do aviso</a></li>
                                 </ul>
                             </div>
                             <div class="form-group">
                                 <input type="text" class="form-control" ng-model="new_message.subject" placeholder="{% trans 'Subject' %}"/>
                             </div>
                             <div class="form-group">
-                                <textarea class="form-control" rows="10" ng-model="new_message.message" placeholder="{% trans 'Message' %}"></textarea>
+                                <textarea ui-tinymce
+                                          ng-model="new_message.message" class="form-control" rows="10"
+                                          placeholder="Mensagem" name="content" required></textarea>
                             </div>
                             <div class="form-group row">
                                 <div class="students col-lg-12">
-                                    <p><label><input type="checkbox" ng-model="modal.all_checked"> {% trans 'Send to all classes' %}</label></p>
+                                    <p><label><input type="checkbox" ng-model="modal.all_checked"> Enviar para todas as turmas deste curso</label></p>
                                     {% verbatim %}
                                     <div ng-repeat="klass in classes">
                                         <label ng-show="!modal.all_checked"><input type="checkbox" checklist-model="classes.checked" checklist-value="klass.students"> {{ klass.name }}</label>
@@ -70,7 +94,7 @@ wrapper-course-lesson
                                     <div class="autocomplete" ng-show="!modal.all_checked">
                                         <input type="text" id="search-user" class="form-control" ng-model="asyncSelected"
                                                         placeholder="{% trans 'Type the name, email or user name of the professor to search...' %}"
-                                                        typeahead="user as user.formated_name for user in getUsers($viewValue)"
+                                                        uib-typeahead="user as user.formated_name for user in getUsers($viewValue)"
                                                         typeahead-loading="loadingLocations"
                                                         typeahead-on-select="on_select_student($model); asyncSelected = '';"
                                                         typeahead-min-length="2"
@@ -79,10 +103,10 @@ wrapper-course-lesson
                                     </div>
                                     <table class="table table-list" ng-show="!modal.all_checked && recipient_list.length">
                                         <tr>
-                                            <th class="fullname">{% trans "Full name" %}</th>
-                                            <th class="email">{% trans "Email" %}</th>
-                                            <th class="username">{% trans "Username" %}</th>
-                                            <th class="actions">{% trans "Actions" %}</th>
+                                            <th class="fullname">Nome completo</th>
+                                            <th class="email">Email</th>
+                                            <th class="username">Usuário</th>
+                                            <th class="actions">Ações</th>
                                         </tr>
                                         <tr ng-repeat="student in recipient_list">
                                             {% verbatim %}
@@ -96,8 +120,8 @@ wrapper-course-lesson
                                 </div>
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-danger" ng-click="cancel()">{% trans "Close" %}</button>
-                                <button type="button" class="btn btn-success" ng-click="send()">{% trans "Send" %}</button>
+                                <button type="button" class="btn btn-danger" ng-click="cancel()">Fechar</button>
+                                <button type="button" class="btn btn-success" ng-click="send()" ng-disabled="!classes_ready">Enviar</button>
                             </div>
                         </div>
                     </script>
@@ -105,8 +129,8 @@ wrapper-course-lesson
         </header>
         {% block messages_content %}
         <div class="messages" ng-controller="MessagesListController">
-            <div class="message" ng-repeat="message in messages">
-                <div class="row">
+            <div class="message" ng-repeat="message in messages" ng-if="messages.length > 0">
+                <div class="row" ng-class="{'unread': !message.is_read}">
                     <div class="col-lg-1 textright">
                         {% verbatim %}
                         <span class="date">{{ message.date|date:"dd/MM/yy" }}</span>
@@ -114,15 +138,27 @@ wrapper-course-lesson
                     </div>
                     <div class="col-lg-11">
                         {% verbatim %}
-                        <div class="subject">{{ message.subject }}</div>
+                        <h1 class="subject">{{ message.subject }}</h1>
                         {% endverbatim %}
                         <div class="body">
-                        <span ng-bind-html="message.message|markdown|words:50"></span>
+                        <span ng-bind-html="strip_html(message.message)"></span>
                             {% if in_admin %}
-                                {% verbatim %}<a ng-href="/admin/course/{{course_id}}/message/{{message.id}}">{% endverbatim %} {% trans 'More...' %}</a>
+                                {% verbatim %}<a ng-href="/admin/course/{{course_id}}/message/{{message.id}}">{% endverbatim %} Mais...</a>
                             {% else %}
-                                {% verbatim %}<a ng-href="/course/{{course_slug}}/message/{{message.id}}">{% endverbatim %} {% trans 'More...' %}</a>
+                                {% verbatim %}<a ng-href="/course/{{course_slug}}/message/{{message.id}}">{% endverbatim %} Mais...</a>
                             {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="message" style="margin-bottom: 20px;" ng-if="messages.length == 0 || !messages">
+                <div class="row">
+                    <div class="col-lg-11">
+                        <div class="body">
+                          <span>
+                              Não há avisos importantes neste curso para você no momento.
+                          </span>
                         </div>
                     </div>
                 </div>

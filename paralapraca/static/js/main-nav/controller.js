@@ -3,11 +3,20 @@
     var app = angular.module('main-nav.controllers', []);
 
     app.controller('MainNavCtrl', [
-        '$scope',
-        function ($scope) {
-            $scope.chat = {};
+        '$scope', 'Message',
+        function ($scope, Message) {
+
+            // Count unread messages for display in the main navigation
+            $scope.messages_unread_count = 0;
+            Message.query({}, function(message){
+                for (var i = 0; i < message.length; i++) {
+                    if (message[i].is_read === false)
+                        $scope.messages_unread_count++;
+                }
+            })
 
             // Listens to 'message' events triggered by the Rocket Chat iframe
+            $scope.chat = {};
             window.addEventListener('message', function(e) {
                 var counter;
                 if(e.data.eventName === 'unread-changed'){

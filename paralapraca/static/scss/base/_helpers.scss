@@ -116,6 +116,9 @@
     &-materials {
         @include icon(before, materials);
     }
+    &-messages {
+        @include icon(before, messages);
+    }
     &-map-pin {
         @include icon(before, map-pin);
     }

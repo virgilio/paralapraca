@@ -1,0 +1,33 @@
+{% extends "messages.html" %}
+{% load i18n %}
+
+{% block messages_content %}
+        <div class="messages" ng-controller="MessageController">
+            {% verbatim %}
+            <h1 class="bottom">{{ message.subject }}</h1>
+            <p class="date">{{ message.date|date:"dd/MM/yy" }}</p>
+            {% endverbatim %}
+            <div class="body">
+                <span ng-bind-html="get_as_safe_html(message.message)"> </span>
+            </div>
+            <!-- <div class="row">
+                <div class="students col-lg-12">
+                    <h2>Destinatários</h2>
+                    <table class="table table-list">
+                        <tr>
+                            <th class="fullname">Nome completo</th>
+                            <th class="email">Email</th>
+                            <th class="username">Usuário</th>
+                        </tr>
+                        <tr ng-repeat="student in message.users_details">
+                            {% verbatim %}
+                            <td>{{student.name}}</td>
+                            <td>{{student.email}}</td>
+                            <td>{{student.username}}</td>
+                            {% endverbatim %}
+                        </tr>
+                    </table>
+                </div>
+            </div> -->
+        </div>
+{% endblock %}
