@@ -5,7 +5,7 @@
     .site-header {
         background-color: transparent;
         box-shadow: none;
-        height: initial;
+        height: auto;
         margin-bottom: 60px;
         overflow: initial;
         position: static;
@@ -94,7 +94,7 @@
             }
         }
         .site-logo {
-            height: initial;
+            height: auto;
             margin: 0 15px 20px; 
             max-width: 560px;
             position: static;

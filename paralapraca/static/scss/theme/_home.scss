@@ -5,19 +5,15 @@
     .blocks {
         color: #fff;
         margin: 0 15px;
-        .line > div {
+        > div {
             padding: 15px;
         }
         @media screen and (min-width: $screen-sm-min) {
-            display: table;
-            .line {
-                display: table-row;
-                > div {
-                    display: table-cell;
-                    padding: 30px;
-                    vertical-align: top;
-                    width: 50%;
-                }
+            display: flex;
+            flex-wrap: wrap;
+            > div {
+                padding: 30px;
+                width: 50%;
             }
         }
         @media screen and (min-width: 947px) {
@@ -90,7 +86,7 @@
             background-size: 86%;
             min-height: 62vw;
             @media screen and (min-width: $screen-sm-min) {
-                min-height: initial;
+                min-height: auto;
             }
 
             p {
