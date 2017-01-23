@@ -84,7 +84,7 @@
                 border-right: 0;
             }
             @media screen and (min-width: $screen-xs-min) {
-                height: initial;
+                height: auto;
                 font-size: 10px;
                 padding: 2.5% 4%;
             }
@@ -94,7 +94,7 @@
                 border-right: 0;
                 margin: 0 5px; 
                 padding: 0;
-                width: initial;
+                width: auto;
             }
             @media screen and (min-width: $screen-md-min) {
                 margin: 0 8px; 
@@ -112,7 +112,7 @@
                 }
                 @media screen and (min-width: $screen-sm-min) {
                     padding: 0;
-                    width: initial;
+                    width: auto;
                     &:last-of-type {
                         border-right: 0;
                     }
@@ -144,18 +144,18 @@
             @media screen and (min-width: $screen-sm-min) {
                 display: inline-block;
                 float: none;
-                height: initial;
+                height: auto;
                 padding: 0;
-                width: initial;
+                width: auto;
             }
             .tools {
                 border: 0 !important;
                 height: 65px;
                 padding: 15% 24%;
-                width: initial;
+                width: auto;
                 @media screen and (min-width: $screen-sm-min) {
-                    height: initial;
-                    padding: initial;
+                    height: auto;
+                    padding: 0;
                 }
             }
             .dropdown-menu {
@@ -167,9 +167,9 @@
                     a {
                         border: 0;
                         font-size: $font-size-small;
-                        height: initial !important;
+                        height: auto !important;
                         margin: 0; 
-                        max-width: initial;
+                        max-width: auto;
                         padding: 6px 12px;
                         text-align: left;
                         width: 100%;
