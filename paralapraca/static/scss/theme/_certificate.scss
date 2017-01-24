@@ -3,35 +3,78 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        height: 100px;
-        max-width: 750px;
         margin: 0 auto;
+        @media screen and (min-width: $screen-sm-min) {
+            height: 60px;
+            max-width: 570px;
+        }
+        @media screen and (min-width: $screen-md-min) {
+            height: 100px;
+            max-width: 750px;
+        }
+        .avante {
+            height: 40px;
+            @media screen and (min-width: $screen-md-min) {
+                height: 50px;
+            }
+            @media screen and (min-width: $screen-md-min) {
+                height: auto;
+            }
+        }
         .paralapraca {
-            max-width: 200px;
-            margin-left: 80px;
+            width: 140px;
+            position: absolute;
+            top: 70px;
+            left: 50%;
+            margin-left: -70px;
+            @media screen and (min-width: $screen-sm-min) {
+                width: 150px;
+                position: static;
+                left: 0;
+                margin-left: 60px;
+            }
+            @media screen and (min-width: $screen-md-min) {
+                width: 200px;
+                margin-left: 80px;
+            }
         }
         .institute-logo {
             text-align: right;
             img {
-                max-height: 20px;
+                height: 12px;
+                @media screen and (min-width: $screen-sm-min) {
+                    height: 15px;
+                }
+                @media screen and (min-width: $screen-md-min) {
+                    height: 20px;
+                }
             }
         }
     }
     &.receipt {
         .certificate-logos {
-            height: 70px;
-            margin-bottom: 15px;
-            .paralapraca {
-                margin-left: 50px;
+            @media screen and (min-width: $screen-sm-min) {
+                height: 70px;
+                margin-bottom: 15px;
             }
-            .institute-logo {
-                img {
-                    max-height: 15px;
+            @media screen and (min-width: $screen-md-min) {
+
+            }
+            .paralapraca {
+                @media screen and (min-width: $screen-sm-min) {
+                    margin-left: 50px;
+                }
+                @media screen and (min-width: $screen-md-min) {
+                
                 }
             }
-        }
-        footer {
-            padding: 40px 0;
+            .institute-logo {
+                @media screen and (min-width: $screen-sm-min) {
+                    img {
+                        max-height: 15px;
+                    }
+                }
+            }
         }
     }
 }

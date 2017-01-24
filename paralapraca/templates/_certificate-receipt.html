@@ -1,7 +1,7 @@
 {% load i18n %}
 {% load staticfiles %}
 
-<div class="container">
+<div class="container-fluid">
     <div class="certificate-container receipt">
       {% block certificate-logo %}
       <div class="certificate-logos">
@@ -21,15 +21,15 @@
           <p>com carga horária estimada em 40 horas em {{ object.created_date | date:"d/m/Y" }}.</p>
       </div>
 
-      <footer style="display: table-cell; vertical-align: bottom;">
+      <footer>
         <div class="credits-section">
             <p><b>Realizado em:</b> ava.paralapraca.org.br</p>
             <p><b>URL de validação:</b> <a href="{% url 'certificate' object.link_hash %}">ava.paralapraca.org.br{% url 'certificate' object.link_hash %}</a></p>
         </div>
-        <div class="coordinator-section" style="position: absolute; right: 100px; bottom: 53px;">
+        <div class="coordinator-section">
             {% if cert_template.signature_url %}
-            <div class="certificate-logos">
-                <img alt="Signature" style="max-width: 130px; position: absolute; right: 68px; bottom: 66px;" src="{{ cert_template.signature_url }}">
+            <div class="certificate-signature">
+                <img alt="Signature" src="{{ cert_template.signature_url }}">
             </div>
             {% endif %}
             <p class="name-coordinator">{{ cert_template.name }}</p>

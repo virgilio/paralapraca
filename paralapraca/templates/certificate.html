@@ -26,7 +26,7 @@ wrapper-course-lesson
             {% include "_go-to-course-button-inline.html"  with course=object.course_student.course %}
         {% endif %}
     {% endif %}
-    <section id="certificate-content" class="container">
+    <section id="certificate-content" class="container-fluid">
         <div>
             {% if object.course_student.user.is_profile_filled %}
                 <div class="row">

@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container-fluid">
     <div class="certificate-container">
         <div class="certificate-logos">
             <img src="/static/img/logo-avante.png" alt="AVANTE" class="avante">
@@ -22,14 +22,14 @@
                 <p><b>Realizado em:</b> ava.paralapraca.org.br</p>
                 <p><b>URL de validação:</b> <a href="{% url 'certificate' object.link_hash %}">ava.paralapraca.org.br{% url 'certificate' object.link_hash %}</a></p>
             </div>
-            <div class="coordinator-section" style="padding-top: 30px;">
-                {{ cert_template.name }}<br>
-                {{ cert_template.role }}<br>
+            <div class="coordinator-section">
                 {% if cert_template.signature_url %}
-                <div class="certificate-logos">
-                    <img alt="Signature" style="max-width: 130px; position: absolute; right: 122px; bottom: 66px;" src="{{ cert_template.signature_url }}">
+                <div class="certificate-signature">
+                    <img alt="Signature" src="{{ cert_template.signature_url }}">
                 </div>
                 {% endif %}
+                <p class="name-coordinator">{{ cert_template.name }}</p>
+                <p class="role-coordinator">{{ cert_template.role }}</p>
             </div>
         </footer>
     </div>
