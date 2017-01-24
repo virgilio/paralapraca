@@ -11,6 +11,7 @@
         inline: false,
         menubar: false,
         relative_urls: false,
+        remove_script_host: false,
         plugins : 'advlist lists autolink link image media autoresize',
         toolbar: 'bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | quicklink link image media fullscreen',
         skin: 'lightgray',
@@ -50,6 +51,7 @@
             var input = document.createElement('input');
             input.setAttribute('type', 'file');
             input.setAttribute('accept', 'image/*');
+            input.style.display = 'none';
 
             // Note: In modern browsers input[type="file"] is functional without
             // even adding it to the DOM, but that might not be the case in some older
