@@ -50,6 +50,7 @@
             var input = document.createElement('input');
             input.setAttribute('type', 'file');
             input.setAttribute('accept', 'image/*');
+            input.style.display = 'none';
 
             // Note: In modern browsers input[type="file"] is functional without
             // even adding it to the DOM, but that might not be the case in some older
