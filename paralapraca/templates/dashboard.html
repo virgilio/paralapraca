@@ -43,6 +43,43 @@
 
 <div ng-controller="DashboardCtrl" ng-cloak>
 
+    <section class="widget courses-widget container-fluid" ng-controller="MessagesDashboardController">
+      <div ng-if="messages.length > 0">
+
+        <header class="widget-header line one-column">
+            <div class="column">
+                <div class="pull-left"><h2 class="widget-title">Avisos</h2></div>
+
+                <div class="pull-right"><a href="/messages/" class="btn btn-success list-all">Todos os avisos</a></div>
+
+            </div>
+        </header>
+
+        {% verbatim %}
+        <div class="messages">
+            <div class="row">
+              <div class="" ng-repeat="message in messages">
+                <div class="message">
+                        <div class="col-lg-1 textright">
+                            <span class="date">{{ message.date|date:"dd/MM/yy" }}</span>
+                        </div>
+                        <div class="col-lg-4" ng-class="{'unread': !message.is_read}">
+                            <div class="subject"><em>{{ message.course_name }}</em></div>
+                            <h2 class="subject"><b>{{ message.subject }}</b></h2>
+                            <div class="body">
+                            <span ng-bind-html="strip_html(message.message | limitTo : 400)"></span>
+                                <a ng-href="/course/{{message.course_slug}}/message/{{message.id}}"> Mais...</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+              </div>
+        </div>
+        {% endverbatim %}
+      </div>
+    </section>
+
+
     <section class="widget courses-widget container-fluid">
 
         <header class="widget-header line one-column">
@@ -116,43 +153,6 @@
         {% endverbatim %}
 
     </section>
-
-    <section class="widget courses-widget container-fluid" ng-controller="MessagesDashboardController">
-      <div ng-if="messages.length > 0">
-
-        <header class="widget-header line one-column">
-            <div class="column">
-                <div class="pull-left"><h2 class="widget-title">Avisos</h2></div>
-
-                <div class="pull-right"><a href="/messages/" class="btn btn-success list-all">Todos os avisos</a></div>
-
-            </div>
-        </header>
-
-        {% verbatim %}
-        <div class="messages">
-            <div class="row">
-              <div class="" ng-repeat="message in messages">
-                <div class="message">
-                        <div class="col-lg-1 textright">
-                            <span class="date">{{ message.date|date:"dd/MM/yy" }}</span>
-                        </div>
-                        <div class="col-lg-4" ng-class="{'unread': !message.is_read}">
-                            <div class="subject"><em>{{ message.course_name }}</em></div>
-                            <h2 class="subject"><b>{{ message.subject }}</b></h2>
-                            <div class="body">
-                            <span ng-bind-html="strip_html(message.message | limitTo : 400)"></span>
-                                <a ng-href="/course/{{message.course_slug}}/message/{{message.id}}"> Mais...</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-              </div>
-        </div>
-        {% endverbatim %}
-      </div>
-    </section>
-
 
     <section class="widget forums forums-widget container-fluid">
 
