@@ -5,10 +5,10 @@
     <div class="certificate-container receipt">
       {% block certificate-logo %}
       <div class="certificate-logos">
-          <img src="/static/img/logo-avante.png" alt="AVANTE" class="avante" style="left: 159px; position: absolute;">
-          <img src="/static/img/site-logo-orange.svg" alt="{{ site.name }}" class="paralapraca" style="position: absolute; top: 29px; left: 301px;">
+          <img src="/static/img/logo-avante.png" alt="AVANTE" class="avante">
+          <img src="/static/img/site-logo-orange.svg" alt="{{ site.name }}" class="paralapraca">
           <div class="institute-logo">
-            <img class="img-responsive" style="max-width: 200px; position: absolute; top: 17px;" src="{{ cert_template.cert_logo_url }}">
+            <img class="img-responsive" src="{{ cert_template.cert_logo_url }}">
           </div>
       </div>
       {% endblock %}

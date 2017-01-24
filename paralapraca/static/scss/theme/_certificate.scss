@@ -1,35 +1,33 @@
 .certificate-container {
     .certificate-logos {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
         height: 100px;
-        overflow: hidden;
-        text-align: center;
-        .avante {
-            position: absolute;
-            left: 100px;
-            top: 60px;
-        }
+        max-width: 750px;
+        margin: 0 auto;
         .paralapraca {
-            margin-top: 50px;
             max-width: 200px;
+            margin-left: 80px;
         }
         .institute-logo {
-            position: absolute;
-            top: 60px;
-            right: 100px;
             text-align: right;
             img {
-                max-height: 60px;
+                max-height: 20px;
             }
         }
     }
     &.receipt {
         .certificate-logos {
             height: 70px;
-            .avante {
-                left: 300px;
+            margin-bottom: 15px;
+            .paralapraca {
+                margin-left: 50px;
             }
             .institute-logo {
-                right: 300px;
+                img {
+                    max-height: 15px;
+                }
             }
         }
         footer {
