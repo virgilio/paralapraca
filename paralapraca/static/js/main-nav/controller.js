@@ -24,9 +24,9 @@
                     if(counter > 9)
                         // if there are more than 9 notifications, reduce the number
                         $scope.chat.notifications = "9+";
-                    else if(e.data.data === "")
+                    else if(e.data.data === "" || e.data.data === "•")
                         // If the data value is empty, then it must be set to zero
-                        $scope.chat.notifications = 0;
+                        $scope.chat.notifications = "0";
                     else
                         // Otherwise, the number must be used as is
                         $scope.chat.notifications = e.data.data;
