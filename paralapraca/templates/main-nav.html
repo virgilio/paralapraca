@@ -12,7 +12,7 @@
         <li>
             {% verbatim %}
             <a class="messages" href="/messages/">
-                <span class="bubble" ng-show="messages_unread_count">{{ messages_unread_count }}</span>
+                <span class="notification-bubble" ng-show="messages_unread_count">{{ messages_unread_count }}</span>
                 <span class="">Avisos</span>
             </a>
             {% endverbatim %}
@@ -23,7 +23,7 @@
         <li>
             {% verbatim %}
             <a class="chat" href="/paralapraca/chat">
-                <span class="bubble" ng-show="chat.notifications">{{ chat.notifications }}</span>
+                <span class="notification-bubble" ng-show="chat.notifications">{{ chat.notifications }}</span>
                 <span class="">Chat</span>
             </a>
             {% endverbatim %}

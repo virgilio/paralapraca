@@ -75,3 +75,16 @@
         background-color: $orange;
     }
 }
+
+// Messages widget
+// --------------------------------------------------
+
+.messages-widget {
+    @include card(rgba($purple,0.7));
+    .widget-topbar {
+        background-color: $purple;
+    }
+    .btn {
+        @include button-hover(#fff,#fff,$orange,darken($orange,5%));
+    }
+}

@@ -155,6 +155,9 @@
     &-search {
         @include icon(before, search);
     }
+    &-see-more {
+        @include icon(before, eye);
+    }
     &-site {
         @include icon(before, site);
     }
@@ -191,6 +194,22 @@
     li {
         display: inline-block;
     }
+}
+
+// notification bubble
+.notification-bubble {
+    display: block;
+    background-color: $brand-warning;
+    border-radius: 100%;
+    color: #fff;
+    font-size: 10px;
+    height: 15px;
+    line-height: 15px;
+    position: absolute;
+    top: -3px;
+    right: -1px;
+    text-align: center;
+    width: 15px;
 }
 
 // this class exists to circunvent a flash + youtube api error
