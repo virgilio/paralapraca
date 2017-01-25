@@ -26,7 +26,7 @@
 {% block content %}
 
 <!--  COURSE CONTENT  -->
-<div class="course course-messages">
+<div class="messages course-messages">
 
     <!-- COURSE-CONTENT -->
     <section class="messages-content page container-fluid">
@@ -38,7 +38,7 @@
             </div>
         </header>
         {% block messages_content %}
-        <div class="messages" ng-controller="MessagesOverviewController">
+        <div ng-controller="MessagesOverviewController">
             <div class="message" ng-repeat="message in messages" ng-if="messages.length > 0">
                 <div class="row" ng-class="{'unread': !message.is_read}">
                     <div class="col-lg-1 textright">
