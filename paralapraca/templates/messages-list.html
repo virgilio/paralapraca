@@ -25,39 +25,43 @@
 
 {% block content %}
 
-<!--  COURSE CONTENT  -->
-<div class="messages course-messages">
-
-    <!-- COURSE-CONTENT -->
-    <section class="messages-content page container-fluid">
+<div class="messages messages-list">
+    <section class="page container-fluid">
         <header class="page-header">
-            <div class="row">
-                <div class="col-md-9 col-sm-8 col-xs-6">
-                    <h2>Avisos</h2>
-                </div>
-            </div>
+            <h2>Avisos</h2>
         </header>
         {% block messages_content %}
         <div ng-controller="MessagesOverviewController">
-            <div class="message" ng-repeat="message in messages" ng-if="messages.length > 0">
-                <div class="row" ng-class="{'unread': !message.is_read}">
-                    <div class="col-lg-1 textright">
-                        {% verbatim %}
-                        <span class="date">{{ message.date|date:"dd/MM/yy" }}</span>
-                        {% endverbatim %}
-                    </div>
-                    <div class="col-lg-11">
-                        {% verbatim %}
-                        <h1 class="bottom">{{ message.subject }}</h1>
-                        {% endverbatim %}
-                        <div class="body">
-                        <span ng-bind-html="strip_html(message.message | limitTo : 500)"></span>
-                            {% verbatim %}<a ng-href="/course/{{message.course_slug}}/message/{{message.id}}">{% endverbatim %} Mais...</a>
+            <div ng-if="messages.length > 0">
+                {% verbatim %}
+                <div class="title-header">
+                    <h3>Avisos gerais</h3>
+                    <button class="btn btn-link btn-sm"
+                            ng-init="messages.show_messages=true"
+                            ng-class="messages.show_messages ? 'hide-all': 'show-all'"
+                            ng-click="messages.show_messages=!messages.show_messages">
+                        <span ng-show="!messages.show_messages">ver</span>
+                        <span ng-show="messages.show_messages">ocultar</span>
+                    </button>
+                </div>
+                <div ng-show="messages.show_messages">
+                    <div class="message" ng-repeat="message in messages" ng-class="{'unread': !message.is_read}">
+                        <div class="message-body">
+                            <div class="message-header">
+                                <h4 class="message-subject">{{ message.subject }}</h4> 
+                                <span class="message-date">{{ message.date|date:"dd/MM/yy" }}</span>
+                            </div>
+                            <div class="message-text">
+                                <span ng-bind-html="strip_html(message.message | limitTo : 300)"></span>
+                                <a class="btn btn-default see-more" ng-href="/course/{{message.course_slug}}/message/{{message.id}}">
+                                    ver aviso completo
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
+                {% endverbatim %}
             </div>
-
             <div class="message" style="margin-bottom: 20px;" ng-if="messages.length == 0 || !messages">
                 <div class="row">
                     <div class="col-lg-11">

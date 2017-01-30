@@ -156,6 +156,9 @@
     }
     &.see-more {
         @extend %icon-see-more;
+        &:before {
+            vertical-align: top;
+        }
     }
     &.see-stats {
         @extend %icon-stats;
