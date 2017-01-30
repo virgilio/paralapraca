@@ -1,12 +1,39 @@
 {% extends 'base.html' %}
-{% load pipeline %}
+{% load compress %}
 {% load i18n %}
+{% load static %}
 {% load staticfiles %}
 
 {% block js %}
     {{ block.super }}
-    {% javascript 'core' %}
-    {% javascript 'certificate' %}
+
+    {% compress js %}
+    <!-- Core -->
+    <script type="text/javascript" src="{% static 'js/core/app.js' %}" charset="utf-8"></script>
+    <script type="text/javascript" src="{% static 'js/core/controllers.js' %}" charset="utf-8"></script>
+    <script type="text/javascript" src="{% static 'js/core/services.js' %}" charset="utf-8"></script>
+    <script type="text/javascript" src="{% static 'js/core/filters.js' %}" charset="utf-8"></script>
+    <script type="text/javascript" src="{% static 'angular-tweet-filter/index.js' %}" charset="utf-8"></script>
+    <script type="text/javascript" src="{% static 'angular-sortable-view/src/angular-sortable-view.min.js' %}" charset="utf-8"></script>
+    <script type="text/javascript" src="{% static 'js/directives/fixedBar.js' %}" charset="utf-8"></script>
+    <script type="text/javascript" src="{% static 'js/directives/alertPopup.js' %}" charset="utf-8"></script>
+    <script type="text/javascript" src="{% static 'js/directives/markdowneditor.js' %}" charset="utf-8"></script>
+
+    <!-- Certificate -->
+    <script type="text/javascript" src="{% static 'js/certificate/app.js' %}" charset="utf-8"></script>
+    <script type="text/javascript" src="{% static 'js/certificate/controllers.js' %}" charset="utf-8"></script>
+    <script type="text/javascript" src="{% static 'js/certificate/filters.js' %}" charset="utf-8"></script>
+    <script type="text/javascript" src="{% static 'js/certificate/services.js' %}" charset="utf-8"></script>
+    <script type="text/javascript" src="{% static 'checklist-model/checklist-model.js' %}" charset="utf-8"></script>
+    <script type="text/javascript" src="{% static 'js/directives/file.js' %}" charset="utf-8"></script>
+    <script type="text/javascript" src="{% static 'js/directives/previewImage.js' %}" charset="utf-8"></script>
+    <script type="text/javascript" src="{% static 'js/factories/timtec-models.js' %}" charset="utf-8"></script>
+
+    <!-- PDF generation dependencies -->
+    <script type="text/javascript" src="{% static 'bluebird/js/browser/bluebird.min.js' %}" charset="utf-8"></script>
+    <script type="text/javascript" src="{% static 'html2canvas/build/html2canvas.min.js' %}" charset="utf-8"></script>
+    <script type="text/javascript" src="{% static 'jspdf/dist/jspdf.min.js' %}" charset="utf-8"></script>
+    {% endcompress %}
 {% endblock %}
 
 {% block body_attrs %}
@@ -30,22 +57,24 @@ wrapper-course-lesson
         <div>
             {% if object.course_student.user.is_profile_filled %}
                 <div class="row">
-                    <!-- <div class="container">
-                        <a href="{% url 'certificate-download' object.link_hash %}"
+                    <div class="container">
+                        <a id="download-certificate" href="#" onclick="printToPDF()"
                            class="btn btn-sm btn-primary pull-right hidden-print download">
                             {% if object.type == 'receipt' %}
-                            {% trans 'Baixar Comprovante' %}
+                                Baixar Comprovante
                             {% else %}
-                            {% trans 'Baixar Certificado' %}
+                                Baixar Certificado
                             {% endif %}
                         </a>
-                    </div> -->
+                    </div>
                 </div>
-                {% if object.type == 'receipt' %}
-                    {% include "_certificate-receipt.html" %}
-                {% else %}
-                    {% include "_certificate-certificate.html" %}
-                {% endif %}
+                <div id="certificate-id-print" style="margin-bottom: 100px; padding-bottom: 100px;">
+                    {% if object.type == 'receipt' %}
+                        {% include "_certificate-receipt.html" %}
+                    {% else %}
+                        {% include "_certificate-certificate.html" %}
+                    {% endif %}
+                </div>
             {% else %}
             <div class="certificate-container receipt">
                 <!-- TODO: translate -->
@@ -58,4 +87,5 @@ wrapper-course-lesson
         </div>
     </section>
 </div>
+<script type="text/javascript" src="{% static 'js/certificate-to-pdf.js' %}" charset="utf-8"></script>
 {% endblock %}
