@@ -183,7 +183,7 @@ wrapper-course-lesson
                 </tr>
             </thead>
             <tbody>
-                <tr ng-repeat="student in classe.students_details | orderBy : 'user.name'">
+                <tr ng-repeat="student in classe.students_details">
                     {% verbatim %}
                     <td>{{ student.user.username }}</td>
                     <td>{{ student.user.email }}</td>
