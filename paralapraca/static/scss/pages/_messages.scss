@@ -20,11 +20,14 @@
 .messages-list {
     .page-header {
         background: $brand-primary;
-        color: #fff;
+        display: flex;
+        justify-content: space-between;
         margin: -30px -30px 30px;
+        padding: 0 30px;
         h2 {
             @extend %icon-messages;
-            margin-left: 30px;
+            color: #fff !important;
+            font-size: 48px !important;
             padding-bottom: 10px;
             text-transform: lowercase;
             &:before {
@@ -33,6 +36,9 @@
                     margin-right: 10px;
                 }
             }
+        }
+        .btn {
+            margin-top: 14px !important;
         }
     }
     .title-header {

@@ -10,6 +10,19 @@
         h2 {
             color: #fff;
         }
+        .btn {
+            @include button-hover(#fff,#fff,$orange,darken($orange, 5%));
+        }
+    }
+    .title-header {
+        h3 {
+            color: $purple;
+        }
+        .btn {
+            &.hide-all, &.show-all {
+                @include link-hover($purple,darken($purple,5%),$purple,darken($purple,5%));
+            }
+        }
     }
     .message {
         &.unread {
