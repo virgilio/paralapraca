@@ -1,8 +1,65 @@
-{% extends "messages.html" %}
+{% extends "base.html" %}
+{% load compress %}
+{% load static %}
 {% load i18n %}
+{% load is_assistant_or_coordinator %}
+{% load is_course_coordinator %}
 
-{% block messages_content %}
-        <div class="messages" ng-controller="MessageController">
+{% block wrapper_classes %}
+wrapper-course-lesson
+{% endblock %}
+
+{% block js %}
+    {{block.super}}
+    <script>
+        window.course_id = {{ course.pk }};
+        window.course_slug = '{{ course.slug }}';
+    </script>
+
+    <script type="text/javascript" src="{% static 'tinymce-dist/tinymce.js' %}"></script>
+    {% compress js %}
+    <script type="text/javascript" src="{% static 'js/messages/app.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/messages/controllers.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/messages/services.js' %}"></script>
+    <script type="text/javascript" src="{% static 'checklist-model/checklist-model.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/factories/timtec-models.js' %}"></script>
+    <script type="text/javascript" src="{% static 'angular-ui-tinymce/src/tinymce.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/ui.tinymce.paralapraca.config.js' %}"></script>
+
+    <script type="text/javascript" src="{% static 'js/discussion-services.js' %}"></script>
+    <script type="text/javascript" src="{% static 'ng-file-upload/ng-file-upload.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/ui.tinymce.paralapraca.config.js' %}"></script>
+    {% endcompress %}
+    <script type="text/javascript">
+        tinyMCE.baseURL = '/static/tinymce-dist/';
+    </script>
+
+{% endblock %}
+
+{% block body_attrs %}
+  ng-app="messages"
+{% endblock %}
+
+{% block content %}
+
+<div class="course messages messages-list message-single">
+
+    {% if in_admin %}
+        {% include "_admin_header_inline.html" with course=course %}
+    {% else %}
+        {% include "_course-header-inline.html"  with course=course %}
+    {% endif %}
+
+    <!-- COURSE-CONTENT -->
+    <section class="page container-fluid" ng-controller="MessageController">
+        <header class="page-header">
+            <h2>Avisos</h2>
+            {% verbatim %}
+            <a class="btn btn-primary see-more" ng-href="/course/{{message.course_slug}}/messages/">ver todos os avisos</a>
+            {% endverbatim %}
+        </header>
+        {% block messages_content %}
+        <div class="messages">
             {% verbatim %}
             <h1 class="bottom">{{ message.subject }}</h1>
             <p class="date">{{ message.date|date:"dd/MM/yy" }}</p>
@@ -30,4 +87,7 @@
                 </div>
             </div> -->
         </div>
+        {% endblock %}
+    </section>
+</div>
 {% endblock %}

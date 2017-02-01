@@ -133,13 +133,17 @@ wrapper-course-lesson
                     <div class="message-text">
                         <span ng-bind-html="strip_html(message.message | limitTo : 300)"></span>
                         {% if in_admin %}
-                            <a class="btn btn-default see-more" ng-href="/admin/course/{{course_id}}/message/{{message.id}}">
+                            {% verbatim %}
+                            <a class="btn btn-default see-more" ng-href="/admin/course/{{message.course_slug}}/message/{{message.id}}">
                                 ver aviso completo
                             </a>
+                             {% endverbatim %}
                         {% else %}
-                            <a class="btn btn-default see-more" ng-href="/course/{{course_slug}}/message/{{message.id}}">
+                            {% verbatim %}
+                            <a class="btn btn-default see-more" ng-href="/course/{{message.course_slug}}/message/{{message.id}}">
                                 ver aviso completo
                             </a>
+                             {% endverbatim %}
                         {% endif %}
                     </div>
                 </div>
@@ -159,14 +163,5 @@ wrapper-course-lesson
         </div>
         {% endblock %}
     </section>
-    <!--  END COURSE CONTENT  -->
-
-
-
-
-
-
 </div>
-<!--  END COURSE CONTENT  -->
-
 {% endblock %}

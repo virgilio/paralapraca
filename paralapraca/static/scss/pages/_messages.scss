@@ -13,6 +13,11 @@
             padding-left: 20px;
         }
     }
+    &.message-single {
+        .page {
+            background-color: rgba(#fff,0.3);      
+        }
+    }
 }
 
 // messages' page styles
