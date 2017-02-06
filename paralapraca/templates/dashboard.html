@@ -19,6 +19,7 @@
     <script type="text/javascript" src="{% static 'js/messages/app.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/messages/controllers.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/messages/services.js' %}"></script>
+    <script type="text/javascript" src="{% static 'angular-filter/dist/angular-filter.min.js' %}"></script>
     <script type="text/javascript" src="{% static 'checklist-model/checklist-model.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/factories/timtec-models.js' %}"></script>
     <script type="text/javascript" src="{% static 'angular-ui-tinymce/src/tinymce.js' %}"></script>
@@ -51,7 +52,9 @@
                         <div class="pull-left">
                             <h2 class="title">
                               {% verbatim %}
-                                Você tem <span class="notification-bubble">{{messages.length}}</span> avisos não lidos
+                                Você tem <span class="notification-bubble">{{messages.length}}</span>
+                                <span ng-show="messages.length>1">avisos não lidos</span>
+                                <span ng-show="messages.length==1">aviso não lido</span>
                               {% endverbatim %}
                             </h2>
                         </div>
@@ -62,12 +65,17 @@
                 {% verbatim %}
                 <div class="messages">
                     <div class="message" ng-repeat="message in messages | limitTo:2">
-                        <h3 class="message-course">{{ message.course_name }}</h3>
+                        <h3 class="message-course">{{ message.course_name || "Aviso Geral" }}</h3>
                         <h4 class="message-subject">{{ message.subject }}</h4>
                         <div class="message-body">
                             <span ng-bind-html="strip_html(message.message | limitTo : 400)"></span>
                         </div>
-                        <a class="btn btn-default see-more" ng-href="/course/{{message.course_slug}}/message/{{message.id}}">ver aviso completo</a>
+                        <a ng-if="message.course_slug" class="btn btn-default see-more" ng-href="/course/{{message.course_slug}}/message/{{message.id}}">
+                            ver aviso completo
+                        </a>
+                        <a ng-if="!message.course_slug" class="btn btn-default see-more" ng-href="/message/{{message.id}}">
+                            ver aviso completo
+                        </a>
                     </div>
                 </div>
                 {% endverbatim %}

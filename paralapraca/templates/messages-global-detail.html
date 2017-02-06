@@ -2,8 +2,6 @@
 {% load compress %}
 {% load static %}
 {% load i18n %}
-{% load is_assistant_or_coordinator %}
-{% load is_course_coordinator %}
 
 {% block wrapper_classes %}
 wrapper-course-lesson
@@ -11,10 +9,6 @@ wrapper-course-lesson
 
 {% block js %}
     {{block.super}}
-    <script>
-        window.course_id = {{ course.pk }};
-        window.course_slug = '{{ course.slug }}';
-    </script>
 
     <script type="text/javascript" src="{% static 'tinymce-dist/tinymce.js' %}"></script>
     {% compress js %}
@@ -45,18 +39,12 @@ wrapper-course-lesson
 
 <div class="course messages messages-list message-single">
 
-    {% if in_admin %}
-        {% include "_admin_header_inline.html" with course=course %}
-    {% else %}
-        {% include "_course-header-inline.html"  with course=course %}
-    {% endif %}
-
     <!-- COURSE-CONTENT -->
     <section class="page container-fluid" ng-controller="MessageController">
         <header class="page-header">
             <h2>Avisos</h2>
             {% verbatim %}
-            <a class="btn btn-primary see-more" ng-href="/course/{{message.course_slug}}/messages/">ver todos os avisos</a>
+            <a class="btn btn-primary see-more" ng-href="/messages/">ver todos os avisos</a>
             {% endverbatim %}
         </header>
         {% block messages_content %}

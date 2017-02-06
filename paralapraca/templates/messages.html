@@ -29,6 +29,7 @@ wrapper-course-lesson
     <script type="text/javascript" src="{% static 'js/discussion-services.js' %}"></script>
     <script type="text/javascript" src="{% static 'ng-file-upload/ng-file-upload.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/ui.tinymce.paralapraca.config.js' %}"></script>
+    <script type="text/javascript" src="{% static 'angular-filter/dist/angular-filter.min.js' %}"></script>
     {% endcompress %}
     <script type="text/javascript">
         tinyMCE.baseURL = '/static/tinymce-dist/';
@@ -126,7 +127,7 @@ wrapper-course-lesson
                 <div class="message-body">
                     {% verbatim %}
                     <div class="message-header">
-                        <h4 class="message-subject">{{ message.subject }}</h4> 
+                        <h4 class="message-subject">{{ message.subject }}</h4>
                         <span class="message-date">{{ message.date|date:"dd/MM/yy" }}</span>
                     </div>
                     {% endverbatim %}

@@ -16,6 +16,7 @@
     <script type="text/javascript" src="{% static 'js/ui.tinymce.paralapraca.config.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/discussion-services.js' %}"></script>
     <script type="text/javascript" src="{% static 'ng-file-upload/ng-file-upload.js' %}"></script>
+    <script type="text/javascript" src="{% static 'angular-filter/dist/angular-filter.min.js' %}"></script>
     {% endcompress %}
 {% endblock %}
 
@@ -27,33 +28,107 @@
 
 <div class="messages messages-list">
     <section class="page container-fluid">
-        <header class="page-header">
+        <header class="page-header" ng-controller="NewGlobalMessageController">
             <h2>Avisos</h2>
+            {% if user.is_staff %}
+            <div class="">
+                <a class="btn btn-primary edit" ng-click="new_message()">Novo aviso</a>
+            </div>
+            {% endif %}
+                <script type="text/ng-template" id="newMessageModal.html">
+                    <div class="modal-header">
+                        <button type="button" class="close" ng-click="cancel()" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="myModalLabel">Novo aviso</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="alert alert-danger" role="alert" ng-show="empty_msg_subject_error || empty_msg_body_error ">
+                            <ul>
+                                <li ng-show="empty_msg_subject_error"><a href="#id-title">Assunto do aviso</a></li>
+                                <li ng-show="empty_msg_body_error"><a href="#wmd-input">Texto do aviso</a></li>
+                            </ul>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" ng-model="new_message.subject" placeholder="{% trans 'Subject' %}"/>
+                        </div>
+                        <div class="form-group">
+                            <textarea ui-tinymce
+                                      ng-model="new_message.message" class="form-control" rows="10"
+                                      placeholder="Mensagem" name="content" required></textarea>
+                        </div>
+                        <div class="form-group row">
+                            <div class="students col-lg-12">
+                                <p><label><input type="checkbox" ng-model="modal.all_students"> Enviar para todos os alunos da plataforma</label></p>
+                                {% verbatim %}
+                                <div ng-repeat="group in groups">
+                                    <label ng-show="!modal.all_students && !modal.specify_students"><input type="checkbox" checklist-model="groups.checked" checklist-value="group.id"> {{ group.name }}</label>
+                                </div>
+                                {% endverbatim %}
+                                <label ng-show="!modal.all_students"><input type="checkbox" ng-model="modal.specify_students"> Especificar usuários individualmente</label>
+                                <div class="autocomplete" ng-show="modal.specify_students && !modal.all_students">
+                                    <input type="text" id="search-user" class="form-control" ng-model="asyncSelected"
+                                                    placeholder="Digite o nome ou email do usuário..."
+                                                    uib-typeahead="user as user.formated_name for user in getUsers($viewValue)"
+                                                    typeahead-loading="loadingLocations"
+                                                    typeahead-on-select="on_select_student($model); asyncSelected = '';"
+                                                    typeahead-min-length="2"
+                                                    typeahead-wait-ms="500">
+                                    <i ng-show="loadingLocations" class="loading fa fa-refresh fa-spin"></i>
+                                </div>
+                                <table class="table table-list" ng-show="!modal.all_students && recipient_list.length">
+                                    <tr>
+                                        <th class="fullname">Nome completo</th>
+                                        <th class="email">Email</th>
+                                        <th class="username">Usuário</th>
+                                        <th class="actions">Ações</th>
+                                    </tr>
+                                    <tr ng-repeat="student in recipient_list">
+                                        {% verbatim %}
+                                        <td>{{student.name}}</td>
+                                        <td>{{student.email}}</td>
+                                        <td>{{student.username}}</td>
+                                        {% endverbatim %}
+                                        <td class="textcenter"><button class="btn btn-warning" ng-click="remove_student($index)"><i class="fa fa-trash-o"></i></button></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-danger" ng-click="cancel()">Fechar</button>
+                            <button type="button" class="btn btn-success" ng-click="send()">Enviar</button>
+                        </div>
+                    </div>
+                </script>
+
+
         </header>
         {% block messages_content %}
-        <div ng-controller="MessagesOverviewController">
-            <div ng-if="messages.length > 0">
+        <div ng-controller="MessagesOverviewController" ng-init="open_messages = {}">
+            <div class="course_messages_group" ng-if="messages.length > 0" ng-repeat="(key, value) in messages | groupBy: 'course_name'">
                 {% verbatim %}
                 <div class="title-header">
-                    <h3>Avisos gerais</h3>
+                    <h3>{{key || 'Avisos gerais'}}</h3>
                     <button class="btn btn-link btn-sm"
-                            ng-init="messages.show_messages=true"
-                            ng-class="messages.show_messages ? 'hide-all': 'show-all'"
-                            ng-click="messages.show_messages=!messages.show_messages">
-                        <span ng-show="!messages.show_messages">ver</span>
-                        <span ng-show="messages.show_messages">ocultar</span>
+                            ng-init="open_messages[key]=true"
+                            ng-class="open_messages[key] ? 'hide-all': 'show-all'"
+                            ng-click="open_messages[key]=!open_messages[key]">
+                        <span ng-show="!open_messages[key]">ver</span>
+
+                        <span ng-show="open_messages[key]">ocultar</span>
                     </button>
                 </div>
-                <div ng-show="messages.show_messages">
-                    <div class="message" ng-repeat="message in messages" ng-class="{'unread': !message.is_read}">
+                <div ng-show="open_messages[key]">
+                    <div class="message" ng-repeat="message in value" ng-class="{'unread': !message.is_read}">
                         <div class="message-body">
                             <div class="message-header">
-                                <h4 class="message-subject">{{ message.subject }}</h4> 
+                                <h4 class="message-subject">{{ message.subject }}</h4>
                                 <span class="message-date">{{ message.date|date:"dd/MM/yy" }}</span>
                             </div>
                             <div class="message-text">
                                 <span ng-bind-html="strip_html(message.message | limitTo : 300)"></span>
-                                <a class="btn btn-default see-more" ng-href="/course/{{message.course_slug}}/message/{{message.id}}">
+                                <a ng-if="message.course_slug" class="btn btn-default see-more" ng-href="/course/{{message.course_slug}}/message/{{message.id}}">
+                                    ver aviso completo
+                                </a>
+                                <a ng-if="!message.course_slug" class="btn btn-default see-more" ng-href="/message/{{message.id}}">
                                     ver aviso completo
                                 </a>
                             </div>
