@@ -97,7 +97,7 @@ wrapper-course-lesson
                             <div class="row">
                                 {% with errors=form.cpf.errors %}
                                 <div class="col-xs-6 left{{ errors|yesno:" has-error,"}}">
-                                    <input name="cpf" type="text" class="form-control" placeholder="000.000.000-00" value="{{form.cpf.value}}">
+                                    <input name="cpf" type="text" class="form-control" placeholder="00000000000" value="{{form.cpf.value|default_if_none:''}}">
                                     {% for error in errors %}<small>{{error}}</small>{% endfor %}
                                 </div>
                                 {% endwith %}
