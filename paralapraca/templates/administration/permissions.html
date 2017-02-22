@@ -1,13 +1,24 @@
 {% extends "base.html" %}
-{% load pipeline %}
+{% load compress %}
 {% load static %}
 {% load i18n %}
 
 {% block js %}
     {{ block.super }}
-    {% javascript 'plpc-header' %}
-    {% javascript 'course_permissions' %}
+    {% compress js %}
+        <!-- plpc-header -->
+        <script type="text/javascript" src="{% static 'js/header-app.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/header-controllers.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/header-services.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/discussion-services.js' %}"></script>
 
+        <!-- Course Permissions -->
+        <script type="text/javascript" src="{% static 'js/course-permissions/app.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/course-permissions/controllers.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/factories/timtec-models.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/directives/fixedBar.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/directives/alertPopup.js' %}"></script>
+    {% endcompress %}
 {% endblock %}
 
 {% block wrapper_classes %}
