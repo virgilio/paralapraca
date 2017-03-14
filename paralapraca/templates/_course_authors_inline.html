@@ -11,7 +11,7 @@
         <div class="instructors organizing-instructors" ng-show="organizingInstructors" sortable="courseProfessors" on-update="repositionInstructors()">
 
             <div class="instructor" ng-repeat="professor in courseProfessors">
-                <span class="handle"><div class="btn btn-default sort"><span class="sr-only">ordenar</span></div></span>
+                <!-- <span class="handle"><div class="btn btn-default sort"><span class="sr-only">ordenar</span></div></span> -->
                 <span class="title" ng-bind="professor.name || professor.user_info.name">{% trans 'Name' %}</span>
             </div>
             <div class="submit">
@@ -39,7 +39,7 @@
 
         <br>
         <a ng-click="open_professor_modal()" class="btn btn-sm btn-primary btn-inverse add">Adicionar autor</a>
-        <a href="" ng-click="organizingInstructors=true" ng-hide="organizingInstructors" class="btn btn-sm btn-primary btn-inverse sort">Ordenar</a>
+        <!-- <a href="" ng-click="organizingInstructors=true" ng-hide="organizingInstructors" class="btn btn-sm btn-primary btn-inverse sort">Ordenar</a> -->
     {% else %}
         {% if course.course.course_authors.all %}
         <div class="secondary-page-header">
