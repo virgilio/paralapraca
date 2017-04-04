@@ -146,7 +146,7 @@ wrapper-course-lesson
                 {% verbatim %}
                 <h3 class="unit-name" ng-show="currentUnit.title && section == 'activity'">{{currentUnit.title}}</h3>
                 {% endverbatim %}
-                <div ng-show="section=='activity'" class="course-activity">
+                <div ng-if="section=='activity'" class="course-activity">
                     <ng:include src="activityTemplateUrl"></ng:include>
 
                 </div>
