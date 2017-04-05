@@ -158,7 +158,7 @@ wrapper-course-lesson
                         <div class="panel-heading">
                             <h2 class="panel-title">{% trans 'Professor comment' %}</h2>
                         </div>
-                        <div class="panel-body" ng-bind-html="currentActivity.comment|markdown"></div>
+                        <div class="panel-body" ng-bind-html="currentActivity.comment"></div>
                     </div>
                     <div class="row" ng-if="answer.correct">
                         <div class="col-lg-12 col-md-12 col-sm-12 textright">
@@ -195,7 +195,7 @@ wrapper-course-lesson
                     <div class="secondary-page-header">
                         <!--<h3><i class="fa fa-angle-double-right"></i> {% trans 'Addicional materials' %}</h3>-->
                     </div>
-                    <span ng-bind-html="currentUnit.side_notes|markdown"></span>
+                    <span ng-bind-html="currentUnit.side_notes"></span>
                     <!--<p ng-if="!currentUnit.side_notes">{% trans 'This unit has no addicional materials' %}</p>-->
                     {% endblock %}
                 </div>
