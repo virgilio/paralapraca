@@ -13,13 +13,21 @@
         relative_urls: false,
         remove_script_host: false,
         plugins : 'advlist lists autolink link image media autoresize',
-        toolbar: 'bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | quicklink link image media fullscreen',
+        toolbar: 'bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | quicklink link image media fullscreen | removeformat',
         skin: 'lightgray',
         theme : 'modern',
         language: 'pt_BR',
         language_url : '/static/vendor/tinymce/langs/pt_BR.js',
         resize: true,
         elementpath: false,
+
+        format: {
+          removeformat: [
+            {selector: 'font', remove : 'all', split : true, expand : false, block_expand: true, deep : true},
+            {selector: 'span', attributes : ['style', 'class'], remove : 'all', split : true, expand : false, deep : true},
+            {selector: '*', attributes : ['style', 'class'], split : false, expand : false, deep : true}
+          ]
+        },
 
         // media customizations
         media_poster: false,
