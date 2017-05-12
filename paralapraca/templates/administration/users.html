@@ -128,7 +128,7 @@ ng-app="users-admin"
                                 </td>
                                 <td>{{ user.name }} {{ user.get_full_name }}</td>
                                 <td>
-                                    <b ng-init="clean_groups(user.groups)" ng-repeat="(key, group) in user.groups">{{  key>0 ? ", " : "" }}{{group.name}}</b>
+                                    <b ng-repeat="(key, group) in user.groups">{{  key>0 ? ", " : "" }}{{group.name}}</b>
                                 </td>
                                 <td class="text-center">
                                     <input type="checkbox" ng-model="user.is_superuser" ng-change="update_user(user)">
