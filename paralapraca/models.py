@@ -1,8 +1,40 @@
 # -*- coding: utf-8 -*-
 from django.db import models
 from django.conf import settings
+from django.utils.translation import ugettext_lazy as _
+from django.utils.encoding import python_2_unicode_compatible
+from django.contrib.auth.models import Group
+from django.contrib.postgres.fields import ArrayField
+from autoslug import AutoSlugField
 from discussion.models import TopicNotification
 from activities.models import Activity
+
+
+@python_2_unicode_compatible
+class Contract(models.Model):
+    name = models.CharField(_('Name'), max_length=255)
+    slug = AutoSlugField(_('Slug'), populate_from='name', max_length=128, editable=False, unique=True)
+    groups = models.ManyToManyField(
+        Group,
+        verbose_name=_('groups'),
+        blank=True,
+        help_text=_('Groups created to enforce this contract restrictions in several other models'),
+        related_name='contracts',
+    )
+    unities = ArrayField(
+        models.CharField(max_length=255, blank=True),
+        help_text=_('Possibly cities. This field stores the user declared unities on contract creation. This are used to distinguish some special grupos associated to the contract')
+    )
+
+    class Meta:
+        verbose_name = _('Contract')
+        verbose_name_plural = _('Contracts')
+
+    def __unicode__(self):
+        return self.name
+
+    def __str__(self):
+        return self.name
 
 
 class AnswerNotification(TopicNotification):
