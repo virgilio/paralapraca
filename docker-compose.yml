@@ -20,7 +20,6 @@ services:
       - .:/usr/src
       # If you have a copy of the server webfiles, uncomment the following line
       # - <webfiles_path>:/usr/src/timtec/media
-      - /home/laury/webfiles-media-paralapraca:/usr/src/timtec/media
     ports:
       - "8000:8000"
     links:
