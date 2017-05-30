@@ -2,45 +2,51 @@
 Paralapracá
 =============================
 
-.. image:: https://badge.fury.io/py/paralapraca.png
-    :target: https://badge.fury.io/py/paralapraca
-
-.. image:: https://travis-ci.org/brunosmartin/paralapraca.png?branch=master
-    :target: https://travis-ci.org/brunosmartin/paralapraca
-
-Paralapracá
-
-Documentation
--------------
-
-The full documentation is at https://paralapraca.readthedocs.org.
-
-Quickstart
-----------
-
-Install Paralapracá::
-
-    pip install paralapraca
-
-Then use it in a project::
-
-    import paralapraca
-
-Features
---------
-
-* TODO
-
-Running Tests
---------------
-
-Does the code actually work?
-
+Development (with Docker)
+--------------------------
+Clone the development versions of timtec, django-discussion and paralapraca
 ::
+    git clone https://github.com/hacklabr/timtec.git
+    git clone https://github.com/hacklabr/django-discussion.git
+    git clone https://github.com/hacklabr/paralapraca.git
 
-    source <YOURVIRTUALENV>/bin/activate
-    (myenv) $ pip install -r requirements_test.txt
-    (myenv) $ python runtests.py
+Switch timtec to its paralapraca compatible version
+::
+    cd timtec
+    git checkout paralapraca
+
+Go back to your main folder and copy some docker files (this proccess will improve in the future)
+::
+    cp paralapraca/Dockerfile-dev Dockerfile-dev
+    cp paralapraca/docker-compose.yml docker-compose.yml
+    cp paralapraca/docker-compose-update.sh docker-compose-update.sh
+
+Now, you're ready to get your stack up and running
+::
+    docker-compose up
+
+
+Aditional notes
+~~~~~~~~~~~~~~~~~
+If you would like to have interactive control for debuging in your server log (pdb or ipdb support), you must activate the stack with the following command
+::
+    docker-compose run --service-ports --rm web
+
+
+Deploy a production database on your local environment
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Put the dump file given to you by the Hacklab/ team on the installation directory.
+
+Copy the file to the database container (do it while the application runs).
+::
+    docker cp dump.psqlc <directory_name>_db_1:/tmp
+
+Now, enter in the container and run the restore command.
+::
+    docker exec -it <directory_name>_db_1 bash
+    # you're inside the container now
+    su postgres
+    pg_restore -O -c -x -n public -d timtec /tmp/dump.psqlc
 
 Credits
 ---------
