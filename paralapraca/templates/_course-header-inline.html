@@ -25,7 +25,7 @@
                     <select ng-model="selectedIndex" ng-change="locationChange(selectedIndex)" class="form-control">
                         <option ng-repeat="unit in lesson.units"
                                 ng-value="$index+1"
-                                ng-selected="unit==currentUnit"
+                                ng-selected="unit.id==currentUnit.id"
                                 value="{{$index+1}}">{% endverbatim %}{% trans 'Unit' %}{% verbatim %} {{ unit.position + 1 }}</option>
                     </select>
                 </div>
