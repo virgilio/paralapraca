@@ -354,6 +354,21 @@ wrapper-course-intro
                         <p>{{ course.structure|timtec_markdown }}</p>
                     {% endif %}
 
+                    {% if in_admin %}
+                        <div class="secondary-page-header {% if not in_admin %}first{% endif %}">
+                          <h3><i ng-class="{'blink-text-danger':errors.requirement}" class="fa fa-angle-double-right"></i> {% trans "Ficha técnica" %}</h3>
+                        </div>
+
+                        <div class="help-text"><i class="fa fa-caret-down" aria-hidden="true"></i> Edite abaixo</div>
+                        <modalmarkdowneditor tabindex="8" on-save="saveCourse()" title="{% trans 'Ficha técnica' %}" content="course.workload"></modalmarkdowneditor>
+                    {% elif course.workload %}
+                        <div class="secondary-page-header">
+                          <h3><i ng-class="{'blink-text-danger':errors.requirement}" class="fa fa-angle-double-right"></i> {% trans "Ficha técnica" %}</h3>
+                        </div>
+
+                        <p>{{ course.workload|timtec_markdown }}</p>
+                    {% endif %}
+
                     <!-- COURSE-INSTRUCTORS -->
                     {%  include '_course_authors_inline.html' %}
                     <!-- END COURSE-INSTRUCTORS -->
