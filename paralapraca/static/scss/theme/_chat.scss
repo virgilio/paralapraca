@@ -6,8 +6,18 @@ body.logged .wrapper.chat {
 
     iframe {
         border: none;
+        @media screen and (max-width: $screen-sm-min) {
+          height: calc(100% - 60px);
+          margin-top: 60px;
+          width: calc(100% - 80px);
+        }
+        @media screen and (max-width: $screen-xs-min) {
+          height: calc(100% - 60px);
+          margin-top: 60px;
+          width: 100%;
+        }
         height: calc(100% - 80px);
         margin-top: 80px;
-        width: calc(100% - 100px)
+        width: calc(100% - 100px);
     }
 }
