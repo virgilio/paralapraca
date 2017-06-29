@@ -2,6 +2,7 @@
 import json
 
 from django.conf import settings
+from django.shortcuts import render
 from django.core.urlresolvers import reverse
 from django.http import HttpResponse, HttpResponseForbidden
 from django.utils.decorators import method_decorator
@@ -112,3 +113,11 @@ class UnreadNotificationViewSet(viewsets.ModelViewSet):
             UnreadNotification.objects.create(user=self.request.user)
             queryset = UnreadNotification.objects.filter(user=self.request.user)
         return queryset
+
+
+def cards_view(request):
+    return render(request, 'cards.html', {})
+
+
+def card_detail_view(request, *args, **kwargs):
+    return render(request, 'card-detail.html', {})
