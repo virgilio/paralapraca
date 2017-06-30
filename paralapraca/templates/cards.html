@@ -24,5 +24,114 @@ ng-app="my-courses"
 
 
 {% block content %}
-        Olá mundo!
+    <div class="assim-se-faz">
+
+        <header class="page-header">
+            <div class="pull-left">
+                <h2 class="title">
+                    assim se faz
+                </h2>
+            </div>
+            <div class="pull-left"><a href="#" class="btn btn-default add">nova prática</a></div>
+        </header>
+
+        <section class="cards-filters row">
+            <div class="column">
+                <form class="cards-filters-search">
+                    <input type="text" placeholder="Insira aqui uma palavra-chave">
+                    <button type="submit" class="button-search">
+                        <span class="sr-only">buscar</span>
+                    </button>
+                    <span class="search-suggestions">
+                        sugestões: <b>lorem ipsum,</b> <b>lorem ipsum,</b> <b>lorem ipsum</b>. 
+                    </span>
+                </form>
+            </div>
+            <div class="column">
+                <span class="open-filters">abrir filtros de busca</span>
+                <span class="close-filters">fechar filtros de busca</span>
+            </div>
+
+            <form class="cards-filters-options row">
+                <label>Quais práticas deseja filtrar?</label>
+                <select>
+                    <option>lorem ipsum</option>
+                </select>
+                <label>Público</label>
+                <select>
+                    <option>lorem ipsum</option>
+                </select>
+                <label>Eixo</label>
+                <select>
+                    <option>lorem ipsum</option>
+                </select>
+                <label>Tags</label>
+                <select>
+                    <option>lorem ipsum</option>
+                </select>
+            </form>
+
+            <div class="results-info">
+                <div class="tags">
+                    <a class="tag" href="#">lorem</a>
+                </div>
+                <h3 class="results-title">
+                    Foram encontrados <b>6</b> resultados para <b>lorem ipsum</b>.
+                </h3>
+            </div>
+        </section>
+
+        <section class="cards-list row">
+            <header class="">
+                <h3>
+                    Práticas Avantes e certificadas
+                    <span>100 práticas</span>
+                </h3>
+                <nav class="cards-pagination">
+                    <ul>
+                        <li class="prev-button">
+                            <span class="sr-only">anterior</span>
+                        </li>
+                        <li class="default-button active">
+                            <span class="sr-only">1</span>
+                        </li>
+                        <li class="default-button">
+                            <span class="sr-only">2</span>
+                        </li>
+                        <li class="next-button">
+                            <span class="sr-only">próximo</span>
+                        </li>
+                    </ul>
+                </nav>
+            </header>
+
+            <article class="card">
+                <header>
+                    <div class="card-image" style="background-image: url('')"></div>
+                    <a class="category" href="">categoria</a>
+                    
+                    <a class="" href="">Assim se brinca</a>
+                    <h4 class="card-title">Assim se curte o outono</h4>
+                    <span class="card-author">Publicado por: <a href="">Avante</a></span>
+                </header>
+
+                <footer>
+                    <span class="action liked">40 curtiram</span>
+                    <div class="tags">
+                        <a class="tag" herf="#">#lorem</a>
+                        <a class="tag" herf="#">#ipsum</a>
+                        <a class="tag" herf="#">+6</a>
+                    </div>
+                </footer>
+            </article>
+
+            <footer>
+                <p class="not-found">Não encontrou o que procurava? Tente remover alguns <b>filtros de busca</b> ou tentar outra palavra-chave.</p>
+            </footer>
+
+            <div class="scroll-warning">role a página para ver todas as práticas</div>
+        </section>
+        
+    </div>
+
 {% endblock %}
