@@ -24,51 +24,62 @@ ng-app="my-courses"
 
 
 {% block content %}
-    <div class="assim-se-faz">
+    <div class="assim-se-faz container-fluid">
 
-        <header class="page-header">
+        <header class="page-header clearfix">
             <div class="pull-left">
-                <h2 class="title">
-                    assim se faz
-                </h2>
+                <h2 class="title">assim se faz</h2>
             </div>
             <div class="pull-left"><a href="#" class="btn btn-default add">nova prática</a></div>
         </header>
 
-        <section class="cards-filters row">
-            <div class="column">
-                <form class="cards-filters-search">
-                    <input type="text" placeholder="Insira aqui uma palavra-chave">
-                    <button type="submit" class="button-search">
-                        <span class="sr-only">buscar</span>
-                    </button>
-                    <span class="search-suggestions">
-                        sugestões: <b>lorem ipsum,</b> <b>lorem ipsum,</b> <b>lorem ipsum</b>. 
-                    </span>
-                </form>
+        <section class="cards-filters">
+            <div class="row">
+                <div class="col-xs-12 col-md-6 col-lg-7">
+                    <form class="cards-filters-search">
+                        <fieldset class="clearfix">
+                            <legend class="sr-only">Busca por palavra-chave</legend>
+                            <input type="text" placeholder="Insira aqui uma palavra-chave"  class="form-control">
+                            <button type="submit" class="button-search">
+                                <span class="sr-only">buscar</span>
+                            </button>
+                        </fieldset>
+                        <span class="search-suggestions">
+                            sugestões: <b>lorem ipsum,</b> <b>lorem ipsum,</b> <b>lorem ipsum</b>. 
+                        </span>
+                    </form>
+                </div>
+                <div class="col-xs-12 col-md-6 col-lg-5">
+                    <span class="open-filters">abrir filtros de busca</span>
+                    <span class="close-filters">fechar filtros de busca</span>
+                </div>
             </div>
-            <div class="column">
-                <span class="open-filters">abrir filtros de busca</span>
-                <span class="close-filters">fechar filtros de busca</span>
-            </div>
-
+            
             <form class="cards-filters-options row">
-                <label>Quais práticas deseja filtrar?</label>
-                <select>
-                    <option>lorem ipsum</option>
-                </select>
-                <label>Público</label>
-                <select>
-                    <option>lorem ipsum</option>
-                </select>
-                <label>Eixo</label>
-                <select>
-                    <option>lorem ipsum</option>
-                </select>
-                <label>Tags</label>
-                <select>
-                    <option>lorem ipsum</option>
-                </select>
+                <div class="form-group col-xs-12 col-md-6 col-lg-3">
+                    <label>Quais práticas deseja filtrar?</label>
+                    <select class="form-control">
+                        <option>lorem ipsum</option>
+                    </select>
+                </div>
+                <div class="form-group col-xs-12 col-md-6 col-lg-3">
+                    <label>Público</label>
+                    <select class="form-control">
+                        <option>lorem ipsum</option>
+                    </select>
+                </div>
+                <div class="form-group col-xs-12 col-md-6 col-lg-3">
+                    <label>Eixo</label>
+                    <select class="form-control">
+                        <option>lorem ipsum</option>
+                    </select>
+                </div>
+                <div class="form-group col-xs-12 col-md-6 col-lg-3">
+                    <label>Tags</label>
+                    <select class="form-control">
+                        <option>lorem ipsum</option>
+                    </select>
+                </div>
             </form>
 
             <div class="results-info">
@@ -81,53 +92,99 @@ ng-app="my-courses"
             </div>
         </section>
 
-        <section class="cards-list row">
-            <header class="">
-                <h3>
-                    Práticas Avantes e certificadas
-                    <span>100 práticas</span>
-                </h3>
-                <nav class="cards-pagination">
-                    <ul>
-                        <li class="prev-button">
-                            <span class="sr-only">anterior</span>
-                        </li>
-                        <li class="default-button active">
-                            <span class="sr-only">1</span>
-                        </li>
-                        <li class="default-button">
-                            <span class="sr-only">2</span>
-                        </li>
-                        <li class="next-button">
-                            <span class="sr-only">próximo</span>
-                        </li>
-                    </ul>
-                </nav>
-            </header>
-
-            <article class="card">
-                <header>
-                    <div class="card-image" style="background-image: url('')"></div>
-                    <a class="category" href="">categoria</a>
-                    
-                    <a class="" href="">Assim se brinca</a>
-                    <h4 class="card-title">Assim se curte o outono</h4>
-                    <span class="card-author">Publicado por: <a href="">Avante</a></span>
+        <section class="cards-list">
+            <div class="row">
+                <header class="col-xs-12">
+                    <h3 class="pull-left">
+                        Práticas Avantes e certificadas
+                        <span>100 práticas</span>
+                    </h3>
+                    <nav class="cards-pagination pull-left">
+                        <ul>
+                            <li class="prev-button">
+                                <span class="sr-only">anterior</span>
+                            </li>
+                            <li class="default-button active">
+                                <span class="sr-only">1</span>
+                            </li>
+                            <li class="default-button">
+                                <span class="sr-only">2</span>
+                            </li>
+                            <li class="next-button">
+                                <span class="sr-only">próximo</span>
+                            </li>
+                        </ul>
+                    </nav>
                 </header>
+            </div>
 
-                <footer>
-                    <span class="action liked">40 curtiram</span>
-                    <div class="tags">
-                        <a class="tag" herf="#">#lorem</a>
-                        <a class="tag" herf="#">#ipsum</a>
-                        <a class="tag" herf="#">+6</a>
-                    </div>
-                </footer>
-            </article>
+            <div class="row">
+                <article class="card col-xs-12 col-md-6 col-lg-4">
+                    <header>
+                        <div class="card-image" style="background-image: url('')"></div>
+                        <a class="category" href="">categoria</a>
+                        
+                        <a class="" href="">Assim se brinca</a>
+                        <h4 class="card-title">Assim se curte o outono</h4>
+                        <span class="card-author">Publicado por: <a href="">Avante</a></span>
+                    </header>
 
-            <footer>
-                <p class="not-found">Não encontrou o que procurava? Tente remover alguns <b>filtros de busca</b> ou tentar outra palavra-chave.</p>
-            </footer>
+                    <footer>
+                        <span class="action liked">40 curtiram</span>
+                        <div class="tags">
+                            <a class="tag" herf="#">#lorem</a>
+                            <a class="tag" herf="#">#ipsum</a>
+                            <a class="tag" herf="#">+6</a>
+                        </div>
+                    </footer>
+                </article>
+
+                <article class="card col-xs-12 col-md-6 col-lg-4">
+                    <header>
+                        <div class="card-image" style="background-image: url('')"></div>
+                        <a class="category" href="">categoria</a>
+                        
+                        <a class="" href="">Assim se brinca</a>
+                        <h4 class="card-title">Assim se curte o outono</h4>
+                        <span class="card-author">Publicado por: <a href="">Avante</a></span>
+                    </header>
+
+                    <footer>
+                        <span class="action liked">40 curtiram</span>
+                        <div class="tags">
+                            <a class="tag" herf="#">#lorem</a>
+                            <a class="tag" herf="#">#ipsum</a>
+                            <a class="tag" herf="#">+6</a>
+                        </div>
+                    </footer>
+                </article>
+
+                <article class="card col-xs-12 col-md-6 col-lg-4">
+                    <header>
+                        <div class="card-image" style="background-image: url('')"></div>
+                        <a class="category" href="">categoria</a>
+                        
+                        <a class="" href="">Assim se brinca</a>
+                        <h4 class="card-title">Assim se curte o outono</h4>
+                        <span class="card-author">Publicado por: <a href="">Avante</a></span>
+                    </header>
+
+                    <footer>
+                        <span class="action liked">40 curtiram</span>
+                        <div class="tags">
+                            <a class="tag" herf="#">#lorem</a>
+                            <a class="tag" herf="#">#ipsum</a>
+                            <a class="tag" herf="#">+6</a>
+                        </div>
+                    </footer>
+                </article>
+            </div>
+
+            <div class="row">
+                <div class="col-xs-12">
+                    <p class="not-found">Não encontrou o que procurava? Tente remover alguns <b>filtros de busca</b> ou tentar outra palavra-chave.</p>
+                </div>
+            </div>
 
             <div class="scroll-warning">role a página para ver todas as práticas</div>
         </section>
