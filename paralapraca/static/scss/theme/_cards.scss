@@ -1,0 +1,184 @@
+.cards {
+    .page-title {
+
+    }
+    .btn.add {
+        @include button-hover(#fff,#fff,$purple,darken($purple,10%));
+        margin: 15px 0 0 30px;
+    }
+
+    .search-container {
+        position: relative;
+    }
+
+    .search-button {
+        @include icon(before, search);
+        border: 0;
+        background: transparent;
+        position: absolute;
+        top: 7px;
+        right: 20px;
+        padding: 0;
+        &:before {
+            color: $purple;
+            font-size: 25px;
+        }
+    }
+
+    .search-input {
+        border: 2px solid $purple;
+        border-radius: 30px;
+        box-shadow: none;
+        font-size: 20px;
+        font-weight: bold;
+        height: 50px;
+    }
+
+    .search-suggestion {
+        font-size: 14px;
+        a {
+            color: $gray;
+            font-weight: bold;
+            text-decoration: underline;
+        }
+    }
+
+    .open-filters-options {
+        color: $purple;
+        cursor: pointer;
+        font-size: 20px;
+        &:before {
+            font-size: 30px;
+            float: left;
+            padding-top: 5px;
+        }
+        &:after {
+            display: inline-block;
+            margin-left: 15px;
+            max-width: 120px;
+        }
+        &.closed {
+            @include icon(before, chevron-down);
+            &:after {
+                content: 'abrir filtros de busca';
+            }
+        }
+        &.opened {
+            @include icon(before, chevron-up);
+            &:after {
+                content: 'fechar filtros de busca';
+            }
+        }
+    }
+
+    .cards-filters-options {
+        margin-top: 15px;
+        .form-control {
+            border: 2px solid $gray;
+            border-radius: 0px;
+            box-shadow: none;
+        }
+    }
+
+    .results-info-tags {
+        .tag {
+            @include icon(after, times);
+            border-color: $gray;
+            color: $gray;
+            &:after {
+                margin-left: 5px;
+            }
+            &:hover {
+                background-color: $gray;
+                color: #fff;
+            }
+            &.active {
+                border-color: $purple;
+                background-color: $purple;
+                color: #fff;
+            }
+        }
+    }
+
+    .results-info-title {
+        font-family: $font-family-sans-serif;
+        font-size: 20px;
+
+        b {
+            color: $purple;
+        }
+    }
+
+    .cards-pagination {
+        ul {
+            margin: 0;
+            padding: 0;
+        }
+        li {
+            border-radius: 50%;
+            color: #fff;
+            display: inline-block;
+            height: 10px;
+            width: 10px;
+        }
+        .prev-button {
+            @include icon(after, chevron-left);
+        }
+        .next-button {
+            @include icon(after, chevron-right);
+        }
+        .prev-button, .next-button {
+            height: 25px;
+            width: 25px;
+            text-align: center;
+            &:after {
+                line-height: 25px;
+                vertical-align: middle;
+            }
+        }
+    }
+
+    .card {
+
+    }
+    .card-image {
+
+    }
+    .card-title {
+
+    }
+    .card-author {
+        a {
+            color: $purple;
+        }
+    }
+
+    .category, .tag, .action {
+        color: $purple;
+    }
+    .category, .tag {
+        border-color: $purple;
+    }
+}
+
+.praticas-certificadas {
+    .cards-pagination {
+        li {
+            background-color: rgba($purple,0.3);
+        }
+        .prev-button, .next-button, .active {
+            background-color: $purple;
+        }
+    }
+}
+
+.praticas-independentes {
+    .cards-pagination {
+        li {
+            background-color: rgba($orange,0.3);
+        }
+        .prev-button, .next-button, .active {
+            background-color: $orange;
+        }
+    }
+}

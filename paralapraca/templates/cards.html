@@ -24,34 +24,33 @@ ng-app="my-courses"
 
 
 {% block content %}
-    <div class="assim-se-faz container-fluid">
+    <div class="cards container-fluid">
 
         <header class="page-header clearfix">
             <div class="pull-left">
-                <h2 class="title">assim se faz</h2>
+                <h2 class="page-title">assim se faz</h2>
             </div>
-            <div class="pull-left"><a href="#" class="btn btn-default add">nova prática</a></div>
+            <div class="pull-left"><a href="#" class="btn add">nova prática</a></div>
         </header>
 
-        <section class="cards-filters">
+        <section class="cards-search">
             <div class="row">
                 <div class="col-xs-12 col-md-6 col-lg-7">
-                    <form class="cards-filters-search">
-                        <fieldset class="clearfix">
+                    <form>
+                        <fieldset class="clearfix search-container">
                             <legend class="sr-only">Busca por palavra-chave</legend>
-                            <input type="text" placeholder="Insira aqui uma palavra-chave"  class="form-control">
-                            <button type="submit" class="button-search">
+                            <input type="text" placeholder="Insira aqui uma palavra-chave"  class="form-control search-input">
+                            <button type="submit" class="search-button">
                                 <span class="sr-only">buscar</span>
                             </button>
                         </fieldset>
-                        <span class="search-suggestions">
-                            sugestões: <b>lorem ipsum,</b> <b>lorem ipsum,</b> <b>lorem ipsum</b>. 
+                        <span class="search-suggestion">
+                            sugestões: <a href="#">lorem ipsum,</a> <a href="#">lorem ipsum,</a> <a href="#">lorem ipsum</a>. 
                         </span>
                     </form>
                 </div>
                 <div class="col-xs-12 col-md-6 col-lg-5">
-                    <span class="open-filters">abrir filtros de busca</span>
-                    <span class="close-filters">fechar filtros de busca</span>
+                    <div class="open-filters-options closed"></div>
                 </div>
             </div>
             
@@ -83,19 +82,20 @@ ng-app="my-courses"
             </form>
 
             <div class="results-info">
-                <div class="tags">
-                    <a class="tag" href="#">lorem</a>
+                <div class="results-info-tags">
+                    <a class="tag active" href="#">lorem</a>
+                    <a class="tag" href="#">ipsum</a>
                 </div>
-                <h3 class="results-title">
+                <h3 class="results-info-title">
                     Foram encontrados <b>6</b> resultados para <b>lorem ipsum</b>.
                 </h3>
             </div>
         </section>
 
-        <section class="cards-list">
+        <section class="cards-list praticas-certificadas">
             <div class="row">
                 <header class="col-xs-12">
-                    <h3 class="pull-left">
+                    <h3 class="subtitle pull-left">
                         Práticas Avantes e certificadas
                         <span>100 práticas</span>
                     </h3>
@@ -108,6 +108,103 @@ ng-app="my-courses"
                                 <span class="sr-only">1</span>
                             </li>
                             <li class="default-button">
+                                <span class="sr-only">2</span>
+                            </li>
+                            <li class="next-button">
+                                <span class="sr-only">próximo</span>
+                            </li>
+                        </ul>
+                    </nav>
+                </header>
+            </div>
+
+            <div class="row">
+                <article class="card col-xs-12 col-md-6 col-lg-4">
+                    <header>
+                        <div class="card-image" style="background-image: url('')"></div>
+                        <a class="category" href="">categoria</a>
+                        
+                        <a class="" href="">Assim se brinca</a>
+                        <h4 class="card-title">Assim se curte o outono</h4>
+                        <span class="card-author">Publicado por: <a href="">Avante</a></span>
+                    </header>
+
+                    <footer>
+                        <span class="action liked">40 curtiram</span>
+                        <div class="tags">
+                            <a class="tag" herf="#">#lorem</a>
+                            <a class="tag" herf="#">#ipsum</a>
+                            <a class="tag" herf="#">+6</a>
+                        </div>
+                    </footer>
+                </article>
+
+                <article class="card col-xs-12 col-md-6 col-lg-4">
+                    <header>
+                        <div class="card-image" style="background-image: url('')"></div>
+                        <a class="category" href="">categoria</a>
+                        
+                        <a class="" href="">Assim se brinca</a>
+                        <h4 class="card-title">Assim se curte o outono</h4>
+                        <span class="card-author">Publicado por: <a href="">Avante</a></span>
+                    </header>
+
+                    <footer>
+                        <span class="action liked">40 curtiram</span>
+                        <div class="tags">
+                            <a class="tag" herf="#">#lorem</a>
+                            <a class="tag" herf="#">#ipsum</a>
+                            <a class="tag" herf="#">+6</a>
+                        </div>
+                    </footer>
+                </article>
+
+                <article class="card col-xs-12 col-md-6 col-lg-4">
+                    <header>
+                        <div class="card-image" style="background-image: url('')"></div>
+                        <a class="category" href="">categoria</a>
+                        
+                        <a class="" href="">Assim se brinca</a>
+                        <h4 class="card-title">Assim se curte o outono</h4>
+                        <span class="card-author">Publicado por: <a href="">Avante</a></span>
+                    </header>
+
+                    <footer>
+                        <span class="action liked">40 curtiram</span>
+                        <div class="tags">
+                            <a class="tag" herf="#">#lorem</a>
+                            <a class="tag" herf="#">#ipsum</a>
+                            <a class="tag" herf="#">+6</a>
+                        </div>
+                    </footer>
+                </article>
+            </div>
+
+            <div class="row">
+                <div class="col-xs-12">
+                    <p class="not-found">Não encontrou o que procurava? Tente remover alguns <b>filtros de busca</b> ou tentar outra palavra-chave.</p>
+                </div>
+            </div>
+
+            <div class="scroll-warning">role a página para ver todas as práticas</div>
+        </section>
+
+        <section class="cards-list praticas-independentes">
+            <div class="row">
+                <header class="col-xs-12">
+                    <h3 class="subtitle pull-left">
+                        Práticas independentes
+                        <span>100 práticas</span>
+                    </h3>
+                    <nav class="cards-pagination pull-left">
+                        <ul>
+                            <li class="prev-button">
+                                <span class="sr-only">anterior</span>
+                            </li>
+                            <li class="active">
+                                <span class="sr-only">1</span>
+                            </li>
+                            <li>
                                 <span class="sr-only">2</span>
                             </li>
                             <li class="next-button">
