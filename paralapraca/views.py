@@ -14,7 +14,7 @@ from paralapraca.models import AnswerNotification, UnreadNotification
 from core.models import Course, CourseStudent
 from collections import Counter
 from accounts.models import TimtecUser
-from paralapraca.serializers import AnswerNotificationSerializer, UnreadNotificationSerializer, UserInDetailSerializer, BetterNameLaterSerializer
+from paralapraca.serializers import AnswerNotificationSerializer, UnreadNotificationSerializer, UserInDetailSerializer, UsersByClassSerializer
 from discussion.models import Comment, CommentLike, Topic, TopicLike
 from rest_pandas import PandasViewSet
 from rest_pandas.renderers import PandasCSVRenderer, PandasJSONRenderer
@@ -183,9 +183,9 @@ class UsersByClassViewSet(PandasViewSet):
             # This is a bit ugly, but should work. There is no (easy) way to directly filter from
             # a function, so I'm getting all the desired IDs, then filtering by the desired IDs
             people_ids = [x.id for x in self.queryset if x.get_current_class().id == int(id)]
-            serializer = BetterNameLaterSerializer(self.queryset.filter(id__in=people_ids), many=True)
+            serializer = UsersByClassSerializer(self.queryset.filter(id__in=people_ids), many=True)
         else:
-            serializer = BetterNameLaterSerializer(self.queryset, many=True)
+            serializer = UsersByClassSerializer(self.queryset, many=True)
         return Response(pd.DataFrame.from_dict(self.transform_data(serializer.data)).set_index('cpf'))
 
     def transform_data(self, data):
@@ -198,5 +198,5 @@ class UsersByClassViewSet(PandasViewSet):
                     coursestudent.update({
                         u'Lição {} - Atividade {} realizada'.format(lesson['name'], activity['name']): activity['done']
                     })
-
+            coursestudent.pop('percent_progress_by_lesson', None)
         return data

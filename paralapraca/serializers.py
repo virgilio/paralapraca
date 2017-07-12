@@ -73,7 +73,7 @@ class UserInDetailSerializer(serializers.ModelSerializer):
     def get_number_of_likes(self, obj):
         return obj.topiclike_set.count() + obj.commentlike_set.count()
 
-class BetterNameLaterSerializer(serializers.Serializer):
+class UsersByClassSerializer(serializers.Serializer):
     # class Meta:
         # model = CourseStudent
 
