@@ -19,7 +19,11 @@ def answer_created_or_updated(instance, **kwargz):
 
     # All instructors of the corresponding course must be notified
     notifiable_users = instance.activity.unit.lesson.course.professors
-    topic_id = instance.given.get('topic', None)
+    try:
+        topic_id = instance.given.get('topic', None)
+    except AttributeError as e:
+        # If "given" isn't a dictionary, there's no topic data to get
+        topic_id = None
 
     # If this answer is not relative to a Discussion Activity, this signal must not notify professors
     if topic_id is None:
