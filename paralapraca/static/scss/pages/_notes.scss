@@ -43,6 +43,9 @@
         background: rgba(255,255,255,0.5);
         overflow: hidden;
         padding: 10px;
+        .note-text {
+          white-space: pre-line;
+        }
         @media screen and (min-width: $screen-xs-min) {
             padding: 15px;
         }
