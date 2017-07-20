@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+{% load is_enrolled %}
+
+{% block js %} {{block.super}}
+<script type="text/javascript" src="{% static 'js/reports/app.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/reports/controllers.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/reports/services.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/factories/timtec-models.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/directives/fixedBar.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/directives/file.js' %}"></script>
+<script>window.user_id = {{ user.pk }};</script>
+{% endblock %}
+
+{% block wrapper_classes %}
+wrapper-courses
+{% endblock %}
+
+{% block body_attrs %}
+ng-app="reports"
+{% endblock %}
+
+
+{% block content %}
+<div ng-controller="GeneralReportsCtrl" class="">
+    Olá mundo!
+</div>
+{% endblock %}
