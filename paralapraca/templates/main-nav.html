@@ -88,7 +88,7 @@
             <div class="modal-body">
                 <div class="row">
                     <div class="col-lg-8 col-lg-offset-1">
-                        <form class="form-horizontal" method="post" action="{% url 'contact' %}">
+                        <form class="form-horizontal" id="contact-form" method="post" action="{% url 'contact' %}">
                             {% csrf_token %}
                             {% include '_contact_form.html' %}
                             <div class="submit textright">
@@ -100,7 +100,7 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">{% trans 'Close' %}</button>
+                <button type="button" onclick="document.getElementById('contact-form').reset()" class="btn btn-default" data-dismiss="modal">{% trans 'Close' %}</button>
             </div>
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
