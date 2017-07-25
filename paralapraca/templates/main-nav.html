@@ -93,7 +93,7 @@
                             {% include '_contact_form.html' %}
                             <div class="submit textright">
                                 <button type="reset" class="btn btn-danger">{% trans 'Clear' %}</button>
-                                <button type="submit" class="btn btn-success">{% trans 'Send' %}</button>
+                                <button onclick="setTimeout(function(){document.getElementById('contact-form').reset()}, 1000)" type="submit" class="btn btn-success">{% trans 'Send' %}</button>
                             </div>
                         </form>
                     </div>
