@@ -10,11 +10,11 @@ from django.views.generic.base import TemplateView, View
 from rest_framework import viewsets, status
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
-from paralapraca.models import AnswerNotification, UnreadNotification
+from paralapraca.models import AnswerNotification, UnreadNotification, Contract
 from core.models import Course, CourseStudent
 from collections import Counter
 from accounts.models import TimtecUser
-from paralapraca.serializers import AnswerNotificationSerializer, UnreadNotificationSerializer, UserInDetailSerializer, UsersByClassSerializer
+from paralapraca.serializers import AnswerNotificationSerializer, UnreadNotificationSerializer, UserInDetailSerializer, UsersByClassSerializer, ContractSerializer
 from discussion.models import Comment, CommentLike, Topic, TopicLike
 from rest_pandas import PandasViewSet
 from rest_pandas.renderers import PandasCSVRenderer, PandasJSONRenderer
@@ -67,6 +67,11 @@ class RocketchatIframeAuthView(TemplateView):
         response["Access-Control-Allow-Headers"] = "Origin, X-Requested-With, Content-Type, Accept"
 
         return response
+
+
+class ContractViewSet(viewsets.ReadOnlyModelViewSet):
+    queryset = Contract.objects.all()
+    serializer_class = ContractSerializer
 
 
 class AnswerNotificationViewSet(viewsets.ModelViewSet):
@@ -171,6 +176,7 @@ class UsersByGroupViewSet(PandasViewSet):
             user.pop('courses', None)
             response.append(user)
         return pd.DataFrame.from_dict(response)
+
 
 class UsersByClassViewSet(PandasViewSet):
 

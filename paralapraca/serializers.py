@@ -1,8 +1,15 @@
 from rest_framework import serializers
-from paralapraca.models import AnswerNotification, UnreadNotification
+from paralapraca.models import AnswerNotification, UnreadNotification, Contract
 from discussion.serializers import BaseTopicSerializer, BaseCommentSerializer, TopicLikeSerializer, CommentLikeSerializer
 from accounts.models import TimtecUser
-from core.models import Course, CourseStudent
+
+
+class ContractSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Contract
+        depth = 1
+
 
 class AnswerNotificationSerializer(serializers.ModelSerializer):
 
@@ -37,7 +44,6 @@ class UnreadNotificationSerializer(serializers.ModelSerializer):
     class Meta:
         model = UnreadNotification
         fields = ('id', 'counter', )
-
 
 
 class UserInDetailSerializer(serializers.ModelSerializer):
