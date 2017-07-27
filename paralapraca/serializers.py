@@ -2,9 +2,27 @@ from rest_framework import serializers
 from paralapraca.models import AnswerNotification, UnreadNotification, Contract
 from discussion.serializers import BaseTopicSerializer, BaseCommentSerializer, TopicLikeSerializer, CommentLikeSerializer
 from accounts.models import TimtecUser
+from core.models import Class, Course
+
+
+class CourseSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Course
+        fields = ('id', 'name')
+
+
+class ClassSerializer(serializers.ModelSerializer):
+
+    course = CourseSerializer(read_only=True)
+
+    class Meta:
+        model = Class
 
 
 class ContractSerializer(serializers.ModelSerializer):
+
+    classes = ClassSerializer(many=True, read_only=True)
 
     class Meta:
         model = Contract
