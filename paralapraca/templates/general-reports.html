@@ -1,0 +1,142 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+{% load is_enrolled %}
+
+{% block js %} {{block.super}}
+<script type="text/javascript" src="{% static 'js/reports/app.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/reports/controllers.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/reports/services.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/factories/timtec-models.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/directives/fixedBar.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/directives/file.js' %}"></script>
+<script>window.user_id = {{ user.pk }};</script>
+{% endblock %}
+
+{% block wrapper_classes %}
+wrapper-courses
+{% endblock %}
+
+{% block body_attrs %}
+ng-app="reports"
+{% endblock %}
+
+
+{% block content %}
+{% verbatim %}
+<div ng-controller="GeneralReportsCtrl" class="page general-reports container-fluid">
+    <header class="page-header">
+        <h2>Relatórios</h2>
+    </header>
+
+    <div class="row">
+
+        <div class="col-sm-12 col-md-2 col-lg-7">
+            <div class="reports-list">
+                <h3>
+                    <i class="fa fa-user" aria-hidden="true"></i>
+                    Visão geral
+                    <span>{{ general_data.user_count }} usuários</span>
+                </h3>
+
+                <div class="report-course-wrapper">
+                    <h4>Por módulo</h4>
+                    <table class="report-course" ng-repeat="course in general_data.statistics_per_course">
+                        <tr>
+                            <td colspan="2"><h5>{{ course.name }}</h5></td>
+                            <td class="text-right"><b>{{ course.user_count }}</b></td>
+                        </tr>
+                        <tr>
+                            <td>concluíram o módulo</td>
+                            <td>
+                                <div class="progress">
+                                    <div class="progress-bar" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: {{ (course.user_finished_course_count / course.user_count)*100 }}%;">
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="text-right">
+                                <b>{{ course.user_finished_course_count }}</b> ({{ (course.user_finished_course_count / course.user_count)*100 | number:2}}%)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3">
+                                <button class="btn btn-link" ng-class="!course.show_classes ? 'show-all' : 'hide-all'" ng-click="course.show_classes = !course.show_classes">
+                                    <span ng-show="course.show_classes">ocultar turmas</span>
+                                    <span ng-show="!course.show_classes">mostrar turmas</span>
+                                </button>
+
+                                <ul class="list-unstyled" ng-show="course.show_classes">
+                                    <li ng-repeat="klass in course.classes">
+                                      <b>{{ klass.name }}: </b> {{ klass.user_count }} alunos ({{ klass.certificate_count }} certificados)
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="col-sm-12 col-md-2 col-lg-5">
+            <div class="reports-forum">
+                <h3><i class="fa fa-quote-left" aria-hidden="true"></i> Fóruns</h3>
+                <table>
+                    <tr>
+                        <td><b>Tópicos</b></td>
+                        <td class="text-right">
+                            <i class="fa fa-comments" aria-hidden="true"></i>
+                            {{ general_data.total_number_of_topics }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><b>Reações</b></td>
+                        <td class="text-right">
+                            <i class="fa fa-heart" aria-hidden="true"></i>
+                            {{ general_data.total_number_of_likes }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><b>Comentários</b></td>
+                        <td class="text-right">
+                            <i class="fa fa-reply" aria-hidden="true"></i>
+                            {{ general_data.total_number_of_comments }}
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            <form class="reports-downloads">
+                <h3>Opções de download</h3>
+
+                <fieldset>
+                    <legend>Relatório geral da plataforma</legend>
+
+                    <label>filtrar por contratos</label>
+                    <select class="form-control" ng-model="selected_contract_general" ng-options="c.name for c in contracts"></select>
+
+                    <label>filtrar por grupos</label>
+                    <select class="form-control" ng-model="general_report.group" ng-options="g.name for g in selected_contract_general.groups"></select>
+
+                    <button class="btn download" ng-click="download_general_report()">baixar relatório geral</button>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Relatório de módulos</legend>
+
+                    <label>filtrar por contratos</label>
+                    <select class="form-control" ng-model="selected_contract_courses" ng-options="c.name for c in contracts"></select>
+
+                    <label>filtrar por turmas</label>
+                    <select class="form-control" ng-model="course_report.class" ng-options="c as c.name group by c.course.name for c in selected_contract_courses.classes"></select>
+
+                    <button class="btn download" ng-click="download_course_report()">baixar relatório de módulos</button>
+                </fieldset>
+
+            </form>
+        </div>
+
+    </div>
+</div>
+{% endverbatim %}
+{% endblock %}
