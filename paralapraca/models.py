@@ -8,6 +8,7 @@ from django.contrib.postgres.fields import ArrayField
 from autoslug import AutoSlugField
 from discussion.models import TopicNotification
 from activities.models import Activity
+from core.models import Class
 
 
 @python_2_unicode_compatible
@@ -21,6 +22,7 @@ class Contract(models.Model):
         help_text=_('Groups created to enforce this contract restrictions in several other models'),
         related_name='contracts',
     )
+    classes = models.ManyToManyField(Class, related_name='contracts')
     unities = ArrayField(
         models.CharField(max_length=255, blank=True),
         help_text=_('Possibly cities. This field stores the user declared unities on contract creation. This are used to distinguish some special grupos associated to the contract')
