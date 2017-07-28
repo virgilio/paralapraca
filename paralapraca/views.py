@@ -156,9 +156,9 @@ class UsersByGroupViewSet(PandasViewSet):
     queryset = TimtecUser.objects.all()
 
     def list(self, request, format=None):
-        group = request.query_params.get('group', None)
-        if group is not None:
-            serializer = UserInDetailSerializer(self.queryset.filter(groups__name__iexact=group), many=True)
+        groups = request.query_params.get('group', None)
+        if groups is not None:
+            serializer = UserInDetailSerializer(self.queryset.filter(groups__name__in=groups.split(',')), many=True)
         else:
             serializer = UserInDetailSerializer(self.queryset, many=True)
         # in order to get the data in the wanted column form, I'll need to make some transformations
@@ -184,11 +184,13 @@ class UsersByClassViewSet(PandasViewSet):
     queryset = CourseStudent.objects.all()
 
     def list(self, request, format=None):
-        id = request.query_params.get('id', None)
-        if id is not None:
+        ids = request.query_params.get('id', None)
+        if ids is not None:
             # This is a bit ugly, but should work. There is no (easy) way to directly filter from
             # a function, so I'm getting all the desired IDs, then filtering by the desired IDs
-            people_ids = [x.id for x in self.queryset if x.get_current_class().id == int(id)]
+            ids = ids.split(',')
+            ids = [int(idt) for idt in ids]
+            people_ids = [x.id for x in self.queryset if x.get_current_class().id in ids]
             serializer = UsersByClassSerializer(self.queryset.filter(id__in=people_ids), many=True)
         else:
             serializer = UsersByClassSerializer(self.queryset, many=True)
