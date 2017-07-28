@@ -116,7 +116,7 @@ ng-app="reports"
                     <select class="form-control" ng-model="selected_contract_general" ng-options="c.name for c in contracts"></select>
 
                     <label>filtrar por grupos</label>
-                    <select class="form-control" ng-model="general_report.group" ng-options="g.name for g in selected_contract_general.groups"></select>
+                    <select class="form-control" multiple ng-model="general_report.groups" ng-options="g.name for g in selected_contract_general.groups"></select>
 
                     <button class="btn download" ng-click="download_general_report()">baixar relatório geral</button>
                 </fieldset>
@@ -128,7 +128,7 @@ ng-app="reports"
                     <select class="form-control" ng-model="selected_contract_courses" ng-options="c.name for c in contracts"></select>
 
                     <label>filtrar por turmas</label>
-                    <select class="form-control" ng-model="course_report.class" ng-options="c as c.name group by c.course.name for c in selected_contract_courses.classes"></select>
+                    <select class="form-control" multiple ng-model="course_report.classes" ng-options="c as c.name group by c.course.name for c in selected_contract_courses.classes"></select>
 
                     <button class="btn download" ng-click="download_course_report()">baixar relatório de módulos</button>
                 </fieldset>
