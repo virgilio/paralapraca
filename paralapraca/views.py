@@ -12,7 +12,6 @@ from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
 from paralapraca.models import AnswerNotification, UnreadNotification, Contract
 from core.models import Course, CourseStudent
-from collections import Counter
 from accounts.models import TimtecUser
 from paralapraca.serializers import AnswerNotificationSerializer, UnreadNotificationSerializer, UserInDetailSerializer, UsersByClassSerializer, ContractSerializer
 from discussion.models import Comment, CommentLike, Topic, TopicLike
@@ -125,6 +124,7 @@ class UnreadNotificationViewSet(viewsets.ModelViewSet):
             queryset = UnreadNotification.objects.filter(user=self.request.user)
         return queryset
 
+
 class SummaryViewSet(viewsets.ViewSet):
 
     permission_classes = [IsAuthenticated]
@@ -136,8 +136,8 @@ class SummaryViewSet(viewsets.ViewSet):
              'user_finished_course_count': [student.can_emmit_receipt() for student in course.coursestudent_set.all()].count(True),
              'classes': [
                 {'name': klass.name,
-                'user_count': klass.get_students.count(),
-                'certificate_count': [student.can_emmit_receipt() for student in klass.get_students.all()].count(True)
+                 'user_count': klass.get_students.count(),
+                 'certificate_count': [student.can_emmit_receipt() for student in klass.get_students.all()].count(True)
                 } for klass in course.class_set.all()]
             } for course in Course.objects.all()
         ]

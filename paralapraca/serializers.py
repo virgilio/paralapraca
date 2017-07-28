@@ -97,6 +97,7 @@ class UserInDetailSerializer(serializers.ModelSerializer):
     def get_number_of_likes(self, obj):
         return obj.topiclike_set.count() + obj.commentlike_set.count()
 
+
 class UsersByClassSerializer(serializers.Serializer):
     # class Meta:
         # model = CourseStudent
@@ -109,7 +110,6 @@ class UsersByClassSerializer(serializers.Serializer):
     last_login = serializers.SerializerMethodField()
     has_certificate = serializers.SerializerMethodField()
     percent_progress_by_lesson = serializers.SerializerMethodField()
-
 
     def get_cpf(self, obj):
         return obj.user.cpf
