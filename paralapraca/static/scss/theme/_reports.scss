@@ -14,6 +14,10 @@
     }
 
     .reports-list {
+        margin-bottom: 50px;
+        @media (min-width: $screen-md-min) {
+            margin-bottom: 0;
+        }
         h3, h4 {
             font-family: $font-family-sans-serif;
             font-weight: bold;
@@ -45,8 +49,30 @@
         .report-course {
             background: rgba(255,255,255,0.5);
             width: 100%;
+            &:nth-child(even) {
+                ul {
+                    li {
+                        &:nth-child(even) {
+                            background-color: rgba($purple,0.15);
+                        }
+                        &:nth-child(odd) {
+                            background-color: rgba($purple,0.25);
+                        }
+                    }
+                }
+            }
             &:nth-child(odd) {
                 background: transparent;
+                ul {
+                    li {
+                        &:nth-child(even) {
+                            background-color: rgba(255,255,255,0.3);
+                        }
+                        &:nth-child(odd) {
+                            background-color: rgba(255,255,255,0.6);
+                        }
+                    }
+                }
             }
             td {
                 padding: 6px 12px;
@@ -59,7 +85,7 @@
             ul {
                 margin: 0 0 12px;
                 li {
-                    margin-bottom: 6px;
+                    padding: 6px 12px;
                     &:last-child {
                         margin-bottom: 0;
                     }
@@ -76,7 +102,10 @@
             .progress {
                 height: 7px;
                 margin-bottom: 0;
-                min-width: 190px;
+                min-width: 165px;
+                @media (min-width: $screen-lg-min) {
+                    min-width: 190px;
+                }
                 .progress-bar {
                     background-color: $purple;
                     height: 7px;

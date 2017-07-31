@@ -31,7 +31,7 @@ ng-app="reports"
 
     <div class="row">
 
-        <div class="col-sm-12 col-md-2 col-lg-7">
+        <div class="col-sm-12 col-md-7">
             <div class="reports-list">
                 <h3>
                     <i class="fa fa-user" aria-hidden="true"></i>
@@ -67,7 +67,7 @@ ng-app="reports"
 
                                 <ul class="list-unstyled" ng-show="course.show_classes">
                                     <li ng-repeat="klass in course.classes">
-                                      <b>{{ klass.name }}: </b> {{ klass.user_count }} alunos ({{ klass.certificate_count }} certificados)
+                                      <b>{{ klass.name }}: </b> {{ klass.user_count }} alunos <span class="pull-right">({{ klass.certificate_count }} certificados)</span>
                                     </li>
                                 </ul>
                             </td>
@@ -78,7 +78,7 @@ ng-app="reports"
             </div>
         </div>
 
-        <div class="col-sm-12 col-md-2 col-lg-5">
+        <div class="col-sm-12 col-md-5">
             <div class="reports-forum">
                 <h3><i class="fa fa-quote-left" aria-hidden="true"></i> Fóruns</h3>
                 <table>
