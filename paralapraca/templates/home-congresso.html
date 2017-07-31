@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+
+{% load i18n %}
+{% load compress %}
+{% load static %}
+{% load is_enrolled %}
+{% load get_flatpage %}
+
+{% block js %}
+    {{ block.super }}
+    {% compress js %}
+        <!-- Core -->
+        <script type="text/javascript" src="{% static 'js/core/app.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/core/controllers.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/core/services.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/core/filters.js' %}"></script>
+        <script type="text/javascript" src="{% static 'angular-tweet-filter/index.js' %}"></script>
+        <script type="text/javascript" src="{% static 'angular-sortable-view/src/angular-sortable-view.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/directives/fixedBar.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/directives/alertPopup.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/directives/markdowneditor.js' %}"></script>
+    {% endcompress %}
+{% endblock %}
+
+{% block wrapper_classes %}
+home
+{% endblock %}
+
+{% block content %}
+
+<div>
+    <section class="blocks">
+
+        <div class="welcome">
+            <h2>Seja bem vindo ao Paralapracá!</h2>
+            <p>Toda criança tem direito a uma escola equitativa, plural e acolhedora.</p>
+        </div>
+
+        <div class="login">
+            <form method="post" action="{% url 'account_login' %}" class="login-form">{% csrf_token %}
+                <fieldset>
+                    <legend>Entre!</legend>
+                    <div class="form-group">
+                        <label for="username" class="sr-only">nome de usuário</label>
+                        <input name="login" type="text" class="form-control" id="username" placeholder="nome de usuário ou email">
+                    </div>
+                    <div class="form-group">
+                        <label for="password" class="sr-only">senha</label>
+                        <input name="password" type="password" class="form-control" id="password" placeholder="senha">
+                    </div>
+                    <button type="submit" class="btn btn-submit">entrar</button>
+                    <div class="checkbox">
+                        <label>
+                            <input name="remember" type="checkbox" value="1"> Lembrar do meu usuário neste computador.
+                        </label>
+                    </div>
+                </fieldset>
+                <p class="info">Esqueceu sua senha? <a href="{% url 'account_reset_password' %}">Clique aqui para recuperá-la</a></p>
+            </form>
+        </div>
+
+        <div class="register">
+            <h2>O AVA Paralapracá está de cara nova.</h2>
+            <!--<p>Não é cadastrado no AVA? Com 4 passos você tem acesso a área livre e pode conhecer o ambiente-->
+                <!--virtual de aprendizagem do Paralapracá.</p>-->
+            <p class="info"><a href="/pages/novo-ava">Clique aqui para conhecer as novidades!</a></p>
+        </div>
+
+        <div class="use">
+            <p>Pense, conheça e exercite novos olhares sobre as crianças e a educação infantil.</p>
+        </div>
+
+    </section>
+</div>
+
+{% endblock %}
