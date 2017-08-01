@@ -17,9 +17,11 @@ Aceite os Termos de Uso para continuar
     <div class="page static-page-body accept-terms">
         <div class="illust hidden-xs"></div><!-- .illust // top ilustration -->
         <div class="main-content">
+            {% if not request.user.accepted_terms %}
             <div class="well well-lg">
               Para continuar usando a plataforma, você deve concordar com os termos de uso abaixo.
             </div>
+            {% endif %}
 
             <div class="">
               <h1>TERMO DE USO DO AMBIENTE VIRTUAL DE APRENDIZAGEM PARALAPRACÁ</h1>
@@ -100,6 +102,7 @@ Aceite os Termos de Uso para continuar
               </ol>
             </div>
 
+            {% if not request.user.accepted_terms %}
             <!-- CONTAINER -->
             <div class="container js-fullheight c1">
               <form action="{% url 'accept_terms' %}" method="post">{% csrf_token %}
@@ -116,6 +119,7 @@ Aceite os Termos de Uso para continuar
                 <input class="btn btn-success" type="submit" value="Enviar">
               </form>
             </div>
+            {% endif %}
         </div>
     </div>
 {% endblock %}
