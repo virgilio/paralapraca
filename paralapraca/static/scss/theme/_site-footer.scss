@@ -15,7 +15,10 @@
             @extend %list-inline;
             margin-top: 15px;
             li {
-                margin: 0 10px; 
+                margin: 0 5px; 
+            }
+            .logo-hacklab {
+                max-width: 150px;
             }
         }
     }

@@ -12,6 +12,9 @@
             display: flex;
             flex-wrap: wrap;
             > div {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
                 padding: 30px;
                 width: 50%;
             }
@@ -35,9 +38,6 @@
         .welcome {
             background-color: $yellow;
             text-align: center;
-            @media screen and (min-width: $screen-sm-min) {
-                text-align: left;
-            }
             h2 {
                 font-size: 6vmax;
                 line-height: 95%;
@@ -54,11 +54,11 @@
             background-color: $purple;
             text-align: center;
             h2 {
-               font-size: 5.5vmax;
+               font-size: 6vmax;
                 line-height: 95%;
-                margin-bottom: 60px;
+                margin-bottom: 20px;
                 @media screen and (min-width: $screen-sm-min) {
-                    font-size: 50px;
+                    font-size: 66px;
                 }
             }
             p {
@@ -82,15 +82,13 @@
             }
         }
         .use {
-            background: url(../img/home-print.png) $light-blue bottom right no-repeat;
-            background-size: 86%;
-            min-height: 62vw;
-            @media screen and (min-width: $screen-sm-min) {
-                min-height: auto;
-            }
-
-            p {
-                margin: 0 0 15px 30px;
+            background: $light-blue;
+            img {
+                max-width: 280px;
+                margin: 0 auto;
+                @media screen and (min-width: $screen-sm-min) {
+                    padding: 30px 0;
+                }
             }
         }
     }
