@@ -21,9 +21,9 @@
     border-width: 10px;
     border-style: solid;
     border-top-color: $green;
-    border-right-color: $blue;
-    border-bottom-color: $purple;
-    border-left-color: $red;
+    border-right-color: $orange;
+    border-bottom-color: $dark-orange;
+    border-left-color: $orange;
     @media screen and (min-width: $screen-sm-min) {
         background-color: transparent;
         background-image: url('../img/bg-certificate.svg');
@@ -42,9 +42,9 @@
         border-width: 2px;
         border-style: solid;
         border-top-color: $green;
-        border-right-color: $blue;
-        border-bottom-color: $purple;
-        border-left-color: $red;
+        border-right-color: $orange;
+        border-bottom-color: $dark-orange;
+        border-left-color: $orange;
         position: absolute;
         content: '';
         top: 5px;

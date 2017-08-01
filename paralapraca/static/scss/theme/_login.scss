@@ -61,9 +61,9 @@
 
         .login-form { // this is used on home and login page
             .btn-submit {
-                background-color: $blue;
+                background-color: $green;
                 &:hover {
-                    background-color: darken($blue, 15%);
+                    background-color: darken($green, 15%);
                 }
             }
             .checkbox {
@@ -114,7 +114,7 @@
                 text-align: center;
             }
             .btn-submit {
-                background-color: $blue;
+                background-color: $green;
                 margin-bottom: 15px;
                 max-width: 340px;
                 width: 100%;
@@ -122,7 +122,7 @@
                     width: 340px;
                 }
                 &:hover {
-                    background-color: darken($blue, 15%);
+                    background-color: darken($green, 15%);
                 }
             }
         }
@@ -139,7 +139,7 @@
             }
 
             &.alert-danger {
-                background-color: $pink;
+                background-color: $orange;
             }
         }
 
@@ -183,14 +183,14 @@
     }
     .register-form {
         .btn-submit {
-            background-color: $blue !important;
+            background-color: $green !important;
             &:hover {
-                background-color: darken($blue, 15%) !important;
+                background-color: darken($green, 15%) !important;
             }
         }
     }
 }
 
 .register-page {
-    background-color: $purple;
+    background-color: $dark-orange;
 }

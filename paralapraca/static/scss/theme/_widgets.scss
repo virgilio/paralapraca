@@ -27,29 +27,29 @@
 // --------------------------------------------------
 
 .courses-widget {
-    @include card(rgba($light-blue,0.6));
+    @include card(rgba($gray-light,0.6));
     
     .widget-header {
         margin-bottom: 30px;
     }
     .widget-title {
-        color: $purple;
+        color: $dark-orange;
     }
     .widget-filter {
         label {
-            color: $purple;
+            color: $dark-orange;
         }
         .form-control {
-            color: $light-blue;
+            color: $green;
             &:focus {
-                border-color: $light-blue;
+                border-color: $green;
             }
         }
     }
 
     .all-courses {
         .btn {
-            @include button-hover(#fff,#fff,$pink,darken($pink,10%));
+            @include button-hover(#fff,#fff,$orange,darken($orange,10%));
         }
     }
 }
@@ -80,9 +80,9 @@
 // --------------------------------------------------
 
 .messages-widget {
-    @include card(rgba($purple,0.7));
+    @include card(rgba($dark-orange,0.7));
     .widget-topbar {
-        background-color: $purple;
+        background-color: $dark-orange;
     }
     .btn {
         @include button-hover(#fff,#fff,$orange,darken($orange,5%));

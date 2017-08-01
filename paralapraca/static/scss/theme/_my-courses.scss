@@ -5,10 +5,10 @@
     .course {
         .buttons {
             .btn-primary {
-                @include button-hover(#fff,#fff,$purple,darken($purple,10%));
+                @include button-hover(#fff,#fff,$dark-orange,darken($dark-orange,10%));
             }
             .btn-info {
-                @include button-hover(#fff,#fff,$pink,darken($pink,10%));
+                @include button-hover(#fff,#fff,$orange,darken($orange,10%));
             }
         }
     }

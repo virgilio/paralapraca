@@ -5,16 +5,16 @@
 //##
 .course-box {
     .progress-bar {
-        background-color: $blue;
+        background-color: $green;
     }
     .progress-label {
-        color: $blue;
+        color: $green;
     }
     .continue {
-        @include button-hover(#fff,#fff,$purple,darken($purple,10%));
+        @include button-hover(#fff,#fff,$dark-orange,darken($dark-orange,10%));
     }
     .see-report {
-        @include link-hover($purple,$purple,$purple,transparent);
+        @include link-hover($dark-orange,$dark-orange,$dark-orange,transparent);
         font-weight: $bold;
     }
 }

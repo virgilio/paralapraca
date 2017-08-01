@@ -10,10 +10,10 @@
 
     .slides {
         .slides-navigation {
-            background-color: $purple;
+            background-color: $dark-orange;
         }
         .slides-number {
-            color: $purple;
+            color: $dark-orange;
         }
     }
 }
@@ -22,7 +22,7 @@
 .open-activity {
     margin-bottom: 30px;
     .topbar {
-        background-color: $purple;
+        background-color: $dark-orange;
         color: #fff;
         height: 40px;
         margin: -30px -30px 0;
@@ -82,14 +82,14 @@
     }
     &.closed {
         .topbar {
-            background-color: rgba($purple,0.2);
+            background-color: rgba($dark-orange,0.2);
         }
         .message {
             margin: 20px auto 0; 
             max-width: 760px;
             text-align: center;
             h3 {
-                color: $purple;
+                color: $dark-orange;
                 font-size: 36px;
                 font-weight: bold;
                 margin: 0 auto 20px; 

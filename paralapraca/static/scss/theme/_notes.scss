@@ -7,22 +7,22 @@
             margin-top: -5px;
         }
         .btn-primary {
-            background: $blue;
+            background: $green;
             &:hover {
-                background: darken($blue,10%);
+                background: darken($green,10%);
             }
         }
         .btn-info {
-            background: $purple;
+            background: $dark-orange;
             &:hover {
-                background: darken($purple,10%);
+                background: darken($dark-orange,10%);
             }
         }
     }
     .lesson-title {
-        color: $pink;
+        color: $orange;
     }
     .notes-list {
-        border-color: $pink;
+        border-color: $orange;
     }
 }

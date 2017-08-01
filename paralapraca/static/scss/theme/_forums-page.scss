@@ -3,27 +3,27 @@
 
 .post-attachments {
     .attachments {
-        border: 1px solid $purple;
-        color: $purple;
+        border: 1px solid $dark-orange;
+        color: $dark-orange;
     }
     ul {
-        border-color: rgba($purple,0.7);
+        border-color: rgba($dark-orange,0.7);
         li {
             .delete {
                 &:before {
-                    color: $purple;
+                    color: $dark-orange;
                 }
             }
         }
     }
     a {
-        @include link-hover($purple,$purple,$purple,transparent);
+        @include link-hover($dark-orange,$dark-orange,$dark-orange,transparent);
     }
     .loading {
         .loading-bar {
-            border-color: $purple;
+            border-color: $dark-orange;
             div {
-                background-color: $purple;
+                background-color: $dark-orange;
             }
         } 
     }
@@ -32,14 +32,14 @@
 .forums {
     .post-attachments {
         a {
-            @include link-hover($purple,$purple,$purple,transparent);
+            @include link-hover($dark-orange,$dark-orange,$dark-orange,transparent);
         }
     }
 }
 
 .comments-form {
     textarea {
-        border: 2px solid $pink;
+        border: 2px solid $orange;
     }
 }
 

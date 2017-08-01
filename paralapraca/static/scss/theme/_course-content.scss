@@ -2,7 +2,7 @@
 // --------------------------------------------------
 
 .main-header {
-    background-color: $yellow;
+    background-color: $orange;
     .course-details {
         display: none;
     }
@@ -10,11 +10,11 @@
         .lesson-list-dropdown {
             .dropdown-menu {
                 border-top-color: #979797;
-                background-color: $yellow;
+                background-color: $orange;
                 li {
                     a {
                         &:hover {
-                            background-color: darken($yellow,5%);
+                            background-color: darken($orange,5%);
                         }
                     }
                 }
@@ -30,7 +30,7 @@
     .course-content {
         .course-info {
             .column {
-                background-color: rgba($light-blue,0.4);
+                background-color: rgba($green,0.4);
                 &:last-child {
                     background-color: rgba($green,0.4);
                 }
@@ -81,7 +81,7 @@
 
 .student-notes {
     .button-show {
-        color: $yellow;
+        color: $orange;
         position: fixed;
         bottom: 0;
         right: 0;

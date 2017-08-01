@@ -3,25 +3,22 @@
 
 //== Colors
 //
-//## Parapraca brand colors
+//## Entremeios brand colors
 
-$blue:          #006eb1;
-$light-blue:    #87c2e4;
-$green:         #87b726;
-$yellow:        #eabc00;
-$orange:        #de6f10;
-$red:           #d51300;
-$pink:          #cf086a;
-$purple:        #993671;
+$dark-orange: #de4d39;
+$orange: #f7914a;
+$green: #b8c96b;
+$gray: #949494;
+$gray-light: #e2d4c1;
 
 //## Override Bootstrap's variables 
 // --------------------------------------------------
 
-$brand-primary:     $blue;
+$brand-primary:     $dark-orange;
 $brand-success:     $green;
-$brand-info:        $light-blue;
+$brand-info:        $gray-light;
 $brand-warning:     $orange;
-$brand-danger:      $red;
+$brand-danger:      $dark-orange;
 
 // Allows for customizing button radius independently from global border radius
 $btn-border-radius-base:         20px !default;
@@ -29,7 +26,7 @@ $btn-border-radius-large:        20px !default;
 $btn-border-radius-small:        20px !default;
 
 $btn-default-color:              #fff;
-$btn-default-bg:                 #555;
+$btn-default-bg:                 #949494;
 $btn-default-border:             transparent;
 
 //** Default `.form-control` border radius
@@ -86,7 +83,7 @@ $table-border-color:            transparent !default;
 $site-header-bg-color:      rgba(255,255,255,0.75);
 
 //** Main navigation background color
-$main-nav-bg-color:         rgba($purple,0.75);
+$main-nav-bg-color:         rgba($dark-orange,0.75);
 
 //== Scaffolding
 //

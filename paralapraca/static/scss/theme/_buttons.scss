@@ -14,17 +14,17 @@
     }
     &.used {
         &.active {
-            color: $purple;
+            color: $dark-orange;
             &:before {
-                color: $purple;
+                color: $dark-orange;
             }
         }
     }
     &.replies {
         &.active {
-            color: $pink;
+            color: $orange;
             &:before {
-                color: $pink;
+                color: $orange;
             }
         }
     }
@@ -48,42 +48,42 @@ a.action {
     &.used {
         color: $gray;
         &:hover {
-            color: $purple;
+            color: $dark-orange;
         }
         span {
-            @include link-hover($gray,$purple,transparent,$purple);
+            @include link-hover($gray,$dark-orange,transparent,$dark-orange);
         }
         &.active {
             span { 
-                @include link-hover($purple,$purple,transparent,$purple);
+                @include link-hover($dark-orange,$dark-orange,transparent,$dark-orange);
             }
         }
     }
     &.replies {
         color: $gray;
         &:hover {
-            color: $pink;
+            color: $orange;
         }
         span {
-            @include link-hover($gray,$pink,transparent,$pink);
+            @include link-hover($gray,$orange,transparent,$orange);
         }
         &.active {
             span {
-                @include link-hover($pink,$pink,transparent,$pink);
+                @include link-hover($orange,$orange,transparent,$orange);
             }
         }
     }
     &.edit {
         color: $gray;
         &:hover {
-            color: $pink;
+            color: $orange;
         }
         span {
-            @include link-hover($gray,$pink,transparent,$pink);
+            @include link-hover($gray,$orange,transparent,$orange);
         }
         &.active {
             span {
-                @include link-hover($pink,$pink,transparent,$pink);
+                @include link-hover($orange,$orange,transparent,$orange);
             }
         }
     }
@@ -127,24 +127,24 @@ a {
 
 .btn {
     &.attach {
-        @include button-hover(#fff,#fff,$purple,darken($purple,10%));
+        @include button-hover(#fff,#fff,$dark-orange,darken($dark-orange,10%));
     }
     &.attached {
-        border-color: $purple !important;
-        @include button-hover($purple,$purple,transparent,transparent);
+        border-color: $dark-orange !important;
+        @include button-hover($dark-orange,$dark-orange,transparent,transparent);
     }
     &.new-topic {
         @include button-hover(#fff,#fff,rgba($orange,0.6),$orange);
     }
     &.reply {
-        @include button-hover(#fff,#fff,$pink,darken($pink,10%));
+        @include button-hover(#fff,#fff,$orange,darken($orange,10%));
     }
 }
 
 .courses-widget {
     .btn {
         &.list-all, &.see-stats {
-            @include button-hover(#fff,#fff,rgba($purple,0.6),$purple);
+            @include button-hover(#fff,#fff,rgba($dark-orange,0.6),$dark-orange);
         }
     }
 }
@@ -168,18 +168,18 @@ a {
 /* .course-activity {
     .btn-default {
         @extend %icon-angle-right;
-        @include button-hover(#fff,#fff,$pink,darken($pink,10%));
+        @include button-hover(#fff,#fff,$orange,darken($orange,10%));
         margin-left: 0;
     }
     .btn-info {
         @extend %icon-undo;
-        @include button-hover(#fff,#fff,$purple,darken($purple,10%));
+        @include button-hover(#fff,#fff,$dark-orange,darken($dark-orange,10%));
     }
     .btn:nth-child(3) {
         @extend %icon-checked;
     }
     .btn-success:last-child {
         @extend %icon-angle-right;
-        @include button-hover(#fff,#fff,$blue,darken($blue,10%));
+        @include button-hover(#fff,#fff,$green,darken($green,10%));
     }
 } */

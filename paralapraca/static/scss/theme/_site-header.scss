@@ -180,20 +180,20 @@
 
 .notifications-panel {
     &:before {
-        border-bottom-color: $purple;
+        border-bottom-color: $dark-orange;
     }
     .notifications-title {
-        background-color: $purple;
+        background-color: $dark-orange;
     }
     .notifications-list {
         .notifications-item {
-            border-bottom: 1px solid rgba($purple,0.3);
+            border-bottom: 1px solid rgba($dark-orange,0.3);
             &.not-read {
-                background-color: rgba($purple,0.15);
+                background-color: rgba($dark-orange,0.15);
             }
         }
     }
     .see-more {
-        color: $purple;
+        color: $dark-orange;
     }
 }

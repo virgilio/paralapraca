@@ -1,12 +1,12 @@
 .messages {
     .page {
-        @include card(rgba($purple,0.25));
+        @include card(rgba($dark-orange,0.25));
     }
 }
 
 .messages-list {
     .page-header {
-        background-color: $purple;
+        background-color: $dark-orange;
         h2 {
             color: #fff;
         }
@@ -16,11 +16,11 @@
     }
     .title-header {
         h3 {
-            color: $purple;
+            color: $dark-orange;
         }
         .btn {
             &.hide-all, &.show-all {
-                @include link-hover($purple,darken($purple,5%),$purple,darken($purple,5%));
+                @include link-hover($dark-orange,darken($dark-orange,5%),$dark-orange,darken($dark-orange,5%));
             }
         }
     }
