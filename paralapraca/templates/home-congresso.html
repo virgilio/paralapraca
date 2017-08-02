@@ -23,7 +23,7 @@
 {% endblock %}
 
 {% block wrapper_classes %}
-home
+home congresso
 {% endblock %}
 
 {% block content %}
@@ -31,9 +31,9 @@ home
 <div>
     <section class="blocks">
 
-        <div class="welcome">
-            <h2>Seja bem vindo ao Paralapracá!</h2>
-            <p>Toda criança tem direito a uma escola equitativa, plural e acolhedora.</p>
+        <div class="register">
+            <h2>Primeiro acesso?</h2>
+            <p><a href="{% url 'account_signup' %}">Cadastre-se aqui!</a></p>
         </div>
 
         <div class="login">
@@ -59,18 +59,28 @@ home
             </form>
         </div>
 
-        <div class="register">
-            <h2>O AVA Paralapracá está de cara nova.</h2>
-            <!--<p>Não é cadastrado no AVA? Com 4 passos você tem acesso a área livre e pode conhecer o ambiente-->
-                <!--virtual de aprendizagem do Paralapracá.</p>-->
-            <p class="info"><a href="/pages/novo-ava">Clique aqui para conhecer as novidades!</a></p>
+        <div class="welcome">
+            <h2>Seja bem vindo</h2>
+            <p>Seja bem vindo ao ambiente online do
+            XI Congresso Internacional de
+            Acompanhamento Terapêutico</p>
         </div>
 
         <div class="use">
-            <p>Pense, conheça e exercite novos olhares sobre as crianças e a educação infantil.</p>
+            <img src="/static/img/logo-congresso.png" alt="{{ site.name }}" class="img-responsive"></a>
         </div>
 
     </section>
 </div>
 
+<!-- FOOTER -->
+<div class="site-footer">
+    <ul class="logos">
+        <li><img src="/static/img/logo-entremeios.png" alt="Entremeios" class="logo-entremeios"></li>
+        <li><img src="/static/img/logo-cehfi.jpg" alt="CEHFI"></li>
+        <li><img src="/static/img/logo-attenda.jpg" alt="Attenda"></li>
+        <li><img src="/static/img/logo-unifesp.jpg" alt="UNIFESP"></li>
+    </ul>
+</div>
+<!-- END FOOTER -->
 {% endblock %}

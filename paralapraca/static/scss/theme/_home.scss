@@ -36,7 +36,7 @@
 
         }
         .welcome {
-            background-color: $orange;
+            background-color: $gray;
             text-align: center;
             h2 {
                 font-size: 6vmax;
@@ -51,7 +51,7 @@
             background-color: $orange;
         }
         .register {
-            background-color: $dark-orange;
+            background-color: $green;
             text-align: center;
             h2 {
                font-size: 6vmax;
@@ -82,7 +82,7 @@
             }
         }
         .use {
-            background: $green;
+            background: $dark-orange;
             img {
                 max-width: 280px;
                 margin: 0 auto;
@@ -91,6 +91,15 @@
                 }
             }
         }
+    }
+}
+
+.home.congresso {
+    .use {
+        background-color: $gray-light;
+    }
+    .logo-entremeios {
+        max-width: 140px;
     }
 }
 
