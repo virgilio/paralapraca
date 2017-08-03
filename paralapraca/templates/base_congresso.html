@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html>
+{% load i18n %}
+{% load static %}
+{% load compress %}
+{% load pinax_webanalytics_tags %}
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
+
+    <title>{% block title %}{{ site.name }}{% endblock %}</title>
+
+    {% compress css %}
+        <link rel='stylesheet' href="{% static 'font-awesome/css/font-awesome.css' %}" type='text/css' media='screenprojectionprint' />
+        <link rel='stylesheet' href="{% static 'codemirror/lib/codemirror.css' %}" type='text/css' media='screenprojectionprint' />
+        <link rel='stylesheet' href="{% static 'codemirror/addon/hint/show-hint.css' %}" type='text/css' media='screenprojectionprint' />
+        <link rel='stylesheet' href="{% static 'codemirror/theme/monokai.css' %}" type='text/css' media='screenprojectionprint' />
+        <link rel='stylesheet' href="{% static 'css/codemirrorconf.css' %}" type='text/css' media='screenprojectionprint' />
+        <link rel='stylesheet' href="{% static 'angular-loading-bar/src/loading-bar.css' %}" type='text/css' media='all' />
+        <link rel='stylesheet' href="{% static 'scss/main-paralapraca.scss' %}" type='text/x-scss' media='screen,projection,print' />
+    {% endcompress %}
+
+    <script>
+        window.STATIC_URL = '{{ STATIC_URL }}';
+        window.MEDIA_URL = '{{ MEDIA_URL }}';
+        window.DEBUG = '{{ DEBUG }}';
+        window.YOUTUBE_API_KEY = '{{ site.YOUTUBE_API_KEY }}';
+        window.USER_ID = '{{ user.id }}';
+    </script>
+
+    {% compress js %}
+        <!-- All -->
+        <script type="text/javascript" src="{% static 'modernizr/modernizr.js' %}"></script>
+        <script type="text/javascript" src="{% static 'jquery/dist/jquery.js' %}"></script>
+        <script type="text/javascript" src="{% static 'jquery-ui/ui/jquery-ui.js' %}"></script>
+        <script type="text/javascript" src="{% static 'jquery-ui/ui/jquery.ui.sortable.js' %}"></script>
+        <script type="text/javascript" src="{% static 'bootstrap/dist/js/bootstrap.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/consolelogfallback.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/contact_form.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/helpers.js' %}"></script>
+
+        <!-- Angular -->
+        <script type="text/javascript" src="{% static 'angular/angular.js' %}"></script>
+        <script type="text/javascript" src="{% static 'angular-animate/angular-animate.js' %}"></script>
+        <script type="text/javascript" src="{% static 'angular-cookies/angular-cookies.js' %}"></script>
+        <script type="text/javascript" src="{% static 'angular-resource/angular-resource.js' %}"></script>
+        <script type="text/javascript" src="{% static 'angular-route/angular-route.js' %}"></script>
+        <script type="text/javascript" src="{% static 'angular-sanitize/angular-sanitize.js' %}"></script>
+        <script type="text/javascript" src="{% static 'angular-bootstrap/ui-bootstrap-tpls.js' %}"></script>
+        <script type="text/javascript" src="{% static 'angular-gettext/dist/angular-gettext.js' %}"></script>
+        <script type="text/javascript" src="{% static 'angular-i18n/angular-locale_pt-br.js' %}"></script>
+
+        <!-- Angular Timtec -->
+        <script type="text/javascript" src="{% static 'js/django.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/angular-youtube.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/truncate.js' %}"></script>
+
+        <!-- Codemirror -->
+        <script type="text/javascript" src="{% static 'codemirror/lib/codemirror.js' %}"></script>
+        <script type="text/javascript" src="{% static 'codemirror/addon/fold/xml-fold.js' %}"></script>
+        <script type="text/javascript" src="{% static 'codemirror/addon/hint/show-hint.js' %}"></script>
+        <script type="text/javascript" src="{% static 'codemirror/addon/hint/xml-hint.js' %}"></script>
+        <script type="text/javascript" src="{% static 'codemirror/addon/hint/html-hint.js' %}"></script>
+        <script type="text/javascript" src="{% static 'codemirror/addon/hint/css-hint.js' %}"></script>
+        <script type="text/javascript" src="{% static 'codemirror/addon/hint/javascript-hint.js' %}"></script>
+        <script type="text/javascript" src="{% static 'codemirror/addon/edit/matchbrackets.js' %}"></script>
+        <script type="text/javascript" src="{% static 'codemirror/addon/edit/closebrackets.js' %}"></script>
+        <script type="text/javascript" src="{% static 'codemirror/addon/edit/matchtags.js' %}"></script>
+        <script type="text/javascript" src="{% static 'codemirror/mode/xml/xml.js' %}"></script>
+        <script type="text/javascript" src="{% static 'codemirror/mode/css/css.js' %}"></script>
+        <script type="text/javascript" src="{% static 'codemirror/mode/javascript/javascript.js' %}"></script>
+        <script type="text/javascript" src="{% static 'codemirror/mode/htmlmixed/htmlmixed.js' %}"></script>
+        <script type="text/javascript" src="{% static 'codemirror/mode/clike/clike.js' %}"></script>
+        <script type="text/javascript" src="{% static 'codemirror/mode/php/php.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/vendor/angular-ui-codemirror/ui-codemirror.js' %}"></script>
+
+
+        <script type="text/javascript" src="{% static 'js/vendor/pagedown/Markdown.Converter.js' %}" charset="utf-8"></script>
+        <script type="text/javascript" src="{% static 'js/vendor/pagedown/Markdown.Editor.js' %}" charset="utf-8"></script>
+        <script type="text/javascript" src="{% static 'js/vendor/pagedown/Markdown.Sanitizer.js' %}" charset="utf-8"></script>
+        <script type='text/javascript' src="{% static 'angular-loading-bar/src/loading-bar.js' %}"></script>
+    {% endcompress %}
+    <script src="{% url 'djangular' %}"></script>
+
+
+    {% block js %}{% endblock %}
+
+
+    {% analytics %}
+    <script type="text/javascript" charset="utf-8">
+        (function(){
+            $(document).ready(function() {
+                if (!("ontouchstart" in window)) {
+                    $('.has-tooltip').tooltip();
+                }
+                // workaround to contact modal work with safari on ipad due to safari bug:
+                // http://getbootstrap.com/getting-started/#support-fixed-position-keyboards
+                if (navigator.userAgent.match(/iPhone|iPad|iPod/i)) {
+                    $('.modal').on('show.bs.modal', function () {
+                        // Position modal absolute and bump it down to the scrollPosition
+                        $(this).css({
+                              position: 'absolute',
+                              marginTop: $(window).scrollTop() + 'px',
+                              bottom: 'auto'
+                        });
+
+                        // Position backdrop absolute and make it span the entire page
+                        // Also dirty, but we need to tap into the backdrop after Boostrap
+                        // positions it but before transitions finish.
+                        setTimeout(function () {
+                            $('.modal-backdrop').css({
+                                position: 'absolute',
+                                top: 0,
+                                left: 0,
+                                width: '100%',
+                                height: Math.max(
+                                    document.body.scrollHeight, document.documentElement.scrollHeight,
+                                    document.body.offsetHeight, document.documentElement.offsetHeight,
+                                    document.body.clientHeight, document.documentElement.clientHeight
+                                ) + 'px'
+                            });
+                        }, 0);
+                    });
+                }
+            });
+        })();
+    </script>
+</head>
+<body {% if in_admin %}id="admin"{% else %}id="notadmin"{% endif %}
+      {% spaceless %}{% block body_attrs %}ng-app{% endblock %}{% endspaceless %}
+      class="{% if user.is_authenticated %}logged{% else %}anonymous{% endif %}">
+
+    <div class="site-wrapper" ng-class="{'main-nav-opened': is_main_nav_opened}">
+        {% block header %}
+        {% if user.is_authenticated %}
+            {% include 'header.html' %}
+        {% else %}
+            {% load is_coordinator %}
+
+            <header class="site-header" role="navigation">
+                {% block header_navbar %}
+
+                <button class="btn btn-link visible-xs site-nav-open collapse-site-nav" type="button"
+                    ng-init="show_site_nav=false"
+                    ng-click="show_site_nav=!show_site_nav">
+                    <i class="fa fa-bars" aria-hidden="true"></i>
+                    menu
+                </button>
+
+                <nav class="site-nav" ng-class="show_site_nav ? 'site-nav opened' : 'site-nav'">
+                    <button class="btn btn-link visible-xs site-nav-close collapse-site-nav" type="button"
+                        ng-click="show_site_nav=false">
+                        <i class="fa fa-times" aria-hidden="true"></i>
+                        fechar
+                    </button>
+                    <ul>
+                        <li><a href="{% url 'account_login' %}">Entrar!</a></li>
+                        <li><a href="/pages/o-programa">O programa</a></li>
+                        <li><a href="/pages/faq">FAQ</a></li>
+                        <li><a href="/pages/sobre">Sobre a plataforma</a></li>
+                        <li><a href="#" data-toggle="modal" data-target="#modal-contact">Contato</a></li>
+                    </ul>
+                </nav>
+                {% endblock %}
+            </header>
+
+            <div class="modal fade" id="modal-contact">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            <h4 class="modal-title">{% trans 'Contact' %}</h4>
+                        </div>
+                        <div class="modal-body">
+                            <form class="form-horizontal contact-form" method="post" action="{% url 'contact' %}">
+                                {% csrf_token %}
+                                {% include '_contact_form.html' %}
+                                <div class="submit">
+                                    <button type="reset" class="btn btn-sm btn-warning clean">{% trans 'Clear' %}</button>
+                                    <button type="submit" class="btn btn-sm btn-success save">{% trans 'Send' %}</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div><!-- /.modal-content -->
+                </div><!-- /.modal-dialog -->
+            </div><!-- /.modal -->
+
+        {% endif %}
+        {% endblock %}
+
+        {% block main-nav %}
+        {% if user.is_authenticated %}
+            {% include 'main-nav.html' %}
+        {% endif %}
+        {% endblock %}
+
+        <div class="wrapper wrapper-bg {% spaceless %}{% block wrapper_classes %}{% endblock %}{% endspaceless %}">
+            {% block content %}
+            <h1>missing content block</h1>
+            {% endblock %}
+        </div>
+    </div>
+
+    {% block footer %}
+        {% if not user.is_authenticated %}
+            <!-- FOOTER -->
+            <div class="site-footer">
+                <ul class="logos">
+                    <li><img src="/static/img/logo-entremeios.png" alt="Entremeios" class="logo-entremeios"></li>
+                    <li><img src="/static/img/logo-cehfi.jpg" alt="CEHFI"></li>
+                    <li><img src="/static/img/logo-attenda.jpg" alt="Attenda"></li>
+                    <li><img src="/static/img/logo-unifesp.jpg" alt="UNIFESP"></li>
+                </ul>
+            </div>
+            <!-- END FOOTER -->
+        {% endif %}
+    {% endblock %}
+
+    {% if not user.is_authenticated %}
+        {% include 'account/login_modal.html' %}
+        <script type="text/javascript" charset="utf-8">
+            $(document).ready(function() {
+                var $modal = $("#login-modal");
+                var $next = $modal.find('input[name=next]');
+                $('a.js-login-required').click(function(e){
+                    $next.val($(this).attr('href'));
+                    $modal.modal();
+                    return false;
+                });
+                $('.dropdown-menu form').click(function(e) {
+                    e.stopPropagation();
+                });
+            });
+        </script>
+    {% endif %}
+</body>
+</html>
