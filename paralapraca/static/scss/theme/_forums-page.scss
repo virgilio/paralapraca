@@ -37,6 +37,12 @@
     }
 }
 
+.forum-thread {
+    .thread-post {
+        background-color: rgba($gray,0.3);
+    }
+}
+
 .comments-form {
     textarea {
         border: 2px solid $orange;
