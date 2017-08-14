@@ -158,4 +158,8 @@
             @include button-hover(#fff,#fff,$purple,rgba($purple,0.6));
         }
     }
+
+    .multiple-select {
+        height: 300px;
+    }
 }
