@@ -11,7 +11,7 @@ from rest_framework import viewsets, status
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
 from paralapraca.models import AnswerNotification, UnreadNotification, Contract
-from core.models import Course, CourseStudent, Class
+from core.models import Course, CourseStudent
 from accounts.models import TimtecUser
 from paralapraca.serializers import AnswerNotificationSerializer, UnreadNotificationSerializer, UserInDetailSerializer, UsersByClassSerializer, ContractSerializer
 from discussion.models import Comment, CommentLike, Topic, TopicLike
@@ -190,9 +190,7 @@ class UsersByClassViewSet(PandasViewSet):
             # a function, so I'm getting all the desired IDs, then filtering by the desired IDs
             ids = ids.split(',')
             ids = [int(idt) for idt in ids]
-            people_ids = []
-            for c in Class.objects.filter(id__in=ids):
-                people_ids += [s.id for s in c.students.all()]
+            people_ids = [x.id for x in self.queryset if x.get_current_class().id in ids]
             serializer = UsersByClassSerializer(self.queryset.filter(id__in=people_ids), many=True)
         else:
             serializer = UsersByClassSerializer(self.queryset, many=True)
