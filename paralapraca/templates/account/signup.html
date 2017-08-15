@@ -16,15 +16,16 @@
     </div>
     {% endfor %}
 
-    <form onclick="event.stopPropagation()" method="post" action="{% url 'account_signup' %}" class="register-form">{% csrf_token %}
+    <form onclick="event.stopPropagation()" id="signup-form" method="post" action="{% url 'account_signup' %}" class="register-form">{% csrf_token %}
         <fieldset>
             <legend>{% trans "Sign Up" %}</legend>
             {% with errors=form.username.errors %}
             <div class="form-group{{ errors|yesno:' has-error,' }}">
                 <i class="fa fa-user" aria-hidden="true"></i>
                 <label for="username" class="sr-only">{% trans "Username" %}</label>
-                <input name="username" type="text" value="{{form.username.value|default_if_none:""}}" class="form-control" id="username" placeholder="{% trans 'Username' %}">
+                <input name="username" type="text" value="{{form.username.value|default_if_none:""}}" class="form-control" id="username" placeholder="CPF ou Passaporte">
                 {% for error in errors %}<small>{{error}}</small>{% endfor %}
+                <small id="username-error"></small>
             </div>
             {% endwith %}
 
@@ -33,15 +34,6 @@
                 <i class="fa fa-envelope" aria-hidden="true"></i>
                 <label for="email" class="sr-only">{% trans "E-mail" %}</label>
                 <input name="email" type="email" id="email" value="{{form.email.value|default_if_none:""}}" class="form-control" placeholder="{% trans 'Your e-mail' %}">
-                {% for error in errors %}<small>{{error}}</small>{% endfor %}
-            </div>
-            {% endwith %}
-
-            {% with errors=form.cpf.errors %}
-            <div class="form-group{{ errors|yesno:' has-error,' }}">
-                <i class="fa fa-id-card-o" aria-hidden="true"></i>
-                <label for="email" class="sr-only">CPF</label>
-                <input name="cpf" type="text" id="cpf" value="{{form.cpf.value|default_if_none:""}}" class="form-control" placeholder="CPF">
                 {% for error in errors %}<small>{{error}}</small>{% endfor %}
             </div>
             {% endwith %}
@@ -72,10 +64,11 @@
                       {% url 'flatpage' url='/terms' as terms_url %}
                       {% blocktrans %}I agree to the <a href="{{ terms_url }}" target="_blank">Terms of Use</a>{% endblocktrans %}
                   </label>
+                  {% for error in errors %}<br><small>{{error}}</small>{% endfor %}
               </div>
               {% endwith %}
             {% endif %}
-            <button class="btn btn-submit">{% trans "Sign Up" %}</button>
+            <button class="btn btn-submit" type="button" onclick="validate()">{% trans "Sign Up" %}</button>
         </fieldset>
         <!-- <p class="info">
             {% load socialaccount %}
@@ -88,4 +81,24 @@
     </form>
 
 </div>
+<script type="text/javascript">
+  function validate() {
+    var username = document.getElementById("username");
+
+    if(username.value.indexOf('.') !== -1 ||
+       username.value.indexOf('-') !== -1 ||
+       username.value.indexOf('/') !== -1 ||
+       username.value.indexOf('\\') !== -1) {
+      document.getElementById("username-error").innerHTML = "Por favor, não use traços, pontos ou barras no número";
+      return;
+    }
+    if (username.value.length > 11) {
+      document.getElementById("username-error").innerHTML = "O número não pode ter mais do que 11 dígitos";
+      return;
+    }
+
+    document.getElementById("signup-form").submit();
+
+  }
+</script>
 {% endblock %}
