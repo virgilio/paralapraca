@@ -27,7 +27,7 @@ ng-app="my-courses"
         <!-- CONTAINER -->
         <div class="courses-page page container-fluid" ng-controller="CourseListController">
             <header class="page-header">
-                <h2><i class="fa fa-angle-double-right"></i> Módulos</h2>
+                <h2><i class="fa fa-angle-double-right"></i> Conteúdos</h2>
             </header>
             {% verbatim %}
             <section class="courses-list" ng-cloak>
@@ -50,7 +50,7 @@ ng-app="my-courses"
                                     <div class="course-thumb-bg" ng-style="{'background-image':'url('+course.thumbnail_url+')'}"></div>
                                 </a>
                                 <a ng-href="/course/{{ course.slug }}/resume"
-                                   class="continue">continuar módulo</a>
+                                   class="continue">continuar</a>
                             </div>
                             <div ng-if="course.course_student===undefined">
                                 <a ng-href="/course/{{ course.slug }}/intro" class="course-link">

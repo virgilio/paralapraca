@@ -37,9 +37,9 @@
             <div class="col-xs-12 col-sm-6 col-md-5">
                 <!-- COURSE-SECTION-NAV -->
                 <nav class="course-sections {% if user|is_assistant_or_coordinator:course %}admin-menu{% endif %}">
-                    <a href="{% url 'course_intro' course.slug %}" class="intro {% if '/intro/' in request.path %}active{% endif %}">Início do<br>módulo</a>
-                    <a href="{% url 'resume_course' course.slug %}" class="resume {% if '/lesson/' in request.path %}active{% endif %}">Continuar<br>módulo</a>
-                    <a href="{% url 'user_course_notes' course.slug %}" class="notes {% if '/mynotes/' in request.path %}active{% endif %}">Anotações<br>do módulo</a>
+                    <a href="{% url 'course_intro' course.slug %}" class="intro {% if '/intro/' in request.path %}active{% endif %}">Início</a>
+                    <a href="{% url 'resume_course' course.slug %}" class="resume {% if '/lesson/' in request.path %}active{% endif %}">Continuar</a>
+                    <a href="{% url 'user_course_notes' course.slug %}" class="notes {% if '/mynotes/' in request.path %}active{% endif %}">Anotações</a>
                     <a href="{% url 'course_material' course.slug %}" class="materials {% if '/material/' in request.path %}active{% endif %}">Menu de<br>referências</a>
                     {% if user|is_assistant_or_coordinator:course %}
                         <div class="dropdown">

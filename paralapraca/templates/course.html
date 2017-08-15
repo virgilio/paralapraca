@@ -268,7 +268,7 @@ wrapper-course-intro
                     </div>
                     <!-- END ABSTRACT -->
 
-                    <div class="another-info">
+                    <!-- <div class="another-info">
                         <div class="secondary-page-header">
                             {% if in_admin %}
                                 <div class="editable-secondary-title">
@@ -282,7 +282,7 @@ wrapper-course-intro
                         {% else %}
                             <div class="content">{{ course.application|timtec_markdown }}</div>
                         {% endif %}
-                    </div>
+                    </div> -->
 
                 </section>
                 <!-- END COURSE-INFO -->
@@ -345,7 +345,7 @@ wrapper-course-intro
                     {% endif %}
 
                     <div class="secondary-page-header {% if not in_admin %}first{% endif %}">
-                        <h3><i ng-class="{'blink-text-danger':errors.requirement}" class="fa fa-angle-double-right"></i> {% trans "O que eu preciso saber?" %}</h3>
+                        <h3><i ng-class="{'blink-text-danger':errors.requirement}" class="fa fa-angle-double-right"></i>Apresentação dos conteúdos</h3>
                     </div>
                     {% if in_admin %}
                         <div class="help-text"><i class="fa fa-caret-down" aria-hidden="true"></i> Edite abaixo</div>
