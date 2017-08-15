@@ -190,8 +190,16 @@ class UsersByClassViewSet(PandasViewSet):
             # a function, so I'm getting all the desired IDs, then filtering by the desired IDs
             ids = ids.split(',')
             ids = [int(idt) for idt in ids]
-            people_ids = [x.id for x in self.queryset if x.get_current_class().id in ids]
-            serializer = UsersByClassSerializer(self.queryset.filter(id__in=people_ids), many=True)
+            cs_ids = []
+            for x in self.queryset:
+                try:
+                    if x.get_current_class().id in ids:
+                        cs_ids.append(x.id)
+                except Exception as e:
+                    # If no class has been found, pass the error silently
+                    pass
+
+            serializer = UsersByClassSerializer(self.queryset.filter(id__in=cs_ids), many=True)
         else:
             serializer = UsersByClassSerializer(self.queryset, many=True)
         return Response(pd.DataFrame.from_dict(self.transform_data(serializer.data)).set_index('cpf'))
