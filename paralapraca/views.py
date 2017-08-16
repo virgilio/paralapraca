@@ -137,7 +137,7 @@ class SummaryViewSet(viewsets.ViewSet):
              'classes': [
                 {'name': klass.name,
                  'user_count': klass.get_students.count(),
-                 'certificate_count': [student.can_emmit_receipt() for student in klass.get_students.all()].count(True)
+                 'certificate_count': [cs.certificate.type for cs in klass.get_students.all()].count('certificate')
                 } for klass in course.class_set.all()]
             } for course in Course.objects.all()
         ]
