@@ -12,7 +12,7 @@
           </div>
       </div>
       {% endblock %}
-      <div class="certificate-title">Comprovante</div>
+      <div class="certificate-title">Declaração</div>
       <div class="certificate-info">
           {% block receipt-options-student %}
               <p class="student">{{ object.course_student.user.get_full_name }}{% if object.course_student.user.rg %}, RG {{ object.course_student.user.rg }} {% endif %}</p>

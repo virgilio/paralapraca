@@ -197,7 +197,7 @@ wrapper-course-lesson
                         {% verbatim %}
                         <a ng-click="remove_item($index)" class="btn btn-warning"><i class="fa fa-trash-o"></i></a>
                         <a ng-hide="!student.certificate || !classe.user_can_certificate" ng-disabled='!student.can_emmit_receipt' ng-href="{{ student.certificate.url }}" class="btn btn-default" target="_blank" ng-class="{'btn-primary': student.certificate.type == 'certificate', 'disabled': !student.can_emmit_receipt }">
-                            <span ng-show="student.can_emmit_receipt && student.certificate.type == 'receipt'" title="Clique aqui para ver o comprovante deste estudante"><i class="fa fa-certificate"></i></span>
+                            <span ng-show="student.can_emmit_receipt && student.certificate.type == 'receipt'" title="Clique aqui para ver a declaração deste estudante"><i class="fa fa-certificate"></i></span>
                             <span ng-show="student.can_emmit_receipt && student.certificate.type == 'certificate'" title="Clique aqui para ver o certificado deste estudante"><i class="fa fa-certificate"></i></span>
                             <span ng-show="!student.can_emmit_receipt" title="Não há certificados disponíveis"><i class="fa fa-certificate"></i></span>
                         </a>
