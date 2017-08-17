@@ -9,10 +9,12 @@
         </div>
         <div class="certificate-title">Certificado</div>
         <div class="certificate-info">
-            <p>Certificamos que</p>
+            <p>Certificamos, para os devidos fins, que</p>
             <p class="student">{{ object.course_student.user.get_full_name }}</p>
+            <p>inscrita no cadastro de pessoa física sob o número (NÚMERO CPF)</p>
             <p>concluiu o <strong>{{ object.course_student.course.name }}</strong>,</p>
-            <p>em <strong>{{ object.modified_date | date:"d/m/Y" }}</strong> no ambiente virtual de aprendizagem do <strong>Programa Paralapracá</strong>,</p> <p>perfazendo o total de 40 horas.</p>
+            <p>com carga horária total de 40 horas, no</p>
+            <p>Ambiente Virtual de Aprendizagem do Programa Paralapracá.</p>
 
             <!-- <strong>{{ cert_template.organization_name }}</strong> -->
         </div>
