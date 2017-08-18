@@ -1,7 +1,20 @@
 {% extends 'account/base.html' %}
 {% load i18n %}
 {% load account %}
-{% block body_attrs %}class="registration registration--email-confirm"{% endblock %}
+{% load static %}
+{% load compress %}
+
+{% compress js %}
+    <!-- Dashboard -->
+    <script type="text/javascript" src="{% static 'js/dashboard/dashboard-app.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/dashboard/dashboard-controllers.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/core-services.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/discussion-services.js' %}"></script>
+{% endcompress %}
+
+{% block body_attrs %}
+ng-app="header"
+{% endblock %}
 
 {% block account_content %}
 <div class="login-page">
@@ -17,7 +30,7 @@
     {% else %}
         {% url 'account_email' as email_url %}
         <div class="message">
-            {% blocktrans %}This e-mail confirmation link expired or is invalid.<br/>Please <a href="{{ email_url}}">issue a new e-mail confirmation request</a>.{% endblocktrans %}
+            {% blocktrans %}This e-mail confirmation link expired or is invalid.<br/>{% endblocktrans %}
         </div>
     {% endif %}
 </div>
