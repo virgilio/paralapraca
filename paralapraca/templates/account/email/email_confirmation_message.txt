@@ -1,11 +1,11 @@
-Caro(a), bem vindo(a) ao Paralapracá!
+Olá!
 
-Estamos felizes por poder ajudá-lo(a) nesse trajeto de reflexão e aprendizado.
+Você se cadastrou na plataforma virtual do XI Congresso Internacional de Acompanhamento Terapêutico. Estamos felizes em tê-lo conosco!
 
-Para garantir que você tenha acesso a todos os recursos e cursos que temos para oferecer, clique no link abaixo e confirme o seu endereço de e-mail.
+Para garantir que você tenha acesso a todos os conteúdos e conversas sobre o Congresso, clique no link abaixo e confirme o seu endereço de e-mail.
 
 {{ activate_url }}
 
+Um abraço,
 
-Até já!
-Avante e Instituto C&A
+Rede Organizadora do XI Congresso Internacional de AT
