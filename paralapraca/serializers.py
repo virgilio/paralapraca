@@ -83,7 +83,7 @@ class UserInDetailSerializer(serializers.ModelSerializer):
         needed_stuff = [
             {'percent_progress': x.percent_progress(),
              'course_name': x.course.name,
-             'has_certificate': x.can_emmit_receipt(),
+             'has_certificate': x.certificate.type == 'certificate',
              'class_name': x.get_current_class().name
             } for x in obj.coursestudent_set.all()]
         return needed_stuff
@@ -124,7 +124,7 @@ class UsersByClassSerializer(serializers.Serializer):
         return obj.user.last_login
 
     def get_has_certificate(self, obj):
-        return obj.can_emmit_receipt()
+        return obj.certificate.type == 'certificate'
 
     def get_percent_progress_by_lesson(self, obj):
         return obj.percent_progress_by_lesson()
