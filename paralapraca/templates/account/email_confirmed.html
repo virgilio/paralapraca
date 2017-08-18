@@ -18,8 +18,8 @@ ng-app="header"
 {% block account_content %}
 <div class="login-page">
     <div class="message">
-        <h2>{% trans "Mission accomplished" %}</h2>
-        <h3>{% trans "You have an active account" %}</h3>
+        <h2>Missão cumprida!</h2>
+        <h3>Você ativou o email da sua conta</h3>
     </div>
 
     <form method="post" action="{% url 'account_login' %}" class="login-form">{% csrf_token %}
