@@ -18,7 +18,7 @@
           {% block receipt-options-student %}
               <p class="student">{{ object.course_student.user.get_full_name }}{% if object.course_student.user.rg %}, RG {{ object.course_student.user.rg }} {% endif %}</p>
           {%   endblock %}
-          <p>inscrita no cadastro de pessoa física sob o número (NÚMERO CPF)</p>
+          <p>inscrita no cadastro de pessoa física sob o número {{ object.course_student.user.cpf }}</p>
           <p>participou do <em>{{ object.course.name }}</em></p>
           <p>no Ambiente Virtual de Aprendizagem do Programa Paralapracá.</p>
       </div>

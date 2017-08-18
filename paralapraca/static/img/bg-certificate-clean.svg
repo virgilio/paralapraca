@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 21.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Camada_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 866 504" style="enable-background:new 0 0 866 504;" xml:space="preserve">
+<style type="text/css">
+	.st0{filter:url(#Adobe_OpacityMaskFilter);}
+	.st1{fill:#FFFFFF;}
+	.st2{mask:url(#mask-4);}
+	.st3{filter:url(#filter-3);}
+	.st4{fill:#FCF6EF;stroke:#FBF6EF;stroke-width:10;}
+	.st5{fill:none;stroke:url(#path-2_9_);stroke-width:40;}
+	.st6{fill:none;stroke:#FBF6EF;stroke-width:36;}
+	.st7{fill:none;stroke:url(#path-2_10_);stroke-width:18;}
+</style>
+<filter  filterUnits="objectBoundingBox" height="200%" id="filter-3" width="200%" x="-50%" y="-50%">
+	<feOffset  dx="0" dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+	<feGaussianBlur  in="shadowOffsetOuter1" result="shadowBlurOuter1" stdDeviation="2"></feGaussianBlur>
+	<feComposite  in="shadowBlurOuter1" in2="SourceAlpha" operator="out" result="shadowBlurOuter1"></feComposite>
+	<feColorMatrix  in="shadowBlurOuter1" type="matrix" values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.5 0"></feColorMatrix>
+</filter>
+<title>certificado</title>
+<desc>Created with Sketch.</desc>
+<g id="Page-1">
+	<g id="certificado">
+		<defs>
+			<filter id="Adobe_OpacityMaskFilter" filterUnits="userSpaceOnUse" x="-433" y="-252" width="1732" height="1008">
+				<feColorMatrix  type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 1 0"/>
+			</filter>
+		</defs>
+		<mask maskUnits="userSpaceOnUse" x="-433" y="-252" width="1732" height="1008" id="mask-4">
+			<g class="st0">
+				<rect id="path-2" class="st1" width="866" height="504"/>
+			</g>
+			<g>
+				<rect id="path-2_1_" class="st1" width="866" height="504"/>
+			</g>
+			<g>
+				<rect id="path-2_2_" class="st1" width="866" height="504"/>
+			</g>
+			<g>
+				<rect id="path-2_3_" class="st1" width="866" height="504"/>
+			</g>
+		</mask>
+		<g id="Rectangle-3-Copy-7" class="st2">
+			<g class="st3">
+				<rect id="path-2_9_" width="866" height="504"/>
+			</g>
+			<g>
+				<rect id="path-2_5_" class="st4" width="866" height="504"/>
+			</g>
+			<g>
+				
+					<linearGradient id="path-2_9_" gradientUnits="userSpaceOnUse" x1="126.8533" y1="648.2162" x2="127.8533" y2="648.2162" gradientTransform="matrix(866 0 0 -504 -109855 326953)">
+					<stop  offset="0" style="stop-color:#66B821"/>
+					<stop  offset="0.1583" style="stop-color:#0470B0"/>
+					<stop  offset="0.3461" style="stop-color:#B02488"/>
+					<stop  offset="0.5468" style="stop-color:#E02128"/>
+					<stop  offset="0.7428" style="stop-color:#F22D92"/>
+					<stop  offset="1" style="stop-color:#FF4100"/>
+				</linearGradient>
+				<rect id="path-2_6_" class="st5" width="866" height="504"/>
+			</g>
+			<g>
+				<rect id="path-2_7_" class="st6" width="866" height="504"/>
+			</g>
+			<g>
+				
+					<linearGradient id="path-2_10_" gradientUnits="userSpaceOnUse" x1="126.8533" y1="648.2162" x2="127.8533" y2="648.2162" gradientTransform="matrix(866 0 0 -504 -109855 326953)">
+					<stop  offset="0" style="stop-color:#66B821"/>
+					<stop  offset="0.1583" style="stop-color:#0470B0"/>
+					<stop  offset="0.3461" style="stop-color:#B02488"/>
+					<stop  offset="0.5468" style="stop-color:#E02128"/>
+					<stop  offset="0.7428" style="stop-color:#F22D92"/>
+					<stop  offset="1" style="stop-color:#FF4100"/>
+				</linearGradient>
+				<rect id="path-2_8_" class="st7" width="866" height="504"/>
+			</g>
+		</g>
+	</g>
+</g>
+</svg>
