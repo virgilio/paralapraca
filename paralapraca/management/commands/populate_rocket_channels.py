@@ -2,217 +2,172 @@
 from django.core.management.base import BaseCommand
 from django.contrib.auth import get_user_model
 from django.db.models import Q
+from core.models import Class
 
-from pymongo import MongoClient, errors
-from datetime import datetime
-import random
+from random import random
+import requests
+import os
+
 
 User = get_user_model()
+rocket = os.getenv('ROCKET_CHAT_API')
+api_user = {
+    'username': os.getenv('ROCKET_CHAT_USER'),
+    'password': os.getenv('ROCKET_CHAT_PASS')
+}
 
-# Connect to rocket's database
-client = MongoClient('mongo-paralapraca.docker', 27017)
-db = client.paralapraca
-rocket_channels = db.rocketchat_room
-rocket_users = db.users
-rocket_subscriptions = db.rocketchat_subscription
+def create_chat_user(username):
+    user = User.objects.get(username=username)
+    create_req = requests.post(rocket + 'users.create', headers=auth_headers, json={
+        'name'    : user.username,
+        'email'   : user.email,
+        'password': '%d%f' % (user.id, random()),
+        'username': user.username,
+        'verified': True,
+    })
+    return create_req
 
+def sync_room(user_list, group):
+    rocket_group_req = requests.get(rocket + 'groups.info?roomName=' + group, headers=auth_headers)
+    rocket_group = rocket_group_req.json()
 
-def genMeteorID():
-    return('%024x' % random.randrange(16**24))
+    # For compatibility reasons with the Rocket Chat permissions system, the user making the requests needs to be a member of the room to control it
+    # The next line ensures that the main user won't be removed from any group by this script
+    user_list += [api_user['username']]
 
+    # Anyone that is in the group, but isn't in the user_list, must be removed
+    for group_member in rocket_group['group']['usernames']:
+        if group_member not in user_list:
+            # Get the userId
+            user = requests.get(rocket + 'users.info?username=' + group_member, headers=auth_headers)
+            
+            # Kick him from the room
+            kick = requests.post(rocket + 'groups.kick', headers=auth_headers, json={
+                'roomId': rocket_group['group']['_id'],
+                'userId': user.json()['user']['_id']
+            })
+            if not kick.ok:
+                print("Couldn't kick " + group_member + " from " + rocket_group['group']['name'])
 
-def create_subscription(user, channel):
-    new_sub = {
-        "_id": genMeteorID(),
-        "open": True,
-        "alert": False,
-        "unread": 0,
-        "ts": datetime.now(),
-        "rid": channel['id'],
-        "name": channel['name'],
-        "t": "p",
-        "u": {
-            "_id": user['id'],
-            "username": user['username']
-        },
-        "_updatedAt": datetime.now(),
-        "ls": datetime.now()
-    }
-    try:
-        rocket_subscriptions.insert_one(new_sub)
-    except errors.DuplicateKeyError:
-        print("Duplicated subscription")
-        pass
+    # Anyone in the user_list that isn't in the group, must be invited
+    for timtec_user in user_list:
+        if timtec_user not in rocket_group['group']['usernames']:
+            
+            # Get the userId
+            user = requests.get(rocket + 'users.info?username=' + timtec_user, headers=auth_headers)
+            if not user.ok:
+                # If Rocket.Chat couldn't find the user, he probably isn't there yet
+                # So create a profile for him now
+                user = create_chat_user(timtec_user)
+                if not user.ok:
+                    # If creation failed as well, human attention is needed for him
+                    print("Couldn't locate or create " + timtec_user)
+                    continue
+            
+            # Include him in the room
+            invite = requests.post(rocket + 'groups.invite', headers=auth_headers, json={
+                'roomId': rocket_group['group']['_id'],
+                'userId': user.json()['user']['_id']
+            })
+            if not invite.ok:
+                print("Couldn't invite " + group_member + " for " + rocket_group['group']['name'])
 
 
 class Command(BaseCommand):
-    help = 'Synchronize Django user groups with Rocket Chat Channels taking specific grouping rules into account.'
+    help = 'Synchronize Django user groups with Rocket Chat Rooms taking specific grouping rules into account.'
 
     def handle(self, **options):
 
-        # Retrieve the admin superuser
-        User = get_user_model()
+        global api_user_data
+        api_user_data = requests.post(rocket + 'login', json=api_user).json()
+        
+        global auth_headers
+        auth_headers = {
+            'X-Auth-Token': api_user_data['data']['authToken'],
+            'X-User-Id': api_user_data['data']['userId']
+        }
 
-        # Get the users list for each room
-        users_geral = User.objects.all().exclude(groups__name="Gestores")
+        ### Get the users list for each room ###
+        # Group 'geral'
+        users = User.objects.all().exclude(
+            Q(groups__name="Gestores") |
+            Q(groups__name="Gestores Camaçari") |
+            Q(groups__name="Gestores Maceió") |
+            Q(groups__name="Gestores Maracanaú") |
+            Q(groups__name="Gestores Natal") |
+            Q(groups__name="Gestores Olinda")
+        ).distinct().values_list('username')
+        sync_room([u[0] for u in users], 'geral')
+        
+        # Group 'natal'
+        users = User.objects.filter(
+            Q(groups__name="Avante") |
+            Q(groups__name="Entremeios") |
+            Q(groups__name="Assessoras Natal") |
+            Q(groups__name="Natal") |
+            Q(groups__name="Mediadoras")
+        ).distinct().values_list('username')
+        sync_room([u[0] for u in users], 'natal')
 
-        users_camacari = (
-            User.objects.filter(Q(groups__name="Camaçari") |
-                                Q(groups__name="Assessoras Camaçari") |
-                                Q(groups__name="Avante") |
-                                Q(groups__name="Entremeios"))
-                        .exclude(Q(groups__name="Gestores") |
-                                 Q(groups__name="Gestores Camaçari"))
-                        .distinct()
-        )
+        # Group 'camacari'
+        users = User.objects.filter(
+            Q(groups__name="Avante") |
+            Q(groups__name="Entremeios") |
+            Q(groups__name="Assessoras Camaçari") |
+            Q(groups__name="Camaçari") |
+            Q(groups__name="Mediadoras")
+        ).distinct().values_list('username')
+        sync_room([u[0] for u in users], 'camacari')
 
-        users_maracanau = (
-            User.objects.filter(Q(groups__name="Maracanaú") |
-                                Q(groups__name="Assessoras Maracanaú") |
-                                Q(groups__name="Avante") |
-                                Q(groups__name="Entremeios"))
-                        .exclude(Q(groups__name="Gestores") |
-                                 Q(groups__name="Gestores Maracanaú"))
-                        .distinct()
-        )
+        # Group 'maracanau'
+        users = User.objects.filter(
+            Q(groups__name="Avante") |
+            Q(groups__name="Entremeios") |
+            Q(groups__name="Assessoras Maracanaú") |
+            Q(groups__name="Maracanaú") |
+            Q(groups__name="Mediadoras")
+        ).distinct().values_list('username')
+        sync_room([u[0] for u in users], 'maracanau')
 
-        users_natal = (
-            User.objects.filter(Q(groups__name="Natal") |
-                                Q(groups__name="Assessoras Natal") |
-                                Q(groups__name="Avante") |
-                                Q(groups__name="Entremeios"))
-                        .exclude(Q(groups__name="Gestores") |
-                                 Q(groups__name="Gestores Natal"))
-                        .distinct()
-        )
+        # Group 'maceio'
+        users = User.objects.filter(
+            Q(groups__name="Avante") |
+            Q(groups__name="Entremeios") |
+            Q(groups__name="Assessoras Maceió") |
+            Q(groups__name="Maceió") |
+            Q(groups__name="Mediadoras")
+        ).distinct().values_list('username')
+        sync_room([u[0] for u in users], 'maceio')
+        
+        # Group 'olinda'
+        users = User.objects.filter(
+            Q(groups__name="Avante") |
+            Q(groups__name="Entremeios") |
+            Q(groups__name="Assessoras Olinda") |
+            Q(groups__name="Olinda") |
+            Q(groups__name="Mediadoras")
+        ).distinct().values_list('username')
+        sync_room([u[0] for u in users], 'olinda')
+        
 
-        users_olinda = (
-            User.objects.filter(Q(groups__name="Olinda") |
-                                Q(groups__name="Assessoras Olinda") |
-                                Q(groups__name="Avante") |
-                                Q(groups__name="Entremeios"))
-                        .exclude(Q(groups__name="Gestores") |
-                                 Q(groups__name="Gestores Olinda"))
-                        .distinct()
-        )
+        # Classes must be synchronized also
+        users = Class.objects.get(name='Turma FIRMEZA - Maracanaú').students.all().values_list('username')
+        sync_room([u[0] for u in users], 'turma_firmeza')
 
-        users_maceio = (
-            User.objects.filter(Q(groups__name="Maceió") |
-                                Q(groups__name="Assessoras Maceió") |
-                                Q(groups__name="Avante") |
-                                Q(groups__name="Entremeios"))
-                        .exclude(Q(groups__name="Gestores") |
-                                 Q(groups__name="Gestores Maceió"))
-                        .distinct()
-        )
+        users = Class.objects.get(name='Turma IRINÉIA - Maceió').students.all().values_list('username')
+        sync_room([u[0] for u in users], 'turma_irineia')
 
-        users_gestores = (
-            User.objects.filter(Q(groups__name="Gestores") |
-                                Q(groups__name="Gestores Camçari") |
-                                Q(groups__name="Gestores Maceió") |
-                                Q(groups__name="Gestores Maracanaú") |
-                                Q(groups__name="Gestores Natal") |
-                                Q(groups__name="Gestores Olinda") |
-                                Q(groups__name="Avante") |
-                                Q(groups__name="Entremeios"))
-                        .distinct()
-        )
+        users = Class.objects.get(name='Turma PRA TODO CANTO - Camaçari').students.all().values_list('username')
+        sync_room([u[0] for u in users], 'turma_pratodocanto')
 
-        # Populate each channel
-        # Geral
-        print("-----------")
-        channel = {"id": "QRviDMnqyNSBTGNQh", "name": "geral"}
-        usernames = []
-        for user in users_geral:
-            rocket_user = rocket_users.find_one({"emails": {"$elemMatch": {"address": user.email}}})
-            if rocket_user is None:
-                print(user.username + " " + user.email)
-                continue
-            usernames.append(rocket_user['username'])
-            create_subscription({"id": rocket_user['_id'], "username": rocket_user['username']}, channel)
-        print("Importing channel geral")
-        rocket_channels.update({"_id": channel['id']}, {"$addToSet": {"usernames": {"$each": usernames}}})
+        users = Class.objects.get(name='Turma AQUI E ACOLÁ - Olinda').students.all().values_list('username')
+        sync_room([u[0] for u in users], 'turma_aquieacola')
 
-        # Camaçari
-        print("-----------")
-        channel = {"id": "tBggre83oJSjkTA4g", "name": "camacari"}
-        usernames = []
-        for user in users_camacari:
-            rocket_user = rocket_users.find_one({"emails": {"$elemMatch": {"address": user.email}}})
-            if rocket_user is None:
-                print(user.username + " " + user.email)
-                continue
-            usernames.append(rocket_user['username'])
-            create_subscription({"id": rocket_user['_id'], "username": rocket_user['username']}, channel)
-        print("Importing channel camacari")
-        rocket_channels.update({"_id": channel['id']}, {"$addToSet": {"usernames": {"$each": usernames}}})
+        users = Class.objects.get(name='Turma JUAQUINA - Natal').students.all().values_list('username')
+        sync_room([u[0] for u in users], 'turma_juaquina')
 
-        # Maracanaú
-        print("-----------")
-        channel = {"id": "hTwXJ2uzsLgHzRieM", "name": "maracanau"}
-        usernames = []
-        for user in users_maracanau:
-            rocket_user = rocket_users.find_one({"emails": {"$elemMatch": {"address": user.email}}})
-            if rocket_user is None:
-                print(user.username + " " + user.email)
-                continue
-            usernames.append(rocket_user['username'])
-            create_subscription({"id": rocket_user['_id'], "username": rocket_user['username']}, channel)
-        print("Importing channel maracanau")
-        rocket_channels.update({"_id": channel['id']}, {"$addToSet": {"usernames": {"$each": usernames}}})
+        users = Class.objects.get(name='Turma DORIAN - Natal').students.all().values_list('username')
+        sync_room([u[0] for u in users], 'turma_dorian')
 
-        # Natal
-        print("-----------")
-        channel = {"id": "ewBKkFrtg8RnSeJyw", "name": "natal"}
-        usernames = []
-        for user in users_natal:
-            rocket_user = rocket_users.find_one({"emails": {"$elemMatch": {"address": user.email}}})
-            if rocket_user is None:
-                print(user.username + " " + user.email)
-                continue
-            usernames.append(rocket_user['username'])
-            create_subscription({"id": rocket_user['_id'], "username": rocket_user['username']}, channel)
-        print("Importing channel natal")
-        rocket_channels.update({"_id": channel['id']}, {"$addToSet": {"usernames": {"$each": usernames}}})
-
-        # Olinda
-        print("-----------")
-        channel = {"id": "GExqAwPhEoQa9n7N5", "name": "olinda"}
-        usernames = []
-        for user in users_olinda:
-            rocket_user = rocket_users.find_one({"emails": {"$elemMatch": {"address": user.email}}})
-            if rocket_user is None:
-                print(user.username + " " + user.email)
-                continue
-            usernames.append(rocket_user['username'])
-            create_subscription({"id": rocket_user['_id'], "username": rocket_user['username']}, channel)
-        print("Importing channel olinda")
-        rocket_channels.update({"_id": channel['id']}, {"$addToSet": {"usernames": {"$each": usernames}}})
-
-        # Maceió
-        print("-----------")
-        channel = {"id": "J9o5wYiNwhxLn38GF", "name": "maceio"}
-        usernames = []
-        for user in users_maceio:
-            rocket_user = rocket_users.find_one({"emails": {"$elemMatch": {"address": user.email}}})
-            if rocket_user is None:
-                print(user.username + " " + user.email)
-                continue
-            usernames.append(rocket_user['username'])
-            create_subscription({"id": rocket_user['_id'], "username": rocket_user['username']}, channel)
-        print("Importing channel maceio")
-        rocket_channels.update({"_id": channel['id']}, {"$addToSet": {"usernames": {"$each": usernames}}})
-
-        # Gestores
-        print("-----------")
-        channel = {"id": "LZxQypGvjoM6uvmcZ", "name": "gestores"}
-        usernames = []
-        for user in users_gestores:
-            rocket_user = rocket_users.find_one({"emails": {"$elemMatch": {"address": user.email}}})
-            if rocket_user is None:
-                print(user.username + " " + user.email)
-                continue
-            usernames.append(rocket_user['username'])
-            create_subscription({"id": rocket_user['_id'], "username": rocket_user['username']}, channel)
-        print("Importing channel gestores")
-        rocket_channels.update({"_id": channel['id']}, {"$addToSet": {"usernames": {"$each": usernames}}})
+        users = Class.objects.get(name='Turma NAVARRO - Natal').students.all().values_list('username')
+        sync_room([u[0] for u in users], 'turma_navarro')
