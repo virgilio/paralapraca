@@ -19,4 +19,5 @@ urlpatterns = [
     url(r'^api/', include(router.urls)),
     url(r'^chat/?$', views.ChatScreenView.as_view(template_name="chat.html"), name='chat_screen'),
     url(r'^_chat/auth/$', views.RocketchatIframeAuthView.as_view(), name='rocketchat_iframe_auth'),
+    url(r'^profile/edit/?$', views.ProfileEditView.as_view(), name="profile_edit"),
 ]

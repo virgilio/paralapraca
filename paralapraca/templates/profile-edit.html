@@ -28,7 +28,7 @@ wrapper-course-lesson
     <form class="form-horizontal"
           method="post"
           enctype="multipart/form-data"
-          action="/profile/edit/">{% csrf_token %}
+          action="">{% csrf_token %}
 
         <fieldset>
             <legend class="page-header">
@@ -84,21 +84,6 @@ wrapper-course-lesson
                                 {% with errors=form.last_name.errors %}
                                 <div class="col-xs-6 right{{ errors|yesno:" has-error,"}}">
                                     <input name="last_name" type="text" class="form-control" placeholder="Último nome" value="{{form.last_name.value}}">
-                                    {% for error in errors %}<small>{{error}}</small>{% endfor %}
-                                </div>
-                                {% endwith %}
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="col-xs-12 col-sm-3 col-lg-2 control-label">CPF</label>
-
-                        <div class="col-xs-12 col-sm-9 col-lg-10">
-                            <div class="row">
-                                {% with errors=form.cpf.errors %}
-                                <div class="col-xs-6 left{{ errors|yesno:" has-error,"}}">
-                                    <input name="cpf" type="text" class="form-control" placeholder="00000000000" value="{{form.cpf.value|default_if_none:''}}">
                                     {% for error in errors %}<small>{{error}}</small>{% endfor %}
                                 </div>
                                 {% endwith %}

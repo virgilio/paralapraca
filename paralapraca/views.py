@@ -6,7 +6,10 @@ from django.core.urlresolvers import reverse
 from django.http import HttpResponse, HttpResponseForbidden
 from django.utils.decorators import method_decorator
 from django.views.decorators.csrf import csrf_exempt
+from django.core.urlresolvers import reverse_lazy
+from django.views.generic import UpdateView
 from django.views.generic.base import TemplateView, View
+from django.contrib.auth import get_user_model
 from rest_framework import viewsets, status
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
@@ -17,8 +20,10 @@ from paralapraca.serializers import AnswerNotificationSerializer, UnreadNotifica
 from discussion.models import Comment, CommentLike, Topic, TopicLike
 from rest_pandas import PandasViewSet
 from rest_pandas.renderers import PandasCSVRenderer, PandasJSONRenderer
+from braces.views import LoginRequiredMixin
 import pandas as pd
 
+from .forms import ProfileEditForm 
 
 ROCKET_CHAT = {
     'address': 'http://chat.paralapraca.org.br',
@@ -66,6 +71,22 @@ class RocketchatIframeAuthView(TemplateView):
         response["Access-Control-Allow-Headers"] = "Origin, X-Requested-With, Content-Type, Accept"
 
         return response
+
+
+class ProfileEditView(LoginRequiredMixin, UpdateView):
+    model = get_user_model()
+    form_class = ProfileEditForm
+    template_name = 'profile-edit.html'
+
+    def get_success_url(self):
+        url = self.request.GET.get('next', None)
+        if url:
+            return url
+        else:
+            return reverse_lazy('profile')
+
+    def get_object(self):
+        return self.request.user
 
 
 class ContractViewSet(viewsets.ReadOnlyModelViewSet):
