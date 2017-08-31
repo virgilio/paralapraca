@@ -86,7 +86,7 @@
                         Práticas Avante e certificadas
                         <span>{{ cards.certified.length }} prática<span ng-show="cards.certified.length != 1">s</span></span>
                     </h3>
-                    <nav class="cards-pagination pull-left">
+                    <!--<nav class="cards-pagination pull-left">
                         <ul>
                             <li class="prev-button">
                                 <span class="sr-only">anterior</span>
@@ -101,7 +101,7 @@
                                 <span class="sr-only">próximo</span>
                             </li>
                         </ul>
-                    </nav>
+                    </nav>-->
                 </header>
             </div>
 
@@ -114,7 +114,7 @@
                             
                             <a class="" ng-click="filter.axis = card.axis.name">{{ card.axis.name }}</a>
                             <h4 class="card-title"><a href="#!/{{ card.pk }}">{{ card.title }}</a></h4>
-                            <span class="card-author">Publicado por: <a href="/profile/{{card.author.username}}">{{ card.author.first_name + ' ' + card.author.last_name }}</a></span>
+                            <span class="card-author">Publicado por: <a href="/profile/{{card.author.username}}">{{ card.author.first_name}} {{ card.author.last_name }}</a></span>
                         </header>
 
                         <footer>
@@ -137,7 +137,7 @@
                         Práticas independentes
                         <span>{{ cards.community.length }} prática<span ng-show="cards.community.length != 1">s</span></span>
                     </h3>
-                    <nav class="cards-pagination pull-left">
+                    <!--<nav class="cards-pagination pull-left">
                         <ul>
                             <li class="prev-button">
                                 <span class="sr-only">anterior</span>
@@ -152,7 +152,7 @@
                                 <span class="sr-only">próximo</span>
                             </li>
                         </ul>
-                    </nav>
+                    </nav>-->
                 </header>
             </div>
 
@@ -165,7 +165,7 @@
                             
                             <a class="" ng-click="filter.axis = card.axis.name">{{ card.axis.name }}</a>
                             <h4 class="card-title"><a href="#!/{{ card.pk }}">{{ card.title }}</a></h4>
-                            <span class="card-author">Publicado por: <a href="/profile/{{card.author.username}}">{{ card.author.first_name + ' ' + card.author.last_name }}</a></span>
+                            <span class="card-author">Publicado por: <a href="/profile/{{card.author.username}}">{{ card.author.first_name}} {{ card.author.last_name }}</a></span>
                         </header>
 
                         <footer>
@@ -197,7 +197,7 @@
                             
                             <a class="" ng-click="filter.axis = card.axis.name">{{ card.axis.name }}</a>
                             <h4 class="card-title"><a href="#!/{{ card.pk }}">{{ card.title }}</a></h4>
-                            <span class="card-author">Publicado por: <a href="/profile/{{card.author.username}}">{{ card.author.first_name + ' ' + card.author.last_name }}</a></span>
+                            <span class="card-author">Publicado por: <a href="/profile/{{card.author.username}}">{{ card.author.first_name}} {{ card.author.last_name }}</a></span>
                         </header>
 
                         <footer>
@@ -223,7 +223,7 @@
                         
                         <a class="" ng-click="filter.axis = card.axis.name">{{ card.axis.name }}</a>
                         <h4 class="card-title"><a href="#!/{{ card.pk }}">{{ card.title }}</a></h4>
-                        <span class="card-author">Publicado por: <a href="/profile/{{card.author.username}}">{{ card.author.first_name + ' ' + card.author.last_name }}</a></span>
+                        <span class="card-author">Publicado por: <a href="/profile/{{card.author.username}}">{{ card.author.first_name}} {{ card.author.last_name }}</a></span>
                     </header>
 
                     <footer>
