@@ -103,6 +103,7 @@
     .results-info-title {
         font-family: $font-family-sans-serif;
         font-size: 20px;
+        margin: 20px 0 30px;
 
         b {
             color: $purple;
@@ -110,6 +111,7 @@
     }
 
     .cards-pagination {
+        margin-bottom: 15px;
         ul {
             margin: 0 0 0 20px;
             padding: 0;
@@ -151,24 +153,32 @@
     .card {
         background: #fff;
         border-radius: 10px;
+        padding: 15px;
+        position: relative;
     }
     .card-image {
+        background-size: cover;
         border-radius: 10px 10px 0 0;
+        height: 150px;
+        margin: -15px -15px 15px;
     }
     .card-title {
-
+        font-size: 24px;
+        margin: 2px 0 4px;
     }
     .card-author {
-        a {
-            color: $purple;
-        }
+        color: #4A4A4A;
+        display: block;
+        font-size: 12px;
+        margin-bottom: 25px;
     }
-
-    .category, .tag, .action {
-        color: $purple;
+    .category {
+        position: absolute;
+        top: 15px;
+        left: 15px;
     }
-    .category, .tag {
-        border-color: $purple;
+    .tags {
+        float: right;
     }
 }
 
@@ -191,6 +201,21 @@
             background-color: $purple;
         }
     }
+    .card-author {
+        a {
+            color: $purple;
+        }
+    }
+    .category, .tag, .action {
+        color: $purple;
+    }
+    .category, .tag {
+        border-color: $purple;
+    }
+    .category {
+        border: 0;
+        @include button-hover(#fff,$purple,$purple,#fff);
+    }
 }
 
 .praticas-independentes {
@@ -204,5 +229,51 @@
         .prev-button, .next-button, .active {
             background-color: $orange;
         }
+    }
+    .card-author {
+        a {
+            color: $orange;
+        }
+    }
+    .category, .tag, .action {
+        color: $orange;
+    }
+    .category, .tag {
+        border-color: $orange;
+    }
+    .category {
+        border: 0;
+        @include button-hover(#fff,$orange,$orange,#fff);
+    }
+}
+
+.scroll-warning {
+    @include icon(before, chevron-down);
+    color: #fff;
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 2;
+    text-align: center;
+    height: 30px;
+	width: 340px;
+	border-radius: 20px 20px 0 0;
+    background-color: #4A4A4A;
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    margin-left: -170px;
+    &:before {
+        margin-right: 5px;
+    }
+}
+
+.not-found {
+	color: #4A4A4A;
+	font-family: "Open Sans";
+    font-size: 20px;
+    margin: 30px 0;
+    b {
+        color: $purple;
+        font-weight: bold;
     }
 }
