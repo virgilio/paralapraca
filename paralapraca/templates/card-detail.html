@@ -20,7 +20,7 @@
         </div>
 
         <div class="card-page-info">
-            <span class="action liked">{{ card.likes }} gostaram</span>
+            <span class="action liked"><ng-pluralize count="card.likes" when="{'0': '0 gostou', '1': '1 gostou', 'other': '{{ card.likes }} gostaram'}"></ng-pluralize></span>
             <span class="author">Prática publicada por: <a href="/profile/{{card.author.username}}">{{card.author.first_name}} {{card.author.last_name}}</a></span>
             <div class="user-icon">
                 <img src="{{ card.author.picture }}" alt="Nome Usuário"/>
@@ -84,8 +84,9 @@
         <p>{{ card.author.bio }}</p>
 
         <div class="actions">
-            <!--<a class="action liked"><span>gostei</span></a>-->
-            <span class="action">{{ card.likes }} gostaram</span>
+            <a class="action liked" ng-if="card.user_liked" ng-click="unlike()"><span>Gostei</span></a>
+            <a class="action liked" ng-if="!card.user_liked" ng-click="like()"><span>Gostar</span></a>
+            <span class="action"><ng-pluralize count="card.likes" when="{'0': '0 gostou', '1': '1 gostou', 'other': '{{ card.likes }} gostaram'}"></span>
         </div>
     </div>
     

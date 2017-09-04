@@ -118,7 +118,7 @@
                         </header>
 
                         <footer>
-                            <span class="action liked">{{ card.likes }} curtiram</span>
+                            <span class="action liked"><ng-pluralize count="card.likes" when="{'0': '0 gostou', '1': '1 gostou', 'other': '{{ card.likes }} gostaram'}"></span>
                             <div class="tags">
                                 <a class="tag" ng-click="insert_tag(tag.name)" ng-repeat="tag in card.tags">#{{ tag.name }}</a>
                             </div>
@@ -169,7 +169,7 @@
                         </header>
 
                         <footer>
-                            <span class="action liked">{{ card.likes }} curtiram</span>
+                            <span class="action liked"><ng-pluralize count="card.likes" when="{'0': '0 gostou', '1': '1 gostou', 'other': '{{ card.likes }} gostaram'}"></span>
                             <div class="tags">
                                 <a class="tag" ng-click="insert_tag(tag.name)" ng-repeat="tag in card.tags">#{{ tag.name }}</a>
                             </div>
@@ -201,7 +201,7 @@
                         </header>
 
                         <footer>
-                            <span class="action liked">{{ card.likes }} curtiram</span>
+                            <span class="action liked"><ng-pluralize count="card.likes" when="{'0': '0 gostou', '1': '1 gostou', 'other': '{{ card.likes }} gostaram'}"></span>
                             <div class="tags">
                                 <a class="tag" ng-click="insert_tag(tag.name)" ng-repeat="tag in card.tags">#{{ tag.name }}</a>
                             </div>
@@ -227,7 +227,7 @@
                     </header>
 
                     <footer>
-                        <span class="action liked">{{ card.likes }} curtiram</span>
+                        <span class="action liked"><ng-pluralize count="card.likes" when="{'0': '0 gostou', '1': '1 gostou', 'other': '{{ card.likes }} gostaram'}"></span>
                         <div class="tags">
                             <a class="tag" ng-click="insert_tag(tag.name)" ng-repeat="tag in card.tags">#{{ tag.name }}</a>
                         </div>
