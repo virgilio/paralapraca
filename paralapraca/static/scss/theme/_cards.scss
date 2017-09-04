@@ -277,3 +277,57 @@
         font-weight: bold;
     }
 }
+
+.card-page {
+    background: rgba(#fff,0.3);
+    .widget-topbar.breadcrumb {
+        margin: 0px -15px 15px -15px !important; 
+        .line {
+            border-bottom: 0;
+            .author {
+                color: $gray;
+                font-size: 12px;
+                b {
+                    font-size: 14px;
+                }
+            }
+        }
+        .title {
+            color: $gray;
+        }
+    }
+
+    .card-page-header {
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+        .tags, .category {
+            margin-top: 10px;
+        }
+    }
+    .card-page-info {
+        display: flex;
+        align-items: baseline;
+    }
+    .page-title {
+        font-size: 48px;
+        font-weight: bold;
+        margin: 0 20px 0 0;
+    }
+    .user-icon {
+        display: inline-block;
+        float: none;
+        margin: 0 10px;
+    }
+
+    &.praticas-certificadas {
+        .page-title, .action {
+            color: $purple;
+        }
+    }
+    &.praticas-independentes {
+        .page-title, .action {
+            color: $orange;
+        }
+    }
+}
