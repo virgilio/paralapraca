@@ -64,7 +64,7 @@
         <div class="results-info">
             <div class="results-info-tags">
                 <a class="tag active" ng-click="filter.status = '';" ng-show="filter.status == '2'">Práticas validadas</a>
-                <a class="tag active" ng-click="filter.status = ''" ng-show="filter.status == '3'">Práticas da comunidade</a>                
+                <a class="tag active" ng-click="filter.status = ''" ng-show="filter.status == '3'">Práticas independentes</a>                
                 <a class="tag active" ng-click="filter.audience = ''" ng-hide="filter.audience == ''">{{ filter.audience }}</a>
                 <a class="tag active" ng-click="filter.axis = ''" ng-hide="filter.axis == ''">{{ filter.axis }}</a>
                 <a class="tag active" ng-repeat="tag in filter.tags" ng-click="remove_tag($index)">#{{ tag }}</a>
@@ -83,7 +83,7 @@
             <div class="row">
                 <header class="col-xs-12">
                     <h3 class="subtitle pull-left">
-                        Práticas Avante e certificadas
+                        Práticas validadas
                         <span>{{ cards.certified.length }} prática<span ng-show="cards.certified.length != 1">s</span></span>
                     </h3>
                     <!--<nav class="cards-pagination pull-left">
