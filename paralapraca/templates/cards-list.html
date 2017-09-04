@@ -120,7 +120,7 @@
                         <footer>
                             <span class="action liked">{{ card.likes }} curtiram</span>
                             <div class="tags">
-                                <a class="tag" ng-click="insert_tag(tag)" ng-repeat="tag in card.tags">#{{ tag.name }}</a>
+                                <a class="tag" ng-click="insert_tag(tag.name)" ng-repeat="tag in card.tags">#{{ tag.name }}</a>
                             </div>
                         </footer>
                     </article>
@@ -171,7 +171,7 @@
                         <footer>
                             <span class="action liked">{{ card.likes }} curtiram</span>
                             <div class="tags">
-                                <a class="tag" ng-click="insert_tag(tag)" ng-repeat="tag in card.tags">#{{ tag.name }}</a>
+                                <a class="tag" ng-click="insert_tag(tag.name)" ng-repeat="tag in card.tags">#{{ tag.name }}</a>
                             </div>
                         </footer>
                     </article>
@@ -190,7 +190,7 @@
 
             <div class="row">
                 <div class="col-xs-12 col-md-6 col-lg-4" ng-repeat="card in cards.all">
-                    <article class="card">
+                    <article class="card" ng-class="{'praticas-certificadas': card.is_certified, 'praticas-independentes': !card.is_certified}">
                         <header>
                             <div class="card-image" style="background-image: url('{{card.image_gallery[0].image}}')"></div>
                             <a class="category" ng-click="filter.audience = card.audience.name">{{ card.audience.name }}</a>
@@ -203,7 +203,7 @@
                         <footer>
                             <span class="action liked">{{ card.likes }} curtiram</span>
                             <div class="tags">
-                                <a class="tag" ng-click="insert_tag(tag)" ng-repeat="tag in card.tags">#{{ tag.name }}</a>
+                                <a class="tag" ng-click="insert_tag(tag.name)" ng-repeat="tag in card.tags">#{{ tag.name }}</a>
                             </div>
                         </footer>
                     </article>
@@ -229,7 +229,7 @@
                     <footer>
                         <span class="action liked">{{ card.likes }} curtiram</span>
                         <div class="tags">
-                            <a class="tag" ng-click="insert_tag(tag)" ng-repeat="tag in card.tags">#{{ tag.name }}</a>
+                            <a class="tag" ng-click="insert_tag(tag.name)" ng-repeat="tag in card.tags">#{{ tag.name }}</a>
                         </div>
                     </footer>
                 </article>
