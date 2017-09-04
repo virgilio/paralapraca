@@ -67,7 +67,7 @@
             <div ng-show="card.tags != []">
                 <h5>Tags</h5>
                 <div class="tags">
-                    <a class="tag" ng-repeat="tag in card.tags">{{ tag.name }}</a>
+                    <a class="tag" ng-repeat="tag in card.tags">#{{ tag.name }}</a>
                 </div>
             </div>
         </div>
@@ -84,8 +84,8 @@
         <p>{{ card.author.bio }}</p>
 
         <div class="actions">
-            <a class="action liked" ng-if="card.user_liked" ng-click="unlike()"><span>Gostei</span></a>
-            <a class="action liked" ng-if="!card.user_liked" ng-click="like()"><span>Gostar</span></a>
+            <a class="action liked" ng-show="card.user_liked" ng-click="unlike()"><span>Gostei</span></a>
+            <a class="action liked" ng-show="!card.user_liked" ng-click="like()"><span>Gostar</span></a>
             <span class="action"><ng-pluralize count="card.likes" when="{'0': '0 gostou', '1': '1 gostou', 'other': '{{ card.likes }} gostaram'}"></span>
         </div>
     </div>
