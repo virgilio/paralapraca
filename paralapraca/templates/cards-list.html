@@ -86,7 +86,7 @@
                         Práticas validadas
                         <span>{{ cards.certified.length }} prática<span ng-show="cards.certified.length != 1">s</span></span>
                     </h3>
-                    <nav class="cards-pagination pull-left" ng-show="cards.certified.length <= 3">
+                    <nav class="cards-pagination pull-left" ng-show="cards.certified.length > 3">
                         <ul>
                             <li class="prev-button" ng-click="certified_slides_down()">
                                 <span class="sr-only">anterior</span>
@@ -137,7 +137,7 @@
                         Práticas independentes
                         <span>{{ cards.community.length }} prática<span ng-show="cards.community.length != 1">s</span></span>
                     </h3>
-                    <nav class="cards-pagination pull-left" ng-show="cards.community.length <= 3">
+                    <nav class="cards-pagination pull-left" ng-show="cards.community.length > 3">
                         <ul>
                             <li class="prev-button" ng-click="community_slides_down()">
                                 <span class="sr-only">anterior</span>
