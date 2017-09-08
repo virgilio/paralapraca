@@ -1,5 +1,115 @@
 {% verbatim %}
-<div>
-	Criar card... {{message}}
-<div>
+<section class="cards card-page praticas-independentes widget container-fluid">
+    <header class="widget-topbar line one-column">
+        <div class="column">
+            <div class="pull-right">
+				<a class="btn btn-sm btn-primary edit" ng-click="create_card()" ng-show="!editing_mode">criar prática</a>				
+                <a class="btn btn-sm btn-primary edit" href="#" ng-show="editing_mode">salvar prática</a>
+                <a class="btn btn-sm btn-danger delete" href="#" ng-show="editing_mode">apagar prática</a>
+            </div>
+        </div>
+    </header>
+
+    <div class="card-page-content">
+        <header class="card-page-header-edit">
+            <form class="cards-filters-options row">
+                <div class="form-group col-xs-12 col-md-6 col-lg-3">
+                    <label>Público</label>
+                    <select class="form-control" ng-model="card.audience.id">
+                        <option ng-repeat="audience in audiences" ng-value="audience.id">{{ audience.name }}</option>
+                    </select>
+                </div>
+                <div class="form-group col-xs-12 col-md-6 col-lg-3">
+                    <label>Eixo</label>
+                    <select class="form-control" ng-model="card.axis.id">
+                        <option ng-repeat="axis in axes" ng-value="axis.id">{{ axis.name }}</option>
+                    </select>
+                </div>
+                <div class="form-group col-xs-12 col-md-6 col-lg-3">
+                    <label>Tags</label>
+					<ui-select multiple ng-model="card.tags" tagging="new_tag" title="Selecione uma tag...">
+						<ui-select-match placeholder="Selecione uma tag...">#{{ $item.name}}</ui-select-match>
+						<ui-select-choices repeat="tag in tags" group-by="">
+							<div>{{ tag.name }}</div>
+						</ui-select-choices>
+					</ui-select>
+                </div>
+            </form>
+
+            <div class="editable-title">
+                <input type="text" placeholder="Título" ng-model="card.title" maxlength="70">
+            </div>
+            <p class="certificada">Sua prática é independente</p>
+        </header>
+        
+        <div class="editable-title">
+            <input type="text" placeholder="Chamada para proposta" ng-model="card.lead" maxlength="70">
+        </div>
+
+        <div class="row">
+            <div class="col-sm-12 col-md-6 col-lg-4">
+				<div class="editable editable-text-box" ng-bind-html="card.text || 'Clique para editar'" ng-click="show_text_editor = true"></div>
+				<div ng-show="show_text_editor">
+					<textarea ui-tinymce="tinymceOptions" ng-model="card.text"></textarea>
+					<div class="btn btn-default save" ng-click="show_text_editor = false">Salvar</div>
+				</div>
+
+                <h5 class="subtitle">Você vai precisar de:</h5>
+				<div class="editable editable-text-box" ng-bind-html="card.you_will_need || 'Clique para editar'" ng-click="show_needed_editor = true"></div>
+				<div ng-show="show_needed_editor">
+					<textarea ui-tinymce="tinymceOptions" ng-model="card.you_will_need"></textarea>
+					<div class="btn btn-default save" ng-click="show_needed_editor = false">Salvar</div>
+				</div>
+            </div>
+            <div class="col-sm-12 col-md-6 col-lg-8">
+                galeria/video
+            </div>
+        </div>
+        
+        <h5 class="subtitle">Desenvolvimento</h5>
+    
+		<div class="editable editable-text-box" ng-bind-html="card.development || 'Clique para editar'" ng-click="show_development_editor = true"></div>
+		<div ng-show="show_development_editor">
+			<textarea ui-tinymce="tinymceOptions" ng-model="card.development"></textarea>
+			<div class="btn btn-default save" ng-click="show_development_editor = false">Salvar</div>
+		</div>
+
+        <div class="row">
+            <div class="col-sm-12 col-md-6 col-lg-8">
+                <h5 class="subtitle">Para saber mais</h5>
+				<div class="editable editable-text-box" ng-bind-html="card.know_more || 'Clique para editar'" ng-click="show_know_more_editor = true"></div>
+				<div ng-show="show_know_more_editor">
+					<textarea ui-tinymce="tinymceOptions" ng-model="card.know_more"></textarea>
+					<div class="btn btn-default save" ng-click="show_know_more_editor = false">Salvar</div>
+				</div>
+    
+                <h5 class="subtitle">Autoria <div class="btn btn-sm add" ng-click="add_author()">Adicionar pessoa</div></h5>
+				
+				<div ng-repeat="author in card.authors">			
+					<div class="editable-title">
+						<input type="text" placeholder="Nome" ng-model="author.author_name">
+					</div>
+		
+					<div class="editable editable-text-box">
+						<textarea ui-tinymce="tinymceOptions" ng-model="author.author_description"></textarea>
+					</div>
+				</div>
+            </div>
+    
+            <div class="col-sm-12 col-md-6 col-lg-4">
+                <div class="sidebar">
+                    <div class="box">
+                        <h5>Dicas</h5>
+						<div class="editable editable-text-box" ng-bind-html="card.hint || 'Clique para editar'" ng-click="show_hint_editor = true"></div>
+						<div ng-show="show_hint_editor">
+							<textarea ui-tinymce="tinymceOptions" ng-model="card.hint"></textarea>
+							<div class="btn btn-default save" ng-click="show_hint_editor = false">Salvar</div>
+						</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</section>
 {% endverbatim %}
