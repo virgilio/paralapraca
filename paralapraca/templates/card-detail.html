@@ -6,8 +6,8 @@
                 <h2 class="title">Assim se faz &gt; {{ card.axis.name }} &gt; {{ card.title }}</h2>
             </div>
             <div class="pull-right" ng-show="card.editable">
-                <a class="btn btn-sm btn-success edit" href="#">editar prática</a>
-                <a class="btn btn-sm btn-danger delete" href="#">deletar prática</a>
+                <a class="btn btn-sm btn-success edit" href="#!/{{card_id}}/edit">editar prática</a>
+                <a class="btn btn-sm btn-danger delete" ng-click="delete_card()">deletar prática</a>
             </div>
         </div>
 
@@ -67,8 +67,8 @@
 
         <h5 class="subtitle">Autoria</h5>
         <div ng-repeat="author in card.authors">
-            <h6 class="author">{{ author.name }}</h6>
-            <span ng-bind-html="author.description"></span>
+            <h6 class="author">{{ author.author_name }}</h6>
+            <span ng-bind-html="author.author_description"></span>
         </div> 
 
         <div class="actions">
