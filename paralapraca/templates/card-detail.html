@@ -32,36 +32,24 @@
 
         <div ng-show="card.title">
             <h4 class="title">Chamada para a proposta</h4>
-            {{ card.title }}
+            <span ng-bind-html="card.text"></span>
         </div>
 
         <div ng-show="card.you_will_need">
             <h5 class="subtitle">Você vai precisar de:</h5>
-            {{ card.you_will_need }}
-            <!--<ul>
-                <li>Lorem ipsum dolor sit amet</li>
-                <li>Lorem ipsum dolor sit amet</li>
-                <li>Lorem ipsum dolor sit amet</li>
-                <li>Lorem ipsum dolor sit amet</li>
-            </ul>-->
+            <span ng-bind-html="card.you_will_need"></span>
         </div>
 
         <div ng-show="card.development">
             <h5 class="subtitle">Desenvolvimento</h5>
-            {{ card.development }}
-            <!--<ol>
-                <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam sit amet rhoncus risus. Fusce pharetra non odio ac pretium.</li>
-                <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam sit amet rhoncus risus. Fusce pharetra non odio ac pretium.</li>
-                <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam sit amet rhoncus risus. Fusce pharetra non odio ac pretium.</li>
-                <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam sit amet rhoncus risus. Fusce pharetra non odio ac pretium.</li>
-            </ol>-->
+            <span ng-bind-html="card.development"></span>
         </div>
 
         <div class="sidebar">
 
             <div class="box" ng-show="card.hint">
                 <h5>Dicas</h5>
-                <p>{{ card.hint }}</p>
+                <span ng-bind-html="card.hint"></span>
             </div>
 
             <div ng-show="card.tags != []">
@@ -74,14 +62,14 @@
 
         <div ng-show="card.know_more">
             <h5 class="subtitle">Para saber mais</h5>
-            {{ card.know_more }}
+            <span ng-bind-html="card.know_more"></span>
         </div>
 
         <h5 class="subtitle">Autoria</h5>
-        
-        <h6 class="author">{{ card.author.first_name }} {{ card.author.last_name }}</h6>
-
-        <p>{{ card.author.bio }}</p>
+        <div ng-repeat="author in card.authors">
+            <h6 class="author">{{ author.name }}</h6>
+            <span ng-bind-html="author.description"></span>
+        </div> 
 
         <div class="actions">
             <a class="action liked" ng-show="card.user_liked" ng-click="unlike()"><span>Gostei</span></a>
