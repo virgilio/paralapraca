@@ -281,7 +281,7 @@
 .card-page {
     background: rgba(#fff,0.3);
     .widget-topbar.breadcrumb {
-        margin: 0px -15px 15px -15px !important; 
+        margin: 0px -15px 0px -15px !important; 
         .line {
             border-bottom: 0;
             .author {
@@ -319,10 +319,67 @@
         float: none;
         margin: 0 10px;
     }
-
+    .card-page-content {
+        .title {
+            color: #000;
+            font-size: 36px;
+            margin-top: 0;
+        }
+        .subtitle {
+            color: $orange;
+            font-size: 20px;
+            margin: 35px 0 5px;
+        }
+        .author {
+            font-family: $font-family-sans-serif;
+            font-size: 16px;
+            font-weight: bold;
+            margin: 10px 0 10px;
+        }
+        .actions {
+            margin-top: 20px;
+        }
+        .sidebar {
+            .box {
+                background-color: $orange;
+                color: #fff;
+                margin-bottom: 40px;
+                padding: 20px;
+                h5 {
+                    color: #fff;
+                }
+            }
+            h5 {
+                color: $orange;
+                font-family: $font-family-sans-serif;
+                font-size: 20px;
+                font-weight: bold;
+                margin: 0 0 5px;
+            }
+            .tags {
+                margin-top: 10px;
+            }
+        }
+    }
     &.praticas-certificadas {
         .page-title, .action {
             color: $purple;
+        }
+        .subtitle {
+            color: $purple;
+        }
+        .sidebar {
+            .box {
+                background-color: $purple;
+            }
+            h5 {
+                color: $purple;
+            }
+            .tag {
+                border: 1px solid $purple;
+                color: $purple;
+                @include button-hover($purple,#fff,transparent,$purple);    
+            }
         }
     }
     &.praticas-independentes {
