@@ -64,7 +64,28 @@
 				</div>
             </div>
             <div class="col-sm-12 col-md-6 col-lg-8">
-                galeria/video
+                <button class="btn btn-xs btn-primary add-image" ngf-select="show_video_form = false; upload_image($file)" ngf-multiple="false">adicionar imagem</button>
+                <button class="btn btn-xs btn-primary add-video" ng-click="show_video_form = true">adicionar vídeo</button>
+
+                <div ng-show="show_video_form">
+                    <input type="text" ng-model="video_url">
+                    <button class="btn btn-xs edit" ng-click="embed_video(); show_video_form = false">inserir vídeo</button>
+                </div>
+
+                <p>
+                    <a ng-repeat="image in card.image_gallery" ng-click="select_image($index)"><i class="fa fa-picture-o">{{ 1 + $index }}</i></a>
+                    <a ng-repeat="video in card.youtube_embeds" ng-click="select_video($index)"><i class="fa fa-film">{{ card.image_gallery.length + $index }}</i></a>
+                </p>
+
+                <div ng-show="selected_image">
+                    <img class="img-thumbnail" ng-src="{{ selected_image.image }}">
+                    <button class="btn btn-warning" ng-click="remove_image(selected_image_index)"><i class="fa fa-trash-o"></i></button>
+                </div>
+
+                <div ng-repeat="video in card.youtube_embeds">
+                    <iframe width="560" height="315" ng-src="https://www.youtube.com/embed/{{video.video_id}}?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
+                    <button class="btn btn-warning" ng-click="remove_video($index)"><i class="fa fa-trash-o"></i></button>
+                </div>
             </div>
         </div>
         
@@ -80,7 +101,7 @@
         <div class="row">
             <div class="col-sm-12 col-md-6 col-lg-8">
                 <h5 class="subtitle">Para saber mais</h5>
-                <div class="editable editable-text-box" ng-bind-html="card.kow_more || 'Clique para editar'" ng-click="know_more_backup = card.know_more; show_know_more_editor = true"></div>
+                <div class="editable editable-text-box" ng-bind-html="card.know_more || 'Clique para editar'" ng-click="know_more_backup = card.know_more; show_know_more_editor = true"></div>
                 <div ng-show="show_know_more_editor">
                     <textarea ui-tinymce="tinymceOptions" ng-model="card.know_more"></textarea>
                     <div class="btn btn-success save" ng-click="show_know_more_editor = false">Feito</div>
