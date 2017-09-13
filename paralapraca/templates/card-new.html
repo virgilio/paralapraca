@@ -73,8 +73,8 @@
                 </div>
 
                 <p>
-                    <a ng-repeat="image in card.image_gallery" ng-click="select_image($index)"><i class="fa fa-picture-o">{{ 1 + $index }}</i></a>
-                    <a ng-repeat="video in card.youtube_embeds" ng-click="select_video($index)"><i class="fa fa-film">{{ card.image_gallery.length + $index }}</i></a>
+                    <a ng-repeat="image in card.image_gallery" ng-click="select_image($index)"><i class="fa fa-picture-o">{{ $index + 1 }}</i></a>
+                    <a ng-repeat="video in card.youtube_embeds" ng-click="select_video($index)"><i class="fa fa-film">{{ $index + card.image_gallery.length + 1 }}</i></a>
                 </p>
 
                 <div ng-show="selected_image">
@@ -83,7 +83,8 @@
                 </div>
 
                 <div ng-repeat="video in card.youtube_embeds">
-                    <iframe width="560" height="315" ng-src="https://www.youtube.com/embed/{{video.video_id}}?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
+                    <!--<iframe width="560" height="315" ng-src="https://www.youtube.com/embed/{{video.video_id}}?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>-->
+                    <p>{{ video.video_id}}</p>
                     <button class="btn btn-warning" ng-click="remove_video($index)"><i class="fa fa-trash-o"></i></button>
                 </div>
             </div>
