@@ -15,13 +15,13 @@
             <form class="cards-filters-options row">
                 <div class="form-group col-xs-12 col-md-6 col-lg-3">
                     <label>Público <span class="help-text">(campo obrigatório)</span></label>
-                    <select class="form-control" ng-model="card.audience.id">
+                    <select class="form-control" ng-model="card.audience.id" required>
                         <option ng-repeat="audience in audiences track by audience.id" ng-value="audience.id">{{ audience.name }}</option>
                     </select>
                 </div>
                 <div class="form-group col-xs-12 col-md-6 col-lg-3">
                     <label>Eixo <span class="help-text">(campo obrigatório)</span></label>
-                    <select class="form-control" ng-model="card.axis.id">
+                    <select class="form-control" ng-model="card.axis.id" required>
                         <option ng-repeat="axis in axes track by axis.id" ng-value="axis.id">{{ axis.name }}</option>
                     </select>
                 </div>
@@ -37,7 +37,7 @@
             </form>
 
             <div class="editable-title">
-                <input type="text" placeholder="Título (campo obrigatório)" ng-model="card.title" maxlength="70">
+                <input type="text" placeholder="Título (campo obrigatório)" ng-model="card.title" maxlength="70" required>
             </div>
             <p class="certificada">Sua prática é independente</p>
         </header>
