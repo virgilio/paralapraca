@@ -86,7 +86,46 @@ ng-app="my-courses"
                     </div>
                 </div>
                 <div class="col-sm-12 col-md-6 col-lg-8">
-                    galeria/video
+                    <div class="panel panel-default">
+                        <div class="panel-heading clearfix">
+                            <button class="btn btn-primary">1</button> <!-- ativo -->
+                            <button class="btn btn-default">2</button> <!-- não ativo -->
+                            <button class="btn btn btn-success">+</button>
+                        </div>
+                        <div class="panel-body">
+                            <div class="question textleft">
+                                <div class="editable-title">
+                                    <input type="text" ng-model="currentActivity.data.question" placeholder="Título da atividade" class="ng-pristine ng-untouched ng-valid ng-empty">
+                                </div>
+                                <button class="btn btn-danger" ng-click="removeCurrentActivity()"><i class="fa fa-trash-o"></i></button>
+                            </div>
+                            <section class="thumbnail">
+                                <div class="row" ng-show="!currentActivity.image_show">
+                                    <div class="add-thumbnail col-sm-12 col-lg-12 textcenter">
+                                        <div class="centered">
+                                            <i class="fa fa-picture-o fa-4x"></i>
+                                            <h1>Imagem</h1>
+                                            <p>(largura mínima: 845px)</p>
+                                            <input type="file" ngf-select="" ng-model="image_up" name="file" accept="image/*" ngf-max-size="20MB" required="" ngf-model-invalid="errorFile" class="ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required">
+
+                                            <button class="btn btn-sm btn-success add">Adicionar</button>
+                                            <!--<button class="btn btn-sm btn-danger delete">Cancelar</button>-->
+                                        </div>
+                                    </div>
+
+                                    <!--
+                                    
+                                        alterar imagem
+
+                                    <div class="centered">
+                                        <img src="http://placehold.it/300x150" class="img-responsive">
+
+                                        <button class="btn-edit-thumbnail btn btn-sm btn-primary edit">Alterar imagem</button>
+                                    </div> -->
+                                </div>
+                            </section>
+                        </div>
+                    </div>
                 </div>
             </div>
             
