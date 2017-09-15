@@ -69,12 +69,6 @@
                 <a class="tag active" ng-click="filter.axis = ''" ng-hide="filter.axis == ''">{{ filter.axis }}</a>
                 <a class="tag active" ng-repeat="tag in filter.tags" ng-click="remove_tag($index)">#{{ tag }}</a>
             </div>
-            <h3 class="results-info-title">
-                <span ng-show="cards.all.length == 0">Não foram encontrados resultados</span>
-                <span ng-show="cards.all.length == 1">Foi encontrado <b>1</b> resultado</span>
-                <span ng-show="cards.all.length > 1">Foram encontrados <b>{{ cards.all.length }}</b> resultados</span>
-                <span ng-hide="filter.keyword === ''"> para <b>{{ filter.keyword }}</b></span>.
-            </h3>
         </div>
     </section>
 
@@ -215,6 +209,12 @@
     </div>
 
     <div ng-show="!blank_filters">
+        <h3 class="results-info-title">
+            <span ng-show="cards.all.length == 0">Não foram encontrados resultados.</span>
+            <span ng-show="cards.all.length == 1">Foi encontrado <b>1</b> resultado.</span>
+            <span ng-show="cards.all.length > 1">Foram encontrados <b>{{ cards.all.length }}</b> resultados.</span>
+        </h3>
+
         <div class="row" ng-show="cards.all.length > 0">
             <div class="col-xs-12 col-md-6 col-lg-4" ng-repeat="card in cards.all">
                 <article class="card" ng-class="{'praticas-certificadas': card.is_certified, 'praticas-independentes': !card.is_certified}">
