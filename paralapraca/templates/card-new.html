@@ -95,16 +95,16 @@
             </div>
         </div>
 
+        <h5 class="subtitle">Desenvolvimento</h5>                    
+        <div class="editable editable-text-box" ng-bind-html="card.development || 'Clique para editar'" ng-click="development_backup = card.development; show_development_editor = true"></div>
+        <div ng-show="show_development_editor">
+            <textarea ui-tinymce="tinymceOptions" ng-model="card.development"></textarea>
+            <div class="btn btn-success save" ng-click="show_development_editor = false">Feito</div>
+            <div class="btn btn-danger delete" ng-click="card.development = development_backup; show_development_editor = false">Cancelar</div>
+        </div>
+
         <div class="row">
             <div class="col-sm-12 col-md-6 col-lg-8">
-
-                    <h5 class="subtitle">Desenvolvimento</h5>                    
-                    <div class="editable editable-text-box" ng-bind-html="card.development || 'Clique para editar'" ng-click="development_backup = card.development; show_development_editor = true"></div>
-                    <div ng-show="show_development_editor">
-                        <textarea ui-tinymce="tinymceOptions" ng-model="card.development"></textarea>
-                        <div class="btn btn-success save" ng-click="show_development_editor = false">Feito</div>
-                        <div class="btn btn-danger delete" ng-click="card.development = development_backup; show_development_editor = false">Cancelar</div>
-                    </div>
 
                 <h5 class="subtitle">Para saber mais</h5>
                 <div class="editable editable-text-box" ng-bind-html="card.know_more || 'Clique para editar'" ng-click="know_more_backup = card.know_more; show_know_more_editor = true"></div>
