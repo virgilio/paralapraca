@@ -1,5 +1,5 @@
 {% verbatim %}
-<section class="cards card-page praticas-independentes widget container-fluid">
+<section class="cards card-page card-edit widget container-fluid" ng-class="{'praticas-certificadas': card.is_certified, 'praticas-independentes': !card.is_certified}">
     <header class="widget-topbar line one-column">
         <div class="column">
             <div class="pull-right">
@@ -36,14 +36,15 @@
                 </div>
             </form>
 
-            <div class="editable-title">
-                <input type="text" placeholder="Título (campo obrigatório)" ng-model="card.title" maxlength="70" required>
+            <div class="editable-title col-sm-12 col-lg-9">
+                <input type="text" class="title" placeholder="Título (campo obrigatório)" ng-model="card.title" maxlength="70" required>
             </div>
-            <p class="certificada">Sua prática é independente</p>
+            <p ng-show="card.is_certified" class="tipo-pratica col-sm-12">Sua prática foi certificada pela Avante.</p>
+            <p ng-show="!card.is_certified" class="tipo-pratica col-sm-12">Sua prática é independente.</p>
         </header>
         
-        <div class="editable-title">
-            <input type="text" placeholder="Chamada para proposta" ng-model="card.lead" maxlength="70">
+        <div class="editable-title col-sm-12 col-lg-9">
+            <input type="text" class="subtitle" placeholder="Chamada para proposta" ng-model="card.lead" maxlength="70">
         </div>
 
         <div class="row">
@@ -89,18 +90,18 @@
                 </div>
             </div>
         </div>
-        
-        <h5 class="subtitle">Desenvolvimento</h5>
-    
-        <div class="editable editable-text-box" ng-bind-html="card.development || 'Clique para editar'" ng-click="development_backup = card.development; show_development_editor = true"></div>
-        <div ng-show="show_development_editor">
-            <textarea ui-tinymce="tinymceOptions" ng-model="card.development"></textarea>
-            <div class="btn btn-success save" ng-click="show_development_editor = false">Feito</div>
-            <div class="btn btn-danger delete" ng-click="card.development = development_backup; show_development_editor = false">Cancelar</div>
-        </div>
 
         <div class="row">
             <div class="col-sm-12 col-md-6 col-lg-8">
+
+                    <h5 class="subtitle">Desenvolvimento</h5>                    
+                    <div class="editable editable-text-box" ng-bind-html="card.development || 'Clique para editar'" ng-click="development_backup = card.development; show_development_editor = true"></div>
+                    <div ng-show="show_development_editor">
+                        <textarea ui-tinymce="tinymceOptions" ng-model="card.development"></textarea>
+                        <div class="btn btn-success save" ng-click="show_development_editor = false">Feito</div>
+                        <div class="btn btn-danger delete" ng-click="card.development = development_backup; show_development_editor = false">Cancelar</div>
+                    </div>
+
                 <h5 class="subtitle">Para saber mais</h5>
                 <div class="editable editable-text-box" ng-bind-html="card.know_more || 'Clique para editar'" ng-click="know_more_backup = card.know_more; show_know_more_editor = true"></div>
                 <div ng-show="show_know_more_editor">
@@ -112,12 +113,9 @@
                 <h5 class="subtitle">Autoria <div class="btn btn-sm add" ng-click="add_author()">Adicionar pessoa</div></h5>
 				<div ng-repeat="author in card.authors">			
 					<div class="editable-title">
-						<input type="text" placeholder="Nome" ng-model="author.author_name">
+						<input type="text" class="author" placeholder="Nome" ng-model="author.author_name">
 					</div>
-		
-					<div class="editable editable-text-box">
-						<textarea ui-tinymce="tinymceOptions" ng-model="author.author_description"></textarea>
-					</div>
+					<textarea ui-tinymce="tinymceOptions" ng-model="author.author_description"></textarea>
 				</div>
             </div>
     
