@@ -39,10 +39,11 @@
             <div class="editable-title col-sm-12 col-lg-9">
                 <input type="text" class="title" placeholder="Título (campo obrigatório)" ng-model="card.title" maxlength="70" required>
             </div>
+
             <p class="tipo-pratica col-sm-12">
-                <input type="checkbox" ng-show="card.certifiable" ng-model="card.is_certified" ng-checked="card.is_certified">
                 <span ng-show="card.is_certified">Sua prática foi certificada pela Avante.</span>
                 <span ng-show="!card.is_certified">Sua prática é independente.</span>
+                <span ng-show="card.certifiable"><br/><input type="checkbox" ng-model="card.is_certified" ng-checked="card.is_certified"> Certificar prática</span>
             </p>
         </header>
         
