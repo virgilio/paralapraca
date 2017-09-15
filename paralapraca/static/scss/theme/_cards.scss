@@ -404,3 +404,118 @@
         }
     }
 }
+
+.card-edit {
+    .cards-filters-options {
+        .form-group {
+            margin-bottom: 20px;
+        }
+    }
+    .editable-title {
+        background: #fff;
+        .title {
+            font-size: 48px;
+            line-height: 0.1;
+        }
+        .subtitle {
+            color: #000;
+            font-family: $font-family-serif;
+            font-size: 36px;
+            line-height: 0.1;
+            margin: 0;
+            &::-webkit-input-placeholder {
+                color: #000;
+            }
+            &::-moz-placeholder {
+                color: #000;
+            }
+            &:-ms-input-placeholder {
+                color: #000;
+            }
+            &:-moz-placeholder {
+                color: #000;
+            }
+        }
+        .author {
+            font-family: $font-family-sans-serif;
+            font-size: 16px;
+            margin: 0;
+        }
+    }
+    .editable-text-box {
+        background: #fff;
+        margin-top: 15px;
+    }
+    .tipo-pratica {
+        font-size: 14px;
+        font-weight: bold;
+        margin: 20px 0;
+        padding: 0;
+        &:before {
+            border-radius: 100%;
+            content: '';
+            height: 15px;
+            width: 15px;
+            display: inline-block;
+            margin-right: 10px;
+            vertical-align: sub;
+        }
+    }
+    .subtitle + .editable-title, .editable-text-box + .editable-title {
+        margin-top: 15px;
+    }
+    .card-page-content {
+        padding-bottom: 20px;
+    }
+    &.praticas-independentes {
+        .editable-title {
+            .title {
+                color: $orange;
+                &::-webkit-input-placeholder {
+                    color: $orange;
+                }
+                &::-moz-placeholder {
+                    color: $orange;
+                }
+                &:-ms-input-placeholder {
+                    color: $orange;
+                }
+                &:-moz-placeholder {
+                    color: $orange;
+                }
+            }
+        }
+        .tipo-pratica {
+            &:before {
+                background: $orange;
+            }
+        }
+    }
+    &.praticas-certificadas {
+        .widget-topbar {
+            background-color: $purple;
+        }
+        .editable-title {
+            .title {
+                color: $purple;
+                &::-webkit-input-placeholder {
+                    color: $purple;
+                }
+                &::-moz-placeholder {
+                    color: $purple;
+                }
+                &:-ms-input-placeholder {
+                    color: $purple;
+                }
+                &:-moz-placeholder {
+                    color: $purple;
+                }
+            }
+        }
+        .tipo-pratica {
+            &:before {
+                background: $purple;
+            }
+        }
+    }
+}
