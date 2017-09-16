@@ -69,7 +69,7 @@
 				</div>
             </div>
             <div class="col-sm-12 col-md-6 col-lg-8">
-                <button class="btn btn-xs btn-primary add-image" ngf-select="show_video_form = false; upload_image($file)" ngf-multiple="false">adicionar imagem</button>
+                <!--<button class="btn btn-xs btn-primary add-image" ngf-select="show_video_form = false; upload_image($file)" ngf-multiple="false">adicionar imagem</button>
                 <button class="btn btn-xs btn-primary add-video" ng-click="show_video_form = true">adicionar vídeo</button>
 
                 <div ng-show="show_video_form">
@@ -88,23 +88,64 @@
                 </div>
 
                 <div ng-repeat="video in card.youtube_embeds">
-                    <!--<iframe width="560" height="315" ng-src="https://www.youtube.com/embed/{{video.video_id}}?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>-->
+                    <!-<iframe width="560" height="315" ng-src="https://www.youtube.com/embed/{{video.video_id}}?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>->
                     <p>{{ video.video_id}}</p>
                     <button class="btn btn-warning" ng-click="remove_video($index)"><i class="fa fa-trash-o"></i></button>
+                </div>-->
+
+                <div class="panel panel-default">
+                    <div class="panel-heading clearfix">
+                        <button class="btn btn-primary">1</button> <!-- ativo -->
+                        <button class="btn btn-default">2</button> <!-- não ativo -->
+                        <button class="btn btn btn-success">+</button>
+                    </div>
+                    <div class="panel-body">
+                        <div class="question textleft">
+                            <div class="editable-title">
+                                <input type="text" ng-model="currentActivity.data.question" placeholder="Título da atividade" class="ng-pristine ng-untouched ng-valid ng-empty">
+                            </div>
+                            <button class="btn btn-danger" ng-click="removeCurrentActivity()"><i class="fa fa-trash-o"></i></button>
+                        </div>
+                        <section class="thumbnail">
+                            <div class="row" ng-show="!currentActivity.image_show">
+                                <div class="add-thumbnail col-sm-12 col-lg-12 textcenter">
+                                    <div class="centered">
+                                        <i class="fa fa-picture-o fa-4x"></i>
+                                        <h1>Imagem</h1>
+                                        <p>(largura mínima: 845px)</p>
+                                        <input type="file" ngf-select="" ng-model="image_up" name="file" accept="image/*" ngf-max-size="20MB" required="" ngf-model-invalid="errorFile" class="ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required">
+
+                                        <button class="btn btn-sm btn-success add">Adicionar</button>
+                                        <!--<button class="btn btn-sm btn-danger delete">Cancelar</button>-->
+                                    </div>
+                                </div>
+
+                                <!--
+                                
+                                    alterar imagem
+
+                                <div class="centered">
+                                    <img src="http://placehold.it/300x150" class="img-responsive">
+
+                                    <button class="btn-edit-thumbnail btn btn-sm btn-primary edit">Alterar imagem</button>
+                                </div> -->
+                            </div>
+                        </section>
+                    </div>
                 </div>
             </div>
         </div>
 
-        <h5 class="subtitle">Desenvolvimento</h5>                    
-        <div class="editable editable-text-box" ng-bind-html="card.development || 'Clique para editar'" ng-click="development_backup = card.development; show_development_editor = true"></div>
-        <div ng-show="show_development_editor">
-            <textarea ui-tinymce="tinymceOptions" ng-model="card.development"></textarea>
-            <div class="btn btn-success save" ng-click="show_development_editor = false">Feito</div>
-            <div class="btn btn-danger delete" ng-click="card.development = development_backup; show_development_editor = false">Cancelar</div>
-        </div>
-
         <div class="row">
             <div class="col-sm-12 col-md-6 col-lg-8">
+
+                <h5 class="subtitle">Desenvolvimento</h5>                    
+                <div class="editable editable-text-box" ng-bind-html="card.development || 'Clique para editar'" ng-click="development_backup = card.development; show_development_editor = true"></div>
+                <div ng-show="show_development_editor">
+                    <textarea ui-tinymce="tinymceOptions" ng-model="card.development"></textarea>
+                    <div class="btn btn-success save" ng-click="show_development_editor = false">Feito</div>
+                    <div class="btn btn-danger delete" ng-click="card.development = development_backup; show_development_editor = false">Cancelar</div>
+                </div>
 
                 <h5 class="subtitle">Para saber mais</h5>
                 <div class="editable editable-text-box" ng-bind-html="card.know_more || 'Clique para editar'" ng-click="know_more_backup = card.know_more; show_know_more_editor = true"></div>
