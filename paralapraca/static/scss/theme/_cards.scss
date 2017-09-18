@@ -467,6 +467,40 @@
     .card-page-content {
         padding-bottom: 20px;
     }
+    .panel-default {
+        margin-top: 15px;
+        .question {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px; 
+            .editable-title {
+                background: lighten($gray,60%);
+                flex-grow: 0.9;
+            }
+        }
+        .centered {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 30px;
+            h1 {
+                margin: 0;
+            }
+            h1, .fa {
+                color: $purple;
+            }
+            input {
+                margin: 30px 0;
+            }
+            .btn.add {
+                margin: 0;
+            }
+            .btn-edit-thumbnail {
+                margin-top: 30px;
+            }
+        }
+    }
     &.praticas-independentes {
         .editable-title {
             .title {
