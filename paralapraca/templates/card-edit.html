@@ -1,185 +1,119 @@
-{% extends 'base.html' %}
-{% load static %}
-{% load i18n %}
-{% load is_enrolled %}
-
-{% block js %} {{block.super}}
-<script type="text/javascript" src="{% static 'js/my-courses/app.js' %}"></script>
-<script type="text/javascript" src="{% static 'js/my-courses/controllers.js' %}"></script>
-<script type="text/javascript" src="{% static 'js/my-courses/services.js' %}"></script>
-<script type="text/javascript" src="{% static 'js/my-courses/filters.js' %}"></script>
-<script type="text/javascript" src="{% static 'js/factories/timtec-models.js' %}"></script>
-<script type="text/javascript" src="{% static 'js/directives/fixedBar.js' %}"></script>
-<script type="text/javascript" src="{% static 'js/directives/file.js' %}"></script>
-<script>window.user_id = {{ user.pk }};</script>
-{% endblock %}
-
-{% block wrapper_classes %}
-wrapper-courses
-{% endblock %}
-
-{% block body_attrs %}
-ng-app="my-courses"
-{% endblock %}
-
-
-{% block content %}
-    <section class="cards card-page card-edit praticas-certificadas widget container-fluid">
-        <!-- .praticas-certificadas ou .praticas-certificadas
-         para mudar a cor dos elementos da página -->
-        <header class="widget-topbar line one-column">
-            <div class="column">
-                <div class="pull-right">
-                    <a class="btn btn-sm btn-primary edit" href="#">salvar prática</a>
-                    <a class="btn btn-sm btn-danger delete" href="#">apagar prática</a>
-                </div>
+{% verbatim %}
+<section class="cards card-page praticas-independentes widget container-fluid">
+    <header class="widget-topbar line one-column">
+        <div class="column">
+            <div class="pull-right">
+                <a class="btn btn-sm btn-primary edit" href="#">salvar prática</a>
+                <a class="btn btn-sm btn-danger delete" href="#">apagar prática</a>
             </div>
+        </div>
+    </header>
+
+    <div class="card-page-content">
+        <header class="card-page-header-edit">
+            <form class="cards-filters-options row">
+                <div class="form-group col-xs-12 col-md-6 col-lg-3">
+                    <label>Público</label>
+                    <select class="form-control">
+                        <option>lorem ipsum</option>
+                    </select>
+                </div>
+                <div class="form-group col-xs-12 col-md-6 col-lg-3">
+                    <label>Eixo</label>
+                    <select class="form-control">
+                        <option>lorem ipsum</option>
+                    </select>
+                </div>
+                <div class="form-group col-xs-12 col-md-6 col-lg-3">
+                    <label>Tags</label>
+                    <select class="form-control">
+                        <option>lorem ipsum</option>
+                    </select>
+                </div>
+            </form>
+
+            <div class="editable-title">
+                <input type="text" placeholder="Assim se curte o outono">
+            </div>
+            <p class="certificada">Sua prática é independente</p>
         </header>
+        
+        <div class="editable-title">
+            <input type="text" placeholder="Chamada para proposta">
+        </div>
 
-        <div class="card-page-content">
-            <header class="card-page-header-edit">
-                <form class="cards-filters-options row">
-                    <div class="form-group col-xs-12 col-md-6 col-lg-3">
-                        <label>Público</label>
-                        <select class="form-control">
-                            <option>lorem ipsum</option>
-                        </select>
-                    </div>
-                    <div class="form-group col-xs-12 col-md-6 col-lg-3">
-                        <label>Eixo</label>
-                        <select class="form-control">
-                            <option>lorem ipsum</option>
-                        </select>
-                    </div>
-                    <div class="form-group col-xs-12 col-md-6 col-lg-3">
-                        <label>Tags</label>
-                        <input type="text" class="form-control">
-                    </div>
-                </form>
-
-                <div class="editable-title col-sm-12 col-lg-9">
-                    <input type="text" placeholder="Assim se curte o outono" class="title">
+        <div class="row">
+            <div class="col-sm-12 col-md-6 col-lg-4">
+                <div class="editable editable-text-box">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam sit amet rhoncus risus. Fusce pharetra non odio ac pretium. Mauris rutrum sed neque et venenatis. Fusce blandit, erat nec malesuada sollicitudin, nunc turpis mattis eros, rhoncus condimentum eros lectus vel ante. Fusce id nulla nec ipsum accumsan tempus. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Fusce in pulvinar ante. Donec bibendum efficitur enim, sed malesuada est eleifend aliquam. Phasellus vel massa nec enim finibus porta. Pellentesque iaculis congue commodo. Etiam ut erat sit amet velit pharetra aliquet. Donec mattis sollicitudin elit vel gravida. Nunc quis ex at nunc rutrum tristique. Phasellus in magna at nisi condimentum consequat. Nam et massa aliquam ligula pellentesque placerat ut tincidunt justo.</p>
                 </div>
 
-                <p class="tipo-pratica col-sm-12">Sua prática é independente.</p>
-                <!--<p class="tipo-pratica">Sua prática foi certificada pela Avante.</p>-->
-            </header>
-            
-            <div class="editable-title col-sm-12 col-lg-9">
-                <input type="text" placeholder="Chamada para proposta" class="subtitle">
-            </div>
-
-            <div class="row">
-                <div class="col-sm-12 col-md-6 col-lg-4">
-                    <div class="editable editable-text-box">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam sit amet rhoncus risus. Fusce pharetra non odio ac pretium. Mauris rutrum sed neque et venenatis. Fusce blandit, erat nec malesuada sollicitudin, nunc turpis mattis eros, rhoncus condimentum eros lectus vel ante. Fusce id nulla nec ipsum accumsan tempus. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Fusce in pulvinar ante. Donec bibendum efficitur enim, sed malesuada est eleifend aliquam. Phasellus vel massa nec enim finibus porta. Pellentesque iaculis congue commodo. Etiam ut erat sit amet velit pharetra aliquet. Donec mattis sollicitudin elit vel gravida. Nunc quis ex at nunc rutrum tristique. Phasellus in magna at nisi condimentum consequat. Nam et massa aliquam ligula pellentesque placerat ut tincidunt justo.</p>
-                    </div>
-
-                    <h5 class="subtitle">Você vai precisar de:</h5>
-                    <div class="editable editable-text-box">
-                        <ul>
-                            <li>Lorem ipsum dolor sit amet</li>
-                            <li>Lorem ipsum dolor sit amet</li>
-                            <li>Lorem ipsum dolor sit amet</li>
-                            <li>Lorem ipsum dolor sit amet</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-sm-12 col-md-6 col-lg-8">
-                    <div class="panel panel-default">
-                        <div class="panel-heading clearfix">
-                            <button class="btn btn-primary">1</button> <!-- ativo -->
-                            <button class="btn btn-default">2</button> <!-- não ativo -->
-                            <button class="btn btn btn-success">+</button>
-                        </div>
-                        <div class="panel-body">
-                            <div class="question textleft">
-                                <div class="editable-title">
-                                    <input type="text" ng-model="currentActivity.data.question" placeholder="Título da atividade" class="ng-pristine ng-untouched ng-valid ng-empty">
-                                </div>
-                                <button class="btn btn-danger" ng-click="removeCurrentActivity()"><i class="fa fa-trash-o"></i></button>
-                            </div>
-                            <section class="thumbnail">
-                                <div class="row" ng-show="!currentActivity.image_show">
-                                    <div class="add-thumbnail col-sm-12 col-lg-12 textcenter">
-                                        <div class="centered">
-                                            <i class="fa fa-picture-o fa-4x"></i>
-                                            <h1>Imagem</h1>
-                                            <p>(largura mínima: 845px)</p>
-                                            <input type="file" ngf-select="" ng-model="image_up" name="file" accept="image/*" ngf-max-size="20MB" required="" ngf-model-invalid="errorFile" class="ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required">
-
-                                            <button class="btn btn-sm btn-success add">Adicionar</button>
-                                            <!--<button class="btn btn-sm btn-danger delete">Cancelar</button>-->
-                                        </div>
-                                    </div>
-
-                                    <!--
-                                    
-                                        alterar imagem
-
-                                    <div class="centered">
-                                        <img src="http://placehold.it/300x150" class="img-responsive">
-
-                                        <button class="btn-edit-thumbnail btn btn-sm btn-primary edit">Alterar imagem</button>
-                                    </div> -->
-                                </div>
-                            </section>
-                        </div>
-                    </div>
+                <h5 class="subtitle">Você vai precisar de:</h5>
+                <div class="editable editable-text-box">
+                    <ul>
+                        <li>Lorem ipsum dolor sit amet</li>
+                        <li>Lorem ipsum dolor sit amet</li>
+                        <li>Lorem ipsum dolor sit amet</li>
+                        <li>Lorem ipsum dolor sit amet</li>
+                    </ul>
                 </div>
             </div>
-            
-            <div class="row">
-                <div class="col-sm-12 col-md-6 col-lg-8">
-                <h5 class="subtitle">Desenvolvimento</h5>
+            <div class="col-sm-12 col-md-6 col-lg-8">
+                galeria/video
+            </div>
+        </div>
+        
+        <h5 class="subtitle">Desenvolvimento</h5>
+    
+        <div class="editable editable-text-box">
+            <ol>
+                <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam sit amet rhoncus risus. Fusce pharetra non odio ac pretium.</li>
+                <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam sit amet rhoncus risus. Fusce pharetra non odio ac pretium.</li>
+                <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam sit amet rhoncus risus. Fusce pharetra non odio ac pretium.</li>
+                <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam sit amet rhoncus risus. Fusce pharetra non odio ac pretium.</li>
+            </ol>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-12 col-md-6 col-lg-8">
+                <h5 class="subtitle">Para saber mais</h5>
+                <div class="editable editable-text-box">            
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam sit amet rhoncus risus. Fusce pharetra non odio ac pretium. Mauris rutrum sed neque et venenatis. Fusce blandit, erat nec malesuada sollicitudin, nunc turpis mattis eros, rhoncus condimentum eros lectus vel ante. Fusce id nulla nec ipsum accumsan tempus. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Fusce in pulvinar ante. Donec bibendum efficitur enim, sed malesuada est eleifend aliquam. Phasellus vel massa nec enim finibus porta. Pellentesque iaculis congue commodo. Etiam ut erat sit amet velit pharetra aliquet. Donec mattis sollicitudin elit vel gravida. Nunc quis ex at nunc rutrum tristique. Phasellus in magna at nisi condimentum consequat. Nam et massa aliquam ligula pellentesque placerat ut tincidunt justo.</p>
+                </div>
+    
+                <h5 class="subtitle">Autoria</h5>
                 
-                    <div class="editable editable-text-box">
-                        <ol>
-                            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam sit amet rhoncus risus. Fusce pharetra non odio ac pretium.</li>
-                            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam sit amet rhoncus risus. Fusce pharetra non odio ac pretium.</li>
-                            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam sit amet rhoncus risus. Fusce pharetra non odio ac pretium.</li>
-                            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam sit amet rhoncus risus. Fusce pharetra non odio ac pretium.</li>
-                        </ol>
-                    </div>
-
-                    <h5 class="subtitle">Para saber mais</h5>
-                    <div class="editable editable-text-box">            
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam sit amet rhoncus risus. Fusce pharetra non odio ac pretium. Mauris rutrum sed neque et venenatis. Fusce blandit, erat nec malesuada sollicitudin, nunc turpis mattis eros, rhoncus condimentum eros lectus vel ante. Fusce id nulla nec ipsum accumsan tempus. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Fusce in pulvinar ante. Donec bibendum efficitur enim, sed malesuada est eleifend aliquam. Phasellus vel massa nec enim finibus porta. Pellentesque iaculis congue commodo. Etiam ut erat sit amet velit pharetra aliquet. Donec mattis sollicitudin elit vel gravida. Nunc quis ex at nunc rutrum tristique. Phasellus in magna at nisi condimentum consequat. Nam et massa aliquam ligula pellentesque placerat ut tincidunt justo.</p>
-                    </div>
-        
-                    <h5 class="subtitle">Autoria</h5>
-                    
-                    <div class="editable-title">
-                        <input type="text" placeholder="Claudineia Silva" class="author">
-                    </div>
-        
-                    <div class="editable editable-text-box"> 
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam sit amet rhoncus risus. Fusce pharetra non odio ac pretium. Mauris rutrum sed neque et venenatis. Fusce blandit, erat nec malesuada sollicitudin, nunc turpis mattis eros, rhoncus condimentum eros lectus vel ante.</p>
-                    </div>
-        
-                    <div class="editable-title">
-                        <input type="text" placeholder="Joana Terra" class="author">
-                    </div>
-        
-                    <div class="editable editable-text-box"> 
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam sit amet rhoncus risus. Fusce pharetra non odio ac pretium. Mauris rutrum sed neque et venenatis. Fusce blandit, erat nec malesuada sollicitudin, nunc turpis mattis eros, rhoncus condimentum eros lectus vel ante.</p>
-                    </div>
+                <div class="editable-title">
+                    <input type="text" placeholder="Claudineia Silva">
                 </div>
-        
-                <div class="col-sm-12 col-md-6 col-lg-4">
-                    <div class="sidebar">
-                        <div class="box">
-                            <h5>Dicas</h5>
-                            <div class="editable editable-text-box">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam sit amet rhoncus risus. Fusce pharetra non odio ac pretium. Mauris rutrum sed neque et venenatis. Fusce blandit, erat nec malesuada sollicitudin, nunc turpis mattis eros, rhoncus condimentum eros lectus vel ante.</p>
+    
+                <div class="editable editable-text-box"> 
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam sit amet rhoncus risus. Fusce pharetra non odio ac pretium. Mauris rutrum sed neque et venenatis. Fusce blandit, erat nec malesuada sollicitudin, nunc turpis mattis eros, rhoncus condimentum eros lectus vel ante.</p>
+                </div>
+    
+                <div class="editable-title">
+                    <input type="text" placeholder="Joana Terra">
+                </div>
+    
+                <div class="editable editable-text-box"> 
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam sit amet rhoncus risus. Fusce pharetra non odio ac pretium. Mauris rutrum sed neque et venenatis. Fusce blandit, erat nec malesuada sollicitudin, nunc turpis mattis eros, rhoncus condimentum eros lectus vel ante.</p>
+                </div>
+            </div>
+    
+            <div class="col-sm-12 col-md-6 col-lg-4">
+                <div class="sidebar">
+                    <div class="box">
+                        <h5>Dicas</h5>
+                        <div class="editable editable-text-box">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam sit amet rhoncus risus. Fusce pharetra non odio ac pretium. Mauris rutrum sed neque et venenatis. Fusce blandit, erat nec malesuada sollicitudin, nunc turpis mattis eros, rhoncus condimentum eros lectus vel ante.</p>
 
-                                <p>Fusce id nulla nec ipsum accumsan tempus. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Fusce in pulvinar ante. Donec bibendum efficitur enim, sed malesuada est eleifend aliquam.</p>
-                            </div>
+                            <p>Fusce id nulla nec ipsum accumsan tempus. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Fusce in pulvinar ante. Donec bibendum efficitur enim, sed malesuada est eleifend aliquam.</p>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        
-    </section>
-{% endblock %}
+    </div>
+    
+</section>
+{% endverbatim %}
