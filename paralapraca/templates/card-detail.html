@@ -8,6 +8,7 @@
                 <h2 class="title">Assim se faz &gt; {{ card.axis.name }} &gt; {{ card.title }}</h2>
             </div>
             <div class="pull-right" ng-show="card.editable">
+                <a class="btn btn-success goback" href="#!/">voltar</a>
                 <a class="btn btn-sm btn-success edit" href="#!/{{card_id}}/edit">editar prática</a>
                 <a class="btn btn-sm btn-danger delete" ng-click="delete_card()">deletar prática</a>
             </div>
