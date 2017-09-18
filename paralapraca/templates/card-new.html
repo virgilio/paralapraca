@@ -69,78 +69,61 @@
 				</div>
             </div>
             <div class="col-sm-12 col-md-6 col-lg-8">
-                <!--<button class="btn btn-xs btn-primary add-image" ngf-select="show_video_form = false; upload_image($file)" ngf-multiple="false">adicionar imagem</button>
-                <button class="btn btn-xs btn-primary add-video" ng-click="show_video_form = true">adicionar vídeo</button>
-
-                <div ng-show="show_video_form">
-                    <input type="text" ng-model="video_url">
-                    <button class="btn btn-xs edit" ng-click="embed_video(); show_video_form = false">inserir vídeo</button>
-                </div>
-
-                <p>
-                    <a ng-repeat="image in card.image_gallery" ng-click="select_image($index)"><i class="fa fa-picture-o">{{ $index + 1 }}</i></a>
-                    <a ng-repeat="video in card.youtube_embeds" ng-click="select_video($index)"><i class="fa fa-film">{{ $index + card.image_gallery.length + 1 }}</i></a>
-                </p>
-
-                <div ng-show="selected_image">
-                    <img class="img-thumbnail" ng-src="{{ selected_image.image }}">
-                    <button class="btn btn-warning" ng-click="remove_image(selected_image_index)"><i class="fa fa-trash-o"></i></button>
-                </div>
-
-                <div ng-repeat="video in card.youtube_embeds">
-                    <!-<iframe width="560" height="315" ng-src="https://www.youtube.com/embed/{{video.video_id}}?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>->
-                    <p>{{ video.video_id}}</p>
-                    <button class="btn btn-warning" ng-click="remove_video($index)"><i class="fa fa-trash-o"></i></button>
-                </div>-->
-
                 <div class="panel panel-default">
                     <div class="panel-heading clearfix">
-                        <button class="btn btn-primary">1</button> <!-- ativo -->
-                        <button class="btn btn-default">2</button> <!-- não ativo -->
-                        <button class="btn btn btn-success">+</button>
+                        <button class="btn btn-primary" ng-repeat="image in card.image_gallery" ng-click="select_image($index)" ng-class="is_selected_image(index)">{{ $index + 1}}</button>
+                        <button class="btn btn-default" ng-repeat="video in card.youtube_embeds" ng-click="select_video($index)" ng-class="is_selected_video(index)">{{ $index + card.image_gallery.length + 1 }}</button>
+                        <button class="btn btn btn-success" ng-click="show_media_form = true">+</button>
                     </div>
                     <div class="panel-body">
-                        <div class="question textleft">
-                            <button class="btn btn-danger" ng-click="removeCurrentActivity()"><i class="fa fa-trash-o"></i></button>
-                        </div>
-                        <section class="thumbnail">
-                            <div class="row" ng-show="!currentActivity.image_show">
-                                <div class="add-thumbnail col-sm-12 col-lg-12 textcenter">
+                        <div class="row">
+                            <div ng-show="show_media_form">
+                                <div class="question textleft">
+                                    <button class="btn btn-xs btn-primary add-image" ng-click="show_media_mode = 'image'">adicionar imagem</button>
+                                    <button class="btn btn-xs btn-primary add-video" ng-click="show_media_mode = 'video'">adicionar vídeo</button>
+                                </div>
+                                <div class="add-thumbnail col-sm-12 col-lg-12 textcenter" ng-show="show_media_mode == 'image'">
                                     <div class="centered">
                                         <i class="fa fa-picture-o fa-4x"></i>
                                         <h1>Imagem</h1>
-                                        <p>(largura mínima: 845px)</p>
-                                        <input type="file" ngf-select="" ng-model="image_up" name="file" accept="image/*" ngf-max-size="20MB" required="" ngf-model-invalid="errorFile" class="ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required">
-
-                                        <button class="btn btn-sm btn-success add">Adicionar</button>
+                                        <!--<p>(largura mínima: 845px)</p>
+                                        <input type="file" ngf-select="" ng-model="image_up" name="file" accept="image/*" ngf-max-size="20MB" required="" ngf-model-invalid="errorFile">-->
+                                        <button class="btn btn-sm btn-success add" ngf-select="show_video_form = false; upload_image($file)" ngf-multiple="false" accept="image/*">adicionar imagem</button>
                                         <!--<button class="btn btn-sm btn-danger delete">Cancelar</button>-->
                                     </div>
                                 </div>
-
-                                <div class="add-video-intro col-sm-12 col-lg-12 textcenter">
+                                <div class="add-video-intro col-sm-12 col-lg-12 textcenter" ng-show="show_media_mode == 'video'">
                                     <div class="centered">
                                         <div class="form-group">
                                             <i class="fa fa-youtube-play fa-4x"></i>
-                                            <h1>Insira URL do vídeo:</h1>
-                                            <input type="text" tabindex="8" ng-model="youtube_id" class="form-control"/>
+                                            <h1>URL do vídeo</h1>
+                                            <input type="text" ng-model="video_url" class="form-control"/>
                                         </div>
                                         <div class="form-group">
-                                            <button tabindex="9" class="btn btn-success save" ng-show="!course.intro_video.youtube_id" ng-click="setCurrentUnitVideo()">adicionar</button>
+                                            <button class="btn btn-success save" ng-click="embed_video()">adicionar</button>
                                         </div>
                                     </div>
                                 </div>
-
-                                <!--
-                                
-                                    alterar imagem
-
-                                <div class="centered">
-                                    <img src="http://placehold.it/300x150" class="img-responsive">
-
-                                    <button class="btn-edit-thumbnail btn btn-sm btn-primary edit">Alterar imagem</button>
-                                </div> -->
                             </div>
-                        </section>
+                            <section class="thumbnail" ng-show="!show_media_form">
+                                <div class="row">
+                                    <div ng-show="!show_media_form">
+                                        <div ng-show="show_media_mode == 'image'">
+                                            <img ng-src="{{ selected_image.image }}" class="img-responsive" ng-show="show_media_mode == 'image'">
+                                            <button class="btn btn-danger" ng-click="remove_image(selected_image_index)"><i class="fa fa-trash-o"></i></button>
+                                        </div>
+                                        <div ng-show="show_media_mode == 'video'">
+                                            <iframe width="560" height="315" ng-src="{{safe_url('https://www.youtube.com/embed/' + selected_video.video_id + '?rel=0&amp;showinfo=0')}}" frameborder="0" allowfullscreen></iframe>
+                                            <button class="btn btn-danger" ng-click="remove_video(selected_video_index)"><i class="fa fa-trash-o"></i></button>
+                                        </div>
+                                    </div>
+                                    <!--<div class="centered">
+                                        <img src="http://placehold.it/300x150" class="img-responsive">
+                                        <button class="btn-edit-thumbnail btn btn-sm btn-primary edit">Alterar imagem</button>
+                                    </div>-->
+                                </div>
+                            </section>
+                        </div>
                     </div>
                 </div>
             </div>
