@@ -73,8 +73,8 @@
             <div class="col-sm-12 col-md-6 col-lg-8">
                 <div class="panel panel-default">
                     <div class="panel-heading clearfix">
-                        <button class="btn btn-primary" ng-repeat="image in card.image_gallery" ng-click="select_image($index)" ng-class="is_selected_image(index)">{{ $index + 1}}</button>
-                        <button class="btn btn-default" ng-repeat="video in card.youtube_embeds" ng-click="select_video($index)" ng-class="is_selected_video(index)">{{ $index + card.image_gallery.length + 1 }}</button>
+                        <button class="btn" ng-repeat="image in card.image_gallery" ng-click="select_image($index)" ng-class="is_selected_image(index)">{{ $index + 1}}</button>
+                        <button class="btn" ng-repeat="video in card.youtube_embeds" ng-click="select_video($index)" ng-class="is_selected_video(index)">{{ $index + card.image_gallery.length + 1 }}</button>
                         <button class="btn btn btn-success" ng-click="show_media_form = true">+</button>
                     </div>
                     <div class="panel-body">
