@@ -86,7 +86,7 @@
                     <div class="panel-body">
                         <div class="row">
                             <div ng-show="slide_mode == mode.ADD_MEDIA || slide_mode == mode.ADD_IMAGE || slide_mode == mode.ADD_VIDEO">
-                                <div class="question textleft">
+                                <div class="question textleft" ng-show="slide_mode == mode.ADD_MEDIA">
                                     <button class="btn btn-xs btn-primary add-image" ng-click="slide_mode = mode.ADD_IMAGE">adicionar imagem</button>
                                     <button class="btn btn-xs btn-primary add-video" ng-click="slide_mode = mode.ADD_VIDEO">adicionar vídeo</button>
                                 </div>
