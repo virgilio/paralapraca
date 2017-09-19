@@ -78,26 +78,29 @@
                     <div class="panel-heading clearfix">
                         <button class="btn" ng-repeat="image in card.image_gallery" ng-click="select_image($index)" ng-class="is_selected_image(index)">{{ $index + 1}}</button>
                         <button class="btn" ng-repeat="video in card.youtube_embeds" ng-click="select_video($index)" ng-class="is_selected_video(index)">{{ $index + card.image_gallery.length + 1 }}</button>
-                        <button class="btn btn btn-success" ng-click="show_media_form = true">+</button>
+                        <button class="btn btn btn-success" ng-click="slide_mode = mode.ADD_MEDIA">
+                            <span ng-show="slide_mode == mode.ADD_MEDIA || slide_mode == mode.SHOW_IMAGE || slide_mode == mode.SHOW_VIDEO">+</span>
+                            <span ng-show="slide_mode == mode.ADD_IMAGE || slide_mode == mode.ADD_VIDEO">{{ new_slide_index() }}</span>
+                        </button>
                     </div>
                     <div class="panel-body">
                         <div class="row">
-                            <div ng-show="show_media_form">
+                            <div ng-show="slide_mode == mode.ADD_MEDIA || slide_mode == mode.ADD_IMAGE || slide_mode == mode.ADD_VIDEO">
                                 <div class="question textleft">
-                                    <button class="btn btn-xs btn-primary add-image" ng-click="show_media_mode = 'image'">adicionar imagem</button>
-                                    <button class="btn btn-xs btn-primary add-video" ng-click="show_media_mode = 'video'">adicionar vídeo</button>
+                                    <button class="btn btn-xs btn-primary add-image" ng-click="slide_mode = mode.ADD_IMAGE">adicionar imagem</button>
+                                    <button class="btn btn-xs btn-primary add-video" ng-click="slide_mode = mode.ADD_VIDEO">adicionar vídeo</button>
                                 </div>
-                                <div class="add-thumbnail col-sm-12 col-lg-12 textcenter" ng-show="show_media_mode == 'image'">
+                                <div class="add-thumbnail col-sm-12 col-lg-12 textcenter" ng-show="slide_mode == mode.ADD_IMAGE">
                                     <div class="centered">
                                         <i class="fa fa-picture-o fa-4x"></i>
                                         <h1>Imagem</h1>
                                         <!--<p>(largura mínima: 845px)</p>
                                         <input type="file" ngf-select="" ng-model="image_up" name="file" accept="image/*" ngf-max-size="20MB" required="" ngf-model-invalid="errorFile">-->
                                         <button class="btn btn-sm btn-success add" ngf-select="show_video_form = false; upload_image($file)" ngf-multiple="false" accept="image/*">adicionar imagem</button>
-                                        <!--<button class="btn btn-sm btn-danger delete">Cancelar</button>-->
+                                        <button class="btn btn-sm btn-danger delete" ng-click="slide_mode = mode.ADD_MEDIA">cancelar</button>
                                     </div>
                                 </div>
-                                <div class="add-video-intro col-sm-12 col-lg-12 textcenter" ng-show="show_media_mode == 'video'">
+                                <div class="add-video-intro col-sm-12 col-lg-12 textcenter" ng-show="slide_mode == mode.ADD_VIDEO">
                                     <div class="centered">
                                         <div class="form-group">
                                             <i class="fa fa-youtube-play fa-4x"></i>
@@ -106,18 +109,19 @@
                                         </div>
                                         <div class="form-group">
                                             <button class="btn btn-success save" ng-click="embed_video()">adicionar</button>
+                                            <button class="btn btn-sm btn-danger delete" ng-click="slide_mode = mode.ADD_MEDIA; video_url = ''">cancelar</button>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <section class="thumbnail" ng-show="!show_media_form">
+                            <section class="thumbnail" ng-show="slide_mode == mode.SHOW_IMAGE || slide_mode == mode.SHOW_VIDEO">
                                 <div class="row">
-                                    <div ng-show="!show_media_form">
-                                        <div ng-show="show_media_mode == 'image'">
-                                            <img ng-src="{{ selected_image.image }}" class="img-responsive" ng-show="show_media_mode == 'image'">
+                                    <div class="centered">
+                                        <div ng-show="slide_mode == mode.SHOW_IMAGE">
+                                            <img ng-src="{{ selected_image.image }}" class="img-responsive">
                                             <button class="btn btn-danger" ng-click="remove_image(selected_image_index)"><i class="fa fa-trash-o"></i></button>
                                         </div>
-                                        <div ng-show="show_media_mode == 'video'">
+                                        <div ng-show="slide_mode == mode.SHOW_VIDEO">
                                             <iframe width="560" height="315" ng-src="{{safe_url('https://www.youtube.com/embed/' + selected_video.video_id + '?rel=0&amp;showinfo=0')}}" frameborder="0" allowfullscreen></iframe>
                                             <button class="btn btn-danger" ng-click="remove_video(selected_video_index)"><i class="fa fa-trash-o"></i></button>
                                         </div>
