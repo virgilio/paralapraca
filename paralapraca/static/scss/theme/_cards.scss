@@ -1,0 +1,621 @@
+.cards {
+    .page-title {
+
+    }
+    .btn.add {
+        @include button-hover(#fff,#fff,$purple,darken($purple,10%));
+        margin: 15px 0 0 30px;
+    }
+
+    .search-container {
+        position: relative;
+    }
+
+    .search-button {
+        @include icon(before, search);
+        border: 0;
+        background: transparent;
+        position: absolute;
+        top: 7px;
+        right: 20px;
+        padding: 0;
+        &:before {
+            color: $purple;
+            font-size: 25px;
+        }
+    }
+
+    .search-input {
+        border: 2px solid $purple;
+        border-radius: 30px;
+        box-shadow: none;
+        font-size: 20px;
+        font-weight: bold;
+        height: 50px;
+    }
+
+    .search-suggestion {
+        font-size: 14px;
+        a {
+            color: $gray;
+            font-weight: bold;
+            text-decoration: underline;
+        }
+    }
+
+    .open-filters-options {
+        color: $purple;
+        cursor: pointer;
+        font-size: 20px;
+        &:before {
+            font-size: 30px;
+            float: left;
+            padding-top: 5px;
+        }
+        &:after {
+            display: inline-block;
+            margin-left: 15px;
+            max-width: 120px;
+        }
+        &.closed {
+            @include icon(before, chevron-down);
+            &:after {
+                content: 'abrir filtros de busca';
+            }
+        }
+        &.opened {
+            @include icon(before, chevron-up);
+            &:after {
+                content: 'fechar filtros de busca';
+            }
+        }
+    }
+
+    .cards-filters-options {
+        margin-top: 15px;
+        .form-control {
+            border: 2px solid $gray;
+            border-radius: 0px;
+            box-shadow: none;
+        }
+    }
+
+    .results-info-tags {
+        .tag {
+            @include icon(after, times);
+            border-color: $gray;
+            color: $gray;
+            &:after {
+                margin-left: 5px;
+            }
+            &:hover {
+                background-color: $gray;
+                color: #fff;
+            }
+            &.active {
+                border-color: $purple;
+                background-color: $purple;
+                color: #fff;
+            }
+        }
+    }
+
+    .results-info-title {
+        font-family: $font-family-sans-serif;
+        font-size: 20px;
+        margin: 20px 0 30px;
+
+        b {
+            color: $purple;
+        }
+    }
+
+    .cards-pagination {
+        margin-bottom: 15px;
+        ul {
+            margin: 0 0 0 20px;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            list-style: none;
+        }
+        li {
+            border-radius: 50%;
+            color: #fff;
+            height: 10px;
+            width: 10px;
+            & + li {
+                margin-left: 10px;
+            }
+        }
+        .prev-button {
+            @include icon(after, chevron-left);
+            &:after {
+                margin-left: 6px;
+            }
+        }
+        .next-button {
+            @include icon(after, chevron-right);
+            &:after {
+                margin-left: 9px;
+            }
+        }
+        .prev-button, .next-button {
+            height: 25px;
+            width: 25px;
+            &:after {
+                line-height: 25px;
+                vertical-align: middle;
+            }
+        }
+    }
+
+    .card {
+        background: #fff;
+        border-radius: 10px;
+        padding: 15px;
+        position: relative;
+        .card-image {
+            background-size: cover;
+            border-radius: 10px 10px 0 0;
+            height: 150px;
+            margin: -15px -15px 15px;
+        }
+        .card-title {
+            font-size: 24px;
+            margin: 2px 0 4px;
+        }
+        .card-author {
+            color: #4A4A4A;
+            display: block;
+            font-size: 12px;
+            margin-bottom: 25px;
+        }
+        .category {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+        }
+        .tags {
+            float: right;
+        }
+    }
+
+    .carousel {
+        .item {
+            .text-center {
+                position: relative;
+                padding-bottom: 56.25%; /* 16:9 */
+                padding-top: 25px;
+                height: 0;
+            }
+            iframe, img {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+            }
+        }
+        .carousel-control {
+            background-image: none;
+            border-radius: 50%;
+            height: 40px;
+            width: 40px;
+            opacity: 1;
+            top: 50%;
+            margin-top: -20px;
+            &:active, &:focus, &:hover {
+                transition: all 0.3s ease;
+            }
+            span {
+                font-size: 20px;
+                height: auto;
+                width: auto;
+            }
+            &.left {
+                margin-left: 20px;
+                span {
+                    @extend %icon-chevron-left;
+                }
+            }
+            &.right {
+                margin-right: 20px;
+                span {
+                    @extend %icon-chevron-right;
+                }
+            }
+        }
+        .carousel-indicators {
+            display: none;
+        }
+    }
+}
+
+.subtitle {
+    font-family: $font-family-sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    margin: 5px 0;
+}
+
+.praticas-certificadas {
+    .subtitle {
+        color: $purple;
+    }
+    .cards-pagination {
+        li {
+            background-color: rgba($purple,0.3);
+        }
+        .prev-button, .next-button, .active {
+            background-color: $purple;
+        }
+    }
+    .card-author {
+        a {
+            color: $purple;
+        }
+    }
+    .category, .tag, .action {
+        color: $purple;
+    }
+    .category, .tag {
+        border-color: $purple;
+    }
+    .category {
+        border: 0;
+        @include button-hover(#fff,$purple,$purple,#fff);
+    }
+    .carousel {
+        .carousel-control {
+            background-color: $purple;
+            &:active, &:focus, &:hover {
+                background-color: darken($purple,10%);
+            }
+        }
+    }
+}
+
+.praticas-independentes {
+    .subtitle {
+        color: $orange;
+    }
+    .cards-pagination {
+        li {
+            background-color: rgba($orange,0.3);
+        }
+        .prev-button, .next-button, .active {
+            background-color: $orange;
+        }
+    }
+    .card-author {
+        a {
+            color: $orange;
+        }
+    }
+    .category, .tag, .action {
+        color: $orange;
+    }
+    .category, .tag {
+        border-color: $orange;
+    }
+    .category {
+        border: 0;
+        @include button-hover(#fff,$orange,$orange,#fff);
+    }
+    .carousel {
+        .carousel-control {
+            background-color: $orange;
+            &:active, &:focus, &:hover {
+                background-color: darken($orange,10%);
+            }
+        }
+    }
+}
+
+.scroll-warning {
+    @include icon(before, chevron-down);
+    color: #fff;
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 2;
+    text-align: center;
+    height: 30px;
+	width: 340px;
+	border-radius: 20px 20px 0 0;
+    background-color: #4A4A4A;
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    margin-left: -170px;
+    &:before {
+        margin-right: 5px;
+    }
+}
+
+.not-found {
+	color: #4A4A4A;
+	font-family: "Open Sans";
+    font-size: 20px;
+    margin: 30px 0;
+    b {
+        color: $purple;
+        font-weight: bold;
+    }
+}
+
+.card-page {
+    background: rgba(#fff,0.5);
+    .widget-topbar.breadcrumb {
+        margin: 0px -15px 0px -15px !important; 
+        .line {
+            border-bottom: 0;
+            .author {
+                color: $gray;
+                font-size: 12px;
+                b {
+                    font-size: 14px;
+                }
+            }
+        }
+        .title {
+            color: $gray;
+        }
+    }
+
+    .card-page-header {
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+        .tags, .category {
+            margin-top: 10px;
+        }
+    }
+    .card-page-info {
+        display: flex;
+        align-items: baseline;
+        .author {
+            color: $gray;
+            font-size: 12px;
+            margin-left: 30px;
+        }
+        b {
+            color: $gray;
+        }
+    }
+    .page-title {
+        color: #000;
+        font-size: 48px;
+        font-weight: bold;
+        margin: 0 20px 0 0;
+    }
+    .user-icon {
+        display: inline-block;
+        float: none;
+        margin: 0 10px;
+    }
+    .card-page-content {
+        p, li {
+            line-height: 1.5;
+        }
+        ol li {
+            margin-bottom: 10px;
+        }
+        .title {
+            color: #000;
+            font-size: 36px;
+            font-weight: bold;
+            margin-top: 0;
+        }
+        .subtitle {
+            color: $orange;
+            font-size: 20px;
+            margin: 35px 0 5px;
+        }
+        .author {
+            font-family: $font-family-sans-serif;
+            font-size: 16px;
+            font-weight: bold;
+            margin: 10px 0 10px;
+        }
+        .actions {
+            margin: 20px 0;
+        }
+        .sidebar {
+            .box {
+                background-color: $orange;
+                color: #fff;
+                margin-bottom: 40px;
+                padding: 20px;
+                h5 {
+                    color: #fff;
+                }
+            }
+            h5 {
+                color: $orange;
+                font-family: $font-family-sans-serif;
+                font-size: 20px;
+                font-weight: bold;
+                margin: 0 0 5px;
+            }
+            .tags {
+                margin-top: 10px;
+            }
+        }
+    }
+    &.praticas-independentes {
+        .page-title, .action {
+            color: $orange;
+        }
+    }
+    &.praticas-certificadas {
+        .page-title, .action {
+            color: $purple;
+        }
+        .subtitle {
+            color: $purple;
+        }
+        .sidebar {
+            .box {
+                background-color: $purple;
+            }
+            h5 {
+                color: $purple;
+            }
+            .tag {
+                border: 1px solid $purple;
+                color: $purple;
+                @include button-hover($purple,#fff,transparent,$purple);    
+            }
+        }
+    }
+}
+
+.card-edit {
+    .cards-filters-options {
+        .form-group {
+            margin-bottom: 20px;
+        }
+    }
+    .editable-title {
+        background: #fff;
+        .title {
+            font-size: 48px;
+            line-height: 0.1;
+        }
+        .subtitle {
+            color: #000;
+            font-family: $font-family-serif;
+            font-size: 36px;
+            line-height: 0.1;
+            margin: 0;
+            &::-webkit-input-placeholder {
+                color: #000;
+            }
+            &::-moz-placeholder {
+                color: #000;
+            }
+            &:-ms-input-placeholder {
+                color: #000;
+            }
+            &:-moz-placeholder {
+                color: #000;
+            }
+        }
+        .author {
+            font-family: $font-family-sans-serif;
+            font-size: 16px;
+            margin: 0;
+        }
+    }
+    .editable-text-box {
+        background: #fff;
+        margin-top: 15px;
+    }
+    .tipo-pratica {
+        font-size: 14px;
+        font-weight: bold;
+        margin: 20px 0;
+        padding: 0;
+        &:before {
+            border-radius: 100%;
+            content: '';
+            height: 15px;
+            width: 15px;
+            display: inline-block;
+            margin-right: 10px;
+            vertical-align: sub;
+        }
+    }
+    .subtitle + .editable-title, .editable-text-box + .editable-title {
+        margin-top: 15px;
+    }
+    .card-page-content {
+        padding-bottom: 20px;
+    }
+    .panel-default {
+        margin-top: 15px;
+        .question {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px; 
+            .editable-title {
+                background: lighten($gray,60%);
+                flex-grow: 0.9;
+            }
+        }
+        .centered {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 30px;
+            h1 {
+                margin: 0;
+            }
+            h1, .fa {
+                color: $purple;
+            }
+            input {
+                margin: 30px 0;
+            }
+            .btn.add {
+                margin: 0;
+            }
+            .btn-edit-thumbnail {
+                margin-top: 30px;
+            }
+        }
+    }
+    &.praticas-independentes {
+        .editable-title {
+            .title {
+                color: $orange;
+                &::-webkit-input-placeholder {
+                    color: $orange;
+                }
+                &::-moz-placeholder {
+                    color: $orange;
+                }
+                &:-ms-input-placeholder {
+                    color: $orange;
+                }
+                &:-moz-placeholder {
+                    color: $orange;
+                }
+            }
+        }
+        .tipo-pratica {
+            &:before {
+                background: $orange;
+            }
+        }
+    }
+    &.praticas-certificadas {
+        .widget-topbar {
+            background-color: $purple;
+        }
+        .editable-title {
+            .title {
+                color: $purple;
+                &::-webkit-input-placeholder {
+                    color: $purple;
+                }
+                &::-moz-placeholder {
+                    color: $purple;
+                }
+                &:-ms-input-placeholder {
+                    color: $purple;
+                }
+                &:-moz-placeholder {
+                    color: $purple;
+                }
+            }
+        }
+        .tipo-pratica {
+            &:before {
+                background: $purple;
+            }
+        }
+    }
+}

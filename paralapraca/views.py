@@ -2,6 +2,7 @@
 import json
 
 from django.conf import settings
+from django.shortcuts import render
 from django.core.urlresolvers import reverse
 from django.http import HttpResponse, HttpResponseForbidden
 from django.utils.decorators import method_decorator
