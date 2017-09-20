@@ -98,6 +98,9 @@
     &-home {
         @include icon(before, home);
     }
+    &-lightbulb {
+        @include icon(before, lightbulb);
+    }
     &-like {
         @include icon(before, like);
     }
