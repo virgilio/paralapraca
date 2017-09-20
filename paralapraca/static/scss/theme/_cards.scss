@@ -180,6 +180,42 @@
             float: right;
         }
     }
+
+    .carousel {
+        .item {
+            max-height: 380px;
+        }
+        .carousel-control {
+            background-image: none;
+            border-radius: 50%;
+            height: 40px;
+            width: 40px;
+            opacity: 1;
+            top: 50%;
+            margin-top: -20px;
+            &:active, &:focus, &:hover {
+                transition: all 0.3s ease;
+            }
+            span {
+                font-size: 20px;
+                height: auto;
+                width: auto;
+            }
+            &.left {
+                span {
+                    @extend %icon-chevron-left;
+                }
+            }
+            &.right {
+                span {
+                    @extend %icon-chevron-right;
+                }
+            }
+        }
+        .carousel-indicators {
+            display: none;
+        }
+    }
 }
 
 .subtitle {
@@ -216,6 +252,14 @@
         border: 0;
         @include button-hover(#fff,$purple,$purple,#fff);
     }
+    .carousel {
+        .carousel-control {
+            background-color: $purple;
+            &:active, &:focus, &:hover {
+                background-color: darken($purple,10%);
+            }
+        }
+    }
 }
 
 .praticas-independentes {
@@ -244,6 +288,14 @@
     .category {
         border: 0;
         @include button-hover(#fff,$orange,$orange,#fff);
+    }
+    .carousel {
+        .carousel-control {
+            background-color: $orange;
+            &:active, &:focus, &:hover {
+                background-color: darken($orange,10%);
+            }
+        }
     }
 }
 
