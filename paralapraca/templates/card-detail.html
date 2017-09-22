@@ -7,10 +7,10 @@
             <div class="pull-left">
                 <h2 class="title">Assim se faz &gt; {{ card.axis.name }} &gt; {{ card.title }}</h2>
             </div>
-            <div class="pull-right" ng-show="card.editable">
+            <div class="pull-right">
                 <a class="btn btn-success goback" href="#!/">voltar</a>
-                <a class="btn btn-sm btn-success edit" href="#!/{{card_id}}/edit">editar prática</a>
-                <a class="btn btn-sm btn-danger delete" ng-click="delete_card()">deletar prática</a>
+                <a class="btn btn-sm btn-success edit" href="#!/{{card_id}}/edit" ng-show="card.editable">editar prática</a>
+                <a class="btn btn-sm btn-danger delete" ng-click="delete_card()" ng-show="card.editable">deletar prática</a>
             </div>
         </div>
   
@@ -33,10 +33,6 @@
     </header>
 
     <div class="card-page-content">
-
-        <div ng-show="card.title">
-            <h4 class="title">{{ card.lead }}</h4>
-        </div>
 
         <div class="row">
             <div class="col-sm-12 col-md-6 col-lg-4">
