@@ -108,11 +108,10 @@
                             
                             <a class="" ng-click="filter.axis = card.axis.name">{{ card.axis.name }}</a>
                             <h4 class="card-title"><a href="#!/{{ card.id }}">{{ card.title }}</a></h4>
-                            <span class="card-author">Publicado por: <a href="/profile/{{card.author.username}}">{{ card.author.first_name}} {{ card.author.last_name }}</a></span>
+                            <span class="card-author">publicado por <a href="/profile/{{card.author.username}}">{{ card.author.first_name}} {{ card.author.last_name }}</a> <span class="action liked pull-right">{{ card.likes }}</span></span>
                         </header>
 
                         <footer>
-                            <span class="action liked"><ng-pluralize count="card.likes" when="{'0': '0 gostou', '1': '1 gostou', 'other': '{{ card.likes }} gostaram'}"></span>
                             <div class="tags">
                                 <a class="tag" ng-click="insert_tag(tag.name)" ng-repeat="tag in card.tags">#{{ tag.name }}</a>
                             </div>
@@ -159,11 +158,11 @@
                             
                             <a class="" ng-click="filter.axis = card.axis.name">{{ card.axis.name }}</a>
                             <h4 class="card-title"><a href="#!/{{ card.id }}">{{ card.title }}</a></h4>
-                            <span class="card-author">Publicado por: <a href="/profile/{{card.author.username}}">{{ card.author.first_name}} {{ card.author.last_name }}</a></span>
+                            <span class="card-author">publicado por <a href="/profile/{{card.author.username}}">{{ card.author.first_name}} {{ card.author.last_name }}</a> <span class="action liked pull-right">{{ card.likes }}</span>
+                        </span>
                         </header>
 
                         <footer>
-                            <span class="action liked"><ng-pluralize count="card.likes" when="{'0': '0 gostou', '1': '1 gostou', 'other': '{{ card.likes }} gostaram'}"></span>
                             <div class="tags">
                                 <a class="tag" ng-click="insert_tag(tag.name)" ng-repeat="tag in card.tags">#{{ tag.name }}</a>
                             </div>
@@ -191,11 +190,10 @@
                             
                             <a class="" ng-click="filter.axis = card.axis.name">{{ card.axis.name }}</a>
                             <h4 class="card-title"><a href="#!/{{ card.id }}">{{ card.title }}</a></h4>
-                            <span class="card-author">Publicado por: <a href="/profile/{{card.author.username}}">{{ card.author.first_name}} {{ card.author.last_name }}</a></span>
+                            <span class="card-author">publicado por <a href="/profile/{{card.author.username}}">{{ card.author.first_name}} {{ card.author.last_name }}</a> <span class="action liked pull-right">{{ card.likes }}</span></span>
                         </header>
 
                         <footer>
-                            <span class="action liked"><ng-pluralize count="card.likes" when="{'0': '0 gostou', '1': '1 gostou', 'other': '{{ card.likes }} gostaram'}"></span>
                             <div class="tags">
                                 <a class="tag" ng-click="insert_tag(tag.name)" ng-repeat="tag in card.tags">#{{ tag.name }}</a>
                             </div>
@@ -224,11 +222,10 @@
                         
                         <a class="" ng-click="filter.axis = card.axis.name">{{ card.axis.name }}</a>
                         <h4 class="card-title"><a href="#!/{{ card.id }}">{{ card.title }}</a></h4>
-                        <span class="card-author">Publicado por: <a href="/profile/{{card.author.username}}">{{ card.author.first_name}} {{ card.author.last_name }}</a></span>
+                        <span class="card-author">publicado por <a href="/profile/{{card.author.username}}">{{ card.author.first_name}} {{ card.author.last_name }}</a> <span class="action liked pull-right">{{ card.likes }}</span></span>
                     </header>
 
                     <footer>
-                        <span class="action liked"><ng-pluralize count="card.likes" when="{'0': '0 gostou', '1': '1 gostou', 'other': '{{ card.likes }} gostaram'}"></span>
                         <div class="tags">
                             <a class="tag" ng-click="insert_tag(tag.name)" ng-repeat="tag in card.tags">#{{ tag.name }}</a>
                         </div>
