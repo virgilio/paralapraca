@@ -42,7 +42,7 @@
             </div> <!-- /.col -->
 
             <div class="col-sm-12 col-md-6 col-lg-8">
-                <div uib-carousel active="active_slide" interval="5000">
+                <div uib-carousel active="active_slide" interval="0">
                     <div uib-slide ng-repeat="slide in slides" index="$index">    
                         <img ng-show="slide.type == 'image'" ng-src="{{slide.el.image}}">
                         <iframe ng-show="slide.type == 'video'" ng-src="{{safe_url('https://www.youtube-nocookie.com/embed/' + slide.el.video_id + '?rel=0&showinfo=0')}}" frameborder="0" allowfullscreen></iframe>
