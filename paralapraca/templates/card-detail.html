@@ -5,7 +5,7 @@
     <header class="widget-topbar breadcrumb">
         <div class="line">
             <div class="pull-left">
-                <h2 class="title">Assim se faz &gt; {{ card.axis.name }} &gt; {{ card.title }}</h2>
+                <h2 class="title"><a href="#!/">Assim se faz</a> &gt; <a href="#!/?axis={{card.axis.name}}">{{ card.axis.name }}</a> &gt; {{ card.title }}</h2>
             </div>
             <div class="pull-right">
                 <a class="btn btn-success goback" href="#!/">voltar</a>
@@ -16,7 +16,7 @@
   
         <div class="card-page-header line">
             <h3 class="page-title">{{ card.title }}</h3>
-            <a class="category" href="">{{ card.audience.name }}</a>
+            <a class="category" href="#!/?audience={{card.audience.name}}">{{ card.audience.name }}</a>
         </div>
 
         <div class="card-page-info">
