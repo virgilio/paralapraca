@@ -2,11 +2,6 @@
     .page-title {
 
     }
-    .btn.add {
-        @include button-hover(#fff,#fff,$purple,darken($purple,10%));
-        margin: 15px 0 0 30px;
-    }
-
     .search-container {
         position: relative;
     }
@@ -240,6 +235,10 @@
 }
 
 .praticas-certificadas {
+    .btn.add {
+        @include button-hover(#fff,#fff,$purple,darken($purple,10%));
+        margin: 15px 0 0 30px;
+    }
     .subtitle {
         color: $purple;
     }
@@ -277,6 +276,10 @@
 }
 
 .praticas-independentes {
+    .btn.add {
+        @include button-hover(#fff,#fff,$orange,darken($orange,10%));
+        margin: 15px 0 0 30px;
+    }
     .subtitle {
         color: $orange;
     }
@@ -477,6 +480,34 @@
             margin-bottom: 20px;
         }
     }
+    .btn.goback {
+        border: 0;
+        font-weight: bold;
+    }
+    .ui-select-multiple.ui-select-bootstrap {
+        height: auto;
+        min-height: 34px;
+        padding: 4px;
+        input {
+            border: 0;
+        }
+        .btn-default {
+            @extend %forum-categories;
+            .close {
+                opacity: 1;
+                font-size: 1.4em;
+                line-height: 0.9em !important;
+                text-shadow: 0;
+                transition: color 0.5s ease;
+            }
+            &:hover, &:active, &:hover {
+                .close {
+                    color: #fff !important;
+                }
+            }
+        }
+    }
+
     .editable-title {
         background: #fff;
         .title {
@@ -553,19 +584,17 @@
             h1 {
                 margin: 0;
             }
-            h1, .fa {
-                color: $purple;
-            }
-            input {
-                margin: 30px 0;
-            }
-            .btn.add {
-                margin: 0;
-            }
-            .btn-edit-thumbnail {
-                margin-top: 30px;
+            .btn {
+                margin: 20px 0 0;
             }
         }
+        .btn.trash {
+            display: block;
+            margin: 15px auto 0;
+        }
+    }
+    .mce-tinymce {
+        margin: 15px 0;
     }
     &.praticas-independentes {
         .editable-title {
@@ -588,6 +617,20 @@
         .tipo-pratica {
             &:before {
                 background: $orange;
+            }
+        }
+        .ui-select-multiple.ui-select-bootstrap {
+            .btn-default {
+                @include button-hover($orange,#fff,transparent,$orange);
+                border: 1px solid $orange !important;
+                .close {
+                    color: $orange;
+                }
+            }
+        }
+        .panel-default {
+            h1, .fa {
+                color: $orange;
             }
         }
     }
@@ -615,6 +658,20 @@
         .tipo-pratica {
             &:before {
                 background: $purple;
+            }
+        }
+        .ui-select-multiple.ui-select-bootstrap {
+            .btn-default {
+                @include button-hover($purple,#fff,transparent,$purple);
+                border: 1px solid $purple !important;
+                .close {
+                    color: $purple;
+                }
+            }
+        }
+        .panel-default {
+            h1, .fa {
+                color: $purple;
             }
         }
     }
