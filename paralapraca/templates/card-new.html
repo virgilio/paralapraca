@@ -171,6 +171,20 @@
             </div>
         </div>
     </div>
+
+    <footer class="widget-bottombar line one-column">
+        <div class="column">
+            <div class="pull-left">
+                <a class="btn btn-success goback" href="#!/" ng-show="!editing_mode">voltar</a>
+                <a class="btn btn-success goback" ng-href="#!/{{ card_id}}" ng-show="editing_mode">voltar</a>
+            </div>
+            <div class="pull-right">
+                <a class="btn btn-sm btn-primary edit" ng-click="create_card()" ng-show="!editing_mode">criar prática</a>				
+                <a class="btn btn-sm btn-primary edit" ng-click="update_card()" ng-show="editing_mode">salvar prática</a>
+                <a class="btn btn-sm btn-danger delete" ng-click="delete_card()" ng-show="editing_mode">apagar prática</a>
+            </div>
+        </div>
+    </footer>
     
 </section>
 {% endverbatim %}
