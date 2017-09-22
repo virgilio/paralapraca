@@ -17,9 +17,6 @@
         <div class="card-page-header line">
             <h3 class="page-title">{{ card.title }}</h3>
             <a class="category" href="">{{ card.audience.name }}</a>
-            <div class="tags">
-                <a class="tag" ng-repeat="tag in card.tags" href="#!/?tag={{tag.name}}">#{{ tag.name }}</a>
-            </div>
         </div>
 
         <div class="card-page-info">
