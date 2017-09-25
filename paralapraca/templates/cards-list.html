@@ -54,10 +54,16 @@
             </div>
             <div class="form-group col-xs-12 col-md-6 col-lg-3">
                 <label>Tags</label>
-                <input type="text" class="form-control" list="tag_list" ng-model="tag" ng-blur="insert_tag(tag)" ng-keypress="($event.charCode == 13) ? insert_tag(tag) : void()" placeholder="Digite e escolha suas tags">
+                <!--<input type="text" class="form-control" list="tag_list" ng-model="tag" ng-blur="insert_tag(tag)" ng-keypress="($event.charCode == 13) ? insert_tag(tag) : void()" placeholder="Digite e escolha suas tags">
                 <datalist id="tag_list" ng-show="tag">
                     <option ng-repeat="tag in tags" ng-value="tag.name"/>
-                </datalist>
+                </datalist>-->
+                <ui-select multiple theme="bootstrap" ng-model="filter.tags" tagging="new_tag" title="Selecione uma tag...">
+                    <ui-select-match placeholder="Selecione uma tag...">#{{ $item.name | limitTo: 12 }}</ui-select-match>
+                    <ui-select-choices repeat="tag in tags" group-by="">
+                        <div>{{ tag.name }}</div>
+                    </ui-select-choices>
+                </ui-select>
             </div>
         </form>
 
@@ -67,7 +73,7 @@
                 <a class="tag active" ng-click="filter.status = ''" ng-show="filter.status == '3'">Práticas independentes</a>                
                 <a class="tag active" ng-click="filter.audience = ''" ng-hide="filter.audience == ''">{{ filter.audience }}</a>
                 <a class="tag active" ng-click="filter.axis = ''" ng-hide="filter.axis == ''">{{ filter.axis }}</a>
-                <a class="tag active" ng-repeat="tag in filter.tags" ng-click="remove_tag($index)">#{{ tag }}</a>
+                <a class="tag active" ng-repeat="tag in filter.tags" ng-click="remove_tag($index)">#{{ tag.name }}</a>
             </div>
         </div>
     </section>
