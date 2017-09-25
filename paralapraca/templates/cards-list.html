@@ -5,7 +5,7 @@
         <div class="pull-left">
             <h2 class="page-title">assim se faz</h2>
         </div>
-        <div class="pull-left"><a href="#!/new" class="btn add">nova prática</a></div>
+        <div class="pull-left"><a href="#!/new" class="btn btn-primary btn-sm new-practice add">nova prática</a></div>
     </header>
 
     <section class="cards-search">
@@ -54,10 +54,16 @@
             </div>
             <div class="form-group col-xs-12 col-md-6 col-lg-3">
                 <label>Tags</label>
-                <input type="text" class="form-control" list="tag_list" ng-model="tag" ng-blur="insert_tag(tag)" ng-keypress="($event.charCode == 13) ? insert_tag(tag) : void()" placeholder="Digite e escolha suas tags">
+                <!--<input type="text" class="form-control" list="tag_list" ng-model="tag" ng-blur="insert_tag(tag)" ng-keypress="($event.charCode == 13) ? insert_tag(tag) : void()" placeholder="Digite e escolha suas tags">
                 <datalist id="tag_list" ng-show="tag">
                     <option ng-repeat="tag in tags" ng-value="tag.name"/>
-                </datalist>
+                </datalist>-->
+                <ui-select multiple theme="bootstrap" ng-model="filter.tags" tagging="new_tag" title="Selecione uma tag...">
+                    <ui-select-match placeholder="Selecione uma tag...">#{{ $item.name | limitTo: 12 }}</ui-select-match>
+                    <ui-select-choices repeat="tag in tags" group-by="">
+                        <div>{{ tag.name }}</div>
+                    </ui-select-choices>
+                </ui-select>
             </div>
         </form>
 
@@ -67,7 +73,7 @@
                 <a class="tag active" ng-click="filter.status = ''" ng-show="filter.status == '3'">Práticas independentes</a>                
                 <a class="tag active" ng-click="filter.audience = ''" ng-hide="filter.audience == ''">{{ filter.audience }}</a>
                 <a class="tag active" ng-click="filter.axis = ''" ng-hide="filter.axis == ''">{{ filter.axis }}</a>
-                <a class="tag active" ng-repeat="tag in filter.tags" ng-click="remove_tag($index)">#{{ tag }}</a>
+                <a class="tag active" ng-repeat="tag in filter.tags" ng-click="remove_tag($index)">#{{ tag.name }}</a>
             </div>
         </div>
     </section>
@@ -78,7 +84,7 @@
                 <header class="col-xs-12">
                     <h3 class="subtitle pull-left">
                         Práticas validadas
-                        <span>{{ cards.certified.length }} prática<span ng-show="cards.certified.length != 1">s</span></span>
+                        <span class="practices-count">{{ cards.certified.length }} prática<span ng-show="cards.certified.length != 1">s</span></span>
                     </h3>
                     <nav class="cards-pagination pull-left" ng-show="cards.certified.length > 3">
                         <ul>
@@ -106,15 +112,15 @@
                             <div class="card-image" style="background-image: url('{{card.image_gallery[0].image}}')"></div>
                             <a class="category" ng-click="filter.audience = card.audience.name">{{ card.audience.name }}</a>
                             
-                            <a class="" ng-click="filter.axis = card.axis.name">{{ card.axis.name }}</a>
+                            <a class="card-axis" ng-click="filter.axis = card.axis.name">{{ card.axis.name }}</a>
                             <h4 class="card-title"><a href="#!/{{ card.id }}">{{ card.title }}</a></h4>
-                            <span class="card-author">Publicado por: <a href="/profile/{{card.author.username}}">{{ card.author.first_name}} {{ card.author.last_name }}</a></span>
+                            <span class="card-author">publicado por <a href="/profile/{{card.author.username}}">{{ card.author.name }}</a> <span class="action liked pull-right">{{ card.likes }}</span></span>
                         </header>
 
                         <footer>
-                            <span class="action liked"><ng-pluralize count="card.likes" when="{'0': '0 gostou', '1': '1 gostou', 'other': '{{ card.likes }} gostaram'}"></span>
                             <div class="tags">
-                                <a class="tag" ng-click="insert_tag(tag.name)" ng-repeat="tag in card.tags">#{{ tag.name }}</a>
+                                <a class="tag" ng-click="insert_tag(tag.name)" ng-repeat="tag in card.tags.slice(0,2)">#{{ tag.name }}</a>
+                                <a class="tag" ng-show="card.tags.length > 2" href="#!/{{card.id}}">+{{ card.tags.length - 2 }}</a>
                             </div>
                         </footer>
                     </article>
@@ -129,7 +135,7 @@
                 <header class="col-xs-12">
                     <h3 class="subtitle pull-left">
                         Práticas independentes
-                        <span>{{ cards.community.length }} prática<span ng-show="cards.community.length != 1">s</span></span>
+                        <span class="practices-count">{{ cards.community.length }} prática<span ng-show="cards.community.length != 1">s</span></span>
                     </h3>
                     <nav class="cards-pagination pull-left" ng-show="cards.community.length > 3">
                         <ul>
@@ -157,15 +163,16 @@
                             <div class="card-image" style="background-image: url('{{card.image_gallery[0].image}}')"></div>
                             <a class="category" ng-click="filter.audience = card.audience.name">{{ card.audience.name }}</a>
                             
-                            <a class="" ng-click="filter.axis = card.axis.name">{{ card.axis.name }}</a>
+                            <a class="card-axis" ng-click="filter.axis = card.axis.name">{{ card.axis.name }}</a>
                             <h4 class="card-title"><a href="#!/{{ card.id }}">{{ card.title }}</a></h4>
-                            <span class="card-author">Publicado por: <a href="/profile/{{card.author.username}}">{{ card.author.first_name}} {{ card.author.last_name }}</a></span>
+                            <span class="card-author">publicado por <a href="/profile/{{card.author.username}}">{{ card.author.name }}</a> <span class="action liked pull-right">{{ card.likes }}</span>
+                        </span>
                         </header>
 
                         <footer>
-                            <span class="action liked"><ng-pluralize count="card.likes" when="{'0': '0 gostou', '1': '1 gostou', 'other': '{{ card.likes }} gostaram'}"></span>
                             <div class="tags">
-                                <a class="tag" ng-click="insert_tag(tag.name)" ng-repeat="tag in card.tags">#{{ tag.name }}</a>
+                                <a class="tag" ng-click="insert_tag(tag.name)" ng-repeat="tag in card.tags.slice(0,2)">#{{ tag.name }}</a>
+                                <a class="tag" ng-show="card.tags.length > 2" href="#!/{{card.id}}">+{{ card.tags.length - 2 }}</a>
                             </div>
                         </footer>
                     </article>
@@ -189,15 +196,15 @@
                             <div class="card-image" style="background-image: url('{{card.image_gallery[0].image}}')"></div>
                             <a class="category" ng-click="filter.audience = card.audience.name">{{ card.audience.name }}</a>
                             
-                            <a class="" ng-click="filter.axis = card.axis.name">{{ card.axis.name }}</a>
+                            <a class="card-axis" ng-click="filter.axis = card.axis.name">{{ card.axis.name }}</a>
                             <h4 class="card-title"><a href="#!/{{ card.id }}">{{ card.title }}</a></h4>
-                            <span class="card-author">Publicado por: <a href="/profile/{{card.author.username}}">{{ card.author.first_name}} {{ card.author.last_name }}</a></span>
+                            <span class="card-author">publicado por <a href="/profile/{{card.author.username}}">{{ card.author.name }}</a> <span class="action liked pull-right">{{ card.likes }}</span></span>
                         </header>
 
                         <footer>
-                            <span class="action liked"><ng-pluralize count="card.likes" when="{'0': '0 gostou', '1': '1 gostou', 'other': '{{ card.likes }} gostaram'}"></span>
                             <div class="tags">
-                                <a class="tag" ng-click="insert_tag(tag.name)" ng-repeat="tag in card.tags">#{{ tag.name }}</a>
+                                <a class="tag" ng-click="insert_tag(tag.name)" ng-repeat="tag in card.tags.slice(0,2)">#{{ tag.name }}</a>
+                                <a class="tag" ng-show="card.tags.length > 2" href="#!/{{card.id}}">+{{ card.tags.length - 2 }}</a>
                             </div>
                         </footer>
                     </article>
@@ -222,15 +229,15 @@
                         <div class="card-image" style="background-image: url('{{card.image_gallery[0].image}}')"></div>
                         <a class="category" ng-click="filter.audience = card.audience.name">{{ card.audience.name }}</a>
                         
-                        <a class="" ng-click="filter.axis = card.axis.name">{{ card.axis.name }}</a>
+                        <a class="card-axis" ng-click="filter.axis = card.axis.name">{{ card.axis.name }}</a>
                         <h4 class="card-title"><a href="#!/{{ card.id }}">{{ card.title }}</a></h4>
-                        <span class="card-author">Publicado por: <a href="/profile/{{card.author.username}}">{{ card.author.first_name}} {{ card.author.last_name }}</a></span>
+                        <span class="card-author">publicado por <a href="/profile/{{card.author.username}}">{{ card.author.name }}</a> <span class="action liked pull-right">{{ card.likes }}</span></span>
                     </header>
 
                     <footer>
-                        <span class="action liked"><ng-pluralize count="card.likes" when="{'0': '0 gostou', '1': '1 gostou', 'other': '{{ card.likes }} gostaram'}"></span>
                         <div class="tags">
-                            <a class="tag" ng-click="insert_tag(tag.name)" ng-repeat="tag in card.tags">#{{ tag.name }}</a>
+                            <a class="tag" ng-click="insert_tag(tag.name)" ng-repeat="tag in card.tags.slice(0,2)">#{{ tag.name }}</a>
+                            <a class="tag" ng-show="card.tags.length > 2" href="#!/{{card.id}}">+{{ card.tags.length - 2 }}</a>
                         </div>
                     </footer>
                 </article>

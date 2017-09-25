@@ -78,6 +78,9 @@
     .admin {
         @extend %icon-briefcase;
     }
+    .cards {
+        @extend %icon-lightbulb;
+    }
     .chat {
         @extend %icon-chat;
         position: relative;

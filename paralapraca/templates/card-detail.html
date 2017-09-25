@@ -5,38 +5,32 @@
     <header class="widget-topbar breadcrumb">
         <div class="line">
             <div class="pull-left">
-                <h2 class="title">Assim se faz &gt; {{ card.axis.name }} &gt; {{ card.title }}</h2>
+                <h2 class="title"><a href="#!/">Assim se faz</a> &gt; <a href="#!/?axis={{card.axis.name}}">{{ card.axis.name }}</a> &gt; {{ card.title }}</h2>
             </div>
-            <div class="pull-right" ng-show="card.editable">
+            <div class="pull-right">
                 <a class="btn btn-success goback" href="#!/">voltar</a>
-                <a class="btn btn-sm btn-success edit" href="#!/{{card_id}}/edit">editar prática</a>
-                <a class="btn btn-sm btn-danger delete" ng-click="delete_card()">deletar prática</a>
+                <a class="btn btn-sm btn-success edit" href="#!/{{card_id}}/edit" ng-show="card.editable">editar prática</a>
+                <a class="btn btn-sm btn-danger delete" ng-click="delete_card()" ng-show="card.editable">deletar prática</a>
             </div>
         </div>
   
         <div class="card-page-header line">
             <h3 class="page-title">{{ card.title }}</h3>
-            <a class="category" href="">{{ card.audience.name }}</a>
-            <div class="tags">
-                <a class="tag" ng-repeat="tag in card.tags" href="#!/?tag={{tag.name}}">#{{ tag.name }}</a>
-            </div>
+            <a class="category" href="#!/?audience={{card.audience.name}}">{{ card.audience.name }}</a>
         </div>
 
         <div class="card-page-info">
-            <span class="action liked"><ng-pluralize count="card.likes" when="{'0': '0 gostou', '1': '1 gostou', 'other': '{{ card.likes }} gostaram'}"></ng-pluralize></span>
+            <a class="action liked" ng-class="{'active': card.user_liked}" ng-click="toggle_like()"><span>gostei!</span></a>
+            <span class="action"><ng-pluralize count="card.likes" when="{'0': '0 gostou', '1': '1 gostou', 'other': '{{ card.likes }} gostaram'}"></span>
             <span class="author">Prática publicada por:</span>
             <div class="user-icon">
                 <img src="{{ card.author.picture }}" alt="Nome Usuário"/>
             </div>
-            <a href="/profile/{{card.author.username}}"><b>{{ card.author.first_name }} {{ card.author.last_name }}</b></a>
+            <a href="/profile/{{card.author.username}}"><b>{{ card.author.name }}</b></a>
         </div>
     </header>
 
     <div class="card-page-content">
-
-        <div ng-show="card.title">
-            <h4 class="title">{{ card.lead }}</h4>
-        </div>
 
         <div class="row">
             <div class="col-sm-12 col-md-6 col-lg-4">
@@ -49,7 +43,7 @@
             </div> <!-- /.col -->
 
             <div class="col-sm-12 col-md-6 col-lg-8">
-                <div uib-carousel active="active_slide" interval="5000">
+                <div uib-carousel active="active_slide" interval="0">
                     <div uib-slide ng-repeat="slide in slides" index="$index">    
                         <img ng-show="slide.type == 'image'" ng-src="{{slide.el.image}}">
                         <iframe ng-show="slide.type == 'video'" ng-src="{{safe_url('https://www.youtube-nocookie.com/embed/' + slide.el.video_id + '?rel=0&showinfo=0')}}" frameborder="0" allowfullscreen></iframe>
@@ -98,8 +92,7 @@
         </div>
 
         <div class="actions">
-            <a class="action liked" ng-show="card.user_liked" ng-click="unlike()"><span>Gostei</span></a>
-            <a class="action liked" ng-show="!card.user_liked" ng-click="like()"><span>Gostar</span></a>
+            <a class="action liked" ng-class="{'active': card.user_liked}" ng-click="toggle_like()"><span>gostei!</span></a>
             <span class="action"><ng-pluralize count="card.likes" when="{'0': '0 gostou', '1': '1 gostou', 'other': '{{ card.likes }} gostaram'}"></span>
         </div>
     </div>
