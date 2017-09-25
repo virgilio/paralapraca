@@ -77,7 +77,7 @@
                         <button class="btn" ng-repeat="image in card.image_gallery" ng-click="select_image($index)" ng-class="is_selected_image(index)">{{ $index + 1}}</button>
                         <button class="btn" ng-repeat="video in card.youtube_embeds" ng-click="select_video($index)" ng-class="is_selected_video(index)">{{ $index + card.image_gallery.length + 1 }}</button>
                         <button class="btn" ng-show="slide_mode == mode.ADD_MEDIA || slide_mode == mode.ADD_IMAGE || slide_mode == mode.ADD_VIDEO">{{ new_slide_index() }}</button>
-                        <button class="btn btn-success" ng-click="slide_mode = mode.ADD_MEDIA" ng-disabled="slide_mode == mode.ADD_MEDIA || slide_mode == mode.ADD_IMAGE || slide_mode == mode.ADD_VIDEO">+</button>
+                        <button class="btn btn-success" ng-click="slide_mode = mode.ADD_MEDIA" ng-disabled="slide_mode == mode.ADD_MEDIA || slide_mode == mode.ADD_IMAGE || slide_mode == mode.ADD_VIDEO || new_slide_index() > 5">+</button>
                     </div>
                     <div class="panel-body">
                         <div class="row">
