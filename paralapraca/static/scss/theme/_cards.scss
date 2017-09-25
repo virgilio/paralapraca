@@ -1,11 +1,15 @@
 .cards {
-    .page-title {
-
+    &.container-fluid {
+        background: rgba(#fff,0.5);
+        padding: 30px;
+    }
+    .btn.new-practice {
+        @include button-hover(#fff,#fff,$purple,darken($purple,10%));
+        margin: 15px 0 0 30px;
     }
     .search-container {
         position: relative;
     }
-
     .search-button {
         @include icon(before, search);
         border: 0;
@@ -150,22 +154,6 @@
         border-radius: 10px;
         padding: 15px;
         position: relative;
-        .card-image {
-            background-size: cover;
-            border-radius: 10px 10px 0 0;
-            height: 150px;
-            margin: -15px -15px 15px;
-        }
-        .card-title {
-            font-size: 24px;
-            margin: 2px 0 4px;
-        }
-        .card-author {
-            color: #4A4A4A;
-            display: block;
-            font-size: 12px;
-            margin-bottom: 25px;
-        }
         .category {
             position: absolute;
             top: 15px;
@@ -174,6 +162,29 @@
         .tags {
             float: right;
         }
+    }
+    .card-image {
+        background-size: cover;
+        border-radius: 10px 10px 0 0;
+        height: 150px;
+        margin: -15px -15px 15px;
+    }
+    .card-title {
+        font-size: 24px;
+        margin: 2px 0 4px;
+        a {
+            color: #000;
+        }
+    }
+    .card-axis {
+        color: #4A4A4A;
+        font-size: 12px;
+    }
+    .card-author {
+        color: #4A4A4A;
+        display: block;
+        font-size: 12px;
+        margin-bottom: 25px;
     }
 
     .carousel {
@@ -237,7 +248,6 @@
 .praticas-certificadas {
     .btn.add {
         @include button-hover(#fff,#fff,$purple,darken($purple,10%));
-        margin: 15px 0 0 30px;
     }
     .subtitle {
         color: $purple;
@@ -250,10 +260,8 @@
             background-color: $purple;
         }
     }
-    .card-author {
-        a {
-            color: $purple;
-        }
+    .card-axis, .card-author a {
+        color: $purple;
     }
     .category, .tag, .action {
         color: $purple;
@@ -278,7 +286,6 @@
 .praticas-independentes {
     .btn.add {
         @include button-hover(#fff,#fff,$orange,darken($orange,10%));
-        margin: 15px 0 0 30px;
     }
     .subtitle {
         color: $orange;
@@ -291,10 +298,8 @@
             background-color: $orange;
         }
     }
-    .card-author {
-        a {
-            color: $orange;
-        }
+    .card-axis, .card-author a {
+        color: $orange;
     }
     .category, .tag, .action {
         color: $orange;
@@ -348,9 +353,8 @@
 }
 
 .card-page {
-    background: rgba(#fff,0.5);
     .widget-topbar.breadcrumb {
-        margin: 0px -15px 0px -15px !important; 
+        margin: -30px -30px 0px -30px !important; 
         .line {
             border-bottom: 0;
             .author {
