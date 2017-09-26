@@ -8,7 +8,7 @@
                 <h2 class="title"><a href="#!/">Assim se faz</a> &gt; <a href="#!/?axis={{card.axis.name}}">{{ card.axis.name }}</a> &gt; {{ card.title }}</h2>
             </div>
             <div class="pull-right">
-                <a class="btn btn-success goback" href="#!/">voltar</a>
+                <a class="btn btn-link goback" href="#!/">voltar</a>
                 <a class="btn btn-sm btn-success edit" href="#!/{{card_id}}/edit" ng-show="card.editable">editar prática</a>
                 <a class="btn btn-sm btn-danger delete" ng-click="delete_card()" ng-show="card.editable">deletar prática</a>
             </div>
@@ -19,7 +19,7 @@
             <a class="category" href="#!/?audience={{card.audience.name}}">{{ card.audience.name }}</a>
         </div>
 
-        <div class="card-page-info">
+        <div class="card-page-info line">
             <a class="action liked" ng-class="{'active': card.user_liked}" ng-click="toggle_like()"><span>gostei!</span></a>
             <span class="action"><ng-pluralize count="card.likes" when="{'0': '0 gostou', '1': '1 gostou', 'other': '{{ card.likes }} gostaram'}"></span>
             <span class="author">Prática publicada por:</span>

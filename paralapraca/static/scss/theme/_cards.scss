@@ -77,6 +77,9 @@
             border-radius: 0px;
             box-shadow: none;
         }
+        .form-group {
+            margin-bottom: 0;
+        }
     }
 
     .results-info-tags {
@@ -106,6 +109,20 @@
 
         b {
             color: $purple;
+        }
+    }
+
+    .subtitle {
+        font-family: $font-family-sans-serif;
+        font-size: 20px;
+        font-weight: bold;
+        margin: 5px 0;
+
+        span {
+            color: $gray;
+            font-size: 14px;
+            font-weight: normal;
+            margin-left: 10px;
         }
     }
 
@@ -152,8 +169,11 @@
     .card {
         background: #fff;
         border-radius: 10px;
+        height: 325px;
+        margin-bottom: 30px;
         padding: 15px;
         position: relative;
+        overflow: hidden;
         .category {
             position: absolute;
             top: 15px;
@@ -172,6 +192,8 @@
     .card-title {
         font-size: 24px;
         margin: 2px 0 4px;
+        max-height: 55px;
+        overflow: hidden;
         a {
             color: #000;
         }
@@ -236,13 +258,10 @@
             display: none;
         }
     }
-}
 
-.subtitle {
-    font-family: $font-family-sans-serif;
-    font-size: 14px;
-    font-weight: bold;
-    margin: 5px 0;
+    .cards-list {
+        margin: 30px 0 20px;
+    }
 }
 
 .praticas-certificadas {
@@ -353,10 +372,11 @@
 }
 
 .card-page {
-    .widget-topbar.breadcrumb {
+    .widget-topbar {
         margin: -30px -30px 0px -30px !important; 
         .line {
             border-bottom: 0;
+            margin: 0 30px;
             .author {
                 color: $gray;
                 font-size: 12px;
@@ -367,6 +387,12 @@
         }
         .title {
             color: $gray;
+            a {
+                color: $gray;
+                &:hover, &:active, &:focus {
+                    text-decoration: underline;
+                }
+            }
         }
     }
 
@@ -483,10 +509,6 @@
         .form-group {
             margin-bottom: 20px;
         }
-    }
-    .btn.goback {
-        border: 0;
-        font-weight: bold;
     }
     .ui-select-multiple.ui-select-bootstrap {
         height: auto;
