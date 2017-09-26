@@ -1,0 +1,704 @@
+.cards {
+    &.container-fluid {
+        background: rgba(#fff,0.5);
+        padding: 30px;
+    }
+    .btn.new-practice {
+        @include button-hover(#fff,#fff,$purple,darken($purple,10%));
+        margin: 15px 0 0 30px;
+    }
+    .search-container {
+        position: relative;
+    }
+    .search-button {
+        @include icon(before, search);
+        border: 0;
+        background: transparent;
+        position: absolute;
+        top: 7px;
+        right: 20px;
+        padding: 0;
+        &:before {
+            color: $purple;
+            font-size: 25px;
+        }
+    }
+
+    .search-input {
+        border: 2px solid $purple;
+        border-radius: 30px;
+        box-shadow: none;
+        font-size: 20px;
+        font-weight: bold;
+        height: 50px;
+    }
+
+    .search-suggestion {
+        font-size: 14px;
+        a {
+            color: $gray;
+            font-weight: bold;
+            text-decoration: underline;
+        }
+    }
+
+    .open-filters-options {
+        color: $purple;
+        cursor: pointer;
+        font-size: 20px;
+        &:before {
+            font-size: 30px;
+            float: left;
+            padding-top: 5px;
+        }
+        &:after {
+            display: inline-block;
+            margin-left: 15px;
+            max-width: 120px;
+        }
+        &.closed {
+            @include icon(before, chevron-down);
+            &:after {
+                content: 'abrir filtros de busca';
+            }
+        }
+        &.opened {
+            @include icon(before, chevron-up);
+            &:after {
+                content: 'fechar filtros de busca';
+            }
+        }
+    }
+
+    .cards-filters-options {
+        margin-top: 15px;
+        .form-control {
+            border: 2px solid $gray;
+            border-radius: 0px;
+            box-shadow: none;
+        }
+        .form-group {
+            margin-bottom: 0;
+        }
+    }
+
+    .results-info-tags {
+        .tag {
+            @include icon(after, times);
+            border-color: $gray;
+            color: $gray;
+            &:after {
+                margin-left: 5px;
+            }
+            &:hover {
+                background-color: $gray;
+                color: #fff;
+            }
+            &.active {
+                border-color: $purple;
+                background-color: $purple;
+                color: #fff;
+            }
+        }
+    }
+
+    .results-info-title {
+        font-family: $font-family-sans-serif;
+        font-size: 20px;
+        margin: 20px 0 30px;
+
+        b {
+            color: $purple;
+        }
+    }
+
+    .subtitle {
+        font-family: $font-family-sans-serif;
+        font-size: 20px;
+        font-weight: bold;
+        margin: 5px 0;
+
+        span {
+            color: $gray;
+            font-size: 14px;
+            font-weight: normal;
+            margin-left: 10px;
+        }
+    }
+
+    .cards-pagination {
+        margin-bottom: 15px;
+        ul {
+            margin: 0 0 0 20px;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            list-style: none;
+        }
+        li {
+            border-radius: 50%;
+            color: #fff;
+            height: 10px;
+            width: 10px;
+            & + li {
+                margin-left: 10px;
+            }
+        }
+        .prev-button {
+            @include icon(after, chevron-left);
+            &:after {
+                margin-left: 6px;
+            }
+        }
+        .next-button {
+            @include icon(after, chevron-right);
+            &:after {
+                margin-left: 9px;
+            }
+        }
+        .prev-button, .next-button {
+            height: 25px;
+            width: 25px;
+            &:after {
+                line-height: 25px;
+                vertical-align: middle;
+            }
+        }
+    }
+
+    .card {
+        background: #fff;
+        border-radius: 10px;
+        height: 325px;
+        margin-bottom: 30px;
+        padding: 15px;
+        position: relative;
+        overflow: hidden;
+        .category {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+        }
+        .tags {
+            float: right;
+        }
+    }
+    .card-image {
+        background-size: cover;
+        border-radius: 10px 10px 0 0;
+        height: 150px;
+        margin: -15px -15px 15px;
+    }
+    .card-title {
+        font-size: 24px;
+        margin: 2px 0 4px;
+        max-height: 55px;
+        overflow: hidden;
+        a {
+            color: #000;
+        }
+    }
+    .card-axis {
+        color: #4A4A4A;
+        font-size: 12px;
+    }
+    .card-author {
+        color: #4A4A4A;
+        display: block;
+        font-size: 12px;
+        margin-bottom: 25px;
+    }
+
+    .carousel {
+        .item {
+            .text-center {
+                position: relative;
+                padding-bottom: 56.25%; /* 16:9 */
+                padding-top: 25px;
+                height: 0;
+            }
+            iframe, img {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+            }
+        }
+        .carousel-control {
+            background-image: none;
+            border-radius: 50%;
+            height: 40px;
+            width: 40px;
+            opacity: 1;
+            top: 50%;
+            margin-top: -20px;
+            &:active, &:focus, &:hover {
+                transition: all 0.3s ease;
+            }
+            span {
+                font-size: 20px;
+                height: auto;
+                width: auto;
+            }
+            &.left {
+                margin-left: 20px;
+                span {
+                    @extend %icon-chevron-left;
+                }
+            }
+            &.right {
+                margin-right: 20px;
+                span {
+                    @extend %icon-chevron-right;
+                }
+            }
+        }
+        .carousel-indicators {
+            display: none;
+        }
+    }
+
+    .cards-list {
+        margin: 30px 0 20px;
+    }
+}
+
+.praticas-certificadas {
+    .btn.add {
+        @include button-hover(#fff,#fff,$purple,darken($purple,10%));
+    }
+    .subtitle {
+        color: $purple;
+    }
+    .cards-pagination {
+        li {
+            background-color: rgba($purple,0.3);
+        }
+        .prev-button, .next-button, .active {
+            background-color: $purple;
+        }
+    }
+    .card-axis, .card-author a {
+        color: $purple;
+    }
+    .category, .tag, .action {
+        color: $purple;
+    }
+    .category, .tag {
+        border-color: $purple;
+    }
+    .category {
+        border: 0;
+        @include button-hover(#fff,$purple,$purple,#fff);
+    }
+    .carousel {
+        .carousel-control {
+            background-color: $purple;
+            &:active, &:focus, &:hover {
+                background-color: darken($purple,10%);
+            }
+        }
+    }
+}
+
+.praticas-independentes {
+    .btn.add {
+        @include button-hover(#fff,#fff,$orange,darken($orange,10%));
+    }
+    .subtitle {
+        color: $orange;
+    }
+    .cards-pagination {
+        li {
+            background-color: rgba($orange,0.3);
+        }
+        .prev-button, .next-button, .active {
+            background-color: $orange;
+        }
+    }
+    .card-axis, .card-author a {
+        color: $orange;
+    }
+    .category, .tag, .action {
+        color: $orange;
+    }
+    .category, .tag {
+        border-color: $orange;
+    }
+    .category {
+        border: 0;
+        @include button-hover(#fff,$orange,$orange,#fff);
+    }
+    .carousel {
+        .carousel-control {
+            background-color: $orange;
+            &:active, &:focus, &:hover {
+                background-color: darken($orange,10%);
+            }
+        }
+    }
+}
+
+.scroll-warning {
+    @include icon(before, chevron-down);
+    color: #fff;
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 2;
+    text-align: center;
+    height: 30px;
+	width: 340px;
+	border-radius: 20px 20px 0 0;
+    background-color: #4A4A4A;
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    margin-left: -170px;
+    &:before {
+        margin-right: 5px;
+    }
+}
+
+.not-found {
+	color: #4A4A4A;
+	font-family: "Open Sans";
+    font-size: 20px;
+    margin: 30px 0;
+    b {
+        color: $purple;
+        font-weight: bold;
+    }
+}
+
+.card-page {
+    .widget-topbar {
+        margin: -30px -30px 0px -30px !important; 
+        .line {
+            border-bottom: 0;
+            margin: 0 30px;
+            .author {
+                color: $gray;
+                font-size: 12px;
+                b {
+                    font-size: 14px;
+                }
+            }
+        }
+        .title {
+            color: $gray;
+            a {
+                color: $gray;
+                &:hover, &:active, &:focus {
+                    text-decoration: underline;
+                }
+            }
+        }
+    }
+
+    .card-page-header {
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+        .tags, .category {
+            margin-top: 10px;
+        }
+    }
+    .card-page-info {
+        display: flex;
+        align-items: baseline;
+        .author {
+            color: $gray;
+            font-size: 12px;
+            margin-left: 30px;
+        }
+        b {
+            color: $gray;
+        }
+    }
+    .page-title {
+        color: #000;
+        font-size: 48px;
+        font-weight: bold;
+        margin: 0 20px 0 0;
+    }
+    .user-icon {
+        display: inline-block;
+        float: none;
+        margin: 0 10px;
+    }
+    .card-page-content {
+        p, li {
+            line-height: 1.5;
+        }
+        ol li {
+            margin-bottom: 10px;
+        }
+        .title {
+            color: #000;
+            font-size: 36px;
+            font-weight: bold;
+            margin-top: 0;
+        }
+        .subtitle {
+            color: $orange;
+            font-size: 20px;
+            margin: 35px 0 5px;
+        }
+        .author {
+            font-family: $font-family-sans-serif;
+            font-size: 16px;
+            font-weight: bold;
+            margin: 10px 0 10px;
+        }
+        .actions {
+            margin: 20px 0;
+        }
+        .sidebar {
+            .box {
+                background-color: $orange;
+                color: #fff;
+                margin-bottom: 40px;
+                padding: 20px;
+                h5 {
+                    color: #fff;
+                }
+            }
+            h5 {
+                color: $orange;
+                font-family: $font-family-sans-serif;
+                font-size: 20px;
+                font-weight: bold;
+                margin: 0 0 5px;
+            }
+            .tags {
+                margin-top: 10px;
+            }
+        }
+    }
+    &.praticas-independentes {
+        .page-title, .action {
+            color: $orange;
+        }
+    }
+    &.praticas-certificadas {
+        .page-title, .action {
+            color: $purple;
+        }
+        .subtitle {
+            color: $purple;
+        }
+        .sidebar {
+            .box {
+                background-color: $purple;
+            }
+            h5 {
+                color: $purple;
+            }
+            .tag {
+                border: 1px solid $purple;
+                color: $purple;
+                @include button-hover($purple,#fff,transparent,$purple);    
+            }
+        }
+    }
+}
+
+.card-edit {
+    .cards-filters-options {
+        .form-group {
+            margin-bottom: 20px;
+        }
+    }
+    .ui-select-multiple.ui-select-bootstrap {
+        height: auto;
+        min-height: 34px;
+        padding: 4px;
+        input {
+            border: 0;
+        }
+        .btn-default {
+            @extend %forum-categories;
+            .close {
+                opacity: 1;
+                font-size: 1.4em;
+                line-height: 0.9em !important;
+                text-shadow: 0;
+                transition: color 0.5s ease;
+            }
+            &:hover, &:active, &:hover {
+                .close {
+                    color: #fff !important;
+                }
+            }
+        }
+    }
+
+    .editable-title {
+        background: #fff;
+        .title {
+            font-size: 48px;
+            line-height: 0.1;
+        }
+        .subtitle {
+            color: #000;
+            font-family: $font-family-serif;
+            font-size: 36px;
+            line-height: 0.1;
+            margin: 0;
+            &::-webkit-input-placeholder {
+                color: #000;
+            }
+            &::-moz-placeholder {
+                color: #000;
+            }
+            &:-ms-input-placeholder {
+                color: #000;
+            }
+            &:-moz-placeholder {
+                color: #000;
+            }
+        }
+        .author {
+            font-family: $font-family-sans-serif;
+            font-size: 16px;
+            margin: 0;
+        }
+    }
+    .editable-text-box {
+        background: #fff;
+        margin-top: 15px;
+    }
+    .tipo-pratica {
+        font-size: 14px;
+        font-weight: bold;
+        margin: 20px 0;
+        padding: 0;
+        &:before {
+            border-radius: 100%;
+            content: '';
+            height: 15px;
+            width: 15px;
+            display: inline-block;
+            margin-right: 10px;
+            vertical-align: sub;
+        }
+    }
+    .subtitle + .editable-title, .editable-text-box + .editable-title {
+        margin-top: 15px;
+    }
+    .card-page-content {
+        padding-bottom: 20px;
+    }
+    .panel-default {
+        margin-top: 15px;
+        .question {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px; 
+            .editable-title {
+                background: lighten($gray,60%);
+                flex-grow: 0.9;
+            }
+        }
+        .centered {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 30px;
+            h1 {
+                margin: 0;
+            }
+            .btn {
+                margin: 20px 0 0;
+            }
+        }
+        .btn.trash {
+            display: block;
+            margin: 15px auto 0;
+        }
+    }
+    .mce-tinymce {
+        margin: 15px 0;
+    }
+    &.praticas-independentes {
+        .editable-title {
+            .title {
+                color: $orange;
+                &::-webkit-input-placeholder {
+                    color: $orange;
+                }
+                &::-moz-placeholder {
+                    color: $orange;
+                }
+                &:-ms-input-placeholder {
+                    color: $orange;
+                }
+                &:-moz-placeholder {
+                    color: $orange;
+                }
+            }
+        }
+        .tipo-pratica {
+            &:before {
+                background: $orange;
+            }
+        }
+        .ui-select-multiple.ui-select-bootstrap {
+            .btn-default {
+                @include button-hover($orange,#fff,transparent,$orange);
+                border: 1px solid $orange !important;
+                .close {
+                    color: $orange;
+                }
+            }
+        }
+        .panel-default {
+            h1, .fa {
+                color: $orange;
+            }
+        }
+    }
+    &.praticas-certificadas {
+        .widget-topbar {
+            background-color: $purple;
+        }
+        .editable-title {
+            .title {
+                color: $purple;
+                &::-webkit-input-placeholder {
+                    color: $purple;
+                }
+                &::-moz-placeholder {
+                    color: $purple;
+                }
+                &:-ms-input-placeholder {
+                    color: $purple;
+                }
+                &:-moz-placeholder {
+                    color: $purple;
+                }
+            }
+        }
+        .tipo-pratica {
+            &:before {
+                background: $purple;
+            }
+        }
+        .ui-select-multiple.ui-select-bootstrap {
+            .btn-default {
+                @include button-hover($purple,#fff,transparent,$purple);
+                border: 1px solid $purple !important;
+                .close {
+                    color: $purple;
+                }
+            }
+        }
+        .panel-default {
+            h1, .fa {
+                color: $purple;
+            }
+        }
+    }
+}

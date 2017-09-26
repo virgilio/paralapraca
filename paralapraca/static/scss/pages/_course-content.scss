@@ -13,7 +13,7 @@
         margin: 0;
         h1 {
             font-size: 18px;
-            margin: 0; 
+            margin: 0;
             text-transform: uppercase;
             span {
                 display: inline-block;
@@ -23,7 +23,7 @@
     .course-name {
         color: #000;
         font-size: 30px;
-        margin: 0; 
+        margin: 0;
     }
     .course-slug {
         margin-bottom: 5px;
@@ -66,7 +66,7 @@
             margin: 0;
         }
         @media screen and (min-width: $screen-sm-min) {
-            text-align: right; 
+            text-align: right;
         }
         a {
             border-right: 1px solid #c9a30d;
@@ -78,7 +78,7 @@
             margin-left: -1%;
             padding: 2%;
             vertical-align: top;
-            text-align: center; 
+            text-align: center;
             width: 24.1%;
             &:last-of-type {
                 border-right: 0;
@@ -92,12 +92,12 @@
                 @include link-hover(#000,#000,transparent,#000);
                 border-bottom-width: 2px !important;
                 border-right: 0;
-                margin: 0 5px; 
+                margin: 0 5px;
                 padding: 0;
                 width: auto;
             }
             @media screen and (min-width: $screen-md-min) {
-                margin: 0 8px; 
+                margin: 0 8px;
             }
             &:before {
                 display: block;
@@ -168,7 +168,7 @@
                         border: 0;
                         font-size: $font-size-small;
                         height: auto !important;
-                        margin: 0; 
+                        margin: 0;
                         max-width: auto;
                         padding: 6px 12px;
                         text-align: left;
@@ -183,7 +183,7 @@
                             &:hover {
                                 background-color: darken($gray-lighter,15%);
                             }
-                        } 
+                        }
                     }
                 }
             }
@@ -233,7 +233,7 @@
                             &:hover {
                                 background-color: darken($gray-lighter,15%);
                             }
-                        } 
+                        }
                     }
                 }
             }
@@ -252,7 +252,7 @@
     .lesson-breadcrumb {
         display: block;
         margin-top: 3px;
-    }   
+    }
     .form-control {
         background-color: transparent;
         border-radius: 0;
@@ -266,7 +266,7 @@
         padding: 0 0 0 50px;
         position: relative;
         z-index: 1;
-    }        
+    }
 }
 
 .help-text {
@@ -306,7 +306,7 @@
 }
 
 .course-content {
-    margin: 25px auto;  
+    margin: 25px auto;
     padding: 0 15px;
 
     @media screen and (min-width: $screen-xs-min) {
@@ -473,7 +473,7 @@
     // COURSE VIDEO - General
     // ********************************************************************* //
     .course-video {
-        margin: 0 auto 40px; 
+        margin: 0 auto 40px;
         max-width: 720px;
     }
     .video,
@@ -490,7 +490,7 @@
             margin: 5px 10px 0 0;
         }
         .img-responsive {
-            margin: 10px auto; 
+            margin: 10px auto;
         }
     }
     // END COURSE VIDEO
@@ -506,7 +506,7 @@
     left: 0;
     @media screen and (min-width: $screen-sm-min) {
         left: 100px;
-    } 
+    }
     .show-note {
         position: fixed;
         bottom: 0;
@@ -532,7 +532,7 @@
                 font-family: $font-family-sans-serif;
                 font-size: 16px;
                 font-weight: $bold;
-                margin: 0 10px 0 0; 
+                margin: 0 10px 0 0;
             }
             .all-notes {
                 @extend %icon-angle-right;
@@ -552,14 +552,14 @@
             }
             .save {
                 float: right;
-                margin: -2px 15px 0 0; 
+                margin: -2px 15px 0 0;
                 &:before {
                     vertical-align: middle;
                 }
             }
             .hide-note {
                 float: right;
-                margin: -2px 0 0 0; 
+                margin: -2px 0 0 0;
             }
         }
         .notes-content {
@@ -571,11 +571,8 @@
         }
     }
 
-    .notes-success-message {
-        background: $brand-success;
+    .message {
         border-radius: 20px;
-        box-shadow: 0 2px 4px 0 rgba(0,0,0,0.5);
-        color: #fff;
         font-family: $font-family-sans-serif;
         font-size: 16px;
         font-weight: $bold;
@@ -584,6 +581,18 @@
         padding: 5px 13px;
         position: absolute;
         top: 50%;
+
+        &.success {
+            background: $brand-success;
+            box-shadow: 0 2px 4px 0 rgba(0,0,0,0.5);
+            color: #fff;
+        }
+
+        &.failure {
+            background: $brand-danger;
+            box-shadow: 0 2px 4px 0 rgba(0,0,0,0.5);
+            color: #fff;
+        }
     }
 }
 
@@ -644,9 +653,9 @@
             font-size: $font-size-base;
             font-weight: $semi-bold;
             height: 20px;
-            margin-top: -9px; 
+            margin-top: -9px;
             padding: 0 10px;
-            text-align: center; 
+            text-align: center;
         }
         .unit {
             border-radius: 100%;
@@ -655,8 +664,8 @@
             font-size: $font-size-base;
             font-weight: $semi-bold;
             height: 20px;
-            margin: -9px 0 0 6%; 
-            text-align: center; 
+            margin: -9px 0 0 6%;
+            text-align: center;
             width: 20px;
             @include button-hover(#fff,#fff,#9b9b9b,darken(#9b9b9b, 10%));
             &.current {
@@ -724,8 +733,8 @@
                 color: #000;
                 font-family: $font-family-sans-serif;
                 font-size: 3vmax;
-                font-weight: $bold; 
-                margin: 0 0 10px; 
+                font-weight: $bold;
+                margin: 0 0 10px;
                 @media screen and (min-width: $screen-xs-min) {
                     font-size: 24px;
                 }
@@ -765,16 +774,16 @@
 
 .course-lesson {
     .lesson-content {
-        margin: 0 auto; 
+        margin: 0 auto;
         max-width: 720px !important;
 
         .lesson-info {
-            margin-top: 30px; 
+            margin-top: 30px;
             .page-header {
-                margin-bottom: 20px; 
+                margin-bottom: 20px;
             }
             .lesson-materials {
-                margin-top: 20px; 
+                margin-top: 20px;
             }
         }
     }
@@ -890,7 +899,7 @@ ul.uploaded-files-list {
         h4 {
             font-family: $font-family-sans-serif;
             font-size: $font-size-base;
-            font-weight: $bold; 
+            font-weight: $bold;
         }
         li {
             height: 35px;

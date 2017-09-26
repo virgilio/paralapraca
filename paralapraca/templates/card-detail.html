@@ -1,0 +1,101 @@
+{% verbatim %}
+<section class="cards card-page praticas-independentes widget container-fluid" ng-class="{'praticas-certificadas': card.is_certified, 'praticas-independentes': !card.is_certified}">
+    <!-- .praticas-certificadas ou .praticas-certificadas
+         para mudar a cor dos elementos da página -->
+    <header class="widget-topbar breadcrumb">
+        <div class="line">
+            <div class="pull-left">
+                <h2 class="title"><a href="#!/">Assim se faz</a> &gt; <a href="#!/?axis={{card.axis.name}}">{{ card.axis.name }}</a></h2>
+            </div>
+            <div class="pull-right">
+                <a class="btn btn-link goback" href="#!/">voltar</a>
+                <a class="btn btn-sm btn-success edit" href="#!/{{card_id}}/edit" ng-show="card.editable">editar prática</a>
+                <a class="btn btn-sm btn-danger delete" ng-click="delete_card()" ng-show="card.editable">deletar prática</a>
+            </div>
+        </div>
+  
+        <div class="card-page-header line">
+            <h3 class="page-title">{{ card.title }}</h3>
+            <a class="category" href="#!/?audience={{card.audience.name}}">{{ card.audience.name }}</a>
+        </div>
+
+        <div class="card-page-info line">
+            <a class="action liked" ng-class="{'active': card.user_liked}" ng-click="toggle_like()"><span>gostei!</span></a>
+            <span class="action"><ng-pluralize count="card.likes" when="{'0': '0 gostou', '1': '1 gostou', 'other': '{{ card.likes }} gostaram'}"></span>
+            <span class="author">Prática publicada por:</span>
+            <div class="user-icon">
+                <img src="{{ card.author.picture }}" alt="Nome Usuário"/>
+            </div>
+            <a href="/profile/{{card.author.username}}"><b>{{ card.author.name }}</b></a>
+        </div>
+    </header>
+
+    <div class="card-page-content">
+
+        <div class="row">
+            <div class="col-sm-12 col-md-6 col-lg-4">
+                <span ng-bind-html="card.text"></span>
+
+                <div ng-show="card.you_will_need">
+                    <h5 class="subtitle">Você vai precisar de:</h5>
+                    <span ng-bind-html="card.you_will_need"></span>
+                </div>
+            </div> <!-- /.col -->
+
+            <div class="col-sm-12 col-md-6 col-lg-8">
+                <div uib-carousel active="active_slide" interval="0">
+                    <div uib-slide ng-repeat="slide in slides" index="$index">    
+                        <img ng-show="slide.type == 'image'" ng-src="{{slide.el.image}}">
+                        <iframe ng-show="slide.type == 'video'" ng-src="{{safe_url('https://www.youtube-nocookie.com/embed/' + slide.el.video_id + '?rel=0&showinfo=0')}}" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div> <!-- /.col -->
+        </div> <!-- /.row -->
+
+        <div class="row">
+            <div class="col-sm-12 col-md-6 col-lg-8">
+                <div ng-show="card.development">
+                    <h5 class="subtitle">Desenvolvimento</h5>
+                    <span ng-bind-html="card.development"></span>
+                </div>
+
+                <div ng-show="card.know_more">
+                    <h5 class="subtitle">Para saber mais</h5>
+                    <span ng-bind-html="card.know_more"></span>
+                </div>
+            </div> <!-- /.col -->
+
+            <div class="col-sm-12 col-md-6 col-lg-4">
+                <div class="sidebar">
+                    <div class="box" ng-show="card.hint">
+                        <h5>Dicas</h5>
+                        <span ng-bind-html="card.hint"></span>
+                    </div>
+
+                    <div ng-show="card.tags.length > 0">
+                        <h5>Tags</h5>
+                        <div class="tags">
+                            <a class="tag" ng-repeat="tag in card.tags" href="#!/?tag={{tag.name}}">#{{ tag.name }}</a>
+                        </div>
+                    </div>
+                </div>
+            </div> <!-- /.col -->
+        </div> <!-- /.row -->
+
+        <div ng-show="card.authors.length > 0">
+            <h5 class="subtitle">Autoria</h5>
+            
+            <div ng-repeat="author in card.authors">
+                <h6 class="author">{{ author.author_name }}</h6>
+                <span ng-bind-html="author.author_description"></span>
+            </div> 
+        </div>
+
+        <div class="actions">
+            <a class="action liked" ng-class="{'active': card.user_liked}" ng-click="toggle_like()"><span>gostei!</span></a>
+            <span class="action"><ng-pluralize count="card.likes" when="{'0': '0 gostou', '1': '1 gostou', 'other': '{{ card.likes }} gostaram'}"></span>
+        </div>
+    </div>
+   
+</section>
+{% endverbatim %}

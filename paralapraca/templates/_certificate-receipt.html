@@ -12,13 +12,15 @@
           </div>
       </div>
       {% endblock %}
-      <div class="certificate-title">Comprovante</div>
+      <div class="certificate-title">Declaração</div>
       <div class="certificate-info">
+          <p>Declaramos, para os devidos fins, que</p>
           {% block receipt-options-student %}
               <p class="student">{{ object.course_student.user.get_full_name }}{% if object.course_student.user.rg %}, RG {{ object.course_student.user.rg }} {% endif %}</p>
           {%   endblock %}
-          <p>concluiu o <em>{{ object.course.name }}</em> </p>
-          <p>com carga horária estimada em 40 horas em {{ object.created_date | date:"d/m/Y" }}.</p>
+          <p>inscrita no cadastro de pessoa física sob o número {{ object.course_student.user.cpf }}</p>
+          <p>participou do <em>{{ object.course.name }}</em></p>
+          <p>no Ambiente Virtual de Aprendizagem do Programa Paralapracá.</p>
       </div>
 
       <footer>

@@ -26,7 +26,7 @@
     border-left-color: $orange;
     @media screen and (min-width: $screen-sm-min) {
         background-color: transparent;
-        background-image: url('../img/bg-certificate.svg');
+        background-image: url('../img/bg-certificate-clean.svg');
         background-size: 100%;
         background-repeat: no-repeat;
         border: 0;
@@ -68,6 +68,7 @@
         }
         @media screen and (min-width: $screen-md-min) {
             font-size: 64px;
+            line-height: 0.5;
             margin: 0 0 20px;
         }
     }
@@ -145,7 +146,7 @@
         border: 0;
         padding: 30px;
         @media screen and (min-width: $screen-sm-min) {
-            background-image: url('../img/bg-receipt.svg');
+            // background-image: url('../img/bg-receipt.svg');
             background-size: 100%;
             padding: 30px 100px;
         }
