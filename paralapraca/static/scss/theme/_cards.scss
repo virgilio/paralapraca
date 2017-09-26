@@ -169,10 +169,11 @@
     .card {
         background: #fff;
         border-radius: 10px;
+        height: 325px;
+        margin-bottom: 30px;
         padding: 15px;
-        max-height: 300px;
-        overflow: hidden;
         position: relative;
+        overflow: hidden;
         .category {
             position: absolute;
             top: 15px;
