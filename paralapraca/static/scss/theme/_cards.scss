@@ -23,7 +23,6 @@
             font-size: 25px;
         }
     }
-
     .search-input {
         border: 2px solid $purple;
         border-radius: 30px;
@@ -32,7 +31,6 @@
         font-weight: bold;
         height: 50px;
     }
-
     .search-suggestion {
         font-size: 14px;
         a {
@@ -41,7 +39,6 @@
             text-decoration: underline;
         }
     }
-
     .open-filters-options {
         color: $purple;
         cursor: pointer;
@@ -69,7 +66,6 @@
             }
         }
     }
-
     .cards-filters-options {
         margin-top: 15px;
         .form-control {
@@ -81,7 +77,31 @@
             margin-bottom: 0;
         }
     }
-
+    .ui-select-multiple {
+        height: auto;
+        min-height: 34px;
+        padding: 4px;
+        input {
+            border: 0;
+        }
+        .btn-default {
+            @extend %forum-categories;
+            color: #fff;
+            .close {
+                color: #fff;
+                opacity: 1;
+                font-size: 1.4em;
+                line-height: 0.9em !important;
+                text-shadow: 0;
+                transition: color 0.5s ease;
+            }
+            &:hover, &:active, &:hover {
+                .close {
+                    color: #fff !important;
+                }
+            }
+        }
+    }
     .results-info-tags {
         .tag {
             @include icon(after, times);
@@ -116,13 +136,16 @@
         font-family: $font-family-sans-serif;
         font-size: 20px;
         font-weight: bold;
-        margin: 5px 0;
+        margin: 5px 0 15px;
 
         span {
             color: $gray;
             font-size: 14px;
             font-weight: normal;
             margin-left: 10px;
+            span {
+                margin: 0;
+            }
         }
     }
 
@@ -210,6 +233,7 @@
     }
 
     .carousel {
+        margin-bottom: 30px;
         .item {
             .text-center {
                 position: relative;
@@ -271,6 +295,15 @@
     .subtitle {
         color: $purple;
     }
+    .ui-select-multiple {
+        .btn-default {
+            @include button-hover($purple,#fff,transparent,$purple);
+            border: 1px solid $purple !important;
+            .close {
+                color: $purple;
+            }
+        }
+    }
     .cards-pagination {
         li {
             background-color: rgba($purple,0.3);
@@ -292,6 +325,15 @@
         border: 0;
         @include button-hover(#fff,$purple,$purple,#fff);
     }
+    a.action.liked {
+        span {
+            color: $purple !important;
+            &:hover, &:focus, &:hover {
+                border-color: $purple !important;
+                color: $purple !important;
+            }
+        }
+    }
     .carousel {
         .carousel-control {
             background-color: $purple;
@@ -309,6 +351,15 @@
     .subtitle {
         color: $orange;
     }
+    .ui-select-multiple {
+        .btn-default {
+            @include button-hover($orange,#fff,transparent,$orange);
+            border: 1px solid $orange !important;
+            .close {
+                color: $orange;
+            }
+        }
+    }
     .cards-pagination {
         li {
             background-color: rgba($orange,0.3);
@@ -322,6 +373,15 @@
     }
     .category, .tag, .action {
         color: $orange;
+    }
+    a.action.liked {
+        span {
+            color: $orange !important;
+            &:hover, &:focus, &:hover {
+                border-color: $orange !important;
+                color: $orange !important;
+            }
+        }
     }
     .category, .tag {
         border-color: $orange;
@@ -414,6 +474,12 @@
         }
         b {
             color: $gray;
+        }
+    }
+    .actions {
+        .text {
+            color: $gray;
+            font-size: 12px;
         }
     }
     .page-title {
@@ -510,30 +576,6 @@
             margin-bottom: 20px;
         }
     }
-    .ui-select-multiple.ui-select-bootstrap {
-        height: auto;
-        min-height: 34px;
-        padding: 4px;
-        input {
-            border: 0;
-        }
-        .btn-default {
-            @extend %forum-categories;
-            .close {
-                opacity: 1;
-                font-size: 1.4em;
-                line-height: 0.9em !important;
-                text-shadow: 0;
-                transition: color 0.5s ease;
-            }
-            &:hover, &:active, &:hover {
-                .close {
-                    color: #fff !important;
-                }
-            }
-        }
-    }
-
     .editable-title {
         background: #fff;
         .title {
@@ -645,15 +687,6 @@
                 background: $orange;
             }
         }
-        .ui-select-multiple.ui-select-bootstrap {
-            .btn-default {
-                @include button-hover($orange,#fff,transparent,$orange);
-                border: 1px solid $orange !important;
-                .close {
-                    color: $orange;
-                }
-            }
-        }
         .panel-default {
             h1, .fa {
                 color: $orange;
@@ -684,15 +717,6 @@
         .tipo-pratica {
             &:before {
                 background: $purple;
-            }
-        }
-        .ui-select-multiple.ui-select-bootstrap {
-            .btn-default {
-                @include button-hover($purple,#fff,transparent,$purple);
-                border: 1px solid $purple !important;
-                .close {
-                    color: $purple;
-                }
             }
         }
         .panel-default {
