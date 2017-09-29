@@ -5,7 +5,7 @@
         <div class="pull-left">
             <h2 class="page-title">pôsteres</h2>
         </div>
-        <div class="pull-left"><a href="#!/new" class="btn btn-primary btn-sm new-practice add">nova prática</a></div>
+        <div class="pull-left"><a href="#!/new" class="btn btn-primary btn-sm new-practice add">novo pôster</a></div>
     </header>
 
     <section class="cards-search">
@@ -31,9 +31,9 @@
 
         <form class="cards-filters-options row" ng-show="show_filter_options">
             <div class="form-group col-xs-12 col-md-6 col-lg-3">
-                <label>Quais práticas deseja filtrar?</label>
+                <label>Quais pôsteres deseja filtrar?</label>
                 <select ng-model ="filter.status" class="form-control">
-                    <option value="">Todas as práticas publicadas</option>
+                    <option value="">Todas os pôsteres publicados</option>
                     <option value="2">Pôsteres certificados</option>
                     <option value="3">Pôsteres não certificados</option>
                 </select>
@@ -80,7 +80,7 @@
                 <header class="col-xs-12">
                     <h3 class="subtitle pull-left">
                         Pôsteres certificados
-                        <span class="practices-count"><ng-pluralize count="cards.certified.length" when="{'0': 'nenhuma prática', '1': '1 prática', 'other': '{{ cards.certified.length }} práticas'}"></ng-pluralize></span>
+                        <span class="practices-count"><ng-pluralize count="cards.certified.length" when="{'0': 'nenhum pôster', '1': '1 pôster', 'other': '{{ cards.certified.length }} pôsteres'}"></ng-pluralize></span>
                     </h3>
                     <nav class="cards-pagination pull-left" ng-show="cards.certified.length > 3">
                         <ul>
@@ -123,7 +123,7 @@
                 </div>
             </div>
 
-            <div class="scroll-warning">role a página para ver todas as práticas</div>
+            <div class="scroll-warning">role a página para ver todos os pôsteres</div>
         </section>
 
         <section class="cards-list praticas-independentes">
@@ -131,7 +131,7 @@
                 <header class="col-xs-12">
                     <h3 class="subtitle pull-left">
                         Pôsteres não certificados
-                        <span class="practices-count"><ng-pluralize count="cards.community.length" when="{'0': 'nenhuma prática', '1': '1 prática', 'other': '{{ cards.community.length }} práticas'}"></ng-pluralize></span>                    </h3>
+                        <span class="practices-count"><ng-pluralize count="cards.community.length" when="{'0': 'nenhum pôster', '1': '1 pôster', 'other': '{{ cards.community.length }} pôsters'}"></ng-pluralize></span>                    </h3>
                     <nav class="cards-pagination pull-left" ng-show="cards.community.length > 3">
                         <ul>
                             <li class="prev-button" ng-click="community_slides_down()">
@@ -174,13 +174,13 @@
                 </div>
             </div>
 
-            <div class="scroll-warning">role a página para ver todas as práticas</div>
+            <div class="scroll-warning">role a página para ver todas as pôsteres</div>
         </section>
 
         <section class="cards-list">
             <div class="row">
                 <header class="col-xs-12">
-                    <h3 class="subtitle pull-left">Todas as práticas</h3>
+                    <h3 class="subtitle pull-left">Todos os pôsteres</h3>
                 </header>
             </div>
 
@@ -206,7 +206,7 @@
                 </div>
             </div>
 
-            <div class="scroll-warning">role a página para ver todas as práticas</div>
+            <div class="scroll-warning">role a página para ver todos os pôsteres</div>
         </section>
     </div>
 
