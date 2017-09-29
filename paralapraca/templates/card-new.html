@@ -7,7 +7,7 @@
                 <a class="btn btn-link goback" ng-href="#!/{{ card_id}}" ng-show="editing_mode">voltar</a>
             </div>
             <div class="pull-right">
-				<a class="btn btn-sm btn-primary edit" ng-click="create_card()" ng-show="!editing_mode">criar prática</a>				
+				<a class="btn btn-sm btn-primary edit" ng-click="create_card()" ng-show="!editing_mode">criar prática</a>
                 <a class="btn btn-sm btn-primary edit" ng-click="update_card()" ng-show="editing_mode">salvar prática</a>
                 <a class="btn btn-sm btn-danger delete" ng-click="delete_card()" ng-show="editing_mode">apagar prática</a>
             </div>
@@ -17,7 +17,7 @@
     <div class="card-page-content">
         <header class="card-page-header-edit">
             <div>
-                <div class="alert alert-danger" role="danger" ng-repeat="error in validation_errors">{{ error }}</div>
+                <div class="alert alert-danger" role="danger" ng-repeat="error in error_messages">{{ error }}</div>
             </div>
             <form class="cards-filters-options row">
                 <div class="form-group col-xs-12 col-md-6 col-lg-3">
@@ -131,7 +131,7 @@
         <div class="row">
             <div class="col-sm-12 col-md-6 col-lg-8">
 
-                <h5 class="subtitle">Desenvolvimento</h5>                    
+                <h5 class="subtitle">Desenvolvimento</h5>
                 <div class="editable editable-text-box" ng-bind-html="card.development || 'Clique para editar'" ng-click="development_backup = card.development; show_development_editor = true" ng-show="!show_development_editor"></div>
                 <div ng-show="show_development_editor">
                     <textarea ui-tinymce="tinymceOptions" ng-model="card.development"></textarea>
@@ -146,16 +146,16 @@
                     <div class="btn btn-sm btn-success save" ng-click="show_know_more_editor = false">Feito</div>
                     <div class="btn btn-sm btn-danger delete" ng-click="card.know_more = know_more_backup; show_know_more_editor = false">Cancelar</div>
                 </div>
-    
+
                 <h5 class="subtitle">Autoria <div class="btn btn-sm add" ng-click="add_author()">Adicionar pessoa</div></h5>
-				<div ng-repeat="author in card.authors">			
+				<div ng-repeat="author in card.authors">
 					<div class="editable-title">
 						<input type="text" class="author" placeholder="Nome" ng-model="author.author_name">
 					</div>
 					<textarea ui-tinymce="tinymceOptions" ng-model="author.author_description"></textarea>
 				</div>
             </div>
-    
+
             <div class="col-sm-12 col-md-6 col-lg-4">
                 <div class="sidebar">
                     <div class="box">
@@ -179,12 +179,12 @@
                 <a class="btn btn-success goback" ng-href="#!/{{ card_id}}" ng-show="editing_mode">voltar</a>
             </div>
             <div class="pull-right">
-                <a class="btn btn-sm btn-primary edit" ng-click="create_card()" ng-show="!editing_mode">criar prática</a>				
+                <a class="btn btn-sm btn-primary edit" ng-click="create_card()" ng-show="!editing_mode">criar prática</a>
                 <a class="btn btn-sm btn-primary edit" ng-click="update_card()" ng-show="editing_mode">salvar prática</a>
                 <a class="btn btn-sm btn-danger delete" ng-click="delete_card()" ng-show="editing_mode">apagar prática</a>
             </div>
         </div>
     </footer>
-    
+
 </section>
 {% endverbatim %}
