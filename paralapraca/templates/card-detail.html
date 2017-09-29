@@ -5,12 +5,12 @@
     <header class="widget-topbar breadcrumb">
         <div class="line">
             <div class="pull-left">
-                <h2 class="title"><a href="#!/">Assim se faz</a> &gt; <a href="#!/?axis={{card.axis.name}}">{{ card.axis.name }}</a></h2>
+                <h2 class="title"><a href="#!/">Pôsteres</a> &gt; <a href="#!/?axis={{card.axis.name}}">{{ card.axis.name }}</a></h2>
             </div>
             <div class="pull-right">
                 <a class="btn btn-link goback" href="#!/">voltar</a>
-                <a class="btn btn-sm btn-success edit" href="#!/{{card_id}}/edit" ng-show="card.editable">editar prática</a>
-                <a class="btn btn-sm btn-danger delete" ng-click="delete_card()" ng-show="card.editable">deletar prática</a>
+                <a class="btn btn-sm btn-success edit" href="#!/{{card_id}}/edit" ng-show="card.editable">editar pôster</a>
+                <a class="btn btn-sm btn-danger delete" ng-click="delete_card()" ng-show="card.editable">deletar pôster</a>
             </div>
         </div>
 
@@ -24,7 +24,7 @@
                 <a class="action liked" ng-class="{'active': card.user_liked}" ng-click="toggle_like()"><span>gostei!</span></a>
                 <span class="text"><ng-pluralize count="card.likes" when="{'0': '0 gostou', '1': '1 gostou', 'other': '{{ card.likes }} gostaram'}"></span>
             </div>
-            <span class="author">Prática publicada por:</span>
+            <span class="author">Pôster publicado por:</span>
             <div class="user-icon">
                 <img src="{{ card.author.picture }}" alt="Nome Usuário"/>
             </div>

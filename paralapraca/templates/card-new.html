@@ -21,7 +21,7 @@
             </div>
             <form class="cards-filters-options row">
                 <div class="form-group col-xs-12 col-md-6 col-lg-3">
-                    <label>Público <span class="help-text">(campo obrigatório)</span></label>
+                    <label>Língua <span class="help-text">(campo obrigatório)</span></label>
                     <select class="form-control" ng-model="card.audience.id" required>
                         <option ng-repeat="audience in audiences track by audience.id" ng-value="audience.id">{{ audience.name }}</option>
                     </select>
@@ -48,9 +48,9 @@
             </div>
 
             <p class="tipo-pratica col-sm-12">
-                <span ng-show="card.is_certified">Sua prática foi certificada pela Avante.</span>
-                <span ng-show="!card.is_certified">Sua prática é independente.</span>
-                <span ng-show="card.certifiable"><br/><input type="checkbox" ng-model="card.is_certified" ng-checked="card.is_certified"> Certificar prática</span>
+                <span ng-show="card.is_certified">Seu pôster foi certificado.</span>
+                <span ng-show="!card.is_certified">Seu pôster ainda não foi certificado.</span>
+                <span ng-show="card.certifiable"><br/><input type="checkbox" ng-model="card.is_certified" ng-checked="card.is_certified"> Certificar pôster</span>
             </p>
         </header>
 
@@ -179,9 +179,9 @@
                 <a class="btn btn-success goback" ng-href="#!/{{ card_id}}" ng-show="editing_mode">voltar</a>
             </div>
             <div class="pull-right">
-                <a class="btn btn-sm btn-primary edit" ng-click="create_card()" ng-show="!editing_mode">criar prática</a>				
-                <a class="btn btn-sm btn-primary edit" ng-click="update_card()" ng-show="editing_mode">salvar prática</a>
-                <a class="btn btn-sm btn-danger delete" ng-click="delete_card()" ng-show="editing_mode">apagar prática</a>
+                <a class="btn btn-sm btn-primary edit" ng-click="create_card()" ng-show="!editing_mode">criar pôster</a>
+                <a class="btn btn-sm btn-primary edit" ng-click="update_card()" ng-show="editing_mode">salvar pôster</a>
+                <a class="btn btn-sm btn-danger delete" ng-click="delete_card()" ng-show="editing_mode">apagar pôster</a>
             </div>
         </div>
     </footer>

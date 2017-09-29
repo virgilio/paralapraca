@@ -3,7 +3,7 @@
 
     <header class="page-header clearfix">
         <div class="pull-left">
-            <h2 class="page-title">assim se faz</h2>
+            <h2 class="page-title">pôsteres</h2>
         </div>
         <div class="pull-left"><a href="#!/new" class="btn btn-primary btn-sm new-practice add">nova prática</a></div>
     </header>
@@ -34,12 +34,12 @@
                 <label>Quais práticas deseja filtrar?</label>
                 <select ng-model ="filter.status" class="form-control">
                     <option value="">Todas as práticas publicadas</option>
-                    <option value="2">Práticas validadas</option>
-                    <option value="3">Práticas independentes</option>
+                    <option value="2">Pôsteres certificados</option>
+                    <option value="3">Pôsteres não certificados</option>
                 </select>
             </div>
             <div class="form-group col-xs-12 col-md-6 col-lg-3">
-                <label>Público</label>
+                <label>Língua</label>
                 <select ng-model="filter.audience" class="form-control">
                     <option value="">Selecione...</option>
                     <option ng-repeat="audience in audiences" ng-value="audience.name">{{ audience.name }}</option>
@@ -69,8 +69,8 @@
 
         <div class="results-info">
             <div class="results-info-tags">
-                <a class="tag active" ng-click="filter.status = '';" ng-show="filter.status == '2'">Práticas validadas</a>
-                <a class="tag active" ng-click="filter.status = ''" ng-show="filter.status == '3'">Práticas independentes</a>                
+                <a class="tag active" ng-click="filter.status = '';" ng-show="filter.status == '2'">Pôsteres certificados</a>
+                <a class="tag active" ng-click="filter.status = ''" ng-show="filter.status == '3'">Pôsteres não certificados</a>
                 <a class="tag active" ng-click="filter.audience = ''" ng-hide="filter.audience == ''">{{ filter.audience }}</a>
                 <a class="tag active" ng-click="filter.axis = ''" ng-hide="filter.axis == ''">{{ filter.axis }}</a>
                 <a class="tag active" ng-repeat="tag in filter.tags" ng-click="remove_tag($index)">#{{ tag.name }}</a>
@@ -83,7 +83,7 @@
             <div class="row">
                 <header class="col-xs-12">
                     <h3 class="subtitle pull-left">
-                        Práticas validadas
+                        Pôsteres certificados
                         <span class="practices-count"><ng-pluralize count="cards.certified.length" when="{'0': 'nenhuma prática', '1': '1 prática', 'other': '{{ cards.certified.length }} práticas'}"></ng-pluralize></span>
                     </h3>
                     <nav class="cards-pagination pull-left" ng-show="cards.certified.length > 3">
@@ -134,7 +134,7 @@
             <div class="row">
                 <header class="col-xs-12">
                     <h3 class="subtitle pull-left">
-                        Práticas independentes
+                        Pôsteres não certificados
                         <span class="practices-count"><ng-pluralize count="cards.community.length" when="{'0': 'nenhuma prática', '1': '1 prática', 'other': '{{ cards.community.length }} práticas'}"></ng-pluralize></span>                    </h3>
                     <nav class="cards-pagination pull-left" ng-show="cards.community.length > 3">
                         <ul>
