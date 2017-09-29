@@ -1,6 +1,6 @@
 {% verbatim %}
 <div class="cards container-fluid">
-   
+
     <header class="page-header clearfix">
         <div class="pull-left">
             <h2 class="page-title">assim se faz</h2>
@@ -20,7 +20,7 @@
                         </button>
                     </fieldset>
                     <!--<span class="search-suggestion">
-                        sugestões: <a href="#">lorem ipsum,</a> <a href="#">lorem ipsum,</a> <a href="#">lorem ipsum</a>. 
+                        sugestões: <a href="#">lorem ipsum,</a> <a href="#">lorem ipsum,</a> <a href="#">lorem ipsum</a>.
                     </span>-->
                 </form>
             </div>
@@ -28,7 +28,7 @@
                 <div class="open-filters-options" ng-class="{opened: show_filter_options, closed: !show_filter_options}" ng-click="show_filter_options = !show_filter_options"></div>
             </div>
         </div>
-        
+
         <form class="cards-filters-options row" ng-show="show_filter_options">
             <div class="form-group col-xs-12 col-md-6 col-lg-3">
                 <label>Quais práticas deseja filtrar?</label>
@@ -111,7 +111,7 @@
                         <header>
                             <a href="#!/{{card.id}}"><div class="card-image" style="background-image: url('{{card.image_gallery[0].image}}')"></div></a>
                             <a class="category" ng-click="filter.audience = card.audience.name">{{ card.audience.name }}</a>
-                            
+
                             <a class="card-axis" ng-click="filter.axis = card.axis.name">{{ card.axis.name }}</a>
                             <h4 class="card-title"><a href="#!/{{ card.id }}">{{ card.title }}</a></h4>
                             <span class="card-author">publicado por <a href="/profile/{{card.author.username}}">{{ card.author.name }}</a> <span class="action liked pull-right">{{ card.likes }}</span></span>
@@ -161,7 +161,7 @@
                         <header>
                             <a href="#!/{{card.id}}"><div class="card-image" style="background-image: url('{{card.image_gallery[0].image}}')"></div></a>
                             <a class="category" ng-click="filter.audience = card.audience.name">{{ card.audience.name }}</a>
-                            
+
                             <a class="card-axis" ng-click="filter.axis = card.axis.name">{{ card.axis.name }}</a>
                             <h4 class="card-title"><a href="#!/{{ card.id }}">{{ card.title }}</a></h4>
                             <span class="card-author">publicado por <a href="/profile/{{card.author.username}}">{{ card.author.name }}</a> <span class="action liked pull-right">{{ card.likes }}</span>
@@ -194,7 +194,7 @@
                         <header>
                             <a href="#!/{{card.id}}"><div class="card-image" style="background-image: url('{{card.image_gallery[0].image}}')"></div></a>
                             <a class="category" ng-click="filter.audience = card.audience.name">{{ card.audience.name }}</a>
-                            
+
                             <a class="card-axis" ng-click="filter.axis = card.axis.name">{{ card.axis.name }}</a>
                             <h4 class="card-title"><a href="#!/{{ card.id }}">{{ card.title }}</a></h4>
                             <span class="card-author">publicado por <a href="/profile/{{card.author.username}}">{{ card.author.name }}</a> <span class="action liked pull-right">{{ card.likes }}</span></span>
@@ -210,7 +210,7 @@
                 </div>
             </div>
 
-            <div class="scroll-warning">role a página para ver todas as práticas</div>  
+            <div class="scroll-warning">role a página para ver todas as práticas</div>
         </section>
     </div>
 
@@ -227,7 +227,7 @@
                     <header>
                         <a href="#!/{{card.id}}"><div class="card-image" style="background-image: url('{{card.image_gallery[0].image}}')"></div></a>
                         <a class="category" ng-click="filter.audience = card.audience.name">{{ card.audience.name }}</a>
-                        
+
                         <a class="card-axis" ng-click="filter.axis = card.axis.name">{{ card.axis.name }}</a>
                         <h4 class="card-title"><a href="#!/{{ card.id }}">{{ card.title }}</a></h4>
                         <span class="card-author">publicado por <a href="/profile/{{card.author.username}}">{{ card.author.name }}</a> <span class="action liked pull-right">{{ card.likes }}</span></span>
@@ -249,6 +249,6 @@
             </div>
         </div>
     </div>
-    
+
 </div>
 {% endverbatim %}
