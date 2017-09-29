@@ -20,8 +20,10 @@
         </div>
 
         <div class="card-page-info line">
-            <a class="action liked" ng-class="{'active': card.user_liked}" ng-click="toggle_like()"><span>gostei!</span></a>
-            <span class="action"><ng-pluralize count="card.likes" when="{'0': '0 gostou', '1': '1 gostou', 'other': '{{ card.likes }} gostaram'}"></span>
+            <div class="actions">
+                <a class="action liked" ng-class="{'active': card.user_liked}" ng-click="toggle_like()"><span>gostei!</span></a>
+                <span class="text"><ng-pluralize count="card.likes" when="{'0': '0 gostou', '1': '1 gostou', 'other': '{{ card.likes }} gostaram'}"></span>
+            </div>
             <span class="author">Prática publicada por:</span>
             <div class="user-icon">
                 <img src="{{ card.author.picture }}" alt="Nome Usuário"/>
@@ -44,7 +46,7 @@
 
             <div class="col-sm-12 col-md-6 col-lg-8">
                 <div uib-carousel active="active_slide" interval="0">
-                    <div uib-slide ng-repeat="slide in slides" index="$index">    
+                    <div uib-slide ng-repeat="slide in slides track by $index" index="$index">
                         <img ng-show="slide.type == 'image'" ng-src="{{slide.el.image}}">
                         <iframe ng-show="slide.type == 'video'" ng-src="{{safe_url('https://www.youtube-nocookie.com/embed/' + slide.el.video_id + '?rel=0&showinfo=0')}}" frameborder="0" allowfullscreen></iframe>
                     </div>
@@ -93,7 +95,7 @@
 
         <div class="actions">
             <a class="action liked" ng-class="{'active': card.user_liked}" ng-click="toggle_like()"><span>gostei!</span></a>
-            <span class="action"><ng-pluralize count="card.likes" when="{'0': '0 gostou', '1': '1 gostou', 'other': '{{ card.likes }} gostaram'}"></span>
+            <span class="text"><ng-pluralize count="card.likes" when="{'0': '0 gostou', '1': '1 gostou', 'other': '{{ card.likes }} gostaram'}"></span>
         </div>
     </div>
    

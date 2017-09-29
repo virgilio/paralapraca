@@ -59,8 +59,8 @@
                     <option ng-repeat="tag in tags" ng-value="tag.name"/>
                 </datalist>-->
                 <ui-select multiple theme="bootstrap" ng-model="filter.tags" tagging="new_tag" title="Selecione uma tag...">
-                    <ui-select-match placeholder="Selecione uma tag...">#{{ $item.name | limitTo: 12 }}</ui-select-match>
-                    <ui-select-choices repeat="tag in tags" group-by="">
+                    <ui-select-match placeholder="Selecione uma tag...">#{{ $item.name }}</ui-select-match>
+                    <ui-select-choices repeat="tag in tags | filter: {name: $select.search}" group-by="">
                         <div>{{ tag.name }}</div>
                     </ui-select-choices>
                 </ui-select>
@@ -109,7 +109,7 @@
                 <div class="col-xs-12 col-md-6 col-lg-4" ng-repeat="card in slider.certified">
                     <article class="card">
                         <header>
-                            <a href="#!/{{card.id}}"><div class="card-image" style="background-image: url('{{card.image_gallery[0].image}}')"></div></a>
+                            <a href="#!/{{card.id}}"><div class="card-image" style="background-image: url('{{card_image(card)}}')"></div></a>
                             <a class="category" ng-click="filter.audience = card.audience.name">{{ card.audience.name }}</a>
                             
                             <a class="card-axis" ng-click="filter.axis = card.axis.name">{{ card.axis.name }}</a>
@@ -159,7 +159,7 @@
                 <div class="col-xs-12 col-md-6 col-lg-4" ng-repeat="card in slider.community">
                     <article class="card">
                         <header>
-                            <a href="#!/{{card.id}}"><div class="card-image" style="background-image: url('{{card.image_gallery[0].image}}')"></div></a>
+                            <a href="#!/{{card.id}}"><div class="card-image" style="background-image: url('{{card_image(card)}}')"></div></a>
                             <a class="category" ng-click="filter.audience = card.audience.name">{{ card.audience.name }}</a>
                             
                             <a class="card-axis" ng-click="filter.axis = card.axis.name">{{ card.axis.name }}</a>
@@ -192,7 +192,7 @@
                 <div class="col-xs-12 col-md-6 col-lg-4" ng-repeat="card in cards.all">
                     <article class="card" ng-class="{'praticas-certificadas': card.is_certified, 'praticas-independentes': !card.is_certified}">
                         <header>
-                            <a href="#!/{{card.id}}"><div class="card-image" style="background-image: url('{{card.image_gallery[0].image}}')"></div></a>
+                            <a href="#!/{{card.id}}"><div class="card-image" style="background-image: url('{{card_image(card)}}')"></div></a>
                             <a class="category" ng-click="filter.audience = card.audience.name">{{ card.audience.name }}</a>
                             
                             <a class="card-axis" ng-click="filter.axis = card.axis.name">{{ card.axis.name }}</a>
@@ -225,7 +225,7 @@
             <div class="col-xs-12 col-md-6 col-lg-4" ng-repeat="card in cards.all">
                 <article class="card" ng-class="{'praticas-certificadas': card.is_certified, 'praticas-independentes': !card.is_certified}">
                     <header>
-                        <a href="#!/{{card.id}}"><div class="card-image" style="background-image: url('{{card.image_gallery[0].image}}')"></div></a>
+                        <a href="#!/{{card.id}}"><div class="card-image" style="background-image: url('{{card_image(card)}}')"></div></a>
                         <a class="category" ng-click="filter.audience = card.audience.name">{{ card.audience.name }}</a>
                         
                         <a class="card-axis" ng-click="filter.axis = card.axis.name">{{ card.axis.name }}</a>
