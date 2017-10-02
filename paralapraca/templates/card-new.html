@@ -84,9 +84,9 @@
                     <div class="panel-body">
                         <div class="row">
                             <div ng-show="slide_mode == mode.ADD_MEDIA || slide_mode == mode.ADD_IMAGE || slide_mode == mode.ADD_VIDEO">
-                                <div class="col-xs-12" ng-show="slide_mode == mode.ADD_MEDIA">
-                                    <button class="btn btn-xs btn-primary add-image pull-left" ng-click="slide_mode = mode.ADD_IMAGE">adicionar imagem</button>
-                                    <button class="btn btn-xs btn-primary add-video pull-right" ng-click="slide_mode = mode.ADD_VIDEO">adicionar vídeo</button>
+                                <div class="col-xs-12 text-center" ng-show="slide_mode == mode.ADD_MEDIA">
+                                    <button class="btn btn-xs btn-primary add-image" ng-click="slide_mode = mode.ADD_IMAGE">adicionar imagem</button>
+                                    <button class="btn btn-xs btn-primary add-video" ng-click="slide_mode = mode.ADD_VIDEO">adicionar vídeo</button>
                                 </div>
                                 <div class="add-thumbnail col-xs-12 textcenter" ng-show="slide_mode == mode.ADD_IMAGE">
                                     <div class="centered">
