@@ -1,6 +1,6 @@
 {% verbatim %}
 <div class="cards container-fluid">
-   
+
     <header class="page-header clearfix">
         <div class="pull-left">
             <h2 class="page-title">assim se faz</h2>
@@ -20,7 +20,7 @@
                         </button>
                     </fieldset>
                     <!--<span class="search-suggestion">
-                        sugestões: <a href="#">lorem ipsum,</a> <a href="#">lorem ipsum,</a> <a href="#">lorem ipsum</a>. 
+                        sugestões: <a href="#">lorem ipsum,</a> <a href="#">lorem ipsum,</a> <a href="#">lorem ipsum</a>.
                     </span>-->
                 </form>
             </div>
@@ -28,11 +28,11 @@
                 <div class="open-filters-options" ng-class="{opened: show_filter_options, closed: !show_filter_options}" ng-click="show_filter_options = !show_filter_options"></div>
             </div>
         </div>
-        
+
         <form class="cards-filters-options row" ng-show="show_filter_options">
             <div class="form-group col-xs-12 col-md-6 col-lg-3">
                 <label>Quais práticas deseja filtrar?</label>
-                <select ng-model ="filter.status" class="form-control">
+                <select ng-model ="card_filter.status" class="form-control">
                     <option value="">Todas as práticas publicadas</option>
                     <option value="2">Práticas validadas</option>
                     <option value="3">Práticas independentes</option>
@@ -40,14 +40,14 @@
             </div>
             <div class="form-group col-xs-12 col-md-6 col-lg-3">
                 <label>Público</label>
-                <select ng-model="filter.audience" class="form-control">
+                <select ng-model="card_filter.audience" class="form-control">
                     <option value="">Selecione...</option>
                     <option ng-repeat="audience in audiences" ng-value="audience.name">{{ audience.name }}</option>
                 </select>
             </div>
             <div class="form-group col-xs-12 col-md-6 col-lg-3">
                 <label>Eixo</label>
-                <select ng-model="filter.axis" class="form-control">
+                <select ng-model="card_filter.axis" class="form-control">
                     <option value="">Selecione...</option>
                     <option ng-repeat="axis in axes" ng-value="axis.name">{{ axis.name }}</option>
                 </select>
@@ -58,7 +58,7 @@
                 <datalist id="tag_list" ng-show="tag">
                     <option ng-repeat="tag in tags" ng-value="tag.name"/>
                 </datalist>-->
-                <ui-select multiple theme="bootstrap" ng-model="filter.tags" tagging="new_tag" title="Selecione uma tag...">
+                <ui-select multiple theme="bootstrap" ng-model="card_filter.tags" tagging="new_tag" title="Selecione uma tag...">
                     <ui-select-match placeholder="Selecione uma tag...">#{{ $item.name }}</ui-select-match>
                     <ui-select-choices repeat="tag in tags | filter: {name: $select.search}" group-by="">
                         <div>{{ tag.name }}</div>
@@ -69,11 +69,11 @@
 
         <div class="results-info">
             <div class="results-info-tags">
-                <a class="tag active" ng-click="filter.status = '';" ng-show="filter.status == '2'">Práticas validadas</a>
-                <a class="tag active" ng-click="filter.status = ''" ng-show="filter.status == '3'">Práticas independentes</a>                
-                <a class="tag active" ng-click="filter.audience = ''" ng-hide="filter.audience == ''">{{ filter.audience }}</a>
-                <a class="tag active" ng-click="filter.axis = ''" ng-hide="filter.axis == ''">{{ filter.axis }}</a>
-                <a class="tag active" ng-repeat="tag in filter.tags" ng-click="remove_tag($index)">#{{ tag.name }}</a>
+                <a class="tag active" ng-click="card_filter.status = '';" ng-show="card_filter.status == '2'">Práticas validadas</a>
+                <a class="tag active" ng-click="card_filter.status = ''" ng-show="card_filter.status == '3'">Práticas independentes</a>
+                <a class="tag active" ng-click="card_filter.audience = ''" ng-hide="card_filter.audience == ''">{{ card_filter.audience }}</a>
+                <a class="tag active" ng-click="card_filter.axis = ''" ng-hide="card_filter.axis == ''">{{ card_filter.axis }}</a>
+                <a class="tag active" ng-repeat="tag in card_filter.tags" ng-click="remove_tag($index)">#{{ tag.name }}</a>
             </div>
         </div>
     </section>
@@ -110,9 +110,9 @@
                     <article class="card">
                         <header>
                             <a href="#!/{{card.id}}"><div class="card-image" style="background-image: url('{{card_image(card)}}')"></div></a>
-                            <a class="category" ng-click="filter.audience = card.audience.name">{{ card.audience.name }}</a>
-                            
-                            <a class="card-axis" ng-click="filter.axis = card.axis.name">{{ card.axis.name }}</a>
+                            <a class="category" ng-click="card_filter.audience = card.audience.name">{{ card.audience.name }}</a>
+
+                            <a class="card-axis" ng-click="card_filter.axis = card.axis.name">{{ card.axis.name }}</a>
                             <h4 class="card-title"><a href="#!/{{ card.id }}">{{ card.title }}</a></h4>
                             <span class="card-author">publicado por <a href="/profile/{{card.author.username}}">{{ card.author.name }}</a> <span class="action liked pull-right">{{ card.likes }}</span></span>
                         </header>
@@ -160,9 +160,9 @@
                     <article class="card">
                         <header>
                             <a href="#!/{{card.id}}"><div class="card-image" style="background-image: url('{{card_image(card)}}')"></div></a>
-                            <a class="category" ng-click="filter.audience = card.audience.name">{{ card.audience.name }}</a>
-                            
-                            <a class="card-axis" ng-click="filter.axis = card.axis.name">{{ card.axis.name }}</a>
+                            <a class="category" ng-click="card_filter.audience = card.audience.name">{{ card.audience.name }}</a>
+
+                            <a class="card-axis" ng-click="card_filter.axis = card.axis.name">{{ card.axis.name }}</a>
                             <h4 class="card-title"><a href="#!/{{ card.id }}">{{ card.title }}</a></h4>
                             <span class="card-author">publicado por <a href="/profile/{{card.author.username}}">{{ card.author.name }}</a> <span class="action liked pull-right">{{ card.likes }}</span>
                         </span>
@@ -193,9 +193,9 @@
                     <article class="card" ng-class="{'praticas-certificadas': card.is_certified, 'praticas-independentes': !card.is_certified}">
                         <header>
                             <a href="#!/{{card.id}}"><div class="card-image" style="background-image: url('{{card_image(card)}}')"></div></a>
-                            <a class="category" ng-click="filter.audience = card.audience.name">{{ card.audience.name }}</a>
-                            
-                            <a class="card-axis" ng-click="filter.axis = card.axis.name">{{ card.axis.name }}</a>
+                            <a class="category" ng-click="card_filter.audience = card.audience.name">{{ card.audience.name }}</a>
+
+                            <a class="card-axis" ng-click="card_filter.axis = card.axis.name">{{ card.axis.name }}</a>
                             <h4 class="card-title"><a href="#!/{{ card.id }}">{{ card.title }}</a></h4>
                             <span class="card-author">publicado por <a href="/profile/{{card.author.username}}">{{ card.author.name }}</a> <span class="action liked pull-right">{{ card.likes }}</span></span>
                         </header>
@@ -210,7 +210,7 @@
                 </div>
             </div>
 
-            <div class="scroll-warning">role a página para ver todas as práticas</div>  
+            <div class="scroll-warning">role a página para ver todas as práticas</div>
         </section>
     </div>
 
@@ -226,9 +226,9 @@
                 <article class="card" ng-class="{'praticas-certificadas': card.is_certified, 'praticas-independentes': !card.is_certified}">
                     <header>
                         <a href="#!/{{card.id}}"><div class="card-image" style="background-image: url('{{card_image(card)}}')"></div></a>
-                        <a class="category" ng-click="filter.audience = card.audience.name">{{ card.audience.name }}</a>
-                        
-                        <a class="card-axis" ng-click="filter.axis = card.axis.name">{{ card.axis.name }}</a>
+                        <a class="category" ng-click="card_filter.audience = card.audience.name">{{ card.audience.name }}</a>
+
+                        <a class="card-axis" ng-click="card_filter.axis = card.axis.name">{{ card.axis.name }}</a>
                         <h4 class="card-title"><a href="#!/{{ card.id }}">{{ card.title }}</a></h4>
                         <span class="card-author">publicado por <a href="/profile/{{card.author.username}}">{{ card.author.name }}</a> <span class="action liked pull-right">{{ card.likes }}</span></span>
                     </header>
@@ -249,6 +249,6 @@
             </div>
         </div>
     </div>
-    
+
 </div>
 {% endverbatim %}
