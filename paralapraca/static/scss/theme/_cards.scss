@@ -318,6 +318,11 @@
                 color: $purple;
             }
         }
+        .ui-select-choices {
+            max-height: 300px;
+            overflow-y: scroll;
+            top: 30px !important;
+        }
     }
     .cards-pagination {
         li {
