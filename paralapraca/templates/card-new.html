@@ -74,6 +74,7 @@
 				</div>
             </div>
             <div class="col-sm-12 col-md-6 col-lg-8">
+                <p class="help-text text-center"><b>A primeira imagem na galeria abaixo será usada na página inicial do Assim se Faz para divulgar a sua prática.</b></p>
                 <div class="panel panel-default">
                     <div class="panel-heading clearfix">
                         <button class="btn" ng-repeat="image in card.image_gallery" ng-click="select_image($index)" ng-class="is_selected_image(index)">{{ $index + 1}}</button>
@@ -84,9 +85,9 @@
                     <div class="panel-body">
                         <div class="row">
                             <div ng-show="slide_mode == mode.ADD_MEDIA || slide_mode == mode.ADD_IMAGE || slide_mode == mode.ADD_VIDEO">
-                                <div class="col-xs-12" ng-show="slide_mode == mode.ADD_MEDIA">
-                                    <button class="btn btn-xs btn-primary add-image pull-left" ng-click="slide_mode = mode.ADD_IMAGE">adicionar imagem</button>
-                                    <button class="btn btn-xs btn-primary add-video pull-right" ng-click="slide_mode = mode.ADD_VIDEO">adicionar vídeo</button>
+                                <div class="col-xs-12 text-center" ng-show="slide_mode == mode.ADD_MEDIA">
+                                    <button class="btn btn-xs btn-primary add-image" ng-click="slide_mode = mode.ADD_IMAGE">adicionar imagem</button>
+                                    <button class="btn btn-xs btn-primary add-video" ng-click="slide_mode = mode.ADD_VIDEO">adicionar vídeo</button>
                                 </div>
                                 <div class="add-thumbnail col-xs-12 textcenter" ng-show="slide_mode == mode.ADD_IMAGE">
                                     <div class="centered">
@@ -115,7 +116,7 @@
                                 </div>
                             </div>
                             <section class="col-xs-12" ng-show="slide_mode == mode.SHOW_IMAGE || slide_mode == mode.SHOW_VIDEO">
-                                <div ng-show="slide_mode == mode.SHOW_IMAGE">
+                                <div ng-show="slide_mode == mode.SHOW_IMAGE" class="">
                                     <img ng-src="{{ selected_image.image }}" class="img-responsive">
                                     <button class="btn btn-danger trash" ng-click="remove_image(selected_image_index)"></button>
                                 </div>
