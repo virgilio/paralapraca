@@ -115,7 +115,7 @@
                                 </div>
                             </div>
                             <section class="col-xs-12" ng-show="slide_mode == mode.SHOW_IMAGE || slide_mode == mode.SHOW_VIDEO">
-                                <div ng-show="slide_mode == mode.SHOW_IMAGE">
+                                <div ng-show="slide_mode == mode.SHOW_IMAGE" class="">
                                     <img ng-src="{{ selected_image.image }}" class="img-responsive">
                                     <button class="btn btn-danger trash" ng-click="remove_image(selected_image_index)"></button>
                                 </div>

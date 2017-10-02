@@ -286,6 +286,12 @@
     .cards-list {
         margin: 30px 0 20px;
     }
+
+    .pull-right {
+        .btn + .btn {
+            margin-left: 10px;
+        }
+    }
 }
 
 .praticas-certificadas {
@@ -658,6 +664,10 @@
         }
         .add-image + .add-video {
             margin-left: 10px;
+        }
+        .img-responsive {
+            display: block;
+            margin: 0 auto;
         }
         .btn.trash {
             display: block;
