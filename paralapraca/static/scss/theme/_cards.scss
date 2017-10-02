@@ -326,7 +326,7 @@
         @include button-hover(#fff,$purple,$purple,#fff);
     }
     a.action.liked {
-        span {
+        &:before, span {
             color: $purple !important;
             &:hover, &:focus, &:hover {
                 border-color: $purple !important;
@@ -375,7 +375,7 @@
         color: $orange;
     }
     a.action.liked {
-        span {
+        &:before, span {
             color: $orange !important;
             &:hover, &:focus, &:hover {
                 border-color: $orange !important;
