@@ -36,10 +36,11 @@
 
         <div class="row">
             <div class="col-sm-12 col-md-6 col-lg-4">
+                <h5 class="subtitle">Introdução</h5>
                 <span ng-bind-html="card.text"></span>
 
                 <div ng-show="card.you_will_need">
-                    <h5 class="subtitle">Você vai precisar de:</h5>
+                    <h5 class="subtitle">Desenvolvimento/Metodologia</h5>
                     <span ng-bind-html="card.you_will_need"></span>
                 </div>
             </div> <!-- /.col -->
@@ -57,12 +58,12 @@
         <div class="row">
             <div class="col-sm-12 col-md-6 col-lg-8">
                 <div ng-show="card.development">
-                    <h5 class="subtitle">Desenvolvimento</h5>
+                    <h5 class="subtitle">Conclusão</h5>
                     <span ng-bind-html="card.development"></span>
                 </div>
 
                 <div ng-show="card.know_more">
-                    <h5 class="subtitle">Para saber mais</h5>
+                    <h5 class="subtitle">Considerações finais</h5>
                     <span ng-bind-html="card.know_more"></span>
                 </div>
             </div> <!-- /.col -->
@@ -70,7 +71,7 @@
             <div class="col-sm-12 col-md-6 col-lg-4">
                 <div class="sidebar">
                     <div class="box" ng-show="card.hint">
-                        <h5>Dicas</h5>
+                        <h5>Referências bibliográficas</h5>
                         <span ng-bind-html="card.hint"></span>
                     </div>
 

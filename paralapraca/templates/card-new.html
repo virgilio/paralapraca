@@ -57,14 +57,15 @@
 
         <div class="row">
             <div class="col-sm-12 col-md-6 col-lg-4">
-				<div class="editable editable-text-box" ng-bind-html="card.text || 'Clique para editar'" ng-click="text_backup = card.text; show_text_editor = true" ng-show="!show_text_editor"></div>
+                <h5 class="subtitle">Introdução</h5>
+                <div class="editable editable-text-box" ng-bind-html="card.text || 'Clique para editar'" ng-click="text_backup = card.text; show_text_editor = true" ng-show="!show_text_editor"></div>
 				<div ng-show="show_text_editor">
 					<textarea ui-tinymce="tinymceOptions" ng-model="card.text"></textarea>
                     <div class="btn btn-sm btn-success save" ng-click="show_text_editor = false">Feito</div>
                     <div class="btn btn-sm btn-danger delete" ng-click="card.text = text_backup; show_text_editor = false">Cancelar</div>
 				</div>
 
-                <h5 class="subtitle">Você vai precisar de:</h5>
+                <h5 class="subtitle">Desenvolvimento/Metodologia</h5>
 				<div class="editable editable-text-box" ng-bind-html="card.you_will_need || 'Clique para editar'" ng-click="you_will_need_backup = card.you_will_need; show_you_will_need_editor = true" ng-show="!show_you_will_need_editor"></div>
 				<div ng-show="show_you_will_need_editor">
 					<textarea ui-tinymce="tinymceOptions" ng-model="card.you_will_need"></textarea>
@@ -132,7 +133,7 @@
         <div class="row">
             <div class="col-sm-12 col-md-6 col-lg-8">
 
-                <h5 class="subtitle">Desenvolvimento</h5>
+                <h5 class="subtitle">Conclusão</h5>
                 <div class="editable editable-text-box" ng-bind-html="card.development || 'Clique para editar'" ng-click="development_backup = card.development; show_development_editor = true" ng-show="!show_development_editor"></div>
                 <div ng-show="show_development_editor">
                     <textarea ui-tinymce="tinymceOptions" ng-model="card.development"></textarea>
@@ -140,7 +141,7 @@
                     <div class="btn btn-sm btn-danger delete" ng-click="card.development = development_backup; show_development_editor = false">Cancelar</div>
                 </div>
 
-                <h5 class="subtitle">Para saber mais</h5>
+                <h5 class="subtitle">Considerações finais</h5>
                 <div class="editable editable-text-box" ng-bind-html="card.know_more || 'Clique para editar'" ng-click="know_more_backup = card.know_more; show_know_more_editor = true" ng-show="!show_know_more_editor"></div>
                 <div ng-show="show_know_more_editor">
                     <textarea ui-tinymce="tinymceOptions" ng-model="card.know_more"></textarea>
@@ -160,7 +161,7 @@
             <div class="col-sm-12 col-md-6 col-lg-4">
                 <div class="sidebar">
                     <div class="box">
-                        <h5>Dicas</h5>
+                        <h5>Referências bibliográficas</h5>
                         <div class="editable editable-text-box" ng-bind-html="card.hint || 'Clique para editar'" ng-click="hint_backup = card.hint; show_hint_editor = true" ng-show="!show_hint_editor"></div>
                         <div ng-show="show_hint_editor">
                             <textarea ui-tinymce="tinymceOptions" ng-model="card.hint"></textarea>
