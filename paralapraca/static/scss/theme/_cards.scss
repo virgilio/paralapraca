@@ -107,6 +107,7 @@
             @include icon(after, times);
             border-color: $gray;
             color: $gray;
+            margin-bottom: 5px;
             &:after {
                 margin-left: 5px;
             }
@@ -236,7 +237,7 @@
         margin-bottom: 30px;
         .item {
             .text-center {
-                background: #000;
+                background: rgba(255,255,255,0.5);
                 display: flex;
                 justify-content: center;
                 align-items: center;
@@ -301,6 +302,22 @@
             margin-left: 10px;
         }
     }
+
+    .ui-select-multiple {
+        .ui-select-choices {
+            max-height: 300px;
+            overflow-y: scroll;
+            top: 30px !important;
+        }
+        .btn-default {
+            @include button-hover($purple,#fff,transparent,$purple);
+            border: 1px solid $purple !important;
+            margin-bottom: 5px;
+            .close {
+                color: $purple;
+            }
+        }
+    }
 }
 
 .praticas-certificadas {
@@ -309,20 +326,6 @@
     }
     .subtitle {
         color: $purple;
-    }
-    .ui-select-multiple {
-        .btn-default {
-            @include button-hover($purple,#fff,transparent,$purple);
-            border: 1px solid $purple !important;
-            .close {
-                color: $purple;
-            }
-        }
-        .ui-select-choices {
-            max-height: 300px;
-            overflow-y: scroll;
-            top: 30px !important;
-        }
     }
     .cards-pagination {
         li {
