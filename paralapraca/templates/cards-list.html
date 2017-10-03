@@ -28,7 +28,7 @@
                 <div class="open-filters-options" ng-class="{opened: show_filter_options, closed: !show_filter_options}" ng-click="show_filter_options = !show_filter_options"></div>
             </div>
             <div class="col-xs-6 col-md-3 col-lg-2">
-                <span class="btn btn-sm btn-default delete clean-filters pull-right" ng-click="clean_filters()">limpar filtros</span>
+                <span class="btn btn-sm btn-default delete clean-filters pull-right" ng-show="show_filter_options" ng-click="clean_filters()">limpar filtros</span>
             </div>
         </div>
 
