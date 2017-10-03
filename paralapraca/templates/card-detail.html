@@ -5,7 +5,7 @@
     <header class="widget-topbar breadcrumb">
         <div class="line">
             <div class="pull-left">
-                <h2 class="title"><a href="#!/">Assim se faz</a> &gt; <a href="#!/?axis={{card.axis.name}}">{{ card.axis.name }}</a></h2>
+                <h2 class="title"><a href="#!/">Assim se faz</a> &gt; <a ng-click="filter_by_axis(card.axis.name)">{{ card.axis.name }}</a></h2>
             </div>
             <div class="pull-right">
                 <a class="btn btn-link goback" href="#!/">voltar</a>
@@ -13,10 +13,10 @@
                 <a class="btn btn-sm btn-danger delete" ng-click="delete_card()" ng-show="card.editable">deletar prática</a>
             </div>
         </div>
-  
+
         <div class="card-page-header line">
             <h3 class="page-title">{{ card.title }}</h3>
-            <a class="category" href="#!/?audience={{card.audience.name}}">{{ card.audience.name }}</a>
+            <a class="category" ng-click="filter_by_audience(card.audience.name)">{{ card.audience.name }}</a>
         </div>
 
         <div class="card-page-info line">
@@ -77,7 +77,7 @@
                     <div ng-show="card.tags.length > 0">
                         <h5>Tags</h5>
                         <div class="tags">
-                            <a class="tag" ng-repeat="tag in card.tags" href="#!/?tag={{tag.name}}">#{{ tag.name }}</a>
+                            <a class="tag" ng-repeat="tag in card.tags" ng-click="filter_by_tag(tag.name)">#{{ tag.name }}</a>
                         </div>
                     </div>
                 </div>
@@ -86,11 +86,11 @@
 
         <div ng-show="card.authors.length > 0">
             <h5 class="subtitle">Autoria</h5>
-            
+
             <div ng-repeat="author in card.authors">
                 <h6 class="author">{{ author.author_name }}</h6>
                 <span ng-bind-html="author.author_description"></span>
-            </div> 
+            </div>
         </div>
 
         <div class="actions">
@@ -98,6 +98,6 @@
             <span class="text"><ng-pluralize count="card.likes" when="{'0': '0 gostou', '1': '1 gostou', 'other': '{{ card.likes }} gostaram'}"></span>
         </div>
     </div>
-   
+
 </section>
 {% endverbatim %}
