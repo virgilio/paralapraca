@@ -3,7 +3,7 @@
         background: rgba(#fff,0.5);
         padding: 30px;
     }
-    .btn.new-practice {
+    .btn.new-practice, .btn.clean-filters {
         @include button-hover(#fff,#fff,$purple,darken($purple,10%));
         margin: 15px 0 0 30px;
     }
