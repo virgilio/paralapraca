@@ -249,15 +249,14 @@
                 height: 0;
                 */
             }
-            /*
-            iframe, img {
-                position: absolute;
-                top: 0;
-                left: 0;
-                max-width: 100%;
+            iframe {
+                width: 100%;
                 height: 100%;
             }
-            */
+            img {
+                max-height: 100%;
+                max-width: 100%;
+            }
         }
         .carousel-control {
             background-image: none;
@@ -655,6 +654,15 @@
     .card-page-content {
         padding-bottom: 20px;
     }
+    .panel-heading {
+        display: flex;
+        .btn {
+            display: block;
+        }
+        .btn + .btn {
+            margin-left: 5px;
+        }
+    }
     .panel-default {
         margin-top: 15px;
         .question {
@@ -682,7 +690,7 @@
         .add-image + .add-video {
             margin-left: 10px;
         }
-        .img-responsive {
+        .img-responsive, iframe {
             display: block;
             margin: 0 auto;
         }
