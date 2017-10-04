@@ -5,7 +5,7 @@
     <header class="widget-topbar breadcrumb">
         <div class="line">
             <div class="pull-left">
-                <h2 class="title"><a href="#!/">Pôsteres</a> &gt; <a href="#!/?axis={{card.axis.name}}">{{ card.axis.name }}</a></h2>
+                <h2 class="title"><a href="#!/">Pôsteres</a> &gt; <a ng-click="filter_by_axis(card.axis.name)">{{ card.axis.name }}</a></h2>
             </div>
             <div class="pull-right">
                 <a class="btn btn-link goback" href="#!/">voltar</a>
@@ -16,7 +16,7 @@
 
         <div class="card-page-header line">
             <h3 class="page-title">{{ card.title }}</h3>
-            <a class="category" href="#!/?audience={{card.audience.name}}">{{ card.audience.name }}</a>
+            <a class="category" ng-click="filter_by_audience(card.audience.name)">{{ card.audience.name }}</a>
         </div>
 
         <div class="card-page-info line">
@@ -78,7 +78,7 @@
                     <!-- <div ng-show="card.tags.length > 0">
                         <h5>Tags</h5>
                         <div class="tags">
-                            <a class="tag" ng-repeat="tag in card.tags" href="#!/?tag={{tag.name}}">#{{ tag.name }}</a>
+                            <a class="tag" ng-repeat="tag in card.tags" ng-click="filter_by_tag(tag.name)">#{{ tag.name }}</a>
                         </div>
                     </div> -->
                 </div>

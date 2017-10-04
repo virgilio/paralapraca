@@ -3,7 +3,7 @@
         background: rgba(#fff,0.5);
         padding: 30px;
     }
-    .btn.new-practice {
+    .btn.new-practice, .btn.clean-filters {
         @include button-hover(#fff,#fff,$purple,darken($purple,10%));
         margin: 15px 0 0 30px;
     }
@@ -107,6 +107,7 @@
             @include icon(after, times);
             border-color: $gray;
             color: $gray;
+            margin-bottom: 5px;
             &:after {
                 margin-left: 5px;
             }
@@ -236,7 +237,7 @@
         margin-bottom: 30px;
         .item {
             .text-center {
-                background: #000;
+                background: rgba(255,255,255,0.5);
                 display: flex;
                 justify-content: center;
                 align-items: center;
@@ -248,15 +249,14 @@
                 height: 0;
                 */
             }
-            /*
-            iframe, img {
-                position: absolute;
-                top: 0;
-                left: 0;
-                max-width: 100%;
+            iframe {
+                width: 100%;
                 height: 100%;
             }
-            */
+            img {
+                max-height: 100%;
+                max-width: 100%;
+            }
         }
         .carousel-control {
             background-image: none;
@@ -301,6 +301,22 @@
             margin-left: 10px;
         }
     }
+
+    .ui-select-multiple {
+        .ui-select-choices {
+            max-height: 300px;
+            overflow-y: scroll;
+            top: 30px !important;
+        }
+        .btn-default {
+            @include button-hover($purple,#fff,transparent,$purple);
+            border: 1px solid $purple !important;
+            margin-bottom: 5px;
+            .close {
+                color: $purple;
+            }
+        }
+    }
 }
 
 .praticas-certificadas {
@@ -309,20 +325,6 @@
     }
     .subtitle {
         color: $purple;
-    }
-    .ui-select-multiple {
-        .btn-default {
-            @include button-hover($purple,#fff,transparent,$purple);
-            border: 1px solid $purple !important;
-            .close {
-                color: $purple;
-            }
-        }
-        .ui-select-choices {
-            max-height: 300px;
-            overflow-y: scroll;
-            top: 30px !important;
-        }
     }
     .cards-pagination {
         li {
@@ -652,6 +654,15 @@
     .card-page-content {
         padding-bottom: 20px;
     }
+    .panel-heading {
+        display: flex;
+        .btn {
+            display: block;
+        }
+        .btn + .btn {
+            margin-left: 5px;
+        }
+    }
     .panel-default {
         margin-top: 15px;
         .question {
@@ -679,7 +690,7 @@
         .add-image + .add-video {
             margin-left: 10px;
         }
-        .img-responsive {
+        .img-responsive, iframe {
             display: block;
             margin: 0 auto;
         }
