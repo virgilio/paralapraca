@@ -76,14 +76,13 @@
                 <p class="help-text text-center"><b>A primeira imagem na galeria abaixo será usada na página inicial do Assim se Faz para divulgar a sua prática.</b></p>
                 <div class="panel panel-default">
                     <div class="panel-heading clearfix">
-                        <button class="btn" ng-repeat="image in card.image_gallery" ng-click="select_image($index)" ng-class="is_selected_image(index)">{{ $index + 1}}</button>
-                        <button class="btn" ng-repeat="video in card.youtube_embeds" ng-click="select_video($index)" ng-class="is_selected_video(index)">{{ $index + card.image_gallery.length + 1 }}</button>
-                        <button class="btn" ng-show="slide_mode == mode.ADD_MEDIA || slide_mode == mode.ADD_IMAGE || slide_mode == mode.ADD_VIDEO">{{ new_slide_index() }}</button>
-                        <button class="btn btn-success" ng-click="slide_mode = mode.ADD_MEDIA" ng-disabled="slide_mode == mode.ADD_MEDIA || slide_mode == mode.ADD_IMAGE || slide_mode == mode.ADD_VIDEO || new_slide_index() > 5">+</button>
+                        <button class="btn" ng-repeat="slide in slides" ng-click="select_media($index)" ng-class="is_selected_media($index)">{{ $index + 1 }}</button>
+                        <button class="btn" ng-show="dirty_slide">{{ slides.length + 1 }}</button>
+                        <button class="btn btn-success" ng-click="new_slide()" ng-disabled="dirty_slide || slides.length >= 5">+</button>
                     </div>
                     <div class="panel-body">
                         <div class="row">
-                            <div ng-show="slide_mode == mode.ADD_MEDIA || slide_mode == mode.ADD_IMAGE || slide_mode == mode.ADD_VIDEO">
+                            <div ng-show="slide_mode != mode.SHOW_MEDIA">
                                 <div class="col-xs-12 text-center" ng-show="slide_mode == mode.ADD_MEDIA">
                                     <button class="btn btn-xs btn-primary add-image" ng-click="slide_mode = mode.ADD_IMAGE">adicionar imagem</button>
                                     <button class="btn btn-xs btn-primary add-video" ng-click="slide_mode = mode.ADD_VIDEO">adicionar vídeo</button>
@@ -114,14 +113,14 @@
                                     </div>
                                 </div>
                             </div>
-                            <section class="col-xs-12" ng-show="slide_mode == mode.SHOW_IMAGE || slide_mode == mode.SHOW_VIDEO">
-                                <div ng-show="slide_mode == mode.SHOW_IMAGE" class="">
-                                    <img ng-src="{{ selected_image.image }}" class="img-responsive">
-                                    <button class="btn btn-danger trash" ng-click="remove_image(selected_image_index)"></button>
+                            <section class="col-xs-12" ng-show="slide_mode == mode.SHOW_MEDIA">
+                                <div ng-show="selected_slide.type == 'image'" class="">
+                                    <img ng-src="{{ selected_slide.data.image }}" class="img-responsive">
+                                    <button class="btn btn-danger trash" ng-click="remove_media(selected_slide_index)"></button>
                                 </div>
-                                <div ng-show="slide_mode == mode.SHOW_VIDEO">
-                                    <iframe width="560" height="315" ng-src="{{safe_url('https://www.youtube.com/embed/' + selected_video.video_id + '?rel=0&amp;showinfo=0')}}" frameborder="0" allowfullscreen></iframe>
-                                    <button class="btn btn-danger trash" ng-click="remove_video(selected_video_index)"></button>
+                                <div ng-show="selected_slide.type == 'video'">
+                                    <iframe width="560" height="315" ng-src="{{safe_url('https://www.youtube.com/embed/' + selected_slide.data.video_id + '?rel=0&amp;showinfo=0')}}" frameborder="0" allowfullscreen></iframe>
+                                    <button class="btn btn-danger trash" ng-click="remove_media(selected_slide_index)"></button>
                                 </div>
                             </section>
                         </div>
