@@ -206,6 +206,11 @@
         .tags {
             float: right;
         }
+        footer {
+            position: absolute;
+            bottom: 20px;
+            right: 15px;
+        }
     }
     .card-image {
         background-size: cover;
@@ -230,7 +235,7 @@
         color: #4A4A4A;
         display: block;
         font-size: 12px;
-        margin-bottom: 25px;
+        margin-bottom: 15px;
     }
 
     .carousel {
