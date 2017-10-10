@@ -14,25 +14,6 @@
                   {% endif %}
                 {% endblock %}
             </div>
-            <!-- UNITS NAVIGATION FOR PHONES -->
-            {% block units_nav_mobile %}
-            <div class="col-xs-12 visible-xs">
-                <div class="lesson-units-nav-mobile">
-                    <span class="lesson-breadcrumb">
-                        unidade
-                    </span>
-                    {% verbatim %}
-                    <select ng-model="selectedIndex" ng-change="locationChange(selectedIndex)" class="form-control">
-                        <option ng-repeat="unit in lesson.units"
-                                ng-value="$index+1"
-                                ng-selected="unit.id==currentUnit.id"
-                                value="{{$index+1}}">{% endverbatim %}{% trans 'Unit' %}{% verbatim %} {{ unit.position + 1 }}</option>
-                    </select>
-                </div>
-                {% endverbatim %}
-            </div>
-            {% endblock %}
-            <!-- END UNITS NAVIGATION FOR PHONES -->
             {% if course.first_lesson.slug %}
             <div class="col-xs-12 col-sm-6 col-md-5">
                 <!-- COURSE-SECTION-NAV -->
