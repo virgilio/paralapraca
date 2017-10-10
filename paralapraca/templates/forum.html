@@ -196,9 +196,13 @@
                                 </td>
                                 <td>
                                     <div class="tags">
-                                    <a ng-repeat="tag in topic.tags"
+                                    <a ng-repeat="tag in topic.tags.slice(0,2)"
                                           ng-click="forumFilter('add','tag',tag)"
                                           class="tag">#{{ tag.name }}</a>
+                                    <a ng-href="/discussion/topic/#!/topic/{{ topic.id }}"
+                                        ng-show="topic.tags.length > 2"
+                                        class="tag">
+                                        +{{ topic.tags.length - 2 }}</a>
                                     </div>
                                 </td>
                             </tr>
