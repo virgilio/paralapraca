@@ -117,10 +117,10 @@
 
                             <a class="card-axis" ng-click="card_filter.axis = card.axis.name">{{ card.axis.name }}</a>
                             <h4 class="card-title"><a href="#!/{{ card.id }}">{{ card.title }}</a></h4>
+                            <span class="card-author">publicado por <a href="/profile/{{card.author.username}}">{{ card.author.name }}</a> <span class="action liked pull-right">{{ card.likes }}</span></span>
                         </header>
 
                         <footer>
-                            <span class="card-author">publicado por <a href="/profile/{{card.author.username}}">{{ card.author.name }}</a> <span class="action liked pull-right">{{ card.likes }}</span></span>
                             <div class="tags">
                                 <a class="tag" ng-click="insert_tag(tag.name)" ng-repeat="tag in card.tags.slice(0,2)">#{{ tag.name }}</a>
                                 <a class="tag" ng-show="card.tags.length > 2" href="#!/{{card.id}}">+{{ card.tags.length - 2 }}</a>
