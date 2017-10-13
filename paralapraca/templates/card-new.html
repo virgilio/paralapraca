@@ -32,7 +32,7 @@
                         <option ng-repeat="axis in axes track by axis.id" ng-value="axis.id">{{ axis.name }}</option>
                     </select>
                 </div>
-                <!-- <div class="form-group col-xs-12 col-md-6">
+                <div class="form-group col-xs-12 col-md-6">
                     <label>Tags</label>
 					<ui-select multiple theme="bootstrap" ng-model="proxy.tags" tagging="new_tag" title="Selecione uma tag...">
 						<ui-select-match placeholder="Selecione uma tag...">#{{ $item.name }}</ui-select-match>
@@ -41,7 +41,7 @@
                             <div ng-if="!tag.isTag" ng-bind-html="tag.name + tag.isTag | highlight: $select.search" ng-class="{'active': $select.search == tag.name}"></div>
 						</ui-select-choices>
 					</ui-select>
-                </div> -->
+                </div>
             </form>
 
             <div class="editable-title col-sm-12 col-lg-9">
