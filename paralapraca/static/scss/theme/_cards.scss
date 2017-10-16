@@ -323,6 +323,26 @@
             }
         }
     }
+
+    .ui-select-choices-row {
+        > span {
+            cursor: pointer;
+            display: block;
+            padding: 3px 20px;
+            clear: both;
+            line-height: 1.5;
+            color: #333;
+            white-space: nowrap;
+        }
+        &.active {
+            > span {
+                color: #fff;
+                text-decoration: none;
+                outline: 0;
+                background-color: #428bca;
+            }
+        }
+    }
 }
 
 .praticas-certificadas {
