@@ -51,9 +51,9 @@
         </div>
 
         <div class="line one-column">
-            <div class="column" ng-init="show_errors=false">
+            <div class="column">
                 <form class="new-thread" name="newthread" novalidate ng-submit="newthread.$valid && save_topic()">
-                    <div ng-show="show_errors">
+                    <div ng-show="show_errors" id="errors-list">
                         <div class="alert alert-danger" role="danger" ng-repeat="(error, detail) in newthread.forum.$error">Fórum é campo obrigatório</div>
                         <div class="alert alert-danger" role="danger" ng-repeat="(error, detail) in newthread.category.$error">Categoria é campo obrigatório</div>
                         <div class="alert alert-danger" role="danger" ng-repeat="(error, detail) in newthread.title.$error">Título do tópico é campo obrigatório</div>
@@ -123,7 +123,7 @@
                             </div> -->
                         </div>
                     </div>
-                    <button type="submit" ng-click="show_errors=true" class="btn btn-success new-topic">postar novo tópico</button>
+                    <button type="submit" ng-click="validate(newthread.$valid)" class="btn btn-success new-topic">postar novo tópico</button>
                 </form>
             </div>
         </div>
