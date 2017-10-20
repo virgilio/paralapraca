@@ -373,6 +373,11 @@
         border: 0;
         @include button-hover(#fff,$purple,$purple,#fff);
     }
+    .tag {
+        &:hover {
+            background-color: $purple !important;
+        }
+    }
     a.action.liked {
         &:before, span {
             color: $purple !important;
