@@ -508,6 +508,12 @@
             }
         }
     }
+    .widget-bottombar {
+        padding: 10px 0;
+        position: absolute;
+        left: 15px;
+        right: 15px;
+    }
 
     .card-page-header {
         display: flex;
@@ -599,6 +605,9 @@
         .page-title, .action {
             color: $orange;
         }
+        .widget-bottombar {
+            background-color: $orange;
+        }
     }
     &.praticas-certificadas {
         .page-title, .action {
@@ -620,14 +629,16 @@
                 @include button-hover($purple,#fff,transparent,$purple);
             }
         }
+        .widget-bottombar {
+            background-color: $purple;
+        }
     }
 }
 
 .card-edit {
-    .widget-topbar {
-        .goback {
-            margin-top: 7px;
-        }
+    position: relative;
+    .goback {
+        margin-top: 7px;
     }
     .cards-filters-options {
         .form-group {
