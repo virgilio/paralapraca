@@ -619,6 +619,11 @@
 }
 
 .card-edit {
+    .widget-topbar {
+        .goback {
+            margin-top: 7px;
+        }
+    }
     .cards-filters-options {
         .form-group {
             margin-bottom: 20px;
