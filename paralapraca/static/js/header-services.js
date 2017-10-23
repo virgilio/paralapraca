@@ -5,7 +5,7 @@
     app.factory('UnreadNotification', ['$resource', function($resource){
         return $resource('/paralapraca/api/unread-notification/:id',
             {'id' : '@id'},
-            {'update': {'method': 'PUT'} });
+            {'update': {'method': 'PUT', 'ignoreLoadingBar': true} });
     }]);
 
 })(window.angular);
