@@ -1,7 +1,10 @@
 .cards {
     &.container-fluid {
         background: rgba(#fff,0.5);
-        padding: 30px;
+        padding: 15px;
+        @media (min-width: $screen-sm-min) {
+            padding: 30px;
+        }
     }
     .btn.new-practice, .btn.clean-filters {
         @include button-hover(#fff,#fff,$purple,darken($purple,10%));
@@ -486,7 +489,10 @@
 
 .card-page {
     .widget-topbar {
-        margin: -30px -30px 0px -30px !important;
+        margin: -15px -15px 0px -15px !important;
+        @media (min-width: $screen-sm-min) {
+            margin: -30px -30px 0px -30px !important;
+        }
         .line {
             border-bottom: 0;
             margin: 0 30px;
@@ -639,6 +645,7 @@
     position: relative;
     .goback {
         margin-top: 7px;
+        padding: 0px !important;
     }
     .cards-filters-options {
         .form-group {
