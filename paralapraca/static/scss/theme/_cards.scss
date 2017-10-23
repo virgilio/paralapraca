@@ -810,4 +810,9 @@
             }
         }
     }
+    @media (max-width: $screen-sm-min) {
+        .help-gallery {
+            margin-top: 30px;
+        }
+    }
 }
