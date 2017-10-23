@@ -734,8 +734,15 @@
                 margin: 20px 0 0;
             }
         }
-        .add-image + .add-video {
-            margin-left: 10px;
+        @media (max-width: 399px) {
+            .add-image + .add-video {
+                margin-top: 10px;
+            }
+        }
+        @media (min-width: 400px) {
+            .add-image + .add-video {
+                margin-left: 10px;
+            }
         }
         .img-responsive, iframe {
             display: block;
