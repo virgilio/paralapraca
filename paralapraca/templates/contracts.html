@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+{% load is_enrolled %}
+{% load compress %}
+
+
+{% block js %}
+    {{block.super}}
+    {% compress css %}
+        <link rel="stylesheet" type="text/css" href="{% static 'angular-ui-select/dist/select.css' %}">
+    {% endcompress %}
+
+    <script type="text/javascript" src="{% static 'tinymce-dist/tinymce.js' %}"></script>
+    {% compress js %}
+        <script type="text/javascript" src="{% static 'js/contracts/app.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/contracts/controllers.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/contracts/services.js' %}"></script>
+        <script type="text/javascript" src="{% static 'ng-file-upload/ng-file-upload.js' %}"></script>
+        <script type="text/javascript" src="{% static 'angular-sanitize/angular-sanitize.js' %}"></script>
+        <script type="text/javascript" src="{% static 'angular-ui-select/dist/select.js' %}"></script>
+        <script type="text/javascript" src="{% static 'angular-ui-tinymce/src/tinymce.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/ui.tinymce.paralapraca.config.js' %}"></script>
+    {% endcompress %}
+    <script type="text/javascript">
+        tinyMCE.baseURL = '/static/tinymce-dist/';
+    </script>
+
+    <script>window.user_id = {{ user.pk }};</script>
+{% endblock %}
+
+{% block wrapper_classes %}
+wrapper-courses
+{% endblock %}
+
+{% block body_attrs %}
+ng-app="contracts"
+{% endblock %}
+
+
+{% block content %}
+
+    <ng-view></ng-view>
+
+{% endblock %}
