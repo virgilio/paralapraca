@@ -76,9 +76,9 @@ wrapper-course-lesson
                         <form method="post" action="{% url 'class-delete' pk=class.id %}">
                             <a href="{% url 'class' pk=class.id %}" class="btn btn-sm btn-success edit">editar</a>
                             {% csrf_token %}
-                            {% if class.course.default_class.id != class.id %}
+                            <!--{% if class.course.default_class.id != class.id %}
                                 <button type="submit" class="btn btn-sm btn-danger delete">deletar</button>
-                            {% endif %}
+                            {% endif %}-->
                         </form>
                     </td>
                 </tr>
