@@ -19,4 +19,7 @@ urlpatterns = [
     url(r'^api/', include(router.urls)),
     url(r'^chat/?$', views.ChatScreenView.as_view(template_name="chat.html"), name='chat_screen'),
     url(r'^_chat/auth/$', views.RocketchatIframeAuthView.as_view(), name='rocketchat_iframe_auth'),
+    url(r'^contract-edit.html$', TemplateView.as_view(template_name="contract-edit.html")),
+    url(r'^contract-detail.html$', TemplateView.as_view(template_name="contract-detail.html")),
+    url(r'^contracts-list.html$', TemplateView.as_view(template_name="contracts-list.html")),
 ]
