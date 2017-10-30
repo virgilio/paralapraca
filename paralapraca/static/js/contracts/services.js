@@ -1,12 +1,11 @@
 (function (angular) {
     'use strict';
 
-    var module = angular.module('contracts.services', ['ngRoute', 'ngResource']);
+    var app = angular.module('contracts.services', ['ngRoute', 'ngResource']);
 
-    // TODO: insert Contract endpoint here
-    module.factory('Contract', function($resource){
-        // return $resource('/api/professor_message/:messageId', {}, {
-        // });
+    app.factory('Contracts', function($resource){
+        return $resource('/paralapraca/api/contract/:id',
+            {'id': '@id'});
     });
 
 })(angular);
