@@ -2,30 +2,26 @@
     'use strict';
     var app = angular.module('contracts.controllers', []);
 
-    app.controller('ContractsCtrl', [
-        '$scope',
-        function ($scope) {
+    app.controller('ContractsCtrl', ['$scope', 'Contracts',
+        function ($scope, Contracts) {
+            $scope.contracts = Contracts.query();
+        }
+    ]);
+
+    app.controller('ContractDetailsCtrl', ['$scope', 'Contracts',
+        function ($scope, Contracts) {
 
         }
     ]);
 
-    app.controller('ContractDetailsCtrl', [
-        '$scope',
-        function ($scope) {
+    app.controller('NewContractCtrl', ['$scope', 'Contracts',
+        function ($scope, Contracts) {
 
         }
     ]);
 
-    app.controller('NewContractCtrl', [
-        '$scope',
-        function ($scope) {
-
-        }
-    ]);
-
-    app.controller('EditContractCtrl', [
-        '$scope',
-        function ($scope) {
+    app.controller('EditContractCtrl', ['$scope', 'Contracts',
+        function ($scope, Contracts) {
 
         }
     ]);
