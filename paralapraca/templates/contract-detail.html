@@ -1,3 +1,12 @@
 {% verbatim %}
-Olá, detalhes de um contrato!
+<h1>Contratos</h1>
+<h2>{{ contract.name }}</h2>
+<h3>Municípios</h3>
+<ul>
+	<li ng-repeat="unity in contract.unities">{{unity}}</li>
+</ul>
+<h3>Turmas</h3>
+<ul>
+	<li ng-repeat="class in contract.classes">{{class.name}} ({{class.students.length}} membros)</li>
+</ul>
 {% endverbatim %}
