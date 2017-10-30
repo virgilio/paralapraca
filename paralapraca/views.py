@@ -69,7 +69,7 @@ class RocketchatIframeAuthView(TemplateView):
         return response
 
 
-class ContractViewSet(viewsets.ReadOnlyModelViewSet):
+class ContractViewSet(viewsets.ModelViewSet):
     queryset = Contract.objects.all()
     serializer_class = ContractSerializer
 
