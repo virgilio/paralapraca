@@ -22,7 +22,7 @@
                     templateUrl: '/paralapraca/contract-edit.html',
                     controller: 'NewContractCtrl'
                 }).
-                when('/:cardId/edit', {
+                when('/:contractId/edit', {
                     templateUrl: '/paralapraca/contract-edit.html',
                     controller: 'EditContractCtrl'
                 }).
