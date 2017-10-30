@@ -1,3 +1,6 @@
 {% verbatim %}
-Olá, edição/criação de contrato!
+<h1>Contratos</h1>
+<h2 ng-if="!editing_mode">Novo contrato</h2>
+<h2 ng-if="editing_mode">Edição de contrato</h2>
+<p ng-if="editing_mode">{{ contract.name }}</p>
 {% endverbatim %}

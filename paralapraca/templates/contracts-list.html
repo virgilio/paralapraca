@@ -1,3 +1,8 @@
 {% verbatim %}
-Olá, lista de contratos!
+<h1 class="title">Contratos</h1>
+<a class="btn btn-add" href="#!/new">Novo contrato</a>
+<div ng-repeat="contract in contracts track by contract.id">
+	<p><a ng-href="#!/{{contract.id}}">{{ contract.name }}</a></p>
+	<a class="btn" ng-href="#!/{{contract.id}}/edit">Editar prática</a>
+</div>
 {% endverbatim %}
