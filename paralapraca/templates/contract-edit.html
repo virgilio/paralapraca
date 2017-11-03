@@ -1,3 +1,56 @@
 {% verbatim %}
-Olá, edição/criação de contrato!
+
+<div class="contracts contracts-edit widget container-fluid">
+
+    <header class="widget-topbar line one-column">
+        <h2 class="page-title">contratos</h2>
+    </header>
+
+    <h3>Novo contrato</h3>
+
+    <form>
+        <div class="row">
+            <div class="col-xs-12 col-lg-10">
+                <label>Nome do contrato</label>
+                <input type="text" class="form-control" placeholder="Digite aqui o nome do contrato">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-12 col-md-6 col-lg-4">
+                <label>Firmado em</label>
+                <input type="text" class="form-control" placeholder="Escolha ou digite a data">
+            </div>
+            <div class="col-xs-12 col-md-6 col-lg-4">
+                <label>Válido até</label>
+                <input type="text" class="form-control" placeholder="Escolha ou digite a data">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-12 col-md-6 col-lg-4">
+                <label>Município</label>
+                <input type="text" class="form-control" placeholder="Digite e clique numa das opções">
+            </div>
+
+            <div class="col-xs-12 col-md-6 col-lg-4">
+                <label>Módulos disponíveis</label>
+                <input type="text" class="form-control" placeholder="Escolha um ou mais módulos">
+            </div>
+
+            <div class="col-xs-12 col-md-6 col-lg-4">
+                <label>Importar usuários</label>
+                <div class="flex">
+                    <input type="text" class="form-control" placeholder="Somente arquivos em formato CSV">
+                    <button class="btn btn-sm btn-default attach">procurar</button>
+                </div>
+            </div>
+        </div>
+
+        <label>Descrição de contrato</label>
+        <textarea class="form-control"></textarea>
+
+        <button class="btn btn-sm btn-primary save pull-right">salvar contrato</button>
+    </form>
+</div>
 {% endverbatim %}
