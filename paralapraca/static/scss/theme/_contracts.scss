@@ -64,11 +64,46 @@
             margin-left: 10px;
         }
     }
+    .form-control {
+        border: 2px solid $purple;
+        border-radius: 0px;
+        box-shadow: none;
+    }
+    label {
+        color: $gray;
+        font-size: 14px;
+    }
 }
 
 .contracts-list {
     background: rgba(255,255,255,0.25);
     .btn.add {
         margin: 5px 30px 0 0;
+    }
+}
+
+.contracts-edit {
+    background: rgba($purple,0.25);
+
+    h3 {
+        color: $purple;
+        font-size: 30px;
+        margin-bottom: 20px;
+    }
+
+    .row {
+        margin-bottom: 20px;
+    }
+
+    .flex {
+        display: flex;
+    }
+
+    .btn.attach {
+        margin-right: 10px;
+    }
+
+    .btn.save {
+        margin-top: 15px;
     }
 }
