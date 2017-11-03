@@ -64,6 +64,34 @@
             margin-left: 10px;
         }
     }
+    .contract-user-list {
+        max-height: 400px;
+        overflow-y: scroll;
+        padding: 0;
+        li {
+            display: block;
+            list-style: none;
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
+        .user-name {
+            display: block;
+            font-size: 16px;
+            font-weight: bold;
+            margin-top: 8px;
+        }
+    }
+    .see-all {
+        color: $purple;
+        font-weight: bold;
+    }
+    a {
+        color: $purple;
+        text-decoration: underline;
+        &:hover {
+            text-decoration: none;
+        }
+    }
     .form-control {
         border: 2px solid $purple;
         border-radius: 0px;
@@ -72,6 +100,61 @@
     label {
         color: $gray;
         font-size: 14px;
+    }
+    .ui-select-multiple {
+        height: auto;
+        min-height: 34px;
+        padding: 4px;
+        input {
+            border: 0;
+        }
+        .ui-select-choices {
+            max-height: 300px;
+            overflow-y: scroll;
+            top: 30px !important;
+        }
+        .btn-default {
+            @include button-hover($purple,#fff,transparent,$purple);
+            border: 1px solid $purple !important;
+            margin-bottom: 5px;
+            .close {
+                color: $purple;
+                opacity: 1;
+                font-size: 1.4em;
+                line-height: 0.9em !important;
+                text-shadow: 0;
+                transition: color 0.5s ease;
+            }
+            &:hover, &:active, &:hover {
+                .close {
+                    color: #fff !important;
+                }
+            }
+        }
+    }
+    .ui-select-choices-row {
+        > span {
+            cursor: pointer;
+            display: block;
+            padding: 3px 20px;
+            clear: both;
+            line-height: 1.5;
+            color: #333;
+            white-space: nowrap;
+        }
+        &.active {
+            > span {
+                color: #fff;
+                text-decoration: none;
+                outline: 0;
+                background-color: rgba($purple,0.25);
+            }
+        }
+    }
+    .modal-dialog {
+        max-width: 400px;
+        max-height: 500px;
+
     }
 }
 
@@ -100,7 +183,7 @@
     }
 
     .btn.attach {
-        margin-right: 10px;
+        margin-left: 10px;
     }
 
     .btn.save {
