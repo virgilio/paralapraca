@@ -5,13 +5,14 @@
         <h2 class="page-title">contratos</h2>
     </header>
 
-    <h3>Novo contrato</h3>
+    <h3 ng-if="!editing_mode">Novo contrato</h3>
+    <h3 ng-if="editing_mode">Edição de contrato</h3>
 
     <form>
         <div class="row">
             <div class="col-xs-12 col-lg-10">
                 <label>Nome do contrato</label>
-                <input type="text" class="form-control" placeholder="Digite aqui o nome do contrato">
+                <input ng-model="contract.name" type="text" class="form-control" placeholder="Digite aqui o nome do contrato">
             </div>
         </div>
 

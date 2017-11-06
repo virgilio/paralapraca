@@ -18,6 +18,9 @@
     app.controller('NewContractCtrl', ['$scope', 'Contracts',
         function ($scope, Contracts) {
             $scope.editing_mode = false;
+            $scope.contract = {
+                name: ''
+            };
         }
     ]);
 
