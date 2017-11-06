@@ -1,0 +1,192 @@
+.contracts {
+    @media screen and (min-width: $screen-md-min) {
+        padding: 30px;
+    }
+    .widget-topbar {
+        background-color: $purple;
+        @media screen and (min-width: $screen-md-min) {
+            margin: -30px -30px 35px -30px !important;
+        }
+    }
+    .page-title {
+        font-size: 48px;
+        font-weight: bold;
+        margin: -10px 0 0 15px;
+        @media screen and (min-width: $screen-md-min) {
+            margin: -10px 0 0 30px;
+        }
+    }
+
+    .contract-unit {
+        margin-bottom: 30px;
+        @media screen and (min-width: $screen-xs-min) {
+            border-left: 1px solid $purple;
+            padding-left: 20px;
+        }
+    }
+    .contract-title {
+        color: $purple;
+        display: inline-block;
+        font-family: $font-family-sans-serif;
+        font-size: 14px;
+        font-weight: $extra-bold;
+        line-height: 20px;
+        margin: 0;
+    }
+    .contract-info {
+        color: $gray;
+        display: inline-block;
+        font-size: 14px;
+        line-height: 20px;
+    }
+    .contract-content {
+        background: rgba(255,255,255,0.5);
+        clear: both;
+        margin-top: 10px;
+        overflow: hidden;
+        padding: 10px;
+        .contract-text {
+            white-space: pre-line;
+        }
+        @media screen and (min-width: $screen-xs-min) {
+            padding: 15px;
+        }
+        .row {
+            div:last-child {
+                margin-top: 15px;
+                @media screen and (min-width: $screen-sm-min) {
+                    margin-top: 0;
+                    text-align: right;
+                }
+            }
+        }
+        .btn + .btn {
+            margin-left: 10px;
+        }
+    }
+    .contract-user-list {
+        max-height: 400px;
+        overflow-y: scroll;
+        padding: 0;
+        li {
+            display: block;
+            list-style: none;
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
+        .user-name {
+            display: block;
+            font-size: 16px;
+            font-weight: bold;
+            margin-top: 8px;
+        }
+    }
+    .see-all {
+        color: $purple;
+        font-weight: bold;
+    }
+    a {
+        color: $purple;
+        text-decoration: underline;
+        &:hover {
+            text-decoration: none;
+        }
+    }
+    .form-control {
+        border: 2px solid $purple;
+        border-radius: 0px;
+        box-shadow: none;
+    }
+    label {
+        color: $gray;
+        font-size: 14px;
+    }
+    .ui-select-multiple {
+        height: auto;
+        min-height: 34px;
+        padding: 4px;
+        input {
+            border: 0;
+        }
+        .ui-select-choices {
+            max-height: 300px;
+            overflow-y: scroll;
+            top: 30px !important;
+        }
+        .btn-default {
+            @include button-hover($purple,#fff,transparent,$purple);
+            border: 1px solid $purple !important;
+            margin-bottom: 5px;
+            .close {
+                color: $purple;
+                opacity: 1;
+                font-size: 1.4em;
+                line-height: 0.9em !important;
+                text-shadow: 0;
+                transition: color 0.5s ease;
+            }
+            &:hover, &:active, &:hover {
+                .close {
+                    color: #fff !important;
+                }
+            }
+        }
+    }
+    .ui-select-choices-row {
+        > span {
+            cursor: pointer;
+            display: block;
+            padding: 3px 20px;
+            clear: both;
+            line-height: 1.5;
+            color: #333;
+            white-space: nowrap;
+        }
+        &.active {
+            > span {
+                color: #fff;
+                text-decoration: none;
+                outline: 0;
+                background-color: rgba($purple,0.25);
+            }
+        }
+    }
+    .modal-dialog {
+        max-width: 400px;
+        max-height: 500px;
+
+    }
+}
+
+.contracts-list {
+    background: rgba(255,255,255,0.25);
+    .btn.add {
+        margin: 5px 30px 0 0;
+    }
+}
+
+.contracts-edit {
+    background: rgba($purple,0.25);
+
+    h3 {
+        color: $purple;
+        font-size: 30px;
+        margin-bottom: 20px;
+    }
+
+    .row {
+        margin-bottom: 20px;
+    }
+
+    .flex {
+        display: flex;
+    }
+
+    .btn.attach {
+        margin-left: 10px;
+    }
+
+    .btn.save {
+        margin-top: 15px;
+    }
+}
