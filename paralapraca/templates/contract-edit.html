@@ -49,7 +49,6 @@
                     <ui-select-match placeholder="Escolha um ou mais módulos">{{ $item.name }}</ui-select-match>
                     <ui-select-choices repeat="course in courses | filter: {name: $select.search}" group-by="">
                         <div ng-bind-html="course.name | highlight: $select.search"></div>
-                        </div>
                     </ui-select-choices>
                 </ui-select>
             </div>
