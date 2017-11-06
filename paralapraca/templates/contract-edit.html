@@ -1,5 +1,4 @@
 {% verbatim %}
-
 <div class="contracts contracts-edit widget container-fluid">
 
     <header class="widget-topbar line one-column">
@@ -46,7 +45,13 @@
 
             <div class="col-xs-12 col-md-6 col-lg-4">
                 <label>Módulos disponíveis</label>
-                <input type="text" class="form-control" placeholder="Escolha um ou mais módulos">
+                <ui-select multiple theme="bootstrap" class="form-control" ng-model="contract.courses" title="Escolha um ou mais módulos">
+                    <ui-select-match placeholder="Escolha um ou mais módulos">{{ $item.name }}</ui-select-match>
+                    <ui-select-choices repeat="course in courses | filter: {name: $select.search}" group-by="">
+                        <div ng-bind-html="course.name | highlight: $select.search"></div>
+                        </div>
+                    </ui-select-choices>
+                </ui-select>
             </div>
 
             <div class="col-xs-12 col-md-6 col-lg-4">
