@@ -20,11 +20,21 @@
         <div class="row">
             <div class="col-xs-12 col-md-6 col-lg-4">
                 <label>Firmado em</label>
-                <input type="text" class="form-control" placeholder="Escolha ou digite a data">
+                <div class="date-input input-group">
+                    <input type="text" class="form-control" ng-model="contract.start_date" uib-datepicker-popup="dd/MM/yyyy" is-open="start_opened" show-button-bar="false" show-weeks="false" starting-day="0" placeholder="Escolha ou digite a data" />
+                    <span class="input-group-btn">
+                        <button class="btn btn-success" type="button" ng-click="start_opened = true"><span class="caret"></span></button>
+                    </span>
+                </div>
             </div>
             <div class="col-xs-12 col-md-6 col-lg-4">
                 <label>Válido até</label>
-                <input type="text" class="form-control" placeholder="Escolha ou digite a data">
+                <div class="date-input input-group">
+                    <input type="text" class="form-control" ng-model="contract.expiry_date" uib-datepicker-popup="dd/MM/yyyy" is-open="expiry_opened" show-button-bar="false" show-weeks="false" starting-day="0" placeholder="Escolha ou digite a data" />
+                    <span class="input-group-btn">
+                        <button class="btn btn-success" type="button" ng-click="expiry_opened = true"><span class="caret"></span></button>
+                    </span>
+                </div>
             </div>
         </div>
 
