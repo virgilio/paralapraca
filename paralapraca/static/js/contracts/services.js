@@ -8,4 +8,9 @@
             {'id': '@id'});
     });
 
+    app.factory('Courses', function($resource){
+        return $resource('/api/course/:id',
+            {'id': '@id'});
+    });
+
 })(angular);
