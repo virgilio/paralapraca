@@ -195,6 +195,7 @@ class UsersByGroupViewSet(PandasViewSet):
                 user.update({
                     u'{} - progresso'.format(course['course_name']): course['percent_progress'],
                     u'{} - nome da turma'.format(course['course_name']): course['class_name'],
+                    u'{} - concluiu'.format(course['course_name']): course['course_finished'],
                     u'{} - possui certificado'.format(course['course_name']): course['has_certificate']
                 })
             user.pop('courses', None)
