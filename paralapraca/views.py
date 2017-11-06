@@ -209,25 +209,27 @@ class UsersByClassViewSet(PandasViewSet):
     queryset = CourseStudent.objects.all()
 
     def list(self, request, format=None):
-        ids = request.query_params.get('id', None)
-        if ids is not None:
-            # This is a bit ugly, but should work. There is no (easy) way to directly filter from
-            # a function, so I'm getting all the desired IDs, then filtering by the desired IDs
-            ids = ids.split(',')
-            ids = [int(idt) for idt in ids]
-            cs_ids = []
-            for x in self.queryset:
-                try:
-                    if x.get_current_class().id in ids:
-                        cs_ids.append(x.id)
-                except Exception as e:
-                    # If no class has been found, pass the error silently
-                    pass
+        try:
+            ids = request.query_params.get('id', None).split(',')
+            ids = [int(i) for i in ids]
+        except AttributeError:
+            ids = []
 
-            serializer = UsersByClassSerializer(self.queryset.filter(id__in=cs_ids), many=True)
-        else:
-            serializer = UsersByClassSerializer(self.queryset, many=True)
-        return Response(pd.DataFrame.from_dict(self.transform_data(serializer.data)).set_index('cpf'))
+        classes = Class.objects.all().filter(pk__in=ids)
+        students = [cls.students.all() for cls in classes]
+        students = [s for cls in students for s in cls]
+        courses = [cls['course_id'] for cls in classes.values()]
+
+        queryset = self.queryset
+        if len(ids) > 0:
+            queryset = self.queryset \
+                .filter(user__in=students, course__id__in=courses)
+
+        serializer = UsersByClassSerializer(queryset, many=True)
+
+        return Response(pd.DataFrame
+                        .from_dict(self.transform_data(serializer.data))
+                        .set_index('cpf'))
 
     def transform_data(self, data):
         for coursestudent in data:
