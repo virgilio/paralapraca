@@ -68,7 +68,9 @@ class UserInDetailSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = TimtecUser
-        fields = sorted(('cpf', 'courses', 'date_joined', 'last_login', 'full_name', 'topics_created', 'number_of_likes', 'comments_created'))
+        fields = sorted(('cpf', 'courses', 'date_joined', 'last_login',
+                         'full_name', 'topics_created', 'number_of_likes',
+                         'comments_created',))
 
     comments_created = serializers.SerializerMethodField()
     full_name = serializers.SerializerMethodField()
@@ -82,6 +84,7 @@ class UserInDetailSerializer(serializers.ModelSerializer):
     def get_courses(self, obj):
         needed_stuff = [
             {'percent_progress': x.percent_progress(),
+             'course_finished':  x.can_emmit_receipt(),
              'course_name': x.course.name,
              'has_certificate': x.certificate.type == 'certificate',
              'class_name': x.get_current_class().name
@@ -110,6 +113,9 @@ class UsersByClassSerializer(serializers.Serializer):
     last_login = serializers.SerializerMethodField()
     has_certificate = serializers.SerializerMethodField()
     percent_progress_by_lesson = serializers.SerializerMethodField()
+    percent_progress = serializers.SerializerMethodField()
+    course_finished = serializers.SerializerMethodField()
+    class_name = serializers.SerializerMethodField()
 
     def get_cpf(self, obj):
         return obj.user.cpf
@@ -128,3 +134,12 @@ class UsersByClassSerializer(serializers.Serializer):
 
     def get_percent_progress_by_lesson(self, obj):
         return obj.percent_progress_by_lesson()
+
+    def get_percent_progress(self, obj):
+        return obj.percent_progress()
+
+    def get_course_finished(self, obj):
+        return obj.can_emmit_receipt()
+
+    def get_class_name(self, obj):
+        return obj.get_current_class().name

@@ -67,7 +67,7 @@ ng-app="reports"
 
                                 <ul class="list-unstyled" ng-show="course.show_classes">
                                     <li ng-repeat="klass in course.classes">
-                                      <b>{{ klass.name }}: </b> {{ klass.user_count }} alunos ({{ klass.certificate_count }} certificados)
+                                      <b>{{ klass.name }}: </b> {{ klass.user_finished }} de {{ klass.user_count }} alunos concluíram ({{ klass.certificate_count }} certificados)
                                     </li>
                                 </ul>
                             </td>
