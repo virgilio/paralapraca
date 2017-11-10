@@ -57,11 +57,12 @@
             </div>
             <div class="form-group col-xs-12 col-md-6 col-lg-3">
                 <label>Tags</label>
-                <ui-select multiple theme="bootstrap" ng-model="card_filter.tags" tagging="new_tag" title="Selecione uma tag...">
+                <ui-select multiple theme="bootstrap" ng-model="card_filter.tags" title="Selecione uma tag...">
                     <ui-select-match placeholder="Selecione uma tag...">#{{ $item.name }}</ui-select-match>
                     <ui-select-choices repeat="tag in tags | filter: {name: $select.search}" group-by="">
-                        <div ng-hide="tag.isTag">{{ tag.name }}</div>
+                        <div ng-bind-html="tag.name | highlight: $select.search"></div>
                     </ui-select-choices>
+                    <ui-select-no-choice>Nenhuma tag encontrada</ui-select-no-choice>
                 </ui-select>
             </div>
         </form>
@@ -113,10 +114,10 @@
 
                             <a class="card-axis" ng-click="card_filter.axis = card.axis.name">{{ card.axis.name }}</a>
                             <h4 class="card-title"><a href="#!/{{ card.id }}">{{ card.title }}</a></h4>
+                            <span class="card-author">publicado por <a href="/profile/{{card.author.username}}">{{ card.author.name }}</a> <span class="action liked pull-right">{{ card.likes }}</span></span>
                         </header>
 
                         <footer>
-                            <span class="card-author">publicado por <a href="/profile/{{card.author.username}}">{{ card.author.name }}</a> <span class="action liked pull-right">{{ card.likes }}</span></span>
                             <div class="tags">
                                 <a class="tag" ng-click="insert_tag(tag.name)" ng-repeat="tag in card.tags.slice(0,2)">#{{ tag.name }}</a>
                                 <a class="tag" ng-show="card.tags.length > 2" href="#!/{{card.id}}">+{{ card.tags.length - 2 }}</a>

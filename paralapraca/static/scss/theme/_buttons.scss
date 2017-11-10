@@ -54,7 +54,7 @@ a.action {
             @include link-hover($gray,$dark-orange,transparent,$dark-orange);
         }
         &.active {
-            span { 
+            span {
                 @include link-hover($dark-orange,$dark-orange,transparent,$dark-orange);
             }
         }
@@ -76,7 +76,7 @@ a.action {
     &.edit {
         color: $gray;
         &:hover {
-            color: $orange;
+            @include link-hover($gray,$orange,transparent,$orange);
         }
         span {
             @include link-hover($gray,$orange,transparent,$orange);

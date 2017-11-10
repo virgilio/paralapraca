@@ -1,7 +1,10 @@
 .cards {
     &.container-fluid {
         background: rgba(#fff,0.5);
-        padding: 30px;
+        padding: 15px;
+        @media (min-width: $screen-sm-min) {
+            padding: 30px;
+        }
     }
     .btn.new-practice, .btn.clean-filters {
         @include button-hover(#fff,#fff,$purple,darken($purple,10%));
@@ -210,6 +213,7 @@
             position: absolute;
             bottom: 20px;
             right: 15px;
+            left: 15px;
         }
     }
     .card-image {
@@ -322,6 +326,26 @@
             }
         }
     }
+
+    .ui-select-choices-row {
+        > span {
+            cursor: pointer;
+            display: block;
+            padding: 3px 20px;
+            clear: both;
+            line-height: 1.5;
+            color: #333;
+            white-space: nowrap;
+        }
+        &.active {
+            > span {
+                color: #fff;
+                text-decoration: none;
+                outline: 0;
+                background-color: #428bca;
+            }
+        }
+    }
 }
 
 .praticas-certificadas {
@@ -351,6 +375,11 @@
     .category {
         border: 0;
         @include button-hover(#fff,$purple,$purple,#fff);
+    }
+    .tag {
+        &:hover {
+            background-color: $purple !important;
+        }
     }
     a.action.liked {
         &:before, span {
@@ -460,7 +489,10 @@
 
 .card-page {
     .widget-topbar {
-        margin: -30px -30px 0px -30px !important;
+        margin: -15px -15px 0px -15px !important;
+        @media (min-width: $screen-sm-min) {
+            margin: -30px -30px 0px -30px !important;
+        }
         .line {
             border-bottom: 0;
             margin: 0 30px;
@@ -481,6 +513,12 @@
                 }
             }
         }
+    }
+    .widget-bottombar {
+        padding: 10px 0;
+        position: absolute;
+        left: 15px;
+        right: 15px;
     }
 
     .card-page-header {
@@ -573,6 +611,9 @@
         .page-title, .action {
             color: $orange;
         }
+        .widget-bottombar {
+            background-color: $orange;
+        }
     }
     &.praticas-certificadas {
         .page-title, .action {
@@ -594,10 +635,21 @@
                 @include button-hover($purple,#fff,transparent,$purple);
             }
         }
+        .widget-bottombar {
+            background-color: $purple;
+        }
+        .widget-topbar {
+            border-color: $purple;
+        }
     }
 }
 
 .card-edit {
+    position: relative;
+    .goback {
+        margin-top: 7px;
+        padding: 0px !important;
+    }
     .cards-filters-options {
         .form-group {
             margin-bottom: 20px;
@@ -692,8 +744,15 @@
                 margin: 20px 0 0;
             }
         }
-        .add-image + .add-video {
-            margin-left: 10px;
+        @media (max-width: 399px) {
+            .add-image + .add-video {
+                margin-top: 10px;
+            }
+        }
+        @media (min-width: 400px) {
+            .add-image + .add-video {
+                margin-left: 10px;
+            }
         }
         .img-responsive, iframe {
             display: block;
@@ -766,6 +825,11 @@
             h1, .fa {
                 color: $purple;
             }
+        }
+    }
+    @media (max-width: $screen-sm-min) {
+        .help-gallery {
+            margin-top: 30px;
         }
     }
 }

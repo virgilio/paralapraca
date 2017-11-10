@@ -32,7 +32,7 @@
 
 .comments-form {
     margin: 20px 0 10px;
-    overflow: hidden; 
+    overflow: hidden;
     width: 100%;
     .tools {
         button {
@@ -112,7 +112,7 @@
     }
     .actions {
         margin: 10px 0 0;
-        overflow: hidden;  
+        overflow: hidden;
         .last-update {
             color: lighten($gray-light,10%);
             display: inline-block;
@@ -129,7 +129,7 @@
         padding: 15px;
 
         p:last-child {
-            margin-bottom: 0; 
+            margin-bottom: 0;
         }
         img {
           max-width: 100%;
@@ -145,7 +145,7 @@
             margin-bottom: 20px;
             padding-bottom: 20px;
             .thread {
-                border-left: 2px solid lighten($gray-light,20%); 
+                border-left: 2px solid lighten($gray-light,20%);
                 margin: 20px 0 0 20px;
                 padding-left: 20px;
             }
@@ -164,7 +164,7 @@
             padding-bottom: 1px;
         }
         .comments-form {
-            margin-top: 0px; 
+            margin-top: 0px;
             textarea {
                 height: 60px;
             }
@@ -242,7 +242,7 @@
                 border-radius: 8px;
                 height: 8px;
             }
-        } 
+        }
     }
 }
 
@@ -253,6 +253,9 @@
             font-weight: $normal;
             @include link-hover($brand-primary,$brand-primary,$brand-primary,transparent);
         }
+    }
+    .post-attachments, .btn.attached {
+        margin-top: 20px;
     }
     .last-update {
         color: $gray;
@@ -286,7 +289,7 @@
         }
     }
     .tags {
-        margin: 0; 
+        margin: 0;
     }
     .last-update {
         margin-top: 2px;
@@ -320,12 +323,12 @@
 .empty-forum {
     color: $gray;
     font-size: $font-size-small;
-    margin-bottom: 40px;   
+    margin-bottom: 40px;
 }
 
 .see-all-topics {
     margin-bottom: 30px;
-    text-align: center; 
+    text-align: center;
 }
 
 .new-thread {

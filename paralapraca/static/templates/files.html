@@ -1,9 +1,9 @@
 <div class="form-group">
-    <button class="btn btn-xs attached"
-            ng-show="(files.length > 1) && !editable && !show_files"
-            ng-click="show_files=true">
+    <div ng-show="(files.length > 1) && !editable && !show_files">
+        <button class="btn btn-xs attached" ng-click="show_files=true">
         <u>{{files.length}} arquivos anexos</u> + ...
-    </button>
+        </button>
+    </div>
     <div class="post-attachments"
        ng-show="(((files.length>0 && editable) || progress) || show_files) || files.length == 1">
         <div class="attachments">

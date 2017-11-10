@@ -187,7 +187,7 @@ ng-app="users-admin"
                                 <div class="col-sm-5">
                                     <div class="member-info">
                                         <div class="user-icon">
-                                            <img src="{{ user.picture }}" alt="{{ user.name }}">
+                                            <img ng-src="{{ user.picture }}" alt="{{ user.name }}">
                                         </div>
                                         <b>{{ user.first_name }} {{ user.last_name }}</b><br>
                                         ({{user.email}})

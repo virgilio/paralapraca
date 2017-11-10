@@ -64,7 +64,7 @@
         <div class="line one-column">
             <div class="column">
                 <div class="forum-thread" ng-cloak>
-                    <form class="new-thread" name="topic_form" novalidate ng-if="updating" ng-submit="topic_form.$valid && update_topic()">
+                    <form class="new-thread" name="topic_form" novalidate ng-show="updating" ng-submit="topic_form.$valid && update_topic()">
                         <div class="form-group">
                             <div class="row">
                               <div class="col-sm-6">
@@ -73,7 +73,23 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="thread-name">Título do tópico<span class="help-text">(campo obrigatório)</span></label>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <label for="thread-forum">Qual a categoria do seu tópico? <span class="help-text">(campo obrigatório)</span></label>
+                                    <select ng-model="category_id" name="category" class="form-control" id="category" ng-options="category.id as category.name for category in categories" required>
+                                        <option>Escolha a categoria</option>
+                                    </select>
+                                </div>
+                                <!-- <div class="col-sm-6">
+                                    <div class="help-text">categoria escolhida</div>
+                                    <div class="selected-category">
+                                        <span class="category discussion" ng-repeat="category in new_topic.categories">{{category}}</span>
+                                    </div>
+                                </div> -->
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="thread-name">Título do tópico <span class="help-text">(campo obrigatório)</span></label>
                             <input ng-model="topic.title" name="title" type="text" class="form-control" id="thread-name" placeholder="Escreva o título aqui" required>
                         </div>
                         <div class="form-group">
@@ -91,25 +107,6 @@
                         </div>
                         <files files="topic.files" editable="true" progress="topic.progress" is_topic="true"></files>
 
-                        <div class="form-group">
-                            <div class="row">
-                                <div class="col-sm-6">
-                                    <label for="thread-forum">Qual a categoria do seu tópico? <span class="help-text">escolha apenas uma (campo obrigatório)</span></label>
-                                    <ui-select multiple limit="1" ng-model="topic.categories" theme="bootstrap" title="Escolha as categorias..." required>
-                                      <ui-select-match placeholder="Selecione uma categoria...">{{$item.name}}</ui-select-match>
-                                      <ui-select-choices repeat="category in categories | filter: {name: $select.search}" group-by="">
-                                        <div ng-if="!tag.isTag" ng-bind-html="category.name + tag.isTag | highlight: $select.search"></div>
-                                      </ui-select-choices>
-                                    </ui-select>
-                                </div>
-                                <!-- <div class="col-sm-6">
-                                    <div class="help-text">categoria escolhida</div>
-                                    <div class="selected-category">
-                                        <span class="category discussion" ng-repeat="category in new_topic.categories">{{category}}</span>
-                                    </div>
-                                </div> -->
-                            </div>
-                        </div>
                         <div class="form-group">
                             <div class="row">
                                 <div class="col-sm-6">
@@ -145,7 +142,7 @@
                           <h4 class="thread-header"><span class="thread-title">{{ topic.title }}</span> por <a class="user-name" ng-href="/profile/{{ topic.author.username }}">{{ topic.author.name }}</a></h4>
                       </div>
                       <div class="tags">
-                          <a class="tag" ng-repeat="category in topic.categories">#{{ category.name }}</a>
+                          <a class="tag" ng-repeat="category in topic.categories">{{ category.name }}</a>
                       </div>
                       <div class="tags">
                           <a class="tag" ng-repeat="tag in topic.tags">#{{ tag.name }}</a>

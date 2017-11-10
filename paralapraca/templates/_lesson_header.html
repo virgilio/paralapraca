@@ -6,7 +6,7 @@
                         <!--você está no <b>Capítulo 2 de 5 | Unidade 2 de 3:</b>-->
                     <!--</span>-->
                     <span class="lesson-breadcrumb">
-                        você está no Capítulo: 
+                        você está no Capítulo:
                     </span>
                     <span class="lesson-name">
                         <b>{{ lesson.name }}</b>
@@ -23,14 +23,11 @@
         <!-- LESSON NAVIGATION FOR PHONE -->
         <div class="lesson-units-mobile visible-xs">
             <span class="lesson-breadcrumb">
-                capítulo 
+                capítulo
             </span>
             <select onchange="document.location=this.value" class="form-control">
-                <option>{{lesson.name}}</option>
                 {% for list_lesson in lesson.course.public_lessons %}
-                    {% if list_lesson.name != lesson.name %}
-                        <option value="{% url 'lesson' list_lesson.course.slug list_lesson.slug %}">{{ list_lesson.name }}</option>
-                    {% endif %}
+                    <option value="{% url 'lesson' list_lesson.course.slug list_lesson.slug %}" {% if list_lesson.name == lesson.name %}selected{% endif %}>{{ list_lesson.name }}</option>
                 {% endfor %}
             </select>
         </div>

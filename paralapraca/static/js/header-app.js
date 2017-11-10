@@ -14,6 +14,7 @@
         'ngAnimate',
         'angular-loading-bar',
         'angular-click-outside',
+        'ui.bootstrap',
     ]);
 
     app.config(['cfpLoadingBarProvider', function(cfpLoadingBarProvider) {
