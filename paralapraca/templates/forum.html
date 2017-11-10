@@ -210,7 +210,15 @@
                     </table>
 
                     <div ng-show="forum_single || forum_search" class="pagination-wrapper">
-                        <ul uib-pagination boundary-links="true" total-items="forum_topics_total" ng-model="forum.current_page" rotate="true" force-ellipses="true" max-size="forum_pages_max_number" items-per-page="forum_topics_page" ng-change="pageChanged()" class="pagination" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="primeira página" last-text="última página"></ul>
+
+                        <!-- Small screens -->
+                        <ul uib-pagination boundary-links="true" total-items="forum_topics_total" ng-model="forum.current_page" rotate="true" max-size="1" items-per-page="forum_topics_page" ng-change="pageChanged()" class="pagination pagination-sm" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></ul>
+
+                        <!-- Medium screens -->
+                        <ul uib-pagination boundary-links="true" total-items="forum_topics_total" ng-model="forum.current_page" rotate="true" force-ellipses="false" max-size="5" items-per-page="forum_topics_page" ng-change="pageChanged()" class="pagination pagination-md" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="primeira" last-text="última"></ul>
+
+                        <!-- Large screens -->
+                        <ul uib-pagination boundary-links="true" total-items="forum_topics_total" ng-model="forum.current_page" rotate="true" force-ellipses="false" max-size="forum_pages_max_number" items-per-page="forum_topics_page" ng-change="pageChanged()" class="pagination pagination-lg" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="primeira" last-text="última"></ul>
                     </div>
 
                     <div ng-show="!forum_single && !forum_search" class="see-all-topics">
