@@ -32,3 +32,16 @@
             </select>
         </div>
         <!-- END LESSON NAVIGATION FOR PHONE -->
+
+        <!-- UNITS NAVIGATION FOR PHONES -->
+        <div class="lesson-units-mobile visible-xs">
+            {% verbatim %}
+            <span class="lesson-breadcrumb">
+                unidade
+            </span>
+            <select class="form-control" ng-model="selectedIndex" ng-change="locationChange(selectedIndex)">
+                <option ng-repeat="unit in lesson.units" ng-value="$index+1" ng-selected="unit.id==currentUnit.id" value="{{$index+1}}">{{ unit.title }}</option>
+            </select>
+            {% endverbatim %}
+        </div>
+        <!-- END UNITS NAVIGATION FOR PHONES -->
