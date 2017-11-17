@@ -141,6 +141,15 @@
             </div>
         </div>
 
+        <div class="line one-column">
+            <div class="column">
+                <h3 class="section-title">filtrar por contrato</h3>
+                <select class="form-control" ng-model="filters.contract" ng-options="contract as contract.name for contract in contracts track by contract.id">
+                    <option value="">Selecione...</option>
+                </select>
+            </div>
+        </div>
+
         <div ng-repeat="forum in forums">
             <div ng-hide="(filters.categories.length + filters.tags.length === 0) && forum.topics.length===0">
                 <div class="line one-column" ng-if="!forum_single">
