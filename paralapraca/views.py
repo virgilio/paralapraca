@@ -14,7 +14,11 @@ from rest_framework.permissions import IsAuthenticated
 from paralapraca.models import AnswerNotification, UnreadNotification, Contract
 from core.models import Course, CourseStudent
 from accounts.models import TimtecUser
-from paralapraca.serializers import AnswerNotificationSerializer, UnreadNotificationSerializer, UserInDetailSerializer, UsersByClassSerializer, ContractSerializer
+from accounts.views import GroupViewSet
+from paralapraca.serializers import (AnswerNotificationSerializer,
+    UnreadNotificationSerializer, UserInDetailSerializer,
+    UsersByClassSerializer, ContractSerializer, ContractGroupSerializer)
+from accounts.serializers import GroupSerializer
 from discussion.models import Comment, CommentLike, Topic, TopicLike
 from rest_pandas import PandasViewSet
 from rest_pandas.renderers import PandasCSVRenderer, PandasJSONRenderer
@@ -217,3 +221,10 @@ class UsersByClassViewSet(PandasViewSet):
                     })
             coursestudent.pop('percent_progress_by_lesson', None)
         return data
+
+
+class ContractGroupViewSet(GroupViewSet):
+    """
+    Override group viewset add contracts.
+    """
+    serializer_class = ContractGroupSerializer
