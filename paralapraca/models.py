@@ -20,7 +20,7 @@ class Contract(models.Model):
         verbose_name=_('groups'),
         blank=True,
         help_text=_('Groups created to enforce this contract restrictions in several other models'),
-        related_name='contracts',
+        related_name='contract',
     )
     classes = models.ManyToManyField(Class, related_name='contracts')
     unities = ArrayField(
