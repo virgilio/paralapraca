@@ -163,12 +163,22 @@ ng-app="users-admin"
                         </div>
                     </div>
 
+                    <div class="row contracts-filter">
+                        <div class="col-xs-12">
+                            <h4>Filtro por contratos</h4>
+                            <select class="form-control" ng-model="contract" ng-change="filter_contracts()">
+                                <option value="0">Todos os contratos</option>
+                                <option ng-repeat="contract in contracts" value="{{contract.id}}">{{ contract.name }}</option>
+                            </select>
+                        </div>
+                    </div>
+
                     <div class="row header">
                         <div class="col-sm-3 col-lg-4">nome do grupo</div>
                         <div class="col-sm-3 col-lg-3">número de membros</div>
                     </div>
 
-                    <div class="row group" ng-repeat="group in groups">
+                    <div class="row group" ng-repeat="group in groups.filtered">
                         <div class="col-sm-3 col-lg-4 group-name">{{group.name}}</div>
                         <div class="col-sm-3 col-lg-3 members-number">{{group.users.length}} membros</div>
                         <div class="col-sm-6 col-lg-5 actions">
