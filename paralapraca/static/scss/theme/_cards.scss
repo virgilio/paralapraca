@@ -10,6 +10,16 @@
         @include button-hover(#fff,#fff,$purple,darken($purple,10%));
         margin: 15px 0 0 30px;
     }
+    .presentation {
+        font-size: 16px;
+        @media (min-width: $screen-sm-min) {
+            font-size: 18px;
+        }
+        margin-bottom: 30px;
+        b {
+            color: $purple;
+        }
+    }
     .search-container {
         position: relative;
     }
@@ -637,6 +647,9 @@
         }
         .widget-bottombar {
             background-color: $purple;
+        }
+        .widget-topbar {
+            border-color: $purple;
         }
     }
 }

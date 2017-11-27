@@ -12,7 +12,7 @@ from rest_framework import viewsets, status
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
 from paralapraca.models import AnswerNotification, UnreadNotification, Contract
-from core.models import Course, CourseStudent
+from core.models import Course, CourseStudent, Class
 from accounts.models import TimtecUser
 from accounts.views import GroupViewSet
 from paralapraca.serializers import (AnswerNotificationSerializer,
@@ -129,29 +129,52 @@ class UnreadNotificationViewSet(viewsets.ModelViewSet):
             queryset = UnreadNotification.objects.filter(user=self.request.user)
         return queryset
 
-
 class SummaryViewSet(viewsets.ViewSet):
 
     permission_classes = [IsAuthenticated]
 
     def list(self, request):
-        statistics_per_course = [
-            {'name': course.name,
-             'user_count': course.coursestudent_set.count(),
-             'user_finished_course_count': [student.can_emmit_receipt() for student in course.coursestudent_set.all()].count(True),
-             'classes': [
-                {'name': klass.name,
-                 'user_count': klass.get_students.count(),
-                 'certificate_count': [cs.certificate.type for cs in klass.get_students.all()].count('certificate')
-                } for klass in course.class_set.all()]
-            } for course in Course.objects.all()
-        ]
-        return Response({
+        courses = Course.objects.all()
+        stats = []
+        for course in courses:
+            course_stats = {
+                'name': course.name,
+                'user_count': course.coursestudent_set.count(),
+                'user_finished_course_count': 0
+            }
+            classes = Class.objects.filter(course=course)
+            classes_stats = []
+            for cclass in classes:
+                cclass_stats = {
+                    'name': cclass.name,
+                    'user_count': cclass.get_students.count(),
+                    'certificate_count': 0,
+                    'user_finished': 0
+                }
+
+                course_students = cclass.get_students.all()
+                certified = course_students.filter(certificate__type='certificate')
+                cclass_stats['certificate_count'] += certified.count()
+
+                for cs in course_students:
+                    # if cs.course_finished:
+                    #    cclass_stats['user_finished'] += 1
+                    if cs.can_emmit_receipt():
+                        course_stats['user_finished_course_count'] += 1
+                        cclass_stats['user_finished'] += 1
+
+                classes_stats.append(cclass_stats)
+
+            course_stats['classes'] = classes_stats
+            stats.append(course_stats)
+
+        response = Response({
             'user_count': TimtecUser.objects.count(),
             'total_number_of_topics': Topic.objects.count(),
             'total_number_of_comments': Comment.objects.count(),
             'total_number_of_likes': TopicLike.objects.count() + CommentLike.objects.count(),
-            'statistics_per_course': statistics_per_course})
+            'statistics_per_course': stats})
+        return response
 
 
 class UsersByGroupViewSet(PandasViewSet):
@@ -176,6 +199,7 @@ class UsersByGroupViewSet(PandasViewSet):
                 user.update({
                     u'{} - progresso'.format(course['course_name']): course['percent_progress'],
                     u'{} - nome da turma'.format(course['course_name']): course['class_name'],
+                    u'{} - concluiu'.format(course['course_name']): course['course_finished'],
                     u'{} - possui certificado'.format(course['course_name']): course['has_certificate']
                 })
             user.pop('courses', None)
@@ -189,25 +213,27 @@ class UsersByClassViewSet(PandasViewSet):
     queryset = CourseStudent.objects.all()
 
     def list(self, request, format=None):
-        ids = request.query_params.get('id', None)
-        if ids is not None:
-            # This is a bit ugly, but should work. There is no (easy) way to directly filter from
-            # a function, so I'm getting all the desired IDs, then filtering by the desired IDs
-            ids = ids.split(',')
-            ids = [int(idt) for idt in ids]
-            cs_ids = []
-            for x in self.queryset:
-                try:
-                    if x.get_current_class().id in ids:
-                        cs_ids.append(x.id)
-                except Exception as e:
-                    # If no class has been found, pass the error silently
-                    pass
+        try:
+            ids = request.query_params.get('id', None).split(',')
+            ids = [int(i) for i in ids]
+        except AttributeError:
+            ids = []
 
-            serializer = UsersByClassSerializer(self.queryset.filter(id__in=cs_ids), many=True)
-        else:
-            serializer = UsersByClassSerializer(self.queryset, many=True)
-        return Response(pd.DataFrame.from_dict(self.transform_data(serializer.data)).set_index('cpf'))
+        classes = Class.objects.all().filter(pk__in=ids)
+        students = [cls.students.all() for cls in classes]
+        students = [s for cls in students for s in cls]
+        courses = [cls['course_id'] for cls in classes.values()]
+
+        queryset = self.queryset
+        if len(ids) > 0:
+            queryset = self.queryset \
+                .filter(user__in=students, course__id__in=courses)
+
+        serializer = UsersByClassSerializer(queryset, many=True)
+
+        return Response(pd.DataFrame
+                        .from_dict(self.transform_data(serializer.data))
+                        .set_index('cpf'))
 
     def transform_data(self, data):
         for coursestudent in data:

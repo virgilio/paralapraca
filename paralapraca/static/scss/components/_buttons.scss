@@ -140,7 +140,7 @@
     }
     &.next-activity {
         @extend %icon-forward;
-        margin: -4px 0 0 10px; 
+        margin: -4px 0 0 10px;
     }
     &.notes {
         @extend %icon-notes;
@@ -291,6 +291,7 @@ a.action {
     color: $brand-primary;
     font-size: $font-size-small;
     font-weight: $semi-bold;
+    margin-bottom: 5px;
     margin-right: 5px;
     padding: 3px 6px;
 }

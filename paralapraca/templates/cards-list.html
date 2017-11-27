@@ -8,6 +8,10 @@
         <div class="pull-left"><a href="#!/new" class="btn btn-primary btn-sm new-practice add">nova prática</a></div>
     </header>
 
+    <div class="presentation">
+        <p><b>Assim se Faz</b> é um repositório de práticas culturais e pedagógicas que traz ideias que apoiam os profissionais da Educação Infantil nas suas interações com as crianças, a comunidade e as professoras. Poste suas práticas e desfrute das sugestões publicadas!</p>
+    </div>
+
     <section class="cards-search">
         <div class="row">
             <div class="col-xs-12 col-md-6 col-lg-7">
@@ -61,15 +65,12 @@
                 <datalist id="tag_list" ng-show="tag">
                     <option ng-repeat="tag in tags" ng-value="tag.name"/>
                 </datalist>-->
-                <ui-select multiple theme="bootstrap" ng-model="card_filter.tags" tagging="new_tag" title="Selecione uma tag...">
+                <ui-select multiple theme="bootstrap" ng-model="card_filter.tags" title="Selecione uma tag...">
                     <ui-select-match placeholder="Selecione uma tag...">#{{ $item.name }}</ui-select-match>
                     <ui-select-choices repeat="tag in tags | filter: {name: $select.search}" group-by="">
-                        <div ng-if="tag.isTag">
-                            <div ng-if="tag_exists($select.search)" ng-bind-html="tag.name | highlight: $select.search"></div>
-                            <div ng-if="!tag_exists($select.search)" ng-bind-html="(tag.name | highlight: $select.search) +' (nova tag)'"></div>
-                        </div>
-                        <div ng-if="!tag.isTag" ng-bind-html="tag.name + tag.isTag | highlight: $select.search" ng-hide="$select.search == tag.name"></div>
+                        <div ng-bind-html="tag.name | highlight: $select.search"></div>
                     </ui-select-choices>
+                    <ui-select-no-choice>Nenhuma tag encontrada</ui-select-no-choice>
                 </ui-select>
             </div>
         </form>

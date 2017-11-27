@@ -21,5 +21,10 @@
                 margin-right: 10px;
             }
         }
+        .btn {
+            @media screen and (max-width: $screen-sm-max) {
+                margin-top: 5px !important;
+            }
+        }
     }
 }

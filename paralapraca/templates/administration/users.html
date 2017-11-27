@@ -121,10 +121,10 @@ ng-app="users-admin"
                             {% verbatim %}
                                 <td>
                                     <div class="user-icon">
-                                        <img ng-src="{{ user.picture }}" alt="{{ user.name }}">
+                                        <a href="/profile/{{user.username}}"><img ng-src="{{ user.picture }}" alt="{{ user.name }}"></a>
                                     </div>
                                     <b>{{ user.name }}</b><br>
-                                    ({{ user.email }})
+                                    (<a href="/profile/{{user.username}}">{{ user.email }}</a>)
                                 </td>
                                 <td>{{ user.name }} {{ user.get_full_name }}</td>
                                 <td>
@@ -187,10 +187,10 @@ ng-app="users-admin"
                                 <div class="col-sm-5">
                                     <div class="member-info">
                                         <div class="user-icon">
-                                            <img src="{{ user.picture }}" alt="{{ user.name }}">
+                                            <a href="/profile/{{user.username}}"><img ng-src="{{ user.picture }}" alt="{{ user.name }}"></a>
                                         </div>
                                         <b>{{ user.first_name }} {{ user.last_name }}</b><br>
-                                        ({{user.email}})
+                                        (<a href="/profile/{{user.username}}">{{user.email}}</a>)
                                     </div>
                                 </div>
                                 <div class="col-sm-3">
