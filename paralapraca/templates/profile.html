@@ -63,36 +63,59 @@ wrapper-course-lesson
 
     </div>
 
-     <div class="profile-certificates">
+    <div class="profile-certificates">
 
-    <div ng-if="valid_certificates">
-
-        <div class="page-header">
-            <h2><i class="fa fa-angle-double-right"></i>Cursos finalizados</h2>
+        <div ng-if="current_user.is_superuser && user_profile.classes.length > 0">
+            {% verbatim %}
+            <div class="page-header profile-classes">
+                <h2>Turmas</h2>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Turma</th>
+                            <th>Módulo</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="klass in user_profile.classes">
+                            <td>{{ klass.name }}</td>
+                            <td>{{ klass.course }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            {% endverbatim %}
         </div>
 
-        <div class="widget">
-            {%verbatim%}
-            <div class="courses line two-column fifty-fifty">
-                <div class="course-box column" ng-repeat="certificate in user_profile.certificates | filter: { approved: 'true' }">
-                    <div class="line two-column">
-                        <div class="course-thumb column">
-                            <div class="course-thumb-bg" style="background-image: url({{certificate.course.home_thumbnail_url}});"></div>
-                            <a class="btn see-certificate" href="/certificate/{{certificate.link_hash}}/" target="_blank">ver
-                            {{ certificate.type==='receipt' ? 'declaração' : 'certificado' }}</a>
-                        </div>
-                        <div class="course-description column">
-                            <div class="progress-label">módulo concluído</div>
-                            <h3 class="course-title">{{ certificate.course.name }}</h3>
-                            <div class="course-info">
-                                <p><b>Finalizado em:</b> {{ certificate.created_date | date : "d/M/yyyy"}}</p>
+        <div ng-if="valid_certificates">
+
+            <div class="page-header">
+                <h2><i class="fa fa-angle-double-right"></i>Cursos finalizados</h2>
+            </div>
+
+            <div class="widget">
+                {%verbatim%}
+                <div class="courses line two-column fifty-fifty">
+                    <div class="course-box column" ng-repeat="certificate in user_profile.certificates | filter: { approved: 'true' }">
+                        <div class="line two-column">
+                            <div class="course-thumb column">
+                                <div class="course-thumb-bg" style="background-image: url({{certificate.course.home_thumbnail_url}});"></div>
+                                <a class="btn see-certificate" href="/certificate/{{certificate.link_hash}}/" target="_blank">ver
+                                {{ certificate.type==='receipt' ? 'declaração' : 'certificado' }}</a>
+                            </div>
+                            <div class="course-description column">
+                                <div class="progress-label">módulo concluído</div>
+                                <h3 class="course-title">{{ certificate.course.name }}</h3>
+                                <div class="course-info">
+                                    <p><b>Finalizado em:</b> {{ certificate.created_date | date : "d/M/yyyy"}}</p>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
+                {%endverbatim%}
             </div>
-            {%endverbatim%}
-
+        </div>
     </div>
 </div>
 {% endblock %}
