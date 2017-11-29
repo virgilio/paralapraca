@@ -68,7 +68,7 @@ class UserInDetailSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = TimtecUser
-        fields = sorted(('cpf', 'courses', 'date_joined', 'last_login',
+        fields = sorted(('cpf', 'cities', 'courses', 'date_joined', 'last_login',
                          'full_name', 'topics_created', 'number_of_likes',
                          'comments_created',))
 
@@ -77,6 +77,13 @@ class UserInDetailSerializer(serializers.ModelSerializer):
     topics_created = serializers.SerializerMethodField()
     number_of_likes = serializers.SerializerMethodField()
     courses = serializers.SerializerMethodField()
+    cities = serializers.SerializerMethodField()
+
+    def get_cities(self, obj):
+        contracts = [contract for group in obj.groups.all() for contract in group.contracts.all()]
+        group_names = [group.name.lower() for group in obj.groups.all()]
+        city_names = [unity for c in contracts for unity in c.unities_normalized]
+        return " - ".join(set(city_names) & set(group_names)).capitalize()
 
     def get_comments_created(self, obj):
         return obj.comment_author.count()
@@ -116,9 +123,17 @@ class UsersByClassSerializer(serializers.Serializer):
     percent_progress = serializers.SerializerMethodField()
     course_finished = serializers.SerializerMethodField()
     class_name = serializers.SerializerMethodField()
+    cities = serializers.SerializerMethodField()
 
     def get_cpf(self, obj):
         return obj.user.cpf
+
+    def get_cities(self, obj):
+        obj = obj.user
+        contracts = [contract for group in obj.groups.all() for contract in group.contracts.all()]
+        group_names = [group.name.lower() for group in obj.groups.all()]
+        city_names = [unity for c in contracts for unity in c.unities_normalized]
+        return " - ".join(set(city_names) & set(group_names)).capitalize()
 
     def get_email(self, obj):
         return obj.user.email

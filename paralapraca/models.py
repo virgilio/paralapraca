@@ -28,6 +28,10 @@ class Contract(models.Model):
         help_text=_('Possibly cities. This field stores the user declared unities on contract creation. This are used to distinguish some special grupos associated to the contract')
     )
 
+    @property
+    def unities_normalized(self):
+        return filter(lambda x: x !=  '', [x.strip().rstrip().lower() for x in self.unities])
+
     class Meta:
         verbose_name = _('Contract')
         verbose_name_plural = _('Contracts')
