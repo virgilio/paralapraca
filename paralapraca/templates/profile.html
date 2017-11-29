@@ -78,7 +78,7 @@ wrapper-course-lesson
                     </thead>
                     <tbody>
                         <tr ng-repeat="klass in user_profile.classes">
-                            <td>{{ klass.name }}</td>
+                            <td><a href="/class/{{klass.id}}">{{ klass.name }}</a></td>
                             <td>{{ klass.course }}</td>
                         </tr>
                     </tbody>
