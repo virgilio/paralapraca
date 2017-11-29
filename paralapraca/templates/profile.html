@@ -60,29 +60,7 @@ wrapper-course-lesson
 
     </div>
 
-    <div class="profile-certificates"></div>
-
-    <div ng-if="current_user.is_superuser">
-        {% verbatim %}
-        <div class="page-header profile-classes">
-            <h2>Turmas</h2>
-            <table class="table table-striped">
-                <thead>
-                    <tr>
-                        <th>Turma</th>
-                        <th>Módulo</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr ng-repeat="klass in user_profile.classes">
-                        <td>{{ klass.name }}</td>
-                        <td>{{ klass.course }}</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        {% endverbatim %}
-    </div>
+     <div class="profile-certificates">
 
     <div ng-if="valid_certificates">
 
@@ -111,7 +89,7 @@ wrapper-course-lesson
                 </div>
             </div>
             {%endverbatim%}
-        </div>
+
     </div>
 </div>
 {% endblock %}
