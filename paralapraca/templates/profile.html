@@ -34,7 +34,7 @@ wrapper-course-lesson
         <div class="profile-picture" style="background-image: url({{ user_profile.picture }});">
         </div>
 
-        <div class="profile-edit" ng-if="user_profile.is_current_user || current_user.is_superuser">
+        <div class="profile-edit" ng-show="user_profile.is_current_user">
             <a href="/profile/edit/" class="btn btn-success btn-sm edit">editar perfil</a>
         </div>
 
