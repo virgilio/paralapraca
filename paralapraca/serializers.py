@@ -2,9 +2,10 @@ from rest_framework import serializers
 from paralapraca.models import AnswerNotification, UnreadNotification, Contract
 from discussion.serializers import BaseTopicSerializer, BaseCommentSerializer, TopicLikeSerializer, CommentLikeSerializer
 from accounts.models import TimtecUser
-from accounts.serializers import GroupSerializer
+from accounts.serializers import GroupSerializer, GroupAdminSerializer
 from core.models import Class, Course
 from django.contrib.auth.models import Group
+
 
 class CourseSerializer(serializers.ModelSerializer):
 
@@ -158,6 +159,16 @@ class ContractGroupSerializer(GroupSerializer):
 
     class Meta(GroupSerializer.Meta):
         fields = ('id', 'name', 'contract')
+
+    def get_contract(self, obj):
+        return SimpleContractSerializer(obj.contract.first(),).data
+
+
+class ContractGroupAdminSerializer(GroupAdminSerializer):
+    contract = serializers.SerializerMethodField()
+
+    class Meta(GroupSerializer.Meta):
+        fields = ('id', 'name', 'users', 'contract')
 
     def get_contract(self, obj):
         return SimpleContractSerializer(obj.contract.first(),).data
