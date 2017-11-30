@@ -16,6 +16,7 @@ router.register(r'users-by-class', views.UsersByClassViewSet, base_name='users-b
 
 plpc_router = routers.SimpleRouter(trailing_slash=False)
 router.register(r'group', views.ContractGroupViewSet, base_name='group')
+router.register(r'group_admin', views.ContractGroupAdminViewSet, base_name='group_admin')
 
 urlpatterns = [
     url(r'^$', TemplateView.as_view(template_name="base.html")),
