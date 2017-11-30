@@ -1,0 +1,219 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load staticfiles %}
+
+{% block js %} {{block.super}}
+<script type="text/javascript" src="{% static 'js/profile-admin/profile.app.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/profile-admin/profile.controllers.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/profile-admin/profile.services.js' %}"></script>
+<script type="text/javascript" src="{% static 'tinymce-dist/tinymce.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/factories/timtec-models.js' %}"></script>
+<script type="text/javascript" src="{% static 'angular-ui-tinymce/src/tinymce.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/ui.tinymce.paralapraca.config.js' %}"></script>
+<script type="text/javascript">
+    tinyMCE.baseURL = '/static/tinymce-dist/';
+</script>
+{% endblock %}
+
+{% block wrapper_classes %}
+wrapper-course-lesson
+{% endblock %}
+
+{% block body_attrs %}
+  ng-app="profile-admin"
+{% endblock %}
+
+{% block content %}
+<div class="profile page container-fluid profile-admin" ng-controller="UserProfileController">
+    <form class="form-horizontal"
+          method="post"
+          enctype="multipart/form-data"
+          action="/admin/profile/edit/{{form.username.value}}">{% csrf_token %}
+        <fieldset>
+            <legend class="page-header">
+                <h2><i class="fa fa-angle-double-right"></i> {% trans "Profile Info" %}</h2>
+            </legend>
+
+            <script type="text/javascript" charset="utf-8">
+                $(document).ready(function() {
+                    function onFileSelected(event) {
+                        var selectedFile = event.target.files[0];
+                        var reader = new FileReader();
+                        var imgtag = document.getElementById("profile-avatar");
+
+                        reader.onload = function(event) {
+                            imgtag.style.backgroundImage = 'url(' + event.target.result + ')';
+                        };
+
+                        reader.readAsDataURL(selectedFile);
+                    }
+
+                    function onImgNotFound(event) {
+                        $(this).attr('src', '{% static "img/avatar-default.png" %}')
+                    }
+
+                    $("#upload-avatar").change(onFileSelected);
+
+                    $("#profile-avatar").error(onImgNotFound);
+                });
+            </script>
+            <div class="row">
+                <div class="col-xs-12 col-sm-4 col-md-3">
+                    <label for="upload-avatar">
+                        <div id="profile-avatar" class="profile-picture" style="background-image: url({{ form.instance.get_picture_url }});"></div>
+                        <span class="btn btn-info btn-sm edit">{% trans "Upload avatar" %}</span>
+                    </label>
+
+                    <input type="file" name="picture" id="upload-avatar" class="hidden"/>
+                </div>
+
+                <div class="col-xs-12 col-sm-8 col-md-9">
+                    <div class="form-group">
+                        <label class="col-xs-12 col-sm-3 col-lg-2 control-label">{% trans "Full Name" %}</label>
+
+                        <div class="col-xs-12 col-sm-9 col-lg-10">
+                            <div class="row">
+                                {% with errors=form.first_name.errors %}
+                                <div class="col-xs-6 left{{ errors|yesno:" has-error,"}}">
+                                    <input name="first_name" type="text" class="form-control" placeholder="Primeiro nome" value="{{form.first_name.value}}">
+                                    {% for error in errors %}<small>{{error}}</small>{% endfor %}
+                                </div>
+                                {% endwith %}
+
+                                {% with errors=form.last_name.errors %}
+                                <div class="col-xs-6 right{{ errors|yesno:" has-error,"}}">
+                                    <input name="last_name" type="text" class="form-control" placeholder="Último nome" value="{{form.last_name.value}}">
+                                    {% for error in errors %}<small>{{error}}</small>{% endfor %}
+                                </div>
+                                {% endwith %}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-xs-12 col-sm-3 col-lg-2 control-label">CPF</label>
+
+                        <div class="col-xs-12 col-sm-9 col-lg-10">
+                            <div class="row">
+                                {% with errors=form.cpf.errors %}
+                                <div class="col-xs-6 left{{ errors|yesno:" has-error,"}}">
+                                    <input name="cpf" type="text" class="form-control" placeholder="00000000000" value="{{form.cpf.value|default_if_none:''}}">
+                                    {% for error in errors %}<small>{{error}}</small>{% endfor %}
+                                </div>
+                                {% endwith %}
+                            </div>
+                        </div>
+                    </div>
+
+                    {% with errors=form.occupation.errors %}
+                    <div class="form-group{{ errors|yesno:" has-error,"}}">
+                        <label class="col-xs-12 col-sm-3 col-lg-2 control-label">{% trans "Occupation" %}</label>
+                        <div class="col-xs-12 col-sm-9 col-lg-10">
+                            <input name="occupation" type="text" class="form-control" placeholder="O que você faz?" value="{{form.occupation.value}}">
+                            {% for error in errors %}<small>{{error}}</small>{% endfor %}
+                        </div>
+                    </div>
+                    {% endwith %}
+
+                    {% with errors=form.city.errors %}
+                    <div class="form-group{{ errors|yesno:" has-error,"}}">
+                        <label class="col-xs-12 col-sm-3 col-lg-2 control-label">{% trans "City" %}</label>
+                        <div class="col-xs-12 col-sm-9 col-lg-10">
+                            <input name="city" type="text" class="form-control" placeholder="Qual cidade você vive?" value="{{form.city.value}}">
+                            {% for error in errors %}<small>{{error}}</small>{% endfor %}
+                        </div>
+                    </div>
+                    {% endwith %}
+
+                    {% with errors=form.site.errors %}
+                    <div class="form-group{{ errors|yesno:" has-error,"}}">
+                        <label class="col-xs-12 col-sm-3 col-lg-2 control-label">{% trans "Site" %}</label>
+                        <div class="col-xs-12 col-sm-9 col-lg-10">
+                            <input name="site" type="text" class="form-control" placeholder="Você possui algum site pessoal?" value="{{form.site.value}}">
+                            {% for error in errors %}<small>{{error}}</small>{% endfor %}
+                        </div>
+                    </div>
+                    {% endwith %}
+
+                    {% with errors=form.biography.errors %}
+                    <div class="form-group{{ errors|yesno:" has-error,"}}">
+                        <label class="col-xs-12 col-sm-3 col-lg-2 control-label">{% trans "Bio" %}</label>
+                        <div class="col-xs-12 col-sm-9 col-lg-10">
+                            <textarea ui-tinymce ng-model="user_profile.biography" name="biography" class="form-control" rows="7" placeholder="Escreve um pouco sobre você...">{{form.biography.value}}</textarea>
+                            {% for error in errors %}<small>{{error}}</small>{% endfor %}
+                        </div>
+                    </div>
+                    {% endwith %}
+                </div>
+            </div>
+        </fieldset>
+
+        <fieldset>
+            <legend class="page-header">
+                <h2><i class="fa fa-angle-double-right"></i> {% trans "User Groups" %}</h2>
+            </legend>
+            {% with errors=form.groups.errors %}
+              <label class="col-xs-12 col-sm-3 col-lg-2 control-label">{% trans "Username" %}</label>
+                <div class="col-xs-12 col-sm-9 col-lg-10">
+                    {{ form.groups }}
+                    {% for error in errors %}<small>{{error}}</small>{% endfor %}
+                </div>
+            {% endwith %}
+        </fieldset>
+
+        <fieldset>
+            <legend class="page-header">
+                <h2><i class="fa fa-angle-double-right"></i> {% trans "Account Settings" %}</h2>
+            </legend>
+
+            {% with errors=form.username.errors %}
+            <div class="form-group{{ errors|yesno:" has-error,"}}">
+                <label class="col-xs-12 col-sm-3 col-lg-2 control-label">{% trans "Username" %}</label>
+                <div class="col-xs-12 col-sm-9 col-lg-10">
+                    <input readonly name="username" type="text" class="form-control" value="{{form.username.value}}">
+                    {% for error in errors %}<small>{{error}}</small>{% endfor %}
+                </div>
+            </div>
+            {% endwith %}
+
+            {% with errors=form.email.errors %}
+            <div class="form-group{{ errors|yesno:" has-error,"}}">
+                <label class="col-xs-12 col-sm-3 col-lg-2 control-label">{% trans "E-mail" %}</label>
+                <div class="col-xs-12 col-sm-9 col-lg-10">
+                    <input name="email" type="e-mail" class="form-control" placeholder="Qual o seu email?" value="{{form.email.value}}">
+                    {% for error in errors %}<small>{{error}}</small>{% endfor %}
+                </div>
+            </div>
+            {% endwith %}
+
+            {% with errors=form.password2.errors %}
+            <div class="form-group{{ errors|yesno:" has-error,"}}">
+                <label class="col-xs-12 col-sm-3 col-lg-2 control-label">{% trans "Password" %}</label>
+                <div class="col-xs-12 col-sm-9 col-lg-10">
+                    <div class="row">
+                        <div class="col-xs-6 left">
+                            <input name="password1" type="password" class="form-control" placeholder="{% trans 'New password' %}">
+                        </div>
+                        <div class="col-xs-6 right">
+                            <input name="password2" type="password" class="form-control" placeholder="{% trans 'Confirm new password' %}">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            {% for error in errors %}<small>{{error}}</small>{% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endwith %}
+        </fieldset>
+
+        <div class="submit">
+            <button type="submit" class="btn btn-danger save pull-right"
+                    onclick="return confirm('Você confirma a alteração para o usuário: {{ form.first_name.value }}?')">
+              {% trans "Save" %}
+            </button>
+        </div>
+    </form>
+</div>
+{% endblock %}

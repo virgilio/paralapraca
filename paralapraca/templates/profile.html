@@ -21,7 +21,7 @@ wrapper-course-lesson
 {% endblock %}
 
 {% block content %}
-<div class="profile page container-fluid" ng-controller="UserProfileController" ng-cloak>
+<div class="profile page container-fluid" ng-class="{'profile-admin': current_user.is_superuser}" ng-controller="UserProfileController" ng-cloak>
     <div ng-hide="user_profile.$resolved">
         <p><i class="loading fa fa-refresh fa-spin"></i></p>
     </div>
@@ -34,8 +34,11 @@ wrapper-course-lesson
         <div class="profile-picture" style="background-image: url({{ user_profile.picture }});">
         </div>
 
-        <div class="profile-edit" ng-show="user_profile.is_current_user">
+        <div class="profile-edit" ng-show="user_profile.is_current_user && !current_user.is_superuser">
             <a href="/profile/edit/" class="btn btn-success btn-sm edit">editar perfil</a>
+        </div>
+        <div class="profile-edit" ng-show="current_user.is_superuser">
+            <a href="/admin/profile/edit/{{ user_profile.username }}" class="btn btn-danger btn-sm edit">editar</a>
         </div>
 
         <h2 class="profile-name">{{user_profile.first_name}} {{user_profile.last_name}}</h2>
