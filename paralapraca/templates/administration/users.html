@@ -172,17 +172,20 @@ ng-app="users-admin"
                         <div class="col-sm-3 col-lg-4 group-name">{{group.name}}</div>
                         <div class="col-sm-3 col-lg-3 members-number">{{group.users.length}} membros</div>
                         <div class="col-sm-6 col-lg-5 actions">
-                            <button class="btn btn-sm btn-primary btn-inverse add" ng-click="new_users(group)">adicionar membros</button>
                             <button class="btn btn-sm btn-primary btn-inverse"
                                     ng-init="show_members=false"
                                     ng-click="show_members=!show_members">
-                                    ver membros
+                                    gerenciar grupo
                                     <i class="fa" ng-class="{'fa fa-caret-down':!show_members,'fa fa-caret-up':show_members}"></i>
                             </button>
-                            <button class="btn btn-danger btn-inverse trash" ng-click="remove_group(group)"></button>
+                            <button class="btn btn-sm btn-danger btn-inverse delete" ng-click="remove_group(group)">Remover grupo</button>
                         </div>
 
                         <div class="container-fluid members" ng-show="show_members">
+                            <div class="group-actions">
+                                <button class="btn btn-sm btn-primary btn-inverse add" ng-click="new_users(group)">adicionar membros</button>
+                                <button class="btn btn-sm btn-danger btn-inverse delete" ng-click="remove_users(group)">remover membros em lote</button>
+                            </div>
                             <div class="row member-line" ng-repeat="user in group.users">
                                 <div class="col-sm-5">
                                     <div class="member-info">
@@ -194,7 +197,7 @@ ng-app="users-admin"
                                     </div>
                                 </div>
                                 <div class="col-sm-3">
-                                    <button class="btn btn-sm btn-danger btn-inverse delete" ng-click="remove_user(group, user)">remover do grupo</button>
+                                    <button class="btn btn-danger btn-inverse trash" ng-click="remove_user(group, user)"></button>
                                 </div>
                             </div>
 
@@ -212,45 +215,83 @@ ng-app="users-admin"
 <script type="text/ng-template" id="newUserModal.html">
             <div class="modal-content">
                 <div class="modal-header">
-                    <button type="button" class="close" ng-click="cancel()"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <button type="button" class="close" ng-click="cancel()"><span aria-hidden="true">&times;</span><span class="sr-only">Cancelar</span></button>
                     {% verbatim %}
                     <h4 class="modal-title" id="add-users-modal-label">Adicione usuários ao grupo "{{group.name}}"</h4>
                     {% endverbatim %}
                 </div>
-                <div class="modal-body">
-                    <form role="form">
-                        <label for="search-user" class="control-label">Busca de usuários</label>
-                        <div class="autocomplete">
-                            <input type="text" id="search-user" class="form-control" ng-model="asyncSelected"
-                                    placeholder="{% trans 'Type the name, email or user name of the professor to search...' %}"
-                                    uib-typeahead="user as user.formated_name for user in getUsers($viewValue)"
-                                    typeahead-loading="loadingLocations"
-                                    typeahead-on-select="on_select_professor($model); asyncSelected = '';"
-                                    typeahead-min-length="2"
-                                    typeahead-wait-ms="500">
-                            <i ng-show="loadingLocations" class="loading fa fa-refresh fa-spin"></i>
+                <div ng-show="!bulk_add_show">
+                    <div class="modal-body">
+                        <form role="form">
+                            <label for="search-user" class="control-label">Busca de usuários</label>
+                            <div class="autocomplete">
+                                <input type="text" id="search-user" class="form-control" ng-model="asyncSelected"
+                                        placeholder="{% trans 'Type the name, email or user name of the professor to search...' %}"
+                                        uib-typeahead="user as user.formated_name for user in getUsers($viewValue)"
+                                        typeahead-loading="loadingLocations"
+                                        typeahead-on-select="on_select_professor($model); asyncSelected = '';"
+                                        typeahead-min-length="2"
+                                        typeahead-wait-ms="500">
+                                <i ng-show="loadingLocations" class="loading fa fa-refresh fa-spin"></i>
+                            </div>
+                            <table class="table table-list" ng-show="new_users.length">
+                                <tr>
+                                    <th class="fullname">{% trans "Full name" %}</th>
+                                    <th class="email">{% trans "Email" %}</th>
+                                    <th class="username">{% trans "Username" %}</th>
+                                    <th class="actions">{% trans "Actions" %}</th>
+                                </tr>
+                                <tr ng-repeat="new_user in new_users">
+                                    {% verbatim %}
+                                    <td>{{new_user.name}}</td>
+                                    <td>{{new_user.email}}</td>
+                                    <td>{{new_user.username}}</td>
+                                    {% endverbatim %}
+                                    <td class="textcenter"><button class="btn btn-warning" ng-click="remove_new_professor($index)"><i class="fa fa-trash-o"></i></button></td>
+                                </tr>
+                            </table>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <div class="pull-left">
+                            <label class="check"><input type="checkbox" ng-model="bulk_add_show"> Adicionar em lote</label>
                         </div>
-                        <table class="table table-list" ng-show="new_users.length">
-                            <tr>
-                                <th class="fullname">{% trans "Full name" %}</th>
-                                <th class="email">{% trans "Email" %}</th>
-                                <th class="username">{% trans "Username" %}</th>
-                                <th class="actions">{% trans "Actions" %}</th>
-                            </tr>
-                            <tr ng-repeat="new_user in new_users">
-                                {% verbatim %}
-                                <td>{{new_user.name}}</td>
-                                <td>{{new_user.email}}</td>
-                                <td>{{new_user.username}}</td>
-                                {% endverbatim %}
-                                <td class="textcenter"><button class="btn btn-warning" ng-click="remove_new_professor($index)"><i class="fa fa-trash-o"></i></button></td>
-                            </tr>
-                        </table>
-                    </form>
+                        <button type="button" class="btn btn-default" ng-click="cancel()">Cancelar</button>
+                        <button type="button" class="btn btn-primary" ng-click="add_professors()">{% trans 'Add users' %}</button>
+                    </div>
+                </div>
+                <div ng-show="bulk_add_show">
+                    <div class="modal-body">
+                        <label for="bulk-add-list">Lista de usuários</label>
+                        <textarea id="bulk-add-list" ng-model="bulk_add_list" class="form-control" rows="10" placeholder="Copie a lista de e-mails aqui. Apenas um e-mail por linha."></textarea>
+                    </div>
+                    <div class="modal-footer">
+                        <div class="pull-left">
+                            <label class="check"><input type="checkbox" ng-model="bulk_add_show"> Adicionar em lote</label>
+                        </div>
+                        <button type="button" class="btn btn-default" ng-click="cancel()">Cancelar</button>
+                        <button type="button" class="btn btn-primary" ng-click="bulk_add()">Adicionar usuários em lote</button>
+                    </div>
+                </div>
+            </div>
+</script>
+
+<!-- modal bulk remove user -->
+<script type="text/ng-template" id="removeUsersModal.html">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" ng-click="cancel()"><span aria-hidden="true">&times;</span><span class="sr-only">Cancelar</span></button>
+                    {% verbatim %}
+                    <h4 class="modal-title" id="remove-users-modal-label">Remover usuários em lote do grupo "{{group.name}}"</h4>
+                    {% endverbatim %}
+                </div>
+                <div class="modal-body">
+                    <label for="bulk-remove-list">Lista de usuários</label>
+                    <textarea id="bulk-remove-list" ng-model="bulk_remove_list" class="form-control" rows="10" placeholder="Copie a lista de e-mails aqui. Apenas um e-mail por linha."></textarea>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" ng-click="cancel()">Close</button>
-                    <button type="button" class="btn btn-primary" ng-click="add_professors()">{% trans 'Add users' %}</button>
+                    <button type="button" class="btn btn-default" ng-click="cancel()">Cancelar</button>
+                    <button type="button" class="btn btn-primary" ng-click="bulk_remove()">Remover usuários</button>
                 </div>
             </div>
 </script>
