@@ -153,7 +153,7 @@ ng-app="users-admin"
             {% verbatim %}
             <div class="tab-pane fade in groups-list" id="groups" ng-controller="GroupAdminController">
                 <section>
-                    <div class="row">
+                    <div class="row section-header">
                         <div class="col-xs-8">
                             <h3>Lista de grupos</h3>
                             <p class="total">Total de <span>{{ groups.length }} grupos cadastrados</span></p>
@@ -166,6 +166,7 @@ ng-app="users-admin"
                     <div class="row header">
                         <div class="col-sm-3 col-lg-4">nome do grupo</div>
                         <div class="col-sm-3 col-lg-3">número de membros</div>
+                        <div class="col-sm-6 col-lg-5 actions"></div>
                     </div>
 
                     <div class="row group" ng-repeat="group in groups">
@@ -182,13 +183,21 @@ ng-app="users-admin"
                         </div>
 
                         <div class="container-fluid members" ng-show="show_members">
-                            <div class="group-actions">
-                                <button class="btn btn-sm btn-primary btn-inverse add" ng-click="new_users(group)">adicionar membros</button>
-                                <button class="btn btn-sm btn-danger btn-inverse delete" ng-click="remove_users(group)">remover membros em lote</button>
+                            <h3>Grupo {{group.name}}</h3>
+                            <div class="row group-actions">
+                                <div class="col-sm-7">
+                                  Usuário
+                                </div>
+                                <div class="col-sm-5">
+                                  <div class="pull-right">
+                                    <button class="btn btn-sm btn-primary btn-inverse add" ng-click="new_users(group)">adicionar membros</button>
+                                    <button class="btn btn-sm btn-danger btn-inverse delete" ng-click="remove_users(group)">remover membros em lote</button>
+                                  </div>
+                                </div>
                             </div>
                             <div class="row member-line" ng-repeat="user in group.users">
-                                <div class="col-sm-5">
-                                    <div class="member-info">
+                                <div class="col-sm-7">
+                                    <div class="">
                                         <div class="user-icon">
                                             <a href="/profile/{{user.username}}"><img ng-src="{{ user.picture }}" alt="{{ user.name }}"></a>
                                         </div>
@@ -196,8 +205,10 @@ ng-app="users-admin"
                                         (<a href="/profile/{{user.username}}">{{user.email}}</a>)
                                     </div>
                                 </div>
-                                <div class="col-sm-3">
+                                <div class="col-sm-5">
+                                  <div class="pull-right">
                                     <button class="btn btn-danger btn-inverse trash" ng-click="remove_user(group, user)"></button>
+                                  </div>
                                 </div>
                             </div>
 
