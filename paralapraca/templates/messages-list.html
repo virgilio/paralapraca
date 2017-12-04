@@ -5,6 +5,9 @@
 
 {% block js %}
     {{block.super}}
+    {% compress css %}
+        <link rel="stylesheet" type="text/css" href="{% static 'angular-ui-select/dist/select.css' %}">
+    {% endcompress %}
     <script type="text/javascript" src="{% static 'tinymce-dist/tinymce.js' %}"></script>
     {% compress js %}
     <script type="text/javascript" src="{% static 'js/messages/app.js' %}"></script>
@@ -12,6 +15,7 @@
     <script type="text/javascript" src="{% static 'js/messages/services.js' %}"></script>
     <script type="text/javascript" src="{% static 'checklist-model/checklist-model.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/factories/timtec-models.js' %}"></script>
+    <script type="text/javascript" src="{% static 'angular-ui-select/dist/select.js' %}"></script>
     <script type="text/javascript" src="{% static 'angular-ui-tinymce/src/tinymce.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/ui.tinymce.paralapraca.config.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/discussion-services.js' %}"></script>
@@ -59,9 +63,12 @@
                             <div class="students col-lg-12">
                                 <p><label><input type="checkbox" ng-model="modal.all_students"> Enviar para todos os alunos da plataforma</label></p>
                                 {% verbatim %}
-                                <div ng-repeat="group in groups">
-                                    <label ng-show="!modal.all_students && !modal.specify_students"><input type="checkbox" checklist-model="groups.checked" checklist-value="group.id"> {{ group.name }}</label>
-                                </div>
+                                <ui-select multiple theme="bootstrap" class="form-control" ng-model="groups.checked" ng-show="!modal.all_students && !modal.specify_students">
+                                    <ui-select-match placeholder="Escolha um ou mais grupos">{{ group_label($item) }}</ui-select-match>
+                                    <ui-select-choices repeat="group.id as group in groups | filter: {name: $select.search}" group-by="contract_name">
+                                        <div ng-bind-html="get_as_safe_html((group.name | highlight: $select.search))"></div>
+                                    </ui-select-choices>
+                                </ui-select>
                                 {% endverbatim %}
                                 <label ng-show="!modal.all_students"><input type="checkbox" ng-model="modal.specify_students"> Especificar usuários individualmente</label>
                                 <div class="autocomplete" ng-show="modal.specify_students && !modal.all_students">

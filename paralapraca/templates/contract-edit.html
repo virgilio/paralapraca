@@ -1,0 +1,156 @@
+{% verbatim %}
+<div class="contracts contracts-edit widget container-fluid">
+
+    <header class="widget-topbar line one-column">
+        <h2 class="page-title">contratos</h2>
+    </header>
+
+    <h3 ng-if="!editing_mode">Novo contrato</h3>
+    <h3 ng-if="editing_mode">Edição de contrato</h3>
+
+    <form>
+        <div class="row">
+            <div class="col-xs-12 col-lg-10">
+                <label>Nome do contrato</label>
+                <input ng-model="contract.name" type="text" class="form-control" placeholder="Digite aqui o nome do contrato">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-12 col-md-6 col-lg-4">
+                <label>Firmado em</label>
+                <div class="date-input input-group">
+                    <input type="text" class="form-control" ng-model="contract.start_date" uib-datepicker-popup="dd/MM/yyyy" is-open="start_opened" show-button-bar="false" show-weeks="false" starting-day="0" placeholder="Escolha ou digite a data" />
+                    <span class="input-group-btn">
+                        <button class="btn btn-success" type="button" ng-click="start_opened = true"><span class="caret"></span></button>
+                    </span>
+                </div>
+            </div>
+            <div class="col-xs-12 col-md-6 col-lg-4">
+                <label>Válido até</label>
+                <div class="date-input input-group">
+                    <input type="text" class="form-control" ng-model="contract.expiry_date" uib-datepicker-popup="dd/MM/yyyy" is-open="expiry_opened" show-button-bar="false" show-weeks="false" starting-day="0" placeholder="Escolha ou digite a data" />
+                    <span class="input-group-btn">
+                        <button class="btn btn-success" type="button" ng-click="expiry_opened = true"><span class="caret"></span></button>
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-12 col-md-6 col-lg-4">
+                <label>Município</label>
+                <input type="text" class="form-control" placeholder="Digite e clique numa das opções">
+            </div>
+
+            <div class="col-xs-12 col-md-6 col-lg-4">
+                <label>Módulos disponíveis</label>
+                <ui-select multiple theme="bootstrap" class="form-control" ng-model="contract.courses" title="Escolha um ou mais módulos">
+                    <ui-select-match placeholder="Escolha um ou mais módulos">{{ $item.name }}</ui-select-match>
+                    <ui-select-choices repeat="course in courses | filter: {name: $select.search}" group-by="">
+                        <div ng-bind-html="course.name | highlight: $select.search"></div>
+                    </ui-select-choices>
+                </ui-select>
+            </div>
+
+            <div class="col-xs-12 col-md-6 col-lg-4">
+                <label>Importar usuários</label>
+                <div class="flex">
+                    <input type="text" class="form-control" placeholder="Somente arquivos em formato CSV">
+                    <button class="btn btn-sm btn-default attach">procurar</button>
+                </div>
+                <span class="see-all">
+                    <i class="fa fa-eye" aria-hidden="true"></i>
+                    <a href="#modal">ver todos os usuários</a>
+                </span>
+            </div>
+        </div>
+
+        <label>Descrição de contrato</label>
+        <textarea class="form-control"></textarea>
+
+        <button class="btn btn-sm btn-primary save pull-right">salvar contrato</button>
+    </form>
+
+    <div class="modal" style="display: none;">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close">× fechar</button>
+                    <h4 class="modal-title">Usuários neste contrato (XXX)</h4>
+                </div>
+                <div class="modal-body">
+                    <ul class="contract-user-list">
+                        <li>
+                            <span class="user-icon">
+                                <img src="https://placeholdit.co//i/40x40">
+                            </span>
+                            <span class="user-name">Cecília Ramos Rodrigues</span>
+                        </li>
+                        <li>
+                            <span class="user-icon">
+                                <img src="https://placeholdit.co//i/40x40">
+                            </span>
+                            <span class="user-name">Cecília Ramos Rodrigues</span>
+                        </li>
+                        <li>
+                            <span class="user-icon">
+                                <img src="https://placeholdit.co//i/40x40">
+                            </span>
+                            <span class="user-name">Cecília Ramos Rodrigues</span>
+                        </li>
+                        <li>
+                            <span class="user-icon">
+                                <img src="https://placeholdit.co//i/40x40">
+                            </span>
+                            <span class="user-name">Cecília Ramos Rodrigues</span>
+                        </li>
+                        <li>
+                            <span class="user-icon">
+                                <img src="https://placeholdit.co//i/40x40">
+                            </span>
+                            <span class="user-name">Cecília Ramos Rodrigues</span>
+                        </li>
+                        <li>
+                            <span class="user-icon">
+                                <img src="https://placeholdit.co//i/40x40">
+                            </span>
+                            <span class="user-name">Cecília Ramos Rodrigues</span>
+                        </li>
+                        <li>
+                            <span class="user-icon">
+                                <img src="https://placeholdit.co//i/40x40">
+                            </span>
+                            <span class="user-name">Cecília Ramos Rodrigues</span>
+                        </li>
+                        <li>
+                            <span class="user-icon">
+                                <img src="https://placeholdit.co//i/40x40">
+                            </span>
+                            <span class="user-name">Cecília Ramos Rodrigues</span>
+                        </li>
+                        <li>
+                            <span class="user-icon">
+                                <img src="https://placeholdit.co//i/40x40">
+                            </span>
+                            <span class="user-name">Cecília Ramos Rodrigues</span>
+                        </li>
+                        <li>
+                            <span class="user-icon">
+                                <img src="https://placeholdit.co//i/40x40">
+                            </span>
+                            <span class="user-name">Cecília Ramos Rodrigues</span>
+                        </li>
+                        <li>
+                            <span class="user-icon">
+                                <img src="https://placeholdit.co//i/40x40">
+                            </span>
+                            <span class="user-name">Cecília Ramos Rodrigues</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endverbatim %}
