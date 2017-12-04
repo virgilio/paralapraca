@@ -82,7 +82,7 @@ class UserInDetailSerializer(serializers.ModelSerializer):
     cities = serializers.SerializerMethodField()
 
     def get_cities(self, obj):
-        contracts = [contract for group in obj.groups.all() for contract in group.contracts.all()]
+        contracts = [contract for group in obj.groups.all() for contract in group.contract.all()]
         group_names = [group.name.lower() for group in obj.groups.all()]
         city_names = [unity for c in contracts for unity in c.unities_normalized]
         return " - ".join(set(city_names) & set(group_names)).capitalize()
@@ -132,7 +132,7 @@ class UsersByClassSerializer(serializers.Serializer):
 
     def get_cities(self, obj):
         obj = obj.user
-        contracts = [contract for group in obj.groups.all() for contract in group.contracts.all()]
+        contracts = [contract for group in obj.groups.all() for contract in group.contract.all()]
         group_names = [group.name.lower() for group in obj.groups.all()]
         city_names = [unity for c in contracts for unity in c.unities_normalized]
         return " - ".join(set(city_names) & set(group_names)).capitalize()
