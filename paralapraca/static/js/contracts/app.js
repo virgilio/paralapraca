@@ -10,6 +10,7 @@
         'ui.bootstrap',
         'ui.select',
         'ui.tinymce',
+        'core.services',
         'header',
     ]);
 
