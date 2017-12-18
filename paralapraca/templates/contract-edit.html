@@ -28,7 +28,7 @@
                 <label>Grupos de usuários</label>
                 <ui-select multiple theme="bootstrap" class="form-control" ng-model="contract.groups" title="Escolha um ou mais módulos">
                     <ui-select-match placeholder="Escolha um ou mais grupos de usuários">{{ $item.name }}</ui-select-match>
-                    <ui-select-choices repeat="group in groups | filter: {name: $select.search}" group-by="">
+                    <ui-select-choices repeat="group in groups | filter: {name: $select.search} track by group.id">
                         <div ng-bind-html="group.name | highlight: $select.search"></div>
                     </ui-select-choices>
                 </ui-select>
@@ -38,7 +38,7 @@
                 <label>Turmas</label>
                 <ui-select multiple theme="bootstrap" class="form-control" ng-model="contract.classes" title="Escolha um ou mais módulos">
                     <ui-select-match placeholder="Escolha uma ou mais turmas">{{ $item.name }}</ui-select-match>
-                    <ui-select-choices repeat="klass in classes | filter: {name: $select.search}" group-by="">
+                    <ui-select-choices repeat="klass in classes | filter: {name: $select.search} track by klass.id">
                         <div ng-bind-html="klass.name | highlight: $select.search"></div>
                     </ui-select-choices>
                 </ui-select>
