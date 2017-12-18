@@ -22,6 +22,7 @@
 
             $scope.editing_mode = false;
             $scope.contract = {
+                description: '',
                 name: ''
             };
         }
