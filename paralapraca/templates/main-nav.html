@@ -31,7 +31,7 @@
             </a>
             {% endverbatim %}
         </li>
-        
+
         {% if user.is_superuser %}
         <li class="submenu">
             <a class="admin"
@@ -49,7 +49,7 @@
         </li>
         {% elif user|is_coordinator %}
         <li class="submenu">
-            <a href="{% url 'administration.courses' %}">
+            <a class="admin" href="{% url 'administration.courses' %}">
                 {% trans "Admin" %}
             </a>
         </li>
