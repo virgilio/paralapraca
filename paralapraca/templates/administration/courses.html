@@ -24,20 +24,20 @@ wrapper-course-lesson
     <div class="modal-dialog modal-sm">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">{% trans 'Close' %}</span></button>
-                <h4 class="modal-title" id="class-modal-label">{% trans 'New course name' %}</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Cancelar</span></button>
+                <h4 class="modal-title" id="class-modal-label">Nome do novo módulo</h4>
             </div>
             <form role="form" novalidate method="post" action="{% url 'administration.new_course' %}">
                 {% csrf_token %}
                 <div class="modal-body">
                         <div class="form-group">
-                            <label for="course-name" class="sr-only">{% trans 'New course name' %}</label>
-                            <input ng-model="new_course_name" id="course-name" name="name" class="form-control" placeholder="{% trans 'New course name' %}">
+                            <label for="course-name" class="sr-only">Nome do novo módulo</label>
+                            <input ng-model="new_course_name" id="course-name" name="name" class="form-control" placeholder="Nome do novo módulo">
                         </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">{% trans 'Cancel' %}</button>
-                    <button type="submit" ng-disabled="!new_course_name" class="btn btn-primary">{% trans 'Create course' %}</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                    <button type="submit" ng-disabled="!new_course_name" class="btn btn-primary">Criar módulo</button>
                 </div>
             </form>
         </div>
@@ -50,24 +50,24 @@ wrapper-course-lesson
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" ng-click="cancel()"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                <h4 class="modal-title" id="class-modal-label">{% trans 'Choose the course file to import' %}</h4>
+                <h4 class="modal-title" id="class-modal-label">Selecione o arquivo de módulo para importar</h4>
             </div>
             <form role="form" method="post">
                 {% csrf_token %}
                 <div class="modal-body">
                         <div class="form-group">
-                            <label for="course-import-file" class="sr-only">{% trans 'Select the course file to import' %}</label>
+                            <label for="course-import-file" class="sr-only">Selecione o arquivo de módulo para importar</label>
                             <input file
                                    ng-model="course_import_file"
                                    id="course-import-file"
                                    name="course-import-file"
                                    class="form-control"
-                                   placeholder="{% trans 'Course file to import...' %}">
+                                   placeholder="Arquivo de módulo para importar...">
                         </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" ng-click="cancel()">{% trans 'Cancel' %}</button>
-                    <button type="button" class="btn btn-primary" ng-click="import_course()">{% trans 'Import course' %}</button>
+                    <button type="button" class="btn btn-default" ng-click="cancel()">Cancelar</button>
+                    <button type="button" class="btn btn-primary" ng-click="import_course()">Importar módulo</button>
                 </div>
             </form>
         </div>
@@ -76,8 +76,8 @@ wrapper-course-lesson
     <!-- ACTIONS -->
     <div class="actions-menu" fixed-bar>
         <div class="container-fluid">
-            <a class="btn btn-sm btn-primary btn-inverse add" data-toggle="modal" data-target="#new-course-modal">{% trans 'Create course' %}</a>
-            <a class="btn btn-sm btn-primary btn-inverse download" ng-click="import_course_modal()">{% trans 'Import course' %}</a>
+            <a class="btn btn-sm btn-primary btn-inverse add" data-toggle="modal" data-target="#new-course-modal">Criar módulo</a>
+            <a class="btn btn-sm btn-primary btn-inverse download" ng-click="import_course_modal()">Importar módulo</a>
         </div>
     </div>
     <!-- END ACTIONS -->
@@ -86,7 +86,7 @@ wrapper-course-lesson
     <div class="courses-content page container-fluid">
         <!--  HEADER -->
         <header class="page-header">
-            <h3>{% trans 'Courses' %}</h3>
+            <h3>Módulos</h3>
         </header>
         <!-- END HEADER -->
 
@@ -98,19 +98,19 @@ wrapper-course-lesson
                 <div class="row">
                     <div class="filter-checkbox col-md-3 col-sm-12">
                         <div class="checkbox">
-                            <label><input ng-model="filters.all" type="checkbox"> {% trans 'All' %}</label>
-                            <label><input ng-model="filters.published" type="checkbox"> {% trans 'Published' %}</label>
-                            <label><input ng-model="filters.draft" type="checkbox"> {% trans 'Draft' %}</label>
+                            <label><input ng-model="filters.all" type="checkbox"> Todos</label>
+                            <label><input ng-model="filters.published" type="checkbox"> Públicos</label>
+                            <label><input ng-model="filters.draft" type="checkbox"> Rascunho</label>
                         </div>
                     </div>
                     <div class="filter-keyword col-md-3 col-sm-4">
-                        <input type="text" ng-model="filters.textsearch" placeholder="{% trans 'Keyword' %}" class="form-control">
+                        <input type="text" ng-model="filters.textsearch" placeholder="Palavra-chave" class="form-control">
                     </div>
                     <div class="filter-ordering col-md-3 col-sm-4">
                         <select ng-model="ordering" class="form-control">
-                            <option value="start_date">{% trans 'Start date' %}</option>
-                            <option value="status">{% trans 'Status' %}</option>
-                            <option value="name">{% trans 'Name' %}</option>
+                            <option value="start_date">Data de início</option>
+                            <option value="status">Status</option>
+                            <option value="name">Nome</option>
                         </select>
                     </div>
                     <div class="filter-reverse col-md-3 col-sm-4">
@@ -129,7 +129,7 @@ wrapper-course-lesson
             <!-- COURSE -->
             <div class="line" ng-repeat="course in (filteredList = (courseList | orderBy:ordering:reverse | nullToEnd:ordering:reverse | filter:filters.check))">
 
-                
+
                 <div class="header">
                     <h4 class="course-title">
                         {% verbatim %}
@@ -137,25 +137,25 @@ wrapper-course-lesson
                         {% endverbatim %}
                     </h4>
 
-                    <span class="label label-warning" ng-if="course.status =='draft'">{% trans 'Draft' %}</span>
-                    <span class="label label-success" ng-if="course.status == 'published'">{% trans 'Published' %}</span>
+                    <span class="label label-warning" ng-if="course.status =='draft'">Rascunho</span>
+                    <span class="label label-success" ng-if="course.status == 'published'">Público</span>
                 </div>
 
                 <span class="course-date">
                     <span ng-show="course.has_started">
-                        <span class="date-label">{% trans 'Started in' %}</span>
+                        <span class="date-label">Começou em</span>
                         {% verbatim %}
                         <b>{{ course.start_date | date:'d/M/yyyy' }}</b>
                         {% endverbatim %}
                     </span>
                     <span ng-show="!course.has_started && course.start_date">
-                        <span class="date-label">{% trans 'Starts in' %}</span>
+                        <span class="date-label">Começa em</span>
                         {% verbatim %}
                         <b>{{ course.start_date | date:'d/M/yyyy' }}</b>
                         {% endverbatim %}
                     </span>
                     <span ng-show="!course.start_date">
-                        <b>{% trans 'No start date' %}</b>
+                        <b>Sem data de início</b>
                     </span>
                 </span>
 
@@ -165,18 +165,18 @@ wrapper-course-lesson
                     <span ng-if="!showLessons">mostrar capítulos</span>
                     <span ng-if="showLessons">esconder capítulos</span>
                 </button>
-  
+
                 <div class="lesson-list" ng-show="showLessons">
                     <div ng-hide="course.lessons.$resolved">
-                        <span>{% trans 'Loading lessons list' %}...</span>
+                        <span>Carregando lista de capítulos...</span>
                     </div>
                     <div ng-show="course.lessons.length == 0">
-                        <span>{% trans 'Loading lessons list' %}</span>
+                        <span>Carregando lista de capítulos...</span>
                     </div>
                     <div ng-show="course.lessons">
                         <div class="lesson" ng-repeat="lesson in course.lessons">
-                            <span class="label label-success" ng-if="lesson.status=='published'">{% trans 'Published' %}</span>
-                            <span class="label label-warning" ng-if="lesson.status!='published'">{% trans 'Draft' %}</span>
+                            <span class="label label-success" ng-if="lesson.status=='published'">Público</span>
+                            <span class="label label-warning" ng-if="lesson.status!='published'">Rascunho</span>
 
                             {% verbatim %}
                             <a ng-href="/admin/courses/{{ course.id }}/lessons/{{lesson.id}}" ng-bind="lesson.name" class="lesson-name"></a>
@@ -189,10 +189,10 @@ wrapper-course-lesson
             <!-- END COURSE -->
 
             <div class="row" ng-show="courseList.$resolved && filteredList.length === 0">
-                <p class="textcenter">{% trans 'No courses found' %}</p>
+                <p class="textcenter">Nenhum módulo encontrado</p>
             </div>
             <div class="row" ng-show="!courseList.$resolved">
-                <p class="textcenter">{% trans 'Loading courses...' %}<i class="loading fa fa-refresh fa-spin"></i></p>
+                <p class="textcenter">Carregando módulos...<i class="loading fa fa-refresh fa-spin"></i></p>
             </div>
         </section>
         <!-- END ALL-COURSES -->
